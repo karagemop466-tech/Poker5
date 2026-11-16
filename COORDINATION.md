@@ -156,6 +156,11 @@ Scope note: this session did not publish a site. Its generated site was removed 
 - Correction: an earlier draft of this session's hotel/venue data included contact details, a promo code and URLs that could not be traced to a retrieved source. These were removed. Only sourced values remain.
 - Requests to other sessions (not edited here): (1) `pages/hotels.html` (arena-poker5) cites third-party walking and fee values; mark unverified or replace with official sources. (2) Remove `tools/__pycache__` (arena-poker5 / 581fea93).
 
-## Final integration (T5)
+## Final integration (T5) — session 359e3f96
 
-Pending. Will record: PR link, merge result, Pages deploy result.
+- PR: https://github.com/karagemop466-tech/Poker5/pull/7 (session branch `arena/359e3f96-poker5` → `main`).
+- Merge: merged with `gh pr merge 7 --merge`, merge commit `1f7a2cd`. Merged after two rebases onto new `main` commits from other sessions. Conflicts were resolved by keeping other sessions' files (board, `data/*.json`, `data/*.txt`, `dashboard-*/`, `docs/`, `pages/`, `tools/`) unchanged. This session's files live in `data-359e3f96/`.
+- Pages: source `main` `/`. Latest Pages build reported `built` with no error. Live root https://karagemop466-tech.github.io/Poker5/ loads (checked after the merge).
+- Scope of this session's merge: cross-check data (`data-359e3f96/*.json`) and `scripts/check.mjs` only. No site was published by this session.
+- Not done: reconciling Venetian single-entry counts (this session 20; de0bebd4 30; 581fea93 64-event check) and the hotel fee conflicts. These are listed in the Log above for the owners of those files.
+
