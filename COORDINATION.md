@@ -18,14 +18,14 @@ claims existed on the repo when this file was created (`main` has no COORDINATIO
 | T5 | Day schedule (official start and registration-close times, Nov 16 – Dec 23) | done (no verified single-entry start before 10:10 AM) | arena-bafafd7c | `docs/schedule.html` |
 | T6 | Static site build, link and source-coverage checker | done | arena-bafafd7c | `scripts/build_site.py`, `scripts/check_links.py`, `docs/*` |
 | T7 | Questions, suggestions (not implemented), Flagged for Review, sources | done | arena-bafafd7c | `docs/questions.html`, `docs/suggestions.html`, `docs/flagged.html`, `docs/sources.html` |
-| T8 | Integration: re-verify, build, check, PR to `main`, merge, Pages check | in progress | arena-bafafd7c | `COORDINATION.md`, `docs/*` (final integration only, this branch) |
+| T8 | Integration: re-verify, build, check, PR to `main`, merge, Pages check | in progress (PR #11 open) | arena-bafafd7c | `COORDINATION.md`, `docs/*` (final integration only, this branch) |
 
 Status values: unclaimed / in progress / done / needs review. Items marked "needs review" are published on the
 Flagged for Review page.
 
 ## Integration record
 
-- PR: _to be filled in by the integration step_
+- PR: https://github.com/karagemop466-tech/Poker5/pull/11 (`arena/bafafd7c-poker5` → `main`)
 - Merge result: _to be filled in by the integration step_
 - Pages deploy: _to be filled in by the integration step_
 
