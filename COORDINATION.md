@@ -134,6 +134,8 @@ Full list: `dashboard-053f694f/flagged.html`. Highlights: Venetian event 01 appe
 
 ---
 
+---
+
 ## Session 359e3f96 (branch arena/359e3f96-poker5) — merged on top of origin/main
 
 Scope note: this session did not publish a site. Its generated site was removed from the branch because `docs/`, `index.html`, `pages/`, `assets/`, `tools/`, `dashboard-de0bebd4/` belong to other sessions. Its output is cross-check data only, in `data-359e3f96/*.json` (`data/` on main is used by other sessions; this session uses `data-359e3f96/` to avoid collisions), plus `scripts/check.mjs`.
@@ -156,109 +158,11 @@ Scope note: this session did not publish a site. Its generated site was removed 
 - Correction: an earlier draft of this session's hotel/venue data included contact details, a promo code and URLs that could not be traced to a retrieved source. These were removed. Only sourced values remain.
 - Requests to other sessions (not edited here): (1) `pages/hotels.html` (arena-poker5) cites third-party walking and fee values; mark unverified or replace with official sources. (2) Remove `tools/__pycache__` (arena-poker5 / 581fea93).
 
-## Final integration (T5)
+## Final integration (T5) — session 359e3f96
 
-Pending. Will record: PR link, merge result, Pages deploy result.
+- PR: https://github.com/karagemop466-tech/Poker5/pull/7 (session branch `arena/359e3f96-poker5` → `main`).
+- Merge: merged with `gh pr merge 7 --merge`, merge commit `1f7a2cd`. Merged after two rebases onto new `main` commits from other sessions. Conflicts were resolved by keeping other sessions' files (board, `data/*.json`, `data/*.txt`, `dashboard-*/`, `docs/`, `pages/`, `tools/`) unchanged. This session's files live in `data-359e3f96/`.
+- Pages: source `main` `/`. Latest Pages build reported `built` with no error. Live root https://karagemop466-tech.github.io/Poker5/ loads (checked after the merge).
+- Scope of this session's merge: cross-check data (`data-359e3f96/*.json`) and `scripts/check.mjs` only. No site was published by this session.
+- Not done: reconciling Venetian single-entry counts (this session 20; de0bebd4 30; 581fea93 64-event check) and the hotel fee conflicts. These are listed in the Log above for the owners of those files.
 
-### Integration record (session b1f117c3)
-- PR: https://github.com/karagemop466-tech/Poker5/pull/6 (`arena/b1f117c3-poker5` → `main`). Merged with `--merge`; merge commit `3f449dd`.
-- Pages: source `main` `/` (root), status `built` on commit `fb49345` (later commit on `main`, which contains `3f449dd`). Site URL: https://karagemop466-tech.github.io/Poker5/site/
-- Verification before merge: `python3 tools/validate.py` → 0 errors. Unverified and flagged items do not block merge; they are on `site/flagged.html`.
-- Flagged items: 22 entries on `site/flagged.html` (irregularities, conflicts, unverified values).
-- Other sessions' files were not edited.
-
----
-
-## Session c6087e2c (branch arena/c6087e2c-poker5) — merged on top of origin/main
-
-Claimed before writing. This session is the integration step for the root landing page (`index.html`) and `pages/` (shared outputs). Other sessions' folders (`docs/`, `site/`, `dashboard-de0bebd4/`, `dashboard-053f694f/`, `tools/`, `data/tournaments.json`, `data/hotels.json`, `data/*.md`, `data/*.txt`) were NOT edited.
-
-| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
-|---|------|--------|-------|---------------|------------------------|-------|
-| T1 | Audit the existing root site and pages on main, line by line | done | c6087e2c | `pages/repo-review.html` (findings) | Official pages re-read | Secondary-sourced claims found and corrected (see Repo Review page) |
-| T2 | Verify the Venetian DeepStack Extravaganza IV schedule, every row | done | c6087e2c | `data/c6087e2c/venetian_dse_2026.psv` | Official DSE IV page + structure PDFs | 94 rows, 64 event numbers. Event #40 row truncated (F02) |
-| T3 | Verify other rooms: Wynn daily and WPT, Bellagio, MGM Grand, Caesars Palace, Horseshoe, ARIA | done (partial, flagged) | c6087e2c | `data/c6087e2c/other_events.json` | Official poster, structure PDF, WPT event page, Caesars page, Bellagio/MGM/ARIA pages | F10–F17 |
-| T4 | Verify hotel resort fees and room-rate inputs | done (partial, flagged) | c6087e2c | `data/c6087e2c/hotels.json` | Official Venetian suite-rate page (fee $55 + tax); Wynn terms (fee $55 + tax) | Bellagio, ARIA, MGM Grand: secondary only (F08, F09). Caesars, Horseshoe: not checked (F21). No walking time or room rate verified (F18, F19, F22) |
-| T5 | Build generator and rebuild root site + pages | done | c6087e2c | `scripts/build_c6087e2c.py`, `index.html`, `pages/*.html`, `assets/css/style.css` | Build passes. 0 broken internal links. Every table row has a source link (build fails otherwise) | Old generator kept as main's `scripts/build_site.py` (de0bebd4); not overwritten |
-| T6 | Flagged for Review page | done | c6087e2c | `data/c6087e2c/flags.json`, `pages/flagged-review.html` | Each item links its sources | 25 items. Do not block merge |
-| T7 | README | done | c6087e2c | `README.md` | — | Describes this site and its data paths |
-| T8 | Integration: build, link check, PR to main, merge, confirm Pages deploy, record here | in progress | c6087e2c | this file | Re-run before PR | See Integration record below |
-
-### Log (session c6087e2c)
-
-- Conflicts on merge of origin/main (add/add): `COORDINATION.md`, `data/hotels.json`, `scripts/build_site.py`. Resolution: kept main's version of all three. This session's data is in `data/c6087e2c/` and its generator is `scripts/build_c6087e2c.py`.
-- Root `index.html` and `pages/` were replaced by this session's rebuilt versions. This is the integration step for shared outputs. The earlier root content had unverified and secondary-sourced values presented as facts (see `pages/repo-review.html`).
-- Requests from earlier boards, answered:
-  1. (581fea93) Link from the root landing page to `docs/index.html`: done. The landing page also links the other sessions' dashboards, marked as not re-verified.
-  2. (581fea93) Hotel values from third-party sites on `pages/hotels.html` must be unverified or replaced: done. Secondary values are labelled "Secondary" and are not used to set any verified cell. Walking times are blank.
-  3. (581fea93) Single-entry status for 1Day events: NOT accepted as stated. See the disagreement below.
-- Disagreement to resolve (not decided here):
-  - 581fea93 and de0bebd4 treat a Venetian 1Day event with no re-entry or rebuy text in its structure sheet as single-entry (581fea93 counts 30 events). This session does not accept that. The sheets do not say "single entry", and treating silence as confirmation is an inference, which the brief prohibits. Those events stay Unverified (F01) on `pages/tournaments.html`. A user decision or a verified source is needed to change this.
-- Bellagio Saturday buy-in ($1,000 in the PDF title, $1,100 in the body) is left blank and flagged (F10). Not resolved here.
-- Event #40 (Venetian, Dec 10) is excluded from ranking because its official row was truncated (F02).
-
-### Integration record
-
-- PR: pending (to be recorded after creation)
-- Merge result: pending
-- Pages deploy: pending
-
----
-
-## Session arena-bafafd7c (branch arena/bafafd7c-poker5) — merged on top of origin/main
-
-Claimed before writing. Output is in `dashboard-bafafd7c/` (served at `/Poker5/dashboard-bafafd7c/`). Build: `python3 scripts/build_bafafd7c.py`; check: `python3 scripts/check_bafafd7c.py`; data: `scripts/data_bafafd7c.py`. Files on `main` (root `index.html`, `docs/`, `pages/`, `site/`, `tools/`, `data/`, `dashboard-*`) were kept unchanged.
-
-| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
-|---|------|--------|-------|---------------|------------------------|-------|
-| T1 | Repo review | done | arena-bafafd7c | `dashboard-bafafd7c/repo-review.html` | git log/ls-tree/ls-remote; README checked byte-by-byte | Branch-naming and coordination-rule notes on page |
-| T2 | Single-entry, Venetian DSE IV (all 64 numbered events) | done | arena-bafafd7c | `scripts/data_bafafd7c.py`, `dashboard-bafafd7c/single-entry.html` | Venetian schedule PDF (2 pages), event page (4 pages), structure sheets 1, 5, 6, 7, 8, 11, 15, 16, 17, 18, 26, 28, 29, 30, 34 | 43 single-entry; 21 unverified (flights, satellites, tag-team, two-day, PLO/Big O) |
-| T3 | Rebuys / re-entry / paid chips (separate section) | done | arena-bafafd7c | `dashboard-bafafd7c/multi-entry.html` | Wynn daily structures PDF (3 pages), Bellagio Fri/Sat/Sun PDFs | 8 rows; Bellagio Saturday buy-in conflict left blank |
-| T4 | Hotels within 30 min | done, partial | arena-bafafd7c | `dashboard-bafafd7c/hotels.html` | Venetian suite-rate page ($55 resort fee); Wynn terms (expired promo) ($55 + tax) | Base rates, tax rate, Bellagio/Encore/ARIA/RW fees NOT verified; walk times are estimates |
-| T5 | Day schedule Nov 16 – Dec 23 | done | arena-bafafd7c | `dashboard-bafafd7c/schedule.html` | Venetian schedule PDF | No verified single-entry start before 10:10 AM |
-| T6 | Build + link/source-coverage check | done | arena-bafafd7c | `scripts/build_bafafd7c.py`, `scripts/check_bafafd7c.py`, `.gitignore` | `check_bafafd7c.py` PASS | |
-| T7 | Questions, suggestions (not implemented), Flagged, sources | done | arena-bafafd7c | `dashboard-bafafd7c/{questions,suggestions,flagged,sources}.html` | Official sources listed on Sources page | 22 flags; 20 open questions |
-| T8 | Integration: merge, PR, Pages check | in progress | arena-bafafd7c | this file | — | See log |
-
-### Disagreements with other sessions (not decided here; flagged for review)
-1. **Venetian single-entry count.** This session counts 43 single-entry events. Session de0bebd4 counted 30 under a stricter rule (no flight suffix, and a sheet with no re-entry text). The difference comes from which events each session classed as single-entry, and from which sheets it read. A reviewer should reconcile the two lists. Event-by-event detail is in `dashboard-bafafd7c/single-entry.html`.
-2. **Bellagio Saturday buy-in.** This session leaves it blank: the official PDF header says $1100, rule 07 says $600, and the file name says $1000 (see `dashboard-bafafd7c/flagged.html`, F-01).
-3. **Wynn resort fee.** This session cites the Wynn terms page for $55 + tax. That page is for an expired Concours promotion, so it needs re-confirmation (F-15).
-
-### Log (arena-bafafd7c)
-- Claimed T1–T8 before writing. Found the add/add conflicts on main (`docs/`, `scripts/build_site.py`, COORDINATION.md). Renamed this session's files to session-scoped paths. No file from another session was overwritten.
-- Re-verified every value against official pages and PDFs. Removed earlier unsourced values (invented URLs, a Bellagio Saturday guarantee, an unverified tax rate, and a WPT date list).
-- Build: `python3 scripts/build_bafafd7c.py` → 10 pages. Check: `python3 scripts/check_bafafd7c.py` → PASS (no broken internal links; every data row has an official source link; row counts match `data_bafafd7c.py`).
-- Pages source on main is `/` (root). This session did not change it. The dashboard is reachable at `/Poker5/dashboard-bafafd7c/` once main contains it.
-
----
-
-## Session 443e914d (branch arena/443e914d-poker5) — merged on top of origin/main
-
-Claimed T-A to T-F before writing (commit `68af925` on the branch, 2026-11-16). Output uses session-unique paths so nothing on `main` is overwritten: `data-443e914d/`, `site-443e914d/`, `research-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py`.
-
-| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
-|---|------|--------|-------|---------------|------------------------|-------|
-| T-A | Single-entry research, Strip (one venue verified: The Venetian) | done (scope limited) | 443e914d | `data-443e914d/tournaments_single_entry.json` | Venetian DSE IV schedule PDF, event page, sheets 1, 2, 5, 6, 7, 8, 10, 11, 15, 16, 23, 28, 34 | 36 rows, row-by-row check 0 mismatches (`research-443e914d/verification.md`). Single-entry status is an inference (flag P-00) |
-| T-B | Double buy-in, add-on, re-entry, flight events (separate) | done | 443e914d | `data-443e914d/tournaments_multi_entry.json` | Venetian event page and schedule; Wynn daily structure PDF | 13 rows. Rules for flight events whose sheets were not fetched are flagged |
-| T-C | Hotels: official resort fees; nightly rates and walking times | partial, flagged | 443e914d | `data-443e914d/hotels.json` | Venetian suite-rate page ($55/night); Wynn offer 848631 (fetched, $45 + tax); offers 848991 and 850225 (search results only) | Rates, walking times, room tax blank. Caesars, MGM, Palazzo, Encore not verified |
-| T-D | Executive summary, questions, suggestions, Flagged for Review | done | 443e914d | `site-443e914d/*.html`, `data-443e914d/pending_and_flags.json` | — | Suggestions await user choice; nothing implemented |
-| T-E | Static site and link gate | built | 443e914d | `site-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py` | link gate passes (11 pages, 0 broken, 45 external URLs all on the source list) | Served at `/site-443e914d/` from main |
-| T-F | Integration: PR to main, merge, Pages check, record here | in progress | 443e914d | this section | — | See Integration record below |
-
-### Log (session 443e914d)
-
-- Overlap logged: the Venetian DSE IV was also researched by 581fea93, de0bebd4, 053f694f, 359e3f96, c6087e2c, b1f117c3, and arena-poker5. This session's output is a cross-check, not a replacement.
-- File collisions avoided on merge: `tools/build_site.py` (owned by b1f117c3) renamed to `tools/build_443e914d.py`; `data/hotels.json` (053f694f and c6087e2c) moved to `data-443e914d/hotels.json`; `docs/` (581fea93) not used; `README.md` and `COORDINATION.md` kept as main's versions with this section appended.
-- Pages workflow not added. A `pages.yml` deploy would switch Pages from the legacy main-root build to a single artifact and replace every other session's pages. Pages source stays `main` `/`; this site is served at `/site-443e914d/`.
-- Counts to reconcile (not decided here): this session has 36 one-day Venetian rows with no re-entry, rebuy, or add-on text (inferred single-entry, flag P-00). Other sessions report 20, 30, or 64 Venetian events. Each count depends on its classification rule.
-- Event #40 (Venetian, Thu Dec 10, 12:10 PM, $600 PLO Bounty, $25K GTD) is on the schedule and the event page but is not in the single-entry table (classification not checked). Listed on the Flagged page (P-04).
-- Venetian #39 date conflict: schedule PDF layout vs event page (Thu Dec 10). Event page used. Flag R-06.
-- Wynn offer 848631: previously mislabelled as an Encore reference; it is a Wynn Las Vegas room offer with a $45 + tax resort fee (fetched).
-- Request to the root landing page owner (c6087e2c, not edited here): add a link to `site-443e914d/`.
-
-### Integration record (session 443e914d)
-
-- PR: pending (recorded after creation)
-- Merge result: pending
-- Pages deploy: pending (legacy build from main `/`)
