@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions (decide) | Poker5 Las Vegas Strip</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="brand">Poker5 <span>Las Vegas Strip poker research</span></div>
+<div class="asof">Data as of 2026-11-16 (America/Los_Angeles)</div></header>
+<div class="layout">
+<nav class="side"><a href="index.html" class="">Dashboard</a><a href="tournaments.html" class="">Single-entry tournaments</a><a href="advantage.html" class="">Advantage / not single-entry</a><a href="hotels.html" class="">Hotels</a><a href="schedule.html" class="">Schedule</a><a href="analysis.html" class="">Analysis</a><a href="questions.html" class="">Questions &amp; open items</a><a href="suggestions.html" class="active">Suggestions (decide)</a><a href="flagged.html" class="">Flagged for Review</a><a href="sources.html" class="">Sources</a></nav>
+<main>
+<h1>Suggestions (decide)</h1>
+
+<p class="lede">These are proposed changes to the site. Nothing here has been implemented. Choose which ones to approve, change or reject.</p>
+<input class="filter" data-target="sug" placeholder="Filter rows (e.g. Bounty, 12/..., $600)"><div class="scroll"><table class="data" id="sug"><thead><tr><th>ID</th><th>Suggestion</th><th>Status</th><th>Why</th></tr></thead><tbody><tr><td>S1</td><td>Add a &#x27;last checked&#x27; date and structure-sheet link to every row</td><td><span class="pill ver">Recommended</span></td><td>Makes it obvious how old each value is and where to check it.</td></tr><tr><td>S2</td><td>Read the 31 unread Venetian structure sheets and 46 WPT rows, then convert them to verified or excluded</td><td><span class="pill ver">Recommended</span></td><td>Largest gain in accuracy; it is research, not a design change.</td></tr><tr><td>S3</td><td>Refresh official schedule PDFs on a schedule (for example weekly) through a GitHub Action, with a diff report</td><td><span class="pill unv">Needs your decision</span></td><td>Keeps the site current but needs a scheduled job.</td></tr><tr><td>S4</td><td>Capture nightly room rates for your chosen dates from each official booking engine, with a timestamp</td><td><span class="pill unv">Needs your decision</span></td><td>The only way to get a verified room rate; needs your dates.</td></tr><tr><td>S5</td><td>Add a walking-time column measured from a maps service</td><td><span class="pill unv">Needs your decision</span></td><td>Walking times are not on official sites. Requires a maps service that is outside the current allowed hosts.</td></tr><tr><td>S6</td><td>Add a trip planner: dates and budget in, a day plan out</td><td><span class="pill unv">Needs your decision</span></td><td>Useful for the goal of playing as many events as possible; adds a page and some logic.</td></tr><tr><td>S7</td><td>Add a single-entry filter toggle and CSV download on every table</td><td><span class="pill ver">Recommended</span></td><td>Simple to implement and makes review easier.</td></tr><tr><td>S8</td><td>Split satellites into their own page instead of mixing them in the tournament table</td><td><span class="pill ver">Recommended</span></td><td>Keeps the main table clean.</td></tr><tr><td>S9</td><td>Run an automated check before every publish (JSON valid, every row has an official source, no broken links)</td><td><span class="pill ver">Recommended</span></td><td>tools/validate.py covers part of this; a CI step would make it automatic.</td></tr><tr><td>S10</td><td>Add a &#x27;Changes since last check&#x27; log</td><td><span class="pill unv">Needs your decision</span></td><td>Helps you see what moved between checks.</td></tr></tbody></table></div>
+
+</main></div>
+<footer>Every value links to an official source unless marked <span class="pill unv">Unverified</span>. Blank = not verified; nothing was inferred.</footer>
+<script src="assets/app.js"></script>
+</body></html>

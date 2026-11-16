@@ -1,0 +1,118 @@
+{
+ "as_of": "2026-11-16",
+ "rows": [
+  {
+   "room": "Wynn Las Vegas",
+   "event": "NLH daily (Monday-Thursday)",
+   "start": "12:00 PM",
+   "buy_in": 200,
+   "guarantee": 10000,
+   "advantage": "re-entry",
+   "note": "Entry fee doubles as re-entry fee; registration and re-entries until start of level 9 (~4:30 PM).",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf"
+  },
+  {
+   "room": "Wynn Las Vegas",
+   "event": "NLH daily (Friday)",
+   "start": "12:00 PM",
+   "buy_in": 240,
+   "guarantee": 40000,
+   "advantage": "rebuy, add-on",
+   "note": "Unlimited $200 rebuys when at 15,000 chips or less; one $100 add-on for 15,000 chips; re-entry NOT allowed.",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf"
+  },
+  {
+   "room": "Wynn Las Vegas",
+   "event": "NLH daily (Saturday & Sunday)",
+   "start": "12:00 PM",
+   "buy_in": 200,
+   "guarantee": 25000,
+   "advantage": "re-entry",
+   "note": "Entry fee doubles as re-entry fee.",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf"
+  },
+  {
+   "room": "Wynn Las Vegas",
+   "event": "NLH daily (Nightly)",
+   "start": "6:00 PM",
+   "buy_in": 160,
+   "guarantee": 10000,
+   "advantage": "unverified",
+   "note": "Listed on official poster; structure sheet not reviewed, so re-entry status is unknown.",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf"
+  },
+  {
+   "room": "Caesars Palace",
+   "event": "Daily NLH",
+   "start": "10:00 AM",
+   "buy_in": 100,
+   "guarantee": 1000,
+   "advantage": "add-on, re-entry",
+   "note": "$50 add-on for 15,000 chips at first break; re-entry by paying entry fee after elimination within first break; registration closes at start of level 7.",
+   "source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf"
+  },
+  {
+   "room": "Caesars Palace",
+   "event": "Daily NLH",
+   "start": "2:00 PM",
+   "buy_in": 160,
+   "guarantee": 1000,
+   "advantage": "add-on, re-entry",
+   "note": "$50 add-on for 15,000 chips at first break; re-entry within first break; registration closes at start of level 7.",
+   "source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf"
+  },
+  {
+   "room": "Caesars Palace",
+   "event": "Daily NLH",
+   "start": "6:00 PM",
+   "buy_in": 100,
+   "guarantee": 1000,
+   "advantage": "add-on, re-entry",
+   "note": "$50 add-on for 15,000 chips at first break; re-entry within first break; registration closes at start of level 7.",
+   "source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf"
+  },
+  {
+   "room": "Caesars Palace",
+   "event": "Daily NLH",
+   "start": "9:00 PM",
+   "buy_in": 160,
+   "guarantee": 1000,
+   "advantage": "add-on, re-entry",
+   "note": "$50 add-on for 15,000 chips at first break; re-entry within first break; registration closes at start of level 7.",
+   "source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf"
+  },
+  {
+   "room": "Bellagio",
+   "event": "NLH/HORSE (Friday)",
+   "start": "11:00 AM",
+   "buy_in": 600,
+   "guarantee": null,
+   "advantage": "re-entry, purchased chips",
+   "note": "Re-entry allowed through end of level 8. Optional $40 staff gratuity grants +15,000 starting chips.",
+   "source": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-%24600-nlh.pdf",
+   "flag": "Heading reads $600 NLH; rules allocate $510 pool, $50 admin, $40 optional gratuity."
+  },
+  {
+   "room": "Bellagio",
+   "event": "NLH/HORSE (Saturday)",
+   "start": "11:00 AM",
+   "buy_in": 600,
+   "guarantee": null,
+   "advantage": "purchased chips",
+   "note": "Optional $40 staff gratuity grants +20,000 starting chips. Registration open through level 10. PDF heading reads '$1100 Buy-In' and the file name reads $1000, but the rules allocate a $600 buy-in.",
+   "source": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-%241000-nlh.pdf",
+   "flag": "Heading ($1,100) conflicts with rules ($600) and file name ($1,000)."
+  },
+  {
+   "room": "Bellagio",
+   "event": "NLH/HORSE (Sunday)",
+   "start": "11:00 AM",
+   "buy_in": 400,
+   "guarantee": null,
+   "advantage": "re-entry, purchased chips",
+   "note": "Re-entry allowed through end of level 8. Optional $25 staff gratuity grants +15,000 starting chips. HORSE format.",
+   "source": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-%24400-horse.pdf",
+   "flag": "HORSE format."
+  }
+ ]
+}
