@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summary · Poker5 Las Vegas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="index.html">Poker5 · Las Vegas Strip</a></div>
+  <nav><a href="index.html">Home</a><a href="tournaments.html">Tournaments</a><a href="hotels.html">Hotels</a><a href="schedule.html">Daily schedule</a><a href="dashboard.html">Dashboard</a><a href="summary.html" class=active>Summary</a><a href="flagged.html">Flagged for Review</a></nav>
+</header>
+<main>
+
+<section>
+  <h1>Executive summary</h1>
+  <p><strong>Scope:</strong> single-entry poker tournaments on or after 2026-11-16 near the Las Vegas Strip, with hotels within walking distance and a daily schedule starting 8 AM. Only official sources were used for values.</p>
+  <p><strong>Result, honestly stated:</strong> this is a partial verification. Confirmed rows come mainly from The Venetian DeepStack Extravaganza IV, which publishes structure sheets, plus Bellagio, Wynn, and Caesars Palace official PDFs. Several venues have no usable official schedule (Horseshoe, ARIA, MGM Grand, Planet Hollywood, Golden Nugget, Resorts World). Those gaps are left blank.</p>
+  <ul>
+    <li><strong>Best single-entry value by guarantee ÷ buy-in (verified):</strong> Wynn daily $200 NLH Sat/Sun ($25K GTD, 125x; validity flagged), then Venetian $200 ValueTown Bounty ($20K GTD, 100x, event 58, Dec 19), then Wynn daily $200 Mon–Thu (50x; validity flagged), then Venetian $600 Big O ($25K GTD, 41.7x, Dec 3).</li>
+    <li><strong>Re-entry and add-on events</strong> are listed separately. Their guarantees are large, but the buy-in is not the total cost, so they are not comparable with single-entry events.</li>
+    <li><strong>Hotels:</strong> only the Venetian ($55 plus tax) and Wynn/Encore ($55 plus tax) resort fees are verified from official pages. Room rates and walking times were not verified, so nightly cost and ranking are blank. Do not use the hotel table to choose a hotel yet.</li>
+    <li><strong>Schedule:</strong> the 8 AM menu uses verified start times only. Durations and travel are not verified, so it does not yet show a route that fits the most events.</li>
+  </ul>
+  <h2>Suggestions (for review, not implemented)</h2>
+  <ol>
+    <li>Add official hotel room rates: pull them from each property's booking engine for a fixed test date so nightly cost can be computed.</li>
+    <li>Verify the remaining Venetian DSE IV structure sheets (events 02, 19, 20, 36, 42, 43, 47, 52, 56, 59, 63) and add rows only after line-by-line reading.</li>
+    <li>Confirm Wynn's 2026 daily structures on a current page, since the poster in use is a 2025 asset.</li>
+    <li>Obtain official Caesars Palace, Horseshoe, and Bellagio resort-fee pages and add them to the hotel table.</li>
+    <li>Add a schedule builder that tests overlapping start windows against verified durations, once those durations are available.</li>
+    <li>Add a "last verified" date to each row and a stale-data warning after 14 days.</li>
+  </ol>
+  <h2>Questions, missing information, and how to find it</h2>
+  <div class="table-wrap"><table class="data">
+    <thead><tr><th>Question</th><th>Why it matters</th><th>Suggested way to find out</th></tr></thead>
+    <tbody>
+      <tr><td>What is the 2026 schedule for Horseshoe, ARIA, MGM Grand, Planet Hollywood, Golden Nugget?</td><td>No official schedule was found, so these venues are blank.</td><td>Call each poker room. Ask for the current tournament calendar. Check each property's poker page for a PDF.</td></tr>
+    <tr><td>Is Resorts World's poker room still open?</td><td>A third-party source reports it closed in March 2026. The official page shows dining only.</td><td>Call the property poker desk. Check the official poker page for a closure notice.</td></tr>
+    <tr><td>Which Venetian event numbers are correct for the PKO and Day 1 events?</td><td>Sheets and the schedule disagree on event numbers.</td><td>Ask the Venetian Poker Room for the official event list. Check the event page for changes.</td></tr>
+    <tr><td>What is the Bellagio Saturday buy-in?</td><td>The PDF says both $1,100 and $600.</td><td>Ask the Bellagio poker room, or check the poker page for a newer PDF.</td></tr>
+    <tr><td>Which Wynn daily structures apply after Nov 16, 2026?</td><td>The poster is a 2025 asset. Daily tournaments are suspended during the WPT series.</td><td>Call the Wynn poker room. Check the Wynn poker page.</td></tr>
+    <tr><td>What does a room rate cost for your dates?</td><td>Without a rate, true nightly cost cannot be computed.</td><td>Give your check-in and check-out dates. A dated rate search on each official booking page would fill this.</td></tr>
+    <tr><td>How far is each hotel from each event room on foot?</td><td>Walk time is required for the 30-minute filter.</td><td>Use a walking route tool on each official address. Record the source and the date.</td></tr>
+    <tr><td>Do you want to include events that are not single-entry in the main ranking?</td><td>The current rule keeps them separate, as requested.</td><td>No action needed unless your preference changes.</td></tr>
+  </tbody></table></div>
+</section>
+
+</main>
+<footer>
+  <p>Data as of 2026-11-16 (America/Los_Angeles). Every value is sourced to an official page or left blank and flagged. Built from <code>data/*.json</code> by <code>scripts/build_site.py</code>.</p>
+</footer>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// Validates data/*.json (cross-check data for the Strip poker project). Run: node scripts/check.mjs
+// Validates data-359e3f96/*.json (cross-check data for the Strip poker project). Run: node scripts/check.mjs
 // Exits non-zero on any failure, so a broken build cannot be merged.
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -12,7 +12,7 @@ const files = ["tournaments.json", "hotels.json", "venues.json", "questions.json
 const data = {};
 for (const f of files) {
   try {
-    data[f] = JSON.parse(readFileSync(join(root, "data", f), "utf8"));
+    data[f] = JSON.parse(readFileSync(join(root, "data-359e3f96", f), "utf8"));
   } catch (e) {
     fail(`data/${f}: ${e.message}`);
   }

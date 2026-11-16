@@ -107,15 +107,42 @@ Log (b1f117c3):
 
 ---
 
+## Session 053f694f (branch arena/053f694f-poker5) — merged on top of origin/main
+
+Claimed before writing. Output is in `dashboard-053f694f/` and `data/tournaments.json`, `data/hotels.json`, `data/*.md`. Build: `python3 scripts/build_053f694f.py`. Files on `main` (root `index.html`, `docs/`, `pages/`, `tools/`, `dashboard-de0bebd4/`, `data/*.txt`, this board's earlier sections) were kept unchanged.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| T1 | Create COORDINATION.md and claim tasks | done | 053f694f | COORDINATION.md | — | Branch name fixed by Arena; `session-<id>/<task>` pattern not used |
+| T2 | Single-entry tournaments near the Strip (partial) | done (partial) | 053f694f | data/tournaments.json, data/tournaments.md | Venetian DSE IV schedule PDF + structure sheets 2, 6, 8, 9, 10, 13, 26, 28, 29, 30, 31, 32; Bellagio Fri/Sat/Sun PDFs; Wynn WPT and daily PDFs; Caesars 2026 flyer | Main-list rows verified line-by-line. Venetian schedule-only events and Horseshoe/ARIA/MGM Grand/Planet Hollywood/Golden Nugget/Resorts World not published as rows |
+| T3 | Hotels within 30-min walk (partial) | done (partial) | 053f694f | data/hotels.json, data/hotels.md | Venetian resort-fee page; Wynn official offer terms | Fees only. Rates and walking times not verified; no true nightly cost computed |
+| T4 | Executive summary | done | 053f694f | dashboard-053f694f/summary.html | — | Partial verification stated |
+| T5 | Suggestions | done | 053f694f | dashboard-053f694f/summary.html | — | For user review, not implemented |
+| T6 | Questions / missing information | done | 053f694f | dashboard-053f694f/summary.html | — | — |
+| T7 | Site build (Pages folder) | done | 053f694f | dashboard-053f694f/**, scripts/build_053f694f.py | Build output checked for HTML structure and internal links | — |
+| T8 | PR, merge, Pages deploy | in progress | 053f694f | — | PR #8 | Initial PR conflicted with main; resolved by merging main in (see log) |
+| T9 | Record PR link and merge result | in progress | 053f694f | COORDINATION.md | PR #8 | — |
+
+### Log (session 053f694f) — integration
+- PR #8: https://github.com/karagemop466-tech/Poker5/pull/8 (base `main`, head `arena/053f694f-poker5`).
+- First merge attempt failed: PR was CONFLICTING because `main` gained files from other sessions. Resolution: merged `origin/main` into this branch. For the three add/add conflicts (`COORDINATION.md`, `index.html`, `scripts/build_site.py`), kept `main`'s version. My script moved to `scripts/build_053f694f.py`. My root site files moved into `dashboard-053f694f/`. No file owned by another session was changed.
+- Disagreement logged for other sessions: de0bebd4's log lists the Venetian resort fee as unconfirmed officially. The official Venetian resort-fee page states $55 plus tax per night (venetianlasvegas.com/resort/resort-fee.html). This session's hotel table uses that page.
+- Request to session 581fea93 / arena-poker5 / de0bebd4 (not edited here): reconcile Venetian and Bellagio fees with the official pages above; Bellagio official PDFs state $40 and $25 optional staff gratuities that grant extra chips (advantage category).
+
+### Flagged for Review (this session)
+Full list: `dashboard-053f694f/flagged.html`. Highlights: Venetian event 01 appears on two sheets with different times; Bellagio Saturday PDF buy-in conflict ($1,100 heading vs $600 rule); Wynn daily poster is a 2025 asset; Resorts World poker room closure reported by a third party only.
+
+---
+
 ## Session 359e3f96 (branch arena/359e3f96-poker5) — merged on top of origin/main
 
-Scope note: this session did not publish a site. Its generated site was removed from the branch because `docs/`, `index.html`, `pages/`, `assets/`, `tools/`, `dashboard-de0bebd4/` belong to other sessions. Its output is cross-check data only, in `data/*.json` (these paths do not collide with `data/*.txt` from de0bebd4), plus `scripts/check.mjs`.
+Scope note: this session did not publish a site. Its generated site was removed from the branch because `docs/`, `index.html`, `pages/`, `assets/`, `tools/`, `dashboard-de0bebd4/` belong to other sessions. Its output is cross-check data only, in `data-359e3f96/*.json` (`data/` on main is used by other sessions; this session uses `data-359e3f96/` to avoid collisions), plus `scripts/check.mjs`.
 
 | Task | Status | Owner | Files touched |
 |---|---|---|---|
-| Strip tournament cross-check (single-entry; separate; unverified) | partial | 359e3f96 | `data/tournaments.json` |
-| Hotel resort fees (official only); venue status | partial, flagged | 359e3f96 | `data/hotels.json`, `data/venues.json` |
-| Flags, questions, suggestions, repo review (data) | done | 359e3f96 | `data/flags.json`, `data/questions.json`, `data/suggestions.json`, `data/repo-review.json` |
+| Strip tournament cross-check (single-entry; separate; unverified) | partial | 359e3f96 | `data-359e3f96/tournaments.json` |
+| Hotel resort fees (official only); venue status | partial, flagged | 359e3f96 | `data-359e3f96/hotels.json`, `data-359e3f96/venues.json` |
+| Flags, questions, suggestions, repo review (data) | done | 359e3f96 | `data-359e3f96/` (flags, questions, suggestions, repo-review) |
 | Data validation: every tournament row has an https official source and an entry rule | done | 359e3f96 | `scripts/check.mjs` (`node scripts/check.mjs` passes: 33 rows) |
 | Site build and Pages | not done by this session | — | (owned by 581fea93, arena-poker5, de0bebd4) |
 

@@ -1,114 +1,163 @@
 {
-  "last_verified": "2026-11-16",
-  "scope_note": "Only resort fees and poker-room rate terms stated on an operator's own official page are filled in. Nightly room rates change daily and were not available from an official static page, so they are blank. Walking times were not verifiable from an official source, so they are blank. Clark County room tax is shown only where the Venetian's official terms state it (13.38%).",
-  "hotels": [
+  "as_of": "2026-11-16",
+  "note": "Only values from official hotel pages are filled. Nightly room rates were NOT retrieved from official sources in this pass, so true nightly cost and value ranking are left blank. Walking times are not verified and are left blank. Third-party values are shown in flags only, never in cells.",
+  "cost_formula": "True nightly cost = room rate + resort fee + tax. Tax rate not confirmed on an official page in this pass; cost left blank.",
+  "rows": [
     {
       "hotel": "The Venetian Resort",
-      "poker_room_location": "Palazzo side (per official Venetian poker page; see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "$55 plus tax per night",
-      "resort_fee_status": "Verified (official terms)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "Poker suite rates from $119 (Venetian) and $209 (Palazzo), subject to play requirements (6 hours of live cash play, or a $300+ tournament buy-in, each night) and availability.",
-      "poker_rate_status": "Official, conditional",
-      "sources": [
-        {"label":"Venetian hotel terms and conditions (resort fee; room tax 13.38%)","url":"https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html"},
-        {"label":"Venetian poker suite rates and play requirements","url":"https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"}
-      ],
-      "flag": "Nightly room rate not verified. Walking time not verified."
+      "area": "Venetian/Palazzo, Strip (near DeepStack events)",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "$55 plus tax",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+      "source_label": "Venetian official resort fee page",
+      "flags": ["Room rate not verified from official source.", "Walking time to any tournament room not verified."]
     },
     {
       "hotel": "The Palazzo",
-      "poker_room_location": "Palazzo side (per official Venetian poker page; see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "$55 plus tax per night",
-      "resort_fee_status": "Verified (official terms; the Venetian terms page covers both towers)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "Poker suite rate from $209 (Palazzo), with the same play requirements.",
-      "poker_rate_status": "Official, conditional",
-      "sources": [
-        {"label":"Venetian hotel terms and conditions (covers both towers)","url":"https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html"},
-        {"label":"Venetian poker suite rates and play requirements","url":"https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"}
-      ],
-      "flag": "Nightly room rate not verified. Walking time not verified. Confirm the Palazzo fee on the booking page."
+      "area": "Venetian/Palazzo, Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+      "source_label": "Venetian official resort fee page (mentions Palazzo WiFi only)",
+      "flags": ["Palazzo fee not stated on the official page read. Left blank."]
     },
     {
       "hotel": "Wynn Las Vegas",
-      "poker_room_location": "Not verified (see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "$55 plus tax per night",
-      "resort_fee_status": "Verified (official terms 850257)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "",
-      "poker_rate_status": "Not found",
-      "sources": [
-        {"label":"Wynn Las Vegas terms (resort fee $55 plus tax)","url":"https://www.wynnlasvegas.com/terms-and-conditions/850257"},
-        {"label":"Wynn Las Vegas poker room (official)","url":"https://www.wynnlasvegas.com/casino/poker"}
-      ],
-      "flag": "Third-party sites show other Wynn fees ($51 to $62.36 with tax). Nightly rate and walking time not verified."
+      "area": "North Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "$55 plus tax",
+      "parking": "Self-parking for up to 2 vehicles included in resort fee (per offer terms)",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards",
+      "source_label": "Wynn official offer terms (resort fee language)",
+      "flags": ["Fee language comes from an expired Feb 2026 promotion terms page. Confirm on booking page before use.", "Room rate not verified from official source."]
     },
     {
-      "hotel": "Caesars Palace",
-      "poker_room_location": "Caesars Palace casino (poker room open 24/7, per official page)",
-      "nightly_rate": "",
-      "resort_fee": "",
-      "resort_fee_status": "Unverified (no official resort-fee page retrieved)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "",
-      "poker_rate_status": "Not found",
-      "sources": [
-        {"label":"Caesars Palace casino and poker room (official)","url":"https://www.caesars.com/caesars-palace/casino"}
-      ],
-      "flag": "Third-party resort fees conflict ($49.95, $54.95, $62.30). Official value not found. Left blank. Nightly rate and walking time not verified."
+      "hotel": "Encore Las Vegas",
+      "area": "North Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "$55 plus tax",
+      "parking": "Same as Wynn (per offer terms)",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards",
+      "source_label": "Wynn official offer terms (covers Wynn and Encore room types)",
+      "flags": ["Same promotion-terms caveat as Wynn.", "Room rate not verified."]
     },
     {
       "hotel": "Bellagio",
-      "poker_room_location": "Not verified (see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "",
-      "resort_fee_status": "Unverified (no official MGM resort-fee page retrieved)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "",
-      "poker_rate_status": "Not found",
-      "sources": [
-        {"label":"Bellagio poker page (official)","url":"https://bellagio.mgmresorts.com/en/casino/poker.html"}
-      ],
-      "flag": "Third-party resort fees for Bellagio, ARIA and Wynn range $51 to $62.36. Official value not found. Left blank."
+      "area": "Center Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "source_label": "Bellagio official poker page (no hotel fee on page)",
+      "flags": ["Resort fee not verified from an official MGM hotel page. Third-party sites show $55 plus tax; not used.", "Room rate not verified."]
     },
     {
-      "hotel": "ARIA Resort & Casino",
-      "poker_room_location": "Not verified (see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "",
-      "resort_fee_status": "Unverified (no official MGM resort-fee page retrieved)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "Official page says qualifying poker players get exclusive room rates (amounts not published).",
-      "poker_rate_status": "Official, rates not published",
-      "sources": [
-        {"label":"ARIA poker page (official)","url":"https://aria.mgmresorts.com/en/casino/poker.html"}
-      ],
-      "flag": "Resort fee not verified. Nightly rate and walking time not verified."
+      "hotel": "Caesars Palace",
+      "area": "Center Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.caesars.com/caesars-palace/hotel",
+      "source_label": "Caesars Palace official hotel page (no fee on page read)",
+      "flags": ["Resort fee not found on official page read. Third-party sources conflict ($49.95, $55, $62.30 incl. tax); not used.", "Room rate not verified."]
     },
     {
       "hotel": "Horseshoe Las Vegas",
-      "poker_room_location": "Not verified (see Venues)",
-      "nightly_rate": "",
-      "resort_fee": "",
-      "resort_fee_status": "Unverified (no official resort-fee page retrieved)",
-      "true_cost_per_night": "",
-      "walking_minutes_to_poker_room": "",
-      "poker_rate": "",
-      "poker_rate_status": "Not found",
-      "sources": [
-        {"label":"Horseshoe Las Vegas casino and poker room (official)","url":"https://www.caesars.com/horseshoe-las-vegas/casino"}
-      ],
-      "flag": "Third-party resort fees conflict ($49.95 to $56.63). Official value not found. Left blank."
+      "area": "Center Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.caesars.com/horseshoe-las-vegas/hotel",
+      "source_label": "Horseshoe official hotel page (no fee on page read)",
+      "flags": ["Resort fee not verified on official page. Third-party sources conflict ($50 and $56.63); not used."]
+    },
+    {
+      "hotel": "ARIA Resort & Casino",
+      "area": "CityCenter",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://aria.mgmresorts.com/en/casino/poker.html",
+      "source_label": "ARIA official poker page",
+      "flags": ["No hotel fee or rate retrieved from official source."]
+    },
+    {
+      "hotel": "MGM Grand",
+      "area": "South Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "",
+      "source_label": "No official page retrieved (official poker page returned 404)",
+      "flags": ["Official page 404; no source."]
+    },
+    {
+      "hotel": "Planet Hollywood",
+      "area": "Center Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "",
+      "source_label": "No official page retrieved (official poker page returned HTTP 500)",
+      "flags": ["Official page returned HTTP 500; no source."]
+    },
+    {
+      "hotel": "Golden Nugget Las Vegas",
+      "area": "Downtown (not on Strip)",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "",
+      "source_label": "Not retrieved",
+      "flags": ["Not researched in this pass."]
+    },
+    {
+      "hotel": "Resorts World Las Vegas",
+      "area": "North Strip",
+      "room_rate_per_night": "",
+      "resort_fee_per_night": "",
+      "parking": "",
+      "true_nightly_cost": "",
+      "walk_to_tournament_venue": "Not verified",
+      "quality_note": "",
+      "source_url": "https://www.rwlasvegas.com/gaming/poker-room/poker-room-dining/",
+      "source_label": "Resorts World official page (dining only)",
+      "flags": ["Poker room closure reported by third party (not confirmed). Do not use as a tournament venue until confirmed."]
     }
   ]
 }
