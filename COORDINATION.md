@@ -197,6 +197,7 @@ This session's static dashboard and source data are isolated in `dashboard-cd5ab
 ### Validation and integration log
 
 - `python3 scripts/check_site_cd5ab298.py` passes: 7 dashboard HTML pages, 56 dated tournament rows, 4 hotel records, local links, source keys and quote arithmetic. `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing and `git diff --check` also pass. The validator checks external URLs for HTTPS syntax; it does not make live HTTP requests.
+- Integrated the latest `origin/main` at merge commit `210c621` after main had advanced with other sessions. Resolved the `COORDINATION.md` add/add conflict by keeping main's board and appending this session. Kept the existing root site and README, adding only a link to the isolated dashboard; no existing Pages source or other session output was replaced.
 - PR and final Pages URL/check status are pending. Intended published path is `https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/` under the repository's existing root-based Pages deployment. Do not replace the legacy root Pages source or other sessions' outputs.
 
 ### Primary sources
