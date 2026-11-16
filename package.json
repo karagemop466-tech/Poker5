@@ -1,0 +1,14 @@
+{
+  "name": "one-entry-vegas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-linked Las Vegas poker tournament and hotel research dashboard.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node --check data.mjs && node --check app.mjs && node --check sources.mjs && node --check serve.mjs && node --check scripts/build.mjs && npm test && npm run build",
+    "dev": "node serve.mjs",
+    "preview": "node serve.mjs dist"
+  }
+}

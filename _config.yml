@@ -1,0 +1,12 @@
+title: One Entry Vegas
+markdown: kramdown
+exclude:
+  - .github/
+  - .gitignore
+  - COORDINATION.md
+  - README.md
+  - package.json
+  - scripts/
+  - serve.mjs
+  - test/
+  - dist/
