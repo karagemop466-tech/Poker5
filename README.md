@@ -69,7 +69,7 @@ The isolated, source-backed dashboard is in [`dashboard-cd5ab298/`](dashboard-cd
 
 ## Session aa83f1e1 outputs — source-linked poker and stay planner
 
-Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact). The root landing page links to this planner.
+Published subsite: [Poker &amp; Stay Planner](https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/) (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact). The root landing page links to this planner.
 
 | Path | Purpose |
 |---|---|
