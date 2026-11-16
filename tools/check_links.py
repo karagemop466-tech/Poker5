@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Link gate for the Pages build. Fails (exit 1) on:
-- any internal link/asset that does not exist under docs/,
+- any internal link/asset that does not exist under site-443e914d/,
 - any '#anchor' that does not exist on the target page,
-- any external URL not listed in data/sources.json (no network access is used).
+- any external URL not listed in data-443e914d/sources.json (no network access is used).
 """
 import glob, json, os, sys
 from html.parser import HTMLParser
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DOCS = os.path.join(ROOT, "docs")
-ALLOWED = {v["url"] for v in json.load(open(os.path.join(ROOT, "data", "sources.json"), encoding="utf-8")).values()}
-ALLOWED |= {"https://github.com/karagemop466-tech/Poker5/blob/main/research/verification.md"}
+DOCS = os.path.join(ROOT, "site-443e914d")
+ALLOWED = {v["url"] for v in json.load(open(os.path.join(ROOT, "data-443e914d", "sources.json"), encoding="utf-8")).values()}
+ALLOWED |= {"https://github.com/karagemop466-tech/Poker5/blob/main/research-443e914d/verification.md"}
 
 class Scan(HTMLParser):
     def __init__(self):
@@ -55,4 +55,4 @@ if errors:
     print("FAILED:")
     for e in errors: print("  " + e)
     sys.exit(1)
-print("OK: no broken internal links or anchors; all external URLs are in data/sources.json")
+print("OK: no broken internal links or anchors; all external URLs are in data-443e914d/sources.json")

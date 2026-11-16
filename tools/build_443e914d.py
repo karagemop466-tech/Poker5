@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build the static GitHub Pages site (docs/) from the verified JSON data.
+"""Build the static site (site-443e914d/) from the verified JSON data in data-443e914d/.
 
-Stdlib only. Every value printed comes from data/*.json; nothing is inferred.
+Stdlib only. Every value printed comes from data-443e914d/*.json; nothing is inferred.
 Derived numbers (ratios, day counts) are labelled as calculated.
 """
 import datetime as dt
@@ -12,8 +12,8 @@ import re
 from collections import OrderedDict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DATA = os.path.join(ROOT, "data")
-OUT = os.path.join(ROOT, "docs")
+DATA = os.path.join(ROOT, "data-443e914d")
+OUT = os.path.join(ROOT, "site-443e914d")
 
 def load(name):
     with open(os.path.join(DATA, name), encoding="utf-8") as f:
@@ -156,7 +156,7 @@ def tournaments_page():
 </div>
 <div class="toolbar"><input type="search" placeholder="Filter by date, name, buy-in…" data-target="t-single"></div>
 {tbl(headers, rows, filter_id="t-single").replace('<table class="data"', '<table class="data" id="t-single"')}
-<p class="note">* Calculated: guarantee ÷ buy-in (arithmetic on verified values). Times are venue local (Pacific). Blank = not verified. Row-by-row check: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/research/verification.md" target="_blank" rel="noopener">research/verification.md</a>.</p>
+<p class="note">* Calculated: guarantee ÷ buy-in (arithmetic on verified values). Times are venue local (Pacific). Blank = not verified. Row-by-row check: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/research-443e914d/verification.md" target="_blank" rel="noopener">research-443e914d/verification.md</a>.</p>
 {FILTER_JS}
 """
     return page("Single-entry tournaments", "tournaments.html", body, "Verified single-entry live tournaments on the Las Vegas Strip, Nov–Dec 2026.")
@@ -300,7 +300,7 @@ def exec_page():
 <div class="card wide">
 <h2>What is verified</h2>
 <ul class="bullets">
-  <li><strong>{n} single-entry live tournaments</strong> at The Venetian Poker Room, {E(lo_s)} – {E(hi_s)}, 2026. Each row lists the official schedule and the structure sheet checked. Every date, time, buy-in, and guarantee was re-checked against the official schedule and event page (<a href="https://github.com/karagemop466-tech/Poker5/blob/main/research/verification.md" target="_blank" rel="noopener">verification log</a>). <a href="tournaments.html">See the list</a>.</li>
+  <li><strong>{n} single-entry live tournaments</strong> at The Venetian Poker Room, {E(lo_s)} – {E(hi_s)}, 2026. Each row lists the official schedule and the structure sheet checked. Every date, time, buy-in, and guarantee was re-checked against the official schedule and event page (<a href="https://github.com/karagemop466-tech/Poker5/blob/main/research-443e914d/verification.md" target="_blank" rel="noopener">verification log</a>). <a href="tournaments.html">See the list</a>.</li>
   <li><strong>Highest guarantee-to-buy-in multiples (calculated):</strong> the $200 Valuetown Bounty on Nov 28 ($20K GTD) and the $800 Bounty on Dec 9 ($75K GTD). Bounty guarantees include bounty money on the sheets checked.</li>
   <li><strong>Multi-entry and flight formats are kept separate:</strong> Wynn daily tournaments (re-entry and add-on formats) and Venetian flight events. <a href="multi-entry.html">See the separate section</a>.</li>
   <li><strong>Resort fees (official):</strong> The Venetian $55 per night, per the official poker-suite page. Wynn is offer-specific: $45 + tax on some offers and $55 + tax on others. The Palazzo, Encore, Caesars, and MGM fees are NOT verified.</li>
