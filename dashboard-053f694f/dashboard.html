@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard · Poker5 Las Vegas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="index.html">Poker5 · Las Vegas Strip</a></div>
+  <nav><a href="index.html">Home</a><a href="tournaments.html">Tournaments</a><a href="hotels.html">Hotels</a><a href="schedule.html">Daily schedule</a><a href="dashboard.html" class=active>Dashboard</a><a href="summary.html">Summary</a><a href="flagged.html">Flagged for Review</a></nav>
+</header>
+<main>
+
+<section>
+  <h1>Dashboard</h1>
+  <div class="cards">
+    <div class="card"><span class="num">8</span><span>Single-entry rows</span></div>
+    <div class="card"><span class="num">17</span><span>Multi-entry / add-on rows</span></div>
+    <div class="card"><span class="num">2</span><span>Restricted rows</span></div>
+    <div class="card"><span class="num">4</span><span>Unverified listings</span></div>
+    <div class="card"><span class="num">3</span><span>Hotels with official fee</span></div>
+    <div class="card"><span class="num">42</span><span>Open flags (tournaments + hotels)</span></div>
+  </div>
+  <p><label for="filter">Filter main list:</label> <input id="filter" type="search" placeholder="Type venue, event, or buy-in" aria-label="Filter main list"></p>
+  <div class="table-wrap"><table class="data" id="main-table"><thead><tr><th>Venue</th><th>Event</th><th>Name</th><th>Date</th><th>Start</th><th>Buy-in</th><th>Guarantee</th><th>Guarantee ÷ buy-in</th><th>Pool / rules</th><th>Source</th><th>Flags</th></tr></thead><tbody><tr><td>Wynn Las Vegas (daily tournament)</td><td></td><td>$200 No-Limit Hold&#x27;em, Sat/Sun</td><td>Sat &amp; Sun (recurring)</td><td></td><td>$200</td><td>$25,000</td><td>125.0x</td><td>Single entry per daily structure sheet.</td><td><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" rel="noopener">Wynn official daily structures PDF</a></td><td><ul class="flags"><li>Start time not captured from the structure PDF. Blank.</li><li>Validity not confirmed (2025 poster asset).</li></ul></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>18 / 58</td><td>$200 ValueTown Bounty (PokerAtlas PRO $20 discount on first buy-in)</td><td>Dec 19, 2026 (event 58)</td><td>5:10 PM</td><td>$200</td><td>$20,000 (prize pool plus bounties)</td><td>100.0x</td><td>$40 house fee; $50 bounty per elimination; PokerAtlas PRO members pay $180 on first buy-in only (claim in PokerAtlas app and show at cage); 25,000 starting chips Single entry on sheet. Discount applies to first buy-in only.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf" rel="noopener">Venetian DSE IV structure sheet (events 18 and 58)</a></td><td><ul class="flags"><li>Date verified only for event 58 (schedule summary). Event 18 date blank.</li></ul></td></tr><tr><td>Wynn Las Vegas (daily tournament)</td><td></td><td>$200 No-Limit Hold&#x27;em, Mon–Thu</td><td>Mon–Thu (recurring)</td><td>12:00 PM</td><td>$200</td><td>$10,000</td><td>50.0x</td><td>Single entry per daily structure sheet.</td><td><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" rel="noopener">Wynn official daily structures PDF</a></td><td><ul class="flags"><li>Validity for Nov 16, 2026 onward not confirmed: the daily poster is a 2025 asset.</li><li>Wynn poker page says daily tournaments are suspended during the WPT World Championship (Nov 27–Dec 21, 2026).</li></ul></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>27</td><td>$600 Big O, 1-Day</td><td>Dec 3, 2026</td><td>12:10 PM</td><td>$600</td><td>$25,000</td><td>41.7x</td><td>$90 house fee; prize pool $510 of each $600; 8-handed; pays 12.5% of field; 30,000 starting chips; late registration 8 levels + break (~4:40 PM) Single entry. No re-entry or add-on language on structure sheet. 21+ with Venetian Rewards card.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf" rel="noopener">Venetian DSE IV structure sheet (event 27)</a></td><td></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>08</td><td>$200 No-Limit Hold&#x27;em PKO Bounty</td><td></td><td>5:10 PM</td><td>$200</td><td>$8,000 (prize pool plus bounties)</td><td>40.0x</td><td>$40 house fee; prize pool $160 of each $200; $50 starting bounty per player; 25,000 starting chips; late registration 8 levels + break (9:40 PM) Single entry on sheet. Bounty event; no re-entry language.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf" rel="noopener">Venetian DSE IV structure sheet (event 08, PKO)</a></td><td><ul class="flags"><li>Event-number conflict: schedule summary lists $200 bounty events under other numbers (#09, #11, #13 etc.). Date blank until resolved.</li><li>Bounty payouts count toward the guarantee.</li></ul></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>10</td><td>$400 No-Limit Hold&#x27;em, 1-Day</td><td>Nov 25, 2026</td><td>11:10 AM</td><td>$400</td><td>$15,000</td><td>37.5x</td><td>$65 house fee; prize pool $335 of each $400; pays 12.5% of field; 40,000 starting chips; late registration 10 levels + break (~4:55 PM) Single entry. No re-entry or add-on language on structure sheet. 21+ with Venetian Rewards card.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf" rel="noopener">Venetian DSE IV structure sheet (event 10)</a></td><td></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>17</td><td>$400 Pot-Limit Omaha Bounty, 1-Day</td><td>Nov 28, 2026</td><td>12:10 PM</td><td>$400</td><td>$15,000 (prize pool plus bounties)</td><td>37.5x</td><td>$60 house fee; prize pool $340 of each $400; $100 bounty per elimination; 8-handed; pays 12.5% of field; late registration 8 levels + break (~4:40 PM) Single entry. No re-entry or add-on language on structure sheet. 21+ with Venetian Rewards card.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf" rel="noopener">Venetian DSE IV structure sheet (event 17)</a></td><td></td></tr><tr><td>The Venetian (DeepStack Extravaganza IV)</td><td>06</td><td>$200 No-Limit Hold&#x27;em, 1-Day</td><td></td><td>11:10 AM</td><td>$200</td><td></td><td></td><td>$40 house fee; prize pool $160 of each $200 buy-in; pays 12.5% of field; 30,000 starting chips; late registration 8 levels + break (~3:40 PM) Single entry. No re-entry or add-on language on structure sheet. 21+ with Venetian Rewards card.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf" rel="noopener">Venetian DSE IV structure sheet (event 06)</a></td><td><ul class="flags"><li>Date not confirmed: event 06 is not in the schedule summary captured for this run.</li><li>No guarantee printed on sheet.</li></ul></td></tr></tbody></table></div>
+</section>
+<script>
+(function () {
+  var input = document.getElementById('filter');
+  var table = document.getElementById('main-table');
+  if (!input || !table) return;
+  input.addEventListener('input', function () {
+    var q = input.value.toLowerCase();
+    var rows = table.tBodies[0].rows;
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].style.display = rows[i].textContent.toLowerCase().indexOf(q) === -1 ? 'none' : '';
+    }
+  });
+})();
+</script>
+
+</main>
+<footer>
+  <p>Data as of 2026-11-16 (America/Los_Angeles). Every value is sourced to an official page or left blank and flagged. Built from <code>data/*.json</code> by <code>scripts/build_site.py</code>.</p>
+</footer>
+</body>
+</html>

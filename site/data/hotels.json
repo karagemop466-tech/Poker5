@@ -1,0 +1,94 @@
+{
+ "as_of": "2026-11-16",
+ "rows": [
+  {
+   "property": "Wynn Las Vegas",
+   "poker_room": "Encore at Wynn Las Vegas (official T&C states the poker room is in Encore)",
+   "resort_fee_before_tax": 55,
+   "fee_status": "Verified (official)",
+   "fee_source": "https://www.wynnlasvegas.com/terms-and-conditions/850257",
+   "fee_source_type": "official",
+   "fee_plus_tax_calc": 62.36,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "Official Wynn terms: daily resort fee $55 plus tax per room night."
+  },
+  {
+   "property": "The Venetian Resort",
+   "poker_room": "The Palazzo, level 2, Grand Canal Shoppes (official)",
+   "resort_fee_before_tax": null,
+   "fee_status": "Unverified: third-party figures only",
+   "fee_source": "https://www.resortfeechecker.com/1443-resort_fee_venetian_resort_las_vegas.html",
+   "fee_source_type": "third-party",
+   "fee_plus_tax_calc": null,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "Third-party sites report $62.36 per night including tax (approximately $55 before tax). Not confirmed on an official Venetian page."
+  },
+  {
+   "property": "The Palazzo at The Venetian",
+   "poker_room": "The Palazzo, level 2, Grand Canal Shoppes (official)",
+   "resort_fee_before_tax": null,
+   "fee_status": "Unverified: third-party figures only",
+   "fee_source": "https://www.resortfeechecker.com/1769973-resort_fee_palazzo_venetian.html",
+   "fee_source_type": "third-party",
+   "fee_plus_tax_calc": null,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "Third-party sites report $62.36 per night including tax. Not confirmed on an official page."
+  },
+  {
+   "property": "Bellagio",
+   "poker_room": "North side of casino, next to Sportsbook (official)",
+   "resort_fee_before_tax": null,
+   "fee_status": "Unverified: sources conflict",
+   "fee_source": "https://www.applevacations.com/hotels/bellagio/",
+   "fee_source_type": "third-party",
+   "fee_plus_tax_calc": null,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "A third-party page quotes a '$55.00 plus applicable tax' resort fee. Another third-party guide lists $50. Official Bellagio page not retrieved."
+  },
+  {
+   "property": "ARIA Resort & Casino",
+   "poker_room": "East side of casino floor, next to Main Valet (official)",
+   "resort_fee_before_tax": null,
+   "fee_status": "Unverified: sources conflict",
+   "fee_source": "https://www.virginatlantic.com/holidays/holiday-types/city-breaks/hotels/aria-resort-and-casino",
+   "fee_source_type": "third-party",
+   "fee_plus_tax_calc": null,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "A third-party page quotes '$55 plus tax per room, per day'. Another third-party guide lists $50. Official ARIA page not retrieved."
+  },
+  {
+   "property": "Caesars Palace",
+   "poker_room": "Caesars Palace casino (poker room location per official Caesars page)",
+   "resort_fee_before_tax": null,
+   "fee_status": "Unverified: third-party figures only",
+   "fee_source": "https://www.resortfeechecker.com/41245-resort_fee_caesars_palace.html",
+   "fee_source_type": "third-party",
+   "fee_plus_tax_calc": null,
+   "room_rate": "",
+   "room_rate_status": "Unverified: no official static rate; dynamic pricing not captured",
+   "walking_time": "",
+   "walking_status": "Unverified: not measured from an official source",
+   "notes": "Third-party sites report a $62.30 total with tax (about $54.95 before tax). Not confirmed on an official Caesars page."
+  }
+ ],
+ "tax_note": "Clark County lodging tax on the Strip is reported at 13.38% by third-party sources that cite Clark County. The official Clark County tax page has not been retrieved, so this is unverified.",
+ "tax_sources": [
+  "https://unleashvegas.com/guides/vegas-basics/resort-fees",
+  "https://www.roommaster.com/hotel-tax/nevada"
+ ]
+}
