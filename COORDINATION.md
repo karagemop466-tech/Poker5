@@ -23,13 +23,13 @@ Shared task board for agent sessions working on this repo.
 | Task | Status | Owner | File scope | Sources | Verification | Irregularities |
 |------|--------|-------|------------|---------|--------------|----------------|
 | T1: Create COORDINATION.md and claim tasks | done | arena | COORDINATION.md | — | — | — |
-| T2: Research live upcoming single-entry poker tournaments near Las Vegas Strip | in progress | arena | data/tournaments.md | official poker room sites | pending | pending |
-| T3: Research hotels within 30-min walking distance | unclaimed | arena | data/hotels.md | official hotel sites | pending | pending |
-| T4: Executive summary | unclaimed | arena | site/executive-summary.md | — | pending | — |
-| T5: Suggestions section (site improvements) | unclaimed | arena | site/suggestions.md | — | pending | — |
-| T6: Q&A / missing information section | unclaimed | arena | site/questions.md | — | pending | — |
-| T7: Build GitHub Pages site | unclaimed | arena | site/*.html, assets | — | pending | — |
-| T8: PR, merge, GitHub Pages deploy | unclaimed | arena | — | — | pending | — |
+| T2: Research live upcoming single-entry poker tournaments near Las Vegas Strip | done | arena | data/tournaments.md | venetianlasvegas.com (official DSE IV schedule + structure PDFs) | Verified against official Venetian schedule + structure PDFs (see irregularities in flagged-review.md) | Flagged: single-entry status is structural interpretation; GTD blank for Events 3/4/5/6; other rooms third-party only |
+| T3: Research hotels within 30-min walking distance | done | arena | data/hotels.md | official hotel sites + third-party aggregators | Resort fees verified officially only at Wynn ($45/$55); rates dynamic/unverified; walking times approximate | Flagged: nightly rates blank/unverified; resort fees third-party except Wynn |
+| T4: Executive summary | done | arena | site/executive-summary.md | — | — | — |
+| T5: Suggestions section (site improvements) | done | arena | site/suggestions.md | — | — | — |
+| T6: Q&A / missing information section | done | arena | site/questions.md | — | — | — |
+| T7: Build GitHub Pages site | done | arena | docs/*.html, docs/style.css | — | Built; all internal links resolve; no bad entities | — |
+| T8: PR, merge, GitHub Pages deploy | in progress | arena | — | — | pending | — |
 | T9: Record PR link and merge result | unclaimed | arena | COORDINATION.md | — | pending | — |
 
 ## Flagged for Review

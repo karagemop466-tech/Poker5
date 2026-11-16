@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suggestions — Improve the Site &amp; Decision Making</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="site-brand" href="index.html">Poker<span>5</span></a>
+    <span class="site-tag">&middot; Suggestions &mdash; review before implementing</span>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="container">
+    <a href="index.html">Dashboard</a>
+    <a href="tournaments.html">Tournaments</a>
+    <a href="hotels.html">Hotels</a>
+    <a href="executive-summary.html">Executive Summary</a>
+    <a href="schedule.html">8 AM &ndash; All-Day Schedule</a>
+    <a href="suggestions.html" class="active">Suggestions</a>
+    <a href="questions.html">Open Questions</a>
+    <a href="flagged-review.html">Flagged for Review</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page">
+    <div class="page-header">
+      <h1 class="page-title">Suggestions</h1>
+      <p class="page-sub">Proposed improvements to the site and to the poker-vacation decision process. <strong>Review these and choose which to implement before making any changes.</strong> None are implemented unless marked done.</p>
+    </div>
+
+    <div class="callout">
+      <h4>How to review before implementing</h4>
+      <ol>
+        <li>Read each suggestion below.</li>
+        <li>Decide its priority and whether it fits the goal (more verified information, better decision support).</li>
+        <li>Claim a suggestion in <a href="https://github.com/karagemop466-tech/Poker5/blob/arena/2ed7df1a-poker5/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md</a> (write your session ID + file scope, commit, push) before editing.</li>
+        <li>Implement, verify against official sources, then mark it done in COORDINATION.md.</li>
+      </ol>
+    </div>
+
+    <div class="section-title">Suggested site features &amp; data improvements</div>
+    <table>
+      <thead><tr><th>#</th><th>Suggestion</th><th>Why it helps</th><th>Priority</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>S1</td><td>Add an explicit "single entry verified YES/NO" column with a quote from each structure sheet (e.g. "single entry / no re-entry" or "re-entry allowed").</td><td>Removes ambiguity about whether spending more buys an advantage.</td><td>High</td><td>Unclaimed</td></tr>
+        <tr><td>S2</td><td>Pull live nightly hotel rates + exact resort fees via each hotel's official booking page for specific dates; compute true cost/night automatically.</td><td>Addresses the biggest unverified gap (dynamic rates).</td><td>High</td><td>Unclaimed</td></tr>
+        <tr><td>S3</td><td>Add walking-distance verification (Google Maps / Apple Maps walking time) from each hotel to the Venetian Poker Room.</td><td>Distance must be &le;30 min; current times are approximate.</td><td>High</td><td>Unclaimed</td></tr>
+        <tr><td>S4</td><td>Add other verified Strip poker rooms (Wynn WPT World Championship, MGM Grand, Aria, Bellagio, Circa) as additional tournament sources.</td><td>More tournament options = more entries possible.</td><td>Medium</td><td>Unclaimed</td></tr>
+        <tr><td>S5</td><td>Add a calendar/iCal export of the recommended single-entry schedule.</td><td>Lets a traveler add events to their phone calendar.</td><td>Medium</td><td>Unclaimed</td></tr>
+        <tr><td>S6</td><td>Add a cost calculator: enter buy-ins + nights + hotel true cost &rarr; total trip budget.</td><td>Directly answers "how much will this vacation cost?".</td><td>Medium</td><td>Unclaimed</td></tr>
+        <tr><td>S7</td><td>Add bankroll guidance (recommended buy-ins relative to bankroll).</td><td>Helps avoid over-spending across many tournaments.</td><td>Low</td><td>Unclaimed</td></tr>
+        <tr><td>S8</td><td>Add a "flag / report outdated info" button on each table row.</td><td>Keeps data honest as schedules and fees change.</td><td>Low</td><td>Unclaimed</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Suggested editorial / verification improvements</div>
+    <table>
+      <thead><tr><th>#</th><th>Suggestion</th><th>Why it helps</th><th>Priority</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>V1</td><td>Confirm "single entry" wording directly with the Venetian Poker Room (phone/email) for every (1Day) event listed.</td><td>Current classification is structural interpretation, not an explicit label.</td><td>High</td><td>Unclaimed</td></tr>
+        <tr><td>V2</td><td>Verify every hotel resort fee on the official hotel booking page (not third-party aggregators).</td><td>Third-party fees conflict (e.g. ARIA reported as $45 vs $55).</td><td>High</td><td>Unclaimed</td></tr>
+        <tr><td>V3</td><td>Add archive links (e.g. Wayback Machine) to each official source so data can be re-verified later.</td><td>Schedules and fees change; provenance matters.</td><td>Medium</td><td>Unclaimed</td></tr>
+        <tr><td>V4</td><td>Re-verify weekly while the series runs (Nov 16 &ndash; Dec 23, 2026).</td><td>Management can cancel or change tournaments at any time.</td><td>Medium</td><td>Unclaimed</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Decision-making suggestions</div>
+    <ul>
+      <li>Before booking, answer every item in <a href="questions.html">Open Questions</a>.</li>
+      <li>Review every item on the <a href="flagged-review.html">Flagged for Review</a> page and decide whether to accept, correct, or remove each row.</li>
+      <li>Compare the true all-in hotel cost (rate + resort fee + ~13.38% tax), not the advertised nightly rate.</li>
+      <li>Confirm entry rules (single entry vs re-entry) for each tournament you plan to enter.</li>
+      <li>Set a total trip bankroll first, then pick tournaments that fit (use suggested cost calculator S6 once built).</li>
+    </ul>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Task board:</strong> <a>COORDINATION.md</a> on GitHub tracks who is working on what.</p>
+    <p><a href="index.html">&larr; Back to Dashboard</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
