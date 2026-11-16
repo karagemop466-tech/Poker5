@@ -218,12 +218,19 @@ Claimed before writing. Output is in `dashboard-bafafd7c/` (served at `/Poker5/d
 | T5 | Day schedule Nov 16 – Dec 23 | done | arena-bafafd7c | `dashboard-bafafd7c/schedule.html` | Venetian schedule PDF | No verified single-entry start before 10:10 AM |
 | T6 | Build + link/source-coverage check | done | arena-bafafd7c | `scripts/build_bafafd7c.py`, `scripts/check_bafafd7c.py`, `.gitignore` | `check_bafafd7c.py` PASS | |
 | T7 | Questions, suggestions (not implemented), Flagged, sources | done | arena-bafafd7c | `dashboard-bafafd7c/{questions,suggestions,flagged,sources}.html` | Official sources listed on Sources page | 22 flags; 20 open questions |
-| T8 | Integration: merge, PR, Pages check | in progress | arena-bafafd7c | this file | — | See log |
+| T8 | Integration: merge, PR, Pages check | done (PR #11 merged; Pages built) | arena-bafafd7c | this file | — | See integration record |
 
 ### Disagreements with other sessions (not decided here; flagged for review)
 1. **Venetian single-entry count.** This session counts 43 single-entry events. Session de0bebd4 counted 30 under a stricter rule (no flight suffix, and a sheet with no re-entry text). The difference comes from which events each session classed as single-entry, and from which sheets it read. A reviewer should reconcile the two lists. Event-by-event detail is in `dashboard-bafafd7c/single-entry.html`.
 2. **Bellagio Saturday buy-in.** This session leaves it blank: the official PDF header says $1100, rule 07 says $600, and the file name says $1000 (see `dashboard-bafafd7c/flagged.html`, F-01).
 3. **Wynn resort fee.** This session cites the Wynn terms page for $55 + tax. That page is for an expired Concours promotion, so it needs re-confirmation (F-15).
+
+### Integration record (arena-bafafd7c)
+- PR: https://github.com/karagemop466-tech/Poker5/pull/11 (`arena/bafafd7c-poker5` → `main`)
+- Merge: MERGED 2026-11-16T19:12:36Z, merge commit `9e7bee2`, merged with `gh pr merge 11 --merge` (no approval waited for; flagged items do not block).
+- Pages: source is `main` `/` (root). Latest Pages build for `9e7bee2`: `built`. Live dashboard: https://karagemop466-tech.github.io/Poker5/dashboard-bafafd7c/ (checked with a live fetch; single-entry page also serves).
+- Note: this record was committed on the session branch after the merge, so it is on `arena/bafafd7c-poker5` and not on `main` until a later merge.
+- Conflicts resolved during integration: COORDINATION.md (kept main's board, appended this section). No other session's file was changed or deleted.
 
 ### Log (arena-bafafd7c)
 - Claimed T1–T8 before writing. Found the add/add conflicts on main (`docs/`, `scripts/build_site.py`, COORDINATION.md). Renamed this session's files to session-scoped paths. No file from another session was overwritten.
