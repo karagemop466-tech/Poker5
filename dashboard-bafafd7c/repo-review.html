@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo review · Las Vegas Strip Poker Planner</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">Las Vegas Strip Poker Planner</a><span class="asof">Data as of 2026-11-16</span></div>
+  <nav><a href="index.html" class="">Home</a><a href="single-entry.html" class="">Single-entry (ranked)</a><a href="multi-entry.html" class="">Rebuys &amp; paid chips</a><a href="schedule.html" class="">Day schedule</a><a href="hotels.html" class="">Hotels</a><a href="questions.html" class="">Questions &amp; info</a><a href="suggestions.html" class="">Suggestions</a><a href="flagged.html" class="">Flagged for Review</a><a href="repo-review.html" class="active">Repo review</a><a href="sources.html" class="">Sources</a></nav>
+</header>
+<main>
+<section class="intro"><h1>Repo review</h1><p class="lead">Checked at the start of the session with local git commands. Items to review manually are listed below, with links.</p></section><section class="panel"><div class="tools"><input type="search" placeholder="Filter rows…" data-filter="repo" aria-label="Filter table"></div><div class="tablewrap"><table id="repo" class="wide"><thead><tr><th>Check</th><th>Result</th><th>How checked</th></tr></thead><tbody><tr><td>Branch</td><td>arena/bafafd7c-poker5 (session branch). Base commit 0ba2e55 &#x27;Initial commit&#x27; on main.</td><td>git log, git branch</td></tr><tr><td>Files at start</td><td>Only README.md, which is 8 bytes: &#x27;# Poker5&#x27; with no trailing newline. No LICENSE, no .gitignore, no docs folder, no Pages config, no build tooling.</td><td>git ls-files; od -c README.md</td></tr><tr><td>Remote branch</td><td>origin/arena/bafafd7c-poker5 exists after the claim push (verified with git ls-remote).</td><td>git ls-remote origin</td></tr><tr><td>Coordination board</td><td>COORDINATION.md added in this session with claims for tasks T1–T8 under arena-bafafd7c.</td><td>file check</td></tr><tr><td>Branch naming</td><td>The coordination text asks for session-&lt;id&gt;/&lt;task&gt; branches. Session rules fix this session to arena/bafafd7c-poker5, so that rule was followed.</td><td>task rules vs. session rules</td></tr><tr><td>Parallel sessions</td><td>No other session claims exist in COORDINATION.md at the start.</td><td>git show main:COORDINATION.md (not present on main)</td></tr><tr><td>README quality</td><td>Placeholder only: no description, setup, or build steps.</td><td>README.md</td></tr><tr><td>Build tooling</td><td>Added scripts/data.py, scripts/build_site.py, scripts/check_links.py. Standard library only; no packages installed.</td><td>git status</td></tr></tbody></table></div></section><section class="panel"><h2>Irregularities to review</h2><ul>
+<li>README is a placeholder and has no trailing newline.</li>
+<li>No license file. Decide whether the data may be reused.</li>
+<li>GitHub Pages was not configured before this session. It is set up as part of the merge.</li>
+<li>The coordination rules are for parallel sessions; this repo had none, so they were applied to this one session.</li>
+</ul></section>
+</main>
+<footer>
+  <p>Every value on this site comes from an official casino page or PDF, linked on its row. Values that no official source stated are left blank and marked <span class="badge x">Unverified</span>. Walk times are <span class="badge warn">Estimate</span>s. Nothing here is booking, gambling, or financial advice. Confirm every detail with the casino before you travel.</p>
+  <p class="small">Problem Gambling HelpLine (Wynn's official documents): 1-800-522-4700.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
