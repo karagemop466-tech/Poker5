@@ -169,6 +169,26 @@ Scope note: this session did not publish a site. Its generated site was removed 
 
 ---
 
+## Session b50aa7f5 (branch `arena/b50aa7f5-poker5`) — strict entry / hotel research
+
+This session's standalone dashboard is published under `site-b50aa7f5/`; it preserves the existing root landing page and every other session's site and research files.
+
+| Task | Status | Owner | Files / result |
+|---|---|---|---|
+| Upcoming tournament research with a strict single-entry-overall rule | done (snapshot) | b50aa7f5 | `site-src/data.mjs`; 11 records, zero verified primary-list entries, 4 confirmed multi-entry/rebuy, 6 entry-cap-unknown, 1 restricted |
+| Hotel, room-tax and route context | done (illustrative / approximate) | b50aa7f5 | `site-src/data.mjs`; two dated sample quotes only (Dec 3–6, 2026), no inferred user dates or overall hotel ranking |
+| Responsive site, source ledger, build and tests | done | b50aa7f5 | `site-src/`, `site-b50aa7f5/`, `scripts/build.mjs`, `test/research.test.mjs`; `npm run check` passes |
+| Integrate with the current main site and verify deployment | in progress | b50aa7f5 | PR #15; preserve main's root `index.html`, existing `pages/` and all session folders; add a direct link to the strict dashboard |
+
+### Log (b50aa7f5)
+
+- Initial branch base: `0ba2e556c11d7c2b6e34935d3b4a2a11d5eefab0`. While this session was active, PRs #13 and #14 advanced `main` and introduced additional research sites. The current branch was kept fixed; `origin/main` was merged into it to resolve the PR conflict.
+- Conflict handling: retained `main`'s existing root landing page, README material, ignore rules, and full coordination history. The new dashboard is isolated at `site-b50aa7f5/`, with editable source under `site-src/`; root landing navigation is only extended to link to it.
+- **Entry standard:** schedule silence, `1Day`, and one-entry-per-flight language do not prove single-entry overall. No event meets the strict primary-list standard in this snapshot. Prior-session inferred or unverified candidate rows remain separate and are not re-labeled as confirmed.
+- **Routes:** third-party estimates vary with endpoint/provider and are not measurements. Hotel quotes are snapshots only, not user-selected trip dates. No hotel is ranked overall.
+- Sources were reviewed November 16, 2026. PGT's current 2027 Championship announcement and Rome2Rio route pages were checked during integration; other official links and findings are recorded in the dashboard's source ledger.
+- PR #15: https://github.com/karagemop466-tech/Poker5/pull/15. Local check: `npm run check` (8 tests and static build) passes; local HTTP smoke test passed for page, ledger, JS modules, data, and CSS. Final merge and live Pages verification pending.
+
 ## Session cd5ab298 (branch `arena/cd5ab298-poker5`) — Dec 2–9 research dashboard
 
 This session's static dashboard and source data are isolated in `dashboard-cd5ab298/`; the validator is `scripts/check_site_cd5ab298.py`. The existing root Pages site, `index.html`, `pages/`, `docs/`, `site/`, `data/`, and other sessions' outputs were preserved. The existing Pages source is `main` at `/`; this session does not replace its deployment configuration.
@@ -197,8 +217,8 @@ This session's static dashboard and source data are isolated in `dashboard-cd5ab
 ### Validation and integration log
 
 - `python3 scripts/check_site_cd5ab298.py` passes: 7 dashboard HTML pages, 56 dated tournament rows, 4 hotel records, local links, source keys and quote arithmetic. `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing and `git diff --check` also pass. The validator checks external URLs for HTTPS syntax; it does not make live HTTP requests.
-- Integrated the latest `origin/main` at merge commit `210c621` after main had advanced with other sessions. Resolved the `COORDINATION.md` add/add conflict by keeping main's board and appending this session. Kept the existing root site and README, adding only a link to the isolated dashboard; no existing Pages source or other session output was replaced.
-- PR #17 is open from `arena/cd5ab298-poker5` to `main`: <https://github.com/karagemop466-tech/Poker5/pull/17>. The initial validation and the fresh `validate` check on commit `098adf7` passed. Merge and final live Pages-path verification are pending. Intended published path is `https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/` under the repository's existing root-based Pages deployment. Do not replace the legacy root Pages source or other sessions' outputs.
+- Integrated latest `origin/main` commit `0cbefd0` (PR #15) into this branch after main advanced during the PR. Preserved its newer README, coordination history, root landing-page links, Pages config and session-scoped site. Kept this dashboard isolated, added this session's record to main's coordination board and retained the root link; no other session output was replaced.
+- PR #17 is open from `arena/cd5ab298-poker5` to `main`: <https://github.com/karagemop466-tech/Poker5/pull/17>. Before integrating `0cbefd0`, the `validate` check passed on branch commits `098adf7` and `5721b62`; rerun CI after this conflict-resolution merge. Final merge and live Pages-path verification are pending. Intended published path is `https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/` under the existing root-based Pages deployment. Do not replace the legacy root Pages source or other sessions' outputs.
 
 ### Primary sources
 

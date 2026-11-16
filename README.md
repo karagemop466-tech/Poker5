@@ -39,6 +39,23 @@ Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links
 
 ---
 
+## Strict-entry research dashboard (session b50aa7f5)
+
+Open the current source-linked research dashboard at [site-b50aa7f5/](./site-b50aa7f5/). It applies a strict **single-entry-overall** standard: as of November 16, 2026, no upcoming event is verified for the primary list. Confirmed re-entry/rebuy events, entry-cap-unknown events, and restricted events remain separately labeled. See the site's source ledger for the underlying schedules, structure sheets, hotel pages, and third-party route estimates.
+
+The Dec 3–6, 2026 hotel quotes are illustrative snapshots only; no trip dates were supplied. The comparison does not rank hotels overall. This dashboard is a separate, session-scoped static site and does not replace the repository's other research outputs.
+
+### Build and test this dashboard
+
+Requires Node.js 20 or newer; no install step or external package is needed.
+
+```sh
+npm run check
+npm run dev
+```
+
+`npm run check` runs the Node test suite and builds the publishable files into `site-b50aa7f5/`. `npm run dev` serves that folder locally on port 4173; open `http://localhost:4173`. GitHub Pages uses the existing `main` `/` source, so the dashboard is available at `/Poker5/site-b50aa7f5/` after merge.
+
 ## Session cd5ab298: Dec 2–9 research dashboard
 
 The isolated, source-backed dashboard is in [`dashboard-cd5ab298/`](dashboard-cd5ab298/index.html) and will be served under [`/Poker5/dashboard-cd5ab298/`](https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/) by the existing root-based Pages site. It does not replace the root site or other session outputs.
