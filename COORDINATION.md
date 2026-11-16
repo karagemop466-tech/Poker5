@@ -167,6 +167,41 @@ Pending. Will record: PR link, merge result, Pages deploy result.
 - Flagged items: 22 entries on `site/flagged.html` (irregularities, conflicts, unverified values).
 - Other sessions' files were not edited.
 
+---
+
+## Session c6087e2c (branch arena/c6087e2c-poker5) — merged on top of origin/main
+
+Claimed before writing. This session is the integration step for the root landing page (`index.html`) and `pages/` (shared outputs). Other sessions' folders (`docs/`, `site/`, `dashboard-de0bebd4/`, `dashboard-053f694f/`, `tools/`, `data/tournaments.json`, `data/hotels.json`, `data/*.md`, `data/*.txt`) were NOT edited.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| T1 | Audit the existing root site and pages on main, line by line | done | c6087e2c | `pages/repo-review.html` (findings) | Official pages re-read | Secondary-sourced claims found and corrected (see Repo Review page) |
+| T2 | Verify the Venetian DeepStack Extravaganza IV schedule, every row | done | c6087e2c | `data/c6087e2c/venetian_dse_2026.psv` | Official DSE IV page + structure PDFs | 94 rows, 64 event numbers. Event #40 row truncated (F02) |
+| T3 | Verify other rooms: Wynn daily and WPT, Bellagio, MGM Grand, Caesars Palace, Horseshoe, ARIA | done (partial, flagged) | c6087e2c | `data/c6087e2c/other_events.json` | Official poster, structure PDF, WPT event page, Caesars page, Bellagio/MGM/ARIA pages | F10–F17 |
+| T4 | Verify hotel resort fees and room-rate inputs | done (partial, flagged) | c6087e2c | `data/c6087e2c/hotels.json` | Official Venetian suite-rate page (fee $55 + tax); Wynn terms (fee $55 + tax) | Bellagio, ARIA, MGM Grand: secondary only (F08, F09). Caesars, Horseshoe: not checked (F21). No walking time or room rate verified (F18, F19, F22) |
+| T5 | Build generator and rebuild root site + pages | done | c6087e2c | `scripts/build_c6087e2c.py`, `index.html`, `pages/*.html`, `assets/css/style.css` | Build passes. 0 broken internal links. Every table row has a source link (build fails otherwise) | Old generator kept as main's `scripts/build_site.py` (de0bebd4); not overwritten |
+| T6 | Flagged for Review page | done | c6087e2c | `data/c6087e2c/flags.json`, `pages/flagged-review.html` | Each item links its sources | 25 items. Do not block merge |
+| T7 | README | done | c6087e2c | `README.md` | — | Describes this site and its data paths |
+| T8 | Integration: build, link check, PR to main, merge, confirm Pages deploy, record here | in progress | c6087e2c | this file | Re-run before PR | See Integration record below |
+
+### Log (session c6087e2c)
+
+- Conflicts on merge of origin/main (add/add): `COORDINATION.md`, `data/hotels.json`, `scripts/build_site.py`. Resolution: kept main's version of all three. This session's data is in `data/c6087e2c/` and its generator is `scripts/build_c6087e2c.py`.
+- Root `index.html` and `pages/` were replaced by this session's rebuilt versions. This is the integration step for shared outputs. The earlier root content had unverified and secondary-sourced values presented as facts (see `pages/repo-review.html`).
+- Requests from earlier boards, answered:
+  1. (581fea93) Link from the root landing page to `docs/index.html`: done. The landing page also links the other sessions' dashboards, marked as not re-verified.
+  2. (581fea93) Hotel values from third-party sites on `pages/hotels.html` must be unverified or replaced: done. Secondary values are labelled "Secondary" and are not used to set any verified cell. Walking times are blank.
+  3. (581fea93) Single-entry status for 1Day events: NOT accepted as stated. See the disagreement below.
+- Disagreement to resolve (not decided here):
+  - 581fea93 and de0bebd4 treat a Venetian 1Day event with no re-entry or rebuy text in its structure sheet as single-entry (581fea93 counts 30 events). This session does not accept that. The sheets do not say "single entry", and treating silence as confirmation is an inference, which the brief prohibits. Those events stay Unverified (F01) on `pages/tournaments.html`. A user decision or a verified source is needed to change this.
+- Bellagio Saturday buy-in ($1,000 in the PDF title, $1,100 in the body) is left blank and flagged (F10). Not resolved here.
+- Event #40 (Venetian, Dec 10) is excluded from ranking because its official row was truncated (F02).
+
+### Integration record
+
+- PR: pending (to be recorded after creation)
+- Merge result: pending
+- Pages deploy: pending
 
 ---
 
