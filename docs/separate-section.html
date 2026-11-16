@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Separate section | Las Vegas Strip Poker Planner</title>
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dfe4ec;--bg:#f7f9fc;--accent:#1f5fbf;--warn:#b25000;--ok:#1b7f4b}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:12px 0}
+header h1{font-size:17px;margin:0 12px 0 0}
+nav a{color:var(--muted);text-decoration:none;padding:4px 8px;border-radius:6px;font-size:14px}
+nav a:hover,nav a.active{background:#e8f0fc;color:var(--accent)}
+main{max-width:1200px;margin:0 auto;padding:24px 20px 60px}
+h2{font-size:22px;margin:28px 0 10px}
+h3{font-size:17px;margin:20px 0 8px}
+p,li{max-width:900px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;color:inherit}
+.card b{display:block;font-size:24px;color:var(--accent)}
+.card span{color:var(--muted);font-size:13px}
+.note{background:#fff8ec;border:1px solid #f1d7a8;border-radius:8px;padding:10px 14px;margin:12px 0;max-width:1000px}
+.note.ok{background:#eef9f2;border-color:#bfe5cd}
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f1f5fb;font-weight:600;position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td a{color:var(--accent)}
+.blank{color:var(--warn);font-style:italic}
+.tag{display:inline-block;font-size:12px;padding:1px 7px;border-radius:999px;background:#eef2f7;color:var(--muted)}
+.tag.ok{background:#e4f5ec;color:var(--ok)}
+.tag.warn{background:#fff0e0;color:var(--warn)}
+.small{font-size:13px;color:var(--muted)}
+footer{max-width:1200px;margin:0 auto;padding:0 20px 30px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap" style="max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center">
+<h1>Las Vegas Strip Poker Planner</h1><nav><a href="index.html">Home</a><a href="single-entry.html">Single-entry</a><a href="separate-section.html" class="active">Separate section</a><a href="schedule.html">Schedule</a><a href="hotels.html">Hotels</a><a href="venues.html">Venues</a><a href="analysis.html">Analysis</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged for Review</a><a href="repo-review.html">Repo review</a></nav></div></header>
+<main>
+
+<h2>Separate section: re-entry, rebuy, add-on and multi-flight</h2>
+<div class="note"><b>Not single-entry.</b> Each row below lets you pay more to enter again, buy chips, or enter a flight. You asked for these to be kept apart. Compare them only if you accept the extra spend.</div>
+<h3>Re-entry, rebuy and add-on events</h3>
+<div class="table-wrap"><table>
+<tr><th>Venue</th><th>Days / date</th><th>Time</th><th>Event</th><th>Buy-in</th><th>Guarantee</th><th>Prize pool (official)</th><th>Entry rule (why excluded)</th><th>Category</th><th>Sources</th></tr>
+<tr>
+<td>Caesars Palace</td>
+<td>Daily</td>
+<td>10:00 AM</td>
+<td>Daily No-Limit Hold'em</td>
+<td>$100</td>
+<td>$1,000</td>
+<td>$70 of $100 to prize pool (official footnote)</td>
+<td>Re-entry allowed by paying entry fee within the first break. $50 optional add-on for 15,000 chips at first break.</td>
+<td><span class="tag warn">Re-entry / add-on</span></td>
+<td><a href="https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf" target="_blank" rel="noopener">Caesars Palace daily NLH schedule (PDF, 2026)</a><br><a href="https://www.caesars.com/caesars-palace/casino" target="_blank" rel="noopener">Caesars Palace poker room page</a></td>
+</tr>
+<tr>
+<td>Caesars Palace</td>
+<td>Daily</td>
+<td>2:00 PM</td>
+<td>Daily No-Limit Hold'em</td>
+<td>$160</td>
+<td>$1,000</td>
+<td>$115 of $160 to prize pool (official footnote)</td>
+<td>Re-entry allowed by paying entry fee within the first break. $50 optional add-on for 15,000 chips at first break.</td>
+<td><span class="tag warn">Re-entry / add-on</span></td>
+<td><a href="https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf" target="_blank" rel="noopener">Caesars Palace daily NLH schedule (PDF, 2026)</a><br><a href="https://www.caesars.com/caesars-palace/casino" target="_blank" rel="noopener">Caesars Palace poker room page</a></td>
+</tr>
+<tr>
+<td>Caesars Palace</td>
+<td>Daily</td>
+<td>6:00 PM</td>
+<td>Daily No-Limit Hold'em</td>
+<td>$100</td>
+<td>$1,000</td>
+<td>$70 of $100 to prize pool (official footnote)</td>
+<td>Re-entry allowed by paying entry fee within the first break. $50 optional add-on for 15,000 chips at first break.</td>
+<td><span class="tag warn">Re-entry / add-on</span></td>
+<td><a href="https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf" target="_blank" rel="noopener">Caesars Palace daily NLH schedule (PDF, 2026)</a><br><a href="https://www.caesars.com/caesars-palace/casino" target="_blank" rel="noopener">Caesars Palace poker room page</a></td>
+</tr>
+<tr>
+<td>Caesars Palace</td>
+<td>Daily</td>
+<td>9:00 PM</td>
+<td>Daily No-Limit Hold'em</td>
+<td>$160</td>
+<td>$1,000</td>
+<td>$115 of $160 to prize pool (official footnote)</td>
+<td>Re-entry allowed by paying entry fee within the first break. $50 optional add-on for 15,000 chips at first break.</td>
+<td><span class="tag warn">Re-entry / add-on</span></td>
+<td><a href="https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf" target="_blank" rel="noopener">Caesars Palace daily NLH schedule (PDF, 2026)</a><br><a href="https://www.caesars.com/caesars-palace/casino" target="_blank" rel="noopener">Caesars Palace poker room page</a></td>
+</tr>
+<tr>
+<td>Wynn Las Vegas</td>
+<td>Monday to Thursday</td>
+<td>12:00 PM</td>
+<td>Daily NLH ($10,000 guarantee)</td>
+<td>$200</td>
+<td>$10,000</td>
+<td>$162 of $200 to prize pool</td>
+<td>Re-entry allowed until start of level 9. Re-entry fee is $200.</td>
+<td><span class="tag warn">Re-entry</span></td>
+<td><a href="https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf" target="_blank" rel="noopener">Wynn daily tournaments poster (PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" target="_blank" rel="noopener">Wynn daily structures (PDF)</a></td>
+</tr>
+<tr>
+<td>Wynn Las Vegas</td>
+<td>Friday</td>
+<td>12:00 PM</td>
+<td>NLH Rebuy and Add-on ($40,000 guarantee)</td>
+<td>$240</td>
+<td>$40,000</td>
+<td>$190 of each $240 entry to prize pool</td>
+<td>Unlimited $200 rebuys while at 15,000 chips or less; one $100 add-on. Re-entry not allowed.</td>
+<td><span class="tag warn">Rebuy / add-on</span></td>
+<td><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" target="_blank" rel="noopener">Wynn daily structures (PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf" target="_blank" rel="noopener">Wynn daily tournaments poster (PDF)</a></td>
+</tr>
+<tr>
+<td>Wynn Las Vegas</td>
+<td>Saturday and Sunday</td>
+<td>12:00 PM</td>
+<td>Daily NLH ($25,000 guarantee)</td>
+<td>$200</td>
+<td>$25,000</td>
+<td>$162 of $200 to prize pool</td>
+<td>Re-entry allowed until start of level 9. Re-entry fee is $200.</td>
+<td><span class="tag warn">Re-entry</span></td>
+<td><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" target="_blank" rel="noopener">Wynn daily structures (PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf" target="_blank" rel="noopener">Wynn daily tournaments poster (PDF)</a></td>
+</tr>
+<tr>
+<td>Wynn Las Vegas</td>
+<td>Nightly</td>
+<td>6:00 PM</td>
+<td>Nightly NLH ($10,000 guarantee)</td>
+<td>$160</td>
+<td>$10,000</td>
+<td>$130 of $160 to prize pool</td>
+<td>Re-entry at $160 and one $100 add-on per entry until start of level 9.</td>
+<td><span class="tag warn">Re-entry / add-on</span></td>
+<td><a href="https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf" target="_blank" rel="noopener">Wynn daily structures (PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf" target="_blank" rel="noopener">Wynn daily tournaments poster (PDF)</a></td>
+</tr>
+<tr>
+<td>Wynn Las Vegas (WPT World Championship)</td>
+<td>2026-11-27 to 2026-11-30</td>
+<td>11:00 AM (Day 1A)</td>
+<td>$600 No Limit Hold'em, Day 1A to 1F (2-day)</td>
+<td>$600</td>
+<td>$400,000</td>
+<td>$510 of $600 to prize pool</td>
+<td>Unlimited re-entry for each starting flight until start of level 9.</td>
+<td><span class="tag warn">Re-entry (multi-flight)</span></td>
+<td><a href="https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf" target="_blank" rel="noopener">WPT World Championship schedule (PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf" target="_blank" rel="noopener">WPT World Championship structures and terms (PDF)</a></td>
+</tr>
+<tr>
+<td>Bellagio</td>
+<td>Fridays</td>
+<td>11:00 AM</td>
+<td>NLH Friday event</td>
+<td>$600</td>
+<td><span class="blank">Unverified: left blank</span></td>
+<td>$510 of $600 to prize pool</td>
+<td>Buy-in and re-entry through end of level 8. Optional $40 staff gratuity adds 15,000 chips.</td>
+<td><span class="tag warn">Re-entry</span></td>
+<td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio poker page (official)</a><br><a href="https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-%24600-nlh.pdf" target="_blank" rel="noopener">Bellagio Friday NLH terms (PDF)</a></td>
+</tr>
+<tr>
+<td>Bellagio</td>
+<td>Saturdays</td>
+<td>11:00 AM</td>
+<td>NLH Saturday event (buy-in conflict, see flags)</td>
+<td><span class="blank">Unverified: left blank</span></td>
+<td>Combined prize pool at least $50,000 (per terms)</td>
+<td><span class="blank">Unverified: left blank</span></td>
+<td>Buy-in and re-entry through end of level 8. Multi-flight (Day 1 flights, Day 2 combined).</td>
+<td><span class="tag warn">Re-entry (multi-flight)</span></td>
+<td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio poker page (official)</a><br><a href="https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-%241000-nlh.pdf" target="_blank" rel="noopener">Bellagio Saturday NLH terms (PDF)</a></td>
+</tr>
+<tr>
+<td>Bellagio</td>
+<td>Sundays</td>
+<td>11:00 AM</td>
+<td>$400 H.O.R.S.E.</td>
+<td>$400</td>
+<td><span class="blank">Unverified: left blank</span></td>
+<td>$340 of $400 to prize pool</td>
+<td>Buy-in and re-entry through end of level 8. Optional $25 staff gratuity adds 15,000 chips.</td>
+<td><span class="tag warn">Re-entry</span></td>
+<td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio poker page (official)</a><br><a href="https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-%24400-horse.pdf" target="_blank" rel="noopener">Bellagio Sunday H.O.R.S.E. terms (PDF)</a></td>
+</tr>
+<tr>
+<td>The Venetian (Palazzo, Level 2)</td>
+<td>2026-11-23 and 2026-11-24</td>
+<td>11:10 AM</td>
+<td>$400 No Limit Hold'em 1A / 1B (flights, Day 2 on Nov 25)</td>
+<td>$400</td>
+<td>$75,000</td>
+<td>$330 of every $400 to prize pool</td>
+<td>Multi-flight (Day 1A and 1B, Day 2 combined). Structure sheet says a player who bags chips for Day 2 may not play a later flight, which implies more than one flight can be entered. Treated as not single-entry until confirmed.</td>
+<td><span class="tag warn">Multi-flight (possible multiple entries)</span></td>
+<td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (PDF)</a><br><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf" target="_blank" rel="noopener">Structure sheet (Event 7)</a></td>
+</tr>
+</table></div>
+<h3>Not yet classified (structure sheet not checked)</h3>
+<p>These events appear on official schedules but their structure sheets were not opened, so their entry rule is unknown. They are not single-entry until checked.</p>
+<div class="table-wrap"><table>
+<tr><th>Venue</th><th>Date</th><th>Time</th><th>Event</th><th>Buy-in</th><th>Guarantee</th><th>Why unclassified</th><th>Source</th></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-11-16 to 2026-11-17</td><td>11:10 AM / 5:10 PM</td><td>$300 No Limit Hold'em flights 1A to 1D (Event 1)</td><td>$300</td><td>$75,000</td><td>Flight format. Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-11-28</td><td>12:10 PM</td><td>$400 Pot Limit Omaha Bounty (Event 17)</td><td>$400</td><td>$15,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-11-28</td><td>5:10 PM</td><td>$200 NLH PokerAtlas Valuetown Bounty (Event 18)</td><td>$200</td><td>$20,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-11-29</td><td>12:10 PM</td><td>$300 PLO Double Board Bomb Pot (Event 20)</td><td>$300</td><td>$10,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-02</td><td>10:10 AM</td><td>$600 NLH Seniors 50+ (Event 24)</td><td>$600</td><td>$40,000</td><td>Structure sheet not opened. 50+ only.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-03</td><td>12:10 PM</td><td>$600 Big O (Event 27)</td><td>$600</td><td>$25,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-06</td><td>5:10 PM</td><td>$300 NLH Bounty (Event 29)</td><td>$300</td><td>$15,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-07</td><td>5:10 PM</td><td>$300 NLH Bounty (Event 31)</td><td>$300</td><td>$15,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-08</td><td>5:10 PM</td><td>$300 NLH Bounty (Event 34)</td><td>$300</td><td>$15,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>The Venetian (Palazzo, Level 2)</td><td>2026-12-08</td><td>11:10 AM</td><td>$800 NLH Bounty (Event 36)</td><td>$800</td><td>$75,000</td><td>Structure sheet not opened.</td><td><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf" target="_blank" rel="noopener">Venetian DeepStack schedule (official PDF)</a></td></tr>
+<tr><td>Wynn Las Vegas (WPT World Championship)</td><td>2026-12-13 to 2026-12-15</td><td>11:00 AM</td><td>$10,400 WPT World Championship Day 1A/1B/1C ($1,000,000 added by ClubWPT Gold per schedule)</td><td>$10,400</td><td><span class="blank">Unverified: left blank</span></td><td>Structure sheet not opened. Entry type unverified. Other WPT rows also unverified.</td><td><a href="https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf" target="_blank" rel="noopener">WPT World Championship schedule (official PDF)</a></td></tr>
+<tr><td>Wynn Las Vegas (WPT World Championship)</td><td>2026-12-10 to 2026-12-13</td><td>10:00 AM to 6:00 PM</td><td>$400 Super Gold Million Mystery Bounty (Days 1A to 3)</td><td>$400</td><td>$3,000,000</td><td>Structure sheet not opened. Schedule rows are on the WPT PDF.</td><td><a href="https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf" target="_blank" rel="noopener">WPT World Championship schedule (official PDF)</a></td></tr>
+</table></div>
+<p class="small">Not included: ARIA and Horseshoe (no official schedule), Planet Hollywood and Resorts World (reported closed), Golden Nugget (downtown, series ended June 2026).</p>
+
+</main>
+<footer>Data verified against official operator pages and PDFs on 2026-11-16. Blank fields are values that could not be confirmed from an official source. This is planning information, not a booking or travel guarantee. Confirm times, buy-ins and rates with each room before you go.</footer>
+</body>
+</html>

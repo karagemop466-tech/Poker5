@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venues | Las Vegas Strip Poker Planner</title>
+<style>
+:root{--ink:#1d2430;--muted:#5b6575;--line:#dfe4ec;--bg:#f7f9fc;--accent:#1f5fbf;--warn:#b25000;--ok:#1b7f4b}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:12px 0}
+header h1{font-size:17px;margin:0 12px 0 0}
+nav a{color:var(--muted);text-decoration:none;padding:4px 8px;border-radius:6px;font-size:14px}
+nav a:hover,nav a.active{background:#e8f0fc;color:var(--accent)}
+main{max-width:1200px;margin:0 auto;padding:24px 20px 60px}
+h2{font-size:22px;margin:28px 0 10px}
+h3{font-size:17px;margin:20px 0 8px}
+p,li{max-width:900px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;color:inherit}
+.card b{display:block;font-size:24px;color:var(--accent)}
+.card span{color:var(--muted);font-size:13px}
+.note{background:#fff8ec;border:1px solid #f1d7a8;border-radius:8px;padding:10px 14px;margin:12px 0;max-width:1000px}
+.note.ok{background:#eef9f2;border-color:#bfe5cd}
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f1f5fb;font-weight:600;position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td a{color:var(--accent)}
+.blank{color:var(--warn);font-style:italic}
+.tag{display:inline-block;font-size:12px;padding:1px 7px;border-radius:999px;background:#eef2f7;color:var(--muted)}
+.tag.ok{background:#e4f5ec;color:var(--ok)}
+.tag.warn{background:#fff0e0;color:var(--warn)}
+.small{font-size:13px;color:var(--muted)}
+footer{max-width:1200px;margin:0 auto;padding:0 20px 30px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap" style="max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center">
+<h1>Las Vegas Strip Poker Planner</h1><nav><a href="index.html">Home</a><a href="single-entry.html">Single-entry</a><a href="separate-section.html">Separate section</a><a href="schedule.html">Schedule</a><a href="hotels.html">Hotels</a><a href="venues.html" class="active">Venues</a><a href="analysis.html">Analysis</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged for Review</a><a href="repo-review.html">Repo review</a></nav></div></header>
+<main>
+
+<h2>Las Vegas Strip poker rooms: status</h2>
+<div class="table-wrap"><table>
+<tr><th>Venue</th><th>On the Strip</th><th>Status</th><th>Tournament status</th><th>Sources</th><th>Flag</th></tr>
+<tr><td>The Venetian / The Palazzo</td><td>Yes</td><td>Open. 24 hours. 50 tables (official).</td><td>DeepStack Extravaganza IV, Nov 16 to Dec 23, 2026 (official). Single-entry events are in the main list. Multi-flight Event 7 is in the separate section.</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker.html" target="_blank" rel="noopener">Venetian poker room (official)</a><br><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament.html" target="_blank" rel="noopener">DeepStack Extravaganza (official)</a></td><td class="small">Single-entry status comes from the absence of re-entry or add-on terms on each structure sheet, not from an official 'single-entry' statement. See Flagged for Review.</td></tr>
+<tr><td>Caesars Palace</td><td>Yes</td><td>Open 24/7 (official). Daily No-Limit Hold'em tournaments listed in the official PDF.</td><td>Four daily events (10 AM, 2 PM, 6 PM, 9 PM). Re-entry is allowed by paying a fee within the first break, so all four are in the separate section.</td><td><a href="https://www.caesars.com/caesars-palace/casino" target="_blank" rel="noopener">Caesars Palace casino (official)</a><br><a href="https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf" target="_blank" rel="noopener">Caesars Palace daily NLH schedule (official PDF, 2026)</a></td><td class="small">Third-party buy-ins differ from the official PDF. Official PDF used.</td></tr>
+<tr><td>Wynn Las Vegas</td><td>Yes (North Strip)</td><td>Open (official poker page). Daily tournaments and the WPT World Championship (Nov 27 to Dec 21, 2026).</td><td>Daily tournaments all allow re-entry or rebuy/add-on, so they are in the separate section. WPT World Championship events are listed separately; most entry types are unverified.</td><td><a href="https://www.wynnlasvegas.com/casino/poker" target="_blank" rel="noopener">Wynn Las Vegas poker room (official)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf" target="_blank" rel="noopener">Wynn daily tournament poster (official PDF)</a><br><a href="https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf" target="_blank" rel="noopener">WPT World Championship schedule (official PDF)</a></td><td class="small">The daily poster does not state its year. Official daily terms say dailies are suspended during some series. Whether dailies run during the WPT is not confirmed. Poster and structure sheet are dated 2025 by URL.</td></tr>
+<tr><td>Bellagio</td><td>Yes</td><td>Open. Official page links three weekly events (Friday, Saturday, Sunday).</td><td>All three weekly events allow buy-in and re-entry through level 8, so they are in the separate section.</td><td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio poker page (official)</a></td><td class="small">The Saturday terms show conflicting buy-in figures. See Flagged for Review.</td></tr>
+<tr><td>ARIA Resort &amp; Casino</td><td>Yes</td><td>Open. 24 tables (official poker page).</td><td>Official page says tournaments run as scheduled but publishes no schedule. Not classified.</td><td><a href="https://aria.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">ARIA poker page (official)</a></td><td class="small">No official schedule. Not classified.</td></tr>
+<tr><td>Horseshoe Las Vegas</td><td>Yes</td><td>Open. 20 poker tables (official casino page).</td><td>Official page says 6 tournament times daily but publishes no schedule, buy-ins or entry rules. Not classified.</td><td><a href="https://www.caesars.com/horseshoe-las-vegas/casino" target="_blank" rel="noopener">Horseshoe Las Vegas casino (official)</a></td><td class="small">Official Horseshoe daily schedule not found. Third-party sources conflict. Not verified.</td></tr>
+<tr><td>Planet Hollywood</td><td>Yes</td><td>Reported closed; trade press says last day of operation was January 31, 2026. Official confirmation not found.</td><td>Excluded.</td><td><a href="https://ggbmagazine.com" target="_blank" rel="noopener">GGB Magazine (third-party, trade press)</a><br><a href="https://vegasadvantage.com" target="_blank" rel="noopener">VegasAdvantage (third-party)</a></td><td class="small">Trade press only. Official Planet Hollywood poker page returned an HTTP 500 error when checked. Flagged.</td></tr>
+<tr><td>Resorts World Las Vegas</td><td>Yes</td><td>Reported permanently closed March 30, 2026 (third-party listing).</td><td>Excluded.</td><td><a href="https://www.pokeratlas.com" target="_blank" rel="noopener">PokerAtlas (third-party)</a></td><td class="small">Third-party only. Official confirmation not found. Flagged.</td></tr>
+<tr><td>Golden Nugget Las Vegas</td><td>No (downtown)</td><td>Open. Grand Poker Series ran June 3 to 28, 2026 (ended).</td><td>Outside the Strip and out of window. Excluded.</td><td><a href="https://www.goldennugget.com/las-vegas/casino/poker-room/grand-poker-series-2026/grand-poker-series-schedule/" target="_blank" rel="noopener">Golden Nugget Grand Poker Series 2026 schedule (official)</a></td><td class="small"></td></tr>
+</table></div>
+
+</main>
+<footer>Data verified against official operator pages and PDFs on 2026-11-16. Blank fields are values that could not be confirmed from an official source. This is planning information, not a booking or travel guarantee. Confirm times, buy-ins and rates with each room before you go.</footer>
+</body>
+</html>
