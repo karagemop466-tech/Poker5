@@ -230,3 +230,35 @@ Claimed before writing. Output is in `dashboard-bafafd7c/` (served at `/Poker5/d
 - Re-verified every value against official pages and PDFs. Removed earlier unsourced values (invented URLs, a Bellagio Saturday guarantee, an unverified tax rate, and a WPT date list).
 - Build: `python3 scripts/build_bafafd7c.py` → 10 pages. Check: `python3 scripts/check_bafafd7c.py` → PASS (no broken internal links; every data row has an official source link; row counts match `data_bafafd7c.py`).
 - Pages source on main is `/` (root). This session did not change it. The dashboard is reachable at `/Poker5/dashboard-bafafd7c/` once main contains it.
+
+---
+
+## Session 443e914d (branch arena/443e914d-poker5) — merged on top of origin/main
+
+Claimed T-A to T-F before writing (commit `68af925` on the branch, 2026-11-16). Output uses session-unique paths so nothing on `main` is overwritten: `data-443e914d/`, `site-443e914d/`, `research-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py`.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| T-A | Single-entry research, Strip (one venue verified: The Venetian) | done (scope limited) | 443e914d | `data-443e914d/tournaments_single_entry.json` | Venetian DSE IV schedule PDF, event page, sheets 1, 2, 5, 6, 7, 8, 10, 11, 15, 16, 23, 28, 34 | 36 rows, row-by-row check 0 mismatches (`research-443e914d/verification.md`). Single-entry status is an inference (flag P-00) |
+| T-B | Double buy-in, add-on, re-entry, flight events (separate) | done | 443e914d | `data-443e914d/tournaments_multi_entry.json` | Venetian event page and schedule; Wynn daily structure PDF | 13 rows. Rules for flight events whose sheets were not fetched are flagged |
+| T-C | Hotels: official resort fees; nightly rates and walking times | partial, flagged | 443e914d | `data-443e914d/hotels.json` | Venetian suite-rate page ($55/night); Wynn offer 848631 (fetched, $45 + tax); offers 848991 and 850225 (search results only) | Rates, walking times, room tax blank. Caesars, MGM, Palazzo, Encore not verified |
+| T-D | Executive summary, questions, suggestions, Flagged for Review | done | 443e914d | `site-443e914d/*.html`, `data-443e914d/pending_and_flags.json` | — | Suggestions await user choice; nothing implemented |
+| T-E | Static site and link gate | built | 443e914d | `site-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py` | link gate passes (11 pages, 0 broken, 45 external URLs all on the source list) | Served at `/site-443e914d/` from main |
+| T-F | Integration: PR to main, merge, Pages check, record here | in progress | 443e914d | this section | — | See Integration record below |
+
+### Log (session 443e914d)
+
+- Overlap logged: the Venetian DSE IV was also researched by 581fea93, de0bebd4, 053f694f, 359e3f96, c6087e2c, b1f117c3, and arena-poker5. This session's output is a cross-check, not a replacement.
+- File collisions avoided on merge: `tools/build_site.py` (owned by b1f117c3) renamed to `tools/build_443e914d.py`; `data/hotels.json` (053f694f and c6087e2c) moved to `data-443e914d/hotels.json`; `docs/` (581fea93) not used; `README.md` and `COORDINATION.md` kept as main's versions with this section appended.
+- Pages workflow not added. A `pages.yml` deploy would switch Pages from the legacy main-root build to a single artifact and replace every other session's pages. Pages source stays `main` `/`; this site is served at `/site-443e914d/`.
+- Counts to reconcile (not decided here): this session has 36 one-day Venetian rows with no re-entry, rebuy, or add-on text (inferred single-entry, flag P-00). Other sessions report 20, 30, or 64 Venetian events. Each count depends on its classification rule.
+- Event #40 (Venetian, Thu Dec 10, 12:10 PM, $600 PLO Bounty, $25K GTD) is on the schedule and the event page but is not in the single-entry table (classification not checked). Listed on the Flagged page (P-04).
+- Venetian #39 date conflict: schedule PDF layout vs event page (Thu Dec 10). Event page used. Flag R-06.
+- Wynn offer 848631: previously mislabelled as an Encore reference; it is a Wynn Las Vegas room offer with a $45 + tax resort fee (fetched).
+- Request to the root landing page owner (c6087e2c, not edited here): add a link to `site-443e914d/`.
+
+### Integration record (session 443e914d)
+
+- PR: pending (recorded after creation)
+- Merge result: pending
+- Pages deploy: pending (legacy build from main `/`)
