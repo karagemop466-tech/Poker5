@@ -36,3 +36,14 @@ Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served f
 | `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
 
 Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`
+
+---
+
+## Session cd5ab298: Dec 2–9 research dashboard
+
+The isolated, source-backed dashboard is in [`dashboard-cd5ab298/`](dashboard-cd5ab298/index.html) and will be served under [`/Poker5/dashboard-cd5ab298/`](https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/) by the existing root-based Pages site. It does not replace the root site or other session outputs.
+
+- Snapshot: Nov 16, 2026; hotel window Dec 2–9 (7 nights, 2 adults; Dec 9 is checkout day).
+- 56 Venetian / Wynn-WPT calendar rows; zero events confirmed strict single-entry. Unknown terms and official-source conflicts are on its Flagged for Review page.
+- Wynn's ~$5,642.92 after-tax amount is an estimate from the rounded $711 average/night; Venetian's $7,054.77 displayed estimate has a capacity warning. Neither should be treated as a guaranteed booking.
+- Check this dashboard with `python3 scripts/check_site_cd5ab298.py`. It validates local links, data and quote arithmetic; it does not live-probe external sites.
