@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels near the Strip venues · Las Vegas Strip Poker Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">Strip Poker Dashboard</a></div>
+  <div class="sub">Live tournaments near the Las Vegas Strip · data as of 2026-11-16 · all values from official sources unless flagged</div>
+</header>
+<div class="layout">
+<nav class="side"><a class="" href="index.html">Dashboard</a>
+<a class="" href="tournaments.html">Single-entry tournaments</a>
+<a class="" href="excluded.html">Multi-entry, excluded &amp; satellites</a>
+<a class="" href="unverified.html">Unverified (needs review)</a>
+<a class="" href="schedule.html">Schedule</a>
+<a class="active" href="hotels.html">Hotels</a>
+<a class="" href="analysis.html">Analysis</a>
+<a class="" href="questions.html">Questions to answer</a>
+<a class="" href="suggestions.html">Suggestions (for review)</a>
+<a class="" href="flagged.html">Flagged for Review</a>
+<a class="" href="sources.html">Sources</a></nav>
+<main>
+<h1>Hotels near the Strip venues</h1>
+
+<p>Goal per brief: lowest <i>true</i> nightly cost (room rate + resort fee + tax), then quality, with walking distance at most 30 minutes to the tournament.
+This session could only confirm <b>two</b> resort fees from official sources. Nightly rates, walking distances and quality ratings are <b>blank</b> because no official source for them was retrieved.</p>
+<p><b>Formula for when rates are supplied:</b> true nightly cost = (room rate + resort fee) × (1 + lodging tax rate) + parking/day. The lodging-tax rate is not verified here and is not applied.</p>
+
+<div class="scroll"><table class="data"><thead><tr><th>Hotel</th><th>Tournament link</th><th>Official resort fee (per night, before tax)</th><th>Source</th><th>Parking (official)</th><th>Nightly room rate</th><th>Walking distance to venue</th><th>Quality rating</th><th>True nightly cost</th></tr></thead><tbody><tr><td>Wynn Las Vegas</td><td>WPT / Wynn dailies (re-entry events; see schedule)</td><td><b>$55 + tax per room night</b> (official T&amp;C)</td><td><a href="https://www.visitwynn.com/tc/index.cfm?term_id=850250" target="_blank" rel="noopener">Wynn official T&amp;C</a></td><td>not verified</td><td><i>blank — unverified</i></td><td><i>blank — unverified</i></td><td><i>blank — no official source</i></td><td><i>blank — needs rate</i></td></tr>
+<tr><td>Resorts World Las Vegas</td><td>No official tournament listing found (see flags)</td><td><b>$55 + tax per room night</b> (official offer T&amp;C); waived only on the 'All Resort, No Fees' offer, valid through Dec 28, 2026 on select dates</td><td><a href="https://www.rwlasvegas.com/offers/all-resort-no-fees/" target="_blank" rel="noopener">RWLV official offer</a> · <a href="https://www.rwlasvegas.com/eblast/poker-invite/" target="_blank" rel="noopener">RWLV poker eblast</a></td><td>not verified</td><td><i>blank — unverified</i></td><td><i>blank — unverified</i></td><td><i>blank — no official source</i></td><td><i>blank — needs rate</i></td></tr>
+<tr><td>Venetian Resort</td><td>DeepStack Extravaganza IV (host)</td><td><b>Not verified</b> — aggregators say $55; no official Venetian fee page could be read</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian event page (no fee found)</a></td><td></td><td><i>blank — unverified</i></td><td><i>blank — unverified</i></td><td><i>blank — no official source</i></td><td><i>blank — needs rate</i></td></tr>
+<tr><td>MGM Grand</td><td>Daily $120 NLH (excluded); weekly schedule</td><td><b>Not verified</b> — a non-MGM listing says $50; another says $56.69</td><td><a href="https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html" target="_blank" rel="noopener">MGM official poker page (no fee found)</a></td><td></td><td><i>blank — unverified</i></td><td><i>blank — unverified</i></td><td><i>blank — no official source</i></td><td><i>blank — needs rate</i></td></tr>
+<tr><td>Bellagio</td><td>Fri/Sat/Sun events (excluded or unverified)</td><td><b>Not verified</b> — an aggregator says $51</td><td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio official poker page (no fee found)</a></td><td></td><td><i>blank — unverified</i></td><td><i>blank — unverified</i></td><td><i>blank — no official source</i></td><td><i>blank — needs rate</i></td></tr></tbody></table></div>
+<footer>Built from files in <code>data/</code> by <code>scripts/build_site.py</code>. Blank cells = not verified from an official source (see <a href="flagged.html">Flagged for Review</a>).</footer>
+</main>
+</div>
+</body>
+</html>
