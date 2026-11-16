@@ -19,7 +19,7 @@ original brief is recorded as an irregularity (see below); the assigned branch n
 | T2 | Live tournament research — Las Vegas Strip (official sources) | needs review (partial) | de0bebd4 | `data/venetian_dse_iv.txt`, `data/other_rooms.txt` | Venetian and Wynn/MGM/Bellagio rows entered; Golden Nugget, Caesars/Horseshoe, Planet Hollywood, Mandalay Bay, South Point and Resorts World 2026 schedule NOT verified. See Log: TOURNAMENTS |
 | T3 | Hotel research — resort fees, walking distance, rates | needs review (partial) | de0bebd4 | `scripts/build_site.py` (hotel table is hard-coded there; no `data/hotels.json` exists) | Official fees: Wynn and Resorts World only. Venetian, MGM Grand, Bellagio fees and all rates/walking distances unverified → blank and flagged |
 | T4 | Site build (GitHub Pages, `docs/`) | in progress | de0bebd4 | `docs/**`, `scripts/build_site.py` | Built locally (14 pages). Not yet committed/published at time of this entry |
-| T5 | Integration: combined data re-verification, link check, build, PR, merge, Pages deploy | in progress | de0bebd4 | all | Final integration step (this session is the only active session) |
+| T5 | Integration: combined data re-verification, link check, build, PR, merge, Pages deploy | in progress (PR #4 open; merge pending) | de0bebd4 | all | Final integration step (this session is the only active session) |
 
 ---
 
@@ -62,4 +62,7 @@ original brief is recorded as an irregularity (see below); the assigned branch n
 - GitHub Pages source (planned): `main` branch, `/docs` folder. Not yet confirmed.
 
 ### INTEGRATION (T5) — de0bebd4
-- Pending: link check, rebuild, PR `arena/de0bebd4-poker5` → `main`, merge, Pages deploy verification. Results will be appended below.
+- Link check passed (internal links; all table rows have source links).
+- PR: https://github.com/karagemop466-tech/Poker5/pull/4 (`arena/de0bebd4-poker5` → `main`).
+- Pages settings: the token could not change Pages source (HTTP 403). Pages currently serves `main` at `/`. A root `index.html` redirects to `docs/index.html`. Owner should set Pages source to `main` / `/docs` if preferred.
+- Results will be appended below.
