@@ -31,8 +31,12 @@ Shared task board for agent sessions working on this repo.
 | T5: Suggestions section | done | 053f694f | summary.html | — | — | — |
 | T6: Questions / missing info | done | 053f694f | summary.html | — | — | — |
 | T7: Build GitHub Pages site | done | 053f694f | index.html, tournaments.html, hotels.html, schedule.html, dashboard.html, summary.html, flagged.html, assets/, scripts/build_site.py | generated from data/*.json | Build script output checked | — |
-| T8: PR, merge, Pages deploy | pending | 053f694f | — | — | pending | pending |
-| T9: Record PR link and merge result | pending | 053f694f | COORDINATION.md | — | pending | pending |
+| T8: PR, merge, Pages deploy | in progress | 053f694f | — | PR #8: https://github.com/karagemop466-tech/Poker5/pull/8 | pending | pending |
+| T9: Record PR link and merge result | in progress | 053f694f | COORDINATION.md | PR #8 | pending | pending |
+
+## Integration
+- PR: https://github.com/karagemop466-tech/Poker5/pull/8 (base `main`, head `arena/053f694f-poker5`)
+- Merge result: pending (recorded after merge)
 
 ## Flagged for Review
 See flagged.html on the published site for the full list. Summary of open items:
