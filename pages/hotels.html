@@ -1,215 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Walking-Distance Hotels — Poker5</title>
-<meta name="description" content="Walking-distance hotels near The Venetian Las Vegas Strip poker tournaments, with resort fees and true nightly cost.">
+<title>Hotels: Walking Distance and True Nightly Cost | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel planner built from official sources. Unverified values are blank and flagged.">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand">
-      <div class="mark">P5</div>
-      <div>
-        <div style="font-weight:800;">Poker5</div>
-        <div class="tagline">Las Vegas Strip poker tournament &amp; hotel planner</div>
-      </div>
-    </div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="tournaments.html">Tournaments</a>
-      <a href="tournaments-double.html">Re-Entry / Add-On</a>
-      <a href="hotels.html" class="active">Hotels</a>
-      <a href="schedule.html">All-Day Schedule</a>
-      <a href="executive-summary.html">Executive Summary</a>
-      <a href="questions.html">Questions &amp; Answers</a>
-      <a href="suggestions.html">Suggestions</a>
-      <a href="flagged-review.html">Flagged for Review</a>
-    </nav>
-  </div>
+<header class="topbar">
+  <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
+  <nav class="nav"><a href="../index.html">Home</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="tournaments.html">Single-Entry Candidates</a>
+<a href="tournaments-double.html">Re-Entry / Multi-Flight</a>
+<a href="hotels.html">Hotels</a>
+<a href="schedule.html">Schedule</a>
+<a href="questions.html">Questions &amp; Answers</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged-review.html">Flagged for Review</a>
+<a href="repo-review.html">Repo Review</a></nav>
 </header>
+<main class="wrap">
+<h1>Hotels: Walking Distance and True Nightly Cost</h1>
 
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2>Hotels Within Walking Distance of the Tournaments</h2>
-        <p class="subtitle">Tournament venue: <strong>The Venetian Resort (Las Vegas Strip)</strong>. All hotels below are within a ~30-minute walk. Cost and quality are weighted higher than distance, but distance stays reasonable.</p>
-      </div>
-      <div class="actions">
-        <a class="btn btn-primary" href="https://www.venetianlasvegas.com/" target="_blank">Venetian official site &rarr;</a>
-      </div>
-    </div>
+<p class="muted">Walking limit: 30 minutes on foot to the tournament room. Not verified for hotels other than the tournament venue itself, so those cells are blank.</p>
+<div class="panel">
+<strong>How true cost per night is built:</strong> nightly room rate + mandatory resort fee. Taxes are not added because the official tax rate was not verified in the sources read. Where a room rate is blank, the true cost is blank too.
+</div>
+<h2>Hotels hosting or near tournaments</h2>
+<div class="tablewrap"><table class="tbl"><thead><tr><th>Hotel</th><th>Walk to tournament</th><th>Nightly room rate</th><th>Resort fee (per night)</th><th>True cost per night</th><th>Quality</th><th>Status &amp; source</th></tr></thead><tbody><tr><td><strong>The Venetian Resort</strong><br><small>Hosts DeepStack Extravaganza IV (official)</small></td><td>0 min: tournament is held on the property (official Venetian DSE IV page)</td><td>from $119 (poker suite rate, requires qualifying play; pre-tax; &#x27;as low as&#x27;)</td><td>$55 per night + tax (official)</td><td>from $174 + tax (= $119 + $55; poker-suite rate only; conditional on play requirement)</td><td><span class="blank">blank</span></td><td><span class="badge badge-ok">Official fee</span><br><a href="https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html" target="_blank" rel="noopener">Official page</a></td></tr><tr><td><strong>The Palazzo</strong><br><small>Same resort as The Venetian (official suite page covers both towers)</small></td><td><span class="blank">blank</span></td><td>Poker-suite wording gives &#x27;as low as $209&#x27; after &#x27;$119&#x27; (mapping to tower not explicit)</td><td>$55 per night stayed (official suite page wording covers The Venetian or The Palazzo)</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="badge badge-ok">Official fee</span><br><a href="https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html" target="_blank" rel="noopener">Official page</a></td></tr><tr><td><strong>Wynn Las Vegas</strong><br><small>Hosts WPT World Championship (Nov 27-Dec 21) and daily tournaments (official)</small></td><td>0 min for Wynn events: tournament is held on the property (official Wynn poker page)</td><td><span class="blank">blank</span></td><td>$55 + tax per night (official Wynn terms; bookings on or after Jan 15, 2025)</td><td>Not computed: nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-ok">Official fee</span><br><a href="https://www.wynnlasvegas.com/terms-and-conditions/849338" target="_blank" rel="noopener">Official page</a></td></tr><tr><td><strong>Encore at Wynn</strong><br><small>Wynn sister property; poker events are at Wynn</small></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td>$55 + tax per night per Wynn terms page (confirm that the terms cover Encore)</td><td>Not computed: nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-ok">Official fee</span><br><a href="https://www.wynnlasvegas.com/terms-and-conditions/849338" target="_blank" rel="noopener">Official page</a></td></tr><tr><td><strong>Bellagio</strong><br><small>Hosts poker room tournaments (official page)</small></td><td>0 min: tournament is held on the property (official Bellagio poker page)</td><td><span class="blank">blank</span></td><td>$55 per night (secondary source only; not confirmed on an official Bellagio page)</td><td>Not computed: nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-warn">Secondary fee</span><br><a href="https://casino.com/news/las-vegas/mgm-resorts-increases-parking-and-resort-fees-in-its-las-vegas-properties/" target="_blank" rel="noopener">Secondary source</a></td></tr><tr><td><strong>ARIA Resort &amp; Casino</strong><br><small>Poker room exists; official page lists no tournaments</small></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td>$55 per night (secondary source only; not confirmed on an official ARIA page)</td><td>Not computed: nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-warn">Secondary fee</span><br><a href="https://casino.com/news/las-vegas/mgm-resorts-increases-parking-and-resort-fees-in-its-las-vegas-properties/" target="_blank" rel="noopener">Secondary source</a></td></tr><tr><td><strong>MGM Grand</strong><br><small>Hosts daily NLH (official page and PDF; PDF is stale)</small></td><td>0 min: tournament is held on the property (official MGM Grand poker page)</td><td><span class="blank">blank</span></td><td>$50 per night (secondary source only; MGM policy page on official site returned not found)</td><td>Not computed: nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-warn">Secondary fee</span><br><a href="https://casino.com/news/las-vegas/mgm-resorts-increases-parking-and-resort-fees-in-its-las-vegas-properties/" target="_blank" rel="noopener">Secondary source</a></td></tr><tr><td><strong>Caesars Palace</strong><br><small>Hosts 4 daily NLH starts (official Caesars page)</small></td><td>0 min: tournament is held on the property (official Caesars page)</td><td><span class="blank">blank</span></td><td>Not checked. No official resort-fee source read this session.</td><td>Not computed: resort fee and nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-warn">Not verified</span><br><a href="https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip" target="_blank" rel="noopener">Official page</a></td></tr><tr><td><strong>Horseshoe Las Vegas</strong><br><small>Hosts 6 daily NLH starts (official Caesars page)</small></td><td>0 min: tournament is held on the property (official Caesars page)</td><td><span class="blank">blank</span></td><td>Not checked. No official resort-fee source read this session.</td><td>Not computed: resort fee and nightly room rate not verified</td><td><span class="blank">blank</span></td><td><span class="badge badge-warn">Not verified</span><br><a href="https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip" target="_blank" rel="noopener">Official page</a></td></tr></tbody></table></div>
+<p class="muted">Quality ratings were not sourced and are blank (F20). Walking times and room rates are blank (F18, F19, F22).</p>
 
-    <div class="callout callout-info">
-      <h4>How "true cost per night" is built</h4>
-      <p><strong>True cost/night = room rate + mandatory resort fee + 13.38% Clark County lodging tax on the resort fee.</strong> Resort fees are mandatory per-room/per-night and are taxed. Room rates are dynamic and could not be confirmed from an official source, so they are left <strong>blank/unverified</strong> — check each hotel's official site (links provided) for current rates before booking.</p>
-    </div>
-
-    <div class="kpi-row">
-      <div class="kpi"><div class="big">0 min</div><div class="lab">Venetian (on-site at tournament)</div></div>
-      <div class="kpi"><div class="big">~5 min</div><div class="lab">Closest walk (Palazzo, Harrah's, Casino Royale)</div></div>
-      <div class="kpi"><div class="big">$55</div><div class="lab">Highest resort fee (Venetian/Caesars, pre-tax)</div></div>
-      <div class="kpi"><div class="big">13.38%</div><div class="lab">Clark County lodging tax on resort fees</div></div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Hotel</th><th>Quality (unverified)</th><th>Walk to Venetian</th><th>Nightly room rate</th><th>Resort fee (pre-tax)</th><th>Resort fee (w/ 13.38% tax)</th><th>True cost/night</th><th>Official site / book</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>The Venetian Resort</strong></td>
-            <td>Luxury</td>
-            <td class="td-nowrap">On-site (tournament venue)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$55</td>
-            <td class="td-nowrap">$62.36</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.venetianlasvegas.com/" target="_blank">venetianlasvegas.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>The Palazzo at The Venetian</strong></td>
-            <td>Luxury</td>
-            <td class="td-nowrap">~5 min walk (connected)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$50 (varies $50–55)</td>
-            <td class="td-nowrap">$56.69 (up to $62.37)</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.venetianlasvegas.com/" target="_blank">venetianlasvegas.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Wynn Las Vegas</strong></td>
-            <td>Luxury</td>
-            <td class="td-nowrap">~12 min walk (0.5 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$50 (varies $50–55)</td>
-            <td class="td-nowrap">$56.69 (up to $62.36)</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.wynnlasvegas.com/" target="_blank">wynnlasvegas.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Encore at Wynn</strong></td>
-            <td>Luxury</td>
-            <td class="td-nowrap">~13 min walk (0.6 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$50 (varies $50–55)</td>
-            <td class="td-nowrap">$56.69 (up to $62.36)</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.wynnlasvegas.com/" target="_blank">wynnlasvegas.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Bellagio</strong></td>
-            <td>Luxury</td>
-            <td class="td-nowrap">~8 min walk (~0.5 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$50</td>
-            <td class="td-nowrap">$56.69</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.bellagio.com/" target="_blank">bellagio.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Caesars Palace</strong></td>
-            <td>Upscale / classic</td>
-            <td class="td-nowrap">~8–12 min walk (0.6 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">$55</td>
-            <td class="td-nowrap">$62.30</td>
-            <td><span class="blank">— rate unverified</span></td>
-            <td><a class="source" href="https://www.caesarspalace.com/" target="_blank">caesarspalace.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>Harrah's Las Vegas</strong></td>
-            <td>Mid / budget-friendly</td>
-            <td class="td-nowrap">~5 min walk (0.2 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td><span class="blank">— unverified</span></td>
-            <td><a class="source" href="https://www.caesars.com/harrahs-las-vegas" target="_blank">caesars.com/harrahs-las-vegas</a></td>
-          </tr>
-          <tr>
-            <td><strong>Treasure Island (TI)</strong></td>
-            <td>Mid / budget-friendly</td>
-            <td class="td-nowrap">~6 min walk (0.3 mi)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td><span class="blank">— unverified</span></td>
-            <td><a class="source" href="https://www.wyndhamhotels.com/treasure-island/treasure-island-ti-las-vegas-hotel" target="_blank">TI Las Vegas</a></td>
-          </tr>
-          <tr>
-            <td><strong>Best Western Plus Casino Royale – Center Strip</strong></td>
-            <td>Budget</td>
-            <td class="td-nowrap">~4 min walk</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td><span class="blank">— unverified</span></td>
-            <td><a class="source" href="https://www.bestwestern.com/" target="_blank">bestwestern.com</a></td>
-          </tr>
-          <tr>
-            <td><strong>The LINQ Hotel + Experience</strong></td>
-            <td>Mid</td>
-            <td class="td-nowrap">~7 min walk (0.76 km)</td>
-            <td><span class="blank">— unverified</span></td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td class="td-nowrap">Not confirmed</td>
-            <td><span class="blank">— unverified</span></td>
-            <td><a class="source" href="https://www.caesars.com/linq" target="_blank">caesars.com/linq</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout callout-warn">
-      <h4>Unverified hotel values</h4>
-      <ul class="tight">
-        <li><strong>Nightly room rates</strong> are dynamic and were not confirmed from an official source. All are marked unverified; use the official booking links above for live rates.</li>
-        <li><strong>Resort fees</strong> for Harrah's, Treasure Island, Casino Royale, and LINQ were not confirmed; marked "Not confirmed." Strip-wide 2026 sources place most Strip resort fees at $45–$55 pre-tax ($51–$62 with tax).</li>
-        <li>Resort-fee figures for Venetian/Palazzo/Wynn/Bellagio/Caesars come from 2026 secondary sources (<a href="https://unleashvegas.com/guides/vegas-basics/resort-fees" target="_blank">unleashvegas.com</a>, <a href="https://lasvegaswonders.com/las-vegas-resort-fees-full-list/" target="_blank">lasvegaswonders.com</a>) and show some variance between sources ($50 vs $55 for Venetian/Palazzo/Wynn). Confirm on each hotel's official site.</li>
-        <li>Walking distances come from hotel-listing/mapping sources and are approximate; confirm on a map.</li>
-        <li>Quality tiers are subjective and unverified.</li>
-      </ul>
-    </div>
-
-    <div class="callout callout-good">
-      <h4>Suggested priority (subject to live-rate check)</h4>
-      <ul class="tight">
-        <li><strong>Best value / closest:</strong> Best Western Plus Casino Royale (~4 min walk, budget) — verify whether a resort fee applies.</li>
-        <li><strong>On-site convenience:</strong> The Venetian Resort (0 min, at the tournament) — highest convenience, highest resort fee ($62.36/night with tax).</li>
-        <li><strong>Luxury within ~12 min walk:</strong> Wynn/Encore or Bellagio — higher quality, $56.69–$62.36/night in fees alone before the room rate.</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="grid">
-      <div>
-        <h4>Poker5 — Hotels</h4>
-        <p>Walking distance measured from The Venetian Resort (tournament venue). All listed hotels are within ~30 minutes on foot.</p>
-      </div>
-      <div>
-        <h4>Resort-fee references (2026)</h4>
-        <ul style="margin:0;padding-left:18px;">
-          <li><a href="https://unleashvegas.com/guides/vegas-basics/resort-fees" target="_blank">unleashvegas.com — Las Vegas Resort Fees by Hotel (2026)</a></li>
-          <li><a href="https://lasvegaswonders.com/las-vegas-resort-fees-full-list/" target="_blank">lasvegaswonders.com — Resort Fees Full List 2026</a></li>
-          <li><a href="https://www.lasvegashowto.com/las-vegas-hotel-resort-fees" target="_blank">lasvegashowto.com — Las Vegas Hotel Resort Fees</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="disclaimer">Hotel rates and resort fees change without notice and vary by date. Confirm the total (room + resort fee + tax) directly with the hotel before booking. Not affiliated with any hotel.</p>
-  </div>
+</main>
+<footer class="foot">
+  <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
+  <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
 </footer>
-
 </body>
 </html>
