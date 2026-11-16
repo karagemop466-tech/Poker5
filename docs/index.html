@@ -1,74 +1,67 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard · Las Vegas Strip Poker Dashboard</title>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<header class="top">
-  <div class="brand"><a href="index.html">Strip Poker Dashboard</a></div>
-  <div class="sub">Live tournaments near the Las Vegas Strip · data as of 2026-11-16 · all values from official sources unless flagged</div>
-</header>
-<div class="layout">
-<nav class="side"><a class="active" href="index.html">Dashboard</a>
-<a class="" href="tournaments.html">Single-entry tournaments</a>
-<a class="" href="excluded.html">Multi-entry, excluded &amp; satellites</a>
-<a class="" href="unverified.html">Unverified (needs review)</a>
-<a class="" href="schedule.html">Schedule</a>
-<a class="" href="hotels.html">Hotels</a>
-<a class="" href="analysis.html">Analysis</a>
-<a class="" href="questions.html">Questions to answer</a>
-<a class="" href="suggestions.html">Suggestions (for review)</a>
-<a class="" href="flagged.html">Flagged for Review</a>
-<a class="" href="sources.html">Sources</a></nav>
-<main>
-<h1>Dashboard</h1>
-
-<div class="banner warn"><b>Status:</b> Only one verified Strip series is live right now: the Venetian's
-<i>DeepStack Extravaganza IV</i> (Nov 16 – Dec 23, 2026). The WSOP runs May–July, so it is not upcoming.
-Wynn's WPT World Championship runs Nov 27 – Dec 21 (official). Hotel rates and walking distances could not be verified from official sources.</div>
-
-
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Las Vegas Strip Poker Research | Las Vegas Strip Poker Research</title><style>
+:root{--ink:#1d2433;--muted:#5b6474;--line:#e3e7ee;--bg:#f7f8fb;--card:#fff;--accent:#1f6feb;--warn:#b26a00;--ok:#1a7f37;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0f172a;color:#fff;padding:14px 22px}header a{color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 22px;display:flex;flex-wrap:wrap;gap:6px 14px}
+nav a{color:var(--accent);text-decoration:none;font-size:14px}nav a.on{font-weight:700;color:var(--ink)}
+main{max-width:1280px;margin:0 auto;padding:22px}
+h1{font-size:26px;margin:4px 0 6px}h2{font-size:20px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}h3{font-size:16px;margin:18px 0 6px}
+p.lead{color:var(--muted);margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card b{font-size:24px;display:block}.card span{color:var(--muted);font-size:13px}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#eef2f8;position:sticky;top:0;font-weight:700}
+tr:nth-child(even) td{background:#fbfcfe}
+td.num{text-align:right;white-space:nowrap}
+.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:600;background:#eef2f8;color:var(--muted)}
+.tag.ok{background:#e6f4ea;color:var(--ok)}.tag.warn{background:#fff4e0;color:var(--warn)}.tag.bad{background:#fde8e6;color:var(--bad)}
+.note{background:#fff8e6;border:1px solid #f5d98a;border-radius:8px;padding:10px 12px;margin:10px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+input.filter{width:100%;max-width:420px;padding:8px 10px;border:1px solid #c9d1de;border-radius:8px;margin:8px 0 10px;font-size:14px}
+.wrap{overflow-x:auto}
+ul{padding-left:20px}li{margin:3px 0}
+footer{color:var(--muted);font-size:12.5px;padding:24px 22px;text-align:center}
+</style></head><body>
+<header><a href="index.html">Las Vegas Strip Poker Research</a> <span style="opacity:.7;font-size:13px">&middot; data verified 2026-11-16 &middot; all values from official sources unless flagged</span></header>
+<nav><a href="index.html" class="on">Home</a><a href="../index.html">Main Poker5 site (other session)</a><a href="summary.html">Executive summary</a><a href="single-entry.html">Single-entry (Venetian)</a><a href="daily-schedule.html">Daily schedule</a><a href="excluded.html">Excluded (multi-entry, satellites)</a><a href="wpt-wynn.html">WPT / Wynn festival</a><a href="hotels.html">Hotels</a><a href="analysis.html">Analysis</a><a href="questions.html">Questions to answer</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged for Review</a><a href="sources.html">Sources &amp; repo review</a></nav><main><h1>Las Vegas Strip Poker Research</h1><p class="lead">A simple dashboard of verified live poker tournaments near the Strip, single-entry first.</p>
 <div class="cards">
-  <a class="card" href="tournaments.html"><div class="num">30</div><div>Single-entry Venetian events (verified structure)</div></a>
-  <a class="card" href="excluded.html"><div class="num">125</div><div>Multi-flight, re-entry, paid-chip and satellite rows (separate)</div></a>
-  <a class="card" href="unverified.html"><div class="num">59</div><div>Events whose entry format is not yet verified</div></a>
-  <a class="card" href="hotels.html"><div class="num">2 of 5</div><div>Hotels with an official resort-fee figure</div></a>
+<div class="card"><b>47</b><span>Venetian single-entry events (official schedule)</span><br><a href="single-entry.html">View table &rarr;</a></div>
+<div class="card"><b>36</b><span>Events excluded: multi-flight, satellites, team, restricted</span><br><a href="excluded.html">View &rarr;</a></div>
+<div class="card"><b>136</b><span>WPT / Wynn festival schedule rows (official)</span><br><a href="wpt-wynn.html">View &rarr;</a></div>
+<div class="card"><b>27</b><span>Items flagged for review (unverified or irregular)</span><br><a href="flagged.html">Review &rarr;</a></div>
 </div>
-
-<h2>Executive summary</h2>
-<ol class="summary">
-<li><b>What is live now.</b> Official Venetian schedule: 94 rows = 64 numbered events plus flights, restarts and satellites, Nov 16 – Dec 23, 2026. Wynn's daily tournaments are listed through Nov 26 and pause during the WPT (Nov 27 – Dec 21).</li>
-<li><b>Single-entry definition used.</b> An event counts as single-entry only if (a) it is one day, (b) it has no flight suffix (1A–1F) or multi-day format, (c) its official structure sheet was read and contains no re-entry, rebuy, add-on or optional paid-chip text. This leaves <b>30 Venetian events</b> verified.</li>
-<li><b>Best value (guarantee ÷ buy-in).</b> #36 — Wed Dec 9, 2026, 11:10 AM, $800 No Limit Hold&#x27;em Bounty $75K GTD (1Day) (93.8×). Largest guarantee among verified singles: #36 — Wed Dec 9, 2026, 11:10 AM, $800 No Limit Hold&#x27;em Bounty $75K GTD (1Day) ($75,000). Cheapest verified singles: $200 bounty events, $8,000 guarantee each.</li>
-<li><b>Caution on bounty events.</b> Official structure sheets say the headline guarantee <i>includes</i> bounty money, so the cash prize pool is smaller than the headline figure.</li>
-<li><b>Excluded from "single entry".</b> Wynn $200 dailies Mon–Thu, Sat and Sun (re-entry allowed), Wynn Friday $240 rebuy &amp; add-on, MGM Grand $120 (voluntary $11 gratuity buys 10,000 chips), Bellagio Friday $600 (re-entry to level 8 and a $40 gratuity for 15,000 chips), Bellagio Saturday $1,100 (flights + gratuity). These are listed separately.</li>
-<li><b>8 AM start.</b> No verified single-entry event starts before 11:10 AM. The earliest verified tournament start is 9:10 AM (a satellite). Wynn daily events are re-entry, so they are not in the single-entry plan.</li>
-<li><b>Hotels.</b> Official resort fees found only for Wynn ($55 + tax) and Resorts World ($55 + tax). Venetian, MGM Grand and Bellagio fees conflict across non-official sources and are flagged. No nightly rate or walking distance could be confirmed, so the true per-night cost is <b>not yet computable</b> and those cells are blank.</li>
-<li><b>Verification status.</b> 18 Venetian and 41 other-room listings are not verified for entry format; 23 items are on the <a href="flagged.html">Flagged for Review</a> page with links.</li>
-</ol>
-
-<h2>Top single-entry picks (verified)</h2>
-<div class="scroll"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>Event</th><th>Buy-in</th><th>Guarantee</th><th>Guarantee ÷ buy-in</th><th>Source</th></tr></thead><tbody><tr><td>Wed Dec 9, 2026</td><td>11:10 AM</td><td>#36 $800 No Limit Hold&#x27;em Bounty $75K GTD (1Day)</td><td>$800</td><td>$75,000</td><td>93.8×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf" target="_blank" rel="noopener">structure</a></td></tr>
-<tr><td>Wed Dec 16, 2026</td><td>11:10 AM</td><td>#54 $600 No Limit Hold&#x27;em Bounty $50K GTD (1Day)</td><td>$600</td><td>$50,000</td><td>83.3×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf" target="_blank" rel="noopener">structure</a></td></tr>
-<tr><td>Tue Dec 15, 2026</td><td>11:10 AM</td><td>#52 $1,100 No Limit Hold&#x27;em $75K GTD (1Day)</td><td>$1,100</td><td>$75,000</td><td>68.2×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf" target="_blank" rel="noopener">structure</a></td></tr>
-<tr><td>Sun Dec 6, 2026</td><td>11:10 AM</td><td>#28 $600 No Limit Hold&#x27;em $40K GTD (1Day)</td><td>$600</td><td>$40,000</td><td>66.7×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf" target="_blank" rel="noopener">structure</a></td></tr>
-<tr><td>Mon Dec 7, 2026</td><td>11:10 AM</td><td>#30 $600 No Limit Hold&#x27;em Bounty $40K GTD (1Day)</td><td>$600</td><td>$40,000</td><td>66.7×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf" target="_blank" rel="noopener">structure</a></td></tr>
-<tr><td>Fri Nov 27, 2026</td><td>11:10 AM</td><td>#14 $600 No Limit Hold&#x27;em $30K GTD (1Day)</td><td>$600</td><td>$30,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a> · <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf" target="_blank" rel="noopener">structure</a></td></tr></tbody></table></div>
-<p class="small">Ranked by guarantee ÷ buy-in. Full list on <a href="tournaments.html">Single-entry tournaments</a>.</p>
-
-<h2>Where to go next</h2>
+<h2>What this site covers</h2>
+<p>Live, upcoming poker tournaments on or near the Las Vegas Strip, filtered to <b>single-entry</b> events. Events that allow a second or later starting-flight entry, a re-entry, a rebuy or an add-on are kept in a separate section, as requested. Every table row links to the official source it came from.</p>
+<h2>Pages</h2>
 <ul>
-<li><a href="schedule.html">Schedule</a> — the verified day-by-day timeline and what the 8 AM goal does and does not allow.</li>
-<li><a href="hotels.html">Hotels</a> — official resort fees only; blanks where the value is unverified.</li>
-<li><a href="questions.html">Questions to answer</a> — what must be known before a booking decision can be made.</li>
-<li><a href="suggestions.html">Suggestions</a> — ways to improve this site. Nothing has been implemented; choose a path first.</li>
+<li><a href="summary.html">Executive summary</a> - the short version: what is verified, what is not, and the answer to the 8:00 AM all-day question.</li>
+<li><a href="single-entry.html">Single-entry tournaments</a> - all 47 Venetian single-entry events, ranked by guarantee-to-buy-in ratio.</li>
+<li><a href="daily-schedule.html">Daily schedule</a> - single-entry options by day, with the days that have two or more shots.</li>
+<li><a href="excluded.html">Excluded</a> - multi-flight, satellites, the team event, and Day-2 continuation rows.</li>
+<li><a href="wpt-wynn.html">WPT / Wynn festival</a> - the full official Wynn schedule. Almost all of it is multi-entry.</li>
+<li><a href="hotels.html">Hotels</a> - official resort fees only; nightly rates and walking times are not verified yet.</li>
+<li><a href="analysis.html">Analysis</a> - method, findings, and what the data does and does not support.</li>
+<li><a href="questions.html">Questions to answer</a> - what must be known before a decision can be made, and where to get it.</li>
+<li><a href="suggestions.html">Suggestions</a> - site improvements for review before anything is changed.</li>
+<li><a href="flagged.html">Flagged for Review</a> - irregularities and unverified items, with source links.</li>
+<li><a href="sources.html">Sources &amp; repo review</a> - every source URL used, and the repository review.</li>
 </ul>
-
-<footer>Built from files in <code>data/</code> by <code>scripts/build_site.py</code>. Blank cells = not verified from an official source (see <a href="flagged.html">Flagged for Review</a>).</footer>
+<div class="note"><b>Important:</b> No hotel can yet be recommended on verified numbers. Nightly rates and walking times are not available from official sources in this session. See <a href="hotels.html">Hotels</a> and <a href="questions.html">Questions</a>.</div>
 </main>
-</div>
-</body>
-</html>
+<footer>Figures are as published by the named official source on 2026-11-16. Unverified values are left blank and flagged. Not financial advice.</footer>
+<script>
+document.querySelectorAll('input.filter').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var t=document.getElementById(inp.dataset.target);
+    var q=inp.value.toLowerCase();
+    t.querySelectorAll('tbody tr').forEach(function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+</script></body></html>

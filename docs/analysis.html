@@ -1,69 +1,65 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Analysis &amp; findings · Las Vegas Strip Poker Dashboard</title>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<header class="top">
-  <div class="brand"><a href="index.html">Strip Poker Dashboard</a></div>
-  <div class="sub">Live tournaments near the Las Vegas Strip · data as of 2026-11-16 · all values from official sources unless flagged</div>
-</header>
-<div class="layout">
-<nav class="side"><a class="" href="index.html">Dashboard</a>
-<a class="" href="tournaments.html">Single-entry tournaments</a>
-<a class="" href="excluded.html">Multi-entry, excluded &amp; satellites</a>
-<a class="" href="unverified.html">Unverified (needs review)</a>
-<a class="" href="schedule.html">Schedule</a>
-<a class="" href="hotels.html">Hotels</a>
-<a class="active" href="analysis.html">Analysis</a>
-<a class="" href="questions.html">Questions to answer</a>
-<a class="" href="suggestions.html">Suggestions (for review)</a>
-<a class="" href="flagged.html">Flagged for Review</a>
-<a class="" href="sources.html">Sources</a></nav>
-<main>
-<h1>Analysis &amp; findings</h1>
-
-
-<h2>Counts</h2>
-<div class="scroll"><table class="data"><thead><tr><th>Status</th><th>Venetian rows</th><th>Other-room rows</th></tr></thead><tbody><tr><td><span class="badge ok">Single-entry (verified)</span></td><td>30</td><td>0</td></tr>
-<tr><td><span class="badge warn">Multi-flight / multi-entry</span></td><td>27</td><td>50</td></tr>
-<tr><td><span class="badge bad">Excluded: re-entry, rebuy or paid chips</span></td><td>0</td><td>16</td></tr>
-<tr><td><span class="badge unk">Unverified format</span></td><td>18</td><td>41</td></tr>
-<tr><td><span class="badge info">Satellite (seat prize)</span></td><td>7</td><td>25</td></tr>
-<tr><td><span class="badge bad">Team event (excluded)</span></td><td>1</td><td>0</td></tr>
-<tr><td><span class="badge info">Restart / final table (same event)</span></td><td>11</td><td>23</td></tr></tbody></table></div>
-<h2>Top 10 single-entry events by guarantee ÷ buy-in</h2>
-<div class="scroll"><table class="data"><thead><tr><th>Rank</th><th>Date</th><th>Start</th><th>Event</th><th>Buy-in</th><th>Guarantee</th><th>Guarantee ÷ buy-in</th><th>Source</th></tr></thead><tbody><tr><td>1</td><td>Wed Dec 9, 2026</td><td>11:10 AM</td><td>#36 $800 No Limit Hold&#x27;em Bounty $75K GTD (1Day)</td><td>$800</td><td>$75,000</td><td>93.8×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>2</td><td>Wed Dec 16, 2026</td><td>11:10 AM</td><td>#54 $600 No Limit Hold&#x27;em Bounty $50K GTD (1Day)</td><td>$600</td><td>$50,000</td><td>83.3×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>3</td><td>Tue Dec 15, 2026</td><td>11:10 AM</td><td>#52 $1,100 No Limit Hold&#x27;em $75K GTD (1Day)</td><td>$1,100</td><td>$75,000</td><td>68.2×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>4</td><td>Sun Dec 6, 2026</td><td>11:10 AM</td><td>#28 $600 No Limit Hold&#x27;em $40K GTD (1Day)</td><td>$600</td><td>$40,000</td><td>66.7×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>5</td><td>Mon Dec 7, 2026</td><td>11:10 AM</td><td>#30 $600 No Limit Hold&#x27;em Bounty $40K GTD (1Day)</td><td>$600</td><td>$40,000</td><td>66.7×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>6</td><td>Fri Nov 27, 2026</td><td>11:10 AM</td><td>#14 $600 No Limit Hold&#x27;em $30K GTD (1Day)</td><td>$600</td><td>$30,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>7</td><td>Sat Nov 28, 2026</td><td>11:10 AM</td><td>#16 $600 No Limit Hold&#x27;em Bounty $30K GTD (1Day)</td><td>$600</td><td>$30,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>8</td><td>Sun Dec 6, 2026</td><td>5:10 PM</td><td>#29 $300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td>$300</td><td>$15,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>9</td><td>Mon Dec 7, 2026</td><td>5:10 PM</td><td>#31 $300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td>$300</td><td>$15,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr>
-<tr><td>10</td><td>Tue Dec 8, 2026</td><td>5:10 PM</td><td>#34 $300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td>$300</td><td>$15,000</td><td>50.0×</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Source</a></td></tr></tbody></table></div>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analysis and findings | Las Vegas Strip Poker Research</title><style>
+:root{--ink:#1d2433;--muted:#5b6474;--line:#e3e7ee;--bg:#f7f8fb;--card:#fff;--accent:#1f6feb;--warn:#b26a00;--ok:#1a7f37;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0f172a;color:#fff;padding:14px 22px}header a{color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 22px;display:flex;flex-wrap:wrap;gap:6px 14px}
+nav a{color:var(--accent);text-decoration:none;font-size:14px}nav a.on{font-weight:700;color:var(--ink)}
+main{max-width:1280px;margin:0 auto;padding:22px}
+h1{font-size:26px;margin:4px 0 6px}h2{font-size:20px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}h3{font-size:16px;margin:18px 0 6px}
+p.lead{color:var(--muted);margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card b{font-size:24px;display:block}.card span{color:var(--muted);font-size:13px}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#eef2f8;position:sticky;top:0;font-weight:700}
+tr:nth-child(even) td{background:#fbfcfe}
+td.num{text-align:right;white-space:nowrap}
+.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:600;background:#eef2f8;color:var(--muted)}
+.tag.ok{background:#e6f4ea;color:var(--ok)}.tag.warn{background:#fff4e0;color:var(--warn)}.tag.bad{background:#fde8e6;color:var(--bad)}
+.note{background:#fff8e6;border:1px solid #f5d98a;border-radius:8px;padding:10px 12px;margin:10px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+input.filter{width:100%;max-width:420px;padding:8px 10px;border:1px solid #c9d1de;border-radius:8px;margin:8px 0 10px;font-size:14px}
+.wrap{overflow-x:auto}
+ul{padding-left:20px}li{margin:3px 0}
+footer{color:var(--muted);font-size:12.5px;padding:24px 22px;text-align:center}
+</style></head><body>
+<header><a href="index.html">Las Vegas Strip Poker Research</a> <span style="opacity:.7;font-size:13px">&middot; data verified 2026-11-16 &middot; all values from official sources unless flagged</span></header>
+<nav><a href="index.html">Home</a><a href="../index.html">Main Poker5 site (other session)</a><a href="summary.html">Executive summary</a><a href="single-entry.html">Single-entry (Venetian)</a><a href="daily-schedule.html">Daily schedule</a><a href="excluded.html">Excluded (multi-entry, satellites)</a><a href="wpt-wynn.html">WPT / Wynn festival</a><a href="hotels.html">Hotels</a><a href="analysis.html" class="on">Analysis</a><a href="questions.html">Questions to answer</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged for Review</a><a href="sources.html">Sources &amp; repo review</a></nav><main><h1>Analysis and findings</h1><p class="lead">What the verified data says, and what it cannot say yet.</p>
+<h2>Method</h2>
+<ul>
+<li><b>Single-entry filter:</b> single day, one starting flight, no re-entry/rebuy/add-on on the official schedule, not a satellite, team, or Day-2 restart.</li>
+<li><b>Value metric:</b> guarantee &divide; buy-in (computed). It is a simple proxy for how much the organiser promises per dollar. It ignores field size and the house fee. The prize pool per buy-in (from structure sheets) is shown where reviewed (e.g., 80% of a $200 buy-in goes to the prize pool; 85% of $600).</li>
+<li><b>Cost:</b> buy-in only. Hotel cost is not included because no nightly rate is verified.</li>
+</ul>
 <h2>Findings</h2>
 <ul>
-<li><b>Bounties inflate the headline.</b> 27 of the 30 single-entry events are bounty or PKO formats; their guarantees include bounty money per the official sheets. Read the cash prize pool, not the headline, when comparing.</li>
-<li><b>House fees on the sheets read are 11.8%–20.0% of buy-in</b> (e.g., $40 of $200, $90 of $600, $130 of $1,100). The 12.5% figure on the sheets is the share of the field paid, not a fee.</li>
-<li><b>Largest verified guarantee:</b> #36 ($75,000) on Wed Dec 9, 2026; the $1,100 PKO at #52 has the same $75,000 guarantee. The $800 bounty #36 has the highest guarantee ÷ buy-in among verified singles.</li>
-<li><b>Multi-flight is where the money is, but it is not single-entry.</b> Venetian's 1A–1F events (e.g., #26 $800 with $500K guarantee; #56 $1,100 with $500K; #47 $2,200 with $1M) are excluded here because the structure sheets say players can play later flights.</li>
-<li><b>Wynn's dailies are cheap but re-entry.</b> $200 NLH, $10K–$25K guarantees, re-entries to about 4:30 PM. The Friday $240 event is a rebuy and add-on event.</li>
-<li><b>No verified tournament starts before 11:10 AM.</b> The 9:10 AM Venetian event (#46) is a satellite, not a cash entry.</li>
+<li><b>Best guarantee per buy-in (single-entry):</b> $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) (100.0x, Sat Nov 28, 2026), $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) (100.0x, Sat Dec 19, 2026), $800 No Limit Hold'em Bounty $75K GTD (1Day) (93.8x, Wed Dec 09, 2026), $600 No Limit Hold'em Bounty $50K GTD (1Day) (83.3x, Wed Dec 16, 2026).</li>
+<li><b>Lowest-cost single-entry events:</b> $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) on Sat Nov 28, 2026, $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) on Sat Dec 19, 2026, $200 No Limit Hold'em $8K GTD (1Day) on Mon Nov 23, 2026.</li>
+<li><b>Bounty events:</b> many single-entry events are bounty tournaments. The bounty money is part of the guarantee, so the cash prize pool for those events is smaller than the headline number. Treat bounty GTDs with care.</li>
+<li><b>Age limit:</b> the Seniors events are 50+ only; they are included but flagged.</li>
+<li><b>Schedule shape:</b> single-entry events cluster at 11:10 AM, 12:10 PM, 10:10 AM and 5:10 PM. 14 days have two or more single-entry starts.</li>
+<li><b>WPT:</b> none of the reviewed WPT formats is single-entry, so the WPT festival (the largest guarantees) is outside the single-entry list.</li>
 </ul>
-<h2>Limits of this analysis</h2>
+<h2>What the data does not yet support</h2>
 <ul>
-<li>Only the official pages listed on the <a href="sources.html">Sources</a> page were used. Resorts World, Caesars/Planet Hollywood and Horseshoe/Paris tournament schedules were not confirmed from official pages.</li>
-<li>Venetian structure sheets read: 1, 7, 10, 11, 15, 16, 33, 34. Every single-entry event maps to one of these sheets (0 single-entry events use a sheet not read).</li>
-<li>WSOP (official wsop.com: May 26 – July 15, 2026) is outside the Nov–Dec window and is excluded.</li>
+<li>A ranking by expected value (field size and payout structure per event are not verified).</li>
+<li>An all-day plan starting at 8:00 AM (no official 8:00 AM single-entry start found).</li>
+<li>A hotel ranking (no verified nightly rate or walking time).</li>
 </ul>
-
-<footer>Built from files in <code>data/</code> by <code>scripts/build_site.py</code>. Blank cells = not verified from an official source (see <a href="flagged.html">Flagged for Review</a>).</footer>
 </main>
-</div>
-</body>
-</html>
+<footer>Figures are as published by the named official source on 2026-11-16. Unverified values are left blank and flagged. Not financial advice.</footer>
+<script>
+document.querySelectorAll('input.filter').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var t=document.getElementById(inp.dataset.target);
+    var q=inp.value.toLowerCase();
+    t.querySelectorAll('tbody tr').forEach(function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+</script></body></html>

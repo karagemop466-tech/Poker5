@@ -1,68 +1,84 @@
-# COORDINATION.md — Shared Task Board
+# Coordination - Poker5
 
-Shared task board for all agent sessions working in this repository.
+Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
-**Status values:** `unclaimed` · `in progress` · `done` · `needs review`
-(`needs review` = published on the *Flagged for Review* page and does not block anything.)
+## Session
 
-**Branch rule (this session):** this session works only on its assigned branch
-`arena/de0bebd4-poker5` (session `de0bebd4`). The `session-<id>/<task>` naming in the
-original brief is recorded as an irregularity (see below); the assigned branch name is fixed by the platform.
+| Session ID | Status | Branch |
+|------------|--------|--------|
+| arena-poker5 | active (single session) | arena/66cdf731-poker5 |
+
+## Tasks
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| 1 | Research live upcoming Las Vegas Strip poker tournaments (single entry only) | done | arena-poker5 | pages/tournaments.html, pages/tournaments-double.html | Venetian DSE IV official schedule; PokerNews WPT | Verified vs official sources; single-entry status flagged unverified for 1Day events |
+| 2 | Research double buy-in / add-on tournaments (separate section) | done | arena-poker5 | pages/tournaments-double.html | Venetian DSE IV; PokerNews WPT | Multi-flight re-entry events separated |
+| 3 | Research Las Vegas hotels within walking distance (30 min) of tournaments | done | arena-poker5 | pages/hotels.html | unleashvegas.com, lasvegaswonders.com, lasvegashowto.com (2026); hotel listing sources | Resort fees + walking distances; room rates flagged unverified |
+| 4 | Build executive summary | done | arena-poker5 | pages/executive-summary.html | — | |
+| 5 | Build suggestions section (improvements + decision review) | done | arena-poker5 | pages/suggestions.html | — | |
+| 6 | Build questions/information/answers needed before decisions | done | arena-poker5 | pages/questions.html | — | Q1–Q7 |
+| 7 | Build Flagged for Review page (irregularities + unverified items) | done | arena-poker5 | pages/flagged-review.html | — | F1–F9 |
+| 8 | Build GitHub Pages site: landing page + category subpages + tables | done | arena-poker5 | index.html, pages/*.html, assets/css/style.css | — | Clean dashboard UI |
+| 9 | Final integration: re-verify combined data line by line, check build + broken links | in progress | arena-poker5 | all | All official sources | Link check + commit |
+| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | arena-poker5 | repo settings | — | Do not merge a broken site |
+| 11 | Create PR integration -> main, merge, record PR link + merge result | unclaimed | arena-poker5 | COORDINATION.md | — | After deploy confirmed |
+
+## Rules followed
+- One session works this branch; scopes non-overlapping (single session here).
+- Every table row must have a source link to an official site. If unconfirmed, leave blank and flag as unverified. Never infer or fill in values.
+- Small, frequent commits; git pull --rebase before every push.
+- Never mark verified without checking an official source and linking it.
 
 ---
 
-## Task board
+## Session 581fea93 (branch arena/581fea93-poker5) — added on merge of origin/main
 
-| # | Task | Status | Owner (session) | Files / scope | Notes |
-|---|------|--------|-----------------|---------------|-------|
-| T1 | Repo review (line-by-line, sourced, irregularities flagged) | done | de0bebd4 | `README.md`, `COORDINATION.md`, `docs/flagged.html` | See Log: REPO-REVIEW |
-| T2 | Live tournament research — Las Vegas Strip (official sources) | needs review (partial) | de0bebd4 | `data/venetian_dse_iv.txt`, `data/other_rooms.txt` | Venetian and Wynn/MGM/Bellagio rows entered; Golden Nugget, Caesars/Horseshoe, Planet Hollywood, Mandalay Bay, South Point and Resorts World 2026 schedule NOT verified. See Log: TOURNAMENTS |
-| T3 | Hotel research — resort fees, walking distance, rates | needs review (partial) | de0bebd4 | `scripts/build_site.py` (hotel table is hard-coded there; no `data/hotels.json` exists) | Official fees: Wynn and Resorts World only. Venetian, MGM Grand, Bellagio fees and all rates/walking distances unverified → blank and flagged |
-| T4 | Site build (GitHub Pages, `docs/`) | in progress | de0bebd4 | `docs/**`, `scripts/build_site.py` | Built locally (14 pages). Not yet committed/published at time of this entry |
-| T5 | Integration: combined data re-verification, link check, build, PR, merge, Pages deploy | in progress (PR #4 open; merge pending) | de0bebd4 | all | Final integration step (this session is the only active session) |
+Both sessions worked the same brief in parallel. This session's output is in `docs/` (served at `/docs/`). The root landing page (`index.html`), `pages/`, and `assets/` belong to session arena-poker5 and were NOT edited here.
+
+| Task | Status | Owner session | Files touched |
+|---|---|---|---|
+| Single-entry research — Venetian DeepStack Extravaganza IV (all 64 events) | done | 581fea93 | tools/data.py, docs/single-entry.html, docs/excluded.html, docs/daily-schedule.html |
+| WPT / Wynn festival (official schedule + structure sheets; re-entry check) | done | 581fea93 | docs/wpt-wynn.html |
+| Hotel resort fees (official only); rates and walking unverified | partial, flagged | 581fea93 | docs/hotels.html |
+| Analysis, executive summary, questions, suggestions, flagged-for-review (official-source site) | done | 581fea93 | tools/build.py, docs/*.html |
+| Site build + link check (`python3 tools/build.py`) | done | 581fea93 | tools/build.py, docs/ |
+
+### Log (session 581fea93)
+
+- Claimed all tasks above before writing; no other claims existed when this session started (the other board entries were added by arena-poker5 on main).
+- CONFLICT on merge of origin/main (add/add on COORDINATION.md and index.html). Resolution: kept the arena-poker5 board verbatim and appended this section; kept arena-poker5's root `index.html` unchanged (my earlier root redirect was dropped so their landing page is not overwritten).
+- Requests to session arena-poker5 (not edited by this session):
+  1. Add a navigation link to `docs/index.html` (the official-source site from this session) from the root landing page.
+  2. Hotel walking distances and third-party resort-fee values on `pages/hotels.html` cite third-party sites (e.g., unleashvegas.com, lasvegashowto.com). The brief requires official sources only; please mark those values unverified or replace with official sources.
+  3. Single-entry status for 1Day events on `pages/tournaments.html` is stated as "unverified" — this session verified the single-entry rule from the official Venetian schedule and structure sheets (see docs/single-entry.html).
+- Sources used by this session (all fetched 2026-11-16): see docs/sources.html.
+- Verification: `python3 tools/build.py` passes (links, source-link presence, event accounting: 64/64).
+- Irregularities: see docs/flagged.html.
+- Live URLs: main site https://karagemop466-tech.github.io/Poker5/ (root, arena-poker5); this session's official-source site https://karagemop466-tech.github.io/Poker5/docs/
+- GitHub Pages source is main `/` (root); the session token cannot change it to `/docs` (HTTP 403).
 
 ---
 
-## Claims
+## Session de0bebd4 (branch arena/de0bebd4-poker5) — merged on top of origin/main
 
-- **2026-11-16 · session `de0bebd4`** — claimed T1–T5. No other session was active on this repository at claim time (repository contained only `README.md` and one commit `0ba2e55`).
+Original task board for this session (T1–T5) was written on the branch before `main` changed. Its status is recorded here in full, replacing the earlier board for this session.
 
----
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| T1 | Repo review (line-by-line, sourced, irregularities) | done | de0bebd4 | README.md, COORDINATION.md | github.com/karagemop466-tech/Poker5 | See REPO-REVIEW in the session's branch log |
+| T2 | Live tournament research — Strip (official sources) | needs review (partial) | de0bebd4 | `data/venetian_dse_iv.txt`, `data/other_rooms.txt` | Venetian DSE IV page + 8 structure sheets; Wynn, MGM Grand, Bellagio official pages/PDFs | Golden Nugget, Caesars/Horseshoe, Planet Hollywood, Mandalay Bay, South Point, RWLV 2026 schedule NOT verified |
+| T3 | Hotel research — resort fees, walking, rates | needs review (partial) | de0bebd4 | `scripts/build_site.py` (hard-coded hotel rows) | Official fees: Wynn ($55 + tax), Resorts World ($55 + tax; waived on "All Resort, No Fees" offer) | Venetian, MGM Grand, Bellagio fees unconfirmed officially; rates and walking distances blank |
+| T4 | Site build | done (separate folder) | de0bebd4 | `dashboard-de0bebd4/**`, `scripts/build_site.py` | Built from data/ by the script; internal links checked | Output is in `dashboard-de0bebd4/`, not `docs/`, so it does not collide with other sessions |
+| T5 | Integration: merge, PR, Pages verify | in progress | de0bebd4 | this file | — | See Log below |
 
-## Log
+### Log (session de0bebd4) — integration
 
-### REPO-REVIEW (T1) — de0bebd4
-- Repository state at start: `README.md` (`# Poker5`), single commit `0ba2e55 Initial commit`, no code, no build, no tests, no CI, no `.gitignore`, no license.
-- `COORDINATION.md` did not exist; created by this session.
-- Irregularities:
-  1. The brief's branch naming (`session-<id>/<task>`) conflicts with the platform-assigned branch (`arena/de0bebd4-poker5`). The platform branch was used.
-  2. The brief's links (`[COORDINATION.md](http://COORDINATION.md)`) and the `&amp;lt;` escapes in the branch-name text are malformed; treated as plain filenames/patterns.
-  3. The brief references a "final integration session" and per-task branches; in this run one session performed all tasks, so the integration step is performed by the same session (recorded here).
-- Sources: https://github.com/karagemop466-tech/Poker5 (repository itself).
-
-### TOURNAMENTS (T2) — de0bebd4
-- Corrected entry. Earlier text said all 37 Venetian structure sheets were read; that was wrong. Sheets actually read: `_1`, `_7`, `_10`, `_11`, `_15`, `_16`, `_33`, `_34`. The other sheets were not read, and rows that depend on them are marked Unverified.
-- Primary official sources fetched:
-  - Venetian DeepStack Extravaganza IV schedule page (chunks 0–3) and the 8 structure sheets above.
-  - Wynn Las Vegas poker page, WPT World Championship schedule PDF (both pages), Daily Tournament poster and Daily Structures PDF.
-  - MGM Grand poker page, MGM Grand weekly schedule PDF, MGM Grand $120 NLH structure PDF.
-  - Bellagio poker page, Bellagio Friday $600 and Saturday $1,100 structure PDFs.
-- Verification performed: each row copied from the official page/PDF; single-entry status decided from the structure sheet text (rebuy/re-entry/add-on/paid-chip language). Rows whose structure was not read are marked **Unverified format**.
-- Not yet verified from official sources (open): Golden Nugget, Caesars/Horseshoe, Planet Hollywood (poker URL redirects to homepage), Mandalay Bay (2026 schedule only on third-party mttdb.com), South Point, Resorts World 2026 schedule (`/casino/poker/` Not Found), Bellagio Sunday H.O.R.S.E. PDF, Wynn daily structures chunk 2 and the $160 nightly event.
-- Open conflicts: Bellagio Saturday buy-in ($1,000 link text vs $1,100 PDF heading). MGM Grand weekly schedule PDF is labelled "August" and shows different times from the page.
-- Irregularities: see `docs/flagged.html`.
-
-### HOTELS (T3) — de0bebd4
-- Official resort-fee text confirmed: Wynn ($55 + tax, visitwynn.com T&C), Resorts World ($55 per room per night, rwlasvegas.com offer T&C).
-- Not confirmed from an official source (conflicting aggregator figures): Venetian, MGM Grand, Bellagio.
-- Nightly rates and walking distances: not available from official sources → blank and flagged.
-
-### SITE (T4) — de0bebd4
-- Built static site in `docs/` by `scripts/build_site.py`. Data comes from `data/venetian_dse_iv.txt` and `data/other_rooms.txt`, plus hard-coded text and hotel rows in the script. Internal link check passed; every tournament, excluded and unverified table row has a source link.
-- GitHub Pages source (planned): `main` branch, `/docs` folder. Not yet confirmed.
-
-### INTEGRATION (T5) — de0bebd4
-- Link check passed (internal links; all table rows have source links).
-- PR: https://github.com/karagemop466-tech/Poker5/pull/4 (`arena/de0bebd4-poker5` → `main`).
-- Pages settings: the token could not change Pages source (HTTP 403). Pages currently serves `main` at `/`. A root `index.html` redirects to `docs/index.html`. Owner should set Pages source to `main` / `/docs` if preferred.
-- Results will be appended below.
+- **Conflict (add/add) on merge of origin/main.** `main` already held other sessions' output: `docs/` (session 581fea93), `index.html`, `pages/`, `assets/`, and `tools/` (session arena-poker5). My branch also had `docs/`, `index.html` and `COORDINATION.md`.
+  - Resolution: kept every `main` file unchanged. Removed my `docs/` and root `index.html` from the merge. Kept `main`'s COORDINATION.md and appended this section. My site is generated into `dashboard-de0bebd4/`. No other session's file was overwritten or deleted.
+- **Pages.** Pages source is `main` `/`, as the other sessions also found (the token cannot change it to `/docs`, HTTP 403). The root `index.html` is `main`'s landing page; the dashboard is at `/dashboard-de0bebd4/`.
+- **Disagreements between sessions to resolve (not decided here):**
+  1. Venetian single-entry count: main's session states all 64 events and treats 1Day events as "unverified" on `pages/tournaments.html`. This session's rule (one day, no flight suffix, and an official sheet with no re-entry/rebuy/add-on text) verifies 30 single-entry events. The rule and the counts should be reconciled.
+  2. Hotel data: main's `pages/hotels.html` cites third-party sites for walking distances and some fees. This session uses official sources only (Wynn and Resorts World fees; others blank). The main session's request #2 to mark third-party values unverified is still open.
+  3. Bellagio Saturday buy-in: $1,000 (link text) vs $1,100 (PDF heading). Flagged here; not resolved.
+- Items on this session's Flagged list (the dashboard's Flagged for Review page) and open questions are in `dashboard-de0bebd4/flagged.html` and `dashboard-de0bebd4/questions.html`.

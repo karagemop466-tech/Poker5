@@ -1,8 +1,133 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<title>Las Vegas Strip Poker Dashboard</title>
-<meta http-equiv="refresh" content="0; url=docs/index.html">
-<link rel="canonical" href="docs/index.html">
-</head><body>
-<p>Redirecting to the <a href="docs/index.html">Las Vegas Strip Poker Dashboard</a>…</p>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poker5 — Las Vegas Strip Poker Tournament &amp; Hotel Planner</title>
+<meta name="description" content="Live upcoming poker tournaments near the Las Vegas Strip, single-entry only, plus walking-distance hotels, true nightly cost, and a play-all-day schedule.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="mark">P5</div>
+      <div>
+        <div style="font-weight:800;">Poker5</div>
+        <div class="tagline">Las Vegas Strip poker tournament &amp; hotel planner</div>
+      </div>
+    </div>
+    <nav>
+      <a href="pages/tournaments.html">Tournaments</a>
+      <a href="pages/tournaments-double.html">Re-Entry / Add-On</a>
+      <a href="pages/hotels.html">Hotels</a>
+      <a href="pages/schedule.html">All-Day Schedule</a>
+      <a href="pages/executive-summary.html">Executive Summary</a>
+      <a href="pages/questions.html">Questions &amp; Answers</a>
+      <a href="pages/suggestions.html">Suggestions</a>
+      <a href="pages/flagged-review.html">Flagged for Review</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Plan a poker vacation on the Las Vegas Strip</h1>
+    <p>Live, upcoming poker tournaments near the Strip — single-entry (freezeout) focus — with walking-distance hotels, true per-night cost including resort fees, and an all-day playing schedule.</p>
+    <div class="chip-row">
+      <span class="chip">Single-entry tournaments only <span class="dot"></span></span>
+      <span class="chip">No double buy-in / add-ons in main list <span class="dot"></span></span>
+      <span class="chip">Hotels within 30-min walk <span class="dot"></span></span>
+      <span class="chip">True cost/night incl. resort fees <span class="dot"></span></span>
+      <span class="chip">Play from 8 AM all day <span class="dot"></span></span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="pages/tournaments.html">View tournaments</a>
+      <a class="btn" href="pages/hotels.html">View hotels</a>
+      <a class="btn" href="pages/executive-summary.html">Executive summary</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2>What this site is for</h2>
+        <p class="subtitle">A decision-making dashboard for a Las Vegas poker vacation built entirely from official, verifiable sources.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <a class="card" href="pages/tournaments.html">
+        <span class="kicker">Tournaments</span>
+        <h3>Single-entry tournaments</h3>
+        <p>Best-value live tournaments near the Strip by buy-in vs. prize pool. Every row links to its official source.</p>
+      </a>
+      <a class="card" href="pages/tournaments-double.html">
+        <span class="kicker">Separate section</span>
+        <h3>Re-entry / add-on events</h3>
+        <p>Multi-flight and double buy-in tournaments kept apart from single entry.</p>
+      </a>
+      <a class="card" href="pages/hotels.html">
+        <span class="kicker">Hotels</span>
+        <h3>Walking-distance hotels</h3>
+        <p>Strip-area hotels within ~30 minutes of the tournament room, with resort fees and true nightly cost.</p>
+      </a>
+      <a class="card" href="pages/schedule.html">
+        <span class="kicker">Schedule</span>
+        <h3>Play-all-day schedule</h3>
+        <p>Tournaments strung together from morning through evening for a full day of play.</p>
+      </a>
+      <a class="card" href="pages/executive-summary.html">
+        <span class="kicker">Summary</span>
+        <h3>Executive summary</h3>
+        <p>The key decisions, costs, and open items at a glance.</p>
+      </a>
+      <a class="card" href="pages/flagged-review.html">
+        <span class="kicker">Review</span>
+        <h3>Flagged for review</h3>
+        <p>Unverified values and irregularities that still need official confirmation.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section callout callout-warn">
+  <div class="container">
+    <h4 style="margin:0 0 6px;">Verification standard</h4>
+    <p style="margin:0;">Every table value carries a link to an official source. Where a value cannot be confirmed from an official source, it is left blank and flagged as <strong>unverified</strong>. Nothing is inferred or filled in. See the <a href="pages/flagged-review.html">Flagged for Review</a> page and <a href="COORDINATION.md">COORDINATION.md</a> for sources and open items.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <h4>Poker5</h4>
+        <p>Las Vegas Strip poker tournament &amp; hotel planning dashboard.</p>
+        <p>Branch: <code>arena/66cdf731-poker5</code> &middot; Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a></p>
+      </div>
+      <div>
+        <h4>Primary sources</h4>
+        <ul style="margin:0;padding-left:18px;">
+          <li><a>The Venetian Resort — DeepStack Extravaganza IV (Nov 16 – Dec 23, 2026)</a></li>
+          <li><a>PokerNews — WPT World Championship at Wynn (Nov 27 – Dec 21, 2026)</a></li>
+          <li><a>VegasPokerCalendar — Las Vegas tournament calendar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hotel cost inputs</h4>
+        <ul style="margin:0;padding-left:18px;">
+          <li>Nightly room rate: dynamic — check official hotel site (flagged unverified)</li>
+          <li>Resort fees &amp; 13.38% Clark County lodging tax (2026 sources)</li>
+          <li>Walking distances from The Venetian (tournament venue)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">Not affiliated with any casino, poker room, or hotel. Rates, schedules, and fees change without notice. Always confirm directly with the venue before booking or traveling. Gambling involves risk; play responsibly. Must be 21+.</p>
+  </div>
+</footer>
+
+</body>
+</html>

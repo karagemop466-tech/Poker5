@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static GitHub Pages site in docs/ from the verified data files in data/.
+"""Build the static site in dashboard-de0bebd4/ (kept separate from docs/, which belongs to other sessions) from the verified data files in data/.
 
 Inputs (all copied from official sources; see docs/sources.html):
   data/venetian_dse_iv.txt   Venetian DeepStack Extravaganza IV schedule (official page + structure sheets)
@@ -17,7 +17,7 @@ from collections import defaultdict
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
+DOCS = os.path.join(ROOT, "dashboard-de0bebd4")
 DATA = os.path.join(ROOT, "data")
 
 VENETIAN_PAGE = "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
@@ -676,4 +676,4 @@ FLAGS = [
 
 if __name__ == "__main__":
     build()
-    print("built", len(os.listdir(DOCS)), "entries in docs/")
+    print("built", len(os.listdir(DOCS)), "entries in", os.path.relpath(DOCS, ROOT) + "/")
