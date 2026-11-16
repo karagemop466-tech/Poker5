@@ -338,6 +338,7 @@ HOTELS = [
 # FLAGGED FOR REVIEW (irregularities + unverified items). Every item has sources.
 # ---------------------------------------------------------------------------
 FLAGS = [
+    ("Repo", "Two agent sessions produced overlapping site content on main: the arena-poker5 root site (index.html, pages/) and this session's docs/ site. The root site was NOT edited here. Its hotel walking values and some resort fees cite third-party sites; they were not re-verified in this session.", "COORDINATION.md", "https://karagemop466-tech.github.io/Poker5/"),
     ("Repo", "Repository contained only a README stub ('# Poker5'). No prior data, site, tests or CI were present.", "Repo state (git log: single commit 0ba2e55)", None),
     ("Repo", "Session instructions mention branches named session-<id>/<task>, but the session branch rule requires working only on arena/581fea93-poker5. The session branch rule was followed.", "Session instructions", None),
     ("Repo", "Session instructions contain escaped/garbled link text ('&amp;lt;id&amp;gt;', '[COORDINATION.md](http://COORDINATION.md)'). Interpreted as COORDINATION.md in repo root.", "Session instructions", None),

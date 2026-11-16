@@ -1,33 +1,59 @@
-# COORDINATION.md — shared task board
+# Coordination - Poker5
 
-Branch: `arena/581fea93-poker5` (single session; this session is the only active agent on this branch)
-Session ID: `581fea93`
+Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
+
+## Session
+
+| Session ID | Status | Branch |
+|------------|--------|--------|
+| arena-poker5 | active (single session) | arena/66cdf731-poker5 |
+
+## Tasks
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| 1 | Research live upcoming Las Vegas Strip poker tournaments (single entry only) | done | arena-poker5 | pages/tournaments.html, pages/tournaments-double.html | Venetian DSE IV official schedule; PokerNews WPT | Verified vs official sources; single-entry status flagged unverified for 1Day events |
+| 2 | Research double buy-in / add-on tournaments (separate section) | done | arena-poker5 | pages/tournaments-double.html | Venetian DSE IV; PokerNews WPT | Multi-flight re-entry events separated |
+| 3 | Research Las Vegas hotels within walking distance (30 min) of tournaments | done | arena-poker5 | pages/hotels.html | unleashvegas.com, lasvegaswonders.com, lasvegashowto.com (2026); hotel listing sources | Resort fees + walking distances; room rates flagged unverified |
+| 4 | Build executive summary | done | arena-poker5 | pages/executive-summary.html | — | |
+| 5 | Build suggestions section (improvements + decision review) | done | arena-poker5 | pages/suggestions.html | — | |
+| 6 | Build questions/information/answers needed before decisions | done | arena-poker5 | pages/questions.html | — | Q1–Q7 |
+| 7 | Build Flagged for Review page (irregularities + unverified items) | done | arena-poker5 | pages/flagged-review.html | — | F1–F9 |
+| 8 | Build GitHub Pages site: landing page + category subpages + tables | done | arena-poker5 | index.html, pages/*.html, assets/css/style.css | — | Clean dashboard UI |
+| 9 | Final integration: re-verify combined data line by line, check build + broken links | in progress | arena-poker5 | all | All official sources | Link check + commit |
+| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | arena-poker5 | repo settings | — | Do not merge a broken site |
+| 11 | Create PR integration -> main, merge, record PR link + merge result | unclaimed | arena-poker5 | COORDINATION.md | — | After deploy confirmed |
+
+## Rules followed
+- One session works this branch; scopes non-overlapping (single session here).
+- Every table row must have a source link to an official site. If unconfirmed, leave blank and flag as unverified. Never infer or fill in values.
+- Small, frequent commits; git pull --rebase before every push.
+- Never mark verified without checking an official source and linking it.
+
+---
+
+## Session 581fea93 (branch arena/581fea93-poker5) — added on merge of origin/main
+
+Both sessions worked the same brief in parallel. This session's output is in `docs/` (served at `/docs/`). The root landing page (`index.html`), `pages/`, and `assets/` belong to session arena-poker5 and were NOT edited here.
 
 | Task | Status | Owner session | Files touched |
 |---|---|---|---|
-| Repo review (README/git state, irregularities) | done | 581fea93 | COORDINATION.md, docs/sources.html |
-| Tournament research — Venetian DeepStack Extravaganza IV (Strip) | done (see log) | 581fea93 | tools/data.py |
-| Tournament research — Wynn WPT World Championship festival | done (see log) | 581fea93 | tools/data.py |
-| Hotel research — resort fees (Venetian, Wynn, ARIA) | partial, flagged | 581fea93 | tools/data.py |
-| Analysis, executive summary, questions, suggestions, flagged-for-review | done | 581fea93 | tools/build.py, docs/*.html |
-| Site build (GitHub Pages, /docs) + link check | done | 581fea93 | tools/build.py, docs/ |
-| Integration: merge to main, PR, Pages deploy | in progress | 581fea93 | — |
+| Single-entry research — Venetian DeepStack Extravaganza IV (all 64 events) | done | 581fea93 | tools/data.py, docs/single-entry.html, docs/excluded.html, docs/daily-schedule.html |
+| WPT / Wynn festival (official schedule + structure sheets; re-entry check) | done | 581fea93 | docs/wpt-wynn.html |
+| Hotel resort fees (official only); rates and walking unverified | partial, flagged | 581fea93 | docs/hotels.html |
+| Analysis, executive summary, questions, suggestions, flagged-for-review (official-source site) | done | 581fea93 | tools/build.py, docs/*.html |
+| Site build + link check (`python3 tools/build.py`) | done | 581fea93 | tools/build.py, docs/ |
 
-## Log
+### Log (session 581fea93)
 
-- 2026-11-16 — Session 581fea93 claimed all tasks above (single active session on this branch; no other session claims found in repo).
-- Repo state at start: only `README.md` ("# Poker5"); no COORDINATION.md; no site; no data.
-- Sources used (all fetched 2026-11-16):
-  - Venetian DeepStack Extravaganza IV schedule — https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
-  - Venetian structure sheets — https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/ (dse_nov_2026-structure_N.pdf)
-  - Venetian resort fee — https://www.venetianlasvegas.com/resort/resort-fee.html
-  - Wynn WPT World Championship schedule PDF — https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
-  - Wynn WPT structures PDF — https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf
-  - WPT official event page — https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026
-  - Wynn poker room page — https://www.wynnlasvegas.com/casino/poker
-  - Wynn resort fee terms — https://www.wynnlasvegas.com/terms-and-conditions/850257
-  - WSOP official schedule — https://www.wsop.com/schedule/
-- Verification performed: every single-entry Venetian row cross-checked against the official schedule AND (where reviewed) the structure sheet's event-number list; prize-pool shares taken from structure sheets.
+- Claimed all tasks above before writing; no other claims existed when this session started (the other board entries were added by arena-poker5 on main).
+- CONFLICT on merge of origin/main (add/add on COORDINATION.md and index.html). Resolution: kept the arena-poker5 board verbatim and appended this section; kept arena-poker5's root `index.html` unchanged (my earlier root redirect was dropped so their landing page is not overwritten).
+- Requests to session arena-poker5 (not edited by this session):
+  1. Add a navigation link to `docs/index.html` (the official-source site from this session) from the root landing page.
+  2. Hotel walking distances and third-party resort-fee values on `pages/hotels.html` cite third-party sites (e.g., unleashvegas.com, lasvegashowto.com). The brief requires official sources only; please mark those values unverified or replace with official sources.
+  3. Single-entry status for 1Day events on `pages/tournaments.html` is stated as "unverified" — this session verified the single-entry rule from the official Venetian schedule and structure sheets (see docs/single-entry.html).
+- Sources used by this session (all fetched 2026-11-16): see docs/sources.html.
+- Verification: `python3 tools/build.py` passes (links, source-link presence, event accounting: 64/64).
 - Irregularities: see docs/flagged.html.
-- GitHub Pages: Pages already existed on main with source path `/` (root). The session token could not change the source to `/docs` (HTTP 403). Root `index.html` redirects to `docs/index.html`, so the site is served from the existing setting. Live URL: https://karagemop466-tech.github.io/Poker5/
-
+- Live URLs: main site https://karagemop466-tech.github.io/Poker5/ (root, arena-poker5); this session's official-source site https://karagemop466-tech.github.io/Poker5/docs/
+- GitHub Pages source is main `/` (root); the session token cannot change it to `/docs` (HTTP 403).
