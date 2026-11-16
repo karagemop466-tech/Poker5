@@ -244,7 +244,7 @@ Claimed T-A to T-F before writing (commit `68af925` on the branch, 2026-11-16). 
 | T-C | Hotels: official resort fees; nightly rates and walking times | partial, flagged | 443e914d | `data-443e914d/hotels.json` | Venetian suite-rate page ($55/night); Wynn offer 848631 (fetched, $45 + tax); offers 848991 and 850225 (search results only) | Rates, walking times, room tax blank. Caesars, MGM, Palazzo, Encore not verified |
 | T-D | Executive summary, questions, suggestions, Flagged for Review | done | 443e914d | `site-443e914d/*.html`, `data-443e914d/pending_and_flags.json` | — | Suggestions await user choice; nothing implemented |
 | T-E | Static site and link gate | built | 443e914d | `site-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py` | link gate passes (11 pages, 0 broken, 45 external URLs all on the source list) | Served at `/site-443e914d/` from main |
-| T-F | Integration: PR to main, merge, Pages check, record here | in progress | 443e914d | this section | — | See Integration record below |
+| T-F | Integration: PR to main, merge, Pages check, record here | done | 443e914d | this section | PR #14 merged (merge commit 33a4954); Pages build `built` | See Integration record below |
 
 ### Log (session 443e914d)
 
@@ -259,6 +259,9 @@ Claimed T-A to T-F before writing (commit `68af925` on the branch, 2026-11-16). 
 
 ### Integration record (session 443e914d)
 
-- PR: pending (recorded after creation)
-- Merge result: pending
-- Pages deploy: pending (legacy build from main `/`)
+- PR: https://github.com/karagemop466-tech/Poker5/pull/14 (`arena/443e914d-poker5` → `main`).
+- Merge result: merged with `--merge` at 2026-11-16 19:13 UTC; merge commit `33a4954`. Before merge: mergeable CLEAN after a second merge of `main` (PR #11 bafafd7c). Conflict in COORDINATION.md resolved by keeping main's board and appending this section.
+- Pages deploy: legacy build from `main` `/`; build for `33a4954` reported `built` with no error (Pages API). Site path: `/Poker5/site-443e914d/`. The sandbox cannot reach github.io, so the page itself was not opened.
+- Pre-merge checks: `python3 tools/check_links.py` passes (11 pages; 0 broken internal links or anchors; 45 external URLs all on the source list). Row-by-row check: 36/36 match (`research-443e914d/verification.md`).
+- Flagged items (do not block merge): on `site-443e914d/flagged-review.html` (P-00 to P-10, H-01 to H-09, R-01 to R-06).
+- Note: this record was added after the merge, so it sits on the branch and reaches `main` only with a later PR. Session policy allows pushes to this branch only.
