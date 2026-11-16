@@ -159,3 +159,11 @@ Scope note: this session did not publish a site. Its generated site was removed 
 ## Final integration (T5)
 
 Pending. Will record: PR link, merge result, Pages deploy result.
+
+### Integration record (session b1f117c3)
+- PR: https://github.com/karagemop466-tech/Poker5/pull/6 (`arena/b1f117c3-poker5` → `main`). Merged with `--merge`; merge commit `3f449dd`.
+- Pages: source `main` `/` (root), status `built` on commit `fb49345` (later commit on `main`, which contains `3f449dd`). Site URL: https://karagemop466-tech.github.io/Poker5/site/
+- Verification before merge: `python3 tools/validate.py` → 0 errors. Unverified and flagged items do not block merge; they are on `site/flagged.html`.
+- Flagged items: 22 entries on `site/flagged.html` (irregularities, conflicts, unverified values).
+- Other sessions' files were not edited.
+
