@@ -1,0 +1,205 @@
+[
+ {
+  "id": "F01",
+  "type": "Irregularity",
+  "item": "Bellagio Saturday buy-in conflicts",
+  "detail": "PDF heading reads $1100 buy-in; the file name reads $1000; the rules allocate a $600 buy-in. Recorded as $600 from the rules text.",
+  "sources": [
+   "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-%241000-nlh.pdf"
+  ]
+ },
+ {
+  "id": "F02",
+  "type": "Irregularity",
+  "item": "Bellagio Saturday PDF lists a past Day 2 date",
+  "detail": "Rules say 'Combined Final Day 2 (9/13/26)'. That date is before today (2026-11-16) and the PDF may be an old template.",
+  "sources": [
+   "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-%241000-nlh.pdf"
+  ]
+ },
+ {
+  "id": "F03",
+  "type": "Irregularity",
+  "item": "Bellagio poker page weekday does not match the date",
+  "detail": "Page says tournament play 'will resume on Saturday, July 26'. July 26, 2026 is a Sunday (July 26, 2025 was a Saturday). The page looks stale; the date was not used.",
+  "sources": [
+   "https://bellagio.mgmresorts.com/en/casino/poker.html"
+  ]
+ },
+ {
+  "id": "F05",
+  "type": "Irregularity",
+  "item": "Venetian $300 house fee differs between two structure sheets",
+  "detail": "Structure #5 withholds $58 (prize pool $242). Structure #10 withholds $60 (prize pool $240). Both are $300 1-Day or Day 1 events. The prize-pool figure used in the breakeven math comes from each event's own sheet.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"
+  ]
+ },
+ {
+  "id": "F06",
+  "type": "Irregularity",
+  "item": "Venetian $400 house fee differs between two structure sheets",
+  "detail": "Structure #2/#3 withholds $70 (prize pool $330). Structure #6 withholds $65 (prize pool $335).",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf"
+  ]
+ },
+ {
+  "id": "F07",
+  "type": "Irregularity",
+  "item": "Venetian series page still shows a finished series",
+  "detail": "The DeepStack page still references the WPT Fall Festival, which ended Nov 15, 2026, before the as-of date (2026-11-16).",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament.html"
+  ]
+ },
+ {
+  "id": "F08",
+  "type": "Irregularity",
+  "item": "Wynn 'Single Day' label conflicts with re-entry terms",
+  "detail": "Wynn's Mon-Thu and Sat/Sun daily events allow re-entry at the entry fee, so they are excluded from the single-entry list.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf"
+  ]
+ },
+ {
+  "id": "F09",
+  "type": "Irregularity",
+  "item": "Official Wynn links return a 'checked out' page",
+  "detail": "https://www.wynnlasvegas.com/Casino/Poker was removed, and https://www.wynnlasvegas.com/hotel shows a 'checked out' page. Neither is used as a source.",
+  "sources": [
+   "https://www.wynnlasvegas.com/Casino/Poker",
+   "https://www.wynnlasvegas.com/hotel"
+  ]
+ },
+ {
+  "id": "F10",
+  "type": "Irregularity",
+  "item": "Official Venetian tournaments page returns 404",
+  "detail": "https://www.venetianlasvegas.com/resort/casino/poker/tournaments.html returns a 404. The working schedule is the DeepStack series page.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/tournaments.html",
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament.html"
+  ]
+ },
+ {
+  "id": "F11",
+  "type": "Irregularity",
+  "item": "WSOP Las Vegas 2026 has ended; no Las Vegas events on the WSOP schedule for Nov-Dec 2026",
+  "detail": "The official WSOP.com schedule was checked for Nov 16 to Dec 23, 2026 and lists no Las Vegas events in that window. It was not used as a tournament source.",
+  "sources": [
+   "https://www.wsop.com/schedule/"
+  ]
+ },
+ {
+  "id": "F12",
+  "type": "Irregularity",
+  "item": "Venetian 'Single Day' events may still include bounties and late registration",
+  "detail": "Structure sheets list late-registration windows. Late registration was not treated as a re-entry. Confirm with the room if it counts as a second entry.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf"
+  ]
+ },
+ {
+  "id": "F13",
+  "type": "Unverified",
+  "item": "Resort fees: Bellagio, ARIA, Venetian, Palazzo, Caesars Palace",
+  "detail": "No official resort-fee page was retrieved for these properties. Third-party sites conflict: Bellagio and ARIA appear at $50 on one list and $55 on others.",
+  "sources": [
+   "https://www.applevacations.com/hotels/bellagio/",
+   "https://www.virginatlantic.com/holidays/holiday-types/city-breaks/hotels/aria-resort-and-casino",
+   "https://www.resortfeechecker.com/1443-resort_fee_venetian_resort_las_vegas.html",
+   "https://www.resortfeechecker.com/41245-resort_fee_caesars_palace.html",
+   "https://unleashvegas.com/guides/vegas-basics/resort-fees"
+  ]
+ },
+ {
+  "id": "F14",
+  "type": "Confirmed",
+  "item": "Wynn resort fee: official terms used",
+  "detail": "Official Wynn terms state a $55 resort fee plus tax. The official figure is used; third-party figures are not used for Wynn.",
+  "sources": [
+   "https://www.wynnlasvegas.com/terms-and-conditions/850257"
+  ]
+ },
+ {
+  "id": "F15",
+  "type": "Unverified",
+  "item": "Clark County lodging tax (13.38%) not confirmed from an official page",
+  "detail": "The rate is reported by third-party sites that cite Clark County. The official Clark County tax page was not retrieved.",
+  "sources": [
+   "https://unleashvegas.com/guides/vegas-basics/resort-fees",
+   "https://www.roommaster.com/hotel-tax/nevada"
+  ]
+ },
+ {
+  "id": "F16",
+  "type": "Unverified",
+  "item": "Aria has no official daily tournament schedule on its poker page",
+  "detail": "The official ARIA poker page says daily tournaments must be confirmed by phone at 702.590.7232, and it has no tournament list. Third-party listings were not used.",
+  "sources": [
+   "https://aria.mgmresorts.com/en/casino/poker.html"
+  ]
+ },
+ {
+  "id": "F17",
+  "type": "Unverified",
+  "item": "Resorts World poker page has no tournament schedule",
+  "detail": "The official Resorts World poker-room page covers dining only. No official tournament schedule was found.",
+  "sources": [
+   "https://www.rwlasvegas.com/gaming/poker-room/poker-room-dining/"
+  ]
+ },
+ {
+  "id": "F18",
+  "type": "Unverified",
+  "item": "MGM Grand schedule not confirmed from an official source",
+  "detail": "Only a PokerAtlas calendar, dated 2025, was found. It is treated as stale and was not used.",
+  "sources": [
+   "https://www.pokeratlas.com/poker-room/mgm-grand-las-vegas/tournaments"
+  ]
+ },
+ {
+  "id": "F19",
+  "type": "Unverified",
+  "item": "Wynn WPT events: re-entry terms not reviewed",
+  "detail": "46 rows from the official WPT schedule (Nov 27 to Dec 13) are listed, but none was checked against the terms for re-entry. The Dec 13 'Day 1A' row reads '$1,000,000 added*' with no guarantee given in the row; the asterisk was not resolved.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+   "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf"
+  ]
+ },
+ {
+  "id": "F20",
+  "type": "Unverified",
+  "item": "Wynn nightly $160 event: structure not reviewed",
+  "detail": "Listed on the official daily poster. Re-entry terms are unknown, so the event is not placed in either section.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf"
+  ]
+ },
+ {
+  "id": "F21",
+  "type": "Unverified",
+  "item": "31 Venetian entry-level events have unread structure sheets",
+  "detail": "These events are on the official schedule (dates, times, buy-ins, guarantees confirmed) but their single-entry status is not confirmed. The status column in Single-entry tournaments shows which ones.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/dse-nov-2026-schedule.pdf"
+  ]
+ },
+ {
+  "id": "F22",
+  "type": "Unverified",
+  "item": "Room rates and walking times are not verified for any hotel",
+  "detail": "Official static pages do not publish nightly rates for the dates in question. Walking distances were not measured from an official source. Both columns are blank.",
+  "sources": [
+   "https://bellagio.mgmresorts.com/en/casino/poker.html",
+   "https://aria.mgmresorts.com/en/casino/poker.html",
+   "https://www.caesars.com/caesars-palace/casino"
+  ]
+ }
+]
