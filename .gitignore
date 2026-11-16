@@ -1,0 +1,7 @@
+# Static Pages build output
+/_site/
+
+# Local/editor artifacts
+.DS_Store
+*.swp
+*.swo

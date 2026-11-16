@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "researchedAt": "2026-11-16",
+    "window": {
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "isUserSelected": false,
+      "note": "Working research dates aligned to the WPT World Championship; not selected by the user."
+    },
+    "currency": "USD",
+    "summary": "The Venetian returned a direct, tax- and resort-fee-inclusive seven-night quote. Wynn returned a nightly price including its resort fee but excluding taxes; its total below is a transparent calculation, not a hotel quote. Do not treat the comparison as final or bookable without checking live rates.",
+    "taxEstimateRate": 0.1338,
+    "taxEstimateSourceId": "clark-county-tax-guide"
+  },
+  "sources": [
+    {
+      "id": "venetian-quote",
+      "title": "The Venetian direct booking quote, Dec 13–20, 2026, 1 adult",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/booking?adults[]=1&arrival_date=2026-12-13&children[]=0&departure_date=2026-12-20&view=calendar",
+      "checkedAt": "2026-11-16",
+      "notes": "Newly Remodeled Luxury King, seven nights. Price breakdown returned room subtotal $1,749.75, resort fees $385, taxes $285.65, total $2,420.40."
+    },
+    {
+      "id": "venetian-fee",
+      "title": "The Venetian resort-fee policy",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+      "checkedAt": "2026-11-16",
+      "notes": "$55 per night plus tax; included in the quote's listed rates."
+    },
+    {
+      "id": "wynn-quote",
+      "title": "Wynn Resort King direct booking rate, Dec 13–20, 2026",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12%2F13%2F2026&checkout=12%2F20%2F2026",
+      "checkedAt": "2026-11-16",
+      "notes": "Wynn Resort King, 640 sq ft, seven nights. Displayed $355 average/night includes resort fee and excludes taxes; page did not return a tax-inclusive stay total."
+    },
+    {
+      "id": "wynn-fee",
+      "title": "Wynn Las Vegas resort-fee and reservation policy",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/about-us/resort-information",
+      "checkedAt": "2026-11-16",
+      "notes": "$55 daily resort fee plus tax. Wynn's room page states the displayed $355 average/night includes the resort fee."
+    },
+    {
+      "id": "clark-county-tax-guide",
+      "title": "Clark County combined transient lodging tax guide",
+      "publisher": "Clark County Department of Business License",
+      "url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:689ef54f-ec0d-4bb6-b8ea-05a82887561f/original/as/genl-info-guide-for-tles-july-2021.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Official guide's Appendix III lists 13.38% for a resort hotel in the Stadium District and Primary Gaming Corridor. The guide identifies this as the current rate in its publication; verify applicable tax at booking."
+    },
+    {
+      "id": "rome2rio-walk",
+      "title": "Wynn Las Vegas to The Venetian Resort route estimate",
+      "publisher": "Rome2Rio (third-party route planner)",
+      "url": "https://www.rome2rio.com/s/Wynn-Las-Vegas/The-Venetian%C2%AE-Resort-Las-Vegas",
+      "checkedAt": "2026-11-16",
+      "notes": "Displays a walk of about 3,160 ft / 11 min. This is a third-party route estimate, not an official hotel route or guaranteed walking time."
+    },
+    {
+      "id": "aria-fee",
+      "title": "ARIA reservation terms",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/terms-and-conditions.html",
+      "checkedAt": "2026-11-16",
+      "notes": "Official terms list a $55 per-night resort fee plus applicable tax; no date-specific room total retrieved."
+    },
+    {
+      "id": "bellagio-fee",
+      "title": "Bellagio reservation terms",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+      "checkedAt": "2026-11-16",
+      "notes": "Official terms list a $55 per-night resort fee plus applicable tax; no date-specific room total retrieved."
+    },
+    {
+      "id": "caesars-booking",
+      "title": "Caesars Palace booking result",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&flexibleMonth=December&propCode=clv&tripCode=CYBER26",
+      "checkedAt": "2026-11-16",
+      "notes": "Displayed $54.95 resort fee plus $7.35 tax ($62.30); not a date-specific Dec 13–20 room quote."
+    },
+    {
+      "id": "treasure-island-fee",
+      "title": "Treasure Island room and resort-fee information",
+      "publisher": "Treasure Island Las Vegas",
+      "url": "https://treasureisland.com/hotel/deluxe-rooms",
+      "checkedAt": "2026-11-16",
+      "notes": "$49.95 per night plus tax; no date-specific Dec 13–20 total retrieved."
+    }
+  ],
+  "quotes": [
+    {
+      "hotel": "The Venetian Resort",
+      "roomType": "Newly Remodeled Luxury King Suite",
+      "roomSizeSqFt": 650,
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "quoteStatus": "direct_quote_includes_fees_and_tax",
+      "roomSubtotalUsd": 1749.75,
+      "resortFeeUsd": 385,
+      "resortFeePerNightUsd": 55,
+      "taxUsd": 285.65,
+      "quotedTotalUsd": 2420.4,
+      "quotedAllInPerNightUsd": 345.77,
+      "sourceIds": ["venetian-quote", "venetian-fee"],
+      "note": "Live direct-booking quote retrieved Nov 16, 2026; not a reservation or guaranteed future price."
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "roomType": "Wynn Resort King",
+      "roomSizeSqFt": 640,
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "quoteStatus": "direct_nightly_rate_tax_excluded_total_not_returned",
+      "displayedAverageNightUsd": 355,
+      "displayedRateIncludesResortFee": true,
+      "resortFeePerNightUsd": 55,
+      "preTaxStayCalculationUsd": 2485,
+      "taxRateUsedForEstimate": 0.1338,
+      "estimatedTaxUsd": 332.49,
+      "estimatedAllInStayUsd": 2817.49,
+      "estimatedAllInPerNightUsd": 402.5,
+      "hotelQuotedTaxInclusiveTotalUsd": null,
+      "sourceIds": ["wynn-quote", "wynn-fee", "clark-county-tax-guide"],
+      "note": "The $2,817.49 total is arithmetic (7 × $355, then 13.38%); Wynn did not return that tax-inclusive total. It is an estimate, not an official hotel quote."
+    }
+  ],
+  "otherResortFees": [
+    {
+      "hotel": "ARIA Resort & Casino",
+      "feeUsdPerNight": 55,
+      "taxExtra": true,
+      "taxInclusiveRoomQuoteUsd": null,
+      "sourceIds": ["aria-fee"],
+      "note": "Fee only; no matching Dec 13–20 room total retrieved."
+    },
+    {
+      "hotel": "Bellagio",
+      "feeUsdPerNight": 55,
+      "taxExtra": true,
+      "taxInclusiveRoomQuoteUsd": null,
+      "sourceIds": ["bellagio-fee"],
+      "note": "Fee only; no matching Dec 13–20 room total retrieved."
+    },
+    {
+      "hotel": "Caesars Palace",
+      "feeUsdPerNight": 54.95,
+      "taxExtra": true,
+      "taxAmountDisplayedUsd": 7.35,
+      "taxInclusiveRoomQuoteUsd": null,
+      "sourceIds": ["caesars-booking"],
+      "note": "Booking result showed $62.30 including the displayed resort-fee tax, but no date-specific room quote."
+    },
+    {
+      "hotel": "Treasure Island",
+      "feeUsdPerNight": 49.95,
+      "taxExtra": true,
+      "taxInclusiveRoomQuoteUsd": null,
+      "sourceIds": ["treasure-island-fee"],
+      "note": "Fee only; no matching Dec 13–20 room total retrieved."
+    }
+  ],
+  "walking": [
+    {
+      "from": "Wynn Las Vegas",
+      "to": "The Venetian Resort",
+      "distanceFeet": 3160,
+      "estimatedMinutes": 11,
+      "sourceId": "rome2rio-walk",
+      "verification": "third_party_estimate_only",
+      "note": "No official hotel-to-hotel pedestrian route or time was verified. Conditions, entrances, and route choice can change the actual walk."
+    }
+  ],
+  "comparison": {
+    "venetianQuotedTotalUsd": 2420.4,
+    "wynnEstimatedTotalUsd": 2817.49,
+    "arithmeticDifferenceUsd": 397.09,
+    "conclusion": "The Venetian's direct quote is $397.09 below the calculated Wynn estimate on this snapshot. Wynn did not return a tax-inclusive quote, so this is not a definitive apples-to-apples price ranking. Both rates can change."
+  }
+}
