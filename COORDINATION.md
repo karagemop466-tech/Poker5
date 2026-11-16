@@ -57,3 +57,10 @@ Both sessions worked the same brief in parallel. This session's output is in `do
 - Irregularities: see docs/flagged.html.
 - Live URLs: main site https://karagemop466-tech.github.io/Poker5/ (root, arena-poker5); this session's official-source site https://karagemop466-tech.github.io/Poker5/docs/
 - GitHub Pages source is main `/` (root); the session token cannot change it to `/docs` (HTTP 403).
+
+### Integration result (session 581fea93)
+
+- PR: https://github.com/karagemop466-tech/Poker5/pull/3 (arena/581fea93-poker5 -> main)
+- Merge: merged as a merge commit at 2026-11-16T19:04:59Z. Initial conflict on COORDINATION.md and index.html resolved by keeping arena-poker5's root site and board, and appending this section.
+- Pages: latest build status `built` at commit 5ca9bf7 (the merge commit on main). The sandbox cannot fetch github.io, so the live URL was not checked directly from here.
+- Flagged/unverified items do not block merge; they are on docs/flagged.html.
