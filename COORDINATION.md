@@ -189,6 +189,43 @@ This session's standalone dashboard is published under `site-b50aa7f5/`; it pres
 - Sources were reviewed November 16, 2026. PGT's current 2027 Championship announcement and Rome2Rio route pages were checked during integration; other official links and findings are recorded in the dashboard's source ledger.
 - PR #15: https://github.com/karagemop466-tech/Poker5/pull/15. Local check: `npm run check` (8 tests and static build) passes; local HTTP smoke test passed for page, ledger, JS modules, data, and CSS. Final merge and live Pages verification pending.
 
+## Session cd5ab298 (branch `arena/cd5ab298-poker5`) — Dec 2–9 research dashboard
+
+This session's static dashboard and source data are isolated in `dashboard-cd5ab298/`; the validator is `scripts/check_site_cd5ab298.py`. The existing root Pages site, `index.html`, `pages/`, `docs/`, `site/`, `data/`, and other sessions' outputs were preserved. The existing Pages source is `main` at `/`; this session does not replace its deployment configuration.
+
+| Task | Status | Owner | Files |
+|---|---|---|---|
+| Select and label a research / hotel window | done | cd5ab298 | `dashboard-cd5ab298/` |
+| Research Dec 2–9 Venetian and Wynn/WPT tournament starts and entry rules | done with explicit unknowns | cd5ab298 | `dashboard-cd5ab298/data/tournaments.json`, `schedule.html`, `single-entry.html`, `extras.html` |
+| Compare date-specific hotel rates, quality and resort fees | done with quote caveats | cd5ab298 | `dashboard-cd5ab298/data/hotels.json`, `hotels.html` |
+| Research property-to-poker-room locations and walking estimates | partial; internal room-to-seat times unverified | cd5ab298 | `dashboard-cd5ab298/data/hotels.json`, `hotels.html` |
+| Build overview, interactive calendar, Q&A and Flagged for Review | done | cd5ab298 | `dashboard-cd5ab298/*.html`, `assets/` |
+| Local validation, PR #17 merge and GitHub Pages verification | done | cd5ab298 | `scripts/check_site_cd5ab298.py`, this section |
+
+### Research snapshot and decisions
+
+- Snapshot date **2026-11-16**. Working hotel window: **check in Wed 2026-12-02; check out Wed 2026-12-09; 7 nights; 2 adults; 1 room**. Selected autonomously to overlap the official Venetian DeepStack Extravaganza IV (Nov 16–Dec 23) and WPT at Wynn (Nov 27–Dec 21), not a user-provided booking instruction. Tournament starts on Dec 9 are shown as checkout-day context.
+- **Zero events are confirmed as strict single-entry** from the official rules reviewed. Venetian one-day PDFs often omit entry limits; silence is not treated as freezeout. WPT Prime allows one re-entry per starting flight; the $10,400 World Championship permits one entry per starting flight plus one Day 2 entry, up to four total. Venetian Events #19/#26 prohibit a later flight after bagging, but do not establish an entry cap after a bust.
+- Dated calendar contains 56 rows (starts, satellites and continuations) for The Venetian and Wynn/WPT, all in Las Vegas local time. No selected-series 8:00 a.m. start appears; Venetian starts as early as 10:10 a.m. and WPT starts as early as 11:00 a.m. These are starts only; event durations are not verified.
+- Venetian structure #19 confirms Events #33/#37 award two direct seats to the $800 LIPS Ladies Event #39; these are seat prizes, not cash guarantees. Entry limits remain unverified.
+- Wynn Resort King direct-booking result: **$711 average/night**, resort fee included, tax excluded. Approximate after-tax total computed from the rounded average and 13.38% Clark County Primary Gaming Corridor tax: `($711 × 7) × 1.1338 ≈ $5,642.92`; booking engine did not return this exact total.
+- Venetian newly remodeled Luxury King Suite direct-booking UI: **$7,054.77** for 2 adults / 7 nights, including $832.52 taxes and $385 resort fees. Same result also showed suites designed for 4+ guests and a maximum-capacity warning. Reconfirm the exact room and availability.
+- Caesars Palace returned no usable 7-night room total. Horseshoe showed Dec 2–3 sold out. Their $62.30/$56.63 figures are tax-in resort fees, not room rates.
+- Casino Compass secondary property-to-property estimates: Venetian–Wynn 0.5 mi / 10–15 min; Venetian–Bellagio 0.9 mi / 18–25 min; Bellagio–Caesars 0.4 mi / 10–15 min. Official venue pages put Venetian poker at Palazzo Level 2 and Wynn poker on Encore's casino floor. No assigned-room-to-poker-seat route was timed.
+- Wynn general daily schedules, Caesars daily tournaments, Bellagio Friday/Sunday events, MGM Grand's stale August schedule and ARIA's missing event terms are separated from the dated series calendar or flagged. Confirm whether recurring events run during the selected series.
+
+### Validation and integration log
+
+- `python3 scripts/check_site_cd5ab298.py` passes: 7 dashboard HTML pages, 56 dated tournament rows, 4 hotel records, local links, source keys and quote arithmetic. `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing and `git diff --check` also pass. The validator checks external URLs for HTTPS syntax; it does not make live HTTP requests.
+- Integrated latest `origin/main` commit `0cbefd0` (PR #15) into this branch after main advanced during the PR. Preserved its newer README, coordination history, root landing-page links, Pages config and session-scoped site. Kept this dashboard isolated, added this session's record to main's coordination board and retained the root link; no other session output was replaced.
+- PR #17: <https://github.com/karagemop466-tech/Poker5/pull/17> merged Nov 16, 2026 as merge commit `b65a7a501c8df2863aafab8b889ed896e998a66c`. Branch checks `check` and `validate` passed on commit `7013beb`.
+- Post-merge Pages build and deploy succeeded: run <https://github.com/karagemop466-tech/Poker5/actions/runs/43940727028>. Pages remains configured to publish `main` `/`; the new dashboard is live at <https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/>. Verified the deployed overview (using a cache-busting query after the initial stale 404) and live schedule and hotel pages. The root landing page links to this dashboard; no Pages source was replaced.
+- Final local checks passed: `python3 scripts/check_site_cd5ab298.py`, `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing, `git diff --check`, and repository `npm run check` (8 tests). The GitHub Actions status check reports 7 pages / 56 rows / 4 hotel records through the session validator.
+
+### Primary sources
+
+The full source links are stored row-by-row in `dashboard-cd5ab298/data/tournaments.json` and `dashboard-cd5ab298/data/hotels.json`. Core sources: Venetian DSE schedule `https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html`; Wynn/WPT schedule `https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf`; WPT governing structure `https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf`; Wynn booking result `https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2`; Venetian booking result `https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar`; Clark County tax ordinance `https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf`; secondary route source `https://www.casinocompassapp.com/transportation/walking-the-strip`.
+
 ---
 
 ## Session aa83f1e1 (branch `arena/aa83f1e1-poker5`)
@@ -200,7 +237,7 @@ Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`
 | Official tournament research and strict single-entry verification | complete — no strict single-entry event confirmed in the reviewed subset; unknowns flagged | `aa83f1e1` | `planner-aa83f1e1/research/tournaments.md`, `planner-aa83f1e1/data/tournaments.json` |
 | Date-specific hotel quote, fees, and walking evidence | complete — Venetian all-in quote captured; Wynn final total and official walking times remain unknown | `aa83f1e1` | `planner-aa83f1e1/research/hotels.md`, `planner-aa83f1e1/data/hotels.json` |
 | Dashboard, analysis, Q&A, suggestions, flagged-review, publication pages | complete | `aa83f1e1` | `planner-aa83f1e1/` |
-| Local and CI data/link/build verification | local checks passed after latest-main integration; CI rerun pending | `aa83f1e1` | `scripts/*_aa83f1e1.mjs`, `.github/workflows/quality.yml` |
+| Local and CI data/link/build verification | all local checks pass after latest-main integration; refreshed PR CI pending | `aa83f1e1` | `scripts/*_aa83f1e1.mjs`, `.github/workflows/quality.yml` |
 | Existing main-root GitHub Pages subsite publication and live verification | pending merge and deployment check | `aa83f1e1` | `planner-aa83f1e1/`, this log |
 
 ### Log (session aa83f1e1)
@@ -208,5 +245,5 @@ Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`
 - Research snapshot checked 2026-11-16; Dec 13–20, 2026 is a working research assumption aligned to the WPT World Championship, not user-selected dates.
 - Tracked 25 event records (18 entry-rule unknown, 6 explicitly multiple-entry, 1 conflicting Bellagio Saturday listing); no reviewed event is confirmed strict single-entry. WPT World Championship event details explicitly set a four-entry maximum (one per flight plus a Day 2 entry). Venetian one-day rules, WPT Ladies re-entry, Bellagio Saturday, Wynn all-in total, current lodging tax, and official walking routes remain flagged.
 - Venetian direct quote: $2,420.40 total for seven nights (room, resort fees, and taxes). Wynn display: $355 average/night including resort fee, excluding tax; no tax-inclusive total returned. 13.38% tax math is an estimate based on the cited 2021 County guide, not a Wynn quote. Rome2Rio's 3,160-ft/11-min route is third-party only.
-- PR #16: https://github.com/karagemop466-tech/Poker5/pull/16. The original PR conflicted with newer main files; the branch merges the latest main while retaining all sessions' files and historical board content. The planner is isolated, the root landing page is linked, the root builder preserves both the b50 and aa83 dashboards, and the shared quality workflow runs both dashboard checks. Refreshed local checks pass; CI and merge are still pending.
+- PR #16: https://github.com/karagemop466-tech/Poker5/pull/16. Main advanced through PR #18 while this branch was under review; merge `b96987c` and the Dec 2–9 dashboard while preserving all session files/history. The planner stays isolated, root landing page and generator link to the strict-entry, Dec 2–9, and aa83 dashboards, and shared quality checks cover all builds. Refreshed local checks pass; GitHub PR checks, merge, and live subsite verification remain pending.
 - Local checks on the isolated subsite: JavaScript syntax; smoke-render all eight pages; JSON/source-ID/summary/quote arithmetic validation; internal links; static build. Do not merge until checks pass and verify the published subsite afterward.

@@ -151,6 +151,7 @@ def page_shell(path, title, body, depth):
     for target, label in PAGES:
         if depth == 0 and path == "index.html" and target == "pages/tournaments.html":
             nav.append('<a href="site-b50aa7f5/index.html">Strict Entry Research</a>')
+            nav.append('<a href="planner-aa83f1e1/index.html">Poker &amp; Stay Planner</a>')
             continue
         href = base + target if depth == 1 else target
         if depth == 0 and target.startswith("pages/"):
@@ -279,6 +280,7 @@ def page_index():
      Every row links to the official page it came from. Anything that is not confirmed is left blank and flagged.</p>
   <div class="ctas">
     <a class="btn" href="site-b50aa7f5/index.html">Strict-entry research (0 verified)</a>
+    <a class="btn ghost" href="planner-aa83f1e1/index.html">Poker &amp; stay planner</a>
     <a class="btn ghost" href="pages/hotels.html">Hotels and true nightly cost</a>
     <a class="btn ghost" href="pages/executive-summary.html">Executive summary</a>
   </div>
@@ -296,18 +298,21 @@ def page_index():
 </section>
 <section class="panel">
   <h2>Other dashboards in this repo</h2>
-  <p class="muted">Separate, session-scoped research outputs are preserved. The strict-entry update below applies the current single-entry-overall standard; older candidate lists remain unverified.</p>
+  <p class="muted">Separate, session-scoped research outputs are preserved. The strict-entry updates below use a single-entry-overall standard; older candidate lists remain unverified.</p>
   <ul>
     <li><a href="site-b50aa7f5/index.html">Strict-entry research (current snapshot)</a>: no event verified as single-entry overall; re-entry and unknown caps remain separate.</li>
     <li><a href="docs/index.html">docs/</a>: official-source site (session 581fea93)</li>
     <li><a href="dashboard-de0bebd4/index.html">dashboard-de0bebd4/</a>: dashboard (session de0bebd4)</li>
     <li><a href="dashboard-053f694f/index.html">dashboard-053f694f/</a>: dashboard (session 053f694f)</li>
     <li><a href="site/index.html">site/</a>: site (session b1f117c3)</li>
+    <li><a href="dashboard-cd5ab298/index.html">dashboard-cd5ab298/</a>: Dec 2–9, 2026 source-backed poker and hotel research (session cd5ab298)</li>
     <li><a href="planner-aa83f1e1/index.html">Source-linked poker and hotel planner (session aa83f1e1)</a></li>
   </ul>
 </section>
 <section class="grid3">
-  <a class="card" href="pages/tournaments.html"><h3>Single-entry</h3><p>Ranked by guarantee, then buy-in. Single-entry status unverified for every row.</p></a>
+  <a class="card" href="site-b50aa7f5/index.html"><h3>Strict-entry research</h3><p>Current snapshot; zero events verified as single-entry overall.</p></a>
+  <a class="card" href="planner-aa83f1e1/index.html"><h3>Poker &amp; stay planner</h3><p>Date-specific research, tournament filters, hotel quotes, and review flags.</p></a>
+  <a class="card" href="pages/tournaments.html"><h3>Single-entry candidates</h3><p>Legacy candidates remain unverified; do not assume single-entry from missing rules.</p></a>
   <a class="card" href="pages/tournaments-double.html"><h3>Re-entry / multi-flight</h3><p>Events where official text allows re-entry, rebuys or add-ons, plus multi-flight events.</p></a>
   <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official Venetian row by date and time, with the 8 AM check.</p></a>
   <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>On-property tournament venues, resort fees with source, and blank room rates.</p></a>
