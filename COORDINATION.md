@@ -20,9 +20,16 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 | 6 | Build questions/information/answers needed before decisions | done | arena-poker5 | pages/questions.html | — | Q1–Q7 |
 | 7 | Build Flagged for Review page (irregularities + unverified items) | done | arena-poker5 | pages/flagged-review.html | — | F1–F9 |
 | 8 | Build GitHub Pages site: landing page + category subpages + tables | done | arena-poker5 | index.html, pages/*.html, assets/css/style.css | — | Clean dashboard UI |
-| 9 | Final integration: re-verify combined data line by line, check build + broken links | in progress | arena-poker5 | all | All official sources | Link check + commit |
-| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | arena-poker5 | repo settings | — | Do not merge a broken site |
-| 11 | Create PR integration -> main, merge, record PR link + merge result | unclaimed | arena-poker5 | COORDINATION.md | — | After deploy confirmed |
+| 9 | Final integration: re-verify combined data line by line, check build + broken links | done | arena-poker5 | all | All official sources | 0 broken internal links; every row links to official source |
+| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | done | arena-poker5 | repo settings | — | Pages sourced from main; build 1375621288 "built" (no error) for merge commit 47b2e73 |
+| 11 | Create PR integration -> main, merge, record PR link + merge result | done | arena-poker5 | COORDINATION.md | — | PR #1 merged (--merge), commit 47b2e73 |
+
+## Final results
+- PR: https://github.com/karagemop466-tech/Poker5/pull/1 (merged via `--merge`, commit 47b2e73)
+- Merge result: merged into main; origin/main = 47b2e73
+- GitHub Pages: https://karagemop466-tech.github.io/Poker5/ (sourced from main)
+- Pages deploy: build 1375621288 status "built", no error — site live
+- Live landing page verified: loads with all navigation + tables
 
 ## Rules followed
 - One session works this branch; scopes non-overlapping (single session here).
