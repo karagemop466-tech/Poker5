@@ -17,3 +17,22 @@ Live site: https://karagemop466-tech.github.io/Poker5/
 Each table value comes from an official source linked in its row. Values that cannot be confirmed are left blank and listed on the Flagged for Review page. Nothing is inferred or filled in.
 
 This is an independent planning tool. It is not affiliated with any casino, poker room or hotel. Values change without notice. Confirm before booking or playing. Must be 21+.
+
+---
+
+## Session 443e914d outputs (Las Vegas Strip poker and hotel planner, single-entry focus)
+
+Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served from `main`, legacy Pages build, source `main` `/`).
+
+| Path | Purpose |
+|---|---|
+| `data-443e914d/sources.json` | Every source URL, labelled official or third-party |
+| `data-443e914d/tournaments_single_entry.json` | 36 one-day Venetian rows, Nov 18 – Dec 23, 2026. Single-entry status is inferred (flag P-00) |
+| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats, kept separate |
+| `data-443e914d/hotels.json` | Hotel rows; blank = unverified |
+| `data-443e914d/pending_and_flags.json` | Pending items, hotel flags, repo irregularities |
+| `tools/build_443e914d.py` | Generates `site-443e914d/` from `data-443e914d/` |
+| `tools/check_links.py` | Link gate: no broken internal links; external URLs must be in `data-443e914d/sources.json` |
+| `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
+
+Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`
