@@ -29,3 +29,5 @@ Session ID: `581fea93`
   - WSOP official schedule — https://www.wsop.com/schedule/
 - Verification performed: every single-entry Venetian row cross-checked against the official schedule AND (where reviewed) the structure sheet's event-number list; prize-pool shares taken from structure sheets.
 - Irregularities: see docs/flagged.html.
+- GitHub Pages: Pages already existed on main with source path `/` (root). The session token could not change the source to `/docs` (HTTP 403). Root `index.html` redirects to `docs/index.html`, so the site is served from the existing setting. Live URL: https://karagemop466-tech.github.io/Poker5/
+

@@ -507,6 +507,15 @@ repo_review = """
 page("sources.html", "Sources and repository review", repo_review, active="sources.html",
      lead="Every source URL, what it supports, and what was reviewed.")
 
+# Root redirect: the live GitHub Pages source is main / (root) (token cannot change it to /docs).
+ROOT_INDEX = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=docs/index.html">
+<link rel="canonical" href="docs/index.html"><title>Las Vegas Strip Poker Research</title></head>
+<body><p>Opening the site: <a href="docs/index.html">docs/index.html</a></p>
+<script>location.replace('docs/index.html');</script></body></html>
+"""
+with open(os.path.join(os.path.dirname(HERE), "index.html"), "w", encoding="utf-8") as f:
+    f.write(ROOT_INDEX)
+
 # ---------------------------------------------------------------------------
 # Link + completeness checks
 # ---------------------------------------------------------------------------
