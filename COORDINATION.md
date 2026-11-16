@@ -33,8 +33,8 @@ Shared task board for agent sessions working on this repo.
 | T5: Suggestions section (site improvements) | done | arena | site/suggestions.md, docs/suggestions.html | — | — | — |
 | T6: Q&A / missing information section | done | arena | site/questions.md, docs/questions.html | — | — | — |
 | T7: Build GitHub Pages site | done | arena | docs/*.html, docs/style.css | — | Built; all internal links resolve; no bad entities | — |
-| T8: PR, merge, GitHub Pages deploy | in progress | arena | — | — | pending | — |
-| T9: Record PR link and merge result | unclaimed | arena | COORDINATION.md | — | pending | — |
+| T8: PR, merge, GitHub Pages deploy | blocked | arena | PR #10 → main | — | PR created; merge BLOCKED by GitHub false-positive conflict report (see note below). Pages deployed & built from main root "/" | Pages built successfully: https://karagemop466-tech.github.io/Poker5/ |
+| T9: Record PR link and merge result | done | arena | COORDINATION.md | PR #10 https://github.com/karagemop466-tech/Poker5/pull/10 | PR created but NOT merged (GitHub platform false-positive) | Recorded below |
 
 ## Parallel-session work preserved on main (not overwritten)
 
@@ -55,6 +55,21 @@ Resolution (no other session's work discarded):
 - docs/hotels.html, docs/index.html, docs/questions.html, docs/suggestions.html: kept this session's integrated versions (HEAD); the parallel session's corresponding pages are preserved under `pages/*.html` and their unique `docs/*.html` pages (single-entry, excluded, wpt-wynn, daily-schedule, analysis, sources, flagged, summary) are retained.
 - tools/__pycache__/*.pyc: retained as committed on main (build artifact).
 - The integrated site tree is `docs/`; GitHub Pages continues to serve from root `/` (per constraint above).
+
+## PR #10 merge blocker (platform issue — documented 2026-11-16)
+- PR #10: https://github.com/karagemop466-tech/Poker5/pull/10 (arena/2ed7df1a-poker5 → main).
+- Status: CREATED but NOT merged.
+- Blocker: GitHub reports `mergeable: false / dirty` and `gh pr merge` and the direct merge API both return HTTP 405 "Pull Request has merge conflicts."
+- This is a FALSE POSITIVE: `main` (5ca9bf7) is a strict ancestor of the branch head (4a06126), and `git merge-tree` confirms ZERO file conflicts (clean fast-forward). Retried `gh pr merge --merge` multiple times and recreated the PR (#5 → #10); all attempts blocked by the same false-positive.
+- Workaround considered but NOT done: pushing directly to main is outside this session's branch rule (push only to current branch).
+- Impact: this session's integrated branch content is committed/pushed to arena/2ed7df1a-poker5 but is NOT yet on main/live. The live GitHub Pages site (below) reflects main's content (the parallel session's verified pages).
+
+## GitHub Pages deploy
+- Pages enabled on repo karagemop466-tech/Poker5, source = branch `main`, path `/` (root).
+- Build status: **built** (successful).
+- Live URL: https://karagemop466-tech.github.io/Poker5/
+- Verified live: homepage loads; links to Tournaments / Hotels / Executive Summary / Flagged for Review all resolve. Verification standard (official sources; unverified flagged) is published on the live site.
+- Note: live site reflects main's content (parallel session's pages) because PR #10 merge is blocked.
 
 ## Flagged for Review
 - Published on the site Flagged for Review page (docs/flagged-review.html and pages/flagged-review.html).
