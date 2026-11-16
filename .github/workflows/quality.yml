@@ -23,5 +23,7 @@ jobs:
         run: node --check planner-aa83f1e1/assets/app.js
       - name: Smoke-render every page
         run: node scripts/smoke_aa83f1e1.mjs
-      - name: Validate data, source references, local links, and build
+      - name: Validate data, source references, local links, and build the isolated planner
         run: node scripts/build_aa83f1e1.mjs
+      - name: Regenerate and validate the existing root Pages site
+        run: python3 scripts/build_c6087e2c.py

@@ -1,30 +1,56 @@
-# Felt & Stay — Las Vegas Poker Planner
+# Poker5
 
-A source-linked, static planner for the working **Dec 13–20, 2026** Las Vegas research window. That date range is a research assumption aligned with the WPT World Championship; it is **not a date choice by the user**.
+Las Vegas Strip poker tournament and hotel planner, published with GitHub Pages.
 
-## What is here
+Live site: https://karagemop466-tech.github.io/Poker5/
 
-- **Dashboard** — entry-rule findings, hotel quote snapshots, and current caveats.
-- **Tournaments** — filterable, source-linked listings with a strict single-entry definition.
-- **Hotels** — date-specific booking evidence, fee breakdowns, and explicit quote-vs-estimate labels.
-- **Analysis, Q&A, Suggestions, Flagged Review, Publication** — rationale, open questions, and release workflow.
-- **Research notes and JSON** — [`research/tournaments.md`](research/tournaments.md), [`research/hotels.md`](research/hotels.md), [`data/tournaments.json`](data/tournaments.json), and [`data/hotels.json`](data/hotels.json).
+## What is in this repo
 
-No strict single-entry event is confirmed in the reviewed sources. “Unverified” is not treated as “single-entry,” and this reviewed subset is not a complete Las Vegas tournament calendar. Hotel prices are snapshots, not reservations.
+- `index.html`, `pages/*.html`, `assets/css/style.css`: the static site (built output).
+- `data/c6087e2c/`: the verified inputs for this site. Venetian schedule rows (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels (`hotels.json`), flagged items (`flags.json`).
+- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`. Run `python3 scripts/build_c6087e2c.py`.
+- Other sessions' outputs (`docs/`, `site/`, `dashboard-*/`, `tools/`, `data/*.json|md|txt`) are kept as they were and are linked from the landing page.
+- `COORDINATION.md`: the task board for parallel work.
 
-## Run locally
+## Verification rule
 
-The site has no package dependencies. Build and validate with Node.js 22 or newer:
+Each table value comes from an official source linked in its row. Values that cannot be confirmed are left blank and listed on the Flagged for Review page. Nothing is inferred or filled in.
 
-```sh
-node --check assets/app.js
-node scripts/smoke.mjs
-node scripts/build.mjs
-python3 -m http.server 4173 --bind 0.0.0.0 --directory _site
-```
+This is an independent planning tool. It is not affiliated with any casino, poker room or hotel. Values change without notice. Confirm before booking or playing. Must be 21+.
 
-Then open `http://localhost:4173` locally. The builder validates JSON, source IDs, uncertainty/summary counts, quoted price arithmetic, internal links, and copies the site to `_site/`.
+---
 
-## Publication
+## Session 443e914d outputs (Las Vegas Strip poker and hotel planner, single-entry focus)
 
-`.github/workflows/quality.yml` runs on pushes and pull requests. `.github/workflows/pages.yml` builds and deploys `_site/` from `main` to GitHub Pages. See the in-site Publication page and [`COORDINATION.md`](COORDINATION.md) for the source review and release checklist.
+Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served from `main`, legacy Pages build, source `main` `/`).
+
+| Path | Purpose |
+|---|---|
+| `data-443e914d/sources.json` | Every source URL, labelled official or third-party |
+| `data-443e914d/tournaments_single_entry.json` | 36 one-day Venetian rows, Nov 18 – Dec 23, 2026. Single-entry status is inferred (flag P-00) |
+| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats, kept separate |
+| `data-443e914d/hotels.json` | Hotel rows; blank = unverified |
+| `data-443e914d/pending_and_flags.json` | Pending items, hotel flags, repo irregularities |
+| `tools/build_443e914d.py` | Generates `site-443e914d/` from `data-443e914d/` |
+| `tools/check_links.py` | Link gate: no broken internal links; external URLs must be in `data-443e914d/sources.json` |
+| `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
+
+Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`
+
+---
+
+## Session aa83f1e1 outputs — source-linked poker and stay planner
+
+Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact).
+
+| Path | Purpose |
+|---|---|
+| `planner-aa83f1e1/index.html` and `planner-aa83f1e1/pages/` | Dashboard, tournaments, hotels, analysis, Q&A, suggestions, flagged review, and publication pages |
+| `planner-aa83f1e1/data/tournaments.json` | Source-linked tournament records; zero strict single-entry events confirmed in the reviewed subset |
+| `planner-aa83f1e1/data/hotels.json` | Date-specific Venetian quote, Wynn pre-tax display, estimates, fees, and walking caveats |
+| `planner-aa83f1e1/research/` | Source-by-source research notes and unresolved questions |
+| `scripts/build_aa83f1e1.mjs` | Validates the session dataset and builds a local preview in `_site-aa83f1e1/` |
+| `scripts/smoke_aa83f1e1.mjs` | Smoke-renders all eight pages |
+| `.github/workflows/quality.yml` | Runs JavaScript, smoke, data, source-reference, link, and build checks |
+
+The Dec 13–20, 2026 stay window is a research assumption, not user-selected. Locally run `node --check planner-aa83f1e1/assets/app.js && node scripts/smoke_aa83f1e1.mjs && node scripts/build_aa83f1e1.mjs`, then serve with `python3 -m http.server 4173 --bind 0.0.0.0 --directory _site-aa83f1e1`. This session deliberately does not add a competing Pages deployment workflow; the existing root Pages site publishes the subdirectory after merge.

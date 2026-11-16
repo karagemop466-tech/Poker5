@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions to improve the site (for review) · Las Vegas Strip Poker Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">Strip Poker Dashboard</a></div>
+  <div class="sub">Live tournaments near the Las Vegas Strip · data as of 2026-11-16 · all values from official sources unless flagged</div>
+</header>
+<div class="layout">
+<nav class="side"><a class="" href="index.html">Dashboard</a>
+<a class="" href="tournaments.html">Single-entry tournaments</a>
+<a class="" href="excluded.html">Multi-entry, excluded &amp; satellites</a>
+<a class="" href="unverified.html">Unverified (needs review)</a>
+<a class="" href="schedule.html">Schedule</a>
+<a class="" href="hotels.html">Hotels</a>
+<a class="" href="analysis.html">Analysis</a>
+<a class="" href="questions.html">Questions to answer</a>
+<a class="active" href="suggestions.html">Suggestions (for review)</a>
+<a class="" href="flagged.html">Flagged for Review</a>
+<a class="" href="sources.html">Sources</a></nav>
+<main>
+<h1>Suggestions to improve the site (for review)</h1>
+
+<div class="banner unk"><b>For review only.</b> No suggestion below has been implemented. Choose one or more (for example "S1, S3, S6") before any change is made.</div>
+
+<div class="scroll"><table class="data"><thead><tr><th>ID</th><th>Suggestion</th><th>What it does</th><th>Trade-off</th></tr></thead><tbody><tr><td>S1</td><td>Auto-classify entry format</td><td>Parse each official structure sheet for re-entry/rebuy/add-on/paid-chip text instead of reading each by hand.</td><td>Faster, repeatable; still needs human review of edge cases.</td></tr>
+<tr><td>S2</td><td>Scheduled re-verification</td><td>Re-fetch official pages on a schedule and flag any changed time, buy-in or guarantee.</td><td>Keeps data current; needs a scheduled job or a manual run.</td></tr>
+<tr><td>S3</td><td>Link checker in build</td><td>Fail the build if any internal page or source link breaks.</td><td>Protects the site from broken links; adds a build step.</td></tr>
+<tr><td>S4</td><td>Hotel rate quotes table</td><td>Add a dated table where official booking-engine rates are pasted for chosen nights, with the quote time recorded.</td><td>Makes true cost possible; rates expire, so each quote needs a date.</td></tr>
+<tr><td>S5</td><td>Walking-distance source</td><td>Use a mapping API or manual distances with the source recorded per row.</td><td>Needed for the 30-minute rule; a mapping host is not on the current allowed list.</td></tr>
+<tr><td>S6</td><td>Trip planner page</td><td>Enter arrival/departure dates and buy-in cap; the site builds a non-overlapping plan with overlap warnings.</td><td>Directly answers &#x27;play all day&#x27;; more work and needs the answers on the Questions page.</td></tr>
+<tr><td>S7</td><td>Filters and sorting</td><td>Add client-side filters (date, venue, buy-in, guarantee) to each table.</td><td>Easier to use; a small JavaScript addition.</td></tr>
+<tr><td>S8</td><td>Last-verified column</td><td>Show the date each row was last checked against its official source.</td><td>Improves trust; needs a verification log per row.</td></tr>
+<tr><td>S9</td><td>CSV download</td><td>Offer each table as CSV for offline comparison.</td><td>Useful for sharing; small effort.</td></tr>
+<tr><td>S10</td><td>Keep the current static design</td><td>Leave the site as it is; only fix data as gaps are closed.</td><td>Lowest effort; no new features.</td></tr></tbody></table></div>
+<footer>Built from files in <code>data/</code> by <code>scripts/build_site.py</code>. Blank cells = not verified from an official source (see <a href="flagged.html">Flagged for Review</a>).</footer>
+</main>
+</div>
+</body>
+</html>

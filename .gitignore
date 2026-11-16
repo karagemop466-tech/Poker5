@@ -1,9 +1,8 @@
-# Session aa83f1e1 local build output
-/_site-aa83f1e1/
-
-# Python caches already ignored on main
 __pycache__/
 *.pyc
+
+# Session aa83f1e1 local preview output
+/_site-aa83f1e1/
 
 # Local/editor artifacts
 .DS_Store
