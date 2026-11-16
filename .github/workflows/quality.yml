@@ -18,5 +18,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate, test, and build the static site
+      - name: Validate and test the existing strict-entry dashboard
         run: npm run check
+      - name: Check the isolated planner JavaScript
+        run: node --check planner-aa83f1e1/assets/app.js
+      - name: Smoke-render all isolated planner pages
+        run: node scripts/smoke_aa83f1e1.mjs
+      - name: Validate and build the isolated planner
+        run: node scripts/build_aa83f1e1.mjs
+      - name: Regenerate and validate the existing root Pages site
+        run: python3 scripts/build_c6087e2c.py

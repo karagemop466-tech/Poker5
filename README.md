@@ -64,3 +64,21 @@ The isolated, source-backed dashboard is in [`dashboard-cd5ab298/`](dashboard-cd
 - 56 Venetian / Wynn-WPT calendar rows; zero events confirmed strict single-entry. Unknown terms and official-source conflicts are on its Flagged for Review page.
 - Wynn's ~$5,642.92 after-tax amount is an estimate from the rounded $711 average/night; Venetian's $7,054.77 displayed estimate has a capacity warning. Neither should be treated as a guaranteed booking.
 - Check this dashboard with `python3 scripts/check_site_cd5ab298.py`. It validates local links, data and quote arithmetic; it does not live-probe external sites.
+
+---
+
+## Session aa83f1e1 outputs — source-linked poker and stay planner
+
+Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact). The root landing page links to this planner.
+
+| Path | Purpose |
+|---|---|
+| `planner-aa83f1e1/index.html` and `planner-aa83f1e1/pages/` | Dashboard, tournaments, hotels, analysis, Q&A, suggestions, flagged review, and publication pages |
+| `planner-aa83f1e1/data/tournaments.json` | Source-linked tournament records; zero strict single-entry events confirmed in the reviewed subset |
+| `planner-aa83f1e1/data/hotels.json` | Date-specific Venetian quote, Wynn pre-tax display, estimates, fees, and walking caveats |
+| `planner-aa83f1e1/research/` | Source-by-source research notes and unresolved questions |
+| `scripts/build_aa83f1e1.mjs` | Validates the session dataset and builds a local preview in `_site-aa83f1e1/` |
+| `scripts/smoke_aa83f1e1.mjs` | Smoke-renders all eight planner pages |
+| `.github/workflows/quality.yml` | Runs existing dashboard checks plus this planner's checks |
+
+The Dec 13–20, 2026 stay window is a research assumption, not user-selected. Locally run `node --check planner-aa83f1e1/assets/app.js && node scripts/smoke_aa83f1e1.mjs && node scripts/build_aa83f1e1.mjs`, then serve the output with `python3 -m http.server 4174 --bind 0.0.0.0 --directory _site-aa83f1e1`. This session deliberately does not add a competing Pages deploy workflow; the existing root Pages source publishes the subdirectory after merge.

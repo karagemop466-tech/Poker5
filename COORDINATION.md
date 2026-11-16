@@ -225,3 +225,25 @@ This session's static dashboard and source data are isolated in `dashboard-cd5ab
 ### Primary sources
 
 The full source links are stored row-by-row in `dashboard-cd5ab298/data/tournaments.json` and `dashboard-cd5ab298/data/hotels.json`. Core sources: Venetian DSE schedule `https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html`; Wynn/WPT schedule `https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf`; WPT governing structure `https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf`; Wynn booking result `https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2`; Venetian booking result `https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar`; Clark County tax ordinance `https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf`; secondary route source `https://www.casinocompassapp.com/transportation/walking-the-strip`.
+
+---
+
+## Session aa83f1e1 (branch `arena/aa83f1e1-poker5`)
+
+Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`, `pages/`, `assets/`, `data/`, existing Pages publication, and all other sessions' files remain intact. The branch started from `0ba2e556`; after `main` advanced with other sessions, `origin/main` was merged into this branch and its shared coordination/README history was retained and extended here.
+
+| Task | Status | Owner/session | Files |
+|---|---|---|---|
+| Official tournament research and strict single-entry verification | complete — no strict single-entry event confirmed in the reviewed subset; unknowns flagged | `aa83f1e1` | `planner-aa83f1e1/research/tournaments.md`, `planner-aa83f1e1/data/tournaments.json` |
+| Date-specific hotel quote, fees, and walking evidence | complete — Venetian all-in quote captured; Wynn final total and official walking times remain unknown | `aa83f1e1` | `planner-aa83f1e1/research/hotels.md`, `planner-aa83f1e1/data/hotels.json` |
+| Dashboard, analysis, Q&A, suggestions, flagged-review, publication pages | complete | `aa83f1e1` | `planner-aa83f1e1/` |
+| Local and CI data/link/build verification | all local checks pass after latest-main integration; refreshed PR CI pending | `aa83f1e1` | `scripts/*_aa83f1e1.mjs`, `.github/workflows/quality.yml` |
+| Existing main-root GitHub Pages subsite publication and live verification | pending merge and deployment check | `aa83f1e1` | `planner-aa83f1e1/`, this log |
+
+### Log (session aa83f1e1)
+
+- Research snapshot checked 2026-11-16; Dec 13–20, 2026 is a working research assumption aligned to the WPT World Championship, not user-selected dates.
+- Tracked 25 event records (18 entry-rule unknown, 6 explicitly multiple-entry, 1 conflicting Bellagio Saturday listing); no reviewed event is confirmed strict single-entry. WPT World Championship event details explicitly set a four-entry maximum (one per flight plus a Day 2 entry). Venetian one-day rules, WPT Ladies re-entry, Bellagio Saturday, Wynn all-in total, current lodging tax, and official walking routes remain flagged.
+- Venetian direct quote: $2,420.40 total for seven nights (room, resort fees, and taxes). Wynn display: $355 average/night including resort fee, excluding tax; no tax-inclusive total returned. 13.38% tax math is an estimate based on the cited 2021 County guide, not a Wynn quote. Rome2Rio's 3,160-ft/11-min route is third-party only.
+- PR #16: https://github.com/karagemop466-tech/Poker5/pull/16. Main advanced through PR #18 while this branch was under review; merge `b96987c` and the Dec 2–9 dashboard while preserving all session files/history. The planner stays isolated, root landing page and generator link to the strict-entry, Dec 2–9, and aa83 dashboards, and shared quality checks cover all builds. Refreshed local checks pass; GitHub PR checks, merge, and live subsite verification remain pending.
+- Local checks on the isolated subsite: JavaScript syntax; smoke-render all eight pages; JSON/source-ID/summary/quote arithmetic validation; internal links; static build. Do not merge until checks pass and verify the published subsite afterward.

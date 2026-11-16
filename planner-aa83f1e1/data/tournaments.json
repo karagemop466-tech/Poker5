@@ -1,0 +1,908 @@
+{
+  "meta": {
+    "researchedAt": "2026-11-16",
+    "window": {
+      "start": "2026-12-13",
+      "end": "2026-12-20",
+      "label": "December 13–20, 2026",
+      "isUserSelected": false,
+      "note": "Working research window only; chosen to align with the official WPT World Championship dates. The user has not selected travel dates."
+    },
+    "timezone": "America/Los_Angeles (venue local time)",
+    "strictSingleEntryDefinition": "A tournament is marked confirmed only when an official source clearly limits a player to one total paid entry for that event, with no re-entry, re-buy, later-flight re-entry, or equivalent extra-entry path. A one-day label or silence about re-entry is not proof.",
+    "summary": {
+      "confirmedStrictSingleEntryCount": 0,
+      "unconfirmedCount": 18,
+      "confirmedMultipleEntryCount": 6,
+      "conflictingOfficialListingsCount": 1,
+      "headline": "No strict single-entry tournament in the reviewed Dec 13–20, 2026 schedule is confirmed by published official terms.",
+      "caveat": "This means none were verified in the reviewed official sources, not that none exist. Ask the tournament room for written, event-specific terms before traveling or registering."
+    },
+    "trackedListingCount": 25,
+    "researchScope": "A source-reviewed subset of in-window event listings, not a complete Las Vegas or WPT festival calendar."
+  },
+  "venues": [
+    {
+      "id": "venetian",
+      "name": "The Venetian Resort — Poker Room",
+      "location": "3355 Las Vegas Blvd S, Las Vegas, NV",
+      "website": "https://www.venetianlasvegas.com/",
+      "pokerUrl": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "note": "DeepStack Extravaganza IV is scheduled Nov 16–Dec 23, 2026."
+    },
+    {
+      "id": "wynn",
+      "name": "Wynn Las Vegas / Encore Poker Room",
+      "location": "3131 Las Vegas Blvd S, Las Vegas, NV",
+      "website": "https://www.wynnlasvegas.com/",
+      "pokerUrl": "https://www.wynnlasvegas.com/casino/poker",
+      "note": "The WPT World Championship festival is scheduled Nov 27–Dec 21, 2026."
+    },
+    {
+      "id": "bellagio",
+      "name": "Bellagio Poker Room",
+      "location": "3600 Las Vegas Blvd S, Las Vegas, NV",
+      "website": "https://bellagio.mgmresorts.com/",
+      "pokerUrl": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "note": "Bellagio's official poker page lists Friday, Saturday, and Sunday tournaments; confirm the weekly schedule before attending."
+    }
+  ],
+  "sources": [
+    {
+      "id": "aria-poker",
+      "title": "ARIA Poker Room current-status page",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/casino/poker.html",
+      "checkedAt": "2026-11-16",
+      "notes": "ARIA directs players to call or check @ARIAPoker for current tournament status."
+    },
+    {
+      "id": "bellagio-friday",
+      "title": "Bellagio Friday $600 NLH structure and rules",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Friday 11 a.m.; re-entry through the end of Level 8; optional $40 staff gratuity adds 15,000 chips."
+    },
+    {
+      "id": "bellagio-poker",
+      "title": "Bellagio Poker Room and weekly tournament listing",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "checkedAt": "2026-11-16",
+      "notes": "Official page lists Friday $600 NLH, Saturday $1,000 NLH, and Sunday $400 H.O.R.S.E."
+    },
+    {
+      "id": "bellagio-saturday",
+      "title": "Bellagio Saturday NLH flyer linked from the official poker page",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Official page says $1,000; flyer title says $1,100; flyer rules describe a $600 buy-in and a combined Day 2 on Sept 13, 2026. Do not use its conflicting terms as a Dec 2026 entry quote."
+    },
+    {
+      "id": "bellagio-sunday",
+      "title": "Bellagio Sunday $400 H.O.R.S.E. structure and rules",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Sunday 11 a.m.; re-entry through the end of Level 8; optional $25 staff gratuity adds 15,000 chips."
+    },
+    {
+      "id": "horseshoe-poker",
+      "title": "Horseshoe Las Vegas poker room overview",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/horseshoe-las-vegas/casino",
+      "checkedAt": "2026-11-16",
+      "notes": "Official page says six tournament times daily but does not publish buy-ins, dates, or entry rules in the reviewed page."
+    },
+    {
+      "id": "pgt-aria-schedule",
+      "title": "PGT tournament schedule",
+      "publisher": "PokerGO Tour",
+      "url": "https://www.pgt.com/schedule",
+      "checkedAt": "2026-11-16",
+      "notes": "ARIA High Roller Series events listed Nov 28–Dec 2, 2026."
+    },
+    {
+      "id": "pgt-aria-structure",
+      "title": "PGT ARIA High Roller Series, Nov 28–Dec 2, 2026, structure and rules",
+      "publisher": "PokerGO Tour / ARIA",
+      "url": "https://pgt.pokergomedia.com/event_pdf/053862af-PGTARIAHighRollerSeriesstructurev3.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Five $5,300 single-day events; all offer unlimited re-entry. Outside the Dec 13–20 working window."
+    },
+    {
+      "id": "venetian-schedule",
+      "title": "DeepStack Extravaganza IV schedule, Nov 16–Dec 23, 2026",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "checkedAt": "2026-11-16",
+      "notes": "Official event dates, start times, listed buy-ins, daily labels, and structure-sheet links."
+    },
+    {
+      "id": "venetian-structure-1",
+      "title": "Venetian DSE structure 1 — $200 NLH Bounty (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Structure and late-registration terms; no explicit single-entry or re-entry rule found."
+    },
+    {
+      "id": "venetian-structure-11",
+      "title": "Venetian DSE structure 11 — $600 NLH Bounty (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Structure, late-registration, bounty and fee terms; no explicit entry limit found."
+    },
+    {
+      "id": "venetian-structure-15",
+      "title": "Venetian DSE structure 15 — $300 NLH Bounty (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Structure, late-registration, bounty and fee terms; no explicit entry limit found."
+    },
+    {
+      "id": "venetian-structure-20",
+      "title": "Venetian DSE structure 20 — $1,100 NLH Seniors, multi-flight",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "50+ age requirement; the structure bars a player who bags for Day 2 from playing a later flight, but does not clearly state whether a busted player may enter another flight."
+    },
+    {
+      "id": "venetian-structure-23",
+      "title": "Venetian DSE structure 23 — $600 PLO Double Board Bomb Pot (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Structure and late-registration terms; no explicit entry limit found."
+    },
+    {
+      "id": "venetian-structure-34",
+      "title": "Venetian DSE structure 34 — $1,100 NLH Progressive Knock-Out Bounty (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Structure, bounty and fee terms; no explicit entry limit found."
+    },
+    {
+      "id": "venetian-structure-35",
+      "title": "Venetian DSE structure 35 — $1,100 NLH multi-flight, Day 1A/C/E",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "The structure bars a player who bags for Day 2 from playing a later flight; it does not clearly state whether a busted player may enter another flight."
+    },
+    {
+      "id": "venetian-structure-36",
+      "title": "Venetian DSE structure 36 — $1,100 NLH multi-flight, Day 1B/D",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "The structure bars a player who bags for Day 2 from playing a later flight; it does not clearly state whether a busted player may enter another flight."
+    },
+    {
+      "id": "venetian-structure-4",
+      "title": "Venetian DSE structure 4 — $600 NLH, multi-flight",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "For event 59. The structure bars a player who bags for Day 2 from playing a later flight; it does not clearly state whether a busted player may enter another flight."
+    },
+    {
+      "id": "venetian-structure-8",
+      "title": "Venetian DSE structure 8 — $200 Valuetown Bounty (1Day)",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "PokerAtlas PRO discount applies to the initial buy-in only; later buy-ins are full price. Re-entry count is not stated."
+    },
+    {
+      "id": "wpt-event-schedule",
+      "title": "WPT event schedule",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/schedule",
+      "checkedAt": "2026-11-16",
+      "notes": "Published festival dates, venues and headline buy-ins, including WPT Ladies Championship Dec 13–14."
+    },
+    {
+      "id": "wpt-ladies-details",
+      "title": "WPT Ladies Championship — event details",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026/details",
+      "checkedAt": "2026-11-16",
+      "notes": "Dec 13–14, $1,100 buy-in and $250,000 guarantee. The reviewed page does not verify a single-entry or re-entry limit."
+    },
+    {
+      "id": "wpt-press-release",
+      "title": "WPT World Championship festival schedule announcement",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/article/wpt-world-championship-at-wynn-las-vegas-set-for-season-24-finale-with-over-85-events-and-20m-in-gte",
+      "checkedAt": "2026-11-16",
+      "notes": "Festival Nov 27–Dec 21; main event Dec 13–20; Super Gold Million Dec 10–14 with unlimited re-entry; WPT Prime Dec 5–12. The release says three main-event starting flights and one entry per flight, with final entry before Day 2; the event-details page explicitly gives a four-entry maximum by allowing a separate Day 2 entry."
+    },
+    {
+      "id": "wpt-prime-details",
+      "title": "WPT Prime Championship — event details",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/prime-wpt-prime-championship-at-wynn-las-vegas-season-2026/details",
+      "checkedAt": "2026-11-16",
+      "notes": "Dec 5–12, $1,100 buy-in, $5 million guarantee; one entry and one re-entry per starting flight through Level 10; a player who advances to Day 2 cannot enter another flight."
+    },
+    {
+      "id": "wpt-structures",
+      "title": "WPT World Championship festival structures and event terms",
+      "publisher": "Wynn Las Vegas / World Poker Tour",
+      "url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Event-specific schedules and entry terms; includes unlimited re-entry terms for selected $600 side events and one entry plus one re-entry per flight for WPT Prime."
+    },
+    {
+      "id": "wpt-super-gold-details",
+      "title": "ClubWPT Gold Super Gold Million — event details",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026/details",
+      "checkedAt": "2026-11-16",
+      "notes": "$400 buy-in, Dec 10–14; four starting flights and unlimited re-entry per official announcement."
+    },
+    {
+      "id": "wpt-world-championship",
+      "title": "WPT World Championship at Wynn Las Vegas — event details and terms",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026/details",
+      "checkedAt": "2026-11-16",
+      "notes": "Dec 13–20, $10,400. Event details state a four-entry maximum: one entry per starting flight plus one Day 2 entry. The September release describes one entry per flight and a final opportunity before Day 2; the event-detail page explicitly clarifies the separate Day 2 entry. The added $1 million is for mystery payouts, not a guaranteed player prize pool."
+    },
+    {
+      "id": "wynn-poker",
+      "title": "Wynn Poker Room — tournament series and daily tournament information",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/casino/poker",
+      "checkedAt": "2026-11-16",
+      "notes": "Official page links current festival and daily schedules; its regular daily events are described as running in non-event timeframes."
+    }
+  ],
+  "events": [
+    {
+      "id": "ven-2026-12-13-49a",
+      "date": "2026-12-13",
+      "time": "10:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "49 / Day 1A",
+      "title": "$1,100 NLH Seniors — Day 1A",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 300000,
+      "guaranteeNote": "Published guarantee; verify the tournament's payout terms before relying on it.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure requires players to be 50+ and says a player who bags for Day 2 may not play a later flight. It does not clearly state whether a player who busts may enter the other flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-20"
+      ],
+      "notes": [
+        "50+ age restriction.",
+        "Not confirmed strict single-entry."
+      ]
+    },
+    {
+      "id": "ven-2026-12-13-50",
+      "date": "2026-12-13",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "50",
+      "title": "$300 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 300,
+      "guaranteeUsd": 15000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-15"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$50 of the listed $300 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-14-49b",
+      "date": "2026-12-14",
+      "time": "10:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "49 / Day 1B",
+      "title": "$1,100 NLH Seniors — Day 1B",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 300000,
+      "guaranteeNote": "Published guarantee; verify the tournament's payout terms before relying on it.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure requires players to be 50+ and says a player who bags for Day 2 may not play a later flight. It does not clearly state whether a player who busts may enter the other flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-20"
+      ],
+      "notes": [
+        "50+ age restriction.",
+        "Not confirmed strict single-entry."
+      ]
+    },
+    {
+      "id": "ven-2026-12-14-51",
+      "date": "2026-12-14",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "51",
+      "title": "$300 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 300,
+      "guaranteeUsd": 15000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-15"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$50 of the listed $300 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-15-52",
+      "date": "2026-12-15",
+      "time": "11:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "52",
+      "title": "$1,100 NLH Progressive Knock-Out Bounty (1Day)",
+      "game": "No-Limit Hold'em progressive knockout bounty",
+      "format": "one-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 75000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounty prizes.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing, bounty and fee terms but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-34"
+      ],
+      "notes": [
+        "One-day does not mean single-entry."
+      ]
+    },
+    {
+      "id": "ven-2026-12-15-53",
+      "date": "2026-12-15",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "53",
+      "title": "$300 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 300,
+      "guaranteeUsd": 15000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-15"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$50 of the listed $300 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-16-54",
+      "date": "2026-12-16",
+      "time": "11:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "54",
+      "title": "$600 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 600,
+      "guaranteeUsd": 50000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-11"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$90 of the listed $600 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-16-55",
+      "date": "2026-12-16",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "55",
+      "title": "$300 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 300,
+      "guaranteeUsd": 15000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-15"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$50 of the listed $300 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-17-56a",
+      "date": "2026-12-17",
+      "time": "10:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "56 / Day 1A",
+      "title": "$1,100 NLH — Day 1A",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 500000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structures bar a player who bags for Day 2 from playing later flights. They do not clearly state whether a busted player may re-enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-35"
+      ],
+      "notes": [
+        "Day 1A has a $40 rake discount for registration before the listed start, per structure.",
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-17-57",
+      "date": "2026-12-17",
+      "time": "12:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "57",
+      "title": "$600 PLO Double Board Bomb Pot (1Day)",
+      "game": "Pot-Limit Omaha Double Board Bomb Pot",
+      "format": "one-day",
+      "buyInUsd": 600,
+      "guaranteeUsd": 25000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-23"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$90 of the listed $600 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "ven-2026-12-17-56b",
+      "date": "2026-12-17",
+      "time": "6:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "56 / Day 1B",
+      "title": "$1,100 NLH — Day 1B",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 500000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structures bar a player who bags for Day 2 from playing later flights. They do not clearly state whether a busted player may re-enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-36"
+      ],
+      "notes": [
+        "Day 1B has a $40 rake discount for registration before the listed start, per structure.",
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-18-56c",
+      "date": "2026-12-18",
+      "time": "10:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "56 / Day 1C",
+      "title": "$1,100 NLH — Day 1C",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 500000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structures bar a player who bags for Day 2 from playing later flights. They do not clearly state whether a busted player may re-enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-35"
+      ],
+      "notes": [
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-18-56d",
+      "date": "2026-12-18",
+      "time": "6:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "56 / Day 1D",
+      "title": "$1,100 NLH — Day 1D",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 500000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structures bar a player who bags for Day 2 from playing later flights. They do not clearly state whether a busted player may re-enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-36"
+      ],
+      "notes": [
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-19-56e",
+      "date": "2026-12-19",
+      "time": "10:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "56 / Day 1E",
+      "title": "$1,100 NLH — Day 1E",
+      "game": "No-Limit Hold'em",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 500000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structures bar a player who bags for Day 2 from playing later flights. They do not clearly state whether a busted player may re-enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-35"
+      ],
+      "notes": [
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-19-58",
+      "date": "2026-12-19",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "58",
+      "title": "$200 NLH PokerAtlas Valuetown Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 200,
+      "guaranteeUsd": 20000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure says the PokerAtlas PRO discount applies to the initial buy-in only and later buy-ins are full price. It does not say whether re-entry is permitted or limited.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-8"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "PokerAtlas PRO initial buy-in discount is $20; subsequent buy-ins are $200."
+      ]
+    },
+    {
+      "id": "ven-2026-12-20-59a",
+      "date": "2026-12-20",
+      "time": "11:10 AM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "59 / Day 1A",
+      "title": "$600 NLH — Day 1A",
+      "game": "No-Limit Hold'em",
+      "format": "three-flight, multi-day",
+      "buyInUsd": 600,
+      "guaranteeUsd": 150000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure bars a player who bags for Day 2 from playing a later flight. It does not clearly state whether a busted player may enter another flight or cap total entries.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-4"
+      ],
+      "notes": [
+        "Day 2 is scheduled Dec 23; the posted schedule lists flights A–C.",
+        "Do not treat the multi-flight restriction as a single-entry rule."
+      ]
+    },
+    {
+      "id": "ven-2026-12-20-60",
+      "date": "2026-12-20",
+      "time": "5:10 PM",
+      "venueId": "venetian",
+      "series": "DeepStack Extravaganza IV",
+      "eventNumber": "60",
+      "title": "$200 NLH Bounty (1Day)",
+      "game": "No-Limit Hold'em bounty",
+      "format": "one-day",
+      "buyInUsd": 200,
+      "guaranteeUsd": 8000,
+      "guaranteeNote": "Structure describes this as prize pool plus total bounties.",
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official structure gives late-registration timing and fees but does not state whether re-entry, re-buy, or an entry cap is allowed.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-structure-1"
+      ],
+      "notes": [
+        "One-day does not mean single-entry.",
+        "$40 of the listed $200 is withheld for house fees; see structure."
+      ]
+    },
+    {
+      "id": "wpt-2026-super-gold-million",
+      "date": "2026-12-10",
+      "endDate": "2026-12-14",
+      "time": "See official flight schedule",
+      "venueId": "wynn",
+      "series": "WPT World Championship Festival",
+      "eventNumber": "Special Event",
+      "title": "ClubWPT Gold Super Gold Million",
+      "game": "No-Limit Hold'em mystery bounty",
+      "format": "multi-flight, multi-day",
+      "buyInUsd": 400,
+      "guaranteeUsd": 3000000,
+      "entryStatus": "multiple-entry",
+      "entryRule": "The official WPT announcement states four starting flights and unlimited re-entry. Series dates are Dec 10–14; exact open flights should be checked on the official schedule.",
+      "sourceIds": [
+        "wpt-press-release",
+        "wpt-super-gold-details",
+        "wpt-structures"
+      ],
+      "notes": [
+        "Event runs Dec 10–14, overlapping the research window Dec 13–20.",
+        "The listed date range is for the whole event, not a claim that a new entry is open on every day.",
+        "Not eligible for a strict single-entry itinerary."
+      ]
+    },
+    {
+      "id": "wpt-2026-world-championship",
+      "date": "2026-12-13",
+      "endDate": "2026-12-20",
+      "time": "11:00 AM first starting flight",
+      "venueId": "wynn",
+      "series": "WPT World Championship Festival",
+      "eventNumber": "Main Tour headline event",
+      "title": "$10,400 WPT World Championship",
+      "game": "No-Limit Hold'em",
+      "format": "three starting flights plus Day 2 registration",
+      "buyInUsd": 10400,
+      "guaranteeUsd": null,
+      "entryStatus": "multiple-entry",
+      "entryRule": "Official event details state a four-entry maximum: one entry per starting flight plus one Day 2 entry before Day 2 begins. The $1,000,000 added amount is for mystery payouts, not a guaranteed player prize pool.",
+      "sourceIds": [
+        "wpt-world-championship",
+        "wpt-press-release",
+        "wpt-structures"
+      ],
+      "notes": [
+        "Not eligible for strict single-entry.",
+        "The official event-details page explicitly states the four-entry maximum; see the source note for how this relates to the September announcement.",
+        "The date range is Dec 13–20, 2026."
+      ],
+      "buyInBreakdownUsd": {
+        "playerPrizePool": 9800,
+        "tournamentFee": 400,
+        "pokerStaffServiceCharge": 200
+      }
+    },
+    {
+      "id": "wpt-2026-ladies-championship",
+      "date": "2026-12-13",
+      "endDate": "2026-12-14",
+      "time": "11:00 AM listed start",
+      "venueId": "wynn",
+      "series": "WPT World Championship Festival",
+      "eventNumber": "Special Event",
+      "title": "$1,100 WPT Ladies Championship (2Day)",
+      "game": "No-Limit Hold'em",
+      "format": "two-day",
+      "buyInUsd": 1100,
+      "guaranteeUsd": 250000,
+      "entryStatus": "unconfirmed",
+      "entryRule": "The official festival schedule lists this Dec 13–14 event and buy-in, but the reviewed official materials do not establish whether re-entry is allowed or capped.",
+      "sourceIds": [
+        "wpt-event-schedule",
+        "wpt-ladies-details",
+        "wpt-structures"
+      ],
+      "notes": [
+        "Potential candidate only after confirming registration is open and obtaining the event-specific entry rule."
+      ]
+    },
+    {
+      "id": "wpt-2026-turbo-600-dec14",
+      "date": "2026-12-14",
+      "time": "9:00 PM",
+      "venueId": "wynn",
+      "series": "WPT World Championship Festival",
+      "eventNumber": "Festival side event",
+      "title": "$600 NLH Turbo — $50K guarantee",
+      "game": "No-Limit Hold'em",
+      "format": "one-day turbo",
+      "buyInUsd": 600,
+      "guaranteeUsd": 50000,
+      "entryStatus": "multiple-entry",
+      "entryRule": "The official festival structure lists unlimited re-entry until the start of Level 9.",
+      "sourceIds": [
+        "wpt-structures",
+        "wpt-world-championship"
+      ],
+      "notes": [
+        "Not eligible for strict single-entry."
+      ]
+    },
+    {
+      "id": "wpt-2026-mixed-triple-draw-dec20",
+      "date": "2026-12-20",
+      "time": "1:00 PM",
+      "venueId": "wynn",
+      "series": "WPT World Championship Festival",
+      "eventNumber": "Festival side event",
+      "title": "$600 Mixed Triple Draw (A-5, 2-7, Badugi)",
+      "game": "Mixed Triple Draw",
+      "format": "one-day mixed game",
+      "buyInUsd": 600,
+      "guaranteeUsd": null,
+      "entryStatus": "multiple-entry",
+      "entryRule": "The official festival structure lists unlimited re-entry until the start of Level 9.",
+      "sourceIds": [
+        "wpt-structures",
+        "wpt-world-championship"
+      ],
+      "notes": [
+        "Not eligible for strict single-entry."
+      ]
+    },
+    {
+      "id": "bellagio-2026-12-18-friday-600",
+      "date": "2026-12-18",
+      "time": "11:00 AM",
+      "venueId": "bellagio",
+      "series": "Bellagio weekly poker tournaments",
+      "eventNumber": "Friday weekly event",
+      "title": "$600 NLH",
+      "game": "No-Limit Hold'em",
+      "format": "one-day",
+      "buyInUsd": 600,
+      "guaranteeUsd": null,
+      "entryStatus": "multiple-entry",
+      "entryRule": "Official structure allows buy-in and re-entry through the end of Level 8, including the break.",
+      "sourceIds": [
+        "bellagio-poker",
+        "bellagio-friday"
+      ],
+      "notes": [
+        "Optional $40 staff gratuity adds 15,000 chips; it is separate from house revenue.",
+        "Confirm the weekly schedule remains in effect for this date."
+      ]
+    },
+    {
+      "id": "bellagio-2026-12-19-saturday-conflict",
+      "date": "2026-12-19",
+      "time": "11:00 AM listed",
+      "venueId": "bellagio",
+      "series": "Bellagio weekly poker tournaments",
+      "eventNumber": "Saturday listing",
+      "title": "Saturday NLH — buy-in and current terms conflict",
+      "game": "No-Limit Hold'em",
+      "format": "conflicting flyer / schedule",
+      "buyInUsd": null,
+      "publishedPageBuyInUsd": 1000,
+      "flyerTitleBuyInUsd": 1100,
+      "flyerTermsBuyInUsd": 600,
+      "guaranteeUsd": null,
+      "entryStatus": "conflicting",
+      "entryRule": "The Bellagio poker page lists $1,000; the linked flyer title says $1,100, while its rules describe a $600 buy-in and a combined Day 2 dated Sept 13, 2026. Do not infer a December price or entry policy.",
+      "sourceIds": [
+        "bellagio-poker",
+        "bellagio-saturday"
+      ],
+      "notes": [
+        "Flag for direct confirmation before including in a plan."
+      ]
+    },
+    {
+      "id": "bellagio-2026-12-20-sunday-400",
+      "date": "2026-12-20",
+      "time": "11:00 AM",
+      "venueId": "bellagio",
+      "series": "Bellagio weekly poker tournaments",
+      "eventNumber": "Sunday weekly event",
+      "title": "$400 H.O.R.S.E.",
+      "game": "H.O.R.S.E.",
+      "format": "one-day mixed game",
+      "buyInUsd": 400,
+      "guaranteeUsd": null,
+      "entryStatus": "multiple-entry",
+      "entryRule": "Official structure allows buy-in and re-entry through the end of Level 8, including the break.",
+      "sourceIds": [
+        "bellagio-poker",
+        "bellagio-sunday"
+      ],
+      "notes": [
+        "Optional $25 staff gratuity adds 15,000 chips.",
+        "Confirm the weekly schedule remains in effect for this date."
+      ]
+    }
+  ],
+  "outsideWindow": [
+    {
+      "title": "WPT Prime Championship at Wynn Las Vegas",
+      "dates": "Dec 5–12, 2026",
+      "buyInUsd": 1100,
+      "entryStatus": "multiple-entry",
+      "entryRule": "One entry and one re-entry per starting flight; a player who bags for Day 2 may not enter a later flight.",
+      "note": "Outside the Dec 13–20 working stay window. The winner receives a $10,400 seat into the 2027 WPT World Championship from the prize pool.",
+      "sourceIds": [
+        "wpt-prime-details",
+        "wpt-press-release",
+        "wpt-structures"
+      ]
+    },
+    {
+      "title": "PGT ARIA High Roller Series",
+      "dates": "Nov 28–Dec 2, 2026",
+      "buyInUsd": 5300,
+      "entryStatus": "multiple-entry",
+      "entryRule": "All five single-day events offer unlimited re-entry.",
+      "note": "Outside the Dec 13–20 working stay window. This illustrates why 'single-day' is not equivalent to 'single-entry.'",
+      "sourceIds": [
+        "pgt-aria-schedule",
+        "pgt-aria-structure"
+      ]
+    }
+  ],
+  "researchNotes": [
+    {
+      "title": "No 8:00 a.m. event verified",
+      "body": "No reviewed official schedule lists an 8:00 a.m. tournament in the working Dec 13–20 window. The earliest recently reviewed Venetian start is a 9:10 a.m. $260 satellite on Dec 12, outside the window."
+    },
+    {
+      "title": "WPT festival is not fully enumerated here",
+      "body": "WPT describes the Nov 27–Dec 21 festival as having more than 85 tournaments. This record includes a subset of headline events and side events whose event-specific terms were reviewed; it is not a full festival schedule. Check the official schedule for the complete slate and later revisions. The World Championship detail page states a four-entry maximum: one per starting flight plus one Day 2 entry."
+    },
+    {
+      "title": "ARIA and Horseshoe need direct confirmation",
+      "body": "ARIA's current official poker page directs players to call or check @ARIAPoker; an official-hosted Poker Open PDF reviewed earlier matched 2025 weekdays, not 2026. Horseshoe's official page says six tournament times daily but the reviewed page gives no dates, buy-ins, or entry terms."
+    },
+    {
+      "title": "Wynn regular daily schedule is not treated as a Dec 13–20 promise",
+      "body": "Wynn describes its regular daily tournaments as running in non-event timeframes. The WPT festival has its own published schedule; verify the current Wynn daily lineup before relying on a daily-event listing."
+    }
+  ]
+}
