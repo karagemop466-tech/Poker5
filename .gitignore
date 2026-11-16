@@ -1,5 +1,9 @@
-# Static Pages build output
-/_site/
+# Session aa83f1e1 local build output
+/_site-aa83f1e1/
+
+# Python caches already ignored on main
+__pycache__/
+*.pyc
 
 # Local/editor artifacts
 .DS_Store

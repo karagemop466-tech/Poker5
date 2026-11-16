@@ -4,8 +4,9 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const app = fs.readFileSync(path.join(root, 'assets/app.js'), 'utf8');
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const siteRoot = path.join(repoRoot, 'planner-aa83f1e1');
+const app = fs.readFileSync(path.join(siteRoot, 'assets/app.js'), 'utf8');
 const pages = [
   ['dashboard', 'Plan the stay around the cards'],
   ['tournaments', 'The tournament slate'],
@@ -40,7 +41,7 @@ async function render(page) {
   const fetch = async (url) => {
     const value = String(url);
     const filename = value.endsWith('data/tournaments.json') ? 'tournaments.json' : 'hotels.json';
-    const content = fs.readFileSync(path.join(root, 'data', filename), 'utf8');
+    const content = fs.readFileSync(path.join(siteRoot, 'data', filename), 'utf8');
     return { ok: true, async json() { return JSON.parse(content); } };
   };
   const context = vm.createContext({

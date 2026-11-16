@@ -73,6 +73,7 @@
             <a href="${escapeHtml(assetFor('research/tournaments.md'))}">Tournament notes</a>
             <a href="${escapeHtml(assetFor('research/hotels.md'))}">Hotel notes</a>
             <a href="${escapeHtml(urlFor('publication'))}">Publication process</a>
+            <a href="https://karagemop466-tech.github.io/Poker5/">Main Poker5 site ↗</a>
           </div>
         </div>
       </footer>`;
@@ -371,11 +372,11 @@
         <article class="step"><span class="step-number">1</span><div><h3>Capture the official source</h3><p>Use operator/venue/hotel pages first. Record exact URL, checked date, the fact supported, and any contradiction or missing clause.</p></div></article>
         <article class="step"><span class="step-number">2</span><div><h3>Update the research notes and JSON</h3><p>Put source-linked prose in <a href="${escapeHtml(assetFor('research/tournaments.md'))}">research/tournaments.md</a> or <a href="${escapeHtml(assetFor('research/hotels.md'))}">research/hotels.md</a>. Update the corresponding source, event, quote, or flag in <a href="${escapeHtml(assetFor('data/tournaments.json'))}">data/tournaments.json</a> and <a href="${escapeHtml(assetFor('data/hotels.json'))}">data/hotels.json</a>. Leave unsupported prices/caps blank.</p></div></article>
         <article class="step"><span class="step-number">3</span><div><h3>Run local checks</h3><p>The build validates JSON, source IDs, calculated summary counts, required uncertainty fields, internal links, and the static output bundle. See the validation workflow in the repository.</p></div></article>
-        <article class="step"><span class="step-number">4</span><div><h3>Review before publishing</h3><p>Update the Flagged Review page and coordination board. Open a pull request only after checks pass; merge only after required CI succeeds. A Pages workflow deploys the static output from the default branch.</p></div></article>
+        <article class="step"><span class="step-number">4</span><div><h3>Review before publishing</h3><p>Update the Flagged Review page and coordination board. Open a pull request only after checks pass; merge only after required CI succeeds. The existing GitHub Pages site is published from the repository root on main; this planner lives in its own subdirectory so it does not overwrite another session's site.</p></div></article>
         <article class="step"><span class="step-number">5</span><div><h3>Verify the live deployment</h3><p>After release, open the Pages URL and test navigation, data loads, source links, mobile layout, and external link validity. Record run/deployment status and timestamp on the board.</p></div></article>
       </div></section>
       <section class="section"><div class="section-head"><div><div class="section-kicker">Current publication caveats</div><h2>These are not bookings or eligibility guarantees</h2></div></div><div class="grid grid-2"><article class="card"><h3>Tournaments</h3><p class="card-copy">${tournaments.meta.summary.headline} ${tournaments.meta.summary.caveat}</p><a class="text-link" href="${escapeHtml(urlFor('review'))}">Open review queue</a></article><article class="card"><h3>Hotels</h3><p class="card-copy">Venetian is a retrieved quote; Wynn's all-in amount is an estimate. The window is not user-selected. Recheck current room terms and fees before any booking.</p><a class="text-link" href="${escapeHtml(urlFor('hotels'))}">See quote details</a></article></div></section>
-      <p class="note">Site scope and release ownership: <a href="${escapeHtml(assetFor('COORDINATION.md'))}">coordination board</a>. For a build preview or test result, use the repository workflow/run linked from GitHub.</p></div>`;
+      <p class="note">Site scope and release ownership: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md" target="_blank" rel="noopener noreferrer">coordination board</a>. For a build preview or test result, use the repository workflow/run linked from GitHub.</p></div>`;
   }
 
   async function init() {

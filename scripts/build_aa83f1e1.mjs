@@ -3,10 +3,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '..');
-const output = path.join(root, '_site');
+const repoRoot = path.resolve(here, '..');
+const siteRoot = path.join(repoRoot, 'planner-aa83f1e1');
+const output = path.join(repoRoot, '_site-aa83f1e1');
 const fail = (message) => { throw new Error(message); };
-const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8'));
+const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(siteRoot, relative), 'utf8'));
 const near = (a, b, tolerance = 0.011) => Math.abs(a - b) <= tolerance;
 
 function validateTournamentData(data) {
@@ -73,17 +74,17 @@ function validateHotelData(data) {
 }
 
 function validateRepositoryLinks() {
-  const htmlFiles = ['index.html', ...fs.readdirSync(path.join(root, 'pages')).filter((name) => name.endsWith('.html')).map((name) => `pages/${name}`)];
+  const htmlFiles = ['index.html', ...fs.readdirSync(path.join(siteRoot, 'pages')).filter((name) => name.endsWith('.html')).map((name) => `pages/${name}`)];
   const linkPattern = /\b(?:href|src)="([^"]+)"/g;
   for (const relativeFile of htmlFiles) {
-    const html = fs.readFileSync(path.join(root, relativeFile), 'utf8');
+    const html = fs.readFileSync(path.join(siteRoot, relativeFile), 'utf8');
     if (/\bid="[^"]+"[^>]*\bid="/.test(html)) fail(`Duplicate id attribute found in ${relativeFile}.`);
     for (const match of html.matchAll(linkPattern)) {
       const value = match[1];
       if (/^(?:https?:|mailto:|tel:|#|data:|javascript:)/i.test(value)) continue;
       const localPart = decodeURIComponent(value.split(/[?#]/, 1)[0]);
-      const target = path.resolve(path.dirname(path.join(root, relativeFile)), localPart);
-      if (!target.startsWith(`${root}${path.sep}`) && target !== root) fail(`Local link escapes repository in ${relativeFile}: ${value}`);
+      const target = path.resolve(path.dirname(path.join(siteRoot, relativeFile)), localPart);
+      if (!target.startsWith(`${siteRoot}${path.sep}`) && target !== siteRoot) fail(`Local link escapes the planner subsite in ${relativeFile}: ${value}`);
       if (!fs.existsSync(target)) fail(`Broken local link in ${relativeFile}: ${value}`);
     }
   }
@@ -91,15 +92,15 @@ function validateRepositoryLinks() {
     dashboard: 1, tournaments: 1, hotels: 1, analysis: 1, qa: 1, suggestions: 1, review: 1, publication: 1
   })) {
     const target = page === 'dashboard' ? 'index.html' : `pages/${page === 'qa' ? 'qa' : page}.html`;
-    if (!fs.existsSync(path.join(root, target))) fail(`Missing navigation target: ${target}`);
+    if (!fs.existsSync(path.join(siteRoot, target))) fail(`Missing navigation target: ${target}`);
   }
 }
 
 function copyBundle() {
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
-  for (const entry of ['index.html', 'pages', 'assets', 'data', 'research', 'README.md', 'COORDINATION.md']) {
-    const source = path.join(root, entry);
+  for (const entry of ['index.html', 'pages', 'assets', 'data', 'research']) {
+    const source = path.join(siteRoot, entry);
     if (!fs.existsSync(source)) fail(`Cannot build: missing ${entry}`);
     fs.cpSync(source, path.join(output, entry), { recursive: true });
   }
@@ -113,7 +114,7 @@ try {
   validateHotelData(hotels);
   validateRepositoryLinks();
   copyBundle();
-  console.log(`Build checks passed. ${tournaments.events.length} tournament records, ${hotels.quotes.length} hotel quotes, and ${fs.readdirSync(path.join(root, 'pages')).length} pages copied to _site/.`);
+  console.log(`Build checks passed. ${tournaments.events.length} tournament records, ${hotels.quotes.length} hotel quotes, and ${fs.readdirSync(path.join(siteRoot, 'pages')).length} pages copied to _site-aa83f1e1/.`);
 } catch (error) {
   console.error(`Build failed: ${error.message}`);
   process.exitCode = 1;

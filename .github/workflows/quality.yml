@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: 22
       - name: Check JavaScript syntax
-        run: node --check assets/app.js
+        run: node --check planner-aa83f1e1/assets/app.js
       - name: Smoke-render every page
-        run: node scripts/smoke.mjs
+        run: node scripts/smoke_aa83f1e1.mjs
       - name: Validate data, source references, local links, and build
-        run: node scripts/build.mjs
+        run: node scripts/build_aa83f1e1.mjs
