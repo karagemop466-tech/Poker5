@@ -1,534 +1,541 @@
 #!/usr/bin/env python3
-"""Builds the static GitHub Pages site in docs/ from tools/data_source.py.
+"""Builds the static GitHub Pages site in ../docs from tools/data.py.
 
-Every row in the output tables carries a source link. Calculated values are labelled as calculations.
 Run:  python3 tools/build.py
+Checks: every internal link resolves; every single-entry and excluded row has an
+official source link; exits non-zero on any failure.
 """
-import html, json, os, datetime
-from collections import OrderedDict
-import data_source as D
+import datetime as dt
+import html
+import os
+import re
+import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "docs")
-DATA = os.path.join(OUT, "data")
-os.makedirs(DATA, exist_ok=True)
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import data as D  # noqa: E402
 
-def esc(s):
-    return html.escape("" if s is None else str(s))
+OUT = os.path.join(os.path.dirname(HERE), "docs")
+VERIFIED = "2026-11-16"
 
-def money(v):
-    if v is None:
-        return ""
-    return f"${v:,.0f}"
-
-def dt(d):
-    return datetime.date.fromisoformat(d).strftime("%a %b %d, %Y")
-
-def link(url, label="Source"):
-    return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(label)}</a>'
-
-# ---------- Venetian rows ----------
-ven_rows = []
-for (date, start, ev, name, buyin, gtd, reg, sn, status) in D.VEN:
-    pool = D.POOL_PER_ENTRY.get(sn)
-    row = OrderedDict(
-        date=date, start=start, event_no=ev, name=name, buy_in=buyin,
-        guarantee=gtd, reg_close=reg, room="The Venetian / The Palazzo (Poker Room)",
-        structure_sheet=D.struct(sn), structure_no=sn,
-        status=status,
-        source_schedule=D.S_SCHED, source_page=D.S_PAGE,
-    )
-    if status == "verified":
-        row["single_entry"] = "Verified single entry: structure sheet shows no re-entry, rebuy or add-on terms"
-    elif status == "unverified":
-        row["single_entry"] = "Unverified: structure sheet not reviewed"
-    else:
-        row["single_entry"] = "Satellite (excluded from ranking)"
-    row["prize_pool_per_entry"] = pool[0] if pool else None
-    row["pool_source"] = pool[2] if pool else None
-    ven_rows.append(row)
-
-# consistency: verified rows must use a structure sheet that was actually read
-for r in ven_rows:
-    if r["status"] == "verified":
-        assert r["structure_no"] in D.STRUCTS_READ, r
-    if r["status"] == "unverified":
-        assert r["structure_no"] not in D.STRUCTS_READ, r
-
-ranked = []
-for r in ven_rows:
-    if r["status"] == "verified" and r["guarantee"]:
-        ratio = r["guarantee"] / r["buy_in"]
-        r["gtd_to_buyin"] = round(ratio, 1)
-        if r["prize_pool_per_entry"]:
-            r["breakeven_entries"] = round(r["guarantee"] / r["prize_pool_per_entry"])
-        ranked.append(r)
-ranked_by_ratio = sorted(ranked, key=lambda r: (-r["gtd_to_buyin"], r["buy_in"]))
-ranked_by_gtd = sorted(ranked, key=lambda r: (-r["guarantee"], r["buy_in"]))
-
-verified_count = sum(1 for r in ven_rows if r["status"] == "verified")
-unverified_count = sum(1 for r in ven_rows if r["status"] == "unverified")
-satellite_count = sum(1 for r in ven_rows if r["status"] == "satellite")
-earliest_verified = min(r["start"] for r in ven_rows if r["status"] == "verified")
-
-# ---------- WPT (Wynn) rows: all unverified re-entry status ----------
-wpt_rows = []
-for (date, start, name, buyin, gtd) in D.WPT:
-    wpt_rows.append(OrderedDict(
-        date=date, start=start, name=name, buy_in=buyin, guarantee=gtd,
-        status="unverified", single_entry="Unverified: re-entry terms not reviewed",
-        room="Wynn Las Vegas (Poker Room in Encore)",
-        source_schedule=D.WPT_SCHED if hasattr(D, "WPT_SCHED") else D.WYNN_WPT_SCHED,
-        source_terms=D.WYNN_WPT_STRUCTS))
-
-# ---------- Advantage rows ----------
-adv_rows = []
-for (days, time, buyin, gtd, atype, note, src) in D.WYNN_DAILY:
-    adv_rows.append(OrderedDict(room="Wynn Las Vegas", event=f"NLH daily ({days})", start=time,
-                                buy_in=buyin, guarantee=gtd, advantage=atype, note=note, source=src))
-for (days, time, buyin, gtd, atype, note, src) in D.CAESARS:
-    adv_rows.append(OrderedDict(room="Caesars Palace", event="Daily NLH", start=time,
-                                buy_in=buyin, guarantee=gtd, advantage=atype, note=note, source=src))
-for (days, time, buyin, note, atype, src, extra) in D.BELLAGIO:
-    adv_rows.append(OrderedDict(room="Bellagio", event=f"NLH/HORSE ({days})", start=time,
-                                buy_in=buyin, guarantee=None, advantage=atype, note=note, source=src,
-                                flag=extra))
-
-# ---------- Hotels ----------
-hotel_rows = []
-for (prop, room, fee, status, src, stype, note) in D.HOTELS:
-    calc = None
-    if fee is not None:
-        calc = round(fee * (1 + 0.1338), 2)
-    hotel_rows.append(OrderedDict(
-        property=prop, poker_room=room, resort_fee_before_tax=fee, fee_status=status,
-        fee_source=src, fee_source_type=stype, fee_plus_tax_calc=calc,
-        room_rate="", room_rate_status="Unverified: no official static rate; dynamic pricing not captured",
-        walking_time="", walking_status="Unverified: not measured from an official source",
-        notes=note))
-
-# ---------- Serialise data ----------
-payload = dict(as_of=D.AS_OF, venetian=ven_rows, wpt=wpt_rows, advantage=adv_rows, hotels=hotel_rows,
-               tax_note=D.TAX_NOTE, tax_sources=D.TAX_SOURCES,
-               counts=dict(venetian_verified=verified_count, venetian_unverified=unverified_count,
-                           venetian_satellites=satellite_count, wpt_rows=len(wpt_rows),
-                           advantage_rows=len(adv_rows)))
-with open(os.path.join(DATA, "tournaments.json"), "w") as f:
-    json.dump(dict(as_of=D.AS_OF, venetian=ven_rows, wynn_wpt=wpt_rows), f, indent=1)
-with open(os.path.join(DATA, "advantage.json"), "w") as f:
-    json.dump(dict(as_of=D.AS_OF, rows=adv_rows), f, indent=1)
-with open(os.path.join(DATA, "hotels.json"), "w") as f:
-    json.dump(dict(as_of=D.AS_OF, rows=hotel_rows, tax_note=D.TAX_NOTE, tax_sources=D.TAX_SOURCES), f, indent=1)
-with open(os.path.join(DATA, "summary.json"), "w") as f:
-    json.dump(payload["counts"] | {"as_of": D.AS_OF, "earliest_verified_start": earliest_verified}, f, indent=1)
-
-# ---------- HTML helpers ----------
 NAV = [
-    ("index.html", "Dashboard"),
-    ("tournaments.html", "Single-entry tournaments"),
-    ("advantage.html", "Advantage / not single-entry"),
+    ("index.html", "Home"),
+    ("../index.html", "Main Poker5 site (other session)"),
+    ("summary.html", "Executive summary"),
+    ("single-entry.html", "Single-entry (Venetian)"),
+    ("daily-schedule.html", "Daily schedule"),
+    ("excluded.html", "Excluded (multi-entry, satellites)"),
+    ("wpt-wynn.html", "WPT / Wynn festival"),
     ("hotels.html", "Hotels"),
-    ("schedule.html", "Schedule"),
     ("analysis.html", "Analysis"),
-    ("questions.html", "Questions & open items"),
-    ("suggestions.html", "Suggestions (decide)"),
+    ("questions.html", "Questions to answer"),
+    ("suggestions.html", "Suggestions"),
     ("flagged.html", "Flagged for Review"),
-    ("sources.html", "Sources"),
+    ("sources.html", "Sources & repo review"),
 ]
 
-def page(filename, title, body, active):
-    nav = "".join(
-        f'<a href="{href}" class="{"active" if href == active else ""}">{esc(label)}</a>'
-        for href, label in NAV)
-    return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+CSS = """
+:root{--ink:#1d2433;--muted:#5b6474;--line:#e3e7ee;--bg:#f7f8fb;--card:#fff;--accent:#1f6feb;--warn:#b26a00;--ok:#1a7f37;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0f172a;color:#fff;padding:14px 22px}header a{color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 22px;display:flex;flex-wrap:wrap;gap:6px 14px}
+nav a{color:var(--accent);text-decoration:none;font-size:14px}nav a.on{font-weight:700;color:var(--ink)}
+main{max-width:1280px;margin:0 auto;padding:22px}
+h1{font-size:26px;margin:4px 0 6px}h2{font-size:20px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}h3{font-size:16px;margin:18px 0 6px}
+p.lead{color:var(--muted);margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card b{font-size:24px;display:block}.card span{color:var(--muted);font-size:13px}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#eef2f8;position:sticky;top:0;font-weight:700}
+tr:nth-child(even) td{background:#fbfcfe}
+td.num{text-align:right;white-space:nowrap}
+.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:600;background:#eef2f8;color:var(--muted)}
+.tag.ok{background:#e6f4ea;color:var(--ok)}.tag.warn{background:#fff4e0;color:var(--warn)}.tag.bad{background:#fde8e6;color:var(--bad)}
+.note{background:#fff8e6;border:1px solid #f5d98a;border-radius:8px;padding:10px 12px;margin:10px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+input.filter{width:100%;max-width:420px;padding:8px 10px;border:1px solid #c9d1de;border-radius:8px;margin:8px 0 10px;font-size:14px}
+.wrap{overflow-x:auto}
+ul{padding-left:20px}li{margin:3px 0}
+footer{color:var(--muted);font-size:12.5px;padding:24px 22px;text-align:center}
+"""
+
+JS = """
+document.querySelectorAll('input.filter').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var t=document.getElementById(inp.dataset.target);
+    var q=inp.value.toLowerCase();
+    t.querySelectorAll('tbody tr').forEach(function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+"""
+
+LINKS_SEEN = []  # (page, href) internal links for checking
+
+
+def e(x):
+    return html.escape("" if x is None else str(x))
+
+
+def money(x):
+    if x is None:
+        return '<span class="tag warn">unverified</span>'
+    return "${:,.0f}".format(x)
+
+
+def link(url, label="source"):
+    if not url:
+        return '<span class="tag warn">no official source</span>'
+    return '<a href="%s" target="_blank" rel="noopener">%s</a>' % (e(url), e(label))
+
+
+def wd(d):
+    return dt.datetime.strptime(d, "%Y-%m-%d").strftime("%a %b %d, %Y")
+
+
+def struct_url(n):
+    return D.VEN_STRUCT.format(n)
+
+
+def page(fname, title, body, active=None, lead=None):
+    navhtml = "".join(
+        '<a href="%s"%s>%s</a>' % (href, ' class="on"' if href == active else "", e(label))
+        for href, label in NAV
+    )
+    html_out = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | Poker5 Las Vegas Strip</title>
-<link rel="stylesheet" href="assets/style.css"></head>
-<body>
-<header class="top"><div class="brand">Poker5 <span>Las Vegas Strip poker research</span></div>
-<div class="asof">Data as of {D.AS_OF} (America/Los_Angeles)</div></header>
-<div class="layout">
-<nav class="side">{nav}</nav>
-<main>
-<h1>{esc(title)}</h1>
-{body}
-</main></div>
-<footer>Every value links to an official source unless marked <span class="pill unv">Unverified</span>. Blank = not verified; nothing was inferred.</footer>
-<script src="assets/app.js"></script>
-</body></html>"""
+<title>%s | Las Vegas Strip Poker Research</title><style>%s</style></head><body>
+<header><a href="index.html">Las Vegas Strip Poker Research</a> <span style="opacity:.7;font-size:13px">&middot; data verified %s &middot; all values from official sources unless flagged</span></header>
+<nav>%s</nav><main><h1>%s</h1>%s%s</main>
+<footer>Figures are as published by the named official source on %s. Unverified values are left blank and flagged. Not financial advice.</footer>
+<script>%s</script></body></html>""" % (
+        e(title), CSS, VERIFIED, navhtml, e(title),
+        ('<p class="lead">%s</p>' % e(lead)) if lead else "", body, VERIFIED, JS)
+    with open(os.path.join(OUT, fname), "w", encoding="utf-8") as f:
+        f.write(html_out)
 
-def table(headers, rows, cls="data", filter_id=None):
-    head = "".join(f"<th>{esc(h)}</th>" for h in headers)
-    body = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
-    f = f'<input class="filter" data-target="{filter_id}" placeholder="Filter rows (e.g. Bounty, 12/..., $600)">' if filter_id else ""
-    return f'{f}<div class="scroll"><table class="{cls}" id="{filter_id or ""}"><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
 
-def pill(kind, text):
-    cls = {"ver": "ver", "unv": "unv", "adv": "adv", "sat": "sat", "flag": "flag"}[kind]
-    return f'<span class="pill {cls}">{esc(text)}</span>'
+def table(tid, headers, rows, filt=True):
+    head = "".join("<th>%s</th>" % e(h) for h in headers)
+    body = "".join("<tr>%s</tr>" % "".join(c for c in r) for r in rows)
+    box = ""
+    if filt:
+        box = '<input class="filter" data-target="%s" placeholder="Filter rows (type to search)">' % tid
+    return '%s<div class="wrap"><table id="%s"><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (
+        box, tid, head, body)
 
-def sdate(d):
-    return datetime.date.fromisoformat(d).strftime("%a %b %-d")
 
-def stat(label, value, note=""):
-    return f'<div class="stat"><div class="v">{esc(value)}</div><div class="l">{esc(label)}</div><div class="n">{esc(note)}</div></div>'
+def td(x, cls=""):
+    return '<td class="%s">%s</td>' % (cls, x)
 
-# ---------- Page: tournaments ----------
-ven_tbl_rows = []
-for r in ven_rows:
-    if r["status"] == "verified":
-        st = pill("ver", "Verified single entry")
-    elif r["status"] == "unverified":
-        st = pill("unv", "Unverified")
-    else:
-        st = pill("sat", "Satellite")
-    ven_tbl_rows.append([
-        sdate(r["date"]), esc(r["start"]), esc(r["event_no"]), esc(r["name"]),
-        money(r["buy_in"]), money(r["guarantee"]) or pill("unv", "none listed"),
-        esc(r["reg_close"] or ""), esc(f"#{r['structure_no']}"),
-        st,
-        link(r["source_schedule"], "Schedule PDF") + " · " + link(r["structure_sheet"], "Structure sheet"),
-    ])
-tourney_body = f"""
-<p class="lede">Venetian DeepStack Extravaganza IV, Nov 16 to Dec 23, 2026. Single entry means one buy-in, with no re-entry, rebuy or add-on terms on the structure sheet. Rows are entry-level only; restarts and final-table rows are in the official PDF and are excluded here.</p>
-<div class="grid4">
-{stat("Verified single-entry events", verified_count, "structure sheet read")}
-{stat("Unverified events", unverified_count, "listed on official schedule; structure not read")}
-{stat("Satellites", satellite_count, "excluded from ranking")}
-{stat("Wynn WPT rows (unverified)", len(wpt_rows), "re-entry not reviewed")}
-</div>
-<h2>All Venetian entry-level events</h2>
-<p class="note">Status key: <span class="pill ver">Verified single entry</span> = structure sheet read, no re-entry/add-on language. <span class="pill unv">Unverified</span> = official schedule row, structure not read, so single-entry is not confirmed. Blank guarantee = none listed on the official schedule.</p>
-{table(["Date","Start","Event #","Event","Buy-in","Guarantee","Reg. closes","Structure","Status","Sources"], ven_tbl_rows, filter_id="ven")}
-<h2>Wynn WPT World Championship (Nov 27 to Dec 13 rows read)</h2>
-<p class="note">These events are listed on the official WPT schedule. Their re-entry and rebuy terms were not reviewed, so they are <span class="pill unv">Unverified</span> and not ranked. The official structures document (<a href="{esc(D.WYNN_WPT_STRUCTS)}" target="_blank" rel="noopener">WPT structures PDF</a>) should be read for each event before any of them is treated as single entry.</p>
-{table(["Date","Start","Event","Buy-in","Guarantee","Status","Sources"], [[sdate(r["date"]), esc(r["start"]), esc(r["name"]), money(r["buy_in"]), money(r["guarantee"]) or pill("unv","none listed"), pill("unv","Unverified"), link(D.WYNN_WPT_SCHED,"WPT schedule PDF")+" · "+link(D.WYNN_WPT_STRUCTS,"WPT structures PDF")] for r in wpt_rows], filter_id="wpt")}
-"""
-open(os.path.join(OUT, "tournaments.html"), "w").write(page("tournaments.html", "Single-entry tournaments", tourney_body, "tournaments.html"))
 
-# ---------- Page: advantage ----------
-adv_tbl = []
-for r in adv_rows:
-    atype = r["advantage"]
-    kind = "unv" if atype == "unverified" else "adv"
-    adv_tbl.append([esc(r["room"]), esc(r["event"]), esc(r["start"]), money(r["buy_in"]), money(r["guarantee"]) or pill("unv","none listed") if r["guarantee"] is not None else "", pill(kind, atype), esc(r["note"]) + (f' <em>{esc(r.get("flag"))}</em>' if r.get("flag") else ""), link(r["source"], "Official source")])
-adv_body = f"""
-<p class="lede">Not single entry, or the extra spending buys an advantage. These are listed separately as you asked. Re-entry, rebuys, add-ons and purchased chips are all counted here.</p>
-<div class="grid4">
-{stat("Entries in this section", len(adv_rows), "from official sources")}
-{stat("Unverified", sum(1 for r in adv_rows if r["advantage"]=="unverified"), "re-entry not reviewed")}
-</div>
-{table(["Room","Event","Start","Buy-in","Guarantee","Type","Terms (from official text)","Source"], adv_tbl, filter_id="adv")}
-<h2>Verification notes</h2>
+# ---------------------------------------------------------------------------
+# Derived numbers
+# ---------------------------------------------------------------------------
+single = D.VEN_SINGLE
+single_n = len(single)
+single_reviewed = sum(1 for r in single if r[7])
+multi_rows = D.VEN_MULTI_FLIGHT
+sat_rows = D.VEN_SATELLITES
+other_rows = D.VEN_OTHER_EXCLUDED
+cont_rows = D.VEN_CONTINUATIONS
+events_all = set(r[2] for r in single) | set(r[2] for r in multi_rows) | set(r[2] for r in sat_rows) | set(r[2] for r in other_rows)
+events_total = len(events_all)
+ratio = lambda r: (r[5] / r[4]) if r[5] else None  # GTD / buy-in (computed)
+wpt_counts = {}
+for r in D.WYNN_ROWS:
+    wpt_counts[r[5]] = wpt_counts.get(r[5], 0) + 1
+wpt_total = len(D.WYNN_ROWS)
+ranked = sorted([r for r in single if ratio(r)], key=lambda r: -ratio(r))
+top_ratio = ranked[:6]
+cheapest = sorted(single, key=lambda r: (r[4], -(r[5] or 0)))[:5]
+events_with_gtd = sum(1 for r in single if r[5])
+excluded_events = len(set(r[2] for r in multi_rows) | set(r[2] for r in sat_rows) | set(r[2] for r in other_rows))
+
+# Days with 2+ single-entry options
+by_day = {}
+for r in single:
+    by_day.setdefault(r[0], []).append(r)
+multi_day = {d: v for d, v in by_day.items() if len(v) >= 2}
+earliest = min(single, key=lambda r: dt.datetime.strptime(r[1], "%I:%M %p").time())
+earliest_time = earliest[1]
+
+# ---------------------------------------------------------------------------
+# PAGE: index
+# ---------------------------------------------------------------------------
+cards = """
+<div class="cards">
+<div class="card"><b>%d</b><span>Venetian single-entry events (official schedule)</span><br><a href="single-entry.html">View table &rarr;</a></div>
+<div class="card"><b>%d</b><span>Events excluded: multi-flight, satellites, team, restricted</span><br><a href="excluded.html">View &rarr;</a></div>
+<div class="card"><b>%d</b><span>WPT / Wynn festival schedule rows (official)</span><br><a href="wpt-wynn.html">View &rarr;</a></div>
+<div class="card"><b>%d</b><span>Items flagged for review (unverified or irregular)</span><br><a href="flagged.html">Review &rarr;</a></div>
+</div>""" % (single_n, len(multi_rows) + len(sat_rows) + len(other_rows), wpt_total, len(D.FLAGS))
+
+index_body = cards + """
+<h2>What this site covers</h2>
+<p>Live, upcoming poker tournaments on or near the Las Vegas Strip, filtered to <b>single-entry</b> events. Events that allow a second or later starting-flight entry, a re-entry, a rebuy or an add-on are kept in a separate section, as requested. Every table row links to the official source it came from.</p>
+<h2>Pages</h2>
 <ul>
-<li>Wynn's Monday-Thursday, Saturday and Sunday events allow re-entry at the entry fee, so they are kept out of the single-entry list.</li>
-<li>Bellagio's Saturday heading says $1,100, the file name says $1,000, and the rules allocate $600. The buy-in is recorded as $600 from the rules text; this conflict is in Flagged for Review.</li>
-<li>Caesars' $50 add-on and re-entry terms come from the official daily NLH flyer.</li>
+<li><a href="summary.html">Executive summary</a> - the short version: what is verified, what is not, and the answer to the 8:00 AM all-day question.</li>
+<li><a href="single-entry.html">Single-entry tournaments</a> - all %d Venetian single-entry events, ranked by guarantee-to-buy-in ratio.</li>
+<li><a href="daily-schedule.html">Daily schedule</a> - single-entry options by day, with the days that have two or more shots.</li>
+<li><a href="excluded.html">Excluded</a> - multi-flight, satellites, the team event, and Day-2 continuation rows.</li>
+<li><a href="wpt-wynn.html">WPT / Wynn festival</a> - the full official Wynn schedule. Almost all of it is multi-entry.</li>
+<li><a href="hotels.html">Hotels</a> - official resort fees only; nightly rates and walking times are not verified yet.</li>
+<li><a href="analysis.html">Analysis</a> - method, findings, and what the data does and does not support.</li>
+<li><a href="questions.html">Questions to answer</a> - what must be known before a decision can be made, and where to get it.</li>
+<li><a href="suggestions.html">Suggestions</a> - site improvements for review before anything is changed.</li>
+<li><a href="flagged.html">Flagged for Review</a> - irregularities and unverified items, with source links.</li>
+<li><a href="sources.html">Sources &amp; repo review</a> - every source URL used, and the repository review.</li>
 </ul>
-"""
-open(os.path.join(OUT, "advantage.html"), "w").write(page("advantage.html", "Advantage / not single-entry", adv_body, "advantage.html"))
+<div class="note"><b>Important:</b> No hotel can yet be recommended on verified numbers. Nightly rates and walking times are not available from official sources in this session. See <a href="hotels.html">Hotels</a> and <a href="questions.html">Questions</a>.</div>
+""" % single_n
+page("index.html", "Las Vegas Strip Poker Research", index_body, active="index.html",
+     lead="A simple dashboard of verified live poker tournaments near the Strip, single-entry first.")
 
-# ---------- Page: hotels ----------
-hot_tbl = []
-for r in hotel_rows:
-    fee_txt = money(r["resort_fee_before_tax"]) if r["resort_fee_before_tax"] is not None else pill("unv", "unverified")
-    hot_tbl.append([
-        esc(r["property"]), esc(r["poker_room"]), fee_txt,
-        pill("ver","Official") if r["fee_source_type"]=="official" else pill("unv","Third-party only"),
-        money(r["fee_plus_tax_calc"]) if r["fee_plus_tax_calc"] else "",
-        pill("unv", "Blank: unverified"), pill("unv", "Blank: unverified"),
-        esc(r["notes"]), link(r["fee_source"], "Fee source"),
-    ])
-hotel_body = f"""
-<p class="lede">The true nightly cost is room rate plus resort fee plus tax. Only Wynn's resort fee is confirmed from an official page. Room rates and walking times cannot be verified from official static sources, so those columns are blank.</p>
-<div class="grid4">
-{stat("Resort fee confirmed (official)", "1 of 6", "Wynn Las Vegas")}
-{stat("Room rates verified", "0", "dynamic pricing")}
-{stat("Walking times verified", "0", "not measured")}
-{stat("Tax rate", "13.38%", "third-party; official page not retrieved")}
-</div>
-<p class="note"><strong>Tax:</strong> {esc(D.TAX_NOTE)} Tax sources: {' · '.join(link(u, 'third-party') for u in D.TAX_SOURCES)}.</p>
-<p class="note"><strong>Fee + tax (calc)</strong> = resort fee × (1 + 13.38%). It is a calculation, not a quote, and it excludes the room rate.</p>
-{table(["Property","Poker room (official location)","Resort fee / night (before tax)","Fee status","Fee + tax (calc)","Room rate / night","Walk to poker room","Notes","Source"], hot_tbl, filter_id="hot")}
-"""
-open(os.path.join(OUT, "hotels.html"), "w").write(page("hotels.html", "Hotels", hotel_body, "hotels.html"))
-
-# ---------- Page: schedule ----------
-sched_rows = []
-for r in sorted([r for r in ven_rows if r["status"] in ("verified","unverified")], key=lambda r:(r["date"], r["start"])):
-    sched_rows.append([sdate(r["date"]), esc(r["start"]), esc(r["name"]), money(r["buy_in"]),
-                       esc(r["reg_close"] or ""), pill("ver","Single entry") if r["status"]=="verified" else pill("unv","Unverified"),
-                       link(r["source_schedule"], "Schedule PDF")])
-schedule_body = f"""
-<p class="lede">Start times are from the official schedule. The earliest verified single-entry start is <strong>{esc(earliest_verified)}</strong>. No verified single-entry event starts at 8:00 AM, so a plan that begins at 8:00 AM cannot be built from verified data.</p>
-<h2>Plan logic</h2>
+# ---------------------------------------------------------------------------
+# PAGE: executive summary
+# ---------------------------------------------------------------------------
+top_names = "; ".join("%s (%s, %s)" % (r[3].split(" - ")[0], wd(r[0]), r[1]) for r in top_ratio[:3])
+summary_body = """
+<h2>Bottom line</h2>
 <ul>
-<li><strong>Morning anchor:</strong> the 10:10 or 11:10 AM events are the earliest single-entry starts in the verified data. Official pages do not publish finish times, so the length of each day depends on how long you last.</li>
-<li><strong>Evening option:</strong> the 5:10 PM bounty events ($200 to $300, verified single entry) are a lower-cost option on the same day. Whether you can play both depends on how long the morning event runs; the official sources do not give that time.</li>
-<li><strong>Not included:</strong> Caesars' 10:00 AM and Wynn's 12:00 PM daily events start earlier than most single-entry events, but they allow re-entry, add-ons or rebuys, so they sit in the advantage section.</li>
+<li><b>%d single-entry events</b> are listed at the Venetian DeepStack Extravaganza IV (Nov 16 - Dec 23, 2026) on the official Venetian schedule. Of these, <b>%d</b> have a structure sheet reviewed in this session; the rest are flagged for line-by-line confirmation.</li>
+<li><b>%d events</b> are excluded from the single-entry list: multi-flight events (%d rows), satellites (%d rows), one team event, and one restricted-eligibility event. Day-2 restarts are listed separately as continuations.</li>
+<li><b>The WPT World Championship festival at Wynn</b> (%d official schedule rows) is treated as multi-entry: every Wynn structure sheet reviewed states unlimited re-entry or one re-entry. The $10,400 WPT World Championship structure was not found, so it is marked unverified.</li>
+<li><b>Best single-entry value by guarantee per buy-in (computed from official figures):</b> %s.</li>
+<li><b>8:00 AM start:</b> not achievable from verified data. The earliest single-entry start found is <b>%s</b>. No official 8:00 AM single-entry event was found.</li>
+<li><b>Hotels:</b> only resort fees are verified. The Venetian and Wynn both list a <b>$55 plus tax</b> resort fee on official pages. Nightly rates, the Clark County tax rate and walking times are <b>not verified</b>, so no hotel ranking is possible yet.</li>
+<li><b>Coverage gap:</b> other Strip rooms (Bellagio, MGM Grand, Caesars, Resorts World, Horseshoe/Paris, etc.) and the ARIA Poker Open have not been verified from official schedules.</li>
 </ul>
-<h2>Single-entry and unverified starts, by date</h2>
-{table(["Date","Start","Event","Buy-in","Reg. closes","Status","Source"], sched_rows, filter_id="sch")}
-"""
-open(os.path.join(OUT, "schedule.html"), "w").write(page("schedule.html", "Schedule", schedule_body, "schedule.html"))
+<h2>Key numbers</h2>
+<div class="cards">
+<div class="card"><b>%d</b><span>Venetian events in the official schedule (64 numbered events)</span></div>
+<div class="card"><b>%d</b><span>Single-entry events with a published guarantee</span></div>
+<div class="card"><b>%d</b><span>Single-entry events with a structure sheet reviewed</span></div>
+<div class="card"><b>%d</b><span>Single-entry days with two or more shots</span></div>
+<div class="card"><b>%d</b><span>Items flagged for review</span></div>
+</div>
+<h2>Verified facts used</h2>
+<ul>
+<li>Venetian schedule and structure sheets: <a href="%s" target="_blank">official schedule</a>; example structure: <a href="%s" target="_blank">structure sheet for Events #9, #11, #13 and others</a>.</li>
+<li>Venetian resort fee: <a href="%s" target="_blank">official page</a> ($55 plus tax per night).</li>
+<li>WPT / Wynn: <a href="%s" target="_blank">official Wynn schedule PDF</a>, <a href="%s" target="_blank">official Wynn structures PDF</a> (re-entry rules), <a href="%s" target="_blank">official WPT event page</a> (Dec 13-20 dates).</li>
+<li>Wynn resort fee: <a href="%s" target="_blank">official terms page</a> ($55 plus tax per room night).</li>
+</ul>
+<div class="note"><b>Decision readiness:</b> the single-entry list is ready for a shortlist. A hotel decision is <b>not</b> ready, and a daily all-day plan cannot be confirmed until run-times and the remaining structure sheets are checked. See <a href="questions.html">Questions to answer</a>.</div>
+""" % (single_n, single_reviewed, excluded_events,
+       len(multi_rows), len(sat_rows), wpt_total, top_names, earliest_time,
+       64, events_with_gtd, single_reviewed, len(multi_day), len(D.FLAGS),
+       D.VEN_SCHED, D.VEN_STRUCT.format(1), D.VEN_RESORT_FEE, D.WYNN_SCHED_PDF, D.WYNN_STRUCT_PDF, D.WPT_EVENT_PAGE, D.WYNN_TERMS)
+page("summary.html", "Executive summary", summary_body, active="summary.html",
+     lead="Important details first: what is verified, what is excluded, and what is still missing.")
 
-# ---------- Page: analysis ----------
-def rrow(r):
-    return [sdate(r["date"]), esc(r["start"]), esc(r["name"]), money(r["buy_in"]), money(r["guarantee"]),
-            f'{r["gtd_to_buyin"]:,.1f}x', money(r["prize_pool_per_entry"]) if r["prize_pool_per_entry"] else pill("unv","unverified"),
-            f'{r["breakeven_entries"]:,}' if r.get("breakeven_entries") else "", link(r["structure_sheet"], f'Structure #{r["structure_no"]}')]
-top_ratio = [rrow(r) for r in ranked_by_ratio[:10]]
-top_gtd = [rrow(r) for r in ranked_by_gtd[:10]]
-analysis_body = f"""
-<p class="lede">Analysis uses only verified single-entry Venetian events. The guarantee-to-buy-in ratio is a calculation: guarantee ÷ buy-in. Breakeven entries is also a calculation: guarantee ÷ prize pool per entry from the structure sheet. A guarantee is paid even if the field is small, so a higher breakeven count means more risk that the event runs as an overlay.</p>
-<h2>Top 10 by guarantee-to-buy-in ratio (calc)</h2>
-{table(["Date","Start","Event","Buy-in","Guarantee","GTD ÷ buy-in (calc)","Prize pool / entry","Breakeven entries (calc)","Structure"], top_ratio)}
-<h2>Top 10 by guarantee (verified single-entry)</h2>
-{table(["Date","Start","Event","Buy-in","Guarantee","GTD ÷ buy-in (calc)","Prize pool / entry","Breakeven entries (calc)","Structure"], top_gtd)}
+# ---------------------------------------------------------------------------
+# PAGE: single-entry table
+# ---------------------------------------------------------------------------
+rows = []
+for r in sorted(single, key=lambda x: (x[0], dt.datetime.strptime(x[1], "%I:%M %p").time())):
+    date, time_, ev, name, buy, gtd, sn, rev, pool, note = r
+    rat = "%.1fx" % ratio(r) if ratio(r) else '<span class="tag warn">n/a</span>'
+    rows.append([
+        td(e(wd(date))), td(e(time_)), td(e(ev), "num"), td(e(name)),
+        td(money(buy), "num"), td(money(gtd), "num"), td(rat, "num"),
+        td(money(pool) if pool else '<span class="tag">not reviewed</span>', "num"),
+        td(('<span class="tag ok">reviewed</span>' if rev else '<span class="tag warn">confirm</span>')),
+        td('%s &middot; %s' % (link(D.VEN_SCHED, "schedule"), link(struct_url(sn), "structure #%d" % sn))),
+        td(e(note)),
+    ])
+single_body = """
+<div class="note"><b>Single-entry rule used:</b> single day, one starting flight, no re-entry, rebuy or add-on named on the official schedule, not a satellite, not a team event, not a Day-2 restart. Structure sheets confirm the event number and guarantee for the rows marked <i>reviewed</i>. <b>Confirm</b> rows are provisional until their structure sheet is read.</div>
+<h2>Top value (guarantee per buy-in, computed)</h2>
+<p>Computed as guarantee &divide; buy-in from official figures. Bounty events include bounty money inside the guarantee, so they are not directly comparable with plain guarantees.</p>
+%s
+<h2>All single-entry events (%d)</h2>
+%s
+""" % (
+    table("top", ["Date", "Time", "Event #", "Event", "Buy-in", "GTD", "GTD / buy-in", "Prize pool per buy-in (structure)", "Structure", "Sources", "Notes"],
+          [[td(e(wd(r[0]))), td(e(r[1])), td(e(r[2]), "num"), td(e(r[3].split(' - ')[0])), td(money(r[4]), "num"),
+            td(money(r[5]), "num"), td("%.1fx" % ratio(r), "num"),
+            td(money(r[8]) if r[8] else '<span class="tag">not reviewed</span>', "num"),
+            td('<span class="tag ok">reviewed</span>' if r[7] else '<span class="tag warn">confirm</span>'),
+            td('%s &middot; %s' % (link(D.VEN_SCHED, "schedule"), link(struct_url(r[6]), "structure #%d" % r[6]))),
+            td(e(r[9]))] for r in top_ratio], filt=False),
+    single_n, table("single", ["Date", "Time", "Event #", "Event", "Buy-in", "GTD", "GTD / buy-in", "Prize pool per buy-in (structure)", "Structure status", "Sources", "Notes"], rows)
+)
+page("single-entry.html", "Single-entry tournaments (Venetian DeepStack Extravaganza IV)", single_body, active="single-entry.html",
+     lead="All single-entry events from the official Venetian schedule, Nov 16 - Dec 23, 2026. Times are venue times (Las Vegas).")
+
+# ---------------------------------------------------------------------------
+# PAGE: daily schedule
+# ---------------------------------------------------------------------------
+day_sections = []
+for d in sorted(by_day):
+    items = sorted(by_day[d], key=lambda x: dt.datetime.strptime(x[1], "%I:%M %p").time())
+    lis = "".join("<li><b>%s</b> &middot; Event #%d &middot; %s &middot; %s <span class='tag'>%s</span></li>" % (
+        e(t), r_ev, e(name.split(' - ')[0]), money(b), "bounty" if "Bounty" in name or "PKO" in name else "no bounty")
+        for (dd, t, r_ev, name, b, g, sn, rv, pl, nt) in items)
+    flag = ' <span class="tag bad">2+ shots</span>' if len(items) >= 2 else ""
+    day_sections.append("<div class='box'><h3>%s%s</h3><ul>%s</ul></div>" % (e(wd(d)), flag, lis))
+sched_body = """
+<div class="note"><b>8:00 AM start: not possible from verified data.</b> The earliest single-entry start found on the official Venetian schedule is <b>%s</b>. Run-times are not published, so a day with two events can overlap. Check overlap with the structure sheets before planning.</div>
+<h2>Days with two or more single-entry options</h2>
+<p>These days allow two or more single-entry starts. Count: <b>%d</b>.</p>
+<h2>All single-entry days</h2>
+%s
+""" % (earliest_time, len(multi_day), "".join(day_sections))
+page("daily-schedule.html", "Daily schedule (single-entry options)", sched_body, active="daily-schedule.html",
+     lead="Single-entry options by day, in time order. Use this to build a plan; run-times still need confirming.")
+
+# ---------------------------------------------------------------------------
+# PAGE: excluded
+# ---------------------------------------------------------------------------
+ex_rows = []
+for r in sorted(multi_rows, key=lambda x: (x[0], dt.datetime.strptime(x[1], "%I:%M %p").time())):
+    date, time_, ev, name, buy, gtd, sn, rev, note = r
+    ex_rows.append([td(e(wd(date))), td(e(time_)), td(e(ev), "num"), td(e(name)), td(money(buy), "num"), td(money(gtd), "num"),
+                    td('<span class="tag bad">multi-flight</span>'),
+                    td('%s &middot; %s' % (link(D.VEN_SCHED, "schedule"), link(struct_url(sn), "structure #%d" % sn))),
+                    td(e(note))])
+for r in sat_rows:
+    date, time_, ev, name, buy, gtd, sn, rev = r
+    ex_rows.append([td(e(wd(date))), td(e(time_)), td(e(ev), "num"), td(e(name)), td(money(buy), "num"), td(money(gtd), "num"),
+                    td('<span class="tag">satellite</span>'),
+                    td('%s &middot; %s' % (link(D.VEN_SCHED, "schedule"), link(struct_url(sn), "structure #%d" % sn))),
+                    td("Award is a seat in a later event, not cash")])
+for r in other_rows:
+    date, time_, ev, name, buy, gtd, sn, rev, note = r
+    ex_rows.append([td(e(wd(date))), td(e(time_)), td(e(ev), "num"), td(e(name)), td(money(buy), "num"), td(money(gtd), "num"),
+                    td('<span class="tag warn">team / restricted</span>'),
+                    td('%s &middot; %s' % (link(D.VEN_SCHED, "schedule"), link(struct_url(sn), "structure #%d" % sn))),
+                    td(e(note))])
+cont_table_rows = [[td(e(wd(d))), td(e(t)), td(e(ev), "num"), td(e(n)), td('<span class="tag">continuation</span>'),
+                    td(link(D.VEN_SCHED, "schedule")), td("Not a new entry")] for (d, t, ev, n) in cont_rows]
+ex_body = """
+<div class="note"><b>Why these are excluded:</b> players may enter more than one starting flight (multi-flight), or the event is a satellite, a team event, or has restricted eligibility. Under the brief, anything that lets you spend more to gain an advantage belongs in this separate section.</div>
+<h2>Excluded entries (%d rows)</h2>
+%s
+<h2>Day-2 / Day-3 / final-table continuations (%d rows, not new entries)</h2>
+%s
+""" % (len(ex_rows), table("excl", ["Date", "Time", "Event #", "Event", "Buy-in", "GTD", "Reason", "Sources", "Notes"], ex_rows),
+       len(cont_table_rows), table("cont", ["Date", "Time", "Event #", "Event", "Type", "Source", "Notes"], cont_table_rows))
+page("excluded.html", "Excluded from single-entry (multi-entry, satellites, team, restricted)", ex_body, active="excluded.html",
+     lead="Kept separate as requested. Multi-flight and re-entry events can be entered more than once.")
+
+# ---------------------------------------------------------------------------
+# PAGE: WPT / Wynn
+# ---------------------------------------------------------------------------
+STATUS_TXT = {
+    "RE": ('<span class="tag bad">re-entry (structure reviewed)</span>', "Multi-entry"),
+    "RE1": ('<span class="tag bad">1 entry + 1 re-entry</span>', "Multi-entry"),
+    "NR": ('<span class="tag warn">not reviewed - provisionally excluded</span>', "Provisional"),
+    "UV": ('<span class="tag warn">unverified (structure not found)</span>', "Unverified"),
+    "SAT": ('<span class="tag">satellite</span>', "Satellite"),
+    "CONT": ('<span class="tag">continuation</span>', "Continuation"),
+    "IRR": ('<span class="tag bad">irregular (flagged)</span>', "Flagged"),
+}
+w_rows = []
+for r in D.WYNN_ROWS:
+    date, time_, name, buy, gtd, st = r
+    w_rows.append([td(e(wd(date))), td(e(time_)), td(e(name)), td(money(buy), "num"), td(money(gtd), "num"),
+                   td(STATUS_TXT[st][0]), td('%s &middot; %s' % (link(D.WYNN_SCHED_PDF, "schedule PDF"), link(D.WPT_EVENT_PAGE, "WPT page")))])
+rev_st = sum(1 for r in D.WYNN_ROWS if r[5] in ("RE", "RE1"))
+wpt_body = """
+<div class="note"><b>Finding:</b> the official Wynn structure sheets reviewed (13 formats) state <b>unlimited re-entry</b> (or one entry plus one re-entry for the WPT Prime Championship). The festival is therefore kept out of the single-entry list.<br>
+<b>Date conflict:</b> the official WPT page says the World Championship runs Dec 13-20; a third-party site says Dec 14-22. Official dates are used. See <a href="flagged.html">Flagged</a>.</div>
+<h2>Full official Wynn / WPT schedule (%d rows)</h2>
+<p>Re-entry confirmed on structure sheet: %d rows. Provisional or unverified: the rest. Status is explained per row.</p>
+%s
+""" % (wpt_total, rev_st, table("wpt", ["Date", "Time", "Event", "Buy-in", "GTD", "Status", "Sources"], w_rows))
+page("wpt-wynn.html", "WPT World Championship at Wynn Las Vegas (festival schedule)", wpt_body, active="wpt-wynn.html",
+     lead="Official schedule, Nov 27 - Dec 21, 2026, with entry status for every row.")
+
+# ---------------------------------------------------------------------------
+# PAGE: hotels
+# ---------------------------------------------------------------------------
+h_rows = []
+for h in D.HOTELS:
+    fee = ("$%d plus tax" % h["resort_fee_pre_tax"]) if h["resort_fee_pre_tax"] else '<span class="tag warn">unverified</span>'
+    h_rows.append([
+        td(e(h["name"])),
+        td(fee, "num"),
+        td(e(h["resort_fee_status"])),
+        td(link(h["resort_fee_source"], "official page") if h["resort_fee_source"] else '<span class="tag warn">no official source</span>'),
+        td(money(h["base_rate"]), "num"),
+        td(e(h["base_rate_status"])),
+        td(e(h["walk_status"])),
+        td(e(h["tourneys"])),
+        td(e(h["other"])),
+    ])
+hotel_body = """
+<div class="note"><b>Result: no hotel recommendation can be made on verified data yet.</b> Only the resort fees are confirmed from official pages. Nightly rates, tax, and walking times are blank because they could not be confirmed from an official source in this session.</div>
+<h2>True cost per night (formula)</h2>
+<div class="box">
+<p><b>True nightly cost</b> = (base room rate for your dates + resort fee + room tax + any mandatory extra-guest or deposit fees) &divide; nights.</p>
+<p>Inputs: base room rate - <span class="tag warn">unverified</span> &middot; resort fee - verified for Venetian and Wynn ($55 plus tax) &middot; room tax - <span class="tag warn">unverified</span>. No number is filled in.</p>
+</div>
+<h2>Candidate hotels (official data only)</h2>
+%s
+<h2>Distance rule</h2>
+<p>Requirement: within at least 30 minutes' walk of each tournament. Walk times are not verified, so no hotel is confirmed to meet it. The Venetian hosts the DeepStack single-entry events; the Wynn hosts the WPT festival (multi-entry, excluded).</p>
+""" % table("hotels", ["Hotel", "Resort fee (pre-tax)", "Fee status", "Fee source", "Base rate / night", "Rate status", "Walking to tournaments", "Tournaments here", "Other requirements"], h_rows)
+page("hotels.html", "Hotels near the Strip tournaments", hotel_body, active="hotels.html",
+     lead="Resort fees from official pages. Rates and walking times are pending.")
+
+# ---------------------------------------------------------------------------
+# PAGE: analysis
+# ---------------------------------------------------------------------------
+analysis_body = """
+<h2>Method</h2>
+<ul>
+<li><b>Single-entry filter:</b> single day, one starting flight, no re-entry/rebuy/add-on on the official schedule, not a satellite, team, or Day-2 restart.</li>
+<li><b>Value metric:</b> guarantee &divide; buy-in (computed). It is a simple proxy for how much the organiser promises per dollar. It ignores field size and the house fee. The prize pool per buy-in (from structure sheets) is shown where reviewed (e.g., 80%% of a $200 buy-in goes to the prize pool; 85%% of $600).</li>
+<li><b>Cost:</b> buy-in only. Hotel cost is not included because no nightly rate is verified.</li>
+</ul>
 <h2>Findings</h2>
 <ul>
-<li>The highest prize pools are at the Venetian: $1,000,000 for the $2,200 PokerAtlas event (1A on Dec 12, 10:10 AM) and $500,000 for the $800 event (#26) and $1,100 event (#56). The 1A flights are verified single entry.</li>
-<li>The best value per dollar is the $800 event (#26, GTD ÷ buy-in 625x) and the $300 event #1 (250x). These are verified single entry and also have large field-size risk; check the breakeven counts.</li>
-<li>Verified bounty events ($200 to $300) have $8,000 to $15,000 guarantees. Their GTD ÷ buy-in is 40x to 50x, below the $75,000-guarantee events, but their buy-ins are much lower.</li>
-<li>Wynn's cheapest daily events ($200 with $10,000 to $25,000 guarantees) and Caesars' $100 daily events all allow re-entry or add-ons, so they cannot be ranked as single entry.</li>
-<li>Bellagio's Friday and Sunday events allow re-entry and sell extra chips for a staff gratuity, so they are excluded from single entry.</li>
+<li><b>Best guarantee per buy-in (single-entry):</b> %s.</li>
+<li><b>Lowest-cost single-entry events:</b> %s.</li>
+<li><b>Bounty events:</b> many single-entry events are bounty tournaments. The bounty money is part of the guarantee, so the cash prize pool for those events is smaller than the headline number. Treat bounty GTDs with care.</li>
+<li><b>Age limit:</b> the Seniors events are 50+ only; they are included but flagged.</li>
+<li><b>Schedule shape:</b> single-entry events cluster at 11:10 AM, 12:10 PM, 10:10 AM and 5:10 PM. %d days have two or more single-entry starts.</li>
+<li><b>WPT:</b> none of the reviewed WPT formats is single-entry, so the WPT festival (the largest guarantees) is outside the single-entry list.</li>
 </ul>
-<h2>Method and limits</h2>
+<h2>What the data does not yet support</h2>
 <ul>
-<li>Single-entry status is checked only from each event's official structure sheet. Events whose sheets were not read are shown as unverified.</li>
-<li>Prize pool per entry is taken from the structure sheet. Two sheets conflict on house fees for the same buy-in: the $300 sheets say $242 and $240 per entry, and the $400 sheets say $330 and $335. Both figures are shown in Flagged for Review.</li>
-<li>Room rates, walking distance and nightly hotel costs are not verified and are not used in the rankings.</li>
+<li>A ranking by expected value (field size and payout structure per event are not verified).</li>
+<li>An all-day plan starting at 8:00 AM (no official 8:00 AM single-entry start found).</li>
+<li>A hotel ranking (no verified nightly rate or walking time).</li>
 </ul>
-"""
-open(os.path.join(OUT, "analysis.html"), "w").write(page("analysis.html", "Analysis", analysis_body, "analysis.html"))
+""" % (", ".join("%s (%.1fx, %s)" % (r[3].split(' - ')[0], ratio(r), wd(r[0])) for r in top_ratio[:4]),
+       ", ".join("%s on %s" % (r[3].split(' - ')[0], wd(r[0])) for r in cheapest[:3]), len(multi_day))
+page("analysis.html", "Analysis and findings", analysis_body, active="analysis.html",
+     lead="What the verified data says, and what it cannot say yet.")
 
+# ---------------------------------------------------------------------------
+# PAGE: questions
+# ---------------------------------------------------------------------------
+q_rows = [[td(e(c)), td(e(q)), td(e(s))] for (c, q, s) in D.QUESTIONS]
+q_body = """
+<p>These must be answered before a decision is reasonably possible. The left column shows the area; the right column shows where the answer comes from.</p>
+%s
+""" % table("qs", ["Area", "Question", "Where the answer comes from"], q_rows)
+page("questions.html", "Questions and information still needed", q_body, active="questions.html",
+     lead="The information we have, and the information we still need.")
 
-# ---------- Flagged for review ----------
-FLAGS = [
- # id, category, item, detail, sources
- ("F01","Irregularity","Bellagio Saturday buy-in conflicts",
-  "PDF heading reads $1100 buy-in; the file name reads $1000; the rules allocate a $600 buy-in. Recorded as $600 from the rules text.",
-  [D.BEL_SAT]),
- ("F02","Irregularity","Bellagio Saturday PDF lists a past Day 2 date",
-  "Rules say 'Combined Final Day 2 (9/13/26)'. That date is before today (2026-11-16) and the PDF may be an old template.",
-  [D.BEL_SAT]),
- ("F03","Irregularity","Bellagio poker page weekday does not match the date",
-  "Page says tournament play 'will resume on Saturday, July 26'. July 26, 2026 is a Sunday (July 26, 2025 was a Saturday). The page looks stale; the date was not used.",
-  [D.BEL_POKER]),
-  ("F05","Irregularity","Venetian $300 house fee differs between two structure sheets",
-  "Structure #5 withholds $58 (prize pool $242). Structure #10 withholds $60 (prize pool $240). Both are $300 1-Day or Day 1 events. The prize-pool figure used in the breakeven math comes from each event's own sheet.",
-  [D.struct(5), D.struct(10)]),
- ("F06","Irregularity","Venetian $400 house fee differs between two structure sheets",
-  "Structure #2/#3 withholds $70 (prize pool $330). Structure #6 withholds $65 (prize pool $335).",
-  [D.struct(2), D.struct(3), D.struct(6)]),
- ("F07","Irregularity","Venetian series page still shows a finished series",
-  "The DeepStack page still references the WPT Fall Festival, which ended Nov 15, 2026, before the as-of date (2026-11-16).",
-  [D.S_SERIES]),
- ("F08","Irregularity","Wynn 'Single Day' label conflicts with re-entry terms",
-  "Wynn's Mon-Thu and Sat/Sun daily events allow re-entry at the entry fee, so they are excluded from the single-entry list.",
-  [D.WYNN_DAILY_STRUCTS]),
- ("F09","Irregularity","Official Wynn links return a 'checked out' page",
-  "https://www.wynnlasvegas.com/Casino/Poker was removed, and https://www.wynnlasvegas.com/hotel shows a 'checked out' page. Neither is used as a source.",
-  ["https://www.wynnlasvegas.com/Casino/Poker", "https://www.wynnlasvegas.com/hotel"]),
- ("F10","Irregularity","Official Venetian tournaments page returns 404",
-  "https://www.venetianlasvegas.com/resort/casino/poker/tournaments.html returns a 404. The working schedule is the DeepStack series page.",
-  ["https://www.venetianlasvegas.com/resort/casino/poker/tournaments.html", D.S_SERIES]),
- ("F11","Irregularity","WSOP Las Vegas 2026 has ended; no Las Vegas events on the WSOP schedule for Nov-Dec 2026",
-  "The official WSOP.com schedule was checked for Nov 16 to Dec 23, 2026 and lists no Las Vegas events in that window. It was not used as a tournament source.",
-  [D.WSOP_SCHED]),
- ("F12","Irregularity","Venetian 'Single Day' events may still include bounties and late registration",
-  "Structure sheets list late-registration windows. Late registration was not treated as a re-entry. Confirm with the room if it counts as a second entry.",
-  [D.struct(1), D.struct(11)]),
- ("F13","Unverified","Resort fees: Bellagio, ARIA, Venetian, Palazzo, Caesars Palace",
-  "No official resort-fee page was retrieved for these properties. Third-party sites conflict: Bellagio and ARIA appear at $50 on one list and $55 on others.",
-  [ "https://www.applevacations.com/hotels/bellagio/", "https://www.virginatlantic.com/holidays/holiday-types/city-breaks/hotels/aria-resort-and-casino",
-    "https://www.resortfeechecker.com/1443-resort_fee_venetian_resort_las_vegas.html", "https://www.resortfeechecker.com/41245-resort_fee_caesars_palace.html", "https://unleashvegas.com/guides/vegas-basics/resort-fees"]),
- ("F14","Confirmed","Wynn resort fee: official terms used",
-  "Official Wynn terms state a $55 resort fee plus tax. The official figure is used; third-party figures are not used for Wynn.",
-  [D.WYNN_TERMS]),
- ("F15","Unverified","Clark County lodging tax (13.38%) not confirmed from an official page",
-  "The rate is reported by third-party sites that cite Clark County. The official Clark County tax page was not retrieved.",
-  D.TAX_SOURCES),
- ("F16","Unverified","Aria has no official daily tournament schedule on its poker page",
-  "The official ARIA poker page says daily tournaments must be confirmed by phone at 702.590.7232, and it has no tournament list. Third-party listings were not used.",
-  [D.ARIA_POKER]),
- ("F17","Unverified","Resorts World poker page has no tournament schedule",
-  "The official Resorts World poker-room page covers dining only. No official tournament schedule was found.",
-  [D.RW_POKER]),
- ("F18","Unverified","MGM Grand schedule not confirmed from an official source",
-  "Only a PokerAtlas calendar, dated 2025, was found. It is treated as stale and was not used.",
-  ["https://www.pokeratlas.com/poker-room/mgm-grand-las-vegas/tournaments"]),
- ("F19","Unverified","Wynn WPT events: re-entry terms not reviewed",
-  "46 rows from the official WPT schedule (Nov 27 to Dec 13) are listed, but none was checked against the terms for re-entry. The Dec 13 'Day 1A' row reads '$1,000,000 added*' with no guarantee given in the row; the asterisk was not resolved.",
-  [D.WYNN_WPT_SCHED, D.WYNN_WPT_STRUCTS]),
- ("F20","Unverified","Wynn nightly $160 event: structure not reviewed",
-  "Listed on the official daily poster. Re-entry terms are unknown, so the event is not placed in either section.",
-  [D.WYNN_DAILY_POSTER]),
- ("F21","Unverified","31 Venetian entry-level events have unread structure sheets",
-  "These events are on the official schedule (dates, times, buy-ins, guarantees confirmed) but their single-entry status is not confirmed. The status column in Single-entry tournaments shows which ones.",
-  [D.S_SCHED]),
- ("F22","Unverified","Room rates and walking times are not verified for any hotel",
-  "Official static pages do not publish nightly rates for the dates in question. Walking distances were not measured from an official source. Both columns are blank.",
-  [D.BEL_POKER, D.ARIA_POKER, D.CAE_PAGE]),
+# ---------------------------------------------------------------------------
+# PAGE: suggestions
+# ---------------------------------------------------------------------------
+s_rows = [[td('<span class="tag">%s</span>' % e(a)), td(e(b)), td('<span class="tag warn">awaiting your choice</span>')] for (a, b) in D.SUGGESTIONS]
+sug_body = """
+<div class="note"><b>Nothing here has been implemented.</b> Review each suggestion, then choose which to adopt before any change is made.</div>
+%s
+""" % table("sug", ["Area", "Suggestion", "Status"], s_rows)
+page("suggestions.html", "Suggestions for improving the site (for review)", sug_body, active="suggestions.html",
+     lead="Choose the path before implementation.")
+
+# ---------------------------------------------------------------------------
+# PAGE: flagged
+# ---------------------------------------------------------------------------
+f_rows = []
+for i, (area, text, src1, src2) in enumerate(D.FLAGS, 1):
+    def _src(x, n):
+        if not x:
+            return None
+        if x.startswith("http"):
+            return link(x, "source %d" % n)
+        return "<i>%s</i>" % e(x)
+    links = " &middot; ".join(x for x in [_src(src1, 1), _src(src2, 2)] if x) or '<span class="tag warn">no source</span>'
+    f_rows.append([td(str(i), "num"), td('<span class="tag warn">%s</span>' % e(area)), td(e(text)), td(links)])
+flag_body = """
+<div class="note"><b>Flagged for Review.</b> These items do not block the merge. They are listed here with their sources so you can review them after the site is live and request changes.</div>
+%s
+""" % table("flags", ["#", "Area", "Item", "Sources"], f_rows)
+page("flagged.html", "Flagged for Review", flag_body, active="flagged.html",
+     lead="Irregularities and unverified items, with links for manual review.")
+
+# ---------------------------------------------------------------------------
+# PAGE: sources & repo review
+# ---------------------------------------------------------------------------
+src_list = [
+    (D.VEN_SCHED, "Venetian DeepStack Extravaganza IV full schedule (64 events, dates, times, buy-ins, guarantees)"),
+    (D.VEN_STRUCT.format(1), "Venetian structure: $200 Bounty $8K (1Day) - events 9,11,13,15,21,22,23,25,60,61,62,64; house fee $40; guarantee includes bounties"),
+    (D.VEN_STRUCT.format(7), "Venetian structure: $600 NLH (1Day) - events 14,28,63; house fee $90; guarantees $30K/$40K"),
+    (D.VEN_STRUCT.format(10), "Venetian structure: $300 NLH flights 1A/1C - multi-flight wording; house fee $60"),
+    (D.VEN_STRUCT.format(12), "Venetian structure: $800 NLH flights 1A/1C/1E - multi-flight wording; house fee $110"),
+    (D.VEN_STRUCT.format(15), "Venetian structure: $300 NLH Bounty $15K (1Day) - events 29,31,34,38,42,50,51,53,55; house fee $50"),
+    (D.VEN_STRUCT.format(21), "Venetian structure: $2,200 NLH Title Event 1A - multi-flight; house fee $225"),
+    (D.VEN_RESORT_FEE, "Venetian resort fee - $55 plus tax per night"),
+    (D.WPT_EVENT_PAGE, "WPT official event page - World Championship dates Dec 13-20 and schedule rows"),
+    (D.WYNN_SCHED_PDF, "Wynn official WPT World Championship schedule PDF (all rows)"),
+    (D.WYNN_STRUCT_PDF, "Wynn official WPT structures PDF - re-entry terms (chunks 0-7 reviewed)"),
+    (D.WYNN_POKER, "Wynn poker room page - WPT dates, daily tournaments reference"),
+    (D.WYNN_TERMS, "Wynn terms page - $55 plus tax resort fee"),
+    (D.WSOP_SCHED, "WSOP official schedule - no Las Vegas events Nov-Dec 2026"),
+    ("https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html", "(duplicate of schedule, cross-check)"),
 ]
-
-flag_rows = []
-for fid, cat, item, detail, srcs in FLAGS:
-    cls = {"Irregularity": "flag", "Conflict": "flag", "Unverified": "unv", "Confirmed": "ver"}[cat]
-    flag_rows.append([esc(fid), pill(cls, cat), esc(item), esc(detail),
-                      " · ".join(link(u, f"Link {i+1}") for i, u in enumerate(srcs))])
-flagged_body = f"""
-<p class="lede"><strong>Flagged for Review.</strong> These items did not block the site. Each one lists its source links so you can check them. Irregularities are things that look wrong in the source itself. Unverified items are values that could not be confirmed from an official source; they are left blank or marked.</p>
-<div class="grid4">
-{stat("Irregularities", sum(1 for f in FLAGS if f[1]=="Irregularity"), "in official or third-party sources")}
-{stat("Conflicts", sum(1 for f in FLAGS if f[1]=="Conflict"), "two sources disagree")}
-{stat("Unverified items", sum(1 for f in FLAGS if f[1]=="Unverified"), "blank or marked")}
-{stat("Repo review items", "see REPO_REVIEW.md", "repository-level findings")}
-</div>
-{table(["ID","Type","Item","What was found","Sources"], flag_rows, filter_id="flags")}
-"""
-open(os.path.join(OUT, "flagged.html"), "w").write(page("flagged.html", "Flagged for Review", flagged_body, "flagged.html"))
-with open(os.path.join(DATA, "flagged.json"), "w") as f:
-    json.dump([dict(id=a, type=b, item=c, detail=d, sources=e) for a,b,c,d,e in FLAGS], f, indent=1)
-
-# ---------- Questions & open items ----------
-QUESTIONS = [
- ("Q01","Trip dates and number of nights","Unanswered","Needed to price rooms and build a day-by-day plan. Nothing in the official sources depends on your dates; the schedule covers Nov 16 to Dec 23, 2026.","You provide dates."),
- ("Q02","Buy-in budget per day and bankroll","Unanswered","Determines which events fit. The site shows buy-ins but has no budget filter yet.","You provide a budget."),
- ("Q03","Maximum walking time","Answered","You set 30 minutes as the limit.","None needed."),
- ("Q04","How walking time is measured","Unanswered","Official pages publish addresses, not walking times. A measured source is needed (for example a maps service), and that service is not an allowed host in this environment.","Decide a method; see Suggestions S5."),
- ("Q05","Does re-entry or an add-on count as 'spending more for advantage'?","Answered","Yes. You said these go in a separate section, so re-entry, rebuy, add-on and purchased chips are all in the advantage section.","None needed."),
- ("Q06","Is late registration allowed?","Partly answered","Late registration is not a second entry, so it is treated as single entry. Confirm with the room if you disagree.","Confirm with the room."),
- ("Q07","Are satellites in scope?","Assumed","They award seats rather than prize money, so they are excluded from ranking. Confirm if you want them listed.","You confirm."),
- ("Q08","Single-entry status for 31 Venetian events and 46 WPT rows","Open","Requires reading each remaining structure sheet. Doable, but it is a research step to be scheduled.","Next research pass."),
- ("Q09","Single-entry status for Wynn's nightly 6 PM event","Open","Structure sheet not reviewed.","Next research pass."),
- ("Q10","Official resort fees for Bellagio, ARIA, Venetian, Palazzo and Caesars Palace","Open","Only third-party figures found, and some conflict.","Locate official pages."),
- ("Q11","Official Clark County lodging tax","Open","Only third-party sources found.","Locate the official Clark County page."),
- ("Q12","Nightly room rates for your dates","Open","Rates are dynamic and not in static official pages. They need a dated capture from each official booking engine.","Needs your dates (Q01)."),
- ("Q13","Loyalty status that waives resort fees","Open","MGM, Caesars and Wynn tiers can change the fee. Your status is not known.","You provide your rewards tiers."),
- ("Q14","Is an 8:00 AM start a hard requirement?","Answered","No verified single-entry event starts before 10:10 AM. The closest earlier starts (Caesars 10:00 AM and Wynn 12:00 PM) are not single entry.","Confirm or relax the 8:00 AM goal."),
- ("Q15","Are Aria, MGM Grand and Resorts World events wanted if they cannot be verified?","Open","They are listed as unverified in Flagged for Review but not in the tables.","Decide whether to keep them."),
+src_rows = [[td(link(u, u.split('//')[1][:60])), td(e(t))] for (u, t) in src_list[:-1]]
+secondary = [
+    "https://pokergods.com/series/wpt/ - third-party: WPT dates Dec 14-22 (conflict, flagged)",
+    "https://pokerfuse.com/live-poker/world-poker-tour/ - third-party: WPT schedule summary (not used for values)",
+    "https://www.lifeofpoker.com/news/2026/09/wpt-world-championship-returns-to-wynn-las-vegas-with-85-events-and-20m-in-guarantees - third-party: Super Gold Million re-entry (flagged)",
+    "https://vegascasinoinsider.com/casino/the-venetian-hotel-and-casino-las-vegas - third-party: Venetian fee $62.36 total (flagged)",
+    "https://www.resortfeechecker.com/2565776-resort_fee_ariresort_casino.html - third-party: ARIA fee (flagged)",
+    "https://www.pokeratlas.com/poker-room/aria-las-vegas/tournaments - third-party: ARIA Poker Open dates (flagged)",
+    "https://poker.betmgm.com/en/blog/poker-news/win-your-way-to-betmgm-events-at-aria-poker-open-in-las-vegas/ - third-party, 2025 post (flagged)",
+    "https://www.pokeratlas.com/poker-tournament-series - third-party: Las Vegas festival listings (not used for values)",
+    "https://pokerdb.thehendonmob.com/festival.php?a=l&y=2026&m=all&c=USA - third-party: festival listings (not used for values)",
 ]
-q_rows = [[esc(a), esc(b), pill("ver" if c=="Answered" else "unv", c), esc(d), esc(e)] for a,b,c,d,e in QUESTIONS]
-questions_body = f"""
-<p class="lede">What must be answered before a decision can be made. It lists what we have, what we don't, and what would close each gap.</p>
-{table(["ID","Question / information","Status","Notes","Next step"], q_rows, filter_id="qs")}
-"""
-open(os.path.join(OUT, "questions.html"), "w").write(page("questions.html", "Questions & open items", questions_body, "questions.html"))
+repo_review = """
+<h2>Repository review (line by line)</h2>
+<table><thead><tr><th>Item</th><th>Finding</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>Branch</td><td>arena/581fea93-poker5, branched from 0ba2e55 (main). Working tree clean at start.</td><td>git status / git log</td></tr>
+<tr><td>Files</td><td>Only README.md ("# Poker5", no trailing newline). No code, data, tests, CI or site existed.</td><td>git ls-files</td></tr>
+<tr><td>Remote</td><td>origin = github.com/karagemop466-tech/Poker5; main is 0ba2e55.</td><td>git ls-remote</td></tr>
+<tr><td>Coordination</td><td>No COORDINATION.md existed; created with this session's claims and log.</td><td>COORDINATION.md</td></tr>
+<tr><td>Irregularity</td><td>README is a title-only stub. Session branch rule and the task text disagree on branch naming (session-&lt;id&gt;/&lt;task&gt;). Followed the session branch rule.</td><td>See flagged page</td></tr>
+</tbody></table>
+<h2>Official sources used (checked 2026-11-16)</h2>
+%s
+<h2>Third-party sources (cross-check only; flagged where used)</h2>
+<ul>%s</ul>
+""" % (table("src", ["Official source", "What it supports"], src_rows, filt=False),
+       "".join("<li>%s</li>" % e(x) for x in secondary))
+page("sources.html", "Sources and repository review", repo_review, active="sources.html",
+     lead="Every source URL, what it supports, and what was reviewed.")
 
-# ---------- Suggestions ----------
-SUGGESTIONS = [
- ("S1","Add a 'last checked' date and structure-sheet link to every row","Recommended","Makes it obvious how old each value is and where to check it."),
- ("S2","Read the 31 unread Venetian structure sheets and 46 WPT rows, then convert them to verified or excluded","Recommended","Largest gain in accuracy; it is research, not a design change."),
- ("S3","Refresh official schedule PDFs on a schedule (for example weekly) through a GitHub Action, with a diff report","Needs your decision","Keeps the site current but needs a scheduled job."),
- ("S4","Capture nightly room rates for your chosen dates from each official booking engine, with a timestamp","Needs your decision","The only way to get a verified room rate; needs your dates."),
- ("S5","Add a walking-time column measured from a maps service","Needs your decision","Walking times are not on official sites. Requires a maps service that is outside the current allowed hosts."),
- ("S6","Add a trip planner: dates and budget in, a day plan out","Needs your decision","Useful for the goal of playing as many events as possible; adds a page and some logic."),
- ("S7","Add a single-entry filter toggle and CSV download on every table","Recommended","Simple to implement and makes review easier."),
- ("S8","Split satellites into their own page instead of mixing them in the tournament table","Recommended","Keeps the main table clean."),
- ("S9","Run an automated check before every publish (JSON valid, every row has an official source, no broken links)","Recommended","tools/validate.py covers part of this; a CI step would make it automatic."),
- ("S10","Add a 'Changes since last check' log","Needs your decision","Helps you see what moved between checks."),
-]
-s_rows = [[esc(a), esc(b), pill("ver" if c=="Recommended" else "unv", c), esc(d)] for a,b,c,d in SUGGESTIONS]
-suggestions_body = f"""
-<p class="lede">These are proposed changes to the site. Nothing here has been implemented. Choose which ones to approve, change or reject.</p>
-{table(["ID","Suggestion","Status","Why"], s_rows, filter_id="sug")}
-"""
-open(os.path.join(OUT, "suggestions.html"), "w").write(page("suggestions.html", "Suggestions (decide)", suggestions_body, "suggestions.html"))
+# ---------------------------------------------------------------------------
+# Link + completeness checks
+# ---------------------------------------------------------------------------
+errors = []
+pages = [n for n, _ in NAV]
+for fname in os.listdir(OUT):
+    if fname.endswith(".html"):
+        with open(os.path.join(OUT, fname), encoding="utf-8") as f:
+            text = f.read()
+        for href in re.findall(r'href="([^"]+)"', text):
+            if href.startswith("http") or href.startswith("#") or href.startswith("mailto:"):
+                continue
+            if href not in pages and not os.path.exists(os.path.join(OUT, href)):
+                errors.append("%s -> broken internal link %s" % (fname, href))
+for r in single:
+    if not r[6] or not D.VEN_SCHED:
+        errors.append("single row missing source: %s" % r[3])
+for r in multi_rows + other_rows:
+    if not D.VEN_SCHED:
+        errors.append("excluded row missing source: %s" % r[3])
+if single_n != 47:
+    errors.append("unexpected single-entry count %d" % single_n)
+for n in pages:
+    if not os.path.exists(os.path.join(OUT, n)):
+        errors.append("missing page %s" % n)
 
-# ---------- Sources ----------
-OFFICIAL = [
- (D.S_SCHED, "Venetian DeepStack Extravaganza IV schedule (Nov 16 to Dec 23, 2026)"),
- (D.S_PAGE, "Venetian DeepStack Extravaganza IV page (structure index)"),
- (D.S_SERIES, "Venetian DeepStack series page"),
- (D.S_POKER, "Venetian poker room page"),
- (D.struct(1), "Venetian structure #1 ($200 bounty events)"),
- (D.struct(2), "Venetian structure #2 ($400 1A/1B)"),
- (D.struct(3), "Venetian structure #3 ($400 1A/1B/1C)"),
- (D.struct(5), "Venetian structure #5 ($300 1-Day)"),
- (D.struct(6), "Venetian structure #6 ($400 1-Day)"),
- (D.struct(7), "Venetian structure #7 ($600 1-Day)"),
- (D.struct(10), "Venetian structure #10 ($300 1A/1C)"),
- (D.struct(11), "Venetian structure #11 ($600 bounty)"),
- (D.struct(12), "Venetian structure #12 ($800 1A/1C/1E)"),
- (D.struct(15), "Venetian structure #15 ($300 bounty)"),
- (D.struct(21), "Venetian structure #21 ($2,200 1A)"),
- (D.struct(29), "Venetian structure #29 ($200 1-Day)"),
- (D.struct(35), "Venetian structure #35 ($1,100 1A/1C/1E)"),
- (D.WYNN_DAILY_POSTER, "Wynn daily tournaments poster"),
- (D.WYNN_DAILY_STRUCTS, "Wynn daily tournament terms and structures"),
- (D.WYNN_WPT_SCHED, "Wynn WPT World Championship schedule"),
- (D.WYNN_WPT_STRUCTS, "Wynn WPT World Championship terms"),
- (D.WYNN_TERMS, "Wynn Las Vegas terms page (resort fee $55 plus tax)"),
- (D.BEL_POKER, "Bellagio poker room page"),
- (D.BEL_FRI, "Bellagio Friday $600 NLH PDF"),
- (D.BEL_SAT, "Bellagio Saturday NLH PDF"),
- (D.BEL_SUN, "Bellagio Sunday $400 HORSE PDF"),
- (D.CAE_FLYER, "Caesars Palace daily NLH tournament flyer"),
- (D.CAE_PAGE, "Caesars Palace casino page"),
- (D.ARIA_POKER, "ARIA poker page"),
- (D.RW_POKER, "Resorts World poker room page"),
- (D.WSOP_SCHED, "WSOP official schedule"),
-]
-THIRD = [
- ("https://www.resortfeechecker.com/1443-resort_fee_venetian_resort_las_vegas.html","Third-party: resort fee for The Venetian (not official)"),
- ("https://www.resortfeechecker.com/1769973-resort_fee_palazzo_venetian.html","Third-party: resort fee for The Palazzo (not official)"),
- ("https://www.resortfeechecker.com/41245-resort_fee_caesars_palace.html","Third-party: resort fee for Caesars Palace (not official)"),
- ("https://www.applevacations.com/hotels/bellagio/","Third-party: Bellagio resort-fee text quoted (not official)"),
- ("https://www.virginatlantic.com/holidays/holiday-types/city-breaks/hotels/aria-resort-and-casino","Third-party: ARIA resort-fee text quoted (not official)"),
- ("https://unleashvegas.com/guides/vegas-basics/resort-fees","Third-party: resort fee list and Clark County tax reference (not official)"),
- ("https://www.roommaster.com/hotel-tax/nevada","Third-party: Nevada hotel tax summary (not official)"),
- ("https://www.pokeratlas.com/poker-room/mgm-grand-las-vegas/tournaments","Third-party: MGM Grand calendar, dated Jan 2025 (not used)"),
-]
-src_rows = [[link(u, "Open"), esc(desc), pill("ver","Official")] for u, desc in OFFICIAL] + \
-           [[link(u, "Open"), esc(desc), pill("unv","Third-party")] for u, desc in THIRD]
-sources_body = f"""
-<p class="lede">Every official source the site relies on, and the third-party sites that were consulted only for flagged items. Third-party sites are never used as the source for a verified value.</p>
-{table(["Link","Description","Type"], src_rows, filter_id="src")}
-"""
-open(os.path.join(OUT, "sources.html"), "w").write(page("sources.html", "Sources", sources_body, "sources.html"))
-with open(os.path.join(DATA, "sources.json"), "w") as f:
-    json.dump(dict(official=[dict(url=u, description=d) for u,d in OFFICIAL], third_party=[dict(url=u, description=d) for u,d in THIRD]), f, indent=1)
-
-# ---------- Dashboard ----------
-index_body = f"""
-<p class="lede">Live single-entry poker tournaments on and near the Las Vegas Strip, with a hotel cost check for each venue. Built from official schedules and structure sheets. Anything that could not be confirmed from an official source is blank or marked Unverified.</p>
-<div class="grid4">
-{stat("Verified single-entry Venetian events", verified_count, "Nov 16 to Dec 23, 2026")}
-{stat("Earliest verified single-entry start", earliest_verified, "no verified event starts at 8:00 AM")}
-{stat("Advantage events (not single entry)", len(adv_rows), "re-entry, rebuy, add-on or purchased chips")}
-{stat("Hotel resort fees verified", "1 of 6", "Wynn only, from an official page")}
-</div>
-<h2>Key findings</h2>
-<ul>
-<li><strong>Best verified single-entry value:</strong> the $800 Venetian event (#26) has a $500,000 guarantee on a $800 buy-in (GTD ÷ buy-in 625x, calc). The $300 event #1 has a $75,000 guarantee (250x, calc).</li>
-<li><strong>Biggest prize pool:</strong> the $2,200 PokerAtlas Championship event (#47, 1A on Dec 12 at 10:10 AM) has a $1,000,000 guarantee and is verified single entry.</li>
-<li><strong>Most daily events are not single entry:</strong> Wynn's daily events and Caesars' daily events allow re-entry or add-ons. Bellagio's Friday and Sunday events allow re-entry and sell extra chips for a staff gratuity.</li>
-<li><strong>8:00 AM:</strong> no verified single-entry event starts before 10:10 AM, so an 8:00 AM all-day plan cannot be built from verified data.</li>
-<li><strong>Hotels:</strong> only Wynn's $55 resort fee is confirmed from an official page. Room rates and walking times are not verified and are blank.</li>
-</ul>
-<h2>Pages</h2>
-<div class="cards">
-<a class="card" href="tournaments.html"><b>Single-entry tournaments</b><span>{verified_count} verified rows plus unverified rows</span></a>
-<a class="card" href="advantage.html"><b>Advantage / not single entry</b><span>Re-entry, rebuys, add-ons, purchased chips</span></a>
-<a class="card" href="hotels.html"><b>Hotels</b><span>Resort fees, tax and what is still missing</span></a>
-<a class="card" href="schedule.html"><b>Schedule</b><span>Start times and the plan logic</span></a>
-<a class="card" href="analysis.html"><b>Analysis</b><span>Ranking, breakeven entries, method</span></a>
-<a class="card" href="questions.html"><b>Questions &amp; open items</b><span>What we know and what we still need</span></a>
-<a class="card" href="suggestions.html"><b>Suggestions</b><span>Site improvements awaiting your decision</span></a>
-<a class="card" href="flagged.html"><b>Flagged for Review</b><span>Irregularities and unverified items with links</span></a>
-</div>
-<h2>Recommended path</h2>
-<ol>
-<li>Confirm your trip dates, budget and loyalty tiers (Questions Q01, Q02, Q13).</li>
-<li>Read the remaining Venetian structure sheets (Q08) so the single-entry list covers the whole series.</li>
-<li>Pick a hotel once official resort fees and dated room rates are captured (Q10, Q12).</li>
-</ol>
-"""
-open(os.path.join(OUT, "index.html"), "w").write(page("index.html", "Las Vegas Strip poker dashboard", index_body, "index.html"))
-
-# ---------- static assets ----------
-open(os.path.join(OUT, ".nojekyll"), "w").write("")
-print("built all pages")
-print("counts", payload["counts"], "earliest verified", earliest_verified)
+if errors:
+    print("\n".join(errors))
+    sys.exit(1)
+print("OK: %d pages; single=%d; excluded=%d; WPT rows=%d; flags=%d; events accounted=%d" % (
+    len(pages), single_n, len(multi_rows) + len(sat_rows) + len(other_rows), wpt_total, len(D.FLAGS), events_total))

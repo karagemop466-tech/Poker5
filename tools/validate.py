@@ -3,12 +3,12 @@
 import json, glob, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 errors = []
-for p in glob.glob(os.path.join(ROOT, "docs", "data", "*.json")):
+for p in glob.glob(os.path.join(ROOT, "site", "data", "*.json")):
     try:
         json.load(open(p))
     except Exception as e:
         errors.append(f"{p}: {e}")
-t = json.load(open(os.path.join(ROOT, "docs", "data", "tournaments.json")))
+t = json.load(open(os.path.join(ROOT, "site", "data", "tournaments.json")))
 for r in t["venetian"]:
     if not r.get("schedule_source") and not r.get("source_schedule"):
         errors.append(f"venetian row without source: {r['event_no']} {r['date']}")

@@ -9,7 +9,7 @@ Reviewed on 2026-11-16 (America/Los_Angeles). Scope: every tracked file on `main
 | `README.md` | 1 | Contains only `# Poker5`. No description, usage, or license. **Irregularity (minor):** no documentation for the Pages site. Not changed in this session. |
 | `COORDINATION.md` | — | Task board (T1–T7). Added in this session. Owner column lists one session for all tasks. No irregularity in the data. |
 | `.github/` | — | Not present on `main`. No Actions workflow is used; Pages builds from the legacy branch source. |
-| `docs/`, `tools/` | — | Added in this session. Generated site and build scripts. |
+| `site/`, `tools/` | — | Added in this session (`site/` = this session's generated site; `tools/build_site.py`, `tools/validate.py`, `tools/data_source.py`). `docs/`, `index.html`, `pages/`, and `tools/build.py` belong to other sessions and were not edited. |
 
 Lines 1–1 of `README.md` were read; the file has no further content.
 
@@ -17,7 +17,8 @@ Lines 1–1 of `README.md` were read; the file has no further content.
 
 - Default branch `main`, public repository.
 - GitHub Pages: status `built`, source `main` branch, path `/` (root), URL https://karagemop466-tech.github.io/Poker5/, HTTPS enforced.
-- **Irregularity:** the Pages source is the repository root, so the root `README.md` is the only thing published. The site generated here is in `docs/`. The Pages source must be changed to `main` / `/docs` for the site to publish (done at merge; see the integration log in COORDINATION.md).
+- **Irregularity:** the Pages source is `main` `/` (root). A change to `/docs` returns HTTP 403 for this session's token, so it was not attempted again. This session's site is published from `site/` under the root source, at https://karagemop466-tech.github.io/Poker5/site/.
+- **Irregularity:** other sessions' work (`index.html`, `pages/`, `docs/`) already covers the same brief on `main`. This session keeps its files under `site/` so nothing is overwritten.
 
 ## Source-data irregularities found while building the site
 

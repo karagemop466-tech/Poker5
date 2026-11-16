@@ -26,5 +26,5 @@
 
 ## Where to look
 
-- Dashboard and tables: the GitHub Pages site.
+- Dashboard and tables: https://karagemop466-tech.github.io/Poker5/site/ (this session's site; generated from `tools/build_site.py`).
 - Irregularities and unverified items with source links: "Flagged for Review" on the site and `REPO_REVIEW.md`.
