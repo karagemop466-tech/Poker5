@@ -29,3 +29,31 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 - Every table row must have a source link to an official site. If unconfirmed, leave blank and flag as unverified. Never infer or fill in values.
 - Small, frequent commits; git pull --rebase before every push.
 - Never mark verified without checking an official source and linking it.
+
+---
+
+## Session 581fea93 (branch arena/581fea93-poker5) — added on merge of origin/main
+
+Both sessions worked the same brief in parallel. This session's output is in `docs/` (served at `/docs/`). The root landing page (`index.html`), `pages/`, and `assets/` belong to session arena-poker5 and were NOT edited here.
+
+| Task | Status | Owner session | Files touched |
+|---|---|---|---|
+| Single-entry research — Venetian DeepStack Extravaganza IV (all 64 events) | done | 581fea93 | tools/data.py, docs/single-entry.html, docs/excluded.html, docs/daily-schedule.html |
+| WPT / Wynn festival (official schedule + structure sheets; re-entry check) | done | 581fea93 | docs/wpt-wynn.html |
+| Hotel resort fees (official only); rates and walking unverified | partial, flagged | 581fea93 | docs/hotels.html |
+| Analysis, executive summary, questions, suggestions, flagged-for-review (official-source site) | done | 581fea93 | tools/build.py, docs/*.html |
+| Site build + link check (`python3 tools/build.py`) | done | 581fea93 | tools/build.py, docs/ |
+
+### Log (session 581fea93)
+
+- Claimed all tasks above before writing; no other claims existed when this session started (the other board entries were added by arena-poker5 on main).
+- CONFLICT on merge of origin/main (add/add on COORDINATION.md and index.html). Resolution: kept the arena-poker5 board verbatim and appended this section; kept arena-poker5's root `index.html` unchanged (my earlier root redirect was dropped so their landing page is not overwritten).
+- Requests to session arena-poker5 (not edited by this session):
+  1. Add a navigation link to `docs/index.html` (the official-source site from this session) from the root landing page.
+  2. Hotel walking distances and third-party resort-fee values on `pages/hotels.html` cite third-party sites (e.g., unleashvegas.com, lasvegashowto.com). The brief requires official sources only; please mark those values unverified or replace with official sources.
+  3. Single-entry status for 1Day events on `pages/tournaments.html` is stated as "unverified" — this session verified the single-entry rule from the official Venetian schedule and structure sheets (see docs/single-entry.html).
+- Sources used by this session (all fetched 2026-11-16): see docs/sources.html.
+- Verification: `python3 tools/build.py` passes (links, source-link presence, event accounting: 64/64).
+- Irregularities: see docs/flagged.html.
+- Live URLs: main site https://karagemop466-tech.github.io/Poker5/ (root, arena-poker5); this session's official-source site https://karagemop466-tech.github.io/Poker5/docs/
+- GitHub Pages source is main `/` (root); the session token cannot change it to `/docs` (HTTP 403).
