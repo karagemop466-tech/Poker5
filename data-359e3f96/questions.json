@@ -1,0 +1,89 @@
+{
+  "last_verified": "2026-11-16",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "What are the travel dates?",
+      "have": "Venetian schedule reviewed for Nov 16 to Dec 9, 2026; Wynn WPT reviewed for Nov 27 to Dec 21.",
+      "missing": "Specific arrival and departure dates.",
+      "how": "Provide dates. Schedule and hotel columns are filtered to them."
+    },
+    {
+      "id": "Q02",
+      "question": "What is the total budget (tournaments and lodging)?",
+      "have": "Official buy-ins and guarantees for the single-entry Venetian events listed on the site.",
+      "missing": "Budget ceiling, and how much you want to spend per tournament day.",
+      "how": "Decision by you."
+    },
+    {
+      "id": "Q03",
+      "question": "Which hotel rates apply to your dates?",
+      "have": "Official resort fees for the Venetian/Palazzo and Wynn ($55 plus tax). Venetian poker suite rates 'as low as $119 and $209' with play conditions.",
+      "missing": "Live nightly rates for your dates at each hotel.",
+      "how": "Check each booking engine on your dates. Add a date-based rate source (see Suggestions)."
+    },
+    {
+      "id": "Q04",
+      "question": "What are the official resort fees for Caesars Palace, Bellagio, ARIA and Horseshoe?",
+      "have": "Third-party values only, and they conflict.",
+      "missing": "Operator resort-fee terms.",
+      "how": "Read the hotel terms on each operator's site, or call the front desk."
+    },
+    {
+      "id": "Q05",
+      "question": "Do Wynn daily tournaments run during the WPT World Championship?",
+      "have": "Daily terms say dailies may be suspended during other tournament series.",
+      "missing": "Confirmed Nov 27 to Dec 21 daily schedule.",
+      "how": "Call (702) 770-7654 (listed on the Wynn WPT schedule)."
+    },
+    {
+      "id": "Q06",
+      "question": "Are Venetian Events 7, 19 and 26 single-entry or multi-flight?",
+      "have": "Event 7 structure sheet implies Day 2 chip bags can exclude later flights. Other flight events not opened.",
+      "missing": "Whether one player can enter multiple flights.",
+      "how": "Ask the Venetian poker room directly. Contact details are on the official Venetian poker page (venetianlasvegas.com/resort/casino/poker.html)."
+    },
+    {
+      "id": "Q07",
+      "question": "What does the Bellagio Saturday event actually cost?",
+      "have": "Saturday terms PDF gives conflicting buy-in figures ($1,100 heading; $600 in the body).",
+      "missing": "Single confirmed buy-in and current dates.",
+      "how": "Call the Bellagio poker room at 702.693.7291 (number on the official Bellagio poker page)."
+    },
+    {
+      "id": "Q08",
+      "question": "Which Strip rooms run daily tournaments right now?",
+      "have": "Official data for Caesars, Wynn, Venetian, and Bellagio (weekly). ARIA and Horseshoe have no official schedule.",
+      "missing": "Official schedules for ARIA and Horseshoe.",
+      "how": "Call each room. Ask whether daily events run on your dates."
+    },
+    {
+      "id": "Q09",
+      "question": "Is Planet Hollywood's poker room closed?",
+      "have": "Trade press (Jan 2026) says closed. A WSOP page says otherwise.",
+      "missing": "Official Caesars confirmation.",
+      "how": "Check caesars.com or call the property."
+    },
+    {
+      "id": "Q10",
+      "question": "Can walking times from each hotel to each room be verified?",
+      "have": "Addresses for hotels are not on official static pages in this review.",
+      "missing": "Official walking-time or distance data.",
+      "how": "Check the routes yourself (links on the schedule page). A map API key would allow this to be automated."
+    },
+    {
+      "id": "Q11",
+      "question": "Does the Venetian poker-suite rate cover the nights you play?",
+      "have": "Official rule: 6 hours of live cash play or a buy-in to a $300+ tournament each night for the Venetian poker-suite rate.",
+      "missing": "Which of your planned days include a $300+ buy-in.",
+      "how": "Compare the single-entry table's $300+ rows with your planned days."
+    },
+    {
+      "id": "Q12",
+      "question": "What is the true all-in cost per night at each hotel?",
+      "have": "Only the resort fees for two hotels.",
+      "missing": "Nightly rate, resort fee and room tax for your dates.",
+      "how": "Requires Q03 and Q04. Formula: (nightly rate + resort fee) x (1 + 13.38%) if the room tax applies."
+    }
+  ]
+}

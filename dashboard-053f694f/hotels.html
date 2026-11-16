@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels · Poker5 Las Vegas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="index.html">Poker5 · Las Vegas Strip</a></div>
+  <nav><a href="index.html">Home</a><a href="tournaments.html">Tournaments</a><a href="hotels.html" class=active>Hotels</a><a href="schedule.html">Daily schedule</a><a href="dashboard.html">Dashboard</a><a href="summary.html">Summary</a><a href="flagged.html">Flagged for Review</a></nav>
+</header>
+<main>
+
+<section>
+  <h1>Hotels</h1>
+  <p>Only values from official hotel pages are filled. Nightly room rates were NOT retrieved from official sources in this pass, so true nightly cost and value ranking are left blank. Walking times are not verified and are left blank. Third-party values are shown in flags only, never in cells.</p>
+  <p><strong>True nightly cost</strong> = True nightly cost = room rate + resort fee + tax. Tax rate not confirmed on an official page in this pass; cost left blank.</p>
+  <div class="table-wrap"><table class="data"><thead><tr><th>Hotel</th><th>Area</th><th>Room rate / night</th><th>Resort fee / night</th><th>Parking</th><th>True nightly cost</th><th>Walk to tournament venue</th><th>Source</th><th>Flags</th></tr></thead><tbody><tr><td>The Venetian Resort</td><td>Venetian/Palazzo, Strip (near DeepStack events)</td><td></td><td>$55 plus tax</td><td></td><td></td><td>Not verified</td><td><a href="https://www.venetianlasvegas.com/resort/resort-fee.html" rel="noopener">Venetian official resort fee page</a></td><td><ul class="flags"><li>Room rate not verified from official source.</li><li>Walking time to any tournament room not verified.</li></ul></td></tr><tr><td>The Palazzo</td><td>Venetian/Palazzo, Strip</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://www.venetianlasvegas.com/resort/resort-fee.html" rel="noopener">Venetian official resort fee page (mentions Palazzo WiFi only)</a></td><td><ul class="flags"><li>Palazzo fee not stated on the official page read. Left blank.</li></ul></td></tr><tr><td>Wynn Las Vegas</td><td>North Strip</td><td></td><td>$55 plus tax</td><td>Self-parking for up to 2 vehicles included in resort fee (per offer terms)</td><td></td><td>Not verified</td><td><a href="https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards" rel="noopener">Wynn official offer terms (resort fee language)</a></td><td><ul class="flags"><li>Fee language comes from an expired Feb 2026 promotion terms page. Confirm on booking page before use.</li><li>Room rate not verified from official source.</li></ul></td></tr><tr><td>Encore Las Vegas</td><td>North Strip</td><td></td><td>$55 plus tax</td><td>Same as Wynn (per offer terms)</td><td></td><td>Not verified</td><td><a href="https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards" rel="noopener">Wynn official offer terms (covers Wynn and Encore room types)</a></td><td><ul class="flags"><li>Same promotion-terms caveat as Wynn.</li><li>Room rate not verified.</li></ul></td></tr><tr><td>Bellagio</td><td>Center Strip</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" rel="noopener">Bellagio official poker page (no hotel fee on page)</a></td><td><ul class="flags"><li>Resort fee not verified from an official MGM hotel page. Third-party sites show $55 plus tax; not used.</li><li>Room rate not verified.</li></ul></td></tr><tr><td>Caesars Palace</td><td>Center Strip</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://www.caesars.com/caesars-palace/hotel" rel="noopener">Caesars Palace official hotel page (no fee on page read)</a></td><td><ul class="flags"><li>Resort fee not found on official page read. Third-party sources conflict ($49.95, $55, $62.30 incl. tax); not used.</li><li>Room rate not verified.</li></ul></td></tr><tr><td>Horseshoe Las Vegas</td><td>Center Strip</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://www.caesars.com/horseshoe-las-vegas/hotel" rel="noopener">Horseshoe official hotel page (no fee on page read)</a></td><td><ul class="flags"><li>Resort fee not verified on official page. Third-party sources conflict ($50 and $56.63); not used.</li></ul></td></tr><tr><td>ARIA Resort &amp; Casino</td><td>CityCenter</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://aria.mgmresorts.com/en/casino/poker.html" rel="noopener">ARIA official poker page</a></td><td><ul class="flags"><li>No hotel fee or rate retrieved from official source.</li></ul></td></tr><tr><td>Resorts World Las Vegas</td><td>North Strip</td><td></td><td></td><td></td><td></td><td>Not verified</td><td><a href="https://www.rwlasvegas.com/gaming/poker-room/poker-room-dining/" rel="noopener">Resorts World official page (dining only)</a></td><td><ul class="flags"><li>Poker room closure reported by third party (not confirmed). Do not use as a tournament venue until confirmed.</li></ul></td></tr></tbody></table></div>
+  <h2>No official source found (not in table)</h2>
+  <ul><li><strong>MGM Grand</strong>: Official page 404; no source.</li><li><strong>Planet Hollywood</strong>: Official page returned HTTP 500; no source.</li><li><strong>Golden Nugget Las Vegas</strong>: Not researched in this pass.</li></ul>
+</section>
+
+</main>
+<footer>
+  <p>Data as of 2026-11-16 (America/Los_Angeles). Every value is sourced to an official page or left blank and flagged. Built from <code>data/*.json</code> by <code>scripts/build_site.py</code>.</p>
+</footer>
+</body>
+</html>

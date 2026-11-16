@@ -1,0 +1,185 @@
+{
+ "_note": "Items not verified or otherwise flagged. Blank values are left blank. Each item links to the source checked (official where available). These items do not block publication.",
+ "pending_tournaments": [
+  {
+   "id": "P-00",
+   "item": "Single-entry classification is an INFERENCE. The Venetian structure sheets do not say 'single entry'. Rows are classed single-entry when the event is one day and the sheet has no re-entry, rebuy, or add-on text. Operator confirmation is needed before treating this as official",
+   "example": "All 36 rows in the single-entry table",
+   "source": "S_VEN_DSE_PAGE",
+   "status": "Inference – flagged; does not block merge"
+  },
+  {
+   "id": "P-01",
+   "item": "Wynn WPT World Championship festival (Nov 27 – Dec 21, 2026): official schedule verified, but structure sheets not checked, so flight, re-entry, and single-entry status are NOT verified",
+   "example": "Dec 13 Day 1A $10,400 buy-in with '$1M added'",
+   "source": "S_WPT_WC_SCHED",
+   "status": "Unverified single-entry status"
+  },
+  {
+   "id": "P-02",
+   "item": "WPT World Championship '$1,000,000 added' footnote ties funding to ClubWPT Gold, which the schedule says is not available in Nevada",
+   "example": "Dec 13 – Dec 20",
+   "source": "S_WPT_WC_SCHED",
+   "status": "Irregularity – verify before relying on the added amount"
+  },
+  {
+   "id": "P-03",
+   "item": "Super Gold Million ($400, $3,000,000 GTD): starting chips conflict (schedule PDF says 30K; WPT event page says 40K). Re-entry status not verified",
+   "example": "Dec 10–11 (Days 1A–1D)",
+   "source": "S_WPT_WC_SCHED",
+   "status": "Irregularity – chip count conflict"
+  },
+  {
+   "id": "P-04",
+   "item": "Venetian events on the official schedule that are not in the single-entry table (structure sheet not checked; format per schedule label)",
+   "example": "",
+   "source": "S_VEN_SCHED_PDF",
+   "status": "Schedule verified; single-entry status unconfirmed"
+  },
+  {
+   "id": "P-05",
+   "item": "Venetian satellites (direct entry to #39 or #47). Excluded from ranking",
+   "example": "#33 & #37 LIPS Ladies $100 satellites (Dec 8 & 9, 4:10 PM); #41 $260 (Dec 10 4:10 PM); #44 $260 (Dec 11 4:10 PM); #45 $260 turbo (Dec 11 8:10 PM); #46 $260 turbo (Dec 12 9:10 AM); #48 $260 turbo (Dec 12 12:10 PM)",
+   "source": "S_VEN_DSE_PAGE",
+   "status": "Excluded (satellite)"
+  },
+  {
+   "id": "P-06",
+   "item": "Venetian #58 date: the schedule PDF's date cell is blank; the event page gives Sat Dec 19, 5:10 PM. Schedule-vs-page discrepancy noted for #39 (see R-06)",
+   "example": "#58 $200 Valuetown Bounty",
+   "source": "S_VEN_DSE_PAGE",
+   "status": "Date from event page only"
+  },
+  {
+   "id": "P-07",
+   "item": "MGM Grand / Mandalay Bay 'South Side Poker Showdown' ($300 NLH): flight format per a secondary listing (Flight A Sat Nov 28 noon, Mandalay Bay; Flight B Mon Nov 30 noon, MGM Grand; Day 2 Tue Dec 1 noon, MGM Grand). Official MGM page NOT found",
+   "example": "",
+   "source": "S_MGM_TC",
+   "status": "Unverified official source"
+  },
+  {
+   "id": "P-08",
+   "item": "Caesars Palace poker schedule and fees: official schedule NOT retrieved. A 2023 structure PDF and a stale third-party calendar were found and not used",
+   "example": "",
+   "source": "",
+   "status": "Unverified – excluded"
+  },
+  {
+   "id": "P-09",
+   "item": "Aria Poker (daily $200 NL 1 PM, Nov 16–28; Aria Poker Open Nov 29 – Dec 20, 11 events): secondary listing only. Official aria.com schedule NOT retrieved",
+   "example": "",
+   "source": "",
+   "status": "Unverified official source"
+  },
+  {
+   "id": "P-10",
+   "item": "Resorts World Las Vegas daily tournaments: older third-party pages list events; one says the poker room is closed. NOT verified; excluded",
+   "example": "",
+   "source": "",
+   "status": "Unverified – excluded"
+  }
+ ],
+ "hotel_items": [
+  {
+   "id": "H-01",
+   "item": "Wynn resort fee is offer-specific: $45 + tax on offers 848631 (fetched) and 848991, 848732 (search result); $55 + tax on offers 850225, 849760 (search result). Standard Wynn fee NOT confirmed",
+   "source": "S_WYN_TC_848631",
+   "source2": "S_WYN_TC_55",
+   "status": "Conflict – confirm the rate on your booking"
+  },
+  {
+   "id": "H-02",
+   "item": "Venetian poker-suite page: 'start as low as $119 and $209'. Mapping to Venetian vs. Palazzo and whether tax is included are NOT stated. Promo code EPOKR25 is shown with no validity dates on the page",
+   "source": "S_VEN_SUITES",
+   "source2": "",
+   "status": "Unverified for specific dates"
+  },
+  {
+   "id": "H-03",
+   "item": "Nightly room rates for stay dates NOT verified for any hotel (dynamic booking-engine data)",
+   "source": "",
+   "source2": "",
+   "status": "Blank by design"
+  },
+  {
+   "id": "H-04",
+   "item": "Walking time/distance from each hotel to the Venetian NOT verified for any hotel; no walking distances were inferred",
+   "source": "",
+   "source2": "",
+   "status": "Blank by design"
+  },
+  {
+   "id": "H-05",
+   "item": "Room tax: 13.38% appears only in third-party guides; the official Clark County / Nevada page was NOT retrieved",
+   "source": "",
+   "source2": "",
+   "status": "Unverified official source"
+  },
+  {
+   "id": "H-06",
+   "item": "Caesars Palace resort fee: third-party sources conflict ($49.95; $54.95 or $55 before tax; $62.30 incl. tax). Official caesars.com fee page NOT retrieved",
+   "source": "",
+   "source2": "",
+   "status": "Blank – unverified"
+  },
+  {
+   "id": "H-07",
+   "item": "MGM properties (Bellagio, ARIA, MGM Grand, Mandalay Bay, others): official MGM terms index has no per-property fee values. Third-party figures differ by year",
+   "source": "S_MGM_TC",
+   "source2": "",
+   "status": "Blank – unverified"
+  },
+  {
+   "id": "H-08",
+   "item": "Palazzo: the Venetian's $55 fee is stated on the Venetian page; whether it applies to the Palazzo is NOT stated",
+   "source": "S_VEN_SUITES",
+   "source2": "",
+   "status": "Blank – unverified"
+  },
+  {
+   "id": "H-09",
+   "item": "Encore Las Vegas resort fee: NOT verified on any official page reviewed. An earlier draft attributed $45 to Encore from a Wynn offer page; that attribution was wrong and has been removed",
+   "source": "",
+   "source2": "",
+   "status": "Blank – unverified (corrected)"
+  }
+ ],
+ "repo_irregularities": [
+  {
+   "id": "R-01",
+   "item": "Seven other agent sessions (branches arena/*-poker5) each created a claim-only COORDINATION.md within about two minutes; no shared board exists on main. Claims were consolidated on this branch",
+   "source": "",
+   "status": "Irregularity – review"
+  },
+  {
+   "id": "R-02",
+   "item": "Repository at start contained only README.md ('# Poker5'); no data, site, or tooling existed",
+   "source": "",
+   "status": "Noted"
+  },
+  {
+   "id": "R-03",
+   "item": "Venetian schedule PDF text has typos and mixed fields (e.g., 'No LImit'; rows labelled 'Day 2 Restart' with no GTD; a LIPS banner replacing the date cell on some rows). Exact text was recorded and flagged, not corrected",
+   "source": "S_VEN_SCHED_PDF",
+   "status": "Noted"
+  },
+  {
+   "id": "R-04",
+   "item": "Wynn daily structure PDF is an older upload (URL stamp 1752011191, about July 2025). The poster is also undated. Current terms NOT confirmed",
+   "source": "S_WYN_DAILY_STR",
+   "status": "Irregularity – confirm current terms"
+  },
+  {
+   "id": "R-05",
+   "item": "No verified single-entry event starts before 11:10 AM, so an 8 AM start is NOT possible with verified single-entry events",
+   "source": "S_VEN_SCHED_PDF",
+   "status": "Noted (affects the day plan)"
+  },
+  {
+   "id": "R-06",
+   "item": "Schedule PDF and event page disagree on #39 (LIPS Ladies, 2-day): the PDF layout places it in the Wed Dec 9 block; the event page says Thu Dec 10 10:10 AM. The event page was used. Also #32, #35 date cells are banner rows in the PDF",
+   "source": "S_VEN_DSE_PAGE",
+   "status": "Irregularity – confirm at cage"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions for improving the site (for review) | Las Vegas Strip Poker Research</title><style>
+:root{--ink:#1d2433;--muted:#5b6474;--line:#e3e7ee;--bg:#f7f8fb;--card:#fff;--accent:#1f6feb;--warn:#b26a00;--ok:#1a7f37;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0f172a;color:#fff;padding:14px 22px}header a{color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 22px;display:flex;flex-wrap:wrap;gap:6px 14px}
+nav a{color:var(--accent);text-decoration:none;font-size:14px}nav a.on{font-weight:700;color:var(--ink)}
+main{max-width:1280px;margin:0 auto;padding:22px}
+h1{font-size:26px;margin:4px 0 6px}h2{font-size:20px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}h3{font-size:16px;margin:18px 0 6px}
+p.lead{color:var(--muted);margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card b{font-size:24px;display:block}.card span{color:var(--muted);font-size:13px}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#eef2f8;position:sticky;top:0;font-weight:700}
+tr:nth-child(even) td{background:#fbfcfe}
+td.num{text-align:right;white-space:nowrap}
+.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:600;background:#eef2f8;color:var(--muted)}
+.tag.ok{background:#e6f4ea;color:var(--ok)}.tag.warn{background:#fff4e0;color:var(--warn)}.tag.bad{background:#fde8e6;color:var(--bad)}
+.note{background:#fff8e6;border:1px solid #f5d98a;border-radius:8px;padding:10px 12px;margin:10px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+input.filter{width:100%;max-width:420px;padding:8px 10px;border:1px solid #c9d1de;border-radius:8px;margin:8px 0 10px;font-size:14px}
+.wrap{overflow-x:auto}
+ul{padding-left:20px}li{margin:3px 0}
+footer{color:var(--muted);font-size:12.5px;padding:24px 22px;text-align:center}
+</style></head><body>
+<header><a href="index.html">Las Vegas Strip Poker Research</a> <span style="opacity:.7;font-size:13px">&middot; data verified 2026-11-16 &middot; all values from official sources unless flagged</span></header>
+<nav><a href="index.html">Home</a><a href="../index.html">Main Poker5 site (other session)</a><a href="summary.html">Executive summary</a><a href="single-entry.html">Single-entry (Venetian)</a><a href="daily-schedule.html">Daily schedule</a><a href="excluded.html">Excluded (multi-entry, satellites)</a><a href="wpt-wynn.html">WPT / Wynn festival</a><a href="hotels.html">Hotels</a><a href="analysis.html">Analysis</a><a href="questions.html">Questions to answer</a><a href="suggestions.html" class="on">Suggestions</a><a href="flagged.html">Flagged for Review</a><a href="sources.html">Sources &amp; repo review</a></nav><main><h1>Suggestions for improving the site (for review)</h1><p class="lead">Choose the path before implementation.</p>
+<div class="note"><b>Nothing here has been implemented.</b> Review each suggestion, then choose which to adopt before any change is made.</div>
+<input class="filter" data-target="sug" placeholder="Filter rows (type to search)"><div class="wrap"><table id="sug"><thead><tr><th>Area</th><th>Suggestion</th><th>Status</th></tr></thead><tbody><tr><td class=""><span class="tag">Data</span></td><td class="">Add a structure-sheet parser so that each event&#x27;s re-entry rule, starting chips, level length and house fee are read directly from the official PDF (instead of manual review).</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Data</span></td><td class="">Add a &#x27;last verified&#x27; date per row and an automated link checker that re-tests every source URL on a schedule.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Data</span></td><td class="">Add the Strip rooms not yet covered (Bellagio, MGM Grand, Caesars Palace, Resorts World, Horseshoe/Paris, Mandalay Bay, Park MGM) using their official poker schedules.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Hotels</span></td><td class="">Add a live-rate collector run on fixed dates (official booking pages only) to fill in base rate, resort fee and tax per night for each candidate hotel.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Hotels</span></td><td class="">Add a walking-time column measured on an official venue map, with the walk time and the route in the source link.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Planner</span></td><td class="">Add a day-planner that checks run-time overlaps once run-times are published, and warns about 5:10 PM vs 11:10 AM clashes.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Ranking</span></td><td class="">Rank by a transparent formula (guarantee per buy-in, prize pool share from the structure sheet, field-size estimate) and show the formula on the page.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Ranking</span></td><td class="">Separate bounty events into their own ranking, because bounty dollars are not cash prizes in the same way as the guaranteed prize pool.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">UX</span></td><td class="">Add filters (buy-in range, date, bounty/non-bounty, 50+ only) and CSV export on every table.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr><tr><td class=""><span class="tag">Governance</span></td><td class="">Keep the &#x27;Flagged for Review&#x27; page as the single place where unverified items are listed, so nothing is silently guessed.</td><td class=""><span class="tag warn">awaiting your choice</span></td></tr></tbody></table></div>
+</main>
+<footer>Figures are as published by the named official source on 2026-11-16. Unverified values are left blank and flagged. Not financial advice.</footer>
+<script>
+document.querySelectorAll('input.filter').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var t=document.getElementById(inp.dataset.target);
+    var q=inp.value.toLowerCase();
+    t.querySelectorAll('tbody tr').forEach(function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+</script></body></html>
