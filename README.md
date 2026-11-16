@@ -1,40 +1,38 @@
 # Poker5
 
-Las Vegas Strip poker tournament and hotel planner. Values are taken from official operator or tournament pages. Anything unverified is left blank and listed on the **Flagged for Review** page.
+Las Vegas Strip poker tournament and hotel planner, published with GitHub Pages.
 
-## Live site (session 443e914d)
+Live site: https://karagemop466-tech.github.io/Poker5/
 
-Served as static files from the `main` branch (GitHub Pages legacy build, source `main` `/`):
+## What is in this repo
 
-- Landing page: https://karagemop466-tech.github.io/Poker5/site-443e914d/
-- Pages: `index`, `tournaments` (single-entry, 36 rows), `multi-entry` (separate), `schedule`, `hotels`, `analysis`, `executive-summary`, `questions`, `suggestions`, `flagged-review`, `sources`.
+- `index.html`, `pages/*.html`, `assets/css/style.css`: the static site (built output).
+- `data/c6087e2c/`: the verified inputs for this site. Venetian schedule rows (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels (`hotels.json`), flagged items (`flags.json`).
+- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`. Run `python3 scripts/build_c6087e2c.py`.
+- Other sessions' outputs (`docs/`, `site/`, `dashboard-*/`, `tools/`, `data/*.json|md|txt`) are kept as they were and are linked from the landing page.
+- `COORDINATION.md`: the task board for parallel work.
 
-Other sessions' sites on this repository are at their own paths and are not changed by this session.
+## Verification rule
 
-## Files owned by this session (443e914d)
+Each table value comes from an official source linked in its row. Values that cannot be confirmed are left blank and listed on the Flagged for Review page. Nothing is inferred or filled in.
+
+This is an independent planning tool. It is not affiliated with any casino, poker room or hotel. Values change without notice. Confirm before booking or playing. Must be 21+.
+
+---
+
+## Session 443e914d outputs (Las Vegas Strip poker and hotel planner, single-entry focus)
+
+Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served from `main`, legacy Pages build, source `main` `/`).
 
 | Path | Purpose |
 |---|---|
 | `data-443e914d/sources.json` | Every source URL, labelled official or third-party |
-| `data-443e914d/tournaments_single_entry.json` | 36 single-entry Venetian rows (Nov 18 – Dec 23, 2026) |
-| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats (kept separate) |
+| `data-443e914d/tournaments_single_entry.json` | 36 one-day Venetian rows, Nov 18 – Dec 23, 2026. Single-entry status is inferred (flag P-00) |
+| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats, kept separate |
 | `data-443e914d/hotels.json` | Hotel rows; blank = unverified |
 | `data-443e914d/pending_and_flags.json` | Pending items, hotel flags, repo irregularities |
-| `tools/build_443e914d.py` | Stdlib-only generator that writes `site-443e914d/` from `data-443e914d/` |
-| `tools/check_links.py` | Link gate: no broken internal links; every external URL must be in `data-443e914d/sources.json` |
-| `research-443e914d/verification.md` | Row-by-row verification log |
-| `site-443e914d/` | Generated site (edit the data and rebuild; do not hand-edit HTML) |
+| `tools/build_443e914d.py` | Generates `site-443e914d/` from `data-443e914d/` |
+| `tools/check_links.py` | Link gate: no broken internal links; external URLs must be in `data-443e914d/sources.json` |
+| `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
 
-## Rebuild and check
-
-```bash
-python3 tools/build_443e914d.py
-python3 tools/check_links.py
-```
-
-## Verification approach
-
-- Single-entry rows: date, weekday, start, buy-in, and guarantee re-checked against the official Venetian schedule PDF and event page (0 mismatches; see `research-443e914d/verification.md`). Structure-sheet fields for older rows were recorded in an earlier session and are not all re-read.
-- Multi-entry and flight formats are never ranked against single-entry events.
-- Derived values (guarantee ÷ buy-in) are arithmetic on verified inputs and are labelled as calculated.
-- No value is inferred. Blanks are intentional and flagged.
+Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`

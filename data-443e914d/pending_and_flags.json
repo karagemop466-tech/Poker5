@@ -2,6 +2,13 @@
  "_note": "Items not verified or otherwise flagged. Blank values are left blank. Each item links to the source checked (official where available). These items do not block publication.",
  "pending_tournaments": [
   {
+   "id": "P-00",
+   "item": "Single-entry classification is an INFERENCE. The Venetian structure sheets do not say 'single entry'. Rows are classed single-entry when the event is one day and the sheet has no re-entry, rebuy, or add-on text. Operator confirmation is needed before treating this as official",
+   "example": "All 36 rows in the single-entry table",
+   "source": "S_VEN_DSE_PAGE",
+   "status": "Inference – flagged; does not block merge"
+  },
+  {
    "id": "P-01",
    "item": "Wynn WPT World Championship festival (Nov 27 – Dec 21, 2026): official schedule verified, but structure sheets not checked, so flight, re-entry, and single-entry status are NOT verified",
    "example": "Dec 13 Day 1A $10,400 buy-in with '$1M added'",

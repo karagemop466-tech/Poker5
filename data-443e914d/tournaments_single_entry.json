@@ -1,5 +1,5 @@
 {
- "_note": "Single-entry rows. Dates/times/buy-ins/guarantees checked against the official schedule PDF and the Venetian event page this session (see research/verification.md). House fee, chips, levels, late-registration close, and bounty fields are from the structure sheets named in source_structure. For rows 02–57 the structure-sheet fields were recorded in an earlier session and are not all re-checked here. No re-entry or add-on language was seen on the sheets fetched. Confirm at the cage before play.",
+ "_note": "Single-entry rows. Dates/times/buy-ins/guarantees checked against the official schedule PDF and the Venetian event page this session (see research/verification.md). House fee, chips, levels, late-registration close, and bounty fields are from the structure sheets named in source_structure. For rows 02–57 the structure-sheet fields were recorded in an earlier session and are not all re-checked here. No re-entry or add-on language was seen on the sheets fetched. Confirm at the cage before play. Single-entry status is INFERRED: the sheets do not state 'single entry'; classification = one-day event with no re-entry, rebuy, or add-on text on the sheet (flag P-00).",
  "venue": "The Venetian Resort Las Vegas – Poker Room (DeepStack Extravaganza IV, Nov 16 – Dec 23, 2026)",
  "rows": [
   {
@@ -19,7 +19,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_5",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -39,7 +39,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -59,7 +59,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_6",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -79,7 +79,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -99,7 +99,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_5",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -119,7 +119,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -139,7 +139,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_7",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -159,7 +159,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -179,7 +179,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_11",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -199,7 +199,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_8",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": "PokerAtlas PRO discount requires a third-party membership; not an official Venetian term"
   },
   {
@@ -219,7 +219,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -239,7 +239,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -259,7 +259,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -279,7 +279,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -299,7 +299,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_28",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -319,7 +319,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_7",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -339,7 +339,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -359,7 +359,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_11",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -379,7 +379,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -399,7 +399,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -419,7 +419,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_16",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -439,7 +439,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -459,7 +459,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -479,7 +479,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -499,7 +499,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -519,7 +519,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_34",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -539,7 +539,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -559,7 +559,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_11",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -579,7 +579,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_15",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -599,7 +599,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_23",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -619,7 +619,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_8",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": "Date from the official event page; the schedule PDF's date cell for #58 is blank. PokerAtlas PRO $20 discount applies to the first buy-in only, claimed in the PokerAtlas app (sheet 8, item 7; third-party membership)."
   },
   {
@@ -639,7 +639,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -659,7 +659,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -679,7 +679,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -699,7 +699,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_7",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   },
   {
@@ -719,7 +719,7 @@
    "source_schedule": "S_VEN_SCHED_PDF",
    "source_structure": "S_VEN_STR_1",
    "source_listing": "S_VEN_DSE_PAGE",
-   "status": "Single-entry per structure sheet",
+   "status": "No re-entry/add-on text on sheet (single-entry inferred)",
    "flag": ""
   }
  ]

@@ -152,7 +152,7 @@ def tournaments_page():
   <p class="lead">Venue: {E(SINGLE["venue"])}. {len(SINGLE_ROWS)} events listed as single-entry on the structure sheets fetched. Sorted by date.</p>
 </section>
 <div class="callout">
-  <strong>Read this first:</strong> On the bounty structure sheets checked (sheets 1 and 8), the guarantee includes bounty money, so cash to first place is less than the headline guarantee. House fee is the amount the sheet says is withheld from each buy-in.
+  <strong>How "single-entry" is decided:</strong> it is an inference, not an operator statement. A row is listed when the event is one day and its structure sheet has no re-entry, rebuy, or add-on text (flag P-00). <strong>Also read:</strong> On the bounty structure sheets checked (sheets 1 and 8), the guarantee includes bounty money, so cash to first place is less than the headline guarantee. House fee is the amount the sheet says is withheld from each buy-in.
 </div>
 <div class="toolbar"><input type="search" placeholder="Filter by date, name, buy-in…" data-target="t-single"></div>
 {tbl(headers, rows, filter_id="t-single").replace('<table class="data"', '<table class="data" id="t-single"')}
@@ -300,7 +300,7 @@ def exec_page():
 <div class="card wide">
 <h2>What is verified</h2>
 <ul class="bullets">
-  <li><strong>{n} single-entry live tournaments</strong> at The Venetian Poker Room, {E(lo_s)} – {E(hi_s)}, 2026. Each row lists the official schedule and the structure sheet checked. Every date, time, buy-in, and guarantee was re-checked against the official schedule and event page (<a href="https://github.com/karagemop466-tech/Poker5/blob/main/research-443e914d/verification.md" target="_blank" rel="noopener">verification log</a>). <a href="tournaments.html">See the list</a>.</li>
+  <li><strong>{n} one-day events with no re-entry, rebuy, or add-on text on the sheets (single-entry inferred, flag P-00)</strong> at The Venetian Poker Room, {E(lo_s)} – {E(hi_s)}, 2026. Each row lists the official schedule and the structure sheet checked. Every date, time, buy-in, and guarantee was re-checked against the official schedule and event page (<a href="https://github.com/karagemop466-tech/Poker5/blob/main/research-443e914d/verification.md" target="_blank" rel="noopener">verification log</a>). <a href="tournaments.html">See the list</a>.</li>
   <li><strong>Highest guarantee-to-buy-in multiples (calculated):</strong> the $200 Valuetown Bounty on Nov 28 ($20K GTD) and the $800 Bounty on Dec 9 ($75K GTD). Bounty guarantees include bounty money on the sheets checked.</li>
   <li><strong>Multi-entry and flight formats are kept separate:</strong> Wynn daily tournaments (re-entry and add-on formats) and Venetian flight events. <a href="multi-entry.html">See the separate section</a>.</li>
   <li><strong>Resort fees (official):</strong> The Venetian $55 per night, per the official poker-suite page. Wynn is offer-specific: $45 + tax on some offers and $55 + tax on others. The Palazzo, Encore, Caesars, and MGM fees are NOT verified.</li>
@@ -332,7 +332,7 @@ def exec_page():
     return page("Executive summary", "executive-summary.html", body)
 
 QUESTIONS = [
-    ("Q1", "Which Venetian events are single-entry?", f"{len(SINGLE_ROWS)} events are listed as single-entry (sheets checked). Other scheduled Venetian events are open (Flagged P-04, P-05).", "partial"),
+    ("Q1", "Which Venetian events are single-entry?", f"Not stated by the operator. {len(SINGLE_ROWS)} one-day events have no re-entry, rebuy, or add-on text on the sheets checked (inference, flag P-00). Other scheduled events are open (flags P-04, P-05).", "partial"),
     ("Q2", "Which Wynn WPT World Championship events are single-entry?", "Open. The official schedule is verified; structure sheets were not checked.", "open"),
     ("Q3", "What is the true nightly cost at The Venetian for my dates?", "Open. Needs your stay dates and a booking-calendar check (dynamic data, not published as a static official value).", "open"),
     ("Q4", "What is the room tax rate?", "Open. Third-party sources say 13.38%; the official Clark County page must be confirmed.", "open"),
