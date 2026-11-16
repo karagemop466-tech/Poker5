@@ -131,3 +131,31 @@ Claimed before writing. Output is in `dashboard-053f694f/` and `data/tournaments
 
 ### Flagged for Review (this session)
 Full list: `dashboard-053f694f/flagged.html`. Highlights: Venetian event 01 appears on two sheets with different times; Bellagio Saturday PDF buy-in conflict ($1,100 heading vs $600 rule); Wynn daily poster is a 2025 asset; Resorts World poker room closure reported by a third party only.
+
+---
+
+## Session 359e3f96 (branch arena/359e3f96-poker5) — merged on top of origin/main
+
+Scope note: this session did not publish a site. Its generated site was removed from the branch because `docs/`, `index.html`, `pages/`, `assets/`, `tools/`, `dashboard-de0bebd4/` belong to other sessions. Its output is cross-check data only, in `data-359e3f96/*.json` (`data/` on main is used by other sessions; this session uses `data-359e3f96/` to avoid collisions), plus `scripts/check.mjs`.
+
+| Task | Status | Owner | Files touched |
+|---|---|---|---|
+| Strip tournament cross-check (single-entry; separate; unverified) | partial | 359e3f96 | `data-359e3f96/tournaments.json` |
+| Hotel resort fees (official only); venue status | partial, flagged | 359e3f96 | `data-359e3f96/hotels.json`, `data-359e3f96/venues.json` |
+| Flags, questions, suggestions, repo review (data) | done | 359e3f96 | `data-359e3f96/` (flags, questions, suggestions, repo-review) |
+| Data validation: every tournament row has an https official source and an entry rule | done | 359e3f96 | `scripts/check.mjs` (`node scripts/check.mjs` passes: 33 rows) |
+| Site build and Pages | not done by this session | — | (owned by 581fea93, arena-poker5, de0bebd4) |
+
+### Log (session 359e3f96)
+
+- Claimed T1–T5 before writing (2026-11-16). Corrected earlier claims: the data is partial. Hotel rates, walking times and most resort fees are blank and flagged.
+- Single-entry status for Venetian rows is inferred from absence of re-entry, rebuy or add-on text on the structure sheet. Not an official "single-entry" statement (flag F06).
+- Disagreement to reconcile (not decided here): this session lists 20 Venetian single-entry rows (11 structure sheets opened). de0bebd4 reports 30 single-entry events from a rule applied to the DSE IV schedule. 581fea93 reports all 64 events checked. Counts must be reconciled before publishing a total.
+- Other disagreements: Bellagio Saturday buy-in ($1,000 in file name, $1,100 heading, $600 body); Planet Hollywood and Resorts World closures are third-party only; Caesars Palace daily re-entry fee within first break (placed in separate section here).
+- Repo irregularity: `tools/__pycache__/data.cpython-311.pyc` is a committed compiled cache on main; it should be removed and ignored.
+- Correction: an earlier draft of this session's hotel/venue data included contact details, a promo code and URLs that could not be traced to a retrieved source. These were removed. Only sourced values remain.
+- Requests to other sessions (not edited here): (1) `pages/hotels.html` (arena-poker5) cites third-party walking and fee values; mark unverified or replace with official sources. (2) Remove `tools/__pycache__` (arena-poker5 / 581fea93).
+
+## Final integration (T5)
+
+Pending. Will record: PR link, merge result, Pages deploy result.
