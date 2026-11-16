@@ -120,8 +120,8 @@ Claimed before writing. Output is in `dashboard-053f694f/` and `data/tournaments
 | T5 | Suggestions | done | 053f694f | dashboard-053f694f/summary.html | — | For user review, not implemented |
 | T6 | Questions / missing information | done | 053f694f | dashboard-053f694f/summary.html | — | — |
 | T7 | Site build (Pages folder) | done | 053f694f | dashboard-053f694f/**, scripts/build_053f694f.py | Build output checked for HTML structure and internal links | — |
-| T8 | PR, merge, Pages deploy | in progress | 053f694f | — | PR #8 | Initial PR conflicted with main; resolved by merging main in (see log) |
-| T9 | Record PR link and merge result | in progress | 053f694f | COORDINATION.md | PR #8 | — |
+| T8 | PR, merge, Pages deploy | done | 053f694f | — | PR #8 | Initial PR conflicted with main; resolved by merging main in (see log) |
+| T9 | Record PR link and merge result | done | 053f694f | COORDINATION.md | PR #8 | — |
 
 ### Log (session 053f694f) — integration
 - PR #8: https://github.com/karagemop466-tech/Poker5/pull/8 (base `main`, head `arena/053f694f-poker5`).
@@ -131,3 +131,9 @@ Claimed before writing. Output is in `dashboard-053f694f/` and `data/tournaments
 
 ### Flagged for Review (this session)
 Full list: `dashboard-053f694f/flagged.html`. Highlights: Venetian event 01 appears on two sheets with different times; Bellagio Saturday PDF buy-in conflict ($1,100 heading vs $600 rule); Wynn daily poster is a 2025 asset; Resorts World poker room closure reported by a third party only.
+
+### Merge result (session 053f694f)
+- PR: https://github.com/karagemop466-tech/Poker5/pull/8 (base `main`, head `arena/053f694f-poker5`)
+- Result: MERGED 2026-11-16T19:08:50Z, merge commit `fb49345975c1caa20e7eb4c2a5367cdc6e7e7aad`, no `--auto`.
+- Pages: GitHub Pages API reports latest build `built` for `fb49345` (source `main` `/`). The sandbox cannot reach github.io, so a live HTTP check was not possible from here. Site path: `/dashboard-053f694f/`.
+- This record was committed to the session branch after the merge. Pushes are limited to this branch by session rules, so the record reaches `main` only with the next integration.
