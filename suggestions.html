@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suggestions — Poker5 Las Vegas Planner</title>
+<meta name="description" content="Suggestions to improve the site and decision-making. Review and choose the best path before implementing.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">
+      <div class="mark">P5</div>
+      <div>
+        <div>Poker5</div>
+        <div class="sub">Suggestions for Site Improvement</div>
+      </div>
+    </div>
+    <a class="btn" href="index.html">&#8592; Dashboard</a>
+  </header>
+
+  <nav>
+    <ul class="navbar">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="schedule.html">All-Day Schedule</a></li>
+      <li><a href="executive-summary.html">Executive Summary</a></li>
+      <li><a href="questions.html">Questions &amp; Answers</a></li>
+      <li><a href="suggestions.html" class="active">Suggestions</a></li>
+      <li><a href="flagged-for-review.html">Flagged for Review</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Suggestions &amp; improvement backlog</h1>
+        <p>Review these before implementing any changes. Each suggestion lists intent, expected benefit, effort, and a decision status. No change is applied automatically — choose the best path here first.</p>
+      </div>
+
+      <div class="callout info">
+        <strong>Process.</strong> Discuss and prioritize each item. Mark a suggestion "approved," "deferred," or "rejected" before any code or data change is made. Record the decision in COORDINATION.md.
+      </div>
+
+      <div class="suggestion">
+        <h3>S-01 &#8212; Fetch official structure sheets and confirm single-entry vs re-entry</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: medium &middot; Status: proposed</div>
+        <p>Many multi-flight WPT/Venetian events allow one entry per starting flight but permit re-entry across flights. The structure sheets (wynnpoker.com; Venetian schedule PDF) were not fully fetched. Confirm which events are truly freezeout/single-entry so the main table doesn't mislead.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-02 &#8212; Add live date picker + true-cost calculator</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: high &middot; Status: proposed</div>
+        <p>Add a date picker so the user can select their trip dates, then show only tournaments running on those dates and compute each hotel's true cost/night for the stay length (base + resort fee + tax + parking × nights).</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-03 &#8212; Verify every table row from official sources; blank + flag unverified</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: high &middot; Status: proposed</div>
+        <p>Continue line-by-line verification. Where a value can't be confirmed from an official source, leave it blank and mark "unverified" (already done for several rows). Prioritize: Venetian daily start times, Wynn daily status during WPT WC, MGM Grand data (official site 500s), all future room rates.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-04 &#8212; Add driving/rideshare alternatives + parking cost detail</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: low &middot; Status: proposed</div>
+        <p>Some users won't walk 20–25 minutes. Add rideshare cost estimates and valet vs. self-parking costs per hotel so distance can be traded against cost.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-05 &#8212; Tournament result tracking (finished events)</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: medium &middot; Status: proposed</div>
+        <p>After each event day, record results/placements so the user can see which flights actually ran and field sizes — helps decide whether to re-enter a later flight.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-06 &#8212; Loyalty-status fee waivers (Caesars Rewards Diamond/Seven Stars; MGM Rewards Gold+)</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: low &middot; Status: proposed</div>
+        <p>Add a toggle: "I have elite status" to waive resort/parking fees where applicable and recalculate true cost per night.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-07 &#8212; Mobile optimization + offline mode</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: medium &middot; Status: proposed</div>
+        <p>Most users will check tables on their phones in the casino. Tighten mobile table scrolling, add a "save for offline" toggle, and cache key data.</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="suggestion">
+        <h3>S-08 &#8212; Add more Strip poker rooms (Resorts World, Planet Hollywood, Park MGM, Mirage/Hard Rock)</h3>
+        <div class="meta">Owner: session-1 &middot; Effort: medium &middot; Status: proposed</div>
+        <p>Coverage currently centers on Venetian, Wynn, Caesars/Horseshoe, ARIA, Bellagio, MGM. Add other Strip rooms with daily tournaments so the user can truly "play all day."</p>
+        <div class="actions">
+          <button class="btn btn-sm">Approve</button><button class="btn btn-sm">Defer</button><button class="btn btn-sm">Reject</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 10px 0;font-size:1rem;">Decision log</h2>
+        <p style="font-size:0.85rem;color:var(--muted);margin:0 0 10px 0;">Record decisions here after review. Example format: &#8220;S-03 approved 2026-11-16 &#8212; verification ongoing.&#8221;</p>
+        <ul style="margin:0;color:var(--muted);font-size:0.85rem;line-height:1.8;">
+          <li>No decisions recorded yet. Review each suggestion above and choose the best path before implementing.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <div><strong>Poker5</strong> — Las Vegas poker tournament &amp; hotel planner.</div>
+      <div class="disclaimer">Suggestions are proposals only; none are implemented until reviewed and approved.</div>
+      <div>Research date: 2026-11-16</div>
+    </div>
+  </footer>
+</div>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

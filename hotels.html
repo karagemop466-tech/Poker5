@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotels — Poker5 Las Vegas Planner</title>
+<meta name="description" content="Walking-distance hotels near Las Vegas Strip poker tournaments with resort fees, taxes, parking, and true cost per night.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">
+      <div class="mark">P5</div>
+      <div>
+        <div>Poker5</div>
+        <div class="sub">Hotels &#183; Walking Distance</div>
+      </div>
+    </div>
+    <a class="btn" href="index.html">&#8592; Dashboard</a>
+  </header>
+
+  <nav>
+    <ul class="navbar">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="hotels.html" class="active">Hotels</a></li>
+      <li><a href="schedule.html">All-Day Schedule</a></li>
+      <li><a href="executive-summary.html">Executive Summary</a></li>
+      <li><a href="questions.html">Questions &amp; Answers</a></li>
+      <li><a href="suggestions.html">Suggestions</a></li>
+      <li><a href="flagged-for-review.html">Flagged for Review</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Hotels within walking distance</h1>
+        <p>Cost and quality are higher priority than distance; every hotel listed is within 30 minutes walking of a tournament venue. <strong>True cost per night = base rate + resort fee + 13.38% Clark County tax (on rate + fee) + self-parking.</strong> Room rates vary by date — sample rates are flagged; confirm on each hotel's official site.</p>
+      </div>
+
+      <input type="text" class="filter-input" data-target="tbl-h" placeholder="Filter hotels&#8230;" style="margin:0 0 10px 0;padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius-sm);width:220px;">
+
+      <div class="card">
+        <h2>Hotel comparison</h2>
+        <div class="table-wrap" style="margin-top:8px;">
+          <table id="tbl-h">
+            <thead>
+              <tr>
+                <th>#</th><th>Hotel</th><th>Tier / Quality</th><th>Distance to Venetian</th><th>Walk time</th><th>Resort fee / night (+ tax)</th><th>Self-parking / day</th><th>Sample base rate (unverified)</th><th>True cost / night (formula)</th><th>Source</th><th>Verification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H1</td><td>The Venetian / The Palazzo</td><td>Luxury — hosts DeepStack Extravaganza</td><td>0 mi (at venue)</td><td>0 min</td><td>$55 + tax (~$62.36)</td><td>$20/day</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html" target="_blank" rel="noopener">Venetian hotel terms (official)</a></td><td class="verif"><span class="badge badge-unverified">fee verified; rate blank</span></td>
+              </tr>
+              <tr>
+                <td>H2</td><td>Wynn Las Vegas / Encore</td><td>Luxury — hosts WPT World Championship</td><td>0.5 mi</td><td>10–15 min</td><td>$55 + tax (~$62.36)</td><td>Free (registered guests)</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://www.visitwynn.com/tc/index.cfm?term_id=850250" target="_blank" rel="noopener">Wynn terms (official)</a></td><td class="verif"><span class="badge badge-unverified">fee verified; rate blank</span></td>
+              </tr>
+              <tr>
+                <td>H3</td><td>ARIA Resort &amp; Casino</td><td>Luxury</td><td>~0.5 mi</td><td>~10 min</td><td>$55 + tax (~$62.36)</td><td>$20/day</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://aria.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">ARIA Poker (official)</a> &middot; <a href="https://hoteltiplasvegas.com/aria-las-vegas-review/" target="_blank" rel="noopener">fee: third-party</a></td><td class="verif"><span class="badge badge-unverified">fee unverified vs official</span></td>
+              </tr>
+              <tr>
+                <td>H4</td><td>Bellagio</td><td>Luxury</td><td>~0.9 mi</td><td>18–25 min</td><td>$55 + tax (~$62.36)</td><td>$20/day</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">Bellagio Poker (official)</a> &middot; <a href="https://www.lasvegasjaunt.com/resort-fees/" target="_blank" rel="noopener">fee: third-party</a></td><td class="verif"><span class="badge badge-unverified">fee unverified vs official</span></td>
+              </tr>
+              <tr>
+                <td>H5</td><td>Caesars Palace</td><td>Upscale-luxury</td><td>~0.7 mi</td><td>~14 min</td><td>$54.95 + tax (~$62.30)</td><td>Paid; free for Caesars Rewards Platinum+</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip" target="_blank" rel="noopener">Caesars official (poker)</a> &middot; <a href="https://lasvegaswonders.com/caesars-palace-prices/" target="_blank" rel="noopener">fee/rate: third-party</a></td><td class="verif"><span class="badge badge-unverified">fee unverified vs official</span></td>
+              </tr>
+              <tr>
+                <td>H6</td><td>MGM Grand</td><td>Large resort</td><td>~1.2 mi</td><td>~22–25 min</td><td>$50 + tax (~$56.69)</td><td>$20/day (unverified)</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://www.pokeratlas.com/poker-room/mgm-grand-las-vegas/tournaments" target="_blank" rel="noopener">MGM via PokerAtlas (3rd party)</a></td><td class="verif"><span class="badge badge-unverified">unverified</span></td>
+              </tr>
+              <tr>
+                <td>H7</td><td>The Cosmopolitan</td><td>Upscale-luxury</td><td>~0.8 mi</td><td>~16 min</td><td>$55 + tax (~$62.36)</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="null">&#8212;</td><td class="source"><a href="https://www.lasvegasjaunt.com/resort-fees/" target="_blank" rel="noopener">fee: third-party</a></td><td class="verif"><span class="badge badge-unverified">unverified</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 10px 0;font-size:1rem;">True cost per night — how it's calculated</h2>
+        <p style="font-size:0.85rem;color:var(--muted);margin:0 0 12px 0;">Clark County room tax = <strong>13.38%</strong>, applied to base rate + resort fee. Resort fees are mandatory (not optional) except with qualifying loyalty status at Caesars/MGM properties.</p>
+        <table>
+          <thead><tr><th>Example</th><th>Base room</th><th>Resort fee</th><th>Subtotal</th><th>Tax 13.38%</th><th>Parking</th><th><strong>True cost / night</strong></th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Wynn @ $176 base (sample Dec 17/22/23 2026)</td><td>$176.00</td><td>$55.00</td><td>$231.00</td><td>$30.91</td><td>$0 (free)</td><td><strong>≈ $261.91</strong></td>
+            </tr>
+            <tr>
+              <td>Venetian @ $200 base (sample)</td><td>$200.00</td><td>$55.00</td><td>$255.00</td><td>$34.12</td><td>$20.00</td><td><strong>≈ $309.12</strong></td>
+            </tr>
+            <tr>
+              <td>Caesars Palace @ $139 all-in (sample, 3+ nights)</td><td>$84.00</td><td>$55.00</td><td>$139.00</td><td>$18.60</td><td>varies</td><td><strong>≈ $157.60 + parking</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <strong>Hotel recommendation.</strong> For an all-day tournament schedule, stay <strong>at the venue</strong>: <strong>Wynn/Encore</strong> (WPT World Championship, distance 0.5 mi/10–15 min from Venetian) or <strong>The Venetian/Palazzo</strong> (DeepStack Extravaganza, distance 0). Both let you walk to play and back between sessions. If cost matters more, <strong>Caesars Palace</strong> (~0.7 mi/~14 min from Venetian) is upscale with a lower sample rate, and Caesars Rewards Diamond/Seven Stars waive the resort fee. Confirm all rates directly on official booking pages — sample rates here are not guaranteed and were not fully verifiable from official sources.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <div><strong>Poker5</strong> — Las Vegas poker tournament &amp; hotel planner.</div>
+      <div class="disclaimer">Hotel rates and fees change without notice. Verify on official booking sites before reserving. Must be 21+. Not affiliated with any hotel or casino.</div>
+      <div>Research date: 2026-11-16</div>
+    </div>
+  </footer>
+</div>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

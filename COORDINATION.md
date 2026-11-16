@@ -18,15 +18,15 @@ Shared task board for the Las Vegas poker tournament & hotel research + GitHub P
 
 | # | Task | Status | Owner | File scope | Sources | Verification | Irregularities |
 |---|------|--------|-------|------------|---------|--------------|----------------|
-| 1 | Research live upcoming poker tournaments near Las Vegas Strip (official sources) | in progress | session-1 | `data/tournaments.md`, `tournaments.html` | wsop.com, caesars.com, wynnlasvegas.com, venetianlasvegas.com, aria.com, bellagio.com, mgmresorts.com | Pending official-site checks | Pending |
-| 2 | Research hotels within walking distance of tournaments (official hotel sites) | unclaimed | session-1 | `data/hotels.md`, `hotels.html` | wynnlasvegas.com, venetianlasvegas.com, aria.com, bellagio.com, mgmresorts.com, caesars.com | Pending | Pending |
-| 3 | Build executive summary | unclaimed | session-1 | `executive-summary.html` | (derived from tasks 1-2) | Pending | Pending |
-| 4 | Build suggestions section (site improvement suggestions) | unclaimed | session-1 | `suggestions.html` | n/a | Pending | Pending |
-| 5 | Build questions/info/answers list (pre-decision items) | unclaimed | session-1 | `questions.html` | n/a | Pending | Pending |
-| 6 | Build Flagged for Review page (irregularities + unverified items) | unclaimed | session-1 | `flagged-for-review.html` | (from tasks 1-2) | Pending | Pending |
-| 7 | Build GitHub Pages site: landing page + subpages, clean dashboard UI, tables, analysis | unclaimed | session-1 | `index.html`, `*.html`, `assets/css/*.css`, `assets/js/*.js` | n/a | Build check + broken-link check | Pending |
-| 8 | Verify all table rows line by line against official sources; blank + flag unverified | unclaimed | session-1 | All data files + pages | Official sources listed above | Pending | Pending |
-| 9 | Final integration: merge branches, re-verify combined data, confirm build with no broken links, publish GitHub Pages | unclaimed | session-1 | All | All | Pending | Pending |
+| 1 | Research live upcoming poker tournaments near Las Vegas Strip (official sources) | done | session-1 | `data/tournaments.md`, `tournaments.html` | venetianlasvegas.com, wynnlasvegas.com, worldpokertour.com, caesars.com, bellagio.mgmresorts.com, aria.mgmresorts.com, pokeratlas.com (MGM, third-party) | Verified against official sources; MGM Grand via PokerAtlas flagged | Venetian deepstack page + WPT schedule PDF official; Caesars buy-in conflicts noted |
+| 2 | Research hotels within walking distance of tournaments (official hotel sites) | done | session-1 | `data/hotels.md`, `hotels.html` | venetianlasvegas.com, visitwynn.com, caesars.com, aria.mgmresorts.com, bellagio.mgmresorts.com | Partial — resort fees confirmed; room rates variable (sample only) | MGM Grand official page 500s; future 2026 rates not bookable/verifiable |
+| 3 | Build executive summary | done | session-1 | `executive-summary.html` | (derived from tasks 1-2) | Built; sources linked | None |
+| 4 | Build suggestions section (site improvement suggestions) | done | session-1 | `suggestions.html` | n/a | Built | None |
+| 5 | Build questions/info/answers list (pre-decision items) | done | session-1 | `questions.html` | n/a | Built | None |
+| 6 | Build Flagged for Review page (irregularities + unverified items) | done | session-1 | `flagged-for-review.html` | (from tasks 1-2) | Built | Listed F-01 to F-09 |
+| 7 | Build GitHub Pages site: landing page + subpages, clean dashboard UI, tables, analysis | done | session-1 | `index.html`, `*.html`, `assets/css/*.css`, `assets/js/*.js` | n/a | Built; internal links verified | Pending Pages deploy |
+| 8 | Verify all table rows line by line against official sources; blank + flag unverified | in progress | session-1 | All data files + pages | Official sources listed above | Tournament rows verified vs official sources; hotel fees partially verified; rates unverified | F-01 to F-09 logged |
+| 9 | Final integration: merge branches, re-verify combined data, confirm build with no broken links, publish GitHub Pages | in progress | session-1 | All | All | Build check next | Pending |
 | 10 | Create PR from integration branch to main, merge, confirm Pages deploys, record PR link + merge result here | unclaimed | session-1 | `COORDINATION.md` | n/a | Pending | Pending |
 
 ## Notes
