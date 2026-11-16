@@ -205,6 +205,34 @@ Claimed before writing. This session is the integration step for the root landin
 
 ---
 
+## Session arena-bafafd7c (branch arena/bafafd7c-poker5) — merged on top of origin/main
+
+Claimed before writing. Output is in `dashboard-bafafd7c/` (served at `/Poker5/dashboard-bafafd7c/`). Build: `python3 scripts/build_bafafd7c.py`; check: `python3 scripts/check_bafafd7c.py`; data: `scripts/data_bafafd7c.py`. Files on `main` (root `index.html`, `docs/`, `pages/`, `site/`, `tools/`, `data/`, `dashboard-*`) were kept unchanged.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| T1 | Repo review | done | arena-bafafd7c | `dashboard-bafafd7c/repo-review.html` | git log/ls-tree/ls-remote; README checked byte-by-byte | Branch-naming and coordination-rule notes on page |
+| T2 | Single-entry, Venetian DSE IV (all 64 numbered events) | done | arena-bafafd7c | `scripts/data_bafafd7c.py`, `dashboard-bafafd7c/single-entry.html` | Venetian schedule PDF (2 pages), event page (4 pages), structure sheets 1, 5, 6, 7, 8, 11, 15, 16, 17, 18, 26, 28, 29, 30, 34 | 43 single-entry; 21 unverified (flights, satellites, tag-team, two-day, PLO/Big O) |
+| T3 | Rebuys / re-entry / paid chips (separate section) | done | arena-bafafd7c | `dashboard-bafafd7c/multi-entry.html` | Wynn daily structures PDF (3 pages), Bellagio Fri/Sat/Sun PDFs | 8 rows; Bellagio Saturday buy-in conflict left blank |
+| T4 | Hotels within 30 min | done, partial | arena-bafafd7c | `dashboard-bafafd7c/hotels.html` | Venetian suite-rate page ($55 resort fee); Wynn terms (expired promo) ($55 + tax) | Base rates, tax rate, Bellagio/Encore/ARIA/RW fees NOT verified; walk times are estimates |
+| T5 | Day schedule Nov 16 – Dec 23 | done | arena-bafafd7c | `dashboard-bafafd7c/schedule.html` | Venetian schedule PDF | No verified single-entry start before 10:10 AM |
+| T6 | Build + link/source-coverage check | done | arena-bafafd7c | `scripts/build_bafafd7c.py`, `scripts/check_bafafd7c.py`, `.gitignore` | `check_bafafd7c.py` PASS | |
+| T7 | Questions, suggestions (not implemented), Flagged, sources | done | arena-bafafd7c | `dashboard-bafafd7c/{questions,suggestions,flagged,sources}.html` | Official sources listed on Sources page | 22 flags; 20 open questions |
+| T8 | Integration: merge, PR, Pages check | in progress | arena-bafafd7c | this file | — | See log |
+
+### Disagreements with other sessions (not decided here; flagged for review)
+1. **Venetian single-entry count.** This session counts 43 single-entry events. Session de0bebd4 counted 30 under a stricter rule (no flight suffix, and a sheet with no re-entry text). The difference comes from which events each session classed as single-entry, and from which sheets it read. A reviewer should reconcile the two lists. Event-by-event detail is in `dashboard-bafafd7c/single-entry.html`.
+2. **Bellagio Saturday buy-in.** This session leaves it blank: the official PDF header says $1100, rule 07 says $600, and the file name says $1000 (see `dashboard-bafafd7c/flagged.html`, F-01).
+3. **Wynn resort fee.** This session cites the Wynn terms page for $55 + tax. That page is for an expired Concours promotion, so it needs re-confirmation (F-15).
+
+### Log (arena-bafafd7c)
+- Claimed T1–T8 before writing. Found the add/add conflicts on main (`docs/`, `scripts/build_site.py`, COORDINATION.md). Renamed this session's files to session-scoped paths. No file from another session was overwritten.
+- Re-verified every value against official pages and PDFs. Removed earlier unsourced values (invented URLs, a Bellagio Saturday guarantee, an unverified tax rate, and a WPT date list).
+- Build: `python3 scripts/build_bafafd7c.py` → 10 pages. Check: `python3 scripts/check_bafafd7c.py` → PASS (no broken internal links; every data row has an official source link; row counts match `data_bafafd7c.py`).
+- Pages source on main is `/` (root). This session did not change it. The dashboard is reachable at `/Poker5/dashboard-bafafd7c/` once main contains it.
+
+---
+
 ## Session 443e914d (branch arena/443e914d-poker5) — merged on top of origin/main
 
 Claimed T-A to T-F before writing (commit `68af925` on the branch, 2026-11-16). Output uses session-unique paths so nothing on `main` is overwritten: `data-443e914d/`, `site-443e914d/`, `research-443e914d/`, `tools/build_443e914d.py`, `tools/check_links.py`.
