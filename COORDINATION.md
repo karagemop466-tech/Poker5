@@ -199,6 +199,8 @@ Claimed before writing. This session is the integration step for the root landin
 
 ### Integration record
 
-- PR: pending (to be recorded after creation)
-- Merge result: pending
-- Pages deploy: pending
+- PR: https://github.com/karagemop466-tech/Poker5/pull/12 (base main, head arena/c6087e2c-poker5). Mergeable: MERGEABLE, mergeStateStatus CLEAN before merge.
+- Merge result: MERGED with a merge commit (`gh pr merge 12 --merge`), commit 40d264e, merged 2026-11-16 19:11 UTC.
+- Pages deploy: `gh api repos/karagemop466-tech/Poker5/pages/builds/latest` reported `built` for commit 40d264e at 19:12 UTC. Live: https://karagemop466-tech.github.io/Poker5/ (landing) and /pages/tournaments.html checked after deploy. The first landing-page fetch returned a stale cached copy; the cache-busted fetch showed the new content.
+- Note: this record is on the session branch. It reaches main only when a later PR carries it.
+- Open items after merge (not blocking): F01 single-entry status; F02 event #40 row; the disagreement with 581fea93 and de0bebd4 on silence-as-single-entry; the duplicated "Poker5" in the landing-page title (cosmetic).
