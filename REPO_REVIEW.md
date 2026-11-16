@@ -22,7 +22,7 @@ Lines 1–1 of `README.md` were read; the file has no further content.
 
 ## Source-data irregularities found while building the site
 
-These also appear on the Flagged for Review page (`docs/flagged.html`) with links.
+These also appear on the Flagged for Review page (`site/flagged.html`) with links.
 
 1. Bellagio poker page says play "will resume on Saturday, July 26". July 26, 2026 is a Sunday. The page looks stale.
 2. Bellagio Saturday PDF: heading reads $1100 buy-in, file name reads $1000, rules allocate a $600 buy-in.
