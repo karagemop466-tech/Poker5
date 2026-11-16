@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { events, hotels, lastVerified, roomTax, routes } from '../data.mjs';
+import { events, hotels, lastVerified, roomTax, routes } from '../site-src/data.mjs';
 
 const statuses = ['single', 'multi', 'unknown', 'restricted'];
 const validHttps = (value) => {
@@ -80,16 +80,20 @@ test('hotel, tax, route and quote source links are secure and present', () => {
 
 test('Pages excludes repository-only notes and test tooling from the published root', async () => {
   const config = await readFile(new URL('../_config.yml', import.meta.url), 'utf8');
-  for (const item of ['COORDINATION.md', 'README.md', 'package.json', 'scripts/', 'test/', 'serve.mjs']) {
+  for (const item of ['COORDINATION.md', 'README.md', 'package.json', 'scripts/', 'test/', 'serve.mjs', 'site-src/']) {
     assert.ok(config.includes(item), `GitHub Pages should exclude ${item}`);
   }
 });
 
-test('dashboard and ledger link to each other and load their local assets', async () => {
-  const [dashboard, ledger] = await Promise.all([
+test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {
+  const [dashboard, ledger, published, rootHome] = await Promise.all([
+    readFile(new URL('../site-src/index.html', import.meta.url), 'utf8'),
+    readFile(new URL('../site-src/sources.html', import.meta.url), 'utf8'),
+    readFile(new URL('../site-b50aa7f5/index.html', import.meta.url), 'utf8'),
     readFile(new URL('../index.html', import.meta.url), 'utf8'),
-    readFile(new URL('../sources.html', import.meta.url), 'utf8'),
   ]);
+  assert.equal(published, dashboard);
+  assert.match(rootHome, /href="site-b50aa7f5\/index\.html"/);
   assert.match(dashboard, /href="\.\/sources\.html"/);
   assert.match(dashboard, /src="\.\/app\.mjs"/);
   assert.match(dashboard, /href="\.\/styles\.css"/);

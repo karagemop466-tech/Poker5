@@ -1,34 +1,57 @@
-# One Entry Vegas
+# Poker5
 
-A small, source-linked Las Vegas poker research dashboard focused on **single-entry-overall** tournament terms. Confirmed re-entry/rebuy events and entry-cap-unknown events are intentionally shown in separate categories. The current research snapshot verifies **zero** upcoming events as single-entry overall.
+Las Vegas Strip poker tournament and hotel planner, published with GitHub Pages.
 
-The static site also includes room-specific hotel details, clearly labeled illustrative booking snapshots, the official room-tax note, and rough third-party walking estimates. No trip dates were provided; the sample stay is not a personalized quote or recommendation. Hotels are compared by disclosed room and source facts, not ranked overall.
+Live site: https://karagemop466-tech.github.io/Poker5/
 
-## Run locally
+## What is in this repo
 
-Requires Node.js 20 or newer; no packages need installing.
+- `index.html`, `pages/*.html`, `assets/css/style.css`: the static site (built output).
+- `data/c6087e2c/`: the verified inputs for this site. Venetian schedule rows (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels (`hotels.json`), flagged items (`flags.json`).
+- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`. Run `python3 scripts/build_c6087e2c.py`.
+- Other sessions' outputs (`docs/`, `site/`, `dashboard-*/`, `tools/`, `data/*.json|md|txt`) are kept as they were and are linked from the landing page.
+- `COORDINATION.md`: the task board for parallel work.
+
+## Verification rule
+
+Each table value comes from an official source linked in its row. Values that cannot be confirmed are left blank and listed on the Flagged for Review page. Nothing is inferred or filled in.
+
+This is an independent planning tool. It is not affiliated with any casino, poker room or hotel. Values change without notice. Confirm before booking or playing. Must be 21+.
+
+---
+
+## Session 443e914d outputs (Las Vegas Strip poker and hotel planner, single-entry focus)
+
+Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served from `main`, legacy Pages build, source `main` `/`).
+
+| Path | Purpose |
+|---|---|
+| `data-443e914d/sources.json` | Every source URL, labelled official or third-party |
+| `data-443e914d/tournaments_single_entry.json` | 36 one-day Venetian rows, Nov 18 – Dec 23, 2026. Single-entry status is inferred (flag P-00) |
+| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats, kept separate |
+| `data-443e914d/hotels.json` | Hotel rows; blank = unverified |
+| `data-443e914d/pending_and_flags.json` | Pending items, hotel flags, repo irregularities |
+| `tools/build_443e914d.py` | Generates `site-443e914d/` from `data-443e914d/` |
+| `tools/check_links.py` | Link gate: no broken internal links; external URLs must be in `data-443e914d/sources.json` |
+| `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
+
+Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`
+
+---
+
+## Strict-entry research dashboard (session b50aa7f5)
+
+Open the current source-linked research dashboard at [site-b50aa7f5/](./site-b50aa7f5/). It applies a strict **single-entry-overall** standard: as of November 16, 2026, no upcoming event is verified for the primary list. Confirmed re-entry/rebuy events, entry-cap-unknown events, and restricted events remain separately labeled. See the site's source ledger for the underlying schedules, structure sheets, hotel pages, and third-party route estimates.
+
+The Dec 3–6, 2026 hotel quotes are illustrative snapshots only; no trip dates were supplied. The comparison does not rank hotels overall. This dashboard is a separate, session-scoped static site and does not replace the repository's other research outputs.
+
+### Build and test this dashboard
+
+Requires Node.js 20 or newer; no install step or external package is needed.
 
 ```sh
 npm run check
 npm run dev
 ```
 
-Then open `http://localhost:4173`. To preview the exact static build output:
-
-```sh
-npm run build
-npm run preview
-```
-
-The build copies the site into the ignored `dist/` directory. GitHub Pages currently serves the same static source files from the repository root, so no client-side API key or backend is required.
-
-## Research & maintenance
-
-- The source review date is shown on the site and stored in `data.mjs`.
-- `data.mjs` is the single source of truth for event, hotel, tax, and walking-route facts.
-- Each event card and the [source ledger](./sources.html) links to the materials used.
-- If official sources conflict, the disagreement is displayed instead of silently resolved.
-- Update rules only after checking the current event-specific terms. Never infer a freezeout from silence, a one-day label, or one-entry-per-flight language.
-- Run `npm run check` after any data or interface change.
-
-This project is independent research and is not affiliated with any poker room, hotel, or tournament operator. Verify all current terms, schedules, and prices directly before making plans.
+`npm run check` runs the Node test suite and builds the publishable files into `site-b50aa7f5/`. `npm run dev` serves that folder locally on port 4173; open `http://localhost:4173`. GitHub Pages uses the existing `main` `/` source, so the dashboard is available at `/Poker5/site-b50aa7f5/` after merge.

@@ -1,5 +1,5 @@
 {
-  "name": "one-entry-vegas",
+  "name": "poker5-strict-entry-research",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,8 +7,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test",
-    "check": "node --check data.mjs && node --check app.mjs && node --check sources.mjs && node --check serve.mjs && node --check scripts/build.mjs && npm test && npm run build",
-    "dev": "node serve.mjs",
-    "preview": "node serve.mjs dist"
+    "check": "node --check site-src/data.mjs && node --check site-src/app.mjs && node --check site-src/sources.mjs && node --check serve.mjs && node --check scripts/build.mjs && npm run build && npm test",
+    "dev": "node serve.mjs site-b50aa7f5",
+    "preview": "node serve.mjs site-b50aa7f5"
   }
 }
