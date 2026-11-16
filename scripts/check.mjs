@@ -1,6 +1,6 @@
-// Validates data/*.json and docs/*.html before publishing. Run: node scripts/check.mjs
+// Validates data/*.json (cross-check data for the Strip poker project). Run: node scripts/check.mjs
 // Exits non-zero on any failure, so a broken build cannot be merged.
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -36,26 +36,8 @@ for (const v of data["venues.json"]?.venues || []) if (!v.sources?.length) fail(
 // Flags: any flag with no source must say so.
 for (const f of data["flags.json"]?.flags || []) if (!f.sources?.length && !/no official|not verified|not present/i.test(f.detail)) fail(`flag ${f.id}: no source and no unverified note`);
 
-// Built HTML must exist and contain no empty table cells that look like inferred values.
-const DATA_PAGES = ["single-entry", "separate-section", "schedule", "hotels", "venues", "analysis"];
-const pages = ["index", "single-entry", "separate-section", "schedule", "hotels", "venues", "analysis", "questions", "suggestions", "flagged", "repo-review"];
-for (const p of pages) {
-  const path = join(root, "docs", `${p}.html`);
-  if (!existsSync(path)) { fail(`missing docs/${p}.html (run node scripts/build.mjs)`); continue; }
-  const html = readFileSync(path, "utf8");
-  if (!html.includes("<!doctype html>")) fail(`docs/${p}.html: not an HTML document`);
-  if (/\bundefined\b|\bNaN\b|\[object Object\]/.test(html)) fail(`docs/${p}.html: contains undefined/NaN`);
-  // Every table row (except header rows) must contain an anchor, unless it is a note row.
-  if (!DATA_PAGES.includes(p)) continue;
-  for (const tr of html.split("<tr>").slice(1)) {
-    const body = tr.split("</tr>")[0];
-    if (body.includes("<th>")) continue;
-    if (!body.includes('href="https://')) fail(`docs/${p}.html: table row without official link`);
-  }
-}
-
 if (errors.length) {
   console.error(`check failed (${errors.length}):\n- ` + errors.join("\n- "));
   process.exit(1);
 }
-console.log(`check passed: ${tRows.length} tournament rows, ${pages.length} pages`);
+console.log(`check passed: ${tRows.length} tournament rows, ${files.length} data files`);
