@@ -1,0 +1,83 @@
+{
+  "snapshot": "2026-11-16",
+  "stay": {"checkIn":"2026-12-02","checkOut":"2026-12-09","nights":7,"adults":2,"rooms":1,"note":"Tournament calendar includes the checkout date for context; the quoted stay covers the seven nights before checkout."},
+  "sources": {
+    "wynn_booking": {"label":"Wynn direct booking result for Dec 2–9", "url":"https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2"},
+    "wynn_fee": {"label":"Wynn resort fee policy", "url":"https://www.wynnlasvegas.com/about-us/resort-information"},
+    "wynn_forbes": {"label":"Wynn Forbes Travel Guide 2026 profile", "url":"https://www.forbestravelguide.com/hotels/las-vegas-nevada/wynn-las-vegas"},
+    "ven_booking": {"label":"Venetian direct booking result for Dec 2–9", "url":"https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar"},
+    "ven_fee": {"label":"Venetian resort fee policy", "url":"https://www.venetianlasvegas.com/resort/resort-fee.html"},
+    "ven_hotels": {"label":"Venetian hotel and suite overview", "url":"https://www.venetianlasvegas.com/resort/las-vegas-hotels.html"},
+    "ven_poker_room": {"label":"Venetian official poker-room location", "url":"https://www.venetianlasvegas.com/resort/casino/poker.html"},
+    "ven_poker_rate": {"label":"Venetian 2026 poker-room suite rates and requirements", "url":"https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"},
+    "wynn_poker_room": {"label":"Wynn official poker page and location", "url":"https://www.wynnlasvegas.com/casino/poker"},
+    "caesars_calendar": {"label":"Caesars Palace date calendar", "url":"https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&flexibleMonth=December&propCode=clv&checkInDate=2026-12-02&checkOutDate=2026-12-09"},
+    "horseshoe_calendar": {"label":"Horseshoe date calendar", "url":"https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&flexibleMonth=December&propCode=blv&checkInDate=2026-12-02&checkOutDate=2026-12-09"},
+    "aaa": {"label":"Caesars Entertainment 2026 AAA Diamond announcement", "url":"https://newsroom.caesars.com/press-releases/press-release-details/2026/Caesars-Entertainment-Destinations-Across-the-U-S--Earn-Prestigious-AAA-Diamond-Recognition-2026-sLN2jRr2lp/default.aspx"},
+    "tax": {"label":"Clark County transient lodging tax ordinance (Primary Gaming Corridor rate)", "url":"https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"},
+    "walking": {"label":"Casino Compass Strip walking-distance chart (secondary estimate)", "url":"https://www.casinocompassapp.com/transportation/walking-the-strip"}
+  },
+  "properties": [
+    {
+      "name":"Wynn Las Vegas",
+      "room":"Wynn Resort King",
+      "occupancy":"2 adults · 1 room · 7 nights",
+      "roomSizeSqFt":640,
+      "quality":"Forbes Travel Guide Four-Star (2026 direct profile)",
+      "displayedAverageNightly":711,
+      "rateIncludes":"Resort fee",
+      "rateExcludes":"Taxes",
+      "displayedSubtotalEstimate":4977,
+      "lodgingTaxRate":0.1338,
+      "taxEstimate":665.92,
+      "totalEstimate":5642.92,
+      "resortFeePerNightBeforeTax":55,
+      "quoteStatus":"Not a checkout total. Booking engine showed a rounded average nightly rate and did not display the exact seven-night after-tax total.",
+      "availabilityNote":"The booking page showed a Fall 2026 offer and a book-by date of Nov 24, 2026. Price and availability can change."
+    },
+    {
+      "name":"The Venetian Resort",
+      "room":"Newly Remodeled Luxury King Suite",
+      "occupancy":"2 adults · 1 room · 7 nights",
+      "roomSizeSqFt":650,
+      "quality":"Property describes itself as a Forbes 4-Star hotel",
+      "displayedTotal":7054.77,
+      "taxes":832.52,
+      "resortFeesBeforeTax":385,
+      "roomRatesBeforeTax":5837.25,
+      "resortFeePerNightBeforeTax":55,
+      "quoteStatus":"Booking interface displayed a seven-night estimate including resort fees and taxes.",
+      "availabilityNote":"The same booking result showed suites designed for 4+ guests and a maximum-capacity warning while also displaying the 2-adult estimate. Reconfirm the exact room and availability directly."
+    },
+    {
+      "name":"Caesars Palace",
+      "room":"No usable seven-night quote retrieved",
+      "quality":"AAA Four Diamond (2026)",
+      "displayedTotal":null,
+      "resortFeeTaxIncluded":62.30,
+      "quoteStatus":"Date-specific calendar returned a technical-difficulties response; only the resort fee was shown.",
+      "availabilityNote":"Do not treat the resort-fee figure as the room price or a seven-night total."
+    },
+    {
+      "name":"Horseshoe Las Vegas",
+      "room":"No room for the requested full stay in calendar result",
+      "quality":"Not rated here",
+      "displayedTotal":null,
+      "resortFeeTaxIncluded":56.63,
+      "quoteStatus":"Flexible calendar marked Dec 2 and Dec 3 sold out for the requested date range.",
+      "availabilityNote":"Fee is not a stay quote; availability for the entire requested stay was not available."
+    }
+  ],
+  "feeBaselines": [
+    {"properties":"Wynn · The Venetian · Bellagio · ARIA", "fee":"$55 per night + applicable tax", "kind":"Published fee only; not a room rate"},
+    {"properties":"MGM Grand", "fee":"$50 per night + applicable tax", "kind":"Published fee only; not a room rate"},
+    {"properties":"Caesars Palace", "fee":"$62.30 per night (tax included)", "kind":"Calendar fee only; not a room rate"},
+    {"properties":"Horseshoe Las Vegas", "fee":"$56.63 per night (tax included)", "kind":"Calendar fee only; not a room rate"}
+  ],
+  "routes": [
+    {"between":"The Venetian ↔ Wynn Las Vegas", "distance":"about 0.5 mi", "time":"10–15 min", "path":"Through Palazzo and across the Sands Avenue pedestrian bridge", "relevance":"The Venetian poker room is at Palazzo Level 2; Wynn's poker room is on the Encore casino floor."},
+    {"between":"The Venetian ↔ Bellagio", "distance":"about 0.9 mi", "time":"18–25 min", "path":"Strip walk across Las Vegas Boulevard and Flamingo Road pedestrian bridges", "relevance":"Property-to-property estimate only; add internal hotel and poker-room navigation."},
+    {"between":"Bellagio ↔ Caesars Palace", "distance":"about 0.4 mi", "time":"10–15 min", "path":"Flamingo Road pedestrian bridge", "relevance":"Property-to-property estimate only; add internal hotel and poker-room navigation."}
+  ],
+  "importantCaveat":"Casino Compass times are secondary casino-to-casino estimates, not venue-verified paths from an assigned guest room to a poker seat. Internal navigation and crowds are not measured."
+}
