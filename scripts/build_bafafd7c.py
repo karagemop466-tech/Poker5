@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the static GitHub Pages site into docs/ from scripts/data.py.
 
-    python3 scripts/build_site.py
+    python3 scripts/build_bafafd7c.py
 
 Standard library only. Every number on the site comes from data.py, which only holds values
 taken from official pages or PDFs opened during this session. Estimates are labelled.
@@ -13,9 +13,9 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import data as D  # noqa: E402
+import data_bafafd7c as D  # noqa: E402
 
-OUT = os.path.join(os.path.dirname(HERE), "docs")
+OUT = os.path.join(os.path.dirname(HERE), "dashboard-bafafd7c")
 AS_OF = D.AS_OF
 
 

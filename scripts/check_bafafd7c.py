@@ -5,7 +5,7 @@
 2. Every data row in the single-entry, multi-entry, and flagged tables links to at least one official source.
 3. Table row counts match data.py.
 
-    python3 scripts/check_links.py          # exit 0 = pass, 1 = fail
+    python3 scripts/check_bafafd7c.py          # exit 0 = pass, 1 = fail
 Standard library only. External URLs are listed but not fetched (run in CI or by hand).
 """
 import html.parser
@@ -15,9 +15,9 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-DOCS = os.path.join(ROOT, "docs")
+DOCS = os.path.join(ROOT, "dashboard-bafafd7c")
 sys.path.insert(0, HERE)
-import data as D  # noqa: E402
+import data_bafafd7c as D  # noqa: E402
 
 
 class Collector(html.parser.HTMLParser):
