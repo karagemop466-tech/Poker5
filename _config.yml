@@ -1,0 +1,13 @@
+title: Poker5
+markdown: kramdown
+exclude:
+  - .github/
+  - .gitignore
+  - COORDINATION.md
+  - README.md
+  - package.json
+  - scripts/
+  - site-src/
+  - serve.mjs
+  - test/
+  - dist/

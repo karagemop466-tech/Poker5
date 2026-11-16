@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101613" />
+    <meta name="description" content="Source ledger and research notes for One Entry Vegas tournament rules, hotel details and walking estimates." />
+    <title>Source Ledger — One Entry Vegas</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231b483b'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='62' fill='%23efdfbd'%3E%E2%99%A0%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./sources.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./index.html#top" aria-label="One Entry Vegas home">
+          <span class="brand-mark" aria-hidden="true">♠</span>
+          <span class="brand-name">ONE ENTRY <span>VEGAS</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="./index.html#events">Tournament list</a>
+          <a href="./index.html#stays">Stay &amp; walk</a>
+          <a href="#source-method">How we verify</a>
+        </nav>
+        <a class="header-source" href="./index.html">Back to dashboard <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main id="main" class="source-page section-wrap">
+      <section class="ledger-hero" aria-labelledby="ledger-title">
+        <p class="eyebrow">ONE ENTRY VEGAS / RESEARCH LEDGER</p>
+        <h1 id="ledger-title">The source trail.</h1>
+        <p>Current-season entry terms, hotel details, quote snapshots and third-party route estimates used in the dashboard. Pages below are linked directly so you can check the underlying language.</p>
+        <div class="ledger-meta">
+          <span>Last checked: <b data-last-verified>November 16, 2026</b></span>
+          <span class="ledger-meta-separator" aria-hidden="true">·</span>
+          <a href="./index.html#events">Return to the tournament dashboard <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="source-method" id="source-method" aria-labelledby="method-heading">
+        <div class="source-method-mark" aria-hidden="true">01</div>
+        <div>
+          <p class="eyebrow">HOW “SINGLE-ENTRY” IS USED</p>
+          <h2 id="method-heading">One bullet, total—not one per flight.</h2>
+          <p>The primary single-entry-overall list only includes an event whose current, event-specific official terms prohibit a second entry, re-entry, rebuy, later starting flight, or Day 2 entry. A schedule’s silence is not a freezeout rule. As of this research check, <strong>no upcoming event is verified to meet that standard.</strong></p>
+          <p>Confirmed re-entry/rebuy events and events with unknown caps remain separate in the dashboard. A prior-season rule is not carried forward unless current-season materials confirm it.</p>
+        </div>
+      </section>
+
+      <section class="ledger-section" aria-labelledby="event-sources-title">
+        <div class="ledger-section-heading">
+          <div><p class="eyebrow">01 / TOURNAMENTS</p><h2 id="event-sources-title">Event terms &amp; schedules</h2></div>
+          <p>Official event pages, schedules and structure sheets checked for the entry-rule wording.</p>
+        </div>
+        <div class="ledger-grid" id="source-events"></div>
+      </section>
+
+      <section class="ledger-section" aria-labelledby="hotel-sources-title">
+        <div class="ledger-section-heading">
+          <div><p class="eyebrow">02 / HOTEL NOTES</p><h2 id="hotel-sources-title">Rooms, fees &amp; sample prices</h2></div>
+          <p>The sample date is an illustration only, not a date supplied or selected by the user.</p>
+        </div>
+        <div class="ledger-grid ledger-grid-hotels" id="source-hotels"></div>
+        <aside class="tax-source-note">
+          <b>Room-tax note</b>
+          <p><span data-tax-rate>13.38%</span> is the City of Las Vegas rate listed for the Primary Gaming Corridor. Confirm each hotel’s final tax and fee breakdown directly.</p>
+          <a href="https://www.lasvegasnevada.gov/Business/Business-License/Room-Tax" target="_blank" rel="noopener noreferrer">City of Las Vegas room-tax guidance ↗</a>
+        </aside>
+      </section>
+
+      <section class="ledger-section" aria-labelledby="route-sources-title">
+        <div class="ledger-section-heading">
+          <div><p class="eyebrow">03 / WALKING ESTIMATES</p><h2 id="route-sources-title">Between poker rooms</h2></div>
+          <p>Third-party estimates, not independently measured. Endpoint and provider differences matter; resort interiors add distance.</p>
+        </div>
+        <div class="routes-grid" id="source-routes"></div>
+        <p class="route-warning"><span aria-hidden="true">↗</span> Check live maps on your travel date. These are rough surface-walk estimates, not hotel-to-poker-table walking itineraries.</p>
+      </section>
+
+      <section class="ledger-footer-note">
+        <p class="eyebrow">RESEARCH LIMITS</p>
+        <p>Tournament calendars and rules can change. Always confirm a specific event’s entry terms, start time and total buy-in with the tournament staff. Hotel rates are volatile and room category matters. No hotel is ranked overall here.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer section-wrap">
+      <a class="brand" href="./index.html#top"><span class="brand-mark" aria-hidden="true">♠</span><span class="brand-name">ONE ENTRY <span>VEGAS</span></span></a>
+      <p>Independent research snapshot · <span data-last-verified>November 16, 2026</span></p>
+      <p>Not affiliated with any poker room or hotel. Verify current terms and prices directly.</p>
+    </footer>
+    <noscript><div class="noscript-note">The source ledger needs JavaScript to render its linked research records. Return to <a href="./index.html">the dashboard</a>.</div></noscript>
+  </body>
+</html>

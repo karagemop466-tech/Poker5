@@ -39,9 +39,28 @@ Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links
 
 ---
 
+## Strict-entry research dashboard (session b50aa7f5)
+
+Open the current source-linked research dashboard at [site-b50aa7f5/](./site-b50aa7f5/). It applies a strict **single-entry-overall** standard: as of November 16, 2026, no upcoming event is verified for the primary list. Confirmed re-entry/rebuy events, entry-cap-unknown events, and restricted events remain separately labeled. See the site's source ledger for the underlying schedules, structure sheets, hotel pages, and third-party route estimates.
+
+The Dec 3–6, 2026 hotel quotes are illustrative snapshots only; no trip dates were supplied. The comparison does not rank hotels overall. This dashboard is a separate, session-scoped static site and does not replace the repository's other research outputs.
+
+### Build and test this dashboard
+
+Requires Node.js 20 or newer; no install step or external package is needed.
+
+```sh
+npm run check
+npm run dev
+```
+
+`npm run check` runs the Node test suite and builds the publishable files into `site-b50aa7f5/`. `npm run dev` serves that folder locally on port 4173; open `http://localhost:4173`. GitHub Pages uses the existing `main` `/` source, so the dashboard is available at `/Poker5/site-b50aa7f5/` after merge.
+
+---
+
 ## Session aa83f1e1 outputs — source-linked poker and stay planner
 
-Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact).
+Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact). The root landing page links to this planner.
 
 | Path | Purpose |
 |---|---|
@@ -50,7 +69,7 @@ Static subsite: https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/ (se
 | `planner-aa83f1e1/data/hotels.json` | Date-specific Venetian quote, Wynn pre-tax display, estimates, fees, and walking caveats |
 | `planner-aa83f1e1/research/` | Source-by-source research notes and unresolved questions |
 | `scripts/build_aa83f1e1.mjs` | Validates the session dataset and builds a local preview in `_site-aa83f1e1/` |
-| `scripts/smoke_aa83f1e1.mjs` | Smoke-renders all eight pages |
-| `.github/workflows/quality.yml` | Runs JavaScript, smoke, data, source-reference, link, and build checks |
+| `scripts/smoke_aa83f1e1.mjs` | Smoke-renders all eight planner pages |
+| `.github/workflows/quality.yml` | Runs existing dashboard checks plus this planner's checks |
 
-The Dec 13–20, 2026 stay window is a research assumption, not user-selected. Locally run `node --check planner-aa83f1e1/assets/app.js && node scripts/smoke_aa83f1e1.mjs && node scripts/build_aa83f1e1.mjs`, then serve with `python3 -m http.server 4173 --bind 0.0.0.0 --directory _site-aa83f1e1`. This session deliberately does not add a competing Pages deployment workflow; the existing root Pages site publishes the subdirectory after merge.
+The Dec 13–20, 2026 stay window is a research assumption, not user-selected. Locally run `node --check planner-aa83f1e1/assets/app.js && node scripts/smoke_aa83f1e1.mjs && node scripts/build_aa83f1e1.mjs`, then serve the output with `python3 -m http.server 4174 --bind 0.0.0.0 --directory _site-aa83f1e1`. This session deliberately does not add a competing Pages deploy workflow; the existing root Pages source publishes the subdirectory after merge.

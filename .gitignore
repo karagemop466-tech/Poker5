@@ -1,10 +1,10 @@
 __pycache__/
 *.pyc
+node_modules/
+dist/
+.DS_Store
 
 # Session aa83f1e1 local preview output
 /_site-aa83f1e1/
-
-# Local/editor artifacts
-.DS_Store
 *.swp
 *.swo
