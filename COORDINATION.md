@@ -35,21 +35,50 @@ Seven other sessions pushed claim-only boards to their own branches within about
 
 | Task | Status | Owner | File scope |
 |---|---|---|---|
-| T-A: Single-entry live tournament research (Las Vegas Strip area), official sources | in progress | `443e914d` | `data/tournaments.json`, `research/tournaments.md` |
-| T-B: Double buy-in / add-on list (separate section) | in progress | `443e914d` | `data/tournaments.json` (`category` field) |
-| T-C: Hotel research within 30 min walk, true nightly cost incl. resort fees | in progress | `443e914d` | `data/hotels.json`, `research/hotels.md` |
-| T-D: Executive summary, suggestions, questions, flagged-for-review pages | in progress | `443e914d` | `site/pages/*.html` (content), `site/build/*` |
-| T-E: GitHub Pages site (landing page, category subpages, tables) | in progress | `443e914d` | `site/`, `.github/workflows/pages.yml`, `README.md` |
-| T-F: Final integration, line-by-line re-verification, broken-link check, PR to `main`, merge, Pages deploy | pending | `443e914d` | `COORDINATION.md` and integration of all of the above |
+| T-A: Single-entry live tournament research (Strip), official sources | done | `443e914d` | `data/tournaments_single_entry.json`, `data/sources.json` |
+| T-B: Double buy-in / add-on / re-entry / flight list (separate section) | done | `443e914d` | `data/tournaments_multi_entry.json` |
+| T-C: Hotel research (official resort fees; blanks for unverified rates and walk times) | done (partial by design) | `443e914d` | `data/hotels.json` |
+| T-D: Executive summary, suggestions, questions, flagged-for-review pages | done | `443e914d` | `tools/build_site.py` (content), `data/pending_and_flags.json` |
+| T-E: GitHub Pages site (landing page, category subpages, tables) | done (built) | `443e914d` | `docs/`, `tools/build_site.py`, `README.md` |
+| T-F: Final integration, re-verification, link check, PR to `main`, merge, Pages deploy | in progress | `443e914d` | `COORDINATION.md` and integration of all of the above |
 
 Overlap note: this session's claim overlaps with the claims listed above. Because each session works on a separate branch, no claimed file exists in any other branch's content yet. Any later merge conflict will be resolved in the integration step and logged below.
 
 ## Task log
-- 2026-11-16 — `443e914d` claimed T-A through T-F. Board consolidated from visible branches. No data verified yet.
+- 2026-11-16 — `443e914d` claimed T-A through T-F. Board consolidated from visible branches.
+- 2026-11-16 — T-A done: 30 single-entry Venetian events verified against the official schedule PDF and structure sheets (no re-entry or add-on language). Multi-entry formats separated (T-B).
+- 2026-11-16 — T-C done for official resort fees only. Nightly rates, walk times, and room tax are blank (no official source).
+- 2026-11-16 — T-D/T-E done: site generated from `data/` into `docs/` (11 pages). Internal link check passed; all external URLs match `data/sources.json`.
+
+## Sources used (official unless marked)
+- Venetian DSE IV event page and schedule PDF; structure sheets 1, 2, 5, 6, 7, 8, 10, 11, 15, 16, 23, 28, 34 (venetianlasvegas.com)
+- Venetian 2026 poker-room rates page (venetianlasvegas.com)
+- Wynn poker room page, daily tournament poster, daily structure PDF, WPT World Championship schedule PDF (wynnlasvegas.com, cdn.wynnresorts.com)
+- WPT event page (worldpokertour.com)
+- Wynn special-offer terms (resort fee $45 / $55) (wynnlasvegas.com)
+- MGM Resorts hotel terms index (mgmresorts.com) – no fee values on this page
+- Full list: `data/sources.json` and the site's Sources page.
+
+Third-party pages (PokerAtlas, vegaspokercalendar, casinos.com, news, tax guides) were used only as leads and are never used as the source of a value.
+
+## Verification performed
+- Each single-entry row: date, weekday, start, buy-in, guarantee, chips, levels, late-registration close, and house fee compared to the official schedule PDF and structure sheet text as retrieved.
+- Each multi-entry row: re-entry/rebuy/add-on rule compared to the official terms text.
+- Hotels: resort fee taken only from official pages; other values blank.
+- Site: generator is stdlib-only; internal link check passed (11 pages, 0 broken). Every external URL on the site is in `data/sources.json`.
 
 ## Handoff / irregularities
-- Seven sessions claimed the same scope in parallel on separate branches. This is an irregularity for review: there is no single shared board on `main`.
-- Repository state at start: `README.md` (`# Poker5`) and this file only. No data, no site.
+- Seven sessions claimed overlapping scope in parallel on separate branches within ~2 minutes; there is no single shared board on `main`. Logged as R-01.
+- Brief asks for `session-<id>/<task>` branches; Arena fixes this session to `arena/443e914d-poker5`. Logged as R-02.
+- Repository state at start: `README.md` only. Logged as R-03.
+- Wynn daily structure PDF is an older upload (ID v1752011191) than the 2026 poster; confirm current terms. Logged as H-related Flagged item.
+- Wynn resort fee conflicts ($45 vs $55, H-01). Caesars and MGM fees unverified (H-06, H-07).
+- WPT $1,000,000 added prize: official schedule says ClubWPT Gold is not available in Nevada (P-02).
 
 ## Flagged for Review
-- (populated during the work; see the site's Flagged for Review page once published)
+- Full list on the site's **Flagged for Review** page (`docs/flagged-review.html`), generated from `data/pending_and_flags.json`.
+
+## Final integration (T-F)
+- PR: (filled in after creation)
+- Merge result: (filled in after merge)
+- Pages deploy: (filled in after deploy)
