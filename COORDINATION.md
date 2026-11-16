@@ -57,3 +57,21 @@ Both sessions worked the same brief in parallel. This session's output is in `do
 - Irregularities: see docs/flagged.html.
 - Live URLs: main site https://karagemop466-tech.github.io/Poker5/ (root, arena-poker5); this session's official-source site https://karagemop466-tech.github.io/Poker5/docs/
 - GitHub Pages source is main `/` (root); the session token cannot change it to `/docs` (HTTP 403).
+
+---
+
+## Session 9c91bba7 (Arena branch `arena/9c91bba7-poker5`)
+
+| Task | Status | Owner | File scope |
+|---|---|---|---|
+| T1 — independently verify current Strip-area tournament schedule, strict single-entry status, official sources and irregularities | done | 9c91bba7 | `research/tournaments.md`, `data/tournaments.json`, `COORDINATION.md` |
+| T2 — verify hotel official resort fees, dated room quotes and walkability | in progress (claim recorded; research not started) | 9c91bba7 | `research/hotels.md`, `data/hotels.json`, `COORDINATION.md` |
+| T3 — final integration/link/build/deployment | unclaimed | — | site files, shared navigation/data, `README.md`, deployment config, `COORDINATION.md` |
+
+### Session 9c91bba7 log
+
+- Claim for T1 was committed and pushed before research began. T1 output is in `research/tournaments.md` and `data/tournaments.json` (16 dated candidate events, 8 recurring schedules, 4 flagged source issues). It contains no asserted strict-single-entry selection because the examined official rules did not explicitly verify a one-entry/no-extra-purchase limit.
+- Official sources independently checked: Venetian DeepStack series, dated event calendar and linked structures; Wynn Poker page, WPT schedule and structure PDFs, and daily schedule/structure PDFs; Caesars' official poker tournament article and Horseshoe casino page; MGM Grand poker page and linked schedule/structure PDFs; ARIA and Bellagio official poker pages. Full URLs and source-by-source notes are in `research/tournaments.md`.
+- Verification performed: official pages and relevant structure extracts fetched/read; row source URLs checked; JSON parsed; all stored guarantee-to-buy-in multiples recalculated from the linked posted values; `git diff --check` passed.
+- Irregularities flagged: Venetian multi-flight entry caps not stated; WPT Super Gold Million's Nevada prize-pool caveat; WPT schedule December date/day mismatch; MGM Grand's linked undated August schedule; Bellagio July 26 date has no year. See `research/tournaments.md` and `data/tournaments.json`.
+- **Conflict/handoff log:** `git pull --rebase origin main` found that `origin/main` had advanced to the merged work of sessions `arena-poker5` and `581fea93`, causing an add/add conflict in this board. Resolution preserves the full upstream board and both prior session logs, then appends this session's scoped status and verification notes. No upstream site or data files are being overwritten. The pre-existing completed/in-progress tournament and hotel outputs are being inspected before any overlapping integration edits.
