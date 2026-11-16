@@ -104,10 +104,10 @@ document.querySelectorAll('input[data-target]').forEach(function(inp){
 
 def status_badge(text):
     t = text.lower()
-    if "single" in t:
-        cls = "ok"
-    elif "multi" in t:
+    if t.startswith("multi"):
         cls = "warn"
+    elif t.startswith("single"):
+        cls = "ok"
     else:
         cls = "bad"
     return f'<span class="badge {cls}">{E(text)}</span>'
@@ -119,10 +119,16 @@ def ratio(row):
         return g / b
     return None
 
-SINGLE_ROWS = sorted(SINGLE["rows"], key=lambda r: (r["date"], r["start"]))
+def md(iso):
+    return dt.date.fromisoformat(iso).strftime("%b %d").replace(" 0", " ")
+
+def parse_time(s):
+    return dt.datetime.strptime(s, "%I:%M %p").time()
+
+SINGLE_ROWS = sorted(SINGLE["rows"], key=lambda r: (r["date"], parse_time(r["start"])))
 
 def tournaments_page():
-    headers = ["Date", "Start", "Event", "Buy-in", "Guarantee", "GTD ÷ buy-in*", "House fee", "Prize pool per entry**", "Chips / level", "Late reg closes", "Bounty", "Status", "Sources"]
+    headers = ["Date", "Start", "Event", "Buy-in", "Guarantee", "GTD ÷ buy-in*", "House fee (sheet)", "Chips / level", "Late reg closes", "Bounty (sheet)", "Status", "Sources"]
     rows = []
     for r in SINGLE_ROWS:
         rt = ratio(r)
@@ -134,7 +140,6 @@ def tournaments_page():
             money(r["guarantee"]),
             f'{rt:.1f}×' if rt else "—",
             money(r["house_fee"]),
-            money(r["prize_pool_per_entry"]),
             f'{r["starting_chips"]:,} / {r["level_minutes"]} min',
             E(r["late_reg_close"]),
             E(r["bounty"]),
@@ -144,14 +149,14 @@ def tournaments_page():
     body = f"""
 <section class="hero small">
   <h1>Single-entry live tournaments</h1>
-  <p class="lead">Venue: {E(SINGLE["venue"])}. {len(SINGLE_ROWS)} events, one entry each per the official structure sheets. Sorted by date.</p>
+  <p class="lead">Venue: {E(SINGLE["venue"])}. {len(SINGLE_ROWS)} events listed as single-entry on the structure sheets fetched. Sorted by date.</p>
 </section>
 <div class="callout">
-  <strong>Read this first:</strong> The guarantee on a bounty event includes the bounty money (the official structure sheets say so), so cash to first place is less than the headline guarantee. Prize pool per entry = buy-in minus the house fee shown on the structure sheet.
+  <strong>Read this first:</strong> On the bounty structure sheets checked (sheets 1 and 8), the guarantee includes bounty money, so cash to first place is less than the headline guarantee. House fee is the amount the sheet says is withheld from each buy-in.
 </div>
 <div class="toolbar"><input type="search" placeholder="Filter by date, name, buy-in…" data-target="t-single"></div>
 {tbl(headers, rows, filter_id="t-single").replace('<table class="data"', '<table class="data" id="t-single"')}
-<p class="note">* Calculated: guarantee ÷ buy-in (arithmetic on verified values). ** Calculated: buy-in − house fee as printed on the structure sheet. Times are venue local (Pacific). Blank = not verified.</p>
+<p class="note">* Calculated: guarantee ÷ buy-in (arithmetic on verified values). Times are venue local (Pacific). Blank = not verified. Row-by-row check: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/research/verification.md" target="_blank" rel="noopener">research/verification.md</a>.</p>
 {FILTER_JS}
 """
     return page("Single-entry tournaments", "tournaments.html", body, "Verified single-entry live tournaments on the Las Vegas Strip, Nov–Dec 2026.")
@@ -178,7 +183,7 @@ def multi_page():
 </section>
 <div class="toolbar"><input type="search" placeholder="Filter…" data-target="t-multi"></div>
 {tbl(headers, rows, filter_id="t-multi").replace('<table class="data"', '<table class="data" id="t-multi"')}
-<p class="note">Not included here: WPT World Championship events at Wynn (official schedule verified, but flight/re-entry rules were not) and other unverified items. See <a href="flagged-review.html">Flagged for Review</a>.</p>
+<p class="note">Not included here: Wynn WPT World Championship events (official schedule verified, but flight/re-entry rules were not) and other unverified items. See <a href="flagged-review.html">Flagged for Review</a>.</p>
 {FILTER_JS}
 """
     return page("Multi-entry events", "multi-entry.html", body)
@@ -194,7 +199,7 @@ def schedule_page():
             for e in evs
         )
         cards.append(f'<div class="card day"><h3>{E(fmt_date(d))}</h3><ul>{items}</ul><p class="note">{len(evs)} verified single-entry event{"s" if len(evs)!=1 else ""}</p></div>')
-    earliest = min(r["start"] for r in SINGLE_ROWS)
+    earliest = min(SINGLE_ROWS, key=lambda r: parse_time(r["start"]))["start"]
     body = f"""
 <section class="hero small">
   <h1>Day plan (verified single-entry events only)</h1>
@@ -212,7 +217,7 @@ def hotels_page():
     rows = []
     for h in HOTELS["rows"]:
         fee = h["resort_fee_per_night_before_tax"]
-        fee_cell = money(fee) if isinstance(fee, (int, float)) else (E(fee) if fee else "—")
+        fee_cell = money(fee) if isinstance(fee, (int, float)) else (E(h.get("resort_fee_note", "")) or "—")
         srcs = []
         for k in ("resort_fee_source", "resort_fee_source_2", "room_rate_floor_source", "source_listing"):
             v = h.get(k)
@@ -233,13 +238,13 @@ def hotels_page():
     body = f"""
 <section class="hero small">
   <h1>Hotels near the verified venue</h1>
-  <p class="lead">Ranking not yet possible: only resort fees are officially verified. Nightly rates for your dates, walking times, and the true cost per night are blank because no official source confirmed them.</p>
+  <p class="lead">Ranking not yet possible: only some resort fees are officially verified. Nightly rates for your dates, walking times, and the true cost per night are blank because no official source confirmed them.</p>
 </section>
 <div class="callout warn-box">
   <strong>How the true cost will be calculated once verified:</strong> nightly room rate for the exact stay dates + resort fee (official) + room tax (rate to be confirmed from an official Clark County source) = true nightly cost. Nothing has been estimated here.
 </div>
 {tbl(headers, rows, filter_id="t-hotels").replace('<table class="data"', '<table class="data" id="t-hotels"')}
-<p class="note">Walking-distance requirement (30 min or less to the tournament) is unverified for every hotel. The Venetian is the verified venue, so a stay on-site meets the distance rule by definition; all other hotels need a verified walk time.</p>
+<p class="note">The 30-minute walking requirement cannot be checked yet: no walking time is verified for any hotel, including the Venetian (same property as the venue; distance not measured). Venetian suite rates and the Wynn offer fee are not date-specific.</p>
 """
     return page("Hotels", "hotels.html", body)
 
@@ -272,79 +277,85 @@ def analysis_page():
 {tbl(["Date", "Event", "Buy-in", "Guarantee", "Start"], gtd_rows)}
 <h2>Findings</h2>
 <ul class="bullets">
-  <li>All 30 verified single-entry events are at The Venetian Poker Room (DeepStack Extravaganza IV). No other single-entry venue was verified.</li>
+  <li>All {total} single-entry events are at The Venetian Poker Room (DeepStack Extravaganza IV). No other single-entry venue was verified.</li>
   <li>The lowest verified buy-in tier is $200: {sum(1 for r in SINGLE_ROWS if r['buy_in']==200)} single-entry events, with $8,000 to $20,000 guarantees. Bounties are paid to eliminators, so each player's prize depends on the field.</li>
-  <li>Wynn Las Vegas daily events carry a higher buy-in-to-guarantee profile (e.g., $25,000 GTD weekend at $200) but are multi-entry (re-entry allowed), so they are not in the single-entry list.</li>
-  <li>The Venetian's own poker-suite rate requires a $300+ tournament buy-in each night (or 6 hours of live cash). Verified $300+ single-entry events: {sum(1 for r in SINGLE_ROWS if r['buy_in']>=300)} of {total}.</li>
+  <li>Wynn Las Vegas daily events are multi-entry (re-entry or add-on allowed), so they are kept in the separate multi-entry section.</li>
+  <li>The Venetian's poker-suite rate requires 6 hours of live cash or a $300+ tournament buy-in each night (official). Single-entry events at $300 or more: {sum(1 for r in SINGLE_ROWS if r['buy_in']>=300)} of {total}.</li>
 </ul>
 <p class="note">Calculated values: multiples and sums are arithmetic on the verified guarantees and buy-ins. Sum includes bounty money where applicable.</p>
 """
     return page("Analysis", "analysis.html", body)
 
 def exec_page():
-    body = """
+    n = len(SINGLE_ROWS)
+    lo = min(r["date"] for r in SINGLE_ROWS); hi = max(r["date"] for r in SINGLE_ROWS)
+    lo_s = md(lo)
+    hi_s = md(hi)
+    earliest = min(SINGLE_ROWS, key=lambda r: parse_time(r["start"]))["start"]
+    body = f"""
 <section class="hero small">
   <h1>Executive summary</h1>
-  <p class="lead">Status as of 16 Nov 2026 (UTC). What is verified, what is not, and what you need to decide.</p>
+  <p class="lead">Status as of 16 Nov 2026 (UTC). What is verified, what is not, and what you need to decide. Blank = not verified.</p>
 </section>
 <div class="card wide">
 <h2>What is verified</h2>
 <ul class="bullets">
-  <li><strong>30 single-entry live tournaments</strong> at The Venetian Poker Room, Nov 18 – Dec 17, 2026. Each row has an official schedule link and an official structure-sheet link (no re-entry or add-on language). <a href="tournaments.html">See the list</a>.</li>
-  <li><strong>Best guarantee-to-buy-in multiples (calculated):</strong> $200 Valuetown Bounty (Nov 28, $20K GTD, 100×), $800 Bounty (Dec 9, $75K GTD, 94×), $600 Bounty (Dec 16, $50K GTD, 83×). Bounty guarantees include bounty money.</li>
-  <li><strong>Multi-entry events kept separate:</strong> Wynn daily (re-entry and rebuy formats, including $10K GTD nightly and $25K GTD weekends), Venetian Event 1 and Event 7 flights. <a href="multi-entry.html">See the separate section</a>.</li>
-  <li><strong>Resort fees (official):</strong> The Venetian and Palazzo $55 per night before tax; Encore $45; Wynn $45 (standard offer) or $55 (Tower Suite offer).</li>
+  <li><strong>{n} single-entry live tournaments</strong> at The Venetian Poker Room, {E(lo_s)} – {E(hi_s)}, 2026. Each row lists the official schedule and the structure sheet checked. Every date, time, buy-in, and guarantee was re-checked against the official schedule and event page (<a href="https://github.com/karagemop466-tech/Poker5/blob/main/research/verification.md" target="_blank" rel="noopener">verification log</a>). <a href="tournaments.html">See the list</a>.</li>
+  <li><strong>Highest guarantee-to-buy-in multiples (calculated):</strong> the $200 Valuetown Bounty on Nov 28 ($20K GTD) and the $800 Bounty on Dec 9 ($75K GTD). Bounty guarantees include bounty money on the sheets checked.</li>
+  <li><strong>Multi-entry and flight formats are kept separate:</strong> Wynn daily tournaments (re-entry and add-on formats) and Venetian flight events. <a href="multi-entry.html">See the separate section</a>.</li>
+  <li><strong>Resort fees (official):</strong> The Venetian $55 per night, per the official poker-suite page. Wynn is offer-specific: $45 + tax on some offers and $55 + tax on others. The Palazzo, Encore, Caesars, and MGM fees are NOT verified.</li>
 </ul>
 </div>
 <div class="card wide warn-box">
 <h2>What is not verified (left blank)</h2>
 <ul class="bullets">
-  <li>Nightly room rates for any dates. The official Venetian poker-suite page says "as low as $119 / $209" but gives no date-specific rate.</li>
-  <li>Walking times from hotels to the Venetian. No official walking distance was found.</li>
-  <li>Room tax: 13.38% appears only in third-party guides; the official Clark County page was not retrieved.</li>
+  <li>Nightly room rates for any dates. The Venetian page gives "as low as" $119 and $209 with no dates or mapping.</li>
+  <li>Walking time from any hotel to the Venetian. No official walking distance was found.</li>
+  <li>Room tax: 13.38% is from third-party guides only; the official Clark County page was not retrieved.</li>
   <li>Caesars Palace and MGM resort fees: conflicting or third-party only.</li>
-  <li>WPT World Championship (Wynn) and about 30 other Venetian events: structure sheets not checked, so single-entry status is unconfirmed.</li>
+  <li>Single-entry status of Venetian events whose structure sheets were not checked (see Flagged P-04), and the full Wynn WPT World Championship schedule (P-01).</li>
 </ul>
 </div>
 <div class="card wide">
 <h2>Key constraints for planning</h2>
 <ul class="bullets">
-  <li>No verified single-entry event starts before 11:10 AM, so an 8 AM start is not possible with verified events. See the <a href="schedule.html">Day plan</a>.</li>
-  <li>All verified events require 21+ and a Venetian Rewards card (official Venetian terms).</li>
-  <li>The Venetian DSE series (Nov 16 – Dec 23) is the only verified single-entry source. The WPT World Championship at Wynn (Nov 27 – Dec 21) is a large festival whose single-entry rules still need checking.</li>
+  <li>The earliest verified single-entry start is <strong>{E(earliest)}</strong>, so an 8 AM start with verified single-entry events is not possible. See the <a href="schedule.html">Day plan</a>.</li>
+  <li>The verified Venetian events require 21+ and a Venetian Rewards card (per the structure sheets checked).</li>
+  <li>The Venetian DSE series (Nov 16 – Dec 23) is the only single-entry source verified in full. The Wynn WPT World Championship (Nov 27 – Dec 21) is a large festival whose single-entry rules still need checking.</li>
 </ul>
 </div>
 <div class="card wide">
 <h2>Decision needed from you</h2>
-<p>To turn this into a complete itinerary and hotel recommendation, we need the stay dates, budget, and bankroll tolerance. The <a href="questions.html">Questions</a> page lists each item and how to resolve it. The <a href="suggestions.html">Suggestions</a> page lists site changes for you to choose from before any implementation.</p>
+<p>To turn this into a full itinerary and hotel recommendation, we need the stay dates, budget, and bankroll tolerance. The <a href="questions.html">Questions</a> page lists each item and how to resolve it. The <a href="suggestions.html">Suggestions</a> page lists site changes for you to choose from before any implementation.</p>
 </div>
 """
     return page("Executive summary", "executive-summary.html", body)
 
 QUESTIONS = [
-    ("Q1", "Which Venetian events are single-entry?", "Answered for 30 events (structure sheets checked). Open for the rest (see Flagged P-04).", "answered"),
+    ("Q1", "Which Venetian events are single-entry?", f"{len(SINGLE_ROWS)} events are listed as single-entry (sheets checked). Other scheduled Venetian events are open (Flagged P-04, P-05).", "partial"),
     ("Q2", "Which Wynn WPT World Championship events are single-entry?", "Open. The official schedule is verified; structure sheets were not checked.", "open"),
-    ("Q3", "What is the true nightly cost at The Venetian for my dates?", "Open. Needs your stay dates and a booking-calendar check (dynamic, not published as static official data).", "open"),
+    ("Q3", "What is the true nightly cost at The Venetian for my dates?", "Open. Needs your stay dates and a booking-calendar check (dynamic data, not published as a static official value).", "open"),
     ("Q4", "What is the room tax rate?", "Open. Third-party sources say 13.38%; the official Clark County page must be confirmed.", "open"),
     ("Q5", "How far is each hotel from the Venetian (walking time)?", "Open. No official walking-distance source was retrieved.", "open"),
     ("Q6", "What is the Caesars Palace resort fee?", "Open. Official caesars.com fee page not retrieved; third-party values conflict.", "open"),
-    ("Q7", "What is the MGM resort fee for Bellagio, ARIA, MGM Grand, Mandalay Bay?", "Open. The official MGM terms index has no per-property fee values.", "open"),
-    ("Q8", "Is the Wynn resort fee $45 or $55 for my booking?", "Open. Official terms show both; the offer code determines which applies.", "open"),
-    ("Q9", "Does the Wynn daily schedule run during the WPT World Championship (Nov 27 – Dec 21)?", "Open. The daily terms say events may be suspended during a Tournament Series.", "open"),
-    ("Q10", "Is the Venetian poker-suite promo code (EPOKR25) still valid?", "Open. The page is titled 2026 but the code name suggests 2025.", "open"),
-    ("Q11", "Is the WPT $1,000,000 added prize available in Nevada?", "Open. The official schedule says ClubWPT Gold is not available in Nevada.", "open"),
-    ("Q12", "Are Venetian Event 1 flights still open for registration today (Nov 16)?", "Open. Confirm at the cage; the official schedule lists flights Nov 16–17 and Day 2 Nov 18.", "open"),
-    ("Q13", "What dates is the trip?", "Open. Needed to pick events and hotel nights.", "open"),
+    ("Q7", "What are the MGM resort fees (Bellagio, ARIA, MGM Grand, Mandalay Bay)?", "Open. The official MGM terms index has no per-property fee values.", "open"),
+    ("Q8", "Which Wynn resort fee applies to my booking?", "Open. Official offer terms show $45 + tax on some offers and $55 + tax on others. The offer on your booking determines the fee.", "open"),
+    ("Q9", "Does the Wynn daily schedule run during the WPT World Championship (Nov 27 – Dec 21)?", "Open. Wynn's poker page says the daily schedule is suspended during the series.", "open"),
+    ("Q10", "Is the Venetian promo code EPOKR25 still valid?", "Open. The suite-rate page shows the code without validity dates.", "open"),
+    ("Q11", "Is the WPT $1,000,000 added prize available in Nevada?", "Open. The official schedule says the funding is tied to ClubWPT Gold, which it says is not available in Nevada.", "open"),
+    ("Q12", "Are Venetian Event 1 flights still open for registration?", "Open. The schedule lists flights Nov 16–17 and Day 2 on Nov 18. Confirm at the cage.", "open"),
+    ("Q13", "What dates is the trip?", "Open. Needed to choose events and hotel nights.", "open"),
     ("Q14", "What is the bankroll / per-day buy-in budget?", "Open. Needed to rank events by affordability.", "open"),
-    ("Q15", "Do the Venetian 1-Day events have any re-entry rule I missed?", "Answered for the 30 verified events: the structure sheets contain no re-entry or add-on language. Confirm at the cage before playing.", "answered"),
-    ("Q16", "What are the 21+ and Venetian Rewards card requirements?", "Answered (official Venetian structure sheets). Free card required to track play.", "answered"),
-    ("Q17", "Is the PokerAtlas PRO $20 discount (Event 18) worth the membership?", "Open. Membership price not verified from an official PokerAtlas page.", "open"),
+    ("Q15", "Are there re-entry or add-on rules in the single-entry events?", "Answered for the structure sheets checked: no re-entry or add-on language. Sheets for other rows were not re-read this session; confirm at the cage.", "partial"),
+    ("Q16", "What are the age and card requirements?", "Answered on the sheets checked: 21+ and a Venetian Rewards card.", "answered"),
+    ("Q17", "What does the PokerAtlas PRO discount (#58) cost to join?", "Open. Membership price not verified from an official PokerAtlas page.", "open"),
+    ("Q18", "Which day is Venetian #39 (LIPS Ladies, 2-day)?", "Open. The schedule PDF and event page differ; the page says Thu Dec 10 (Flagged R-06).", "open"),
 ]
 
 def questions_page():
     rows = []
     for qid, q, a, st in QUESTIONS:
-        badge = '<span class="badge ok">Answered</span>' if st == "answered" else '<span class="badge bad">Open</span>'
+        badge = {"answered": '<span class="badge ok">Answered</span>', "partial": '<span class="badge warn">Partly answered</span>'}.get(st, '<span class="badge bad">Open</span>')
         rows.append([E(qid), E(q), E(a), badge])
     body = f"""
 <section class="hero small">
@@ -354,10 +365,10 @@ def questions_page():
 {tbl(["#", "Question", "Answer or what is needed", "Status"], rows)}
 <h2>Information still needed (how to discover it)</h2>
 <ul class="bullets">
-  <li>Stay dates and party size: from you (needed for nightly rates and Venetian events).</li>
+  <li>Stay dates and party size: from you (needed for nightly rates and event choice).</li>
   <li>Booking-calendar rate checks on each hotel's official site for those dates (manual lookup, or an approved tool).</li>
-  <li>Official Clark County lodging-tax page and official caesars.com / mgmresorts.com fee pages.</li>
-  <li>Official Wynn and WPT structure sheets for the WPT World Championship events.</li>
+  <li>Official Clark County lodging-tax page and official caesars.com / mgmresorts.com per-property fee pages.</li>
+  <li>Structure sheets for the Wynn WPT World Championship and the Venetian flight events (linked on the official pages; not yet read).</li>
 </ul>
 """
     return page("Questions & answers", "questions.html", body)
@@ -424,10 +435,10 @@ def sources_page():
 
 def index_page():
     cards = [
-        ("tournaments.html", "Single-entry tournaments", f"{len(SINGLE_ROWS)} verified events at The Venetian, Nov 18 – Dec 17, 2026"),
+        ("tournaments.html", "Single-entry tournaments", f"{len(SINGLE_ROWS)} events at The Venetian, {md(SINGLE_ROWS[0]['date'])} – {md(SINGLE_ROWS[-1]['date'])}, 2026"),
         ("multi-entry.html", "Multi-entry (separate)", f"{len(MULTI['rows'])} re-entry, rebuy, add-on and flight formats"),
-        ("schedule.html", "Day plan", "Verified start times by date (earliest 11:10 AM)"),
-        ("hotels.html", "Hotels", "Official resort fees; nightly rates and walk times pending"),
+        ("schedule.html", "Day plan", "Verified start times by date (no 8 AM start among verified events)"),
+        ("hotels.html", "Hotels", "Some official resort fees; nightly rates and walk times pending"),
         ("analysis.html", "Analysis", "Guarantee-to-buy-in ratios and findings"),
         ("executive-summary.html", "Executive summary", "What is verified, what is not, what to decide"),
         ("questions.html", "Questions & answers", "What must be known before deciding"),
@@ -443,7 +454,7 @@ def index_page():
   <div class="kpis">
     <div class="kpi"><span>{len(SINGLE_ROWS)}</span><label>Single-entry events verified</label></div>
     <div class="kpi"><span>{min(r['buy_in'] for r in SINGLE_ROWS)}–{max(r['buy_in'] for r in SINGLE_ROWS):,}</span><label>Buy-in range (USD)</label></div>
-    <div class="kpi"><span>11:10 AM</span><label>Earliest verified start</label></div>
+    <div class="kpi"><span>{min((r["start"] for r in SINGLE_ROWS), key=parse_time)}</span><label>Earliest verified start</label></div>
     <div class="kpi"><span>{len(PENDING['pending_tournaments']) + len(PENDING['hotel_items']) + len(PENDING['repo_irregularities'])}</span><label>Items flagged for review</label></div>
   </div>
 </section>

@@ -46,8 +46,8 @@ Overlap note: this session's claim overlaps with the claims listed above. Becaus
 
 ## Task log
 - 2026-11-16 — `443e914d` claimed T-A through T-F. Board consolidated from visible branches.
-- 2026-11-16 — T-A done: 30 single-entry Venetian events verified against the official schedule PDF and structure sheets (no re-entry or add-on language). Multi-entry formats separated (T-B).
-- 2026-11-16 — T-C done for official resort fees only. Nightly rates, walk times, and room tax are blank (no official source).
+- 2026-11-16 — T-A done: 36 single-entry Venetian rows (Nov 18 – Dec 23). Each date, weekday, start, buy-in, and guarantee re-checked against the official schedule PDF and event page (research/verification.md, 0 mismatches). Structure-sheet fields for rows #02–#57 were recorded in an earlier session and not all re-read. Multi-entry and flight formats kept separate (T-B).
+- 2026-11-16 — T-C partial: only some official resort fees verified (Venetian $55; Wynn offer-specific $45/$55). Caesars, MGM, Palazzo, and Encore fees, nightly rates, walk times, and room tax are blank (flagged H-01 to H-09).
 - 2026-11-16 — T-D/T-E done: site generated from `data/` into `docs/` (11 pages). Internal link check passed; all external URLs match `data/sources.json`.
 
 ## Sources used (official unless marked)
@@ -62,16 +62,16 @@ Overlap note: this session's claim overlaps with the claims listed above. Becaus
 Third-party pages (PokerAtlas, vegaspokercalendar, casinos.com, news, tax guides) were used only as leads and are never used as the source of a value.
 
 ## Verification performed
-- Each single-entry row: date, weekday, start, buy-in, guarantee, chips, levels, late-registration close, and house fee compared to the official schedule PDF and structure sheet text as retrieved.
-- Each multi-entry row: re-entry/rebuy/add-on rule compared to the official terms text.
-- Hotels: resort fee taken only from official pages; other values blank.
-- Site: generator is stdlib-only; internal link check passed (11 pages, 0 broken). Every external URL on the site is in `data/sources.json`.
+- Single-entry rows: date, weekday, start, buy-in, guarantee checked line-by-line (36/36 match; research/verification.md). Structure-sheet fields for rows #02–#57 not all re-read this session.
+- Multi-entry and flight rows: rules are paraphrased from the sources read; the multi-entry rules for flight events not fetched are flagged.
+- Hotels: resort fee taken only from official pages (Venetian page, Wynn offer terms 848631 fetched); all other values blank.
+- Site: generator is stdlib-only; tools/check_links.py passes (11 pages, 0 broken internal links or anchors; all 45 external URLs are in data/sources.json).
 
 ## Handoff / irregularities
 - Seven sessions claimed overlapping scope in parallel on separate branches within ~2 minutes; there is no single shared board on `main`. Logged as R-01.
 - Brief asks for `session-<id>/<task>` branches; Arena fixes this session to `arena/443e914d-poker5`. Logged as R-02.
 - Repository state at start: `README.md` only. Logged as R-03.
-- Wynn daily structure PDF is an older upload (ID v1752011191) than the 2026 poster; confirm current terms. Logged as H-related Flagged item.
+- Wynn daily structure PDF: upload stamp implies about July 2025 and the PDF is undated; current terms not confirmed (R-04).
 - Wynn resort fee conflicts ($45 vs $55, H-01). Caesars and MGM fees unverified (H-06, H-07).
 - WPT $1,000,000 added prize: official schedule says ClubWPT Gold is not available in Nevada (P-02).
 

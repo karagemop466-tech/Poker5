@@ -4,7 +4,7 @@ Las Vegas Strip live poker tournament and hotel planner. Every value is taken fr
 
 ## Live site
 
-GitHub Pages (built from `docs/` on `main`): https://karagemop466-tech.github.io/Poker5/
+GitHub Pages (built from `docs/` on `main` by `.github/workflows/pages.yml`). Expected URL: https://karagemop466-tech.github.io/Poker5/ (confirmed only after the first deploy).
 
 Pages:
 - `index.html` – landing dashboard
@@ -27,6 +27,9 @@ Pages:
 | `data/hotels.json` | Hotel rows; blank = unverified |
 | `data/pending_and_flags.json` | Pending tournaments, hotel items, repo irregularities |
 | `tools/build_site.py` | Stdlib-only generator that writes `docs/` from `data/` |
+| `tools/check_links.py` | Link gate: no broken internal links; every external URL must be in `data/sources.json` |
+| `research/verification.md` | Row-by-row verification log |
+| `.github/workflows/pages.yml` | Builds, gates, and deploys `docs/` to GitHub Pages |
 | `docs/` | Generated static site (do not edit by hand; edit `data/` and rebuild) |
 | `COORDINATION.md` | Shared task board for parallel agent sessions |
 
@@ -34,11 +37,12 @@ Pages:
 
 ```bash
 python3 tools/build_site.py
+python3 tools/check_links.py
 ```
 
 ## Verification approach
 
-- Each single-entry row cites the official schedule PDF (date, start, buy-in, guarantee, chips, late-registration close) and the official structure sheet (rules: no re-entry or add-on language).
+- Single-entry rows (36): date, weekday, start, buy-in, and guarantee re-checked against the official schedule PDF and event page. See `research/verification.md` for the row-by-row table. Structure-sheet fields for older rows were recorded in an earlier session and are not all re-read.
 - Multi-entry formats are classified from the official terms; they are never ranked against single-entry events.
 - Derived values (guarantee ÷ buy-in, prize pool per entry = buy-in − house fee) are arithmetic on verified inputs and are labelled as calculated.
 - No value is inferred. Blanks are intentional and flagged.
