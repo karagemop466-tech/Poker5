@@ -200,7 +200,7 @@ This session's static dashboard and source data are isolated in `dashboard-cd5ab
 | Compare date-specific hotel rates, quality and resort fees | done with quote caveats | cd5ab298 | `dashboard-cd5ab298/data/hotels.json`, `hotels.html` |
 | Research property-to-poker-room locations and walking estimates | partial; internal room-to-seat times unverified | cd5ab298 | `dashboard-cd5ab298/data/hotels.json`, `hotels.html` |
 | Build overview, interactive calendar, Q&A and Flagged for Review | done | cd5ab298 | `dashboard-cd5ab298/*.html`, `assets/` |
-| Local validation and GitHub integration / Pages verification | in progress | cd5ab298 | `scripts/check_site_cd5ab298.py`, this section |
+| Local validation, PR #17 merge and GitHub Pages verification | done | cd5ab298 | `scripts/check_site_cd5ab298.py`, this section |
 
 ### Research snapshot and decisions
 
@@ -218,7 +218,9 @@ This session's static dashboard and source data are isolated in `dashboard-cd5ab
 
 - `python3 scripts/check_site_cd5ab298.py` passes: 7 dashboard HTML pages, 56 dated tournament rows, 4 hotel records, local links, source keys and quote arithmetic. `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing and `git diff --check` also pass. The validator checks external URLs for HTTPS syntax; it does not make live HTTP requests.
 - Integrated latest `origin/main` commit `0cbefd0` (PR #15) into this branch after main advanced during the PR. Preserved its newer README, coordination history, root landing-page links, Pages config and session-scoped site. Kept this dashboard isolated, added this session's record to main's coordination board and retained the root link; no other session output was replaced.
-- PR #17 is open from `arena/cd5ab298-poker5` to `main`: <https://github.com/karagemop466-tech/Poker5/pull/17>. Before integrating `0cbefd0`, the `validate` check passed on branch commits `098adf7` and `5721b62`; rerun CI after this conflict-resolution merge. Final merge and live Pages-path verification are pending. Intended published path is `https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/` under the existing root-based Pages deployment. Do not replace the legacy root Pages source or other sessions' outputs.
+- PR #17: <https://github.com/karagemop466-tech/Poker5/pull/17> merged Nov 16, 2026 as merge commit `b65a7a501c8df2863aafab8b889ed896e998a66c`. Branch checks `check` and `validate` passed on commit `7013beb`.
+- Post-merge Pages build and deploy succeeded: run <https://github.com/karagemop466-tech/Poker5/actions/runs/43940727028>. Pages remains configured to publish `main` `/`; the new dashboard is live at <https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/>. Verified the deployed overview (using a cache-busting query after the initial stale 404) and live schedule and hotel pages. The root landing page links to this dashboard; no Pages source was replaced.
+- Final local checks passed: `python3 scripts/check_site_cd5ab298.py`, `node --check dashboard-cd5ab298/assets/app.js`, JSON parsing, `git diff --check`, and repository `npm run check` (8 tests). The GitHub Actions status check reports 7 pages / 56 rows / 4 hotel records through the session validator.
 
 ### Primary sources
 
