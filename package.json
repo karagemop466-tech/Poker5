@@ -1,0 +1,14 @@
+{
+  "name": "poker5-strict-entry-research",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-linked Las Vegas poker tournament and hotel research dashboard.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node --check site-src/data.mjs && node --check site-src/app.mjs && node --check site-src/sources.mjs && node --check serve.mjs && node --check scripts/build.mjs && npm run build && npm test",
+    "dev": "node serve.mjs site-b50aa7f5",
+    "preview": "node serve.mjs site-b50aa7f5"
+  }
+}

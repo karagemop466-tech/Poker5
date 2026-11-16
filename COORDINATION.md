@@ -166,3 +166,25 @@ Scope note: this session did not publish a site. Its generated site was removed 
 - Scope of this session's merge: cross-check data (`data-359e3f96/*.json`) and `scripts/check.mjs` only. No site was published by this session.
 - Not done: reconciling Venetian single-entry counts (this session 20; de0bebd4 30; 581fea93 64-event check) and the hotel fee conflicts. These are listed in the Log above for the owners of those files.
 
+
+---
+
+## Session b50aa7f5 (branch `arena/b50aa7f5-poker5`) — strict entry / hotel research
+
+This session's standalone dashboard is published under `site-b50aa7f5/`; it preserves the existing root landing page and every other session's site and research files.
+
+| Task | Status | Owner | Files / result |
+|---|---|---|---|
+| Upcoming tournament research with a strict single-entry-overall rule | done (snapshot) | b50aa7f5 | `site-src/data.mjs`; 11 records, zero verified primary-list entries, 4 confirmed multi-entry/rebuy, 6 entry-cap-unknown, 1 restricted |
+| Hotel, room-tax and route context | done (illustrative / approximate) | b50aa7f5 | `site-src/data.mjs`; two dated sample quotes only (Dec 3–6, 2026), no inferred user dates or overall hotel ranking |
+| Responsive site, source ledger, build and tests | done | b50aa7f5 | `site-src/`, `site-b50aa7f5/`, `scripts/build.mjs`, `test/research.test.mjs`; `npm run check` passes |
+| Integrate with the current main site and verify deployment | in progress | b50aa7f5 | PR #15; preserve main's root `index.html`, existing `pages/` and all session folders; add a direct link to the strict dashboard |
+
+### Log (b50aa7f5)
+
+- Initial branch base: `0ba2e556c11d7c2b6e34935d3b4a2a11d5eefab0`. While this session was active, PRs #13 and #14 advanced `main` and introduced additional research sites. The current branch was kept fixed; `origin/main` was merged into it to resolve the PR conflict.
+- Conflict handling: retained `main`'s existing root landing page, README material, ignore rules, and full coordination history. The new dashboard is isolated at `site-b50aa7f5/`, with editable source under `site-src/`; root landing navigation is only extended to link to it.
+- **Entry standard:** schedule silence, `1Day`, and one-entry-per-flight language do not prove single-entry overall. No event meets the strict primary-list standard in this snapshot. Prior-session inferred or unverified candidate rows remain separate and are not re-labeled as confirmed.
+- **Routes:** third-party estimates vary with endpoint/provider and are not measurements. Hotel quotes are snapshots only, not user-selected trip dates. No hotel is ranked overall.
+- Sources were reviewed November 16, 2026. PGT's current 2027 Championship announcement and Rome2Rio route pages were checked during integration; other official links and findings are recorded in the dashboard's source ledger.
+- PR #15: https://github.com/karagemop466-tech/Poker5/pull/15. Local check: `npm run check` (8 tests and static build) passes; local HTTP smoke test passed for page, ledger, JS modules, data, and CSS. Final merge and live Pages verification pending.
