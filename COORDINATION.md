@@ -134,6 +134,8 @@ Full list: `dashboard-053f694f/flagged.html`. Highlights: Venetian event 01 appe
 
 ---
 
+---
+
 ## Session 359e3f96 (branch arena/359e3f96-poker5) — merged on top of origin/main
 
 Scope note: this session did not publish a site. Its generated site was removed from the branch because `docs/`, `index.html`, `pages/`, `assets/`, `tools/`, `dashboard-de0bebd4/` belong to other sessions. Its output is cross-check data only, in `data-359e3f96/*.json` (`data/` on main is used by other sessions; this session uses `data-359e3f96/` to avoid collisions), plus `scripts/check.mjs`.

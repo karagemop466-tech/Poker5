@@ -1,245 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suggestions — Poker5</title>
-<meta name="description" content="Suggestions to improve the Poker5 site for decision making, plus a review section to choose the best path before implementing any changes.">
+<title>Suggestions | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel planner built from official sources. Unverified values are blank and flagged.">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand">
-      <div class="mark">P5</div>
-      <div>
-        <div style="font-weight:800;">Poker5</div>
-        <div class="tagline">Las Vegas Strip poker tournament &amp; hotel planner</div>
-      </div>
-    </div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="tournaments.html">Tournaments</a>
-      <a href="tournaments-double.html">Re-Entry / Add-On</a>
-      <a href="hotels.html">Hotels</a>
-      <a href="schedule.html">All-Day Schedule</a>
-      <a href="executive-summary.html">Executive Summary</a>
-      <a href="questions.html">Questions &amp; Answers</a>
-      <a href="suggestions.html" class="active">Suggestions</a>
-      <a href="flagged-review.html">Flagged for Review</a>
-    </nav>
-  </div>
+<header class="topbar">
+  <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
+  <nav class="nav"><a href="../index.html">Home</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="tournaments.html">Single-Entry Candidates</a>
+<a href="tournaments-double.html">Re-Entry / Multi-Flight</a>
+<a href="hotels.html">Hotels</a>
+<a href="schedule.html">Schedule</a>
+<a href="questions.html">Questions &amp; Answers</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged-review.html">Flagged for Review</a>
+<a href="repo-review.html">Repo Review</a></nav>
 </header>
+<main class="wrap">
+<h1>Suggestions</h1>
 
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Suggestions for Improving Decision Making</h2>
-      <p class="subtitle">Review these suggestions and choose the best path before implementing any changes. None are implemented yet.</p>
-    </div>
+<p class="muted">These are options. None is implemented yet; the choice is yours. Only the items you choose will be built.</p>
+<div class="tablewrap"><table class="tbl"><thead><tr><th>#</th><th>Suggestion</th><th>Why</th><th>Status</th></tr></thead><tbody><tr><td>S1</td><td>Add a scheduled check that re-reads the official pages each week and flags changed values</td><td>Keeps dates and buy-ins current without manual input. Needs a scheduled job; no code change made in this run.</td><td><span class="blank">Awaiting your choice</span></td></tr><tr><td>S2</td><td>Add your travel dates and party size to compute a day plan and total trip cost</td><td>Needed for Q13. Turns the schedule into a plan of actual entries.</td><td><span class="blank">Awaiting your choice</span></td></tr><tr><td>S3</td><td>Choose a hotel quality source (for example, a published rating) and its scale</td><td>Quality is blank today because none is verified (Q12).</td><td><span class="blank">Awaiting your choice</span></td></tr><tr><td>S4</td><td>Choose the ranking rule for tournaments: guarantee, buy-in, or guarantee per buy-in</td><td>Current rule is guarantee, then buy-in. Other rules change the top of the list.</td><td><span class="blank">Awaiting your choice</span></td></tr><tr><td>S5</td><td>Add the official Venetian structure-sheet re-entry and level-length lines as columns</td><td>Would resolve F01, F04 and F06 for the Venetian rows.</td><td><span class="blank">Awaiting your choice</span></td></tr><tr><td>S6</td><td>Confirm the Bellagio and MGM Grand dates and add them as dated rows</td><td>Clears F10 and F11.</td><td><span class="blank">Awaiting your choice</span></td></tr></tbody></table></div>
 
-    <div class="callout callout-info">
-      <h4>How to use this page</h4>
-      <p>Each suggestion lists the problem, the proposed change, expected impact, effort, and the decision required. A reviewer should pick which to implement and mark a status. Do not implement anything without reviewing here first.</p>
-    </div>
-
-    <div class="section-header" style="margin-top:20px;">
-      <h2>A. Site improvement suggestions</h2>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th><th>Suggestion</th><th>Problem it solves</th><th>Expected impact</th><th>Effort</th><th>Decision required</th><th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="td-nowrap">S1</td>
-            <td>Add a live-data feed or scraper that pulls each Strip poker room's official daily schedule each morning.</td>
-            <td>Schedules change daily; static data goes stale fast.</td>
-            <td>High — users always see current tournaments.</td>
-            <td>High</td>
-            <td>Approve data source (official sites only) + scraping cadence.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S2</td>
-            <td>Add a "single-entry / freezeout confirmed" toggle filter on the tournaments table.</td>
-            <td>Users can't instantly separate confirmed freezeouts from unverified 1Day events.</td>
-            <td>High — directly supports the "single entry only" rule.</td>
-            <td>Medium</td>
-            <td>Approve filter UI + definition of "confirmed."</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S3</td>
-            <td>Add live hotel rate lookup (official hotel booking links per date) and auto-calculate true cost/night = rate + resort fee + 13.38% tax.</td>
-            <td>Room rates and true cost/night are blank/unverified today.</td>
-            <td>High — addresses the core hotel-cost question.</td>
-            <td>High</td>
-            <td>Approach each hotel for an official rate API or confirm manual entry process.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S4</td>
-            <td>Add walking-distance verification (Google/Apple Maps) from each hotel to the Venetian poker room, with a "≤30 min walk" filter.</td>
-            <td>Walking distances are approximate and unverified.</td>
-            <td>Medium — supports the distance constraint.</td>
-            <td>Medium</td>
-            <td>Verify each route and lock distances.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S5</td>
-            <td>Add an 8 AM–all-day feasibility checker that flags when no tournament meets the user's start time.</td>
-            <td>The 8 AM start goal is currently unsupported (earliest ~10:10 AM).</td>
-            <td>Medium — prevents planning around an impossible start.</td>
-            <td>Low–Medium</td>
-            <td>Define the earliest-acceptable start time.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S6</td>
-            <td>Add source links + "last verified on" date to every table row.</td>
-            <td>Verifiability is a core requirement; freshness is not tracked.</td>
-            <td>Medium — auditability.</td>
-            <td>Low</td>
-            <td>Adopt "last verified" field as a data standard.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S7</td>
-            <td>Add a trip budget calculator (tournament buy-ins × events + hotel true cost × nights + travel/food).</td>
-            <td>No total trip cost exists yet (Q6 unresolved).</td>
-            <td>Medium — total cost of the vacation.</td>
-            <td>Medium</td>
-            <td>Decide calculator inputs and defaults.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S8</td>
-            <td>Add a "flag / report outdated info" button on each table row.</td>
-            <td>Users have no way to flag a value that changed.</td>
-            <td>Low–Medium — keeps data honest.</td>
-            <td>Low</td>
-            <td>Route flagged reports to a review queue.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S9</td>
-            <td>Add mobile-responsive improvements + a print-friendly "trip sheet" view.</td>
-            <td>Users may want a printed schedule while traveling.</td>
-            <td>Low–Medium</td>
-            <td>Low</td>
-            <td>Approve print stylesheet.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">S10</td>
-            <td>Add responsible-gaming and 21+ disclaimers more prominently, plus links to official gaming regulators.</td>
-            <td>Current disclaimer is minimal.</td>
-            <td>Low — compliance / user safety.</td>
-            <td>Low</td>
-            <td>Approve disclaimer wording and regulator links.</td>
-            <td><span class="status status-unverified">Proposed</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-header" style="margin-top:30px;">
-      <h2>B. Data-gathering suggestions (discover missing information)</h2>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th><th>Missing information</th><th>Suggested discovery method</th><th>Official / trusted source to use</th><th>Priority</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="td-nowrap">D1</td>
-            <td>Single-entry / freezeout status of each Venetian 1Day event</td>
-            <td>Read each official structure sheet fully; call Venetian Poker Room to confirm "no re-entry during late registration"</td>
-            <td>Venetian official structure sheets + poker room phone</td>
-            <td>High</td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">D2</td>
-            <td>Any Strip tournament starting 8:00–10:00 AM</td>
-            <td>Scan full VegasPokerCalendar and every Strip poker room official schedule for early starts</td>
-            <td>vegaspokercalendar.com + room official sites</td>
-            <td>High</td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">D3</td>
-            <td>Current nightly room rate + resort fee per candidate hotel for the travel dates</td>
-            <td>Check each hotel's official booking site; record total incl. 13.38% tax on resort fee</td>
-            <td>Hotel official sites (venetianlasvegas.com, wynnlasvegas.com, bellagio.com, caesarspalace.com, etc.)</td>
-            <td>High</td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">D4</td>
-            <td>Aria daily tournament buy-in, time, guarantee, re-entry rule</td>
-            <td>Contact Aria poker room directly; check Aria official site / Bravo app</td>
-            <td>Aria official site (arialasvegas.com)</td>
-            <td>Medium</td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">D5</td>
-            <td>Map-verified walking time hotel → Venetian poker room</td>
-            <td>Walking directions in Google/Apple Maps for each candidate hotel</td>
-            <td>Google Maps / Apple Maps</td>
-            <td>Medium</td>
-          </tr>
-          <tr>
-            <td class="td-nowrap">D6</td>
-            <td>Resort-fee confirmation for Harrah's, Treasure Island, Casino Royale, LINQ</td>
-            <td>Check each hotel's official site / reservations</td>
-            <td>Hotel official sites</td>
-            <td>Medium</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout callout-warn">
-      <h4>Review before implementing</h4>
-      <p>None of these suggestions are implemented. A stakeholder should review suggestions S1–S10 and data tasks D1–D6, choose the best path (considering impact vs. effort), assign an owner, and record the decision here before any change is made to the site or data.</p>
-    </div>
-
-    <div class="actions" style="margin-top:20px;">
-      <a class="btn btn-primary" href="questions.html">Open questions &amp; answers &rarr;</a>
-      <a class="btn" href="flagged-review.html">Flagged for review &rarr;</a>
-      <a class="btn" href="../index.html">Back to home &rarr;</a>
-    </div>
-
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="grid">
-      <div>
-        <h4>Poker5 — Suggestions</h4>
-        <p>Review and choose a path before implementing. None implemented yet.</p>
-      </div>
-      <div>
-        <h4>Related pages</h4>
-        <ul style="margin:0;padding-left:18px;">
-          <li><a href="questions.html">Questions &amp; Answers</a></li>
-          <li><a href="flagged-review.html">Flagged for Review</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="disclaimer">Not affiliated with any casino, poker room, or hotel. Confirm directly with each venue before booking or traveling.</p>
-  </div>
+</main>
+<footer class="foot">
+  <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
+  <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
 </footer>
-
 </body>
 </html>
