@@ -1836,16 +1836,6 @@ def main() -> int:
     write("pages/venues/others.html", shell("Other Strip rooms", page_venue_others(), 2))
     write_assets()
 
-    # Remove root-site pages this build no longer produces, so a stale page
-    # from an earlier pass cannot point at a file that no longer exists.
-    keep = set(PAGES)
-    for folder in ("pages", os.path.join("pages", "venues")):
-        for name in sorted(os.listdir(os.path.join(ROOT, folder))):
-            rel = os.path.join(folder, name).replace(os.sep, "/")
-            if name.endswith(".html") and rel not in keep:
-                os.remove(os.path.join(ROOT, rel))
-                print("removed stale page", rel)
-
     # internal link check
     for path, text in PAGES.items():
         base = os.path.dirname(path)
