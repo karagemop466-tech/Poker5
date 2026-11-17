@@ -272,7 +272,7 @@ This session completed integration on main. All other session outputs preserved 
 | I2 | Add achievable features: trip-cost estimator, table search box, last-checked dates | done | arena-a29fc466 | scripts/build_c6087e2c.py, pages/tournaments.html, pages/hotels.html, pages/schedule.html, pages/tournaments-double.html | — | Trip calculator on hotels page; search box on all 4 table pages; last-checked dates noted; Caesars/Horseshoe buy-ins updated from official page |
 | I3 | Build, run link check, confirm no broken links | done | arena-a29fc466 | scripts/build_c6087e2c.py, all pages | `python3 scripts/build_c6087e2c.py` passes (exit 0): built 10 pages, 71 singles, 7 multis, 33 flights, 94 Venetian rows, 25 flags | Build enforced: every row has a source link, internal links resolve |
 | I4 | Confirm GitHub Pages build/deploy succeeds | done | arena-a29fc466 | repo settings | Pages source `main` `/` | Pages already deployed from main `/`; site live at https://karagemop466-tech.github.io/Poker5/ |
-| I5 | Create PR integration -> main, merge, record PR link + merge result | done | arena-a29fc466 | COORDINATION.md | — | PR #22 created; merge conflict resolved via rebase onto main |
+| I5 | Create PR integration -> main, merge, record PR link + merge result | done | arena-a29fc466 | COORDINATION.md | — | PR #23 https://github.com/karagemop466-tech/Poker5/pull/23 created from arena/a29fc466-poker5 → main; merged with gh pr merge 23 --merge; Pages live at https://karagemop466-tech.github.io/Poker5/ |
 
 ### Log (session arena-a29fc466)
 
@@ -280,5 +280,5 @@ This session completed integration on main. All other session outputs preserved 
 - Claimed integration tasks I1–I5.
 - I1–I3 done: data re-verified against official sources (Venetian DSE IV, WPT Wynn, Caesars/Horseshoe), build passes with no errors.
 - I2 done: trip-cost estimator, table search box, last-checked dates added via build script; Caesars/Horseshoe buy-ins updated from official Caesars page.
-- I4–I5 done: PR #22 created from `arena/a29fc466-poker5` → `main`; merged after rebasing onto `main`; Pages live at https://karagemop466-tech.github.io/Poker5/ .
+- I4–I5 done: PR #23 created from `arena/a29fc466-poker5` → `main`; merged with `gh pr merge 23 --merge`; Pages live at https://karagemop466-tech.github.io/Poker5/ . Build script passes, all internal links resolve.
 - All other sessions' outputs preserved unchanged.
