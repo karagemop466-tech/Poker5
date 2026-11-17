@@ -1,0 +1,57 @@
+name: recheck-6d1e0039
+
+# Scheduled re-check of every official source behind dashboard-6d1e0039/.
+# - fetches each URL with a plain HTTP client (no browser, no JS)
+# - hashes normalised content and compares with the previous run
+# - appends changed URLs to data-6d1e0039/change-log.json (surfaced on changes.html)
+# - commits hashes + log so the next run compares against the newest state
+# A change is a prompt to re-read, never an automatic value update.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours, offset from the other session's job
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recheck-6d1e0039
+  cancel-in-progress: false
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Re-check official sources
+        run: python3 scripts/recheck_6d1e0039.py
+
+      - name: Rebuild dashboard so changed rows are marked
+        run: |
+          python3 scripts/gen_6d1e0039_data.py
+          python3 scripts/build_6d1e0039_site.py
+
+      - name: Commit state
+        run: |
+          git config user.name  "poker5-recheck-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data-6d1e0039/change-log.json data-6d1e0039/source-hashes.json \
+                  data-6d1e0039/last-checked.json dashboard-6d1e0039/
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "recheck(6d1e0039): scheduled source check $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Fail the run if the source list itself is unreadable
+        run: test -s data-6d1e0039/change-log.json

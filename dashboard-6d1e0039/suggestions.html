@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions | Strip Poker Dashboard (session 6d1e0039)</title>
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header class="top"><div class="brand"><span class="mark">P5</span><div><strong>Strip poker &amp; hotel dashboard</strong>
+<small>Verified against official sources · last checked 2026-11-17</small></div></div>
+<nav><a href="index.html">Overview</a><a href="schedule.html">All-day plan</a><a href="venetian.html">Venetian</a><a href="wynn.html">Wynn</a><a href="others.html">Other rooms</a><a href="rules.html">Entry rules</a><a href="hotels.html">Hotels</a><a href="routes.html">Walking</a><a href="calculator.html">Trip cost</a><a href="flagged.html">Flagged</a><a href="questions.html">Questions</a><a href="suggestions.html" class="on">Suggestions</a><a href="changes.html">Change log</a></nav></header><main>
+<h1>Suggestions — pick a path before changing anything</h1>
+<p class="lede">Improvements, ordered only by effort and likely impact, so you can choose. Nothing
+here is implemented yet; the site stays as verified as it is until you pick.</p>
+<section class="panel">
+<div class="tablewrap"><table class="grid"><thead><tr><th>ID</th><th>Change</th><th>Effort</th>
+<th>Impact</th></tr></thead><tbody><tr><td><b>G01</b></td><td><b>Publish a per-event cost-per-hour column</b><div class="sub">Buy-in alone hides the difference between a 20-minute-level turbo and a 40-minute structure. Deriving hours from levels × level length and dividing buy-in by hours gives a fair comparison. The dashboard already stores level length for every row, so this is a display change only.</div></td><td class="num">S</td><td class="num">High</td></tr><tr><td><b>G02</b></td><td><b>Ask the rooms for written freezeout confirmations in one batch</b><div class="sub">A single email template to Venetian, Wynn, Bellagio, Caesars and Resorts World asking “is this event single-entry, and what is the late-registration cut-off” would convert the largest block of unverified rows in one pass.</div></td><td class="num">S</td><td class="num">High</td></tr><tr><td><b>G03</b></td><td><b>Track the Venice/Wynn structure PDFs by checksum</b><div class="sub">Both rooms update their structure PDFs in place. The scheduled worker already hashes each URL; surfacing the hash change date next to each event would show exactly when a rule changed.</div></td><td class="num">S</td><td class="num">Medium</td></tr><tr><td><b>G04</b></td><td><b>Add a like-for-like hotel comparison at one length of stay</b><div class="sub">Seven nights, two adults, one room is the current baseline. Adding 3- and 5-night variants at the same check-in date makes the weekend premium visible instead of averaged away.</div></td><td class="num">M</td><td class="num">High</td></tr><tr><td><b>G05</b></td><td><b>Model the bag risk for multi-flight primaries</b><div class="sub">If a Day 1 is bagged, the next day is committed. A simple flag that a chosen primary has a Day 2 on the following day would stop the planner proposing an impossible sequence.</div></td><td class="num">M</td><td class="num">Medium</td></tr><tr><td><b>G06</b></td><td><b>Add an off-Strip section</b><div class="sub">The 8 a.m. goal and the no-advantage-purchase rule both point off-Strip, where rooms publish true freezeouts more often. This is the single largest coverage gap.</div></td><td class="num">L</td><td class="num">High</td></tr></tbody></table></div>
+<p class="muted">Effort S = a display or data change; M = a new computation or page; L = new
+research scope.</p>
+</section>
+<section class="panel"><h2>The one change that unlocks the most</h2>
+<p>Everything on this site is capped by one missing fact: no Strip room publishes a freezeout rule.
+One batch of emails asking “is this event single-entry, and when does registration close” would
+convert 46 unverified Venetian rows and dozens of Wynn rows into a real single-entry list
+(suggestion G02). Until then, ranking those rows as if they were single-entry would be exactly the
+kind of inference the brief forbids.</p>
+</section>
+
+<footer><p>Session 6d1e0039 · every row links to the official page or PDF it was read from ·
+<code>blank</code> means the official source does not publish the value ·
+computed values are labelled. <a href="changes.html">Change log</a> ·
+<a href="flagged.html">Flagged for review</a></p></footer>
+<script src="assets/app.js"></script></body></html>

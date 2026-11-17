@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change log | Strip Poker Dashboard (session 6d1e0039)</title>
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header class="top"><div class="brand"><span class="mark">P5</span><div><strong>Strip poker &amp; hotel dashboard</strong>
+<small>Verified against official sources · last checked 2026-11-17</small></div></div>
+<nav><a href="index.html">Overview</a><a href="schedule.html">All-day plan</a><a href="venetian.html">Venetian</a><a href="wynn.html">Wynn</a><a href="others.html">Other rooms</a><a href="rules.html">Entry rules</a><a href="hotels.html">Hotels</a><a href="routes.html">Walking</a><a href="calculator.html">Trip cost</a><a href="flagged.html">Flagged</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="changes.html" class="on">Change log</a></nav></header><main>
+<h1>Automatic re-check and change log</h1>
+<p class="lede">Every official URL this dashboard depends on is re-fetched on a schedule, hashed,
+and compared with the previous snapshot. When a page changes, the row is marked and the change is
+recorded here — you never have to trust that a number is still current.</p>
+<section class="stats">
+<div class="stat"><div class="v">48</div><div class="l">URLs monitored</div><div class="n">schedules, 37 structure sheets, fees, tax, routes</div></div>
+<div class="stat"><div class="v">every 6 h</div><div class="l">Schedule</div><div class="n">GitHub Actions cron, workflow recheck-6d1e0039.yml</div></div>
+<div class="stat"><div class="v">179</div><div class="l">Rows carrying a last-checked date</div><div class="n">2026-11-17 in this build</div></div>
+<div class="stat"><div class="v">0</div><div class="l">Recorded changes</div><div class="n">appended to data-6d1e0039/change-log.json</div></div>
+</section>
+<section class="panel"><h2>How a change is detected</h2>
+<ol class="tight">
+<li>The workflow runs <code>scripts/recheck_6d1e0039.py</code>, which downloads each URL with a
+plain HTTP client (no JavaScript), strips whitespace, and stores a SHA-256 hash in
+<code>data-6d1e0039/source-hashes.json</code>.</li>
+<li>If a hash differs from the previous run, the URL is written to
+<code>data-6d1e0039/change-log.json</code> with the date, HTTP status and the byte size before and
+after, and this page marks it <span class="pill no">changed</span>.</li>
+<li>The workflow commits the new hashes, so the next run compares against the most recent state.</li>
+<li>A page that returns 403 or 404 is recorded as an error, not as “changed”, so a blocked scraper
+cannot masquerade as a schedule update.</li>
+</ol>
+<h2>What the automatic check cannot do</h2>
+<ul class="tight">
+<li>It cannot read the Wynn booking engine (JavaScript-only) or the Venetian calendar widget, so
+hotel totals need the manual re-quote described on the Hotels page.</li>
+<li>It cannot decide whether a changed page still supports the classification — a change is a
+prompt to re-read, not a verdict.</li>
+</ul>
+</section>
+<section class="panel"><h2>Recorded runs</h2>
+<div class="tablewrap"><table class="grid"><thead><tr><th>Run date</th><th>URL</th><th>Result</th>
+<th>HTTP</th><th>Note</th></tr></thead><tbody><tr><td colspan="5" class="muted">No scheduled run has been recorded yet. The first run of the re-check workflow writes here.</td></tr></tbody></table></div>
+</section>
+
+<footer><p>Session 6d1e0039 · every row links to the official page or PDF it was read from ·
+<code>blank</code> means the official source does not publish the value ·
+computed values are labelled. <a href="changes.html">Change log</a> ·
+<a href="flagged.html">Flagged for review</a></p></footer>
+<script src="assets/app.js"></script></body></html>

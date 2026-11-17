@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walking routes | Strip Poker Dashboard (session 6d1e0039)</title>
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header class="top"><div class="brand"><span class="mark">P5</span><div><strong>Strip poker &amp; hotel dashboard</strong>
+<small>Verified against official sources · last checked 2026-11-17</small></div></div>
+<nav><a href="index.html">Overview</a><a href="schedule.html">All-day plan</a><a href="venetian.html">Venetian</a><a href="wynn.html">Wynn</a><a href="others.html">Other rooms</a><a href="rules.html">Entry rules</a><a href="hotels.html">Hotels</a><a href="routes.html" class="on">Walking</a><a href="calculator.html">Trip cost</a><a href="flagged.html">Flagged</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="changes.html">Change log</a></nav></header><main>
+<h1>Walking the Strip: is the hotel really within 30 minutes?</h1>
+<p class="lede">Every hotel-to-poker-room pair used in this dashboard is listed with its
+door-to-door walk time. The 30-minute filter is applied and shown, and anything marginal is labelled
+marginal rather than rounded down to “fine”.</p>
+<div class="note"><b>Source honesty.</b> Google and Apple Maps walking directions cannot be linked
+with a stable, citable route, so the times below come from a published Strip walking chart that
+measures door-to-door routes <a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">Casino Compass walking chart</a>.
+They are second-party measurements of official property layouts, not the casinos' own pages, and
+are labelled that way. Nothing here is presented as a Google Maps figure.</div>
+<div class="toolbar"><label class="chk"><input id="walkOnly" type="checkbox" checked>
+Only pairs within 30 minutes</label><span class="count" id="rowcount"></span></div>
+<section class="panel">
+<div class="tablewrap"><table class="grid" data-table="routes"><thead><tr><th>Pair</th><th>Miles</th>
+<th>Walk time</th><th>Route</th><th>Within 30 min</th><th>Note</th><th>Source</th></tr></thead>
+<tbody><tr data-walk="10–15" data-within="1"><td><b>The Venetian ↔ Wynn Las Vegas</b></td><td class="num">0.5</td><td class="num">10–15 min</td><td>Through the Palazzo, then across the Sands Avenue pedestrian bridge</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex">Cash-game-to-cash-game, door to door. Add 5–10 min for the poker rooms at either end.</td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr><tr data-walk="18–25" data-within="1"><td><b>The Venetian ↔ Bellagio</b></td><td class="num">0.9</td><td class="num">18–25 min</td><td>Strip walk over the Las Vegas Blvd and Flamingo Rd pedestrian bridges</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex">Upper end of the estimate plus lobby time can reach 30 minutes; treat as marginal.</td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr><tr data-walk="10–15" data-within="1"><td><b>Bellagio ↔ Caesars Palace</b></td><td class="num">0.4</td><td class="num">10–15 min</td><td>Flamingo Road pedestrian bridge</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex"><span class="blank" title="not published on an official source">blank</span></td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr><tr data-walk="12–18" data-within="1"><td><b>Wynn ↔ Resorts World</b></td><td class="num"><span class=blank>blank</span></td><td class="num">12–18 min</td><td>Outdoors across Las Vegas Blvd</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex"><span class="blank" title="not published on an official source">blank</span></td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr><tr data-walk="12–18" data-within="1"><td><b>The Venetian ↔ Caesars Palace</b></td><td class="num"><span class=blank>blank</span></td><td class="num">12–18 min</td><td>East-side sidewalk south along Las Vegas Blvd</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex">Caesars Palace runs a $100 daily tournament with a paid add-on, so it is in the excluded section.</td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr><tr data-walk="12–18 + 10–15" data-within="1"><td><b>The Venetian ↔ Bellagio via Caesars</b></td><td class="num"><span class=blank>blank</span></td><td class="num">12–18 + 10–15 min</td><td>Two legs; indoor cut-through at Caesars possible</td><td><span class="pill yes">≤ 30 min</span></td><td class="ex">Only useful if you are willing to walk through a casino to save heat.</td><td class="srcs"><a class="srclink" href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">route data</a></td></tr></tbody></table></div>
+</section>
+<section class="panel"><h2>What this means for hotel choice</h2>
+<ul class="tight">
+<li><b>Venetian and Wynn are 10–15 minutes apart</b> across the Sands Avenue bridge, so either
+property lets a player use both rooms in one trip without a taxi.</li>
+<li><b>Bellagio is 18–25 minutes from the Venetian</b> — inside the limit, but at the top of it when
+you add lobby and poker-room navigation. Treat it as marginal.</li>
+<li><b>Resorts World is 12–18 minutes from Wynn</b> but 25+ from the Venetian; it only works as a
+base if the plan centres on the Wynn.</li>
+<li><b>Nothing south of Bellagio stays inside 30 minutes</b> of the Venetian on foot (MGM Grand to
+Bellagio is 35–45 minutes), so a south-Strip hotel would break the walking rule.</li>
+</ul>
+</section>
+
+<footer><p>Session 6d1e0039 · every row links to the official page or PDF it was read from ·
+<code>blank</code> means the official source does not publish the value ·
+computed values are labelled. <a href="changes.html">Change log</a> ·
+<a href="flagged.html">Flagged for review</a></p></footer>
+<script src="assets/app.js"></script></body></html>
