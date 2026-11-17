@@ -1,27 +1,265 @@
 [
-  {"id": "F01", "item": "Single-entry (no re-entry / freezeout) status not confirmed for any event", "value_shown": "Blank / 'Unverified'", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html", "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf"], "to_clear": "Written confirmation from the Venetian poker room (lv_cas_poker@venetianlasvegas.com, 702.414.7657, from the official suite page) or explicit no-re-entry text in each structure sheet."},
-  {"id": "F02", "item": "Venetian DSE event #40 row was truncated in the official page capture (name, exact time and buy-in missing)", "value_shown": "Row listed with blanks", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"], "to_clear": "Re-open the official schedule and read the Dec 10 row for event #40."},
-  {"id": "F03", "item": "No official source found for a start at 8:00 AM. Earliest official start found: 9:00 AM (Horseshoe, daily). Earliest Venetian start: 9:10 AM (Dec 12, event #46)", "value_shown": "Gap shown", "status": "Gap", "sources": ["https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip", "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"], "to_clear": "Scan the official schedules of each Strip room for 8:00 AM starts."},
-  {"id": "F04", "item": "Multi-flight events (1A/1B/...): whether a player can enter more than one flight is not stated in the sources read", "value_shown": "Moved to the multi-flight section as 'unverified'", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"], "to_clear": "Read each structure sheet for flight and re-entry language, or ask the poker room."},
-  {"id": "F05", "item": "Venetian structure sheet _10 (used for event #1 Flights 1A/1C) fee not extracted; fees for other sheets not listed", "value_shown": "Not shown", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"], "to_clear": "Read the fee line on each structure sheet."},
-  {"id": "F06", "item": "Event durations and level lengths not extracted, so non-overlapping day plans cannot be verified", "value_shown": "Start times only", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"], "to_clear": "Read level length and expected duration from each structure sheet."},
-  {"id": "F07", "item": "Official Venetian hotel-policy page returned not found. Resort fee taken from the official poker suite page instead", "value_shown": "$55 + tax per night", "status": "Partly verified", "sources": ["https://www.venetianlasvegas.com/hotel/hotel-policies.html", "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"], "to_clear": "Confirm on the current Venetian hotel policy page at booking."},
-  {"id": "F08", "item": "Official MGM policy and resort-fee pages returned not found", "value_shown": "Secondary-source fees only", "status": "Unverified", "sources": ["https://www.mgmresorts.com/en/hotel-policies.html", "https://www.mgmresorts.com/en/casino-resort-fees.html"], "to_clear": "Find the current official MGM resort-fee page and confirm each property's fee."},
-  {"id": "F09", "item": "Resort fees for Bellagio, ARIA and MGM Grand come from secondary news only", "value_shown": "$55 (Bellagio, ARIA), $50 (MGM Grand), marked secondary", "status": "Secondary only", "sources": ["https://casino.com/news/las-vegas/mgm-resorts-increases-parking-and-resort-fees-in-its-las-vegas-properties/"], "to_clear": "Confirm on each property's official page or booking screen."},
-  {"id": "F10", "item": "Bellagio official PDFs are undated. Saturday NLH buy-in conflicts ($1,000 title vs $1,100 body). Saturday re-entry not stated. Sunday H.O.R.S.E. PDF not read", "value_shown": "Saturday buy-in blank; other rows marked unverified", "status": "Unverified", "sources": ["https://bellagio.mgmresorts.com/en/casino/poker.html"], "to_clear": "Find dated Bellagio schedule and read the Saturday PDF's buy-in line."},
-  {"id": "F11", "item": "MGM Grand weekly PDF is titled 'August' (stale). PDF time 11:10 AM vs page 11:00 AM. PokerAtlas shows $120/$100 NL (conflict)", "value_shown": "Rows marked unverified", "status": "Stale / conflict", "sources": ["https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html"], "to_clear": "Get the current MGM Grand schedule from the poker room."},
-  {"id": "F12", "item": "ARIA official page lists no tournaments. Secondary buy-in figures conflict ($200 PokerAtlas vs $160/$240 pokerclubgames)", "value_shown": "No row shown", "status": "Unverified", "sources": ["https://aria.mgmresorts.com/en/casino/poker.html"], "to_clear": "Call the ARIA poker room for current daily tournaments."},
-  {"id": "F13", "item": "Horseshoe buy-ins are not stated on the official Caesars page", "value_shown": "Blank", "status": "Unverified", "sources": ["https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"], "to_clear": "Read the Horseshoe poker room's official schedule."},
-  {"id": "F14", "item": "Wynn daily tournaments are suspended during the WPT festival (Nov 27-Dec 21). Availability Nov 16-26 not confirmed. Nightly $160 re-entry not stated", "value_shown": "Rows with status shown", "status": "Unverified", "sources": ["https://www.wynnlasvegas.com/casino/poker"], "to_clear": "Check the Wynn poker room for Nov 16-26 availability and the nightly $160 re-entry rule."},
-  {"id": "F15", "item": "WPT Main Event dates conflict. Official WPT page: Dec 13-20. Aggregator (pokergods): Dec 14-22. Official date used", "value_shown": "Dec 13-20 (official)", "status": "Conflict resolved to official", "sources": ["https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026"], "to_clear": "Confirm dates on the Wynn WPT schedule PDF."},
-  {"id": "F16", "item": "WPT festival rows: per-event day and date not captured from the official pages read. Only Main Event dates were captured", "value_shown": "'Festival, day not captured'", "status": "Unverified", "sources": ["https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026", "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"], "to_clear": "Read the WPT schedule PDF day by day."},
-  {"id": "F17", "item": "Caesars Palace $50 add-on: re-entry and add-on rules not stated on the official page", "value_shown": "Add-on noted", "status": "Partly verified", "sources": ["https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"], "to_clear": "Confirm add-on rules with the Caesars Palace poker room."},
-  {"id": "F18", "item": "Palazzo and Encore: walking time and resort-fee coverage not separately verified", "value_shown": "Blank walk time", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html", "https://www.wynnlasvegas.com/terms-and-conditions/849338"], "to_clear": "Confirm walking route and fee on each property's official site."},
-  {"id": "F19", "item": "Hotel room rates not verified (only the Venetian poker-suite 'as low as' figure is official)", "value_shown": "Blank or 'from' figure", "status": "Unverified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"], "to_clear": "Check each official booking page for the travel dates."},
-  {"id": "F20", "item": "Hotel quality: no official quality source used", "value_shown": "Blank", "status": "Unverified", "sources": [], "to_clear": "Choose a quality source (for example, a published rating) with the user."},
-  {"id": "F21", "item": "Caesars Palace and Horseshoe resort fees not checked this session", "value_shown": "Blank", "status": "Unverified", "sources": ["https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"], "to_clear": "Find each property's official resort-fee page."},
-  {"id": "F22", "item": "Walking times: no official source used for any hotel-to-venue route", "value_shown": "Blank", "status": "Unverified", "sources": [], "to_clear": "Measure walking time on a map for each route."},
-  {"id": "F23", "item": "Venetian daily buy-in conflicts between aggregators ($200 vs $400 for the same slot). Official Venetian page used", "value_shown": "Official values only", "status": "Conflict resolved to official", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"], "to_clear": "None needed unless the official page changes."},
-  {"id": "F24", "item": "WPT event page on worldpokertour.com (events/wpt-world-championship-2026/) returned not found; not relied on", "value_shown": "Not used", "status": "Irregular source", "sources": ["https://www.worldpokertour.com/events/wpt-world-championship-2026/"], "to_clear": "None; the correct official event page is used instead."},
-  {"id": "F25", "item": "Venetian poker suite rates 'as low as $119 and $209' do not state which figure maps to The Venetian and which to The Palazzo", "value_shown": "'from $119' used for The Venetian only", "status": "Partly verified", "sources": ["https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"], "to_clear": "Confirm the rate for each tower on the booking page."}
+  {
+    "id": "F01",
+    "item": "Single-entry (no re-entry / freezeout) status not confirmed for any event",
+    "value_shown": "Blank / 'Unverified'",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf"
+    ],
+    "to_clear": "Written confirmation from the Venetian poker room (lv_cas_poker@venetianlasvegas.com, 702.414.7657, from the official suite page) or explicit no-re-entry text in each structure sheet."
+  },
+  {
+    "id": "F02",
+    "item": "Venetian DSE event #40 row was truncated in the official page capture (name, exact time and buy-in missing)",
+    "value_shown": "Row listed with blanks",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+    ],
+    "to_clear": "Re-open the official schedule and read the Dec 10 row for event #40."
+  },
+  {
+    "id": "F03",
+    "item": "No official source found for a start at 8:00 AM. Earliest official start found: 9:00 AM (Horseshoe, daily). Earliest Venetian start: 9:10 AM (Dec 12, event #46)",
+    "value_shown": "Gap shown",
+    "status": "Gap",
+    "sources": [
+      "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+    ],
+    "to_clear": "Scan the official schedules of each Strip room for 8:00 AM starts."
+  },
+  {
+    "id": "F04",
+    "item": "Multi-flight events (1A/1B/...): whether a player can enter more than one flight is not stated in the sources read",
+    "value_shown": "Moved to the multi-flight section as 'unverified'",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+    ],
+    "to_clear": "Read each structure sheet for flight and re-entry language, or ask the poker room."
+  },
+  {
+    "id": "F05",
+    "item": "Venetian structure sheet _10 (used for event #1 Flights 1A/1C) fee not extracted; fees for other sheets not listed",
+    "value_shown": "Not shown",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"
+    ],
+    "to_clear": "Read the fee line on each structure sheet."
+  },
+  {
+    "id": "F06",
+    "item": "Event durations and level lengths not extracted, so non-overlapping day plans cannot be verified",
+    "value_shown": "Start times only",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+    ],
+    "to_clear": "Read level length and expected duration from each structure sheet."
+  },
+  {
+    "id": "F07",
+    "item": "Official Venetian hotel-policy page returned not found. Resort fee taken from the official poker suite page instead",
+    "value_shown": "$55 + tax per night",
+    "status": "Partly verified",
+    "sources": [
+      "https://www.venetianlasvegas.com/hotel/hotel-policies.html",
+      "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
+    ],
+    "to_clear": "Confirm on the current Venetian hotel policy page at booking."
+  },
+  {
+    "id": "F08",
+    "item": "Official MGM policy and resort-fee pages returned not found",
+    "value_shown": "Secondary-source fees only",
+    "status": "Unverified",
+    "sources": [
+      "https://www.mgmresorts.com/en/hotel-policies.html",
+      "https://www.mgmresorts.com/en/casino-resort-fees.html"
+    ],
+    "to_clear": "Find the current official MGM resort-fee page and confirm each property's fee."
+  },
+  {
+    "id": "F09",
+    "item": "Resort fees for Bellagio, ARIA and MGM Grand come from secondary news only",
+    "value_shown": "$55 (Bellagio, ARIA), $50 (MGM Grand), marked secondary",
+    "status": "Secondary only",
+    "sources": [
+      "https://casino.com/news/las-vegas/mgm-resorts-increases-parking-and-resort-fees-in-its-las-vegas-properties/"
+    ],
+    "to_clear": "Confirm on each property's official page or booking screen."
+  },
+  {
+    "id": "F10",
+    "item": "Bellagio official PDFs are undated. Saturday NLH buy-in conflicts ($1,000 title vs $1,100 body). Saturday re-entry not stated. Sunday H.O.R.S.E. PDF not read",
+    "value_shown": "Saturday buy-in blank; other rows marked unverified",
+    "status": "Unverified",
+    "sources": [
+      "https://bellagio.mgmresorts.com/en/casino/poker.html"
+    ],
+    "to_clear": "Find dated Bellagio schedule and read the Saturday PDF's buy-in line."
+  },
+  {
+    "id": "F11",
+    "item": "MGM Grand weekly PDF is titled 'August' (stale). PDF time 11:10 AM vs page 11:00 AM. PokerAtlas shows $120/$100 NL (conflict)",
+    "value_shown": "Rows marked unverified",
+    "status": "Stale / conflict",
+    "sources": [
+      "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html"
+    ],
+    "to_clear": "Get the current MGM Grand schedule from the poker room."
+  },
+  {
+    "id": "F12",
+    "item": "ARIA official page lists no tournaments. Secondary buy-in figures conflict ($200 PokerAtlas vs $160/$240 pokerclubgames)",
+    "value_shown": "No row shown",
+    "status": "Unverified",
+    "sources": [
+      "https://aria.mgmresorts.com/en/casino/poker.html"
+    ],
+    "to_clear": "Call the ARIA poker room for current daily tournaments."
+  },
+  {
+    "id": "F13",
+    "item": "Horseshoe buy-ins are not stated on the official Caesars page",
+    "value_shown": "Blank",
+    "status": "Unverified",
+    "sources": [
+      "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+    ],
+    "to_clear": "Read the Horseshoe poker room's official schedule."
+  },
+  {
+    "id": "F14",
+    "item": "Wynn daily tournaments are suspended during the WPT festival (Nov 27-Dec 21). Availability Nov 16-26 not confirmed. Nightly $160 re-entry not stated",
+    "value_shown": "Rows with status shown",
+    "status": "Unverified",
+    "sources": [
+      "https://www.wynnlasvegas.com/casino/poker"
+    ],
+    "to_clear": "Check the Wynn poker room for Nov 16-26 availability and the nightly $160 re-entry rule."
+  },
+  {
+    "id": "F15",
+    "item": "WPT Main Event dates conflict. Official WPT page: Dec 13-20. Aggregator (pokergods): Dec 14-22. Official date used",
+    "value_shown": "Dec 13-20 (official)",
+    "status": "Conflict resolved to official",
+    "sources": [
+      "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026"
+    ],
+    "to_clear": "Confirm dates on the Wynn WPT schedule PDF."
+  },
+  {
+    "id": "F16",
+    "item": "WPT festival rows: per-event day and date not captured from the official pages read. Only Main Event dates were captured",
+    "value_shown": "'Festival, day not captured'",
+    "status": "Unverified",
+    "sources": [
+      "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
+      "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+    ],
+    "to_clear": "Read the WPT schedule PDF day by day."
+  },
+  {
+    "id": "F17",
+    "item": "Caesars Palace $50 add-on: re-entry and add-on rules not stated on the official page",
+    "value_shown": "Add-on noted",
+    "status": "Partly verified",
+    "sources": [
+      "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+    ],
+    "to_clear": "Confirm add-on rules with the Caesars Palace poker room."
+  },
+  {
+    "id": "F18",
+    "item": "Palazzo and Encore: walking time and resort-fee coverage not separately verified",
+    "value_shown": "Blank walk time",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+    ],
+    "to_clear": "Confirm walking route and fee on each property's official site."
+  },
+  {
+    "id": "F19",
+    "item": "Hotel room rates not verified (only the Venetian poker-suite 'as low as' figure is official)",
+    "value_shown": "Blank or 'from' figure",
+    "status": "Unverified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
+    ],
+    "to_clear": "Check each official booking page for the travel dates."
+  },
+  {
+    "id": "F20",
+    "item": "Hotel quality: no official quality source used",
+    "value_shown": "Blank",
+    "status": "Unverified",
+    "sources": [],
+    "to_clear": "Choose a quality source (for example, a published rating) with the user."
+  },
+  {
+    "id": "F21",
+    "item": "Caesars Palace and Horseshoe resort fees not checked this session",
+    "value_shown": "Blank",
+    "status": "Unverified",
+    "sources": [
+      "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+    ],
+    "to_clear": "Find each property's official resort-fee page."
+  },
+  {
+    "id": "F22",
+    "item": "Walking times: no official source used for any hotel-to-venue route",
+    "value_shown": "Blank",
+    "status": "Unverified",
+    "sources": [],
+    "to_clear": "Measure walking time on a map for each route."
+  },
+  {
+    "id": "F23",
+    "item": "Venetian daily buy-in conflicts between aggregators ($200 vs $400 for the same slot). Official Venetian page used",
+    "value_shown": "Official values only",
+    "status": "Conflict resolved to official",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+    ],
+    "to_clear": "None needed unless the official page changes."
+  },
+  {
+    "id": "F24",
+    "item": "WPT event page on worldpokertour.com (events/wpt-world-championship-2026/) returned not found; not relied on",
+    "value_shown": "Not used",
+    "status": "Irregular source",
+    "sources": [
+      "https://www.worldpokertour.com/events/wpt-world-championship-2026/"
+    ],
+    "to_clear": "None; the correct official event page is used instead."
+  },
+  {
+    "id": "F25",
+    "item": "Venetian poker suite rates 'as low as $119 and $209' do not state which figure maps to The Venetian and which to The Palazzo",
+    "value_shown": "'from $119' used for The Venetian only",
+    "status": "Partly verified",
+    "sources": [
+      "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
+    ],
+    "to_clear": "Confirm the rate for each tower on the booking page."
+  },
+  {
+    "id": "F26",
+    "item": "WPT Ladies Championship (Dec 13, Wynn): official schedule row shows buy-in $1,100, but its footnote states the tournament entry is $11,100 and ladies receive a discounted entry. The $1,100 figure applies only to eligible ladies",
+    "value_shown": "$1,100 (schedule row) with footnote caveat",
+    "status": "Partly verified - confirm applicable fee",
+    "sources": [
+      "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026/details"
+    ],
+    "to_clear": "Read the event structure sheet and confirm eligibility plus the applicable entry fee for the intended player before relying on the $1,100 figure."
+  }
 ]

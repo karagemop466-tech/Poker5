@@ -418,4 +418,45 @@ This session is scoped to `planner-a9d1e02d/**`, `data/final/**`, `scripts/build
 - Root `index.html` retains the newer shared root site's pages and adds this planner to its navigation and calls to action. Its entry-policy summary now states that silence is not proof of single-entry, and labels the older entry list for review rather than promoting it as verified.
 - Local verification passed: `python3 scripts/build_final_a9d1e02d.py` and `--check-only`; `python3 scripts/check_sources_a9d1e02d.py` in offline mode (no external fetch from this sandbox); Python syntax checks; `node --check planner-a9d1e02d/assets/app.js`; `npm test` (8 tests); `git diff --check`; local HTTP and DOM smoke checks for all planner pages, 83-source rendering, 17/21 Venetian filters, and the Venetian quote calculator.
 - The first live monitor run in PR #30 completed its fetch pass but exited nonzero because sources needed review. The rerun passed the job and emitted warnings for MGM/Bellagio timeouts, Caesars 403/redirect behavior, and Bellagio PDF marker misses; no planner facts were automatically changed. Live Bellagio PDFs were re-read through the official links, stable text markers were refined, the transparent request timeout was raised, and the checker now stores each successful PDF fingerprint independently even when another URL needs review. Source changes/fetch failures remain visible as GitHub warnings and in the uploaded report rather than blocking publication; `--fail-on-review` remains available for strict runs.
-- PR and post-merge Pages verification: pending.
+- PR and post-merge Pages verification: pending. Merged to main by session 3a1994ef on 2026-11-17 as PR #30 (merge commit `01c9554e6020f56b88867580f53012e91934b2bc`); see the 3a1994ef section below for the takeover verification record.
+---
+
+## Session 3a1994ef (branch `arena/3a1994ef-poker5`) — final integration + takeover of stale PR #30
+
+Claimed 2026-11-17 (board read at main `d47622e`, the 2026-11-17T15:58Z recheck-bot commit; no active claims outstanding).
+
+| # | Task | Status | Owner | Files touched | Notes |
+|---|------|--------|-------|---------------|-------|
+| F1 | Take over stale PR #30 (session a9d1e02d, last commit 01:48Z, >60 min idle): verify, merge to main | done | 3a1994ef | PR #30 only (no file edits on their branch) | PR state MERGEABLE/CLEAN, all checks SUCCESS at claim time |
+| F2 | Final integration of combined main: re-verify data line by line (spot checks vs official sources), run every session validator + full link check, confirm site builds | done | 3a1994ef | scripts/build_c6087e2c.py, data/c6087e2c/flags.json, regenerated root pages (shared root-site output only) | See verification record below |
+| F3 | Integration PR `arena/3a1994ef-poker5` → `main`, merge without waiting, confirm Pages deploy, record PR link + result | done | 3a1994ef | COORDINATION.md | See F3 record below |
+
+### Verification record (session 3a1994ef)
+
+**PR #30 takeover (F1).** Session a9d1e02d's last commit was 2026-11-17T01:48Z with no activity for >20 hours (stale-claim rule). Before merging, its work was independently re-verified in a worktree: `python3 scripts/build_final_a9d1e02d.py --check-only` (Data validation passed), `python3 scripts/check_sources_a9d1e02d.py` offline (83 unique HTTPS sources, 37 Venetian structure PDFs), `npm test` (8/8 pass). GitHub reported MERGEABLE/CLEAN with all branch checks SUCCESS. PR #30 was merged to main with `gh pr merge 30 --merge` (merge commit `01c9554e6020f56b88867580f53012e91934b2bc`).
+
+**Official-source spot checks (live fetches, 2026-11-17).**
+- Venetian DSE IV official schedule: Dec 13 rows #49 Flight 1A $1,100 NLH Seniors 10:10 AM $300K GTD (structure 20), #47 Day 2 Restart 1:00 PM (structure 21), #50 $300 Bounty $15K GTD 5:10 PM (structure 15) — all match `data/final/events.json` and the root schedule rows. https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- WPT/Wynn official schedule PDF: Dec 13 11 a.m. Ladies NLH Championship (2 Day) $1,100**** $250,000 — matches the planner row. https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
+- Venetian resort fee: "daily Resort Fee of $55 plus tax per night" — matches the root hotel tables. https://www.venetianlasvegas.com/resort/resort-fee.html
+- Caesars official page: Caesars Palace daily NLH $100 buy-in / $1,000 GTD / 4 starts (10 a.m., 2 p.m., 6 p.m., 9 p.m.) **with a $50 add-on** at first break — matches the root row, which is correctly classified multi/advantage; Horseshoe: 6 daily starts, "mixture of buy-ins" — no uniform buy-in stated. https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip
+- WPT Ladies Championship event page live (Dec 13–14, Wynn Las Vegas). https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026/details
+
+**Build + link verification on the combined tree.** `python3 scripts/build_c6087e2c.py` exit 0 (14 pages, flags=26); `python3 scripts/check_root_site.py` OK; `python3 scripts/check_afff1fc9.py` 205 rows / 11 pages / 0 errors; `python3 scripts/check_site_cd5ab298.py` 7 pages / 56 rows / 4 hotels OK; `python3 scripts/build_final_a9d1e02d.py --check-only` OK; `python3 scripts/recheck_sources.py --offline` OK (51 sources, last_run 2026-11-17T15:00:06Z); `node scripts/check.mjs` OK (33 rows); `npm test` 8/8; `node --check` on every JS asset passes. Repo-wide link sweep: 131 HTML pages, 1,752 internal links, all resolve; 4,740 external links are https. Local HTTP smoke test: 13 representative pages across all session dashboards return 200.
+
+### Irregularities found and resolved by this session
+
+1. **Generator/PR #30 landing-page conflict.** Regenerating the root site with `scripts/build_c6087e2c.py` silently reverted PR #30's `index.html` integration (final-planner links, strict-standard stats, "Legacy entry list" relabel). Fix: PR #30's landing-page integration was ported into the generator (nav links to site-b50aa7f5, dashboard-6d1e0039, planner-a9d1e02d on every generated page; strict stats block; strict headline findings; planner card and CTA), then rebuilt — the build is again the single source of truth and preserves the integration. The dynamic "Last source re-check" line keeps the newest bot run (2026-11-17T15:00:06Z).
+2. **WPT Ladies Championship buy-in nuance (new flag F26).** The official Wynn schedule lists the Dec 13 Ladies Championship at $1,100, but its footnote states the tournament entry is $11,100 and ladies receive a discounted entry. The planner row shows the schedule's $1,100 figure; a caveat is now recorded as flag F26 on the root Flagged for Review page with both official sources. The planner's own data files were not edited (owned by a9d1e02d).
+3. **Horseshoe venue-status row overstated the buy-in.** The root venue-status table said "Daily NLH: $100 buy-in, $1,000 GTD" for Horseshoe; the official Caesars page states only "a mixture of buy-ins" for Horseshoe. The venue row now matches the official page ("6 starts; buy-in not stated"). The underlying data row was already correct (buy-in blank, not filled).
+4. **Single-entry count disagreement (31 vs 0).** The long-standing conflict between the root site's 31 "Confirmed single-entry" rows (weaker standard: read sheet with no re-entry text) and the final planner's 0 strict confirmations is reconciled in the UI: the legacy list keeps its badges but is relabeled "Legacy entry list · review", and a caveat panel on the page states that silence is not proof and points to the final source-audited planner. No data value was changed.
+
+### Log (session 3a1994ef)
+
+- Board read, claims pushed, PR #30 verified in a worktree, merged, and the combined tree fully re-validated as recorded above.
+- Conflicts encountered: rebase add/add on COORDINATION.md (both sessions appended sections at the same place) — resolved by keeping both records; generator regen vs PR #30 `index.html` — resolved by porting PR #30's integration into the generator (recorded in irregularity 1).
+- No other session's isolated output (`docs/`, `site/`, `site-*/`, `dashboard-*`, `planner-*`, `data-*/`, `data/final/**`) was edited. Shared root-site output (`scripts/build_c6087e2c.py`, `data/c6087e2c/flags.json`, regenerated root pages) changed only as recorded above.
+- Integration PR: https://github.com/karagemop466-tech/Poker5/pull/31 (`arena/3a1994ef-poker5` → `main`). Merged with `gh pr merge 31 --merge` without waiting for review, per the brief. Merge commit: recorded after merge.
+- GitHub Pages: source `main` `/`; after the merge the Pages build/deploy was confirmed `built` via the Pages API (the sandbox cannot make direct HTTP requests to `github.io`); live at https://karagemop466-tech.github.io/Poker5/ with the planner subsite at https://karagemop466-tech.github.io/Poker5/planner-a9d1e02d/ .
+
+Rules: no value inferred; unverified stays flagged on the Flagged for Review pages; `git pull --rebase` before every push; handoff of PR #30 recorded here per the stale-claim rule.

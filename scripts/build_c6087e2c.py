@@ -508,7 +508,7 @@ def page_shell(path, title, body, depth):
     nav_items = [
         ("index.html", "Home"),
         ("pages/executive-summary.html", "Executive Summary"),
-        ("pages/tournaments.html", "Single-Entry"),
+        ("pages/tournaments.html", "Legacy entry list"),
         ("pages/tournaments-double.html", "Multi-Entry"),
         ("pages/schedule.html", "Schedule"),
         ("pages/hotels.html", "Hotels"),
@@ -520,6 +520,10 @@ def page_shell(path, title, body, depth):
         ("pages/suggestions.html", "Suggestions"),
         ("pages/flagged-review.html", "Flagged"),
         ("pages/repo-review.html", "Repo Review"),
+        # Cross-session dashboards (kept from PR #30 integration; owners listed in COORDINATION.md)
+        ("site-b50aa7f5/index.html", "Strict-entry research"),
+        ("dashboard-6d1e0039/index.html", "Verified dashboard 6d1e0039"),
+        ("planner-a9d1e02d/index.html", "Final source-audited planner"),
     ]
     nav = []
     for target, label in nav_items:
@@ -674,6 +678,16 @@ def page_index():
         ("Flagged items for review", len(flags)),
     ]
     cards = "".join('<div class="stat"><div class="num">{}</div><div class="lbl">{}</div></div>'.format(v, esc(k)) for k, v in stats)
+    # Strict-standard stats ported from the PR #30 integration (session a9d1e02d).
+    # Values come from data/final/events.json (meta.qa + counts) and data/final/source-ledger.json
+    # (83 unique official source records; 37 Venetian structure PDFs audited).
+    strict_stats = [
+        ("Venetian structure PDFs audited", "37"),
+        ("Venetian entry rows QA'd for Dec 13–20", "17"),
+        ("Strict single-entry events verified in the final reviewed subset", "0"),
+        ("Official source records in the final planner", "83"),
+    ]
+    strict_cards = "".join('<div class="stat"><div class="num">{}</div><div class="lbl">{}</div></div>'.format(v, esc(k)) for k, v in strict_stats)
     body = """
 <section class="hero">
   <h2>Plan a Las Vegas Strip poker trip from official sources</h2>
@@ -683,18 +697,19 @@ def page_index():
      is left blank and flagged.</p>
   <div class="ctas">
     <a class="btn" href="pages/planner.html">Trip cost calculator</a>
-    <a class="btn ghost" href="pages/tournaments.html">Single-entry tournaments</a>
+    <a class="btn ghost" href="pages/tournaments.html">Legacy entry list — review rules</a>
     <a class="btn ghost" href="pages/schedule.html">Day schedule + overlap check</a>
     <a class="btn ghost" href="pages/hotels.html">Hotels + true nightly cost</a>
+    <a class="btn ghost" href="planner-a9d1e02d/index.html">Final source-audited planner</a>
   </div>
 </section>
-<section class="stats">{cards}</section>
+<section class="stats">{strict_cards}</section>
 <section class="panel">
   <h2>Headline findings</h2>
   <ul>
-    <li><strong>{n_confirmed} events are confirmed single-entry</strong> from a structure sheet that was read and shows no re-entry, rebuy, add-on or paid-chip text. A further {n_unverified} candidate rows remain <strong>Unverified</strong> because their structure sheet was not read; they are never assumed to be single-entry.</li>
+    <li><strong>No strict single-entry event is confirmed in the final reviewed subset.</strong> A structure sheet's silence about re-entry, rebuy or add-ons is not proof of a one-entry limit. The final source-audited planner keeps each term separate and unknown where unstated.</li>
     <li><strong>Guarantee &divide; entry fee is shown as a descriptive ratio, not a forecast.</strong> It describes the published guarantee per dollar of buy-in; it is not a prediction of winnings.</li>
-    <li><strong>Bounty and flight events are labelled separately.</strong> Bounty guarantees include bounty payouts; flight events allow more than one entry per flight.</li>
+    <li><strong>A bagging rule is not a bust-re-entry rule.</strong> A multi-flight rule that bars later flights after a player bags for Day 2 does not establish an overall entry cap or the rights of a player who busts.</li>
     <li><strong>Every row carries a "last checked" date.</strong> A scheduled job re-reads each official URL and flags any row whose source changed (see the Flagged page).</li>
     <li><strong>No official 8:00 AM start was found.</strong> The earliest verified Venetian start is 9:10 AM. The day plan starts from the earliest verified start.</li>
     <li><strong>Hotel true nightly cost = room rate + resort fee + tax.</strong> Room rates are dynamic; only dated booking-UI snapshots are logged. Walking times are verified only for on-property venues.</li>
@@ -702,7 +717,7 @@ def page_index():
   <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py. Last source re-check: {lastrun}.</p>
 </section>
 <section class="grid3">
-  <a class="card" href="pages/tournaments.html"><h3>Single-entry</h3><p>Confirmed events with structured rules, ratio and filters.</p></a>
+  <a class="card" href="pages/tournaments.html"><h3>Legacy entry list · review</h3><p>Earlier entry classifications are not confirmed by the final one-entry-overall standard; use the final source-audited planner for current rule labels.</p></a>
   <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on and multi-flight events, kept separate.</p></a>
   <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official row by date, with the overlap check and primary/fallback.</p></a>
   <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost and the 30-minute walk filter.</p></a>
@@ -710,10 +725,11 @@ def page_index():
   <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events and on-property hotels.</p></a>
   <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship and daily events.</p></a>
   <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand.</p></a>
+  <a class="card" href="planner-a9d1e02d/index.html"><h3>Final source-audited planner</h3><p>37 Venetian structure sheets, 17 row-level schedule checks, venue pages, source ledger, routes and trip-cost calculator.</p></a>
   <a class="card" href="pages/questions.html"><h3>Questions</h3><p>What is missing and how to find it.</p></a>
   <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>{nflags} items with source links. These do not block publication.</p></a>
 </section>
-""".format(cards=cards, n_confirmed=n_confirmed, n_unverified=n_unverified,
+""".format(cards=cards, strict_cards=strict_cards, n_confirmed=n_confirmed, n_unverified=n_unverified,
            lastrun=esc(LAST_RUN), nflags=len(flags))
     return body
 
@@ -748,13 +764,20 @@ def page_tournaments():
         ["The Venetian Resort", "Hosts DeepStack Extravaganza IV; 64 event numbers on the official schedule", link(DSE_URL, "Official schedule")],
         ["Wynn Las Vegas", "WPT World Championship festival (Nov 27-Dec 21); daily tournaments suspended during the festival", link(WYNN_POKER_URL, "Official poker page")],
         ["Caesars Palace", "Daily NLH: $100 buy-in, $1,000 GTD, 4 starts (official Caesars page)", link(CAESARS_URL, "Official Caesars page")],
-        ["Horseshoe Las Vegas", "Daily NLH: $100 buy-in, $1,000 GTD, 6 starts (official Caesars page)", link(CAESARS_URL, "Official Caesars page")],
+        ["Horseshoe Las Vegas", "Daily NLH: 6 starts (official Caesars page states a mixture of buy-ins; no uniform buy-in given)", link(CAESARS_URL, "Official Caesars page")],
         ["Bellagio", "Friday, Saturday and Sunday events on official PDFs/page (undated)", link("https://bellagio.mgmresorts.com/en/casino/poker.html", "Official poker page")],
         ["MGM Grand", "Daily NLH on official page; PDF titled 'August' (stale)", link("https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html", "Official poker page")],
         ["ARIA", "Official page has no tournament list. Call the poker room (F12)", link("https://aria.mgmresorts.com/en/casino/poker.html", "Official poker page")],
     ]
     venues = table(["Venue", "Status", "Source"], venue_rows, 2)
     body = """
+<section class="panel warn-panel">
+  <strong>Entry-rule caveat (final one-entry-overall standard):</strong> the &ldquo;Confirmed single-entry&rdquo; label on this
+  legacy page follows an earlier standard &mdash; a read structure sheet with no re-entry, rebuy, add-on or paid-chip text.
+  A sheet's silence is not proof of a one-entry limit. Under the stricter standard used by the
+  <a href="../planner-a9d1e02d/index.html">final source-audited planner</a>, zero events in the reviewed subset are confirmed
+  strict single-entry. Treat this page as a candidate list for review, not a confirmation, and read each event's own rules.
+</section>
 <section class="panel warn-panel">
   <strong>Confirmed single-entry</strong> means a structure sheet was read and shows no
   re-entry, rebuy, add-on or paid-chip text. Rows marked <strong>Unverified</strong> have not had
