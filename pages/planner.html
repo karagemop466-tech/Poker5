@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip Cost Planner | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel planner built from official sources. Unverified values are blank and flagged.">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
+  <nav class="nav"><a href="../index.html">Home</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="tournaments.html">Single-Entry</a>
+<a href="tournaments-double.html">Multi-Entry</a>
+<a href="schedule.html">Schedule</a>
+<a href="hotels.html">Hotels</a>
+<a href="planner.html">Trip Planner</a>
+<a href="venues/venetian.html">Venetian</a>
+<a href="venues/wynn.html">Wynn</a>
+<a href="venues/others.html">Other Venues</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged-review.html">Flagged</a>
+<a href="repo-review.html">Repo Review</a></nav>
+</header>
+<main class="wrap">
+<h1>Trip Cost Planner</h1>
+
+<section class="panel">
+  <strong>Trip cost calculator.</strong> Total = (entries &times; buy-ins) + (nights &times; true
+  hotel cost per night). True hotel cost = nightly room rate + mandatory resort fee + tax.
+  Room rates are dynamic; the calculator uses the value you enter or the logged snapshot. This is a
+  planning estimate, not a booking quote. Confirm on the official booking page before paying.
+</section>
+<div class="panel">
+  <div class="calc-grid">
+    <div>
+      <h3>1. Trip</h3>
+      <label>Nights
+        <input id="nights" type="number" min="1" value="7">
+      </label>
+      <label>Nightly room rate ($)
+        <input id="rate" type="number" min="0" step="1" placeholder="e.g. 200">
+      </label>
+      <label>Resort fee per night ($)
+        <input id="fee" type="number" min="0" step="1" placeholder="e.g. 55">
+      </label>
+      <label>Tax rate (%)
+        <input id="tax" type="number" min="0" step="0.01" value="13.38">
+      </label>
+      <label>Hotel
+        <select id="hotel">
+          <option value="">-- pick a hotel to load its logged rate/fee --</option>
+      <option value="The Venetian Resort" data-rate="$119" data-fee="$55">The Venetian Resort (rate $119, fee $55)</option>
+      <option value="The Palazzo" data-rate="$209" data-fee="$55">The Palazzo (rate $209, fee $55)</option>
+      <option value="Wynn Las Vegas" data-rate="" data-fee="$55">Wynn Las Vegas (rate , fee $55)</option>
+      <option value="Encore at Wynn" data-rate="" data-fee="$55">Encore at Wynn (rate , fee $55)</option>
+      <option value="Bellagio" data-rate="" data-fee="$55">Bellagio (rate , fee $55)</option>
+      <option value="ARIA Resort &amp; Casino" data-rate="" data-fee="$55">ARIA Resort &amp; Casino (rate , fee $55)</option>
+      <option value="MGM Grand" data-rate="" data-fee="$50">MGM Grand (rate , fee $50)</option>
+      <option value="Caesars Palace" data-rate="" data-fee="">Caesars Palace (rate , fee )</option>
+      <option value="Horseshoe Las Vegas" data-rate="" data-fee="">Horseshoe Las Vegas (rate , fee )</option>
+      <option value="Encore Las Vegas" data-rate="" data-fee="">Encore Las Vegas (rate , fee )</option>
+      <option value="Planet Hollywood" data-rate="" data-fee="">Planet Hollywood (rate , fee )</option>
+      <option value="Golden Nugget Las Vegas" data-rate="" data-fee="">Golden Nugget Las Vegas (rate , fee )</option>
+      <option value="Resorts World Las Vegas" data-rate="" data-fee="">Resorts World Las Vegas (rate , fee )</option>
+        </select>
+      </label>
+      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax rate is cited from the
+      Clark County ordinance; confirm the current rate.</p>
+    </div>
+    <div>
+      <h3>2. Entries</h3>
+      <label>Event
+        <select id="event">
+          <option value="">-- pick an event to add --</option>
+      <option value="$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO)" data-buyin="$1,100" data-gtd="$75,000">$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO) &middot; The Venetian Resort &middot; $1,100</option>
+      <option value="$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day)" data-buyin="$800" data-gtd="$75,000">$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day) &middot; The Venetian Resort &middot; $800</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day)" data-buyin="$600" data-gtd="$50,000">$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="$600 No Limit Hold&#x27;em $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000">$600 No Limit Hold&#x27;em $40K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000">$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="NLH Rebuy and Add-on, $240, $40K GTD (Friday)" data-buyin="$240" data-gtd="$40,000">NLH Rebuy and Add-on, $240, $40K GTD (Friday) &middot; Wynn Las Vegas &middot; $240</option>
+      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty &middot; The Venetian Resort &middot; $600</option>
+      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
+        </select>
+      </label>
+      <label>Entries (count)
+        <input id="count" type="number" min="1" value="1">
+      </label>
+      <button class="btn add-entry" onclick="poker5AddEntry()">Add to trip</button>
+      <div id="entries" class="entries"></div>
+      <p class="muted">Only confirmed single-entry events are listed. Multi-entry events are on the
+      Multi-Entry page and are not added here.</p>
+    </div>
+  </div>
+  <div class="calc-total">
+    <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
+    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">$0</strong></div>
+    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">$0</strong></div>
+  </div>
+</div>
+<p class="muted">No manual input is required to read the site; this calculator is an optional
+planning tool. Every buy-in and fee shown comes from the linked official source.</p>
+
+</main>
+<footer class="foot">
+  <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
+  <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

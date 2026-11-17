@@ -6,79 +6,71 @@ Live site: https://karagemop466-tech.github.io/Poker5/
 
 ## What is in this repo
 
-- `index.html`, `pages/*.html`, `assets/css/style.css`: the static site (built output).
-- `data/c6087e2c/`: the verified inputs for this site. Venetian schedule rows (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels (`hotels.json`), flagged items (`flags.json`).
-- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`. Run `python3 scripts/build_c6087e2c.py`.
-- Other sessions' outputs (`docs/`, `site/`, `dashboard-*/`, `tools/`, `data/*.json|md|txt`) are kept as they were and are linked from the landing page.
-- `COORDINATION.md`: the task board for parallel work.
+- `index.html`, `pages/*.html`, `pages/venues/*.html`, `assets/css/style.css`,
+  `assets/app.js`: the static root site (built output), published from `main` `/`.
+- `data/c6087e2c/`: the verified inputs for the root site — Venetian schedule rows
+  (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels
+  (`hotels.json`), flags (`flags.json`), the dated rate log (`rates_log.json`),
+  walking routes (`walking.json`) and the source re-check baseline
+  (`last_checked.json`).
+- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`.
+  Run `python3 scripts/build_c6087e2c.py`.
+- `scripts/recheck_sources.py`: scheduled re-check of every official source URL.
+  `--seed` records the baseline, `--offline` prints it, a live run fetches and
+  diffs each URL.
+- `scripts/check_root_site.py`: validates links, source anchors and the baseline.
+- Other sessions' outputs (`docs/`, `site/`, `site-*/`, `dashboard-*/`,
+  `planner-aa83f1e1/`, `data-*/`, `tools/`, `scripts/build_*` other than
+  `build_c6087e2c.py`) are preserved as they were and are linked from the landing
+  page. They are not edited by the root-site integration.
+- `COORDINATION.md`: the shared task board for parallel work.
+
+## Features of the root site
+
+- **Confirmed single-entry vs unverified.** A structure sheet that was read and
+  shows no re-entry, rebuy, add-on or paid-chip text marks an event *Confirmed
+  single-entry*. Rows whose sheet was not read stay *Unverified* and are never
+  assumed to be single-entry.
+- **Structured rule fields.** Each event row carries the entry rule, buy-in,
+  guarantee, format (standard / bounty / flight) and a source link, with a
+  retrieval date.
+- **Guarantee ÷ entry fee** is shown as a *descriptive ratio, not a forecast*.
+  Bounty and flight events are labelled separately.
+- **Last checked** date on every row, from the scheduled source re-check.
+- **Scheduled source re-check.** `scripts/recheck_sources.py` runs daily
+  (`.github/workflows/recheck.yml`), re-reads every official URL, diffs it
+  against the stored baseline and flags rows whose source changed.
+- **Trip-cost calculator** (`pages/planner.html`): entries × buy-ins + nights ×
+  true hotel cost (room rate + resort fee + tax).
+- **Hotels** with a dated rate log (checkout total, nightly average, resort fee,
+  tax, parking, rate timestamp) and the true nightly cost, plus a ≤30-minute
+  walking-route filter (only on-property 0-minute routes are verified).
+- **Per-venue pages** (`pages/venues/`): Venetian, Wynn and other venues, each
+  with its events and hotels.
+- **Filters**: a global search box, a date filter and a confirmed-single-entry
+  toggle on the tables.
+- **Overlap check** (`pages/schedule.html`): a per-day primary event and a
+  conditional fallback, using a clearly-labelled duration assumption (durations
+  are not verified from official sources).
 
 ## Verification rule
 
-Each table value comes from an official source linked in its row. Values that cannot be confirmed are left blank and listed on the Flagged for Review page. Nothing is inferred or filled in.
+Each table value comes from an official source linked in its row. Values that
+cannot be confirmed are left blank and listed on the Flagged for Review page.
+Nothing is inferred or filled in. The build fails if a row has no source link
+or if an internal link is broken.
 
-This is an independent planning tool. It is not affiliated with any casino, poker room or hotel. Values change without notice. Confirm before booking or playing. Must be 21+.
+This is an independent planning tool. It is not affiliated with any casino,
+poker room or hotel. Values change without notice. Confirm before booking or
+playing. Must be 21+.
 
----
-
-## Session 443e914d outputs (Las Vegas Strip poker and hotel planner, single-entry focus)
-
-Static site: https://karagemop466-tech.github.io/Poker5/site-443e914d/ (served from `main`, legacy Pages build, source `main` `/`).
-
-| Path | Purpose |
-|---|---|
-| `data-443e914d/sources.json` | Every source URL, labelled official or third-party |
-| `data-443e914d/tournaments_single_entry.json` | 36 one-day Venetian rows, Nov 18 – Dec 23, 2026. Single-entry status is inferred (flag P-00) |
-| `data-443e914d/tournaments_multi_entry.json` | Re-entry, rebuy, add-on, and flight formats, kept separate |
-| `data-443e914d/hotels.json` | Hotel rows; blank = unverified |
-| `data-443e914d/pending_and_flags.json` | Pending items, hotel flags, repo irregularities |
-| `tools/build_443e914d.py` | Generates `site-443e914d/` from `data-443e914d/` |
-| `tools/check_links.py` | Link gate: no broken internal links; external URLs must be in `data-443e914d/sources.json` |
-| `research-443e914d/verification.md` | Row-by-row check log (36/36 match the official schedule and event page) |
-
-Rebuild and check: `python3 tools/build_443e914d.py && python3 tools/check_links.py`
-
----
-
-## Strict-entry research dashboard (session b50aa7f5)
-
-Open the current source-linked research dashboard at [site-b50aa7f5/](./site-b50aa7f5/). It applies a strict **single-entry-overall** standard: as of November 16, 2026, no upcoming event is verified for the primary list. Confirmed re-entry/rebuy events, entry-cap-unknown events, and restricted events remain separately labeled. See the site's source ledger for the underlying schedules, structure sheets, hotel pages, and third-party route estimates.
-
-The Dec 3–6, 2026 hotel quotes are illustrative snapshots only; no trip dates were supplied. The comparison does not rank hotels overall. This dashboard is a separate, session-scoped static site and does not replace the repository's other research outputs.
-
-### Build and test this dashboard
-
-Requires Node.js 20 or newer; no install step or external package is needed.
+## Build and validate
 
 ```sh
-npm run check
-npm run dev
+python3 scripts/build_c6087e2c.py     # regenerate the root site
+python3 scripts/check_root_site.py    # links, source anchors, baseline
+python3 scripts/recheck_sources.py --offline   # print the re-check baseline
 ```
 
-`npm run check` runs the Node test suite and builds the publishable files into `site-b50aa7f5/`. `npm run dev` serves that folder locally on port 4173; open `http://localhost:4173`. GitHub Pages uses the existing `main` `/` source, so the dashboard is available at `/Poker5/site-b50aa7f5/` after merge.
-
-## Session cd5ab298: Dec 2–9 research dashboard
-
-The isolated, source-backed dashboard is in [`dashboard-cd5ab298/`](dashboard-cd5ab298/index.html) and will be served under [`/Poker5/dashboard-cd5ab298/`](https://karagemop466-tech.github.io/Poker5/dashboard-cd5ab298/) by the existing root-based Pages site. It does not replace the root site or other session outputs.
-
-- Snapshot: Nov 16, 2026; hotel window Dec 2–9 (7 nights, 2 adults; Dec 9 is checkout day).
-- 56 Venetian / Wynn-WPT calendar rows; zero events confirmed strict single-entry. Unknown terms and official-source conflicts are on its Flagged for Review page.
-- Wynn's ~$5,642.92 after-tax amount is an estimate from the rounded $711 average/night; Venetian's $7,054.77 displayed estimate has a capacity warning. Neither should be treated as a guaranteed booking.
-- Check this dashboard with `python3 scripts/check_site_cd5ab298.py`. It validates local links, data and quote arithmetic; it does not live-probe external sites.
-
----
-
-## Session aa83f1e1 outputs — source-linked poker and stay planner
-
-Published subsite: [Poker &amp; Stay Planner](https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/) (served from the existing GitHub Pages `main` / source; isolated so the root site and other sessions' outputs remain intact). The root landing page links to this planner.
-
-| Path | Purpose |
-|---|---|
-| `planner-aa83f1e1/index.html` and `planner-aa83f1e1/pages/` | Dashboard, tournaments, hotels, analysis, Q&A, suggestions, flagged review, and publication pages |
-| `planner-aa83f1e1/data/tournaments.json` | Source-linked tournament records; zero strict single-entry events confirmed in the reviewed subset |
-| `planner-aa83f1e1/data/hotels.json` | Date-specific Venetian quote, Wynn pre-tax display, estimates, fees, and walking caveats |
-| `planner-aa83f1e1/research/` | Source-by-source research notes and unresolved questions |
-| `scripts/build_aa83f1e1.mjs` | Validates the session dataset and builds a local preview in `_site-aa83f1e1/` |
-| `scripts/smoke_aa83f1e1.mjs` | Smoke-renders all eight planner pages |
-| `.github/workflows/quality.yml` | Runs existing dashboard checks plus this planner's checks |
-
-The Dec 13–20, 2026 stay window is a research assumption, not user-selected. Locally run `node --check planner-aa83f1e1/assets/app.js && node scripts/smoke_aa83f1e1.mjs && node scripts/build_aa83f1e1.mjs`, then serve the output with `python3 -m http.server 4174 --bind 0.0.0.0 --directory _site-aa83f1e1`. This session deliberately does not add a competing Pages deploy workflow; the existing root Pages source publishes the subdirectory after merge.
+CI (`.github/workflows/quality.yml`) runs the build, the root-site check and the
+offline re-check on every push and pull request.

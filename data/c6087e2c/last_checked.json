@@ -1,0 +1,414 @@
+{
+  "last_run": "2026-11-16",
+  "official_source_count": 51,
+  "sources": {
+    "https://aria.mgmresorts.com/en/casino/poker.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://bellagio.mgmresorts.com/en/casino/poker.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf": {
+      "file": "data/c6087e2c/other_events.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf|Poster": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf|Re-entry": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf|Rebuys": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf|Structure:": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Day": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Final": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Flight": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Format": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Satellite": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Single-day": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Structure": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Three-day": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf|Two-day": {
+      "file": "data/other_rooms.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2": {
+      "file": "data/c6087e2c/rates_log.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf": {
+      "file": "data/c6087e2c/other_events.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.caesars.com/caesars-palace/hotel": {
+      "file": "data/hotels.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.caesars.com/horseshoe-las-vegas/hotel": {
+      "file": "data/hotels.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.mgmresorts.com/en/casino-resort-fees.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.mgmresorts.com/en/hotel-policies.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.rwlasvegas.com/gaming/poker-room/poker-room-dining/": {
+      "file": "data/hotels.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/booking?adults[": {
+      "file": "data/c6087e2c/rates_log.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf": {
+      "file": "data/tournaments.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_{N}.pdf": {
+      "file": "data/venetian_dse_iv.txt",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/hotel/hotel-policies.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/resort/resort-fee.html": {
+      "file": "data/hotels.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.worldpokertour.com/events/wpt-world-championship-2026/": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.wynnlasvegas.com/casino/poker": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards": {
+      "file": "data/hotels.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.wynnlasvegas.com/terms-and-conditions/849338": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-16",
+      "last_checked": "2026-11-16",
+      "note": "captured from the official source; not yet re-fetched",
+      "sha256": "",
+      "status": "recorded"
+    }
+  }
+}
