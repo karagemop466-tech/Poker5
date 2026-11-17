@@ -1,0 +1,102 @@
+# Venetian DeepStack Extravaganza IV - complete official schedule table, transcribed row by row
+# Source: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+# Retrieved: 2026-11-17 (UTC) by session aecba91e, all 4 page chunks read
+# Series window stated on the page: November 16 - December 23, 2026; "More than $3.6 Million in guaranteed tournament prize pools"
+# Columns: date|start24|event|buyin_usd|guarantee_usd|struct_no|kind|flags|name_as_printed
+# kind: entry = a listed start (flight or 1-day event) | restart = Day 2/Day 3 restart row | ft = final-table row
+# flags: multi=day, flight, bounty, pkо, sat, discount, seniors, mixed (all read from the printed row text)
+# Blank guarantee = the official row does not print a GTD for that row (not zero).
+2026-11-16|11:10|1|300|75000|10|entry|flight|
+2026-11-16|17:10|1|300|75000|9|entry|flight|$300 No Limit Hold'em 1B $75K GTD
+2026-11-17|11:10|1|300|75000|10|entry|flight|$300 No Limit Hold'em 1C $75K GTD
+2026-11-17|17:10|1|300|75000|9|entry|flight|$300 No Limit Hold'em 1D $75K GTD
+2026-11-18|11:10|2|300|10000|5|entry|oneday|$300 No LImit Hold'em $10K GTD (1Day)
+2026-11-18|12:00|1|||10|restart|day2|$300 No Limit Hold'em Day 2 Restart
+2026-11-19|10:10|3|200||18|entry|oneday,race|$200 NLH RaceDay Stack (1Day) - Race to finish before the Race
+2026-11-20|10:10|4|200||18|entry|oneday,race|$200 NLH RaceDay Stack (1Day) - Race to finish before the Race
+2026-11-21|10:10|5|200||18|entry|oneday,race|$200 NLH RaceDay Stack (1Day) - Race to finish before the Race
+2026-11-22|11:10|6|200||29|entry|oneday|$200 No LImit Hold'em (1Day)
+2026-11-23|11:10|7|400|75000|2|entry|flight|$400 No Limit Hold'em 1A $75K GTD
+2026-11-23|17:10|8|200|8000|30|entry|oneday,pko,bounty|$200 No Limit Hold'em $8K GTD (1Day) - Progressive Knock-Out Bounty (PKO)
+2026-11-24|11:10|7|400|75000|2|entry|flight|$400 No Limit Hold'em 1B $75K GTD
+2026-11-24|17:10|9|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-11-25|11:00|7|||2|restart|day2|$400 No Limit Hold'em Day 2 Restart
+2026-11-25|11:10|10|400|15000|6|entry|oneday|$400 No LImit Hold'em $15K GTD (1Day)
+2026-11-25|17:10|11|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-11-26|11:10|12|300|10000|5|entry|oneday|$300 No LImit Hold'em $10K GTD (1Day)
+2026-11-26|17:10|13|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-11-27|11:10|14|600|30000|7|entry|oneday|$600 No Limit Hold'em $30K GTD (1Day)
+2026-11-27|17:10|15|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-11-28|11:10|16|600|30000|11|entry|oneday,bounty|$600 No Limit Hold'em Bounty $30K GTD (1Day) - $200 bounties to start & $500 bounties in the money
+2026-11-28|12:10|17|400|15000|26|entry|oneday,bounty,mixed|$400 Pot Limit Omaha Bounty $15K GTD (1Day)
+2026-11-28|17:10|18|200|20000|8|entry|oneday,bounty,discount|$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT
+2026-11-29|11:10|19|400|75000|3|entry|flight|$400 No Limit Hold'em 1A $75K GTD
+2026-11-29|12:10|20|300|10000|22|entry|oneday,mixed|$300 Pot Limit Omaha $10K GTD (1Day) - Double Board Bomb Pot
+2026-11-29|17:10|21|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-11-30|11:10|19|400|75000|3|entry|flight|$400 No Limit Hold'em 1B $75K GTD
+2026-11-30|17:10|22|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-01|11:10|19|400|75000|3|entry|flight|$400 No Limit Hold'em 1C $75K GTD
+2026-12-01|17:10|23|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-02|10:10|24|600|40000|17|entry|oneday,seniors|$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate
+2026-12-02|11:00|19|||3|restart|day2|$400 No Limit Hold'em Day 2 Restart
+2026-12-02|17:10|25|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-03|11:10|26|800|500000|12|entry|flight|$800 No Limit Hold'em 1A $500K GTD
+2026-12-03|12:10|27|600|25000|28|entry|oneday,mixed|$600 BIG O $25K GTD (1Day)
+2026-12-03|17:10|26|800|500000|13|entry|flight|$800 No Limit Hold'em 1B $500K GTD
+2026-12-04|11:10|26|800|500000|12|entry|flight|$800 No Limit Hold'em 1C $500K GTD
+2026-12-04|17:10|26|800|500000|13|entry|flight|$800 No Limit Hold'em 1D $500K GTD
+2026-12-05|11:10|26|800|500000|12|entry|flight|$800 No Limit Hold'em 1E $500K GTD
+2026-12-05|17:10|26|800|500000|14|entry|flight,turbo|$800 No Limit Hold'em 1F (Turbo) $500K GTD
+2026-12-06|11:10|28|600|40000|7|entry|oneday|$600 No Limit Hold'em $40K GTD (1Day)
+2026-12-06|12:00|26|||12|restart|day2|$800 No Limit Hold'em Day 2 Restart
+2026-12-06|17:10|29|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-07|11:10|30|600|40000|11|entry|oneday,bounty|$600 No Limit Hold'em Bounty $40K GTD (1Day) - $200 bounties to start & $500 bounties in the money
+2026-12-07|17:10|31|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-08|10:10|32|600|40000|17|entry|oneday,seniors|$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate
+2026-12-08|16:10|33|100||19|entry|oneday,satellite|$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39
+2026-12-08|17:10|34|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-09|10:10|35|600|10000|31|entry|oneday,tagteam|$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male
+2026-12-09|11:10|36|800|75000|16|entry|oneday,bounty|$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money
+2026-12-09|16:10|37|100||19|entry|oneday,satellite|$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39
+2026-12-09|17:10|38|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-10|10:10|39|800|40000|32|entry|multiday,flight,women|$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event
+2026-12-10|12:10|40|600|25000|27|entry|oneday,bounty,mixed|$600 Pot Limit Omaha Bounty $25K GTD (1Day)
+2026-12-10|16:10|41|260||24|entry|oneday,satellite|$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47
+2026-12-10|17:10|42|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-11|10:00|39|||32|restart|day2,multiday,women|$800 No Limit Hold'em LIPS Ladies Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)
+2026-12-11|11:10|43|600|30000|33|entry|oneday,bounty|$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players
+2026-12-11|16:10|44|260||24|entry|oneday,satellite|$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47
+2026-12-11|19:00|39|||32|ft|finaltable,women|$800 No Limit Hold'em LIPS Ladies Final Table - Streamed Final Table (PokerGO)
+2026-12-11|20:10|45|260||25|entry|oneday,satellite,turbo|$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47
+2026-12-12|09:10|46|260||25|entry|oneday,satellite,turbo|$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47
+2026-12-12|10:10|47|2200|1000000|21|entry|flight,title|$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event
+2026-12-12|12:10|48|260||25|entry|oneday,satellite,turbo|$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47
+2026-12-12|18:10|47|2200|1000000|37|entry|flight,title|$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event
+2026-12-13|10:10|49|1100|300000|20|entry|flight,seniors|$1,100 No Limit Hold'em Seniors 1A $300K GTD - Must be 50+ years of age to participate
+2026-12-13|13:00|47|||21|restart|day2,title|$2,200 NLH PokerAtlas Championship Title Event Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)
+2026-12-13|17:10|50|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-14|10:10|49|1100|300000|20|entry|flight,seniors|$1,100 No Limit Hold'em Seniors 1B $300K GTD - Must be 50+ years of age to participate
+2026-12-14|11:00|47|||21|restart|day3,title|$2,200 NLH PokerAtlas Championship Title Event Day 3 Restart - Streamed Final Table (PokerGO)
+2026-12-14|17:10|51|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-15|10:00|49|||20|restart|day2,seniors|$1,100 No Limit Hold'em Seniors Day 2 Restart
+2026-12-15|11:10|52|1100|75000|34|entry|oneday,pko,bounty|$1,100 No Limit Hold'em $75K GTD (1Day) - Progressive Knock-Out Bounty (PKO)
+2026-12-15|17:10|53|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-16|11:10|54|600|50000|11|entry|oneday,bounty|$600 No Limit Hold'em Bounty $50K GTD (1Day) - $200 bounties to start & $500 bounties in the money
+2026-12-16|17:10|55|300|15000|15|entry|oneday,bounty|$300 No Limit Hold'em Bounty $15K GTD (1Day)
+2026-12-17|10:10|56|1100|500000|35|entry|flight,discount|$1,100 No Limit Hold'em 1A $500K GTD - $40 Rake Discount for Entries Before 10:10 a.m.
+2026-12-17|12:10|57|600|25000|23|entry|oneday,mixed|$600 Pot Limit Omaha $25K GTD (1Day) - Double Board Bomb Pot
+2026-12-17|18:10|56|1100|500000|36|entry|flight,discount|$1,100 No Limit Hold'em 1B $500K GTD - $40 Rake Discount for Entries Before 6:10 p.m.
+2026-12-18|10:10|56|1100|500000|35|entry|flight|$1,100 No Limit Hold'em 1C $500K GTD
+2026-12-18|18:10|56|1100|500000|36|entry|flight|$1,100 No Limit Hold'em 1D $500K GTD
+2026-12-19|10:10|56|1100|500000|35|entry|flight|$1,100 No Limit Hold'em 1E $500K GTD
+2026-12-19|17:10|58|200|20000|8|entry|oneday,bounty,discount|$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT
+2026-12-20|11:00|56|||35|restart|day2|$1,100 No Limit Hold'em Day 2 Restart
+2026-12-20|11:10|59|600|150000|4|entry|flight,discount|$600 No Limit Hold'em 1A $150K GTD - $20 Rake Discount for Entries Before 11:10 a.m.
+2026-12-20|17:10|60|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-21|11:10|59|600|150000|4|entry|flight|$600 No Limit Hold'em 1B $150K GTD
+2026-12-21|17:10|61|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-22|11:10|59|600|150000|4|entry|flight|$600 No Limit Hold'em 1C $150K GTD
+2026-12-22|17:10|62|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)
+2026-12-23|11:00|59|||4|restart|day2|$600 No Limit Hold'em Day 2 Restart
+2026-12-23|11:10|63|600|30000|7|entry|oneday|$600 No Limit Hold'em $30K GTD (1Day)
+2026-12-23|17:10|64|200|8000|1|entry|oneday,bounty|$200 No Limit Hold'em Bounty $8K GTD (1Day)

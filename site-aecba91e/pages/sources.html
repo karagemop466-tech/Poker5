@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources and automatic re-check · Poker5 Vegas planner</title>
+<link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head><body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html">Poker5 <span>Vegas tournament &amp; stay planner</span></a>
+<div class="asof">data as of <strong>2026-11-17</strong> · official sources only · 21+</div>
+</div></header>
+<nav class="wrap"><div class="nav"><a href="../index.html">Overview</a><a href="./tournaments.html">Tournaments</a><a href="./advantage.html">Advantage &amp; unverified</a><a href="./schedule.html">Day plan</a><a href="./trip-cost.html">Trip cost</a><a href="./hotels.html">Hotels</a><a href="./rates.html">Rate log</a><a href="./routes.html">Walking routes</a><a href="./venues.html">Venues</a><a href="./summary.html">Executive summary</a><a href="./rules.html">Rules &amp; method</a><a href="./questions.html">Open questions</a><a href="./suggestions.html">Suggestions</a><a href="./flagged.html">Flagged for review</a><a href="./sources.html" class="on" aria-current="page">Sources &amp; monitoring</a><a href="./repo-review.html">Repo review</a><a href="./archive.html">Prior session archive</a></div></nav>
+<main class="wrap">
+<h1>Sources and automatic re-check</h1>
+
+<p class="lede">Each row of every table links to one of these URLs. A GitHub Actions job (<code>.github/workflows/source-monitor-aecba91e.yml</code>) re-fetches
+all of them every morning, compares the page against the stored snapshot, appends to <code>data/aecba91e/change-log.json</code>, marks the affected rows
+"source changed" and rebuilds the site. A fetch failure never marks a row; it records the status as unreachable instead.</p>
+<h2>Two independent readings of the schedule</h2>
+<p class="sub">The build refuses to run unless <code>data/aecba91e/venetian_dse_iv.psv</code> (the transcription every row is built from) matches
+<code>data/aecba91e/official_recheck_2026-11-17.psv</code> row for row - date, start, event number, structure sheet, row kind and printed guarantee.
+The second file was written by re-reading the same official page after the first was finished, so a single careless transcription cannot survive the build.
+Re-run it with <code>node scripts/verify_transcription_aecba91e.mjs</code>.</p>
+<h2>Data consistency</h2>
+<p class="sub">Cross-checks run at build time over the 94 joined rows:
+72/72 rows — schedule guarantee agrees with the structure sheet · 83 rows — buy-in equals house fee plus pool credit · 54 rows — single-entry label carries a sheet read on 2026-11-17 and a printed registration close or level count · 0 rows — guarantee conflicts left unresolved and shown as such · 54 rows — every single-entry row is the only start for its event number (no other session of it is on the schedule) · min 5 — the build aborts if the confirmed-single count collapses (a bad join, not a real change).
+The first three are hard invariants; a failure stops the build rather than publishing a wrong number.</p>
+<h2>Change log</h2>
+<p class="blank">No automated runs recorded yet — the monitor creates its baseline snapshots on the first execution. Until then, every row above shows its manual check date.</p>
+<h2>Source ledger (74 URLs)</h2>
+<div class="tools" data-tools>
+<label class="search"><span>Search all tables</span><input type="search" data-q placeholder="event #, name, buy-in, structure sheet…" autocomplete="off"></label>
+<label class="dt"><span>From</span><input type="date" data-from value="2026-11-16"></label>
+<label class="dt"><span>To</span><input type="date" data-to value="2026-12-23"></label>
+
+<span class="count" data-count></span></div>
+<div class="scroll"><table class="grid" data-table><tr><th >Kind</th><th >URL</th><th >Rows using it</th><th >Last checked</th><th >Checked by</th><th >Monitoring</th></tr><tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://reservations.wynnlasvegas.com/ibe/details.aspx" target="_blank" rel="noopener">https://reservations.wynnlasvegas.com/ibe/details.aspx</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://bellagio.mgmresorts.com/" target="_blank" rel="noopener">https://bellagio.mgmresorts.com/</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://www.cosmopolitanlasvegas.com/" target="_blank" rel="noopener">https://www.cosmopolitanlasvegas.com/</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://parkmgm.mgmresorts.com/" target="_blank" rel="noopener">https://parkmgm.mgmresorts.com/</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://aria.mgmresorts.com/" target="_blank" rel="noopener">https://aria.mgmresorts.com/</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>booking engine (quote page; no stored figure)</td><td class="name"><a href="https://vdara.com/" target="_blank" rel="noopener">https://vdara.com/</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>cited by R-F08</td><td class="name"><a href="https://www.casinocompassapp.com/transportation/walking-the-strip" target="_blank" rel="noopener">https://www.casinocompassapp.com/transportation/walking-the-strip</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>cited by R-F11</td><td class="name"><a href="https://github.com/karagemop466-tech/Poker5" target="_blank" rel="noopener">https://github.com/karagemop466-tech/Poker5</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>cited by R-F14</td><td class="name"><a href="https://github.com/karagemop466-tech/Poker5/blob/main/dashboard-053f694f/hotels.html" target="_blank" rel="noopener">https://github.com/karagemop466-tech/Poker5/blob/main/dashboard-053f694f/hotels.html</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel fee policy</td><td class="name"><a href="https://www.rwlasvegas.com/" target="_blank" rel="noopener">https://www.rwlasvegas.com/</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel fee policy</td><td class="name"><a href="https://www.wynnlasvegas.com/terms-and-conditions/849338" target="_blank" rel="noopener">https://www.wynnlasvegas.com/terms-and-conditions/849338</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel policy</td><td class="name"><a href="https://www.venetianlasvegas.com/resort/resort-fee.html" target="_blank" rel="noopener">https://www.venetianlasvegas.com/resort/resort-fee.html</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel policy</td><td class="name"><a href="https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards" target="_blank" rel="noopener">https://www.wynnlasvegas.com/terms-and-conditions/2026-presidents-day-sale-wynn-rewards</a></td><td class="num">2</td><td class="mono">2026-11-16</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://www.venetianlasvegas.com/booking" target="_blank" rel="noopener">https://www.venetianlasvegas.com/booking</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://www.venetianlasvegas.com/booking?adults[]=2&amp;arrival_date=2026-12-02&amp;children[]=0&amp;departure_date=2026-12-09&amp;view=calendar" target="_blank" rel="noopener">https://www.venetianlasvegas.com/booking?adults[]=2&amp;arrival_date=2026-12-02&amp;children[]=0&amp;departure_date=2026-12-09&amp;view=calendar</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&amp;rate=WEBONLY&amp;nono=1&amp;checkin=12/02/2026&amp;checkout=12/09/2026&amp;rooms=1&amp;adults=2" target="_blank" rel="noopener">https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&amp;rate=WEBONLY&amp;nono=1&amp;checkin=12/02/2026&amp;checkout=12/09/2026&amp;rooms=1&amp;adults=2</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://www.caesars.com/caesars-palace" target="_blank" rel="noopener">https://www.caesars.com/caesars-palace</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://www.caesars.com/horseshoe-las-vegas" target="_blank" rel="noopener">https://www.caesars.com/horseshoe-las-vegas</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>hotel rate quote</td><td class="name"><a href="https://www.venetianlasvegas.com/resort/casino/poker/poker-suites.html" target="_blank" rel="noopener">https://www.venetianlasvegas.com/resort/casino/poker/poker-suites.html</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=The+Palazzo+Las+Vegas&amp;destination=The+Venetian+Poker+Room&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=The+Palazzo+Las+Vegas&amp;destination=The+Venetian+Poker+Room&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Wynn+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Wynn+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://maps.apple.com/?daddr=The+Venetian+Resort+Las+Vegas&amp;saddr=Wynn+Las+Vegas&amp;dirdir=d" target="_blank" rel="noopener">https://maps.apple.com/?daddr=The+Venetian+Resort+Las+Vegas&amp;saddr=Wynn+Las+Vegas&amp;dirdir=d</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Encore+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Encore+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Resorts+World+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Resorts+World+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Bellagio+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Bellagio+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Caesars+Palace&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Caesars+Palace&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=The+Cosmopolitan+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=The+Cosmopolitan+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Park+MGM&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Park+MGM&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=ARIA+Resort+Casino&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=ARIA+Resort+Casino&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>map link (walk not measured)</td><td class="name"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Vdara+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking" target="_blank" rel="noopener">https://www.google.com/maps/dir/?api=1&amp;origin=Vdara+Las+Vegas&amp;destination=The+Venetian+Resort+Las+Vegas&amp;travelmode=walking</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>schedule</td><td class="name"><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html</a></td><td class="num">96</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf</a></td><td class="num">12</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf</a></td><td class="num">9</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf</a></td><td class="num">4</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>structure sheet</td><td class="name"><a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf" target="_blank" rel="noopener">https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf</a></td><td class="num">1</td><td class="mono">2026-11-17</td>
+<td>aecba91e</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>tax</td><td class="name"><a href="https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf" target="_blank" rel="noopener">https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf</a></td><td class="num">3</td><td class="mono">2026-11-17</td>
+<td>prior session</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>venue</td><td class="name"><a href="https://www.wynnlasvegas.com/casino/poker" target="_blank" rel="noopener">https://www.wynnlasvegas.com/casino/poker</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>aa83f1e1 + cd5ab298 (prior sessions)</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>venue</td><td class="name"><a href="https://bellagio.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">https://bellagio.mgmresorts.com/en/casino/poker.html</a></td><td class="num">2</td><td class="mono">2026-11-17</td>
+<td>b1f117c3 (prior session)</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>venue</td><td class="name"><a href="https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip" target="_blank" rel="noopener">https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>053f694f + c6087e2c (prior sessions)</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>venue</td><td class="name"><a href="https://mgmgrand.mgmresorts.com/en/casino/poker.html" target="_blank" rel="noopener">https://mgmgrand.mgmresorts.com/en/casino/poker.html</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>de0bebd4 (prior session)</td><td><span class="pill mute">monitored</span></td></tr>
+<tr data-status="src" data-walk="0">
+<td>venue</td><td class="name"><a href="https://www.goldennugget.com/las-vegas/casino/poker/" target="_blank" rel="noopener">https://www.goldennugget.com/las-vegas/casino/poker/</a></td><td class="num">1</td><td class="mono">2026-11-16</td>
+<td>de0bebd4 (prior session)</td><td><span class="pill mute">monitored</span></td></tr></table></div>
+</main>
+<footer class="wrap foot"><p>Independent planning tool. Not affiliated with any casino, poker room or hotel. Every value is transcribed from the linked official page and can change without notice; blank means not confirmed. Confirm at the cage and with the hotel before paying. Must be 21+ with valid ID.</p></footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

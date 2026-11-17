@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions, information and answers · Poker5 Vegas planner</title>
+<link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head><body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html">Poker5 <span>Vegas tournament &amp; stay planner</span></a>
+<div class="asof">data as of <strong>2026-11-17</strong> · official sources only · 21+</div>
+</div></header>
+<nav class="wrap"><div class="nav"><a href="../index.html">Overview</a><a href="./tournaments.html">Tournaments</a><a href="./advantage.html">Advantage &amp; unverified</a><a href="./schedule.html">Day plan</a><a href="./trip-cost.html">Trip cost</a><a href="./hotels.html">Hotels</a><a href="./rates.html">Rate log</a><a href="./routes.html">Walking routes</a><a href="./venues.html">Venues</a><a href="./summary.html">Executive summary</a><a href="./rules.html">Rules &amp; method</a><a href="./questions.html" class="on" aria-current="page">Open questions</a><a href="./suggestions.html">Suggestions</a><a href="./flagged.html">Flagged for review</a><a href="./sources.html">Sources &amp; monitoring</a><a href="./repo-review.html">Repo review</a><a href="./archive.html">Prior session archive</a></div></nav>
+<main class="wrap">
+<h1>Questions, information and answers</h1>
+
+<p class="lede">What must be known before a decision is reasonable, what is already answered by the official data, and what single action closes each gap.
+Blocking items prevent a final schedule or hotel ranking; they do not block reading this site.</p>
+<div class="scroll"><table class="grid" data-table><tr><th >ID</th><th >Type</th><th >Question</th><th >Why it matters</th><th >Answer from what we already have</th><th >How to close it</th><th >Blocks?</th></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q1</b></td><td>missing decision</td>
+<td><b>Which dates and how many nights?</b></td><td>Every rate and hotel comparison is date-specific; nothing in the repo states your dates.</td><td>No answer on file, so this build runs on a labelled ASSUMPTION, not a decision: Dec 3 - Dec 7, 2026 (4 nights), chosen because Events #26 (Day 1A/1B), #27, #28 and #29 fall inside it and a hotel rate record for the neighbouring Dec 2-9 stay already exists. Nothing is booked and no other page treats the window as fact.</td><td>you confirm dates, occupancy and room type; then re-quote</td>
+<td><span class="pill bad">blocks the decision</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q2</b></td><td>missing decision</td>
+<td><b>What is the nightly budget ceiling and the quality floor?</b></td><td>The brief ranks cost and quality above distance, but no budget or star/quality metric is recorded anywhere in the repo.</td><td>blank - no hotel is ranked overall in this build</td><td>you give a max true nightly cost and a minimum quality signal (e.g. renovated, tower, rating)</td>
+<td><span class="pill bad">blocks the decision</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q3</b></td><td>needs official statement</td>
+<td><b>Does a structure sheet that is silent about re-entries actually prohibit them?</b></td><td>All 35 sheets read this session either say nothing about re-entry or, for flights, only restrict bagging into another flight. Under R1 silence is treated as 'no re-entry provision', which is a reading, not a statement.</td><td>54 rows carry 'single entry per official structure sheet'; none carries an explicit 'no re-entry' sentence</td><td>written answer from the Venetian poker room (702.414.7657 / lv_cas_poker@venetianlasvegas.com, printed on the resort's poker pages) or an explicit line added to the sheet</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q4</b></td><td>needs official statement</td>
+<td><b>Can a player enter two flights of the same event after busting?</b></td><td>The sheets only say a player who bags chips for Day 2 may not play a subsequent flight. Nothing says whether busting out of 1A allows a 1B entry, so multi-flight events cannot be classed single-entry overall.</td><td>all 1A/1B/... rows are in the Advantage / multi-flight section</td><td>room confirmation; then re-classify Events #1, #7, #19, #26, #47, #49, #56, #59</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q5</b></td><td>constraint check</td>
+<td><b>Is an 8:00 AM start actually available?</b></td><td>You asked for an all-day plan from 8 AM. The official DSE schedule has no 8:00 AM start: the earliest printed starts are 9:10 AM (Event #46 satellite, Dec 12) and 10:10 AM (seniors/RaceDay events). Prior sessions reached the same conclusion from other rooms' schedules.</td><td>8 AM starts are not available at the Venetian in this series; day plans in this build begin at the earliest confirmed start of the day</td><td>either accept a 9:10/10:10 start, or tell the planner to target a specific room that opens at 8 AM and accept a longer walk</td>
+<td><span class="pill bad">blocks the decision</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q6</b></td><td>needs official number</td>
+<td><b>What is the current Clark County room-tax rate, and is the resort fee taxed?</b></td><td>True nightly cost needs it; the repo only has a 2021-dated county PDF and property quotes that either include tax or do not.</td><td>13.38% used as a labelled input in the calculator with the uncertainty shown; no published true-cost figure is presented as final</td><td>current county rate page or a property quote that itemises tax (the Venetian Dec 2-9 quote does)</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q7</b></td><td>missing data</td>
+<td><b>What does parking cost per night at each candidate hotel, and is it avoidable?</b></td><td>No official parking figure was read by any session, yet it is part of the true cost for a driver.</td><td>blank for every hotel</td><td>read each property's official parking page in the next pass</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q8</b></td><td>missing data</td>
+<td><b>What is the cancellation deadline for the quoted rate?</b></td><td>The trip cost changes from refundable to sunk at that deadline; no captured quote preserved it.</td><td>blank for every rate-log row</td><td>re-quote and record the deadline text with the rate timestamp</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q9</b></td><td>coverage gap</td>
+<td><b>Which non-Venetian Strip rooms run single-entry daily events in the window?</b></td><td>Wynn, Bellagio, Caesars, MGM, Golden Nugget and Resorts World were recorded only by prior sessions, several with stale or missing pages; this session could not re-fetch them.</td><td>no non-Venetian event is published as verified</td><td>second pass on those official pages, with the same sheet-reading rule</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q10</b></td><td>data quality</td>
+<td><b>Which hotel do you actually prefer when cost and quality conflict with the walk?</b></td><td>Only Wynn and Venetian have any fee data; the ≤30-min walk rule does not by itself eliminate anything in the current data, so the ranking cannot be finished.</td><td>no overall hotel ranking published; the table is sortable but unranked</td><td>Q1 and Q2 answered, plus resort-fee and rate quotes for the shortlist</td>
+<td><span class="pill bad">blocks the decision</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q11</b></td><td>interpretation</td>
+<td><b>Do bounty guarantees belong in the ratio?</b></td><td>Sheets write 'Guarantee: $8,000 (prize pool + total bounties)'. Dividing that by the entry fee mixes cash and bounty equity.</td><td>bounty and PKO rows carry a 'Bounty' label and their ratio is greyed as not cash-comparable</td><td>decide whether you want cash-only ratios separated from bounty-inclusive ratios in the ranking</td>
+<td><span class="pill mute">no</span></td></tr>
+<tr data-status="q" data-walk="0"><td class="mono"><b>Q12</b></td><td>decision path</td>
+<td><b>Do you accept satellites as a way to buy a seat cheaper?</b></td><td>Milestone satellites (#33/#37 for $100, #41/#44/#45/#46/#48 for $260) award direct entry to a $800 or $2,200 event for a fraction of the buy-in - the cheapest listed route into the big events, with a seat prize rather than cash.</td><td>satellites are listed with 'seat prize' labels and excluded from cash ratio ranking</td><td>tell the planner whether a seat-prize route is acceptable for your trip</td>
+<td><span class="pill mute">no</span></td></tr></table></div>
+</main>
+<footer class="wrap foot"><p>Independent planning tool. Not affiliated with any casino, poker room or hotel. Every value is transcribed from the linked official page and can change without notice; blank means not confirmed. Confirm at the cage and with the hotel before paying. Must be 21+ with valid ID.</p></footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

@@ -1,0 +1,343 @@
+{
+ "generated_by": "session aecba91e, 2026-11-17",
+ "rules": [
+  {
+   "id": "R1",
+   "title": "Single-entry / freezeout test",
+   "text": "A row is labeled 'single entry per official structure sheet' only when all three hold: (1) the schedule row is a one-day or single-start event, (2) that event's structure sheet was read in full in this session, and (3) the sheet prints no re-entry, re-buy or add-on provision. Silence is weaker than an explicit statement, so the label always names its own basis. Rows whose sheet prints a fee discount, a 'subsequent buy in' clause, or a multi-flight structure are NOT labeled single entry."
+  },
+  {
+   "id": "R2",
+   "title": "Ranking and the guarantee ratio",
+   "text": "Ranking is allowed only for rows where BOTH the total entry fee and the guarantee are confirmed from the official sheet. The ratio shown is guarantee ÷ entry fee, which counts how many entries are needed to reach the guarantee. It is a descriptive ratio of published numbers, not a forecast of overlays, and it is not a per-entry expected value. Bounty events carry a guarantee that the sheet says includes bounties, so their ratio is not comparable with a pure cash-pool ratio; those rows are labelled Bounty / PKO. Multi-flight rows are labelled Flight."
+  },
+  {
+   "id": "R3",
+   "title": "One event per day, overlap check",
+   "text": "Each day gets one primary event (earliest confirmed start that day) and, where one exists, one conditional fallback: a later event on the same date whose start is after the primary's official late-registration close and at least 4 hours after the primary's start. 4 hours is a documented planning assumption - no official source publishes event durations. Any other same-day row is marked 'cannot be added to the primary' because its registration window is still open while the primary is running."
+  },
+  {
+   "id": "R4",
+   "title": "Walking limit",
+   "text": "A hotel qualifies only if the walk from its lobby to the poker room is 30 minutes or less. Official pages publish addresses, not walking minutes, so a pair with no measured time is shown blank and flagged. Third-party minute ranges are never promoted to verified; they appear only with a Google and Apple Maps link for the reader to time."
+  },
+  {
+   "id": "R5",
+   "title": "True hotel cost, like-for-like",
+   "text": "True nightly cost = room rate + mandatory resort fee + room tax. It is only computed when all three are known for the same dates, the same occupancy and the same room type; otherwise the row stays blank. Quotes are kept as a dated log (rate timestamp, checkout total, nightly average, resort fee, tax, parking, cancellation deadline), never as one flat number."
+  },
+  {
+   "id": "R6",
+   "title": "Verification, last-checked and source-change monitoring",
+   "text": "Every row carries its official source link, the date the source was read, and its verification label. Values that cannot be confirmed are blank and appear on the Flagged for Review page. A scheduled GitHub Actions job re-fetches every official URL each morning, compares the stored snapshot with the live page, marks rows whose source changed, and appends to a dated change log; the site is then rebuilt."
+  }
+ ],
+ "flags": [
+  {
+   "id": "R-F01",
+   "severity": "resolved this session",
+   "item": "Structure sheets 36 and 37 initially failed to load, which left three rows ($1,100 Event #56 flights 1B/1D on Dec 17-18 and $2,200 Event #47 flight 1B on Dec 12) labelled unverified. They were re-fetched successfully on 2026-11-17 from the canonical URLs and are now read in full, so all 37 sheets of the series are verified. The cause of the failure was re-using the proxied copy URL the fetch tool returns instead of the canonical venetianlasvegas.com URL - recorded so the next session does not repeat it.",
+   "action": "none - closed. To confirm independently, open the two sheets and check that both rows sit in the Advantage section (multi-flight; sheet 36 also prints a $40 fee discount).",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf"
+   ]
+  },
+  {
+   "id": "R-F02",
+   "severity": "changes a classification",
+   "item": "Event #18 / #58 ($200 PokerAtlas Valuetown Bounty): the official sheet prints 'All subsequent buy in's after the initial buy in will be $200' and a $20 PRO-member discount on the initial entry only. That is official text acknowledging further buy-ins and a paid-membership discount, so these rows are placed in the Advantage section, not the single-entry list.",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf"
+   ]
+  },
+  {
+   "id": "R-F03",
+   "severity": "data conflict",
+   "item": "Event #1 has two sheets with different numbers; the same pattern repeats for Event #47 (sheet 21 Day 1A: 40-minute levels, 10:10 start vs sheet 37 Day 1B: 30-minute levels, 18:10 start) and Event #56 (sheet 35 Days A/C+E: 40-minute levels vs sheet 36 Days B+D: 30-minute levels): sheet 10 (flights 1A/1C) is 40-minute levels with registration closing ~3:40 PM; sheet 9 (flights 1B/1D) is 30-minute levels with registration closing ~8:40 PM. Both print the same $60 house fee and the same Day 2 12:00 PM restart, so the same event number has two different late-registration cut-offs. Row-level values are taken from the sheet linked to that specific schedule row.",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"
+   ]
+  },
+  {
+   "id": "R-F04",
+   "severity": "blank by design",
+   "item": "No guarantee is printed for Event #6 ($200 NLH 1Day, Nov 22) on the schedule row or on sheet 29, and none for Events #3-#5 ($200 RaceDay Stack) on sheet 18. Their ratio column is therefore not computable and is left blank rather than estimated.",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf"
+   ]
+  },
+  {
+   "id": "R-F05",
+   "severity": "fee total",
+   "item": "LIPS events carry a flat third-party fee on top of the house fee: Event #35 $80 + $10, Event #43 $80 + $10, Event #39 $90 + $20 (Vegas Connected INC / LIPS). The entry-fee column for those rows shows the sum, and the sheet wording is quoted in the fee excerpt.",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf"
+   ]
+  },
+  {
+   "id": "R-F06",
+   "severity": "prior-session conflict, unresolved",
+   "item": "Bellagio Saturday listing: prior sessions recorded a heading of $1,100, a file name of $1,000 and a rules body of $600, plus a Day-2 date of 9/13/26 before the reading date and a 'resume Saturday, July 26' line where July 26, 2026 is a Sunday. No Bellagio row is published until the PDFs are re-read.",
+   "sources": [
+    "https://bellagio.mgmresorts.com/en/casino/poker.html"
+   ]
+  },
+  {
+   "id": "R-F07",
+   "severity": "scope limit",
+   "item": "Wynn, WPT, Caesars, MGM Grand, Golden Nugget and Resorts World rows are NOT re-fetched by this session; they are carried as prior-session findings only and are labelled as such. WPT World Championship was recorded as allowing one entry per starting flight plus a Day-2 entry (four maximum), which puts it in the Advantage section by R1.",
+   "sources": [
+    "https://www.wynnlasvegas.com/casino/poker"
+   ]
+  },
+  {
+   "id": "R-F08",
+   "severity": "no official number",
+   "item": "No Strip property publishes walking minutes in an official source, so no hotel-to-venue pair has a verified time. Third-party ranges exist (Wynn-Venetian 20-25 min, Bellagio-Venetian 18-25 min) and are shown only as unverified estimates with map links.",
+   "sources": [
+    "https://www.casinocompassapp.com/transportation/walking-the-strip"
+   ]
+  },
+  {
+   "id": "R-F09",
+   "severity": "formula input unconfirmed",
+   "item": "The 13.38% room-tax figure used by the true-cost formula comes from a Clark County document that prior sessions linked from a 2021-dated hearing PDF; it is not re-confirmed as the 2026 rate and no property was quoted with it. Any 'true cost' figure that relies on it is marked as needing confirmation.",
+   "sources": [
+    "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"
+   ]
+  },
+  {
+   "id": "R-F10",
+   "severity": "quote integrity",
+   "item": "Hotel quotes are dated snapshots from prior sessions (2026-11-16) for dates this session did not choose and cannot re-quote from the sandbox. The Venetian Dec 2-9 result showed a maximum-capacity warning, and the Wynn result returned no tax-inclusive total. Treat all rate-log rows as snapshots, never as bookable prices.",
+   "sources": [
+    "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
+    "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2"
+   ]
+  },
+  {
+   "id": "R-F11",
+   "severity": "repo hygiene",
+   "item": "Repository irregularities found while integrating: twelve overlapping per-session dashboards and three different 'canonical' data folders all claiming the same brief; two COORDINATION 'final integration' claims in one day (0a0e3c6d and this session, resolved in the board log); the Pages source is main-root, so every session's subsite is published under a folder and nothing consolidates; several third-party URLs are cited as sources for hotel fees on some older pages, contrary to the official-source rule.",
+   "sources": [
+    "https://github.com/karagemop466-tech/Poker5"
+   ]
+  },
+  {
+   "id": "R-F12",
+   "severity": "blank by design",
+   "item": "Event #45, #46 and #48 (the $260 Turbo Milestone Satellites) share sheet 25, which prints \"Late Registration: 6 levels\" with no clock time. 15-minute levels are printed on the sheet, but converting them to a cut-off time would be arithmetic, not an official statement, so the registration-close cell stays blank and the day plan cannot certify a safe gap on those days.",
+   "action": "ask the room for the clock-time close, or arrive before the stated start and register on the spot.",
+   "sources": [
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf"
+   ]
+  },
+  {
+   "id": "R-F13",
+   "severity": "source typo, kept verbatim",
+   "item": "The official schedule page spells four event names with a capital I - \"No LImit Hold'em\" (Events #2, #6, #10, #12 on Nov 18, 22, 25 and 26). The structure sheets for the same events print \"No Limit\". This build transcribes the schedule label exactly as printed so the table can be diffed against the page, which is why the name column and the sheet title differ in letter case on those rows.",
+   "action": "nothing to fix in the data; do not string-match on the schedule name when comparing to a sheet title.",
+   "sources": [
+    "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+   ]
+  },
+  {
+   "id": "R-F14",
+   "severity": "prior-session disagreement, resolved by blanking",
+   "item": "The Palazzo resort fee. The same official page - venetianlasvegas.com/resort/resort-fee.html - was read twice with opposite results: dashboard-053f694f/hotels.html leaves the Palazzo cell blank with the note \"Palazzo fee not stated on the official page read\", while an earlier draft of this dataset carried $55 there by reading the page as covering both towers. Whether the Venetian fee page extends to the Palazzo tower is not printed, so the value is blank in this build. The Venetian's own $55 + tax stands, because that is what the page states for The Venetian Resort.",
+   "action": "confirm on the booking engine for a Palazzo room, or ask the front desk; then record it in data/aecba91e/reference.json with the date.",
+   "sources": [
+    "https://www.venetianlasvegas.com/resort/resort-fee.html",
+    "https://github.com/karagemop466-tech/Poker5/blob/main/dashboard-053f694f/hotels.html"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "missing decision",
+   "question": "Which dates and how many nights?",
+   "why": "Every rate and hotel comparison is date-specific; nothing in the repo states your dates.",
+   "current_answer": "No answer on file, so this build runs on a labelled ASSUMPTION, not a decision: Dec 3 - Dec 7, 2026 (4 nights), chosen because Events #26 (Day 1A/1B), #27, #28 and #29 fall inside it and a hotel rate record for the neighbouring Dec 2-9 stay already exists. Nothing is booked and no other page treats the window as fact.",
+   "to_resolve": "you confirm dates, occupancy and room type; then re-quote",
+   "blocking": true
+  },
+  {
+   "id": "Q2",
+   "kind": "missing decision",
+   "question": "What is the nightly budget ceiling and the quality floor?",
+   "why": "The brief ranks cost and quality above distance, but no budget or star/quality metric is recorded anywhere in the repo.",
+   "current_answer": "blank - no hotel is ranked overall in this build",
+   "to_resolve": "you give a max true nightly cost and a minimum quality signal (e.g. renovated, tower, rating)",
+   "blocking": true
+  },
+  {
+   "id": "Q3",
+   "kind": "needs official statement",
+   "question": "Does a structure sheet that is silent about re-entries actually prohibit them?",
+   "why": "All 35 sheets read this session either say nothing about re-entry or, for flights, only restrict bagging into another flight. Under R1 silence is treated as 'no re-entry provision', which is a reading, not a statement.",
+   "current_answer": "{{confirmed}} rows carry 'single entry per official structure sheet'; none carries an explicit 'no re-entry' sentence",
+   "to_resolve": "written answer from the Venetian poker room (702.414.7657 / lv_cas_poker@venetianlasvegas.com, printed on the resort's poker pages) or an explicit line added to the sheet",
+   "blocking": false
+  },
+  {
+   "id": "Q4",
+   "kind": "needs official statement",
+   "question": "Can a player enter two flights of the same event after busting?",
+   "why": "The sheets only say a player who bags chips for Day 2 may not play a subsequent flight. Nothing says whether busting out of 1A allows a 1B entry, so multi-flight events cannot be classed single-entry overall.",
+   "current_answer": "all 1A/1B/... rows are in the Advantage / multi-flight section",
+   "to_resolve": "room confirmation; then re-classify Events #1, #7, #19, #26, #47, #49, #56, #59",
+   "blocking": false
+  },
+  {
+   "id": "Q5",
+   "kind": "constraint check",
+   "question": "Is an 8:00 AM start actually available?",
+   "why": "You asked for an all-day plan from 8 AM. The official DSE schedule has no 8:00 AM start: the earliest printed starts are 9:10 AM (Event #46 satellite, Dec 12) and 10:10 AM (seniors/RaceDay events). Prior sessions reached the same conclusion from other rooms' schedules.",
+   "current_answer": "8 AM starts are not available at the Venetian in this series; day plans in this build begin at the earliest confirmed start of the day",
+   "to_resolve": "either accept a 9:10/10:10 start, or tell the planner to target a specific room that opens at 8 AM and accept a longer walk",
+   "blocking": true
+  },
+  {
+   "id": "Q6",
+   "kind": "needs official number",
+   "question": "What is the current Clark County room-tax rate, and is the resort fee taxed?",
+   "why": "True nightly cost needs it; the repo only has a 2021-dated county PDF and property quotes that either include tax or do not.",
+   "current_answer": "13.38% used as a labelled input in the calculator with the uncertainty shown; no published true-cost figure is presented as final",
+   "to_resolve": "current county rate page or a property quote that itemises tax (the Venetian Dec 2-9 quote does)",
+   "blocking": false
+  },
+  {
+   "id": "Q7",
+   "kind": "missing data",
+   "question": "What does parking cost per night at each candidate hotel, and is it avoidable?",
+   "why": "No official parking figure was read by any session, yet it is part of the true cost for a driver.",
+   "current_answer": "blank for every hotel",
+   "to_resolve": "read each property's official parking page in the next pass",
+   "blocking": false
+  },
+  {
+   "id": "Q8",
+   "kind": "missing data",
+   "question": "What is the cancellation deadline for the quoted rate?",
+   "why": "The trip cost changes from refundable to sunk at that deadline; no captured quote preserved it.",
+   "current_answer": "blank for every rate-log row",
+   "to_resolve": "re-quote and record the deadline text with the rate timestamp",
+   "blocking": false
+  },
+  {
+   "id": "Q9",
+   "kind": "coverage gap",
+   "question": "Which non-Venetian Strip rooms run single-entry daily events in the window?",
+   "why": "Wynn, Bellagio, Caesars, MGM, Golden Nugget and Resorts World were recorded only by prior sessions, several with stale or missing pages; this session could not re-fetch them.",
+   "current_answer": "no non-Venetian event is published as verified",
+   "to_resolve": "second pass on those official pages, with the same sheet-reading rule",
+   "blocking": false
+  },
+  {
+   "id": "Q10",
+   "kind": "data quality",
+   "question": "Which hotel do you actually prefer when cost and quality conflict with the walk?",
+   "why": "Only Wynn and Venetian have any fee data; the ≤30-min walk rule does not by itself eliminate anything in the current data, so the ranking cannot be finished.",
+   "current_answer": "no overall hotel ranking published; the table is sortable but unranked",
+   "to_resolve": "Q1 and Q2 answered, plus resort-fee and rate quotes for the shortlist",
+   "blocking": true
+  },
+  {
+   "id": "Q11",
+   "kind": "interpretation",
+   "question": "Do bounty guarantees belong in the ratio?",
+   "why": "Sheets write 'Guarantee: $8,000 (prize pool + total bounties)'. Dividing that by the entry fee mixes cash and bounty equity.",
+   "current_answer": "bounty and PKO rows carry a 'Bounty' label and their ratio is greyed as not cash-comparable",
+   "to_resolve": "decide whether you want cash-only ratios separated from bounty-inclusive ratios in the ranking",
+   "blocking": false
+  },
+  {
+   "id": "Q12",
+   "kind": "decision path",
+   "question": "Do you accept satellites as a way to buy a seat cheaper?",
+   "why": "Milestone satellites (#33/#37 for $100, #41/#44/#45/#46/#48 for $260) award direct entry to a $800 or $2,200 event for a fraction of the buy-in - the cheapest listed route into the big events, with a seat prize rather than cash.",
+   "current_answer": "satellites are listed with 'seat prize' labels and excluded from cash ratio ranking",
+   "to_resolve": "tell the planner whether a seat-prize route is acceptable for your trip",
+   "blocking": false
+  }
+ ],
+ "suggestions": [
+  {
+   "id": "S1",
+   "title": "Get one written single-entry statement per series",
+   "detail": "Email the Venetian poker room the list of event numbers and ask for a yes/no on re-entries and add-ons; store the reply as a dated source. This is the only way to move R-F01/Q3/Q4 from 'per sheet' to 'confirmed'."
+  },
+  {
+   "id": "S2",
+   "title": "Turn the rate log into a nightly capture for the shortlist",
+   "detail": "Extend the scheduled monitor to store, for each of the 4 candidate hotels, the booking-engine total for your exact dates and occupancy as a dated row, so the site shows a rate trend and the price movement, not one stale quote."
+  },
+  {
+   "id": "S3",
+   "title": "Add a 'fee waiver / resort credit' column",
+   "detail": "Resorts World's 'All Resort, No Fees' style offers change true nightly cost by $55+. Without that column the like-for-like comparison is wrong in the user's favour."
+  },
+  {
+   "id": "S4",
+   "title": "Time the walks once and record the method",
+   "detail": "One timed walk per pair (start at the lobby desk, end at the poker room door, record date, time, mode) turns eight blank cells into verified rows. Until then the ≤30-min filter is advisory."
+  },
+  {
+   "id": "S5",
+   "title": "Publish field sizes when results pages populate",
+   "detail": "Entries per flight turn the guarantee ratio into a real cash-per-entry figure. The DSE 'Results' column is currently blank; capturing it as the series runs is the single highest-value addition."
+  },
+  {
+   "id": "S6",
+   "title": "Model day-2 equity as a separate row type",
+   "detail": "Restart rows (#1, #7, #19, #26, #47, #49, #56, #59, #39) are not new entries and currently inflate the row count of a day. A 'continuation' type keeps them visible but out of the entry budget."
+  },
+  {
+   "id": "S7",
+   "title": "Eligibility filters in the schedule builder",
+   "detail": "50+ seniors events (#24, #32, #49), women-only (#33, #37, #39) and tag-team (#35) need a player-profile filter, otherwise the plan can include events the player cannot enter."
+  },
+  {
+   "id": "S8",
+   "title": "Pre-payment re-confirmation gate",
+   "detail": "Add a checklist that blocks marking any row 'bookable' until the schedule, structure sheet and hotel policy were re-read within 24 hours of payment - the last step of your workflow, currently not enforced by the site."
+  },
+  {
+   "id": "S9",
+   "title": "One canonical dataset, archive the rest",
+   "detail": "Twelve per-session dashboards disagree on the single-entry count (0, 20, 30, 36, 45, 64). Move every prior dashboard under archive/ with a banner and keep data/aecba91e as the only input to the site."
+  },
+  {
+   "id": "S10",
+   "title": "Scenario compare",
+   "detail": "Store 2-3 trip scenarios (e.g. 'Dec 3-6 $800 flights', 'Dec 12-14 title event', 'cheap $200 grind week') as JSON and render a side-by-side cost/entry comparison from the same data."
+  },
+  {
+   "id": "S11",
+   "title": "Coverage pass on the other rooms",
+   "detail": "Re-read Wynn/Bellagio/Caesars/MGM/Golden Nugget/Resorts World with the R1 rule so the single-entry list is not Venetian-only; several of those pages 404'd or were stale in November, which itself should be recorded per venue."
+  },
+  {
+   "id": "S12",
+   "title": "Surface source-change rows on the day pages",
+   "detail": "When the monitor flags a changed official page, the affected venue and schedule pages should show the same badge as the tables, so a changed structure sheet cannot be missed while planning a day."
+  }
+ ],
+ "summary": {
+  "headline": "Verified plan for a Venetian DeepStack Extravaganza IV trip, published with per-row sources",
+  "points": [
+   "{{rows}} official schedule rows for Nov 16 - Dec 23, 2026 transcribed from the Venetian's own DSE page; all {{sheets_read}} of {{sheets_total}} structure sheets read in full on 2026-11-17, and every published field carries the sheet's own wording.",
+   "{{confirmed}} of the {{entry}} dated entry rows qualify as 'single entry per official structure sheet' under the stated rule; {{adv}} rows are multi-flight or fee-discount events, {{unverified}} are still unverified because their structure sheet could not be fetched, and the {{cont}} Day 2 / final-table rows are continuations rather than new entries. That is the separation you asked for, and every excluded row says on the page why.",
+   "Entry cost per confirmed event is known to the dollar: buy-in, the house fee withheld (e.g. $58 of $300 on sheet 5) and the per-entry amount that reaches the prize pool, so the trip calculator multiplies real entry fees, not headline buy-ins.",
+   "No 8:00 AM start exists in this series. Earliest confirmed starts are 9:10 AM (a $260 satellite on Dec 12) and 10:10 AM (seniors and RaceDay events); the day plans therefore begin at the earliest confirmed start, and that gap is a decision for you (Q5).",
+   "Hotel side is the weak half of the data: two resort fees are official ($55 + tax at both the Venetian and Wynn, read by earlier sessions), but no property publishes a walking minute figure, parking, cancellation deadline or a dated rate for your dates. The trip calculator therefore takes hotel inputs from the dated rate log and shows the formula rather than a false single number.",
+   "Change monitoring is live in the repo: a scheduled workflow re-fetches every official URL each morning, records a hash, marks the affected rows 'source changed' and rebuilds the site, so a schedule or fee change cannot be missed between sessions."
+  ]
+ }
+}

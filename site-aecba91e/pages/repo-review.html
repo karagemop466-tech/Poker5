@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repo review · Poker5 Vegas planner</title>
+<link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head><body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html">Poker5 <span>Vegas tournament &amp; stay planner</span></a>
+<div class="asof">data as of <strong>2026-11-17</strong> · official sources only · 21+</div>
+</div></header>
+<nav class="wrap"><div class="nav"><a href="../index.html">Overview</a><a href="./tournaments.html">Tournaments</a><a href="./advantage.html">Advantage &amp; unverified</a><a href="./schedule.html">Day plan</a><a href="./trip-cost.html">Trip cost</a><a href="./hotels.html">Hotels</a><a href="./rates.html">Rate log</a><a href="./routes.html">Walking routes</a><a href="./venues.html">Venues</a><a href="./summary.html">Executive summary</a><a href="./rules.html">Rules &amp; method</a><a href="./questions.html">Open questions</a><a href="./suggestions.html">Suggestions</a><a href="./flagged.html">Flagged for review</a><a href="./sources.html">Sources &amp; monitoring</a><a href="./repo-review.html" class="on" aria-current="page">Repo review</a><a href="./archive.html">Prior session archive</a></div></nav>
+<main class="wrap">
+<h1>Repo review</h1>
+
+<p class="lede">Reviewed on 2026-11-17 at <code>cee51b4</code> (main after PR #20). 94 rows and 37 sheet links checked in <code>data/aecba91e</code>; every other
+session's folder left untouched.</p>
+<section class="note"><h2>Findings</h2><ul>
+<li><b>Twelve parallel outputs of the same brief.</b> <code>docs/</code>, <code>site/</code>, <code>site-443e914d/</code>, <code>site-b50aa7f5/</code>, four <code>dashboard-*/</code> folders, <code>planner-aa83f1e1/</code> and the root <code>pages/</code> each publish a version of the same tables. They disagree on the single-entry count (0, 20, 30, 36, 45, 64). This session's dataset is <code>data/aecba91e</code>; the others are linked from the <a href="./archive.html">archive page</a> and unchanged.</li>
+<li><b>Two "final integration" claims on the same day.</b> Session 0a0e3c6d's PR #20 changed only COORDINATION.md (verified with <code>git show --stat c8f154d</code>), so no root file of theirs was overwritten by this rebuild; the board records the overlap.</li>
+<li><b>Shared root site with no owner.</b> The Pages source is <code>main</code> at <code>/</code>, so the root landing page has been rewritten by several sessions in turn and every session's data is published permanently. Suggestion S9.</li>
+<li><b>Third-party values presented beside official ones.</b> Several older hotel tables carry third-party walking times and fee figures; under the official-source rule those belong on a flagged page, not in a table cell.</li>
+<li><b>Stale and dead official pages.</b> Recorded per venue above (<code>404</code> for the Venetian tournaments page and MGM poker page, removed Wynn poker page, blank Golden Nugget page) — the reason those venues publish no rows.</li>
+<li><b>Two unread structure sheets</b> (36, 37) leave three rows unverified; the monitor will retry them daily (R-F01).</li>
+</ul></section>
+</main>
+<footer class="wrap foot"><p>Independent planning tool. Not affiliated with any casino, poker room or hotel. Every value is transcribed from the linked official page and can change without notice; blank means not confirmed. Confirm at the cage and with the hotel before paying. Must be 21+ with valid ID.</p></footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

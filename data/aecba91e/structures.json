@@ -1,0 +1,751 @@
+{
+ "_note": "Venetian DSE IV structure sheets, read in full 2026-11-17 by session aecba91e from the official URLs. entry_limit: none=no re-entry/rebuy/add-on provision printed on the sheet; bag_only=only the Day-2 bag restriction is printed; discount=the sheet prints a fee discount or 'subsequent buy in' language; unread=sheet fetch failed this session. late_close = the sheet's printed late-registration close (24h local). levels = blind levels printed on the sheet.",
+ "url_pattern": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_%d.pdf",
+ "retrieved": "2026-11-17 (all 37 sheets read in full)",
+ "sheets": {
+  "1": {
+   "title": "$200 NLH Bounty (1Day)",
+   "events": [
+    9,
+    11,
+    13,
+    15,
+    21,
+    22,
+    23,
+    25,
+    60,
+    61,
+    62,
+    64
+   ],
+   "start": "17:10",
+   "late_close": "21:40",
+   "chips": 25000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 8000,
+   "fee": 40,
+   "pool": 160,
+   "payout": "12.5% of the field",
+   "bounty": "$50 per elimination",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "2": {
+   "title": "$400 NLH Day A+B, Day 2 11:00",
+   "events": [
+    7
+   ],
+   "start": "11:10",
+   "late_close": "17:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 75000,
+   "fee": 70,
+   "pool": 330,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "3": {
+   "title": "$400 NLH Day A+B+C, Day 2 11:00",
+   "events": [
+    19
+   ],
+   "start": "11:10",
+   "late_close": "17:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 75000,
+   "fee": 70,
+   "pool": 330,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "4": {
+   "title": "$600 NLH Day A+B+C, Day 2 11:00",
+   "events": [
+    59
+   ],
+   "start": "11:10",
+   "late_close": "17:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 150000,
+   "fee": 95,
+   "pool": 505,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "discount",
+   "oneday": false,
+   "flight": true,
+   "note": "$20 house-fee discount for 1A entries before the start ($580 instead of $600)"
+  },
+  "5": {
+   "title": "$300 NLH (1Day)",
+   "events": [
+    2,
+    12
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 10000,
+   "fee": 58,
+   "pool": 242,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "6": {
+   "title": "$400 NLH (1Day)",
+   "events": [
+    10
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 15000,
+   "fee": 65,
+   "pool": 335,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "7": {
+   "title": "$600 NLH (1Day)",
+   "events": [
+    14,
+    28,
+    63
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 30000,
+   "gtd_by_event": {
+    "14": 30000,
+    "28": 40000,
+    "63": 30000
+   },
+   "fee": 90,
+   "pool": 510,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "8": {
+   "title": "$200 NLH Valuetown Bounty (1Day) + PokerAtlas PRO $20 rake discount",
+   "events": [
+    18,
+    58
+   ],
+   "start": "17:10",
+   "late_close": "21:40",
+   "chips": 25000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 20000,
+   "fee": 40,
+   "pool": 160,
+   "payout": "12.5% of the field",
+   "bounty": "$50 per elimination",
+   "entry_limit": "discount",
+   "oneday": true,
+   "note": "'All subsequent buy in's after the initial buy in will be $200' - the sheet's own wording presumes further buy-ins; PRO members pay $180 on the initial entry"
+  },
+  "9": {
+   "title": "$300 NLH Day B+D, Day 2 12:00",
+   "events": [
+    1
+   ],
+   "start": "17:10",
+   "late_close": "20:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 30,
+   "gtd": 75000,
+   "fee": 60,
+   "pool": 240,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "10": {
+   "title": "$300 NLH Day A+C, Day 2 12:00",
+   "events": [
+    1
+   ],
+   "start": "11:10",
+   "late_close": "15:40",
+   "chips": 30000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 75000,
+   "fee": 60,
+   "pool": 240,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "11": {
+   "title": "$600 NLH Bounty (1Day)",
+   "events": [
+    16,
+    30,
+    54
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 30000,
+   "gtd_by_event": {
+    "16": 30000,
+    "30": 40000,
+    "54": 50000
+   },
+   "fee": 90,
+   "pool": 510,
+   "payout": "12.5% of the field",
+   "bounty": "$200 to start, $500 in the money",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "12": {
+   "title": "$800 NLH Day A+C+E, Day 2 12:00",
+   "events": [
+    26
+   ],
+   "start": "11:10",
+   "late_close": "15:40",
+   "chips": 40000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 500000,
+   "fee": 110,
+   "pool": 690,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "13": {
+   "title": "$800 NLH Day B+D, Day 2 12:00",
+   "events": [
+    26
+   ],
+   "start": "17:10",
+   "late_close": "20:40",
+   "chips": 40000,
+   "level": 30,
+   "levels": 30,
+   "gtd": 500000,
+   "fee": 110,
+   "pool": 690,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "14": {
+   "title": "$800 NLH Day F (Turbo), Day 2 12:00",
+   "events": [
+    26
+   ],
+   "start": "17:10",
+   "late_close": "19:25",
+   "chips": 40000,
+   "level": 20,
+   "levels": 30,
+   "gtd": 500000,
+   "fee": 110,
+   "pool": 690,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "15": {
+   "title": "$300 NLH Bounty (1Day)",
+   "events": [
+    29,
+    31,
+    34,
+    38,
+    42,
+    50,
+    51,
+    53,
+    55
+   ],
+   "start": "17:10",
+   "late_close": "21:40",
+   "chips": 25000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 15000,
+   "fee": 50,
+   "pool": 250,
+   "payout": "12.5% of the field",
+   "bounty": "$100 per elimination",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "16": {
+   "title": "$800 NLH Bounty (1Day)",
+   "events": [
+    36
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 75000,
+   "fee": 100,
+   "pool": 700,
+   "payout": "12.5% of the field",
+   "bounty": "$200 to start, $500 in the money",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "17": {
+   "title": "$600 NLH Seniors (1Day)",
+   "events": [
+    24,
+    32
+   ],
+   "start": "10:10",
+   "late_close": "15:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 40000,
+   "fee": 90,
+   "pool": 510,
+   "payout": "15% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true,
+   "eligibility": "50+"
+  },
+  "18": {
+   "title": "$200 NLH RaceDay Stack (1Day)",
+   "events": [
+    3,
+    4,
+    5
+   ],
+   "start": "10:10",
+   "late_close": "12:25",
+   "chips": 30000,
+   "level": "20/15",
+   "levels": 28,
+   "gtd": null,
+   "fee": 35,
+   "pool": 165,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "19": {
+   "title": "$100 NLH LIPS Ladies Milestone Satellite to #39",
+   "events": [
+    33,
+    37
+   ],
+   "start": "16:10",
+   "late_close": "18:25",
+   "chips": 20000,
+   "level": 20,
+   "levels": 28,
+   "gtd": null,
+   "gtd_text": "2 Seats",
+   "fee": 20,
+   "pool": 80,
+   "payout": "seats to Event #39 + odd money",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true,
+   "satellite": true,
+   "eligibility": "female"
+  },
+  "20": {
+   "title": "$1,100 NLH Seniors Day A+B, Day 2 10:00",
+   "events": [
+    49
+   ],
+   "start": "10:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 29,
+   "gtd": 300000,
+   "fee": 140,
+   "pool": 960,
+   "payout": "flights play to ~15% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true,
+   "eligibility": "50+"
+  },
+  "21": {
+   "title": "$2,200 NLH PokerAtlas Championship Title Event, 1A 10:10 / Day 2 1:00 / Day 3 11:00",
+   "events": [
+    47
+   ],
+   "start": "10:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 29,
+   "gtd": 1000000,
+   "fee": 225,
+   "pool": 1975,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true
+  },
+  "22": {
+   "title": "$300 PLO Double Board Bomb Pot (1Day)",
+   "events": [
+    20
+   ],
+   "start": "12:10",
+   "late_close": "16:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 10000,
+   "fee": 58,
+   "pool": 242,
+   "payout": "12.5% of the field, 8-handed",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "23": {
+   "title": "$600 PLO Double Board Bomb Pot (1Day)",
+   "events": [
+    57
+   ],
+   "start": "12:10",
+   "late_close": "16:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 25000,
+   "fee": 90,
+   "pool": 510,
+   "payout": "12.5% of the field, 8-handed",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "24": {
+   "title": "$260 NLH Milestone Satellite to #47 (1Day)",
+   "events": [
+    41,
+    44
+   ],
+   "start": "16:10",
+   "late_close": "18:25",
+   "chips": 20000,
+   "level": 20,
+   "levels": 28,
+   "gtd": null,
+   "gtd_text": "2 Seats",
+   "fee": 40,
+   "pool": 220,
+   "payout": "seats to Event #47 + odd money",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true,
+   "satellite": true
+  },
+  "25": {
+   "title": "$260 NLH Turbo Milestone Satellite to #47 (1Day)",
+   "events": [
+    45,
+    46,
+    48
+   ],
+   "start": "per event: #45 20:10, #46 09:10, #48 12:10",
+   "late_close": null,
+   "chips": 20000,
+   "level": 15,
+   "levels": 28,
+   "gtd": null,
+   "gtd_text": "2 Seats",
+   "fee": 35,
+   "pool": 225,
+   "payout": "seats to Event #47 + odd money",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true,
+   "satellite": true,
+   "note": "sheet prints 'Late Registration: 6 levels' with no clock time",
+   "late_close_text": "6 levels (no clock time printed)"
+  },
+  "26": {
+   "title": "$400 PLO Bounty (1Day)",
+   "events": [
+    17
+   ],
+   "start": "12:10",
+   "late_close": "16:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 15000,
+   "fee": 60,
+   "pool": 340,
+   "payout": "12.5% of the field, 8-handed",
+   "bounty": "$100 per elimination",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "27": {
+   "title": "$600 PLO Bounty (1Day)",
+   "events": [
+    40
+   ],
+   "start": "12:10",
+   "late_close": "16:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 25000,
+   "fee": 90,
+   "pool": 510,
+   "payout": "12.5% of the field, 8-handed",
+   "bounty": "$200 per elimination",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "28": {
+   "title": "$600 BIG O (1Day)",
+   "events": [
+    27
+   ],
+   "start": "12:10",
+   "late_close": "16:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 25000,
+   "fee": 90,
+   "pool": 510,
+   "payout": "12.5% of the field, 8-handed",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "29": {
+   "title": "$200 NLH (1Day)",
+   "events": [
+    6
+   ],
+   "start": "11:10",
+   "late_close": "15:40",
+   "chips": 30000,
+   "level": 30,
+   "levels": 28,
+   "gtd": null,
+   "fee": 40,
+   "pool": 160,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "30": {
+   "title": "$200 NLH (1Day) PKO",
+   "events": [
+    8
+   ],
+   "start": "17:10",
+   "late_close": "21:40",
+   "chips": 25000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 8000,
+   "fee": 40,
+   "pool": 160,
+   "payout": "12.5% of the field",
+   "bounty": "PKO: $50 start, half/half accumulation",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "31": {
+   "title": "$600 NLH LIPS Poker Jingle Tag Team (1Day)",
+   "events": [
+    35
+   ],
+   "start": "10:10",
+   "late_close": "14:40",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 10000,
+   "fee": 80,
+   "lips_fee": 10,
+   "pool": 510,
+   "payout": "12.5% of the field",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": true,
+   "note": "teams rotate players every level; $10 flat LIPS fee on top of the $80 house fee"
+  },
+  "32": {
+   "title": "$800 NLH LIPS Ladies (2Day) Women in Poker Main Event",
+   "events": [
+    39
+   ],
+   "start": "10:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 29,
+   "gtd": 40000,
+   "fee": 90,
+   "lips_fee": 20,
+   "pool": 690,
+   "payout": "plays to final 7, streamed ~7:00 PM Dec 11",
+   "bounty": null,
+   "entry_limit": "none",
+   "oneday": false,
+   "eligibility": "female"
+  },
+  "33": {
+   "title": "$600 NLH LIPS Kings and Queens Bounty (1Day)",
+   "events": [
+    43
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 30000,
+   "fee": 80,
+   "lips_fee": 10,
+   "pool": 510,
+   "payout": "12.5% of the field",
+   "bounty": "$200 per elimination + trophy to last King / last Queen",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "34": {
+   "title": "$1,100 NLH (1Day) PKO",
+   "events": [
+    52
+   ],
+   "start": "11:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 30,
+   "levels": 28,
+   "gtd": 75000,
+   "fee": 130,
+   "pool": 970,
+   "payout": "12.5% of the field",
+   "bounty": "PKO: $200 start, half/half accumulation",
+   "entry_limit": "none",
+   "oneday": true
+  },
+  "35": {
+   "title": "$1,100 NLH Day A+C+E, Day 2 11:00 + $40 early-registration discount",
+   "events": [
+    56
+   ],
+   "start": "10:10",
+   "late_close": "16:55",
+   "chips": 40000,
+   "level": 40,
+   "levels": 30,
+   "gtd": 500000,
+   "fee": 140,
+   "pool": 960,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "discount",
+   "oneday": false,
+   "flight": true,
+   "note": "$40 house-fee discount for 1A entries before the start ($1,060 instead of $1,100)"
+  },
+  "36": {
+   "title": "$1,100 NLH Day B+D, Day 2 11:00 - $40 fee discount on Day 1B entries before the start",
+   "events": [
+    56
+   ],
+   "start": "18:10",
+   "late_close": "23:10",
+   "chips": 40000,
+   "level": 30,
+   "levels": 30,
+   "gtd": 500000,
+   "fee": 140,
+   "pool": 960,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "discount",
+   "oneday": false,
+   "flight": true,
+   "note": "printed: \"On Day 1B, players who register before the start of the event (6:10 PM.) will receive a forty ($40) discount on house fees for a total buy in of $1,060 instead of $1,100. $40 discounts will no longer be applied once the event has started and played one hand.\" and \"Any player who bags chips for Day 2 may not play a subsequent flight.\"",
+   "sheet_date": "2026-11-17"
+  },
+  "37": {
+   "title": "$2,200 NLH PokerAtlas Championship Title Event, 1B 6:10 / Day 2 1:00 / Day 3 11:00 (PokerGO streamed final table)",
+   "events": [
+    47
+   ],
+   "start": "18:10",
+   "late_close": "23:10",
+   "chips": 40000,
+   "level": 30,
+   "levels": 30,
+   "gtd": 1000000,
+   "fee": 225,
+   "pool": 1975,
+   "payout": "flights play to ~12.5% of field",
+   "bounty": null,
+   "entry_limit": "bag_only",
+   "oneday": false,
+   "flight": true,
+   "note": "printed: \"Any player who bags chips for Day 2 may not play a subsequent flight.\" Day 1A is sheet 21 with 40-minute levels and a 10:10 start - the two flights of the same event print different blind structures (R-F03).",
+   "sheet_date": "2026-11-17"
+  }
+ }
+}

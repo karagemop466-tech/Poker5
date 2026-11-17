@@ -1,0 +1,62 @@
+name: Re-check official sources (aecba91e)
+
+# Scheduled re-verification of every official URL the aecba91e dataset cites.
+# The monitor stores a body hash per URL, appends to data/aecba91e/change-log.json, and the
+# build turns a "changed" entry into a visible "source changed" marker on the affected rows.
+# Fetch failures are recorded as "unreachable" and never mark a row.
+
+on:
+  schedule:
+    - cron: "17 8 * * *"
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: Rebuild and commit the site even when nothing changed
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: source-monitor-aecba91e
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch and compare every official URL
+        run: node scripts/check-sources-aecba91e.mjs
+
+      - name: Rebuild the site (picks up any changed-row markers)
+        run: node scripts/build-aecba91e.mjs
+
+      - name: Gate the rebuilt site
+        run: node scripts/check_site_aecba91e.mjs
+
+      - name: Commit the updated ledger, change log and pages
+        run: |
+          git config user.name "source-monitor-aecba91e"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/aecba91e site-aecba91e || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(aecba91e): nightly source re-check $(date -u +%F)"
+            git push
+          else
+            echo "no source movement today"
+          fi
+        if: github.ref == 'refs/heads/main'
+
+      - name: Report what moved
+        run: |
+          echo '## Source monitor' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 6 data/aecba91e/change-log.json >> "$GITHUB_STEP_SUMMARY" || true
