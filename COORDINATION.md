@@ -2,6 +2,14 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — 5d8999d6 (active)
+
+**Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
+
+**Files:** `COORDINATION.md`, `scripts/build_c6087e2c.py`, `assets/app.js`, generated `pages/planner.html`, and focused tests only. No source research values will be promoted or edited. Existing official source records remain linked and unchanged.
+
+**Status:** in progress. The current planner parses generic “from” poker-suite rates as dated nightly quotes, preloads a resort fee without hotel selection, and reports an all-in total when the required room rate is blank. This task will remove those misleading defaults and label the estimate limitations.
+
 ## Current branch session — a9d1e02d (active)
 
 **Branch:** `arena/a9d1e02d-poker5` (fixed by Arena). **Role:** final integration and official-source re-audit. No other active scope is shown in this board. This session claims the following non-overlapping scope before implementation:
