@@ -185,7 +185,6 @@ Scope note: this session did not publish a site. Its generated site was removed 
 - Scope of this session's merge: cross-check data (`data-359e3f96/*.json`) and `scripts/check.mjs` only. No site was published by this session.
 - Not done: reconciling Venetian single-entry counts (this session 20; de0bebd4 30; 581fea93 64-event check) and the hotel fee conflicts. These are listed in the Log above for the owners of those files.
 
-
 ---
 
 ## Session b50aa7f5 (branch `arena/b50aa7f5-poker5`) — strict entry / hotel research
@@ -371,7 +370,6 @@ Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`
 - Monitor: the schedule runs at 15:00 UTC daily. The token cannot dispatch the workflow manually (HTTP 403), so the first scheduled run is the first live monitor result. Its log could not be read here, and no monitor result is claimed.
 - Two-PR note: PR #24 was rebased onto a newer `main` twice because other sessions appended to this board; both sides were kept each time.
 
-
 ---
 
 ## Session 18e480cb (branch `arena/18e480cb-poker5`) — final integration + feature build
@@ -460,3 +458,22 @@ Claimed 2026-11-17 (board read at main `d47622e`, the 2026-11-17T15:58Z recheck-
 - GitHub Pages: source `main` `/`; the Pages build for the merge commit `b07089c` is `built` (Pages API `builds/latest`, created 2026-11-17T22:08:07Z; the sandbox cannot make direct HTTP requests to `github.io`); live at https://karagemop466-tech.github.io/Poker5/ with the planner subsite at https://karagemop466-tech.github.io/Poker5/planner-a9d1e02d/ .
 
 Rules: no value inferred; unverified stays flagged on the Flagged for Review pages; `git pull --rebase` before every push; handoff of PR #30 recorded here per the stale-claim rule.
+
+## Session 3c49aaec (branch `arena/3c49aaec-poker5`) — full structure-sheet audit + root-site integration
+
+Started 2026-11-17 from `main` @ `d47622e`. Scope: the shared root site (`index.html`, `pages/**`, `assets/**`, `data/c6087e2c/**`, `scripts/build_c6087e2c.py`, `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`) plus this board. Other sessions' isolated folders (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`, other `scripts/*`) are read-only and are not edited.
+
+**Handoff note (per the 60-minute rule):** session 6d1e0039 left N1–N9 "in progress" with no commits after `d47622e` (15:58Z; this session started ~22:00Z). This session takes over the remaining items and records its own verification; `data-6d1e0039/` and `dashboard-6d1e0039/` are preserved untouched and used as a cross-check input only.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| K1 | Read EVERY Venetian DSE IV structure sheet (all 37 PDFs) and record the entry-rule text verbatim per event | in progress | 3c49aaec | data/c6087e2c/structure_sheets.json | venetianlasvegas.com structure PDFs, fetched 2026-11-17 | Goal: remove "unverified" only where a sheet states the rule; silence stays flagged |
+| K2 | Structured rule fields per event (single-entry, re-entry, add-on, fee) each with source excerpt + retrieval date | in progress | 3c49aaec | data/c6087e2c/, pages/tournaments.html | K1 sheets | |
+| K3 | Official-schedule re-capture (all 4 chunks) incl. the truncated Event #40 row | in progress | 3c49aaec | data/c6087e2c/venetian_dse_2026.psv | Official DSE IV page | |
+| K4 | Wynn/WPT + other Strip rooms official re-verification (schedule + structures) | in progress | 3c49aaec | data/c6087e2c/other_events.json | cdn.wynnresorts.com, WPT terms, official room pages | |
+| K5 | Hotels: official resort fee + tax basis, dated rate log, itemised totals, rate timestamp | in progress | 3c49aaec | data/c6087e2c/hotels.json, rates_log.json | Each property's official resort-fee page | |
+| K6 | Walking-route check (official addresses, ≤30 min filter) | in progress | 3c49aaec | data/c6087e2c/walking.json | Official property pages / maps deep links | Durations only where a source states them |
+| K7 | Root site: search box, date filter, single-entry toggle, trip-cost calculator, per-venue pages, overlap check, ratio ranking, exec summary, suggestions, questions, Flagged page | in progress | 3c49aaec | scripts/build_c6087e2c.py, index.html, pages/** | — | |
+| K8 | Scheduled source re-check: every official URL, last-checked per row, changed-source markers | in progress | 3c49aaec | scripts/recheck_sources.py, .github/workflows/recheck.yml, data/c6087e2c/last_checked.json | — | |
+| K9 | Build + validate (every row source-linked, no broken links), commit, push | unclaimed | 3c49aaec | all of this session's files | — | |
+| K10 | PR → main, merge, confirm Pages deploy, record result | unclaimed | 3c49aaec | COORDINATION.md | gh / Pages API | — |
