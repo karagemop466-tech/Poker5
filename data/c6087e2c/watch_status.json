@@ -1,0 +1,109 @@
+{
+ "last_run": "2026-11-17T22:49:01Z",
+ "note": "HTTP status + content hash + verbatim 'resort fee' sentences for each watched official page. No value is parsed or asserted by the scraper; the excerpts exist so a human can read the current wording and so a hash change can be spotted.",
+ "pages": {
+  "venetian_resort_fee": {
+   "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+   "name": "venetian_resort_fee",
+   "http_status": 200,
+   "sha256": "dd6f7e7ede762ae5920f682eed0cbc28b32d387c01710f0b431e6d7ce8dbd7ba",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 227562,
+   "resort_fee_excerpts": [
+    "unities Group Dining Exhibiting Meet Our Team FAQs MOBILE CHECK-IN VENETIAN REWARDS - SIGN IN #bw-ph { display: none; } Resort Fee Home Resort Resort Fee Resort Fee Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in."
+   ]
+  },
+  "venetian_suite_rates": {
+   "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "name": "venetian_suite_rates",
+   "http_status": 200,
+   "sha256": "e2a1148b58d66d06263fca00e564e9b9423bbcb18f5f6f1e49a581ceee148ce9",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 232203,
+   "resort_fee_excerpts": [
+    "There is a $55 resort fee per night stayed."
+   ]
+  },
+  "venetian_hotel_policies": {
+   "url": "https://www.venetianlasvegas.com/hotel/hotel-policies.html",
+   "name": "venetian_hotel_policies",
+   "http_status": 404,
+   "sha256": "",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 0
+  },
+  "wynn_resort_fee_terms": {
+   "url": "https://www.wynnlasvegas.com/terms-and-conditions/849338",
+   "name": "wynn_resort_fee_terms",
+   "http_status": 200,
+   "sha256": "75bf7f189f5f75aa899c6fa2c03d0933d884c3daea33f01e42da79a84f66351e",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 354144,
+   "resort_fee_excerpts": [
+    "RESORT FEE: Reservations booked prior to January 15, 2025, will be charged a daily resort fee of $50 plus tax; reservations booked on or after January 15, 2025, will be charged a daily resort fee of $55 plus tax.",
+    "A valid credit card authorized to cover room and resort fees and tax, plus $150 a night for incidentals must be presented upon check-in.",
+    ",\\\"content\\\":[{\\\"nodeType\\\":\\\"text\\\",\\\"value\\\":\\\"Reservations booked prior to January 15, 2025, will be charged a daily resort fee of $50 plus tax; reservations booked on or after January 15, 2025, will be charged a daily resort fee of $55 plus tax."
+   ]
+  },
+  "wynn_poker": {
+   "url": "https://www.wynnlasvegas.com/casino/poker",
+   "name": "wynn_poker",
+   "http_status": 200,
+   "sha256": "455918c5fdb409cfe2f3a0b1d116920b7ace46c94058ef79dd868c2f3ae0e2e1",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 459755,
+   "resort_fee_excerpts": []
+  },
+  "caesars_poker_tournaments": {
+   "url": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+   "name": "caesars_poker_tournaments",
+   "http_status": 200,
+   "sha256": "da94c5e6de287e6ff143e36ec61d2ce20e6c4c5c31f3dce28f9c54461a65a0ca",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 919,
+   "resort_fee_excerpts": []
+  },
+  "bellagio_poker": {
+   "url": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+   "name": "bellagio_poker",
+   "http_status": "error",
+   "sha256": "",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 0
+  },
+  "mgm_grand_poker": {
+   "url": "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html",
+   "name": "mgm_grand_poker",
+   "http_status": "error",
+   "sha256": "",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 0
+  },
+  "aria_poker": {
+   "url": "https://aria.mgmresorts.com/en/casino/poker.html",
+   "name": "aria_poker",
+   "http_status": "error",
+   "sha256": "",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 0
+  },
+  "wpt_world_championship": {
+   "url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
+   "name": "wpt_world_championship",
+   "http_status": 200,
+   "sha256": "deea8c70805d9aa1b03d36fb76a1990d179028e515692c70313b40543e9e3433",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 248324,
+   "resort_fee_excerpts": []
+  },
+  "clark_county_room_tax": {
+   "url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf",
+   "name": "clark_county_room_tax",
+   "http_status": 200,
+   "sha256": "e49d537db3e9b382654be21b34f5f16ef4ce52f4355d8964be8325f1f53497e4",
+   "retrieved_at": "2026-11-17T22:48:13Z",
+   "bytes": 109133,
+   "resort_fee_excerpts": []
+  }
+ }
+}

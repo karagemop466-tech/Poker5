@@ -647,7 +647,6 @@ Claim written before any file was edited (board read at origin/main `3882856`, P
 | M5 | Integration PR `arena/ccce9579-poker5` → `main` (board record), merge without waiting, confirm GitHub Pages deploy via API, record PR link + merge result | pending | ccce9579 | COORDINATION.md | Flagged/unverified items do not block the merge |
 
 Rules followed: no value inferred; every stated fact on the site stays source-linked; small frequent commits; `git pull --rebase` before every push; conflicts resolved without discarding the other side.
->>>>>>> d1452be (coord(ccce9579): claim non-overlapping scope (README handoff, PR #10 takeover, integration verification))
 
 ### Results (session ccce9579) — repo-level verification + official-source re-checks, 2026-11-17/18
 
@@ -836,3 +835,62 @@ Full ledger with links on `pages/method.html`.
   2026-11-17T22:47:37Z), https://karagemop466-tech.github.io/Poker5/ fetched successfully and shows the
   published landing page: 247 verified schedule rows, 0 confirmed single-entry, 47 rows with no re-entry text,
   92 re-entry/multi-flight rows, 27 flagged items, and 13 preserved session folders.
+## Session 251c122f (branch `arena/251c122f-poker5`) — structure-sheet verification pass + root-site rebuild
+
+Claim written to the board before any file was edited (commit `62953d9`) and pushed. Single active session on this branch, so scopes are non-overlapping by construction. Branch name is fixed by Arena, so the brief's `session-<id>/<task>` naming could not be used.
+
+**Read-only for this session:** `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*`, `data-*/`, `tools/`, and every `scripts/build_*` other than the ones listed below. One exception was found and fixed: before this session, the one GitHub-Pages root site (`index.html` + `pages/`) already belonged to earlier integration sessions (18e480cb added features there), so this session's scope is that same root site, and it merges the other two dashboards' pages back in on rebase rather than deleting them.
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| J1 | Read **every** Venetian DSE IV structure sheet (all 37 distinct PDFs) and record the official rule fields: event numbers covered, start time, starting chips, level duration, late-registration cutoff, guarantee, house fee / prize-pool split, and any re-entry / rebuy / add-on language | done | 251c122f | `scripts/scrape_251c122f.py`, `data/c6087e2c/structures.json` |
+| J2 | Remove the "unverified" label from every event whose sheet was read and shows no re-entry/rebuy/add-on/purchased-stack text | done — 55 confirmed, 0 left unverified (every row matches a read sheet) | 251c122f | `data/c6087e2c/events_verified.json`, `pages/single-entry.html` |
+| J3 | Structured rule fields per event, each with its official excerpt + retrieval date | done | 251c122f | `scripts/merge_251c122f.py`, `data/c6087e2c/events_verified.json` |
+| J4 | Overlap check from official start time + late-registration cutoff + level duration (primary event + conditional fallback per day) | done | 251c122f | `pages/schedule.html` |
+| J5 | Re-verify hotel resort fees on official pages; keep the dated rate log; true nightly cost | done (Caesars Palace / Horseshoe still blank) | 251c122f | `data/c6087e2c/hotels_251c122f.json`, `pages/hotels.html` |
+| J6 | Missing-information register + suggestions board | done | 251c122f | `pages/qa.html`, `pages/suggestions.html` |
+| J7 | Rebuild, validate, PR → main, merge, confirm Pages deploy, record result | in progress | 251c122f | all of the above |
+
+### Sources (session 251c122f; every one read 2026-11-17)
+
+Official, read through the agent's page-fetch tool because the sandbox cannot open a TCP connection to casino hosts (`curl` → `SSL_ERROR_SYSCALL`); the daily GitHub Actions run re-reads them from a runner with normal internet access:
+
+- Venetian DSE IV schedule (94 rows): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- Venetian structure sheets 1-37 (all 37 downloaded and parsed): https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_{N}.pdf
+- Venetian resort fee ($55 + tax): https://www.venetianlasvegas.com/resort/resort-fee.html  (this URL works; the earlier "404" note in REPO_REVIEW.md is superseded)
+- Venetian poker suite rates ($119 / $209, six hours of play or a $300+ tournament per night): https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html
+- Wynn offer terms ($55 + tax for bookings on/after Jan 15 2025): https://www.wynnlasvegas.com/terms-and-conditions/849338
+- Wynn poker page (festival window, daily-slate suspension): https://www.wynnlasvegas.com/casino/poker
+- Bellagio hotel terms ($55 + tax): https://bellagio.mgmresorts.com/en/terms-and-conditions.html
+- ARIA hotel terms ($55 + tax): https://aria.mgmresorts.com/en/terms-and-conditions.html
+- MGM Grand hotel terms ($50 + tax — corrects the earlier secondary-source $55): https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html
+- Caesars official page (four Caesars Palace starts, $100 buy-in / $1,000 GTD / 20,000 chips / 20-minute levels / $50 add-on; six Horseshoe starts, no buy-ins): https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip
+- Clark County transient-lodging ordinance (13.38% for a resort hotel inside the primary gaming corridor): https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf
+
+### Verification performed
+
+- `python3 scripts/scrape_251c122f.py --self-test` — network-free parser test (structure-sheet fields, scoped/conditional guarantees, schedule HTML).
+- `python3 scripts/scrape_251c122f.py` — live read executed on GitHub Actions; capture committed as `9f85566` / `355c2ef` (`data/c6087e2c/schedule_live.json`, `structures.json`, `scrape_status.json`, `watch_status.json`). 94 schedule rows, 37/37 sheets read.
+- `python3 scripts/merge_251c122f.py` — 94 rows → 55 confirmed single-entry, 28 multi-flight, 11 restart rows, 0 unverified.
+- `python3 scripts/build_251c122f.py` — 17 pages; fails on any data row without a source link or any broken internal link.
+- `python3 scripts/crosscheck_251c122f.py` — re-derives every verdict from the stored rule fields; fails if one cannot be reproduced, if a conflicted guarantee is silently attributed, or if a sheet lacks a retrieval timestamp. Passes.
+- Flow test: changed one guarantee and one fee in the capture, rebuilt, confirmed the change reached the pages, then restored the capture. Passes.
+- Two rows were spot-checked field by field against their official PDFs (event #10 / sheet 6, event #47 / sheets 21 and 37): every value matches.
+
+### Irregularities found (published on the site's Flagged for review page)
+
+- **F33** structure-sheet URLs shared by rows with an identical name but different event numbers (for example "#40 $600 PLO Bounty (1Day) $25K GTD" for events 40, 57 and 27's sheet). A single PDF cannot carry two different event numbers, so a name that repeats across event numbers is marked on the row.
+- **F34** guarantee disagreements between the schedule row and the structure sheet — shown with both values, never resolved. (The three candidates seen at first run were traced to sheet-scoped guarantee wording, e.g. "$30,000 for Event #14 and #63 ($10,000 for Event #28)"; the parser now reads each named event's own amount, and no false conflict is published.)
+- **F28** the Wynn $55 sentence sits on an offer page whose window ended 2025-06-30 — official figure, applicability to be confirmed at booking.
+- **F02** resolved: the previously truncated event #40 row is published by the official page ($600 PLO Bounty $25K GTD, 12:10 PM, Dec 10) and the capture now holds it.
+- **Venetian resort-fee URL** listed as 404 in `REPO_REVIEW.md` now resolves; the fee page is live.
+
+### Requests to other sessions
+
+1. Three root-level dashboards now describe the same brief with different numbers (`docs/`, `site/`, `planner-*`, `dashboard-*`, and this root site). Only the root site is published at `https://karagemop466-tech.github.io/Poker5/`. Choosing one as canonical is a user decision, not a session decision.
+2. `pages/method.html`, `pages/monitor.html` and `pages/routes.html` (added by session ea99006a) are preserved verbatim on this branch and are not touched by this build. They are not linked from this build's navigation; their own session's links still point at them.
+
+### Log
+
+- Conflicts on rebase over `main` (sessions a9d1e02d, 3c49aaec, ea99006a merged while this session worked): kept `main`'s `COORDINATION.md` and appended this section; kept this build's root `index.html`, `pages/*`, `assets/*` (regenerated from the capture) and restored the other sessions' non-root pages that my first rebase attempt deleted. No other session's folder was edited or removed.
+- The one mistake made and corrected in this session: a cleanup step in `scripts/build_251c122f.py` deleted `pages/method.html`, `pages/monitor.html`, `pages/routes.html` on the merge. The step was removed from the build and all three files were restored from `main`; the build no longer deletes any file it did not generate.

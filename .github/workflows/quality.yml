@@ -26,9 +26,9 @@ jobs:
         run: node scripts/smoke_aa83f1e1.mjs
       - name: Validate and build the isolated planner
         run: node scripts/build_aa83f1e1.mjs
-      - name: Regenerate and validate the existing root Pages site
-        run: python3 scripts/build_c6087e2c.py
-      - name: Check the root site (links, source anchors, baseline)
-        run: python3 scripts/check_root_site.py
-      - name: Verify the scheduled source re-check baseline
-        run: python3 scripts/recheck_sources.py --offline
+      - name: Parser self-test for the official-source scraper (no network)
+        run: python3 scripts/scrape_251c122f.py --self-test
+      - name: Regenerate the root Pages site from the official capture
+        run: python3 scripts/build_251c122f.py
+      - name: Cross-check every verdict, source link and internal link
+        run: python3 scripts/crosscheck_251c122f.py

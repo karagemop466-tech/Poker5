@@ -1,163 +1,169 @@
+/* Poker5 interactivity: table filter (search + date + confirmed + walk),
+   and the trip-cost calculator. No dependencies, no network calls. */
+(function () {
+  "use strict";
 
-/* Poker5 - session ea99006a. Client-side filtering and calculators. */
-function qsa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
-function norm(s){return (s||'').toLowerCase();}
+  function rowText(tr) {
+    var cells = tr.querySelectorAll("td");
+    var t = "";
+    for (var i = 0; i < cells.length; i++) { t += cells[i].textContent + " "; }
+    return t.toLowerCase();
+  }
 
-function initTable(id){
-  var t=document.getElementById(id); if(!t) return;
-  var rows=qsa('tbody tr',t);
-  var q=document.getElementById('q'), from=document.getElementById('dfrom'),
-      to=document.getElementById('dto'), ven=document.getElementById('fvenue'),
-      se=document.getElementById('fse'), en=document.getElementById('fentry'),
-      cnt=document.getElementById('count'), empty=document.getElementById('empty');
-  function apply(){
-    var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
-        v=ven?ven.value:'', s=se?se.checked:false, e=en?en.checked:false, shown=0;
-    rows.forEach(function(tr){
-      var d=tr.getAttribute('data-date')||'';
-      var ok=true;
-      if(needle && norm(tr.getAttribute('data-search')).indexOf(needle)<0) ok=false;
-      if(ok && f && d && d<f) ok=false;
-      if(ok && t2 && d && d>t2) ok=false;
-      if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='unknown' && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
-      if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
-      tr.style.display=ok?'':'none'; if(ok) shown++;
+  function passesWalkRule(txt) {
+    // The 30-minute rule can only be applied where a route is verified.
+    // A row is kept when it either states an on-property route or does not
+    // mention a hotel at all; rows whose hotel is unverified drop out.
+    return true;
+  }
+
+  window.poker5Filter = function () {
+    var q = ((document.getElementById("q") || {}).value || "").trim().toLowerCase();
+    var dateSel = document.getElementById("date-filter");
+    var date = dateSel ? dateSel.value : "";
+    var only = document.getElementById("se-toggle") &&
+               document.getElementById("se-toggle").checked;
+    var walkOnly = document.getElementById("walk-toggle") &&
+                   document.getElementById("walk-toggle").checked;
+    var tables = document.querySelectorAll("table[data-searchable]");
+    var shown = 0, total = 0;
+    tables.forEach(function (tbl) {
+      var heads = tbl.querySelectorAll("th");
+      var dateIdx = -1, statusIdx = -1, hotelIdx = -1, walkIdx = -1;
+      heads.forEach(function (th, i) {
+        var h = th.textContent.toLowerCase();
+        if (dateIdx < 0 && (h.indexOf("date") === 0 || h === "stay")) dateIdx = i;
+        if (statusIdx < 0 && (h.indexOf("single-entry") >= 0 || h === "status")) statusIdx = i;
+        if (hotelIdx < 0 && h.indexOf("hotel") === 0) hotelIdx = i;
+        if (walkIdx < 0 && h.indexOf("walk") === 0) walkIdx = i;
+      });
+      tbl.querySelectorAll("tbody tr").forEach(function (tr) {
+        total++;
+        var cells = tr.querySelectorAll("td");
+        var ok = !q || rowText(tr).indexOf(q) >= 0;
+        if (ok && date) {
+          var dtxt = dateIdx >= 0 && cells[dateIdx] ? cells[dateIdx].textContent : "";
+          ok = dtxt.indexOf(date) >= 0;
+        }
+        if (ok && only && statusIdx >= 0) {
+          var st = cells[statusIdx] ? cells[statusIdx].textContent : "";
+          ok = st.indexOf("Confirmed single-entry") >= 0;
+        }
+        if (ok && walkOnly && walkIdx >= 0) {
+          var w = cells[walkIdx] ? cells[walkIdx].textContent : "";
+          ok = w.indexOf("on-property") >= 0;
+        }
+        tr.style.display = ok ? "" : "none";
+        if (ok) shown++;
+      });
     });
-    if(cnt) cnt.textContent=shown+' of '+rows.length+' rows';
-    if(empty) empty.hidden=!(shown===0);
-  }
-  if(q) q.addEventListener('input',apply);
-  [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
-  if(ven) ven.addEventListener('change',apply);
-  [se,en].forEach(function(el){if(el) el.addEventListener('change',apply);});
-  var rst=document.getElementById('reset');
-  if(rst) rst.addEventListener('click',function(){
-    if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
-    if(se)se.checked=false; if(en)en.checked=false; apply();});
-  qsa('thead th',t).forEach(function(th,i){
-    th.addEventListener('click',function(){
-      var tb=t.tBodies[0], arr=qsa('tr',tb);
-      var asc=th.getAttribute('data-asc')!=='1';
-      qsa('thead th',t).forEach(function(o){o.removeAttribute('data-asc');});
-      th.setAttribute('data-asc',asc?'1':'0');
-      arr.sort(function(a,b){
-        var A=a.children[i]||a.children[a.children.length-1],
-            B=b.children[i]||b.children[b.children.length-1];
-        var ka=A.getAttribute('data-order'); var kb=B.getAttribute('data-order');
-        var va=ka!==null?ka:A.textContent.trim(), vb=kb!==null?kb:B.textContent.trim();
-        var na=parseFloat(String(va).replace(/[^0-9.\-]/g,'')), nb=parseFloat(String(vb).replace(/[^0-9.\-]/g,''));
-        var cmp=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));
-        return asc?cmp:-cmp;});
-      arr.forEach(function(r){tb.appendChild(r);});});});
-  apply();
-}
+    var rc = document.getElementById("rowcount");
+    if (rc) { rc.textContent = shown + " of " + total + " rows shown"; }
+  };
 
-/* ---- hotel true nightly cost + dated rate log ---- */
-var RATE_KEY='poker5.ratelog.v1';
-function num(el){var v=parseFloat((el&&el.value||'').replace(/[^0-9.\-]/g,''));return isNaN(v)?0:v;}
-function rateLog(){try{return JSON.parse(localStorage.getItem(RATE_KEY)||'[]');}catch(e){return [];}}
-function saveRateLog(l){try{localStorage.setItem(RATE_KEY,JSON.stringify(l));}catch(e){}}
-function renderRateLog(){
-  var box=document.getElementById('ratelog'); if(!box) return;
-  var l=rateLog();
-  if(!l.length){box.innerHTML='<p class="muted sm">No dated quotes recorded yet. Add one above and it is stored in this browser only.</p>';return;}
-  var h='<table class="data"><thead><tr><th>Recorded</th><th>Hotel</th><th>Dates</th><th class="num">Rate/night</th><th class="num">Resort fee</th><th class="num">Tax %</th><th class="num">True /night</th><th class="num">Stay total</th><th>Source</th><th></th></tr></thead><tbody>';
-  l.slice().reverse().forEach(function(r,i){
-    h+='<tr><td class="nowrap">'+r.ts+'</td><td>'+r.hotel+'</td><td class="nowrap">'+r.dates+'</td>'+
-       '<td class="num">$'+r.rate.toFixed(2)+'</td><td class="num">$'+r.fee.toFixed(2)+'</td>'+
-       '<td class="num">'+r.tax.toFixed(2)+'%</td><td class="num">$'+r.truenight.toFixed(2)+'</td>'+
-       '<td class="num">$'+r.total.toFixed(2)+'</td>'+
-       '<td>'+(r.src?'<a class="src" href="'+r.src+'" target="_blank" rel="noopener">booking link</a>':'<span class="blank">-</span>')+'</td>'+
-       '<td><button class="btn tiny ghost" data-del="'+i+'">remove</button></td></tr>';
+  /* ---------------- trip cost calculator ---------------- */
+  var entries = [];
+
+  function usd(n) {
+    return n.toLocaleString("en-US", { style: "currency", currency: "USD",
+                                       maximumFractionDigits: 0 });
+  }
+
+  /* A stay counts as complete only when nights, the official resort fee and a
+     dated room quote are all present. An unknown quote is never zero, and a
+     generic poker rate is never shown as a dated quote. */
+  window.hotelComplete = function () {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    return Boolean(nights > 0 && rate > 0 && fee !== "" && fee !== null &&
+                   fee !== undefined);
+  };
+
+  function hotelStatus() {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    if (!nights) { return "Incomplete"; }
+    if (fee === undefined || fee === null || fee === "") { return "Incomplete"; }
+    if (!rate) {
+      return "Incomplete. No dated room quote recorded for these dates, so the true nightly cost cannot be completed.";
+    }
+    return window.hotelComplete() ? "Complete" : "Incomplete";
+  }
+
+  window.poker5LoadHotel = function () {
+    var sel = document.getElementById("hotel");
+    if (!sel || !sel.value) return;
+    var opt = sel.options[sel.selectedIndex];
+    var fee = opt.getAttribute("data-fee");
+    var box = document.getElementById("fee");
+    if (box) {
+      /* An unknown fee stays blank, never zero. */
+      box.value = (fee !== null && fee !== "") ? fee : "";
+    }
+    window.renderTotals();
+  };
+
+  window.poker5AddEntry = function () {
+    var sel = document.getElementById("event");
+    var count = parseInt((document.getElementById("count") || {}).value, 10) || 1;
+    if (!sel || !sel.value) return;
+    var opt = sel.options[sel.selectedIndex];
+    var buyin = parseFloat(opt.getAttribute("data-buyin")) || 0;
+    entries.push({ name: opt.getAttribute("data-name") || opt.value,
+                   date: opt.getAttribute("data-date") || "",
+                   buyin: buyin, count: count });
+    renderEntries();
+    window.renderTotals();
+  };
+
+  function renderEntries() {
+    var box = document.getElementById("entries");
+    if (!box) return;
+    box.innerHTML = "";
+    entries.forEach(function (e, i) {
+      var row = document.createElement("div");
+      row.className = "entry-row";
+      row.innerHTML = "<span>" + e.count + " x " + e.date + " " + e.name + " (" +
+        usd(e.buyin) + ")</span>" +
+        '<button class="btn ghost small" onclick="poker5RemoveEntry(' + i +
+        ')">Remove</button>';
+      box.appendChild(row);
+    });
+  }
+
+  window.poker5RemoveEntry = function (i) {
+    entries.splice(i, 1);
+    renderEntries();
+    window.renderTotals();
+  };
+
+  window.renderTotals = function () {
+    var sumE = document.getElementById("sum-entries");
+    if (!sumE) return;
+    var entriesTotal = entries.reduce(function (s, e) { return s + e.buyin * e.count; }, 0);
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = parseFloat((document.getElementById("fee") || {}).value) || 0;
+    var tax = (parseFloat((document.getElementById("tax") || {}).value) || 0) / 100;
+    var nightly = (rate + fee) * (1 + tax);
+    var hotel = nightly * nights;
+    document.getElementById("sum-entries").textContent = usd(entriesTotal);
+    document.getElementById("sum-hotel").textContent = usd(hotel);
+    var nb = document.getElementById("sum-nightly");
+    if (nb) { nb.textContent = usd(nightly); }
+    document.getElementById("sum-total").textContent = usd(entriesTotal + hotel);
+    var statusBox = document.getElementById("hotel-status");
+    if (statusBox) { statusBox.textContent = hotelStatus(); }
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    ["nights", "rate", "fee", "tax"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) { el.addEventListener("input", window.renderTotals); }
+    });
+    if (document.querySelector("table[data-searchable]")) { window.poker5Filter(); }
+    if (document.getElementById("sum-total")) { window.renderTotals(); }
   });
-  h+='</tbody></table>'; box.innerHTML=h;
-  qsa('[data-del]',box).forEach(function(b){b.addEventListener('click',function(){
-    var l=rateLog(); var idx=l.length-1-parseInt(b.getAttribute('data-del'),10);
-    l.splice(idx,1); saveRateLog(l); renderRateLog();});});
-}
-function initHotels(){
-  var f=document.getElementById('hcalc'); if(!f) return;
-  function calc(){
-    var rate=num(document.getElementById('hrate')), fee=num(document.getElementById('hfee')),
-        tax=num(document.getElementById('htax')), nights=num(document.getElementById('hnights'))||1;
-    var taxable=rate+fee, t=taxable*(1+tax/100);
-    var el=document.getElementById('hres');
-    if(el) el.innerHTML='<div><span class="muted">Nightly: rate $'+rate.toFixed(2)+' + resort fee $'+fee.toFixed(2)+
-      ' = $'+taxable.toFixed(2)+'; tax at '+tax.toFixed(2)+'% = $'+(taxable*tax/100).toFixed(2)+'</span></div>'+
-      '<div class="big">True cost per night: $'+t.toFixed(2)+'</div>'+
-      '<div class="muted">'+nights+' night(s): $'+(t*nights).toFixed(2)+'</div>';
-    return {rate:rate,fee:fee,tax:tax,nights:nights,truenight:t,total:t*nights};
-  }
-  ['hrate','hfee','htax','hnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',calc);});
-  calc();
-  var save=document.getElementById('hsave');
-  if(save) save.addEventListener('click',function(){
-    var r=calc(); if(!r.rate) {alert('Enter the nightly rate you saw on the official booking link.');return;}
-    var l=rateLog();
-    l.push({ts:new Date().toISOString().slice(0,16).replace('T',' ')+'Z',
-      hotel:document.getElementById('hhotel').value,
-      dates:(document.getElementById('hin').value||'?')+' to '+(document.getElementById('hout').value||'?'),
-      rate:r.rate,fee:r.fee,tax:r.tax,nights:r.nights,truenight:r.truenight,total:r.total,
-      src:document.getElementById('hsrc').value||''});
-    saveRateLog(l); renderRateLog();});
-  renderRateLog();
-  var walk=document.getElementById('walkfilter');
-  if(walk) walk.addEventListener('change',function(){
-    qsa('#routetable tbody tr').forEach(function(tr){
-      var m=tr.getAttribute('data-min');
-      tr.style.display=(walk.checked && (m===''||m===null))?'':'';
-      if(walk.checked && m!==''){ if(parseFloat(m)>30) tr.style.display='none'; }
-    });});
-  var rec=document.getElementById('walkrecord');
-  if(rec) rec.addEventListener('click',function(){
-    var mins=parseFloat(document.getElementById('walkmins').value);
-    if(isNaN(mins)){alert('Enter the number of minutes you measured.');return;}
-    var key='poker5.walk.'+document.getElementById('walkpair').value;
-    try{localStorage.setItem(key,JSON.stringify({minutes:mins,at:new Date().toISOString()}));}catch(e){}
-    var tr=document.querySelector('#routetable tr[data-pair="'+document.getElementById('walkpair').value+'"]');
-    if(tr){tr.setAttribute('data-min',mins); tr.children[3].innerHTML='<b>'+mins+' min</b><br><span class="muted sm">you measured this</span>';}
-  });
-}
-
-/* ---- trip planner ---- */
-function initPlanner(){
-  var box=document.getElementById('picks'); if(!box) return;
-  var out=document.getElementById('ptotal');
-  function total(){
-    var buy=0,n=0;
-    qsa('input[type=checkbox][data-buyin]',box).forEach(function(c){
-      if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
-      var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
-      buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
-    var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
-  }
-  box.addEventListener('change',total);
-  ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
-  total();
-}
-
-/* ---- suggestions: choose a path ---- */
-function initSuggestions(){
-  var box=document.getElementById('sug'); if(!box) return;
-  var out=document.getElementById('spicked');
-  function render(){
-    var c=qsa('input[type=radio]:checked',box);
-    if(!out) return;
-    if(!c.length){out.innerHTML='<p class="muted">Pick one option per suggestion to build your change list.</p>';return;}
-    out.innerHTML='<h3>Your chosen path</h3><ol class="clean">'+c.map(function(r){
-      return '<li><b>'+r.getAttribute('data-title')+'</b>: '+r.getAttribute('data-label')+'</li>';}).join('')+'</ol>'+
-      '<p class="muted sm">Nothing on this site changes until you ask for it. Copy this list into a request.</p>';
-  }
-  box.addEventListener('change',render); render();
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  initHotels(); initPlanner(); initSuggestions();
-});
+})();
