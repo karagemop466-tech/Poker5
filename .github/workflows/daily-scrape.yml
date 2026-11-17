@@ -64,6 +64,19 @@ jobs:
           python3 scripts/check_root_site.py
           python3 scripts/crosscheck_251c122f.py
 
+      - name: Upload the capture for review (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capture-${{ github.run_id }}
+          path: |
+            data/c6087e2c/schedule_live.json
+            data/c6087e2c/structures.json
+            data/c6087e2c/scrape_status.json
+            data/c6087e2c/watch_status.json
+            data/c6087e2c/events_verified.json
+          if-no-files-found: warn
+
       - name: Commit the refreshed capture (scheduled and branch runs)
         run: |
           git config user.name  "poker5-source-bot"
