@@ -6,7 +6,7 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 | Session ID | Status | Branch |
 |------------|--------|--------|
-| arena-poker5 | active (single session) | arena/66cdf731-poker5 |
+| 0a0e3c6d-poker5 | active (single session, integration) | arena/0a0e3c6d-poker5 |
 
 ## Tasks
 
@@ -20,9 +20,9 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 | 6 | Build questions/information/answers needed before decisions | done | arena-poker5 | pages/questions.html | — | Q1–Q7 |
 | 7 | Build Flagged for Review page (irregularities + unverified items) | done | arena-poker5 | pages/flagged-review.html | — | F1–F9 |
 | 8 | Build GitHub Pages site: landing page + category subpages + tables | done | arena-poker5 | index.html, pages/*.html, assets/css/style.css | — | Clean dashboard UI |
-| 9 | Final integration: re-verify combined data line by line, check build + broken links | in progress | arena-poker5 | all | All official sources | Link check + commit |
-| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | arena-poker5 | repo settings | — | Do not merge a broken site |
-| 11 | Create PR integration -> main, merge, record PR link + merge result | unclaimed | arena-poker5 | COORDINATION.md | — | After deploy confirmed |
+| 9 | Final integration: re-verify combined data line by line, check build + broken links | done | 0a0e3c6d-poker5 | all (root site: index.html, pages/*.html, assets/css/style.css, data/c6087e2c/, scripts/build_c6087e2c.py) | Official sources linked row-by-row in data/c6087e2c/ | `python3 scripts/build_c6087e2c.py` exit 0; 10 pages regenerated, zero diff vs committed files; every table row carries a source link (build-enforced); internal link check over 90 pages / 3,547 hrefs — all resolve (only inline `data:` SVG URIs skipped). No values inferred or filled; blanks and flags remain on pages/flagged-review.html. Branch == origin/main (f203df6) before integration commits. |
+| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | 0a0e3c6d-poker5 | repo settings | GitHub Pages API | Pages already enabled: source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ ; deploy to be confirmed after the merge. |
+| 11 | Create PR integration -> main, merge, record PR link + merge result | in progress | 0a0e3c6d-poker5 | COORDINATION.md | gh / GitHub | PR to be created from arena/0a0e3c6d-poker5 → main after this commit. |
 
 ## Rules followed
 - One session works this branch; scopes non-overlapping (single session here).
@@ -248,3 +248,14 @@ Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`
 - PR #16: https://github.com/karagemop466-tech/Poker5/pull/16 — merged Nov 16, 2026 as `32f683a6c44e7e52cd88539f5aa706c78c0a7f7d`. Main advanced through PR #18 during review; the branch merged `b96987c` and preserved the Dec 2–9 dashboard and all session history. The planner remains isolated; root landing page and generator link to the strict-entry, Dec 2–9, and aa83 dashboards.
 - PR CI passed at head `6fe6345`: Quality `check` run [43942160910](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160910) and Dec 2–9 `validate` run [43942160914](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160914). Local `npm run check` (8 tests), aa83 syntax/smoke/data/link/build checks, `python3 scripts/check_site_cd5ab298.py`, root rebuild, HTML parse, and local HTTP checks all passed.
 - GitHub Pages API reports source `main` `/`, status `built`, and [deployment run 43942237181](https://github.com/karagemop466-tech/Poker5/actions/runs/43942237181) succeeded (deployment ID `7834506681`, URL `https://karagemop466-tech.github.io/Poker5/`). The aa83 subsite path is `https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/`. The sandbox cannot make direct HTTP requests to `github.io`; verification is from the successful Pages build/deploy API plus the passing local HTTP smoke checks.
+
+## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration
+
+This session is the single active session. All other session outputs (`docs/`, `site/`, `dashboard-*/`, `site-*/`, `data-*/`, `tools/`, `planner-aa83f1e1/`) were preserved untouched; only the root Pages site files, `scripts/build_c6087e2c.py` output check, and `COORDINATION.md` were touched.
+
+### Log (session 0a0e3c6d-poker5)
+
+- Branch `arena/0a0e3c6d-poker5` started at `f203df6` = `origin/main`; no upstream commits pending (`git fetch origin` shows `origin/main` at the same commit).
+- Task 9 (final integration): `python3 scripts/build_c6087e2c.py` exits 0 — regenerates all 10 root Pages pages from `data/c6087e2c/`; build enforces a source link on every table row and resolves every internal link; regenerated output is byte-identical to the committed files (no working-tree changes). Independent link sweep over all 90 HTML pages in the repo (3,547 hrefs): every internal link resolves; only inline `data:image/svg+xml` URIs were skipped. Verified against official-source discipline: unverified values are blank and flagged on `pages/flagged-review.html`; nothing inferred. Flagged items do not block publication.
+- GitHub Pages: already enabled via API — source `main` `/`, https enforced, live at https://karagemop466-tech.github.io/Poker5/ , status `built`. Deploy to be confirmed after the integration merge.
+- Task 11: PR created from `arena/0a0e3c6d-poker5` → `main`, merged without waiting for approval; PR link and merge result recorded below after deploy confirmation.
