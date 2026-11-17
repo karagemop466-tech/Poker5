@@ -33,12 +33,14 @@ jobs:
 
       - name: Commit and push the updated baseline if anything changed
         run: |
-          if git diff --quiet data/c6087e2c/last_checked.json data/c6087e2c/schedule_feed.json; then
+          # Stage first: `git diff --quiet` ignores untracked files, so the first
+          # schedule_feed.json was never committed by the previous version of this step.
+          git add -- data/c6087e2c/last_checked.json data/c6087e2c/schedule_feed.json
+          if git diff --cached --quiet; then
             echo "No official source changed; nothing to commit."
           else
             git config user.name "poker5-recheck[bot]"
             git config user.email "recheck@users.noreply.github.com"
-            git add data/c6087e2c/last_checked.json data/c6087e2c/schedule_feed.json
             git commit -m "chore: re-check official sources and schedule feed [skip ci]"
             git push
           fi

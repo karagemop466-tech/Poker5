@@ -25,6 +25,7 @@ Usage:
 import argparse
 import datetime as dt
 import hashlib
+import html
 import json
 import os
 import re
@@ -72,10 +73,12 @@ def collect_urls():
                 text = fh.read()
         except OSError:
             continue
-        for m in re.finditer(r"https?://[^\s\"'<>\)\]]+", text):
+        for m in re.finditer(r"https?://[^\s\"'<>|(){}\[\]]+", text):
             url = m.group(0).rstrip(".,;")
-            if any(h in url for h in OFFICIAL_HOSTS):
-                urls.setdefault(url, os.path.relpath(path, ROOT))
+            # A URL ending in "_" is a template stub (e.g. "structure_{N}.pdf" cut at "{").
+            if url.endswith("_") or not any(h in url for h in OFFICIAL_HOSTS):
+                continue
+            urls.setdefault(url, os.path.relpath(path, ROOT))
     return urls
 
 
@@ -121,6 +124,21 @@ def psv_rows():
     return rows
 
 
+def norm_text(text):
+    """Normalise official-page / capture text for a presence check.
+
+    Tags are removed, HTML entities and curly apostrophes unified, "1-Day"/"1Day"
+    and "$1 Mill"/"$1M" equalised, and punctuation dropped, so layout and typography
+    differences do not count as a schedule change. Only the event name is compared.
+    """
+    t = html.unescape(text).replace("\u2019", "'").lower()
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = re.sub(r"(\d)[\s-]+day\b", r"\1day", t)
+    t = re.sub(r"(\d)\s*mill\b", r"\1m", t)
+    t = re.sub(r"[^a-z0-9$]+", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
 def schedule_feed():
     """Morning feed: is each row of our capture still present on the official page?
 
@@ -152,12 +170,14 @@ def schedule_feed():
             json.dump(feed, fh, indent=2, sort_keys=True)
         print("schedule feed: page unreachable ({}); previous feed kept".format(body[:80]))
         return 0
-    flat = re.sub(r"\s+", " ", body)
+    flat = norm_text(body)
     rows = psv_rows()
     missing = []
     for r in rows:
-        needle = re.sub(r"\s+", " ", r["name"]).strip()
-        r["present"] = needle in flat or needle.replace("'", "&#8217;") in flat
+        # Compare the event-name head (before the subtitle after ";" or ", ").
+        head = re.split(r";|,\s", r["name"])[0]
+        needle = norm_text(head)
+        r["present"] = bool(needle) and needle in flat
         if not r["present"]:
             missing.append(r)
     feed = {"status": "ok", "last_run": now, "retrieved": now[:10], "source": url,
@@ -200,6 +220,11 @@ def main():
     urls = collect_urls()
     baseline = load_baseline()
     sources = baseline.setdefault("sources", {})
+    # Drop baseline keys that the collector no longer produces (e.g. "...pdf|Day"
+    # pipe-suffix artifacts and the "{N}" template stub recorded by an older collector).
+    for stale in sorted(set(sources) - set(urls)):
+        print("pruned non-source baseline key: {}".format(stale))
+        del sources[stale]
 
     if args.seed:
         # The official pages were captured on this date by the research passes;

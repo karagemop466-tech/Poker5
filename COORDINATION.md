@@ -591,3 +591,16 @@ Started 2026-11-17 from `main` @ `5273918` (PR #33 merged). Branch was == main a
 | V3 | PR integration branch -> main, merge, record PR link + result | in progress | 05d77503 | COORDINATION.md | gh / GitHub | PR #35 from arena/05d77503-poker5 -> main; merge and Pages re-confirm pending |
 
 Rules followed: no value inferred; nothing edited outside this session's scope; unverified items remain flagged on pages/flagged-review.html; `git pull --rebase` before every push; small commit, pushed immediately as the claim.
+
+---
+
+## Session b0cd6d45 (branch `arena/b0cd6d45-poker5`) — monitor repair + line-by-line schedule re-verification
+
+Claimed 2026-11-17 from `main` @ `5273918` (no other active claims on the board; last session 3c49aaec merged as PR #33). Scope:
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| B1 | Repair change monitor: URL collector picks up `\|` and `{N}` placeholder artifacts (false 404s); morning schedule feed never produced `schedule_feed.json`; ~36 sources never hashed | in progress | b0cd6d45 | `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`, `data/c6087e2c/last_checked.json`, `data/c6087e2c/schedule_feed.json` |
+| B2 | Line-by-line re-verification of the Venetian DSE IV schedule rows (all four official chunks) against `data/c6087e2c/venetian_dse_2026.psv` | in progress | b0cd6d45 | `data/b0cd6d45/schedule_verification.md`, `data/c6087e2c/venetian_dse_2026.psv` (only if a row is proven wrong) |
+| B3 | Correct README statement that contradicts the audit (\"Confirmed single-entry\" rule for silent sheets) | in progress | b0cd6d45 | `README.md` |
+| B4 | Rebuild + `check_root_site.py` + CI; PR → main, merge, dispatch monitor, confirm Pages build; record result here | unclaimed | b0cd6d45 | COORDINATION.md, root site build output |

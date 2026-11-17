@@ -27,10 +27,12 @@ Live site: https://karagemop466-tech.github.io/Poker5/
 
 ## Features of the root site
 
-- **Confirmed single-entry vs unverified.** A structure sheet that was read and
-  shows no re-entry, rebuy, add-on or paid-chip text marks an event *Confirmed
-  single-entry*. Rows whose sheet was not read stay *Unverified* and are never
-  assumed to be single-entry.
+- **Single-entry is not inferred from silence.** A structure sheet that does not
+  mention re-entry, rebuys or add-ons does *not* make an event single-entry. An
+  event is labelled *confirmed* only when its official text states a single-entry
+  or no-re-entry rule. The audit of the 37 Venetian sheets found no such statement,
+  so the count of confirmed single-entry events is 0 (flag F27). Rows whose rule is
+  not stated stay *not stated* / *unverified*.
 - **Structured rule fields.** Each event row carries the entry rule, buy-in,
   guarantee, format (standard / bounty / flight) and a source link, with a
   retrieval date.
@@ -39,7 +41,13 @@ Live site: https://karagemop466-tech.github.io/Poker5/
 - **Last checked** date on every row, from the scheduled source re-check.
 - **Scheduled source re-check.** `scripts/recheck_sources.py` runs daily
   (`.github/workflows/recheck.yml`), re-reads every official URL, diffs it
-  against the stored baseline and flags rows whose source changed.
+  against the stored baseline and flags rows whose source changed. A change can
+  only be detected for a URL that already has a recorded content hash, so the
+  first successful live run records the baseline. Hashes are of the raw response,
+  so pages with dynamic content may show changes that need a human look. Changes
+  are reported for review and never edit data automatically. The morning schedule
+  feed (`--feed`) checks that each captured Venetian event name is still on the
+  official page.
 - **Trip-cost calculator** (`pages/planner.html`): entries × buy-ins + nights ×
   true hotel cost (room rate + resort fee + tax).
 - **Hotels** with a dated rate log (checkout total, nightly average, resort fee,

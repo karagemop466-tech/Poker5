@@ -2,7 +2,7 @@
 # https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
 # Format: date|start_24h|event_no|name|buy_in_usd|guarantee_usd|structure_pdf_no|kind|notes
 # kind: entry = listed event row; restart = "Day 2/Day 3 Restart" or final-table row of an existing event number
-# Blank field = not shown on the official row. Event #40 was truncated in capture and is flagged, not filled.
+# Blank field = not shown on the official row. Event #40 row recovered 2026-11-17 (3c49aaec); row-by-row re-check 2026-11-17 (b0cd6d45, data/b0cd6d45/schedule_verification.md).
 2026-11-16|11:10|1|$300 No Limit Hold'em 1A $75K GTD|300|75000|10|entry|Flight 1A
 2026-11-16|17:10|1|$300 No Limit Hold'em 1B $75K GTD|300|75000|9|entry|Flight 1B
 2026-11-17|11:10|1|$300 No Limit Hold'em 1C $75K GTD|300|75000|10|entry|Flight 1C
@@ -70,10 +70,10 @@
 2026-12-12|12:10|48|$260 NLH Turbo Milestone Satellite (1-Day)|260||25|entry|Awards direct entry to event #47
 2026-12-12|18:10|47|$2,200 No Limit Hold'em 1B $1M GTD, PokerAtlas Championship title event|2200|1000000|37|entry|Flight 1B
 2026-12-13|10:10|49|$1,100 No Limit Hold'em Seniors 1A $300K GTD|1100|300000|20|entry|Must be 50+; Flight 1A
-2026-12-13|13:00|47|$2,200 NLH Day 2 Restart (play down to final 7; streamed final table)|||21|restart|Restart row of event #47
+2026-12-13|13:00|47|$2,200 NLH PokerAtlas Championship Title Event Day 2 Restart (play down to final 7; streamed final table)|||21|restart|Restart row of event #47; name corrected to official row text 2026-11-17 (b0cd6d45)
 2026-12-13|17:10|50|$300 No Limit Hold'em Bounty $15K GTD (1-Day)|300|15000|15|entry|Bounty
 2026-12-14|10:10|49|$1,100 No Limit Hold'em Seniors 1B $300K GTD|1100|300000|20|entry|Must be 50+; Flight 1B
-2026-12-14|11:00|47|$2,200 NLH Day 3 Restart (streamed final table)|||21|restart|Restart row of event #47
+2026-12-14|11:00|47|$2,200 NLH PokerAtlas Championship Title Event Day 3 Restart (streamed final table)|||21|restart|Restart row of event #47; name corrected to official row text 2026-11-17 (b0cd6d45)
 2026-12-14|17:10|51|$300 No Limit Hold'em Bounty $15K GTD (1-Day)|300|15000|15|entry|Bounty
 2026-12-15|10:00|49|$1,100 No Limit Hold'em Seniors Day 2 Restart|||20|restart|Restart row of event #49
 2026-12-15|11:10|52|$1,100 No Limit Hold'em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO)|1100|75000|34|entry|PKO
