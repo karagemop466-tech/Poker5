@@ -1,0 +1,10 @@
+{
+  "tax_rate_percent": 13.38,
+  "tax_source": "clark-tax",
+  "tax_note": "13.38% is the combined rate in the Clark County schedule for a resort hotel within the primary gaming corridor. Whether a given property sits inside that corridor is not verified against the ordinance map.",
+  "hotels": [
+    {"id": "venetian", "name": "The Venetian Resort Las Vegas", "venue": "venetian", "resort_fee_per_night": 55, "resort_fee_source": "ven-resort-fee", "resort_fee_status": "Verified: official page states $55 plus tax per night", "walk_to_poker_minutes": null, "walk_status": "Not verified (no official walking time retrieved)", "rate_status": "No official rate retrieved in this session; see rate log (empty)"},
+    {"id": "wynn", "name": "Wynn Las Vegas", "venue": "wynn", "resort_fee_per_night": null, "resort_fee_source": "wynn-resort-fee", "resort_fee_status": "NOT verified: official resort-fee URL returned an error page on 2026-11-17", "walk_to_poker_minutes": null, "walk_status": "Not verified (no official walking time retrieved)", "rate_status": "No official rate retrieved in this session; see rate log (empty)"}
+  ],
+  "rate_log": []
+}
