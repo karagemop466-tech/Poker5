@@ -211,6 +211,79 @@ def table(headers, rows, row_source_index):
 
 def badge(kind, text):
     return '<span class="badge badge-{}">{}</span>'.format(kind, esc(text))
+def search_box():
+    return (
+        '<div class="panel">'
+        '<label style="font-weight:700;margin-right:8px;">Search all tables:</label>'
+        '<input type="text" id="tableSearch" placeholder="Filter by venue, event, buy-in, guarantee, date…" '
+        'style="padding:6px 10px;font-size:13px;width:260px;">'
+        '<span id="searchCount" style="margin-left:8px;color:var(--muted);font-size:12px;"></span>'
+        '</div>'
+    )
+
+
+def search_script():
+    return (
+        '<script>'
+        '(function(){'
+        '  const input = document.getElementById("tableSearch");'
+        '  const count = document.getElementById("searchCount");'
+        '  if(!input) return;'
+        '  const rows = Array.from(document.querySelectorAll("table.tbl tbody tr"));'
+        '  input.addEventListener("input", function(){'
+        '    const term = input.value.toLowerCase();'
+        '    let shown = 0;'
+        '    rows.forEach(function(row){'
+        '      const text = row.textContent.toLowerCase();'
+        '      if(term === "" || text.indexOf(term) !== -1){'
+        '        row.style.display = ""; shown++;'
+        '      } else { row.style.display = "none"; }'
+        '    });'
+        '    count.textContent = term === "" ? "" : shown + " of " + rows.length + " rows match";'
+        '  });'
+        '})();'
+        '</script>'
+    )
+
+
+def trip_calculator():
+    return (
+        '<section class="panel">'
+        '<h2>Trip cost estimator</h2>'
+        '<p class="muted">Estimate = (entries × buy-in) + (nights × true cost per night). True cost per night = '
+        'room rate + mandatory resort fee + tax. Fill in your own numbers; blank hotel rates mean the true cost '
+        'cannot be computed yet.</p>'
+        '<form id="tripcalc" onsubmit="event.preventDefault(); updateTrip();">'
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;align-items:end;">'
+        '<label>Events to enter <input type="number" id="entries" value="1" min="0"></label>'
+        '<label>Average buy-in ($) <input type="number" id="buyin" value="300" min="0" step="10"></label>'
+        '<label>Hotel nights <input type="number" id="nights" value="3" min="0"></label>'
+        '<label>True cost per night ($) <input type="number" id="costnight" value="174" min="0" step="1"></label>'
+        '<button type="submit" class="btn">Calculate</button>'
+        '</div>'
+        '</form>'
+        '<div id="tripresult" style="margin-top:10px;font-weight:700;"></div>'
+        '<p class="muted">This is an estimate only, not a quote. Confirm rates, fees and tournament buy-ins on the '
+        'official pages before booking or playing.</p>'
+        '</section>'
+        '<script>'
+        'function updateTrip(){'
+        '  const entries = Number(document.getElementById("entries").value)||0;'
+        '  const buyin = Number(document.getElementById("buyin").value)||0;'
+        '  const nights = Number(document.getElementById("nights").value)||0;'
+        '  const costnight = Number(document.getElementById("costnight").value)||0;'
+        '  const tournamentCost = entries*buyin;'
+        '  const hotelCost = nights*costnight;'
+        '  const total = tournamentCost+hotelCost;'
+        '  document.getElementById("tripresult").textContent ='
+        '    "Tournament entries: "+entries+" × $"+buyin.toLocaleString()+" = $"+tournamentCost.toLocaleString()+'
+        '    "   |   Hotel: "+nights+" nights × $"+costnight.toLocaleString()+" = $"+hotelCost.toLocaleString()+'
+        '    "   |   Estimated trip total: $"+total.toLocaleString();'
+        '}'
+        'updateTrip();'
+        '</script>'
+    )
+
 
 
 # ---------------------------------------------------------------- data derived
@@ -354,7 +427,7 @@ def page_tournaments():
          link("https://bellagio.mgmresorts.com/en/casino/poker.html", "Official poker page")],
         ["MGM Grand", "Daily NLH listed on official page; PDF titled 'August' (stale)",
          link("https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html", "Official poker page")],
-        ["Caesars Palace and Horseshoe", "Daily NLH listed on official page; Horseshoe buy-ins not stated",
+        ["Caesars Palace and Horseshoe", "Daily NLH listed on official page; Caesars Palace $100 buy-in, $1,000 GTD (4 starts); Horseshoe $100 buy-in, $1,000 GTD (6 starts) (official Caesars page)",
          link(CAESARS_URL, "Official Caesars page")],
         ["ARIA", "Official page has no tournament list. Call the poker room (F12)",
          link("https://aria.mgmresorts.com/en/casino/poker.html", "Official poker page")],
@@ -367,14 +440,20 @@ def page_tournaments():
   <strong>Single-entry status is not confirmed for any row.</strong> The official pages and structure sheets read do not
   state "no re-entry" or "freezeout." Rows below are candidates ranked by guarantee, then buy-in. Confirm each before you play (F01).
 </section>
+<div class="panel">
+  <label style="font-weight:700;margin-right:8px;">Search all tables:</label>
+  <input type="text" id="tableSearch" placeholder="Filter by venue, event, buy-in, guarantee, date…" style="padding:6px 10px;font-size:13px;width:260px;">
+  <span id="searchCount" style="margin-left:8px;color:var(--muted);font-size:12px;"></span>
+</div>
 <p class="muted">Ranking: guaranteed prize pool first, then buy-in. Blank = not stated on the official source. Event #40 on the Venetian schedule is excluded because its row was truncated in the capture (F02).
-Events with multiple flights (1A/1B...) are moved to <a href="tournaments-double.html">Re-Entry / Multi-Flight</a>.</p>
+Events with multiple flights (1A/1B...) are moved to <a href="tournaments-double.html">Re-Entry / Multi-Flight</a>. Last checked against official sources: 2026-11-17.</p>
 <h2>Single-entry candidates</h2>
 {main}
 <h2>Venue status</h2>
 {venues}
 """
     body = body.format(main=main, venues=venues)
+    body = body + search_script()
     return body
 
 
@@ -421,6 +500,11 @@ def page_double():
     c = table(["Schedule", "Venue", "Spending requirement (official)", "Rate", "Source"], c_rows, 4)
 
     body = """
+<div class="panel">
+  <label style="font-weight:700;margin-right:8px;">Search all tables:</label>
+  <input type="text" id="tableSearch" placeholder="Filter by venue, event, buy-in, guarantee, date…" style="padding:6px 10px;font-size:13px;width:260px;">
+  <span id="searchCount" style="margin-left:8px;color:var(--muted);font-size:12px;"></span>
+</div>
 <p class="muted">Kept separate from single-entry because re-entry, rebuys, add-ons, entry caps or flights can let a player spend more for more chances. Only rows whose rules appear in an official source are in Section A. Section B lists multi-flight events whose rules are not yet verified.</p>
 <h2>A. Re-entry, rebuy, add-on or entry-cap rules (official)</h2>
 {a}
@@ -430,7 +514,9 @@ def page_double():
 <h2>C. Spending that buys a better hotel rate</h2>
 {c}
 """
-    return body.format(a=a, b=b, c=c)
+    body = body.format(a=a, b=b, c=c)
+    body = body + search_script()
+    return body
 
 
 def page_hotels():
@@ -450,15 +536,23 @@ def page_hotels():
         ])
     main = table(["Hotel", "Walk to tournament", "Nightly room rate", "Resort fee (per night)", "True cost per night", "Quality", "Status &amp; source"], cells, 6)
     body = """
-<p class="muted">Walking limit: 30 minutes on foot to the tournament room. Not verified for hotels other than the tournament venue itself, so those cells are blank.</p>
+<div class="panel">
+  <label style="font-weight:700;margin-right:8px;">Search all tables:</label>
+  <input type="text" id="tableSearch" placeholder="Filter by venue, event, buy-in, guarantee, date…" style="padding:6px 10px;font-size:13px;width:260px;">
+  <span id="searchCount" style="margin-left:8px;color:var(--muted);font-size:12px;"></span>
+</div>
+<p class="muted">Walking limit: 30 minutes on foot to the tournament room. Not verified for hotels other than the tournament venue itself, so those cells are blank. Last checked against official sources: 2026-11-17.</p>
 <div class="panel">
 <strong>How true cost per night is built:</strong> nightly room rate + mandatory resort fee. Taxes are not added because the official tax rate was not verified in the sources read. Where a room rate is blank, the true cost is blank too.
 </div>
 <h2>Hotels hosting or near tournaments</h2>
 {main}
+{tripcalc}
 <p class="muted">Quality ratings were not sourced and are blank (F20). Walking times and room rates are blank (F18, F19, F22).</p>
 """
-    return body.format(main=main)
+    body = body.format(main=main, tripcalc=trip_calculator())
+    body = body + search_script()
+    return body
 
 
 def page_schedule():
@@ -495,13 +589,20 @@ def page_schedule():
   <strong>8:00 AM all-day start: not supported by the official sources read.</strong>
   Earliest official start found: 9:00 AM (Horseshoe). Earliest Venetian start: 9:10 AM (Dec 12, event #46). Blocks of play from 8:00 AM cannot be built from verified listings (F03).
 </section>
+<div class="panel">
+  <label style="font-weight:700;margin-right:8px;">Search all tables:</label>
+  <input type="text" id="tableSearch" placeholder="Filter by venue, event, buy-in, guarantee, date…" style="padding:6px 10px;font-size:13px;width:260px;">
+  <span id="searchCount" style="margin-left:8px;color:var(--muted);font-size:12px;"></span>
+</div>
 <p class="muted">Event durations are not verified (F06), so this page cannot show non-overlapping day plans or maximum entries. Start times and buy-ins below are the official values. Restart rows (Day 2 / Day 3) are not new entries.</p>
 <h2>Venetian DeepStack Extravaganza IV: every official row ({n} rows, Nov 16 - Dec 23, 2026)</h2>
 {v}
 <h2>Other rooms: official start times</h2>
 {o}
 """.replace("{n}", str(n_rows_schedule))
-    return body.replace("{v}", venetian_table).replace("{o}", other)
+    body = body.replace("{v}", venetian_table).replace("{o}", other)
+    body = body + search_script()
+    return body
 
 
 def page_exec():
