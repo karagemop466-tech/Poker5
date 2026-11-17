@@ -59,7 +59,7 @@ DSE_URL = ("https://www.venetianlasvegas.com/resort/casino/poker/"
            "deepstack-extravaganza-poker-tournament/dse-nov-2026.html")
 UA = ("Mozilla/5.0 (compatible; Poker5-official-source-scraper/1.0; "
       "+https://github.com/karagemop466-tech/Poker5)")
-TIMEOUT = 25   # per-connection ceiling; MGM hosts can black-hole a TCP connect
+TIMEOUT = 20   # per-connection ceiling; MGM hosts can black-hole a TCP connect
 MONTHS = {m: i for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July",
      "August", "September", "October", "November", "December"], start=1)}
@@ -95,7 +95,7 @@ def fetch(url: str) -> tuple[bytes | None, dict]:
     })
     rec = {"url": url, "retrieved_at": now_iso(), "status": None, "sha256": "",
            "bytes": 0, "note": ""}
-    for attempt in (1, 2, 3):
+    for attempt in (1, 2):
         try:
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                 body = resp.read()

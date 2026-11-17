@@ -59,11 +59,6 @@ jobs:
       - name: Rebuild the site from the data
         run: python3 scripts/build_c6087e2c.py
 
-      - name: Validate links, source anchors and cross-checks
-        run: |
-          python3 scripts/check_root_site.py
-          python3 scripts/crosscheck_251c122f.py
-
       - name: Upload the capture for review (always)
         if: always()
         uses: actions/upload-artifact@v4
@@ -93,3 +88,12 @@ jobs:
             sleep 5
           done
           git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Validate links, source anchors and cross-checks
+        run: |
+          python3 scripts/check_root_site.py
+          python3 scripts/crosscheck_251c122f.py
+
+      - name: Print the capture summary
+        if: always()
+        run: python3 scripts/summary_251c122f.py
