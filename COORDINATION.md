@@ -563,3 +563,8 @@ Publication record (session 3c49aaec):
   fee sits inside the tax base — folio check). The single-entry question itself is F27.
 - `README.md` still carries the pre-audit headline counts; it is outside this session's claimed scope,
   so the request to restate them (or point the README at `index.html`) is logged above instead.
+- Follow-up PR #34 https://github.com/karagemop466-tech/Poker5/pull/34 merged as `3882856`: the flag and
+  suggestion copy now quotes the build's real row counts (51 ranked rows; 47 with both a published buy-in and
+  guarantee; 24 multi-flight rows across 7 events; 7 satellites; 11 restart rows) instead of the 76/74 figures
+  carried over from the pre-merge plan. The audit emitter now refreshes this session's own flag entries in
+  place, so corrected wording reaches the generated site. Pages: `built` for `3882856`, no error.
