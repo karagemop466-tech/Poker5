@@ -260,8 +260,10 @@ def main() -> int:
         gtd = gtd_from_name(name)
         gtd_basis = "schedule page row" if gtd is not None else ""
         gtd_conflict = None
-        sheet_gtd = sheet.get("guarantee") if sheet_ok else None
-        sheet_names = sheet.get("guarantee_events") or []
+        by_event = (sheet.get("guarantee_by_event") or {}) if sheet_ok else {}
+        sheet_gtd = (by_event.get(lr["event_no"]) if lr["event_no"] in by_event
+                     else (sheet.get("guarantee") if sheet_ok else None))
+        sheet_names = sheet.get("guarantee_events") or list(by_event)
         if sheet_ok and sheet_gtd:
             if not sheet_names or lr["event_no"] in sheet_names:
                 if gtd is not None and sheet_gtd != gtd:

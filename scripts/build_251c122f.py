@@ -510,6 +510,33 @@ def page_index() -> str:
     return body
 
 
+def budget_tiers():
+    """Group the confirmed rows by buy-in band, computed from the capture."""
+    bands = [("Under $300", 0, 299), ("$300 - $599", 300, 599),
+             ("$600 - $1,099", 600, 1099), ("$1,100 and up", 1100, 10 ** 9)]
+    out = []
+    for label, lo, hi in bands:
+        rows = [e for e in CONFIRMED if e.get("buyin") is not None
+                and lo <= e["buyin"] <= hi and e.get("format") != "satellite"]
+        if not rows:
+            continue
+        cheapest = min(rows, key=lambda e: e["buyin"])
+        biggest = max(rows, key=lambda e: (e.get("gtd") or 0))
+        dates = sorted({e["date"] for e in rows})
+        out.append([label, str(len(rows)),
+                    "{} &ndash; {}".format(money(cheapest.get("buyin")),
+                                          money(max(r["buyin"] for r in rows))),
+                    (money(biggest.get("gtd")) + " ({})".format(
+                        esc(shorten(biggest["name"], 40)))
+                     if biggest.get("gtd") else '<span class="blank">blank</span>'),
+                    "{} dates: {} to {}".format(len(dates), fdate(dates[0]),
+                                                fdate(dates[-1])),
+                    row_source_cell(biggest)])
+    return table(["Budget band (buy-in)", "Confirmed entries", "Buy-in range",
+                  "Largest published guarantee", "Dates available", "Source"],
+                 out, 5, "tiers")
+
+
 def events_table(rows, base="", show_rules=True) -> str:
     cells = []
     for e in rows:
@@ -562,12 +589,14 @@ silent on re-entry is the published confirmation standard; it is stated on this 
 <a href="sources.html">Sources &amp; method</a> so you can judge it. Rows that fail any part
 of that test are on <a href="flagged.html">Flagged for review</a>, not here.
 """) + """
+<h2>Grouped by what you want to spend per entry</h2>
+{tiers}
 <h2>Confirmed single-entry events ({n})</h2>
 <p class="muted">Guarantee &divide; buy-in is a descriptive ratio, not a forecast. Bounty
 events include bounties in the guarantee, so their ratio is not comparable with a standard
 event; the Format column marks them.</p>
 {tbl}
-""".format(n=len(rows), tbl=events_table(rows))
+""".format(n=len(rows), tbl=events_table(rows), tiers=budget_tiers())
     return body
 
 

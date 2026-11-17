@@ -326,19 +326,31 @@ def parse_structure(text: str) -> dict:
     m = re.search(r"(\d+)\s*levels?", late_text, re.I)
     late_levels = int(m.group(1)) if m else None
 
+    # The sheet can be shared by several events and may print more than one
+    # guarantee ("Guarantee: $30,000 for Event #14 and #63 ($10,000 for Event #28)").
+    # Take the amount that belongs to the FIRST event named on the tail, which is
+    # the event the sentence starts with; anything else stays unread rather than
+    # being guessed.
     m = re.search(r"Guarantee\s*:\s*\$([\d,]+)", gtd_line, re.I)
     guarantee = int(m.group(1).replace(",", "")) if m else None
     # A shared sheet can print a guarantee that applies only to named events
     # ("Guarantee: $30,000 ... Event #16" / "for Event #14 and #63"). Record
     # which events the guarantee line names, so the merge never applies a
     # guarantee to an event the sheet does not promise it for.
-    named = []
+    # Each (amount, event) pair printed on the guarantee line, in order.
+    guarantee_by_event = {}
     if gtd_line:
         tail = re.sub(r"^.*?Guarantee\s*:", "", gtd_line, flags=re.I)
-        for tok in re.findall(r"(?:Event\s*#?\s*|#)(\d{1,2})", tail, re.I):
-            n = int(tok)
-            if n and n not in named:
-                named.append(n)
+        # Split the tail into segments that start with an amount, so
+        # "$30,000 for Event #14 and #63" yields 30000 -> [14, 63].
+        segments = re.split(r"(?=\$[\d,]+)", tail)
+        for seg in segments:
+            mm = re.match(r"\$([\d,]+)", seg)
+            if not mm:
+                continue
+            amount = int(mm.group(1).replace(",", ""))
+            for tok in re.findall(r"(?:Event\s*#?\s*|#)(\d{1,2})", seg, re.I):
+                guarantee_by_event.setdefault(int(tok), amount)
     m = re.search(r"Guarantee\s*:\s*(\d+)\s*Seats?", gtd_line or "", re.I)
     guarantee_seats = int(m.group(1)) if m else None
 
@@ -394,7 +406,8 @@ def parse_structure(text: str) -> dict:
         "chips_line": chips_line,
         "level_line": level_line,
         "guarantee": guarantee,
-        "guarantee_events": named,
+        "guarantee_events": list(guarantee_by_event),
+        "guarantee_by_event": guarantee_by_event,
         "guarantee_seats": guarantee_seats,
         "guarantee_line": gtd_line,
         "house_fee": house_fee,
@@ -621,6 +634,11 @@ def main_self_test() -> int:
         "**Guarantee:** $30,000 for Event #14 and #63"))
     if scoped.get("guarantee_events") != [14, 63] or scoped.get("guarantee") != 30000:
         bad.append("scoped guarantee: {}".format(scoped.get("guarantee_events")))
+    cond = parse_structure(SAMPLE.replace(
+        "**Guarantee:** $8,000 (prize pool + total bounties)",
+        "**Guarantee:** $40,000 for Event #16 ($30,000 for Event #54)"))
+    if cond.get("guarantee_by_event") != {16: 40000, 54: 30000}:
+        bad.append("conditional guarantee: {}".format(cond.get("guarantee_by_event")))
     seats = parse_structure(SAMPLE.replace(
         "**Guarantee:** $8,000 (prize pool + total bounties)", "**Guarantee:** 2 Seats"))
     if seats.get("guarantee_seats") != 2:
