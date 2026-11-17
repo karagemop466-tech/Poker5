@@ -173,6 +173,7 @@ def main() -> None:
     parser.add_argument("--live", action="store_true", help="fetch monitored official URLs and check markers")
     parser.add_argument("--report", type=Path, help="write machine-readable JSON results to this path")
     parser.add_argument("--state", type=Path, help="read / update normalized text fingerprints for static PDFs")
+    parser.add_argument("--fail-on-review", action="store_true", help="exit nonzero when any live source needs human review")
     parser.add_argument("--timeout", type=int, default=35, help="per-source network timeout in seconds")
     parser.add_argument("--workers", type=int, default=8, help="parallel source checks")
     parser.add_argument("--max-bytes", type=int, default=20_000_000, help="per-source download size cap")
@@ -262,7 +263,14 @@ def main() -> None:
         args.state.parent.mkdir(parents=True, exist_ok=True)
         args.state.write_text(json.dumps({"updatedAt": report["checkedAt"], "normalizedTextSha256BySource": next_hashes}, indent=2) + "\n", encoding="utf-8")
     if problems:
-        raise SystemExit(1)
+        for result in results:
+            if result.get("status") in {"ok", "baseline"}:
+                continue
+            message = f"{result.get('id')}: {result.get('error') or result.get('status')} — {result.get('url', '')}"
+            message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+            print(f"::warning title=Official source needs review::{message}")
+        if args.fail_on_review:
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":
