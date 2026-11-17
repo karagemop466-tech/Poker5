@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "researchedAt": "2026-11-17",
+    "timezone": "America/Los_Angeles",
+    "note": "Addresses are from official property pages. Map links are live route lookups, not verified walking times or directions."
+  },
+  "venues": [
+    {
+      "id": "venetian",
+      "property": "The Venetian Resort",
+      "room": "Poker Room",
+      "address": "3355 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.venetianlasvegas.com/",
+      "pokerUrl": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "bookingSourceId": "venetian-booking",
+      "addressSourceId": "venetian-contact",
+      "hotelId": "venetian",
+      "coverage": "DSE IV dated listings in the Dec 13–20 working window.",
+      "hostRelation": "Poker events are on the hotel property; internal walking distance is not measured.",
+      "sourceIds": [
+        "venetian-schedule",
+        "venetian-contact",
+        "venetian-fee"
+      ]
+    },
+    {
+      "id": "wynn",
+      "property": "Wynn Las Vegas / Encore",
+      "room": "Wynn / Encore event venue (specific poker-room name not verified)",
+      "address": "3131 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.wynnlasvegas.com/",
+      "pokerUrl": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
+      "bookingSourceId": "wynn-booking",
+      "addressSourceId": "wynn-contact",
+      "hotelId": "wynn",
+      "coverage": "Selected WPT World Championship and side-event listings; not the full festival calendar.",
+      "hostRelation": "WPT events are hosted at Wynn Las Vegas; the specific room name and internal walking distance are not verified in this audit.",
+      "sourceIds": [
+        "wpt-festival-schedule",
+        "wpt-world-details",
+        "wynn-contact",
+        "wynn-fee"
+      ]
+    },
+    {
+      "id": "bellagio",
+      "property": "Bellagio",
+      "room": "Bellagio Poker Room",
+      "address": "3600 S Las Vegas Blvd, Las Vegas, NV 89109",
+      "website": "https://bellagio.mgmresorts.com/",
+      "pokerUrl": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "bookingSourceId": "bellagio-booking",
+      "addressSourceId": "bellagio-contact",
+      "hotelId": "bellagio",
+      "coverage": "Weekly Friday/Saturday/Sunday listings mapped to the matching weekdays; verify date-specific availability.",
+      "hostRelation": "Bellagio events are on the hotel property; internal walking distance is not measured.",
+      "sourceIds": [
+        "bellagio-poker",
+        "bellagio-friday",
+        "bellagio-saturday",
+        "bellagio-sunday",
+        "bellagio-contact",
+        "bellagio-fee"
+      ]
+    },
+    {
+      "id": "caesars",
+      "property": "Caesars Palace",
+      "room": "Caesars Palace Poker Room",
+      "address": "3570 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.caesars.com/caesars-palace",
+      "pokerUrl": "https://www.caesars.com/caesars-palace/casino",
+      "bookingSourceId": "caesars-booking",
+      "addressSourceId": "caesars-palace-faq",
+      "hotelId": "caesars-palace",
+      "coverage": "Recurring daily starts from the official 2026 flyer, dated across the working window; recheck the current flyer.",
+      "hostRelation": "Caesars Palace events are on the hotel property; internal walking distance is not measured.",
+      "sourceIds": [
+        "caesars-palace-poker",
+        "caesars-daily-flyer-2026",
+        "caesars-palace-faq"
+      ]
+    },
+    {
+      "id": "horseshoe",
+      "property": "Horseshoe Las Vegas",
+      "room": "Poker Room (specific room name not verified)",
+      "address": "3645 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.caesars.com/horseshoe-las-vegas",
+      "pokerUrl": "https://www.caesars.com/horseshoe-las-vegas/casino",
+      "bookingSourceId": "horseshoe-booking",
+      "addressSourceId": "horseshoe-address",
+      "hotelId": "horseshoe",
+      "coverage": "Official article lists six daily start times; buy-ins, guarantees and entry rules were not published in the reviewed source.",
+      "hostRelation": "Horseshoe events are on the hotel property; internal walking distance is not measured.",
+      "sourceIds": [
+        "horseshoe-poker",
+        "caesars-daily-article",
+        "horseshoe-address"
+      ]
+    },
+    {
+      "id": "aria",
+      "property": "ARIA Resort & Casino",
+      "room": "ARIA Poker Room",
+      "address": "3730 S Las Vegas Blvd, Las Vegas, NV 89158",
+      "website": "https://aria.mgmresorts.com/",
+      "pokerUrl": "https://aria.mgmresorts.com/en/casino/poker.html",
+      "bookingSourceId": "aria-booking",
+      "addressSourceId": "aria-contact",
+      "hotelId": "aria",
+      "coverage": "Poker room existence is sourced; no dated tournament listing is included.",
+      "hostRelation": "No dated tournament row is shown in this planner.",
+      "sourceIds": [
+        "aria-poker",
+        "aria-contact",
+        "aria-fee"
+      ]
+    },
+    {
+      "id": "mgm-grand",
+      "property": "MGM Grand Las Vegas",
+      "room": "MGM Grand Poker Room",
+      "address": "3799 S Las Vegas Blvd, Las Vegas, NV 89109",
+      "website": "https://mgmgrand.mgmresorts.com/",
+      "pokerUrl": "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html",
+      "bookingSourceId": "mgm-booking",
+      "addressSourceId": "mgm-contact",
+      "hotelId": "mgm-grand",
+      "coverage": "Daily schedule omitted from dated event results because the current page and August-titled PDF differ by ten minutes.",
+      "hostRelation": "No dated tournament row is shown until the schedule discrepancy is resolved.",
+      "sourceIds": [
+        "mgm-poker",
+        "mgm-schedule-pdf",
+        "mgm-120-structure",
+        "mgm-contact",
+        "mgm-fee"
+      ]
+    }
+  ]
+}

@@ -64,3 +64,29 @@ All source links below resolve to Venetian's official PDF host. “—” for en
 - The field “total prize pool” on bounty PDFs includes the stated bounty awards for sheets 1, 8, 11, 15, 16, 26, 27, 30, 33, and 34. Ratios use this guarantee as printed and are descriptive only; they are not forecasts or expected returns.
 - Structure #19 and #24–25 are direct-seat satellites, not cash-guarantee tournaments. The seats have no official cash valuation in these sheets; leave cash guarantee blank.
 - Official PDFs were accessed in this session on 2026-11-17. The live page and PDF rules can change; the scheduled monitor must recheck the official source URLs.
+
+## Final QA — Dec 13–20 schedule rows
+
+Every nonblank, noncomment entry row in the Venetian PSV for Dec 13–20 was matched to the official schedule on **date + event number + flight**, then cross-checked against the linked numbered PDF. All 17 rows have their own event record with separate total-entry-cap, re-entry, rebuy, add-on, fee-split, late-registration and source-citation fields. The first four entry-policy fields remain **unknown** for every Venetian row; no one-day label or bagging rule was promoted to a freezeout or total-entry cap. The late-registration and fee facts below follow the linked sheet. Bounty guarantees retain their bounty-inclusive qualification.
+
+| Date | Event / flight | Start | Sheet | Buy-in | Schedule guarantee |
+|---|---|---:|---:|---:|---:|
+| Dec 13 | #49 1A Seniors | 10:10 | 20 | $1,100 | $300,000 |
+| Dec 13 | #50 Bounty (1-Day) | 17:10 | 15 | $300 | $15,000 |
+| Dec 14 | #49 1B Seniors | 10:10 | 20 | $1,100 | $300,000 |
+| Dec 14 | #51 Bounty (1-Day) | 17:10 | 15 | $300 | $15,000 |
+| Dec 15 | #52 PKO (1-Day) | 11:10 | 34 | $1,100 | $75,000 |
+| Dec 15 | #53 Bounty (1-Day) | 17:10 | 15 | $300 | $15,000 |
+| Dec 16 | #54 Bounty (1-Day) | 11:10 | 11 | $600 | $50,000 |
+| Dec 16 | #55 Bounty (1-Day) | 17:10 | 15 | $300 | $15,000 |
+| Dec 17 | #56 1A NLH | 10:10 | 35 | $1,100 | $500,000 |
+| Dec 17 | #57 PLO Double Board Bomb Pot | 12:10 | 23 | $600 | $25,000 |
+| Dec 17 | #56 1B NLH | 18:10 | 36 | $1,100 | $500,000 |
+| Dec 18 | #56 1C NLH | 10:10 | 35 | $1,100 | $500,000 |
+| Dec 18 | #56 1D NLH | 18:10 | 36 | $1,100 | $500,000 |
+| Dec 19 | #56 1E NLH | 10:10 | 35 | $1,100 | $500,000 |
+| Dec 19 | #58 PokerAtlas Valuetown Bounty | 17:10 | 8 | $200 | $20,000 |
+| Dec 20 | #59 1A NLH | 11:10 | 4 | $600 | $150,000 |
+| Dec 20 | #60 Bounty (1-Day) | 17:10 | 1 | $200 | $8,000 |
+
+Four restarts overlapping the window (#47 on Dec 13/14, #49 on Dec 15, and #56 on Dec 20) are listed separately as continuation rows, not new entry opportunities. In particular, #56 Day 1D is **Dec 18 at 18:10 on sheet 36**; the flight/date key was verified rather than inferred from a matching letter elsewhere in the event name.
