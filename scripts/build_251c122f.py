@@ -73,6 +73,15 @@ WALK_LIMIT = 30
 
 
 # ------------------------------------------------------------------ utilities
+def shorten(text: str, limit: int) -> str:
+    """Trim a label at a word boundary; never silently cut mid-word."""
+    text = text or ""
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0]
+    return cut.rstrip(",;:") + "..."
+
+
 def esc(v) -> str:
     return html.escape("" if v is None else str(v), quote=True)
 
@@ -444,8 +453,10 @@ def page_index() -> str:
   <h2>What the data still cannot tell you</h2>
   <ul class="tight">
     <li><strong>No 8:00 AM start exists</strong> on the Strip. The earliest official start
-      found is 9:00 AM (Horseshoe, six daily events). The all-day plan therefore starts at
-      9:00 AM, not 8:00 AM.</li>
+      found is 9:00 AM (Horseshoe, six daily events); Caesars Palace opens at 10:00 AM; the
+      Venetian's earliest is 9:10 AM (Dec 12, event #46, a $260 turbo satellite). Among the
+      full tournaments, the Venetian's earliest start is 10:10 AM. The all-day plan therefore
+      starts at 9:00 AM or later, never 8:00 AM.</li>
     <li><strong>Room rates are dynamic.</strong> No official page quotes a fixed rate; the
       rate log stores dated booking-UI snapshots with their timestamp and nothing else.</li>
     <li><strong>Walking times between different resorts are not verified.</strong> Only
@@ -742,8 +753,9 @@ figure, not a published finish time.
 """) + panel("""
 <strong>8:00 AM cannot be met.</strong> No Strip room publishes an 8:00 AM tournament in the
 sources read. Horseshoe's official daily slate starts at 9:00 AM (six events: 9 AM, 11 AM,
-2 PM, 5 PM, 8 PM, 11 PM); Caesars Palace starts at 10:00 AM; the Venetian's earliest is
-9:10 AM. A full day is therefore 9:00 AM onward, not 8:00 AM onward.
+2 PM, 5 PM, 8 PM, 11 PM); Caesars Palace starts at 10:00 AM; the Venetian's earliest start is
+9:10 AM on Dec 12 (event #46, a turbo satellite), and its earliest full-tournament start is
+10:10 AM. A full day is therefore 9:00 AM onward, not 8:00 AM onward.
 """, "panel warn-panel") + """
 <h2>Primary event and conditional fallback, every day with a scheduled row</h2>
 {plan}
@@ -1356,63 +1368,117 @@ every verdict from the stored rule fields and fails the build if one cannot be r
 
 
 def page_exec() -> str:
+    """Executive summary, every number generated from the capture."""
     best = sorted([e for e in CONFIRMED if e.get("gtd") and e.get("buyin")],
                   key=lambda e: -e["gtd"])[:5]
     top_rows = [[name_cell(e, "../"),
                  esc(fdate(e["date"])) + " &middot; " + ftime(e["time"]),
                  money_or_blank(e.get("buyin")), money_or_blank(e.get("gtd")),
                  ratio_cell(e),
-                 badge("warn", "Guarantee conflict") if e.get("gtd_conflict")
-                 else badge("muted", "Single source"),
+                 (badge("warn", "Guarantee conflict") if e.get("gtd_conflict")
+                  else badge("muted", "Agrees")),
                  row_source_cell(e, "../")] for e in best]
     top_tbl = table(["Event", "Date &middot; start", "Buy-in", "Guarantee",
-                     "Guarantee &divide; buy-in", "Guarantee detail", "Source"],
+                     "Guarantee &divide; buy-in", "Schedule vs sheet", "Source"],
                     top_rows, 6, "exec-top")
-    days = len({e["date"] for e in EVENTS})
     plan = day_plans()
-    playable = sum(1 for d in plan.values() if d["fallback"])
+    days = len(plan)
+    with_fb = sum(1 for d in plan.values() if d["fallback"])
+    conflicts = [d for d in (EV.get("discrepancies") or [])
+                 if d["kind"] == "guarantee_conflict"]
+    earliest = min((e for e in EVENTS if e.get("time")),
+                   key=lambda e: to_min(e["time"]) or 9999)
+    fees = {}
+    for h in HOTEL_ROWS:
+        if h.get("resort_fee_usd") is not None:
+            fees.setdefault(h["resort_fee_usd"], []).append(h["hotel"].split(" (")[0])
+    fee_text = "; ".join("{}: {}".format(money(f), ", ".join(sorted(set(n))))
+                         for f, n in sorted(fees.items()))
+    cash_entries = [e for e in CONFIRMED if e.get("format") != "satellite"]
+    cheapest = min((e for e in cash_entries if e.get("buyin")),
+                   key=lambda e: e["buyin"])
+    largest = max([e for e in cash_entries if e.get("gtd")], key=lambda e: e["gtd"])
     body = panel("""
 <h2>Executive summary</h2>
-<p><strong>The trip this site can actually support.</strong> A Las Vegas Strip poker trip
-between {first} and {last}, built on confirmed single-entry tournaments at The Venetian, with
-the option of a second event on {playable} of the {days} scheduled days and a Wynn or
-Caesars Palace session on the days the Venetian schedule has nothing that fits.</p>
+<p><strong>The trip this site can support:</strong> a Strip poker trip between
+{first} and {last}, built on the {conf} tournaments that pass the single-entry test at The
+Venetian, with a second event on {withfb} of the {days} scheduled days, and hotel nights whose
+resort fee and tax are official while the room rate is read from the official booking page for
+your dates.</p>
 <ol class="tight">
-  <li><strong>Tournament supply is strong and official.</strong> {rows} scheduled rows were
-    read from the official Venetian page; {conf} pass the single-entry test, {multi} are
-    multi-flight or multi-entry, and {rest} are restart rows of an event already counted.</li>
-  <li><strong>Costs are known except the room rate.</strong> Buy-ins, house fees, guarantees,
-    resort fees and the room tax are all official. The only moving number is the nightly room
-    rate, which no official page fixes; it is logged with a timestamp instead of guessed.</li>
-  <li><strong>The day plan is honest.</strong> Every day gets one primary event and a
-    fallback only when a later official start clears the primary's derived exit by 30
-    minutes. {playable} of {days} days have a feasible fallback.</li>
-  <li><strong>The 8:00 AM goal is not achievable on the Strip.</strong> The earliest official
-    start is 9:00 AM at Horseshoe; Caesars Palace opens at 10:00 AM; the Venetian's earliest
-    is 9:10 AM.</li>
-  <li><strong>Three guarantee disagreements are published rather than hidden</strong>, and
-    every unverified item is on the Flagged page with what would clear it.</li>
+  <li><strong>Supply is strong and fully read.</strong> {rows} scheduled rows come from the
+  official Venetian DeepStack Extravaganza IV page. {conf} are confirmed single-entry, {multi}
+  are multi-flight or multi-entry (separate section), {rest} are restart rows of an event
+  already counted. All {sheets} distinct structure-sheet PDFs were downloaded and read, so the
+  rule fields in every confirmed row are official values with their own quote.</li>
+  <li><strong>How "confirmed single-entry" is decided.</strong> The row's own sheet lists that
+  event number, describes a one-day event, and contains no re-entry, rebuy, add-on,
+  double-entry, alternate-stack or purchased-chip language. Rows that fail any part of that
+  test are not in the single-entry table, and the standard itself is published on
+  <a href="sources.html">Sources &amp; method</a> so it can be challenged.</li>
+  <li><strong>Cheapest confirmed cash entry is {cheap_b} buy-in, {cheap_name}</strong>; the
+  largest confirmed guarantee is {large_g} ({large_name}). Guarantee &divide; buy-in is shown
+  as a descriptive ratio, never a forecast. Satellites are marked with a Satellite badge and
+  are left out of these two figures, because their prize is a seat in another event rather
+  than cash.</li>
+  <li><strong>Official fees found:</strong> {fees}. Room tax is 13.38% under the Clark County
+  ordinance table for a resort hotel inside the primary gaming corridor. Caesars Palace and
+  Horseshoe fees are still missing, so those nights cannot be costed yet.</li>
+  <li><strong>The day plan is playable, not idealised.</strong> Every scheduled day gets one
+  primary event and, where a later official start clears the primary's derived exit by 30
+  minutes, a fallback. {withfb} of {days} days have a feasible fallback; the rest show "none
+  feasible" instead of a sequence you could not play. Restart rows (Day 2, Day 3, final table)
+  are shown in their own column so a continuation day is never mistaken for a fresh entry.</li>
+  <li><strong>The 8:00 AM goal cannot be met.</strong> The earliest official start anywhere on
+  the Strip is {earliest_t} ({earliest_n}). The Venetian's earliest full-tournament start is
+  10:10 AM. A full day therefore starts at 9:00 AM at the earliest.</li>
+  <li><strong>{nconf} official-source disagreements are published, not resolved.</strong> Where
+  a schedule row and its structure sheet print different guarantees, the row shows both and
+  links both. Nothing is averaged or chosen.</li>
 </ol>
-""") + """
+""".format(first=fdate(min(e["date"] for e in EVENTS)),
+           last=fdate(max(e["date"] for e in EVENTS)),
+           rows=len(EVENTS), conf=len(CONFIRMED), multi=len(MULTI), rest=len(RESTARTS),
+           sheets=SCRAPE.get("sheets_total", "?"), withfb=with_fb, days=days,
+           fees=fee_text, cheapest="",
+           cheap_b=money(cheapest.get("buyin")),
+           cheap_name=esc(shorten(cheapest["name"], 64)),
+           large_g=money(largest.get("gtd")),
+           large_name=esc(shorten(largest["name"], 64)),
+           earliest_t=ftime(earliest.get("time", "")),
+           earliest_n=esc(shorten(earliest.get("name", ""), 64)),
+           nconf=len(conflicts))) + """
 <h2>The five largest confirmed single-entry guarantees</h2>
 {top}
-<h2>What to decide first</h2>
+<h2>What to decide first, in order</h2>
 {decisions}
+<h2>What this page cannot tell you, and why</h2>
+{limits}
 """.format(top=top_tbl, decisions=panel("""
 <ol class="tight">
-  <li><strong>Dates and nights.</strong> Everything financial keys off them (Q01).</li>
-  <li><strong>A nightly cap and a quality standard.</strong> Without the second, the hotel
-    table cannot rank by quality at all (Q02, S08).</li>
-  <li><strong>Whether a map measurement is acceptable as a walking-time source.</strong> If
-    yes, off-property hotels can enter the 30-minute filter (Q05, S07).</li>
-  <li><strong>Whether to read rates by hand or link out to the booking page.</strong> The
-    booking engines are dynamic and restrictive (S06).</li>
+  <li><strong>Dates, nights and party size.</strong> Every cost answer keys off them (Q01).</li>
+  <li><strong>A nightly cap and a quality standard.</strong> No official page publishes a
+  quality score, so the hotel ranking cannot include quality until you pick a standard
+  (Q02, S08).</li>
+  <li><strong>Whether a named map service may be used as the walking-time source.</strong>
+  Until then only on-property hotels can pass the 30-minute rule (Q05, S07).</li>
+  <li><strong>Whether to read booking rates by hand or link out.</strong> The official booking
+  engines are dynamic and restrict automated use (S06).</li>
 </ol>
-""", "panel warn-panel")).format(
-        first=fdate(min(e["date"] for e in EVENTS)), 
-        last=fdate(max(e["date"] for e in EVENTS)),
-        rows=len(EVENTS), conf=len(CONFIRMED), multi=len(MULTI), rest=len(RESTARTS),
-        days=days, playable=playable)
+""", "panel warn-panel"), limits=panel("""
+<ul class="tight">
+  <li><strong>Room rates:</strong> dynamic; the rate log stores dated snapshots instead of a
+  single value, because a single value would be wrong for any other stay.</li>
+  <li><strong>Finishing times:</strong> not published anywhere. The exit time on the schedule
+  page is derived from each sheet's late-registration level count and is labelled as derived.</li>
+  <li><strong>Off-property walking times:</strong> no casino publishes one; they stay blank.</li>
+  <li><strong>Bellagio, MGM Grand and ARIA tournament schedules:</strong> the official material
+  is undated, stale, or absent, so no row from those rooms is classified.</li>
+  <li><strong>Wynn festival rows:</strong> the festival window and Main Event dates are
+  official; the per-event structures were not read row by row.</li>
+</ul>
+""", "panel"))
+    return body
 
 
 def page_repo_review() -> str:
