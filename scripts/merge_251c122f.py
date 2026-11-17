@@ -230,6 +230,13 @@ def main() -> int:
         else:
             verdict = "unverified"
 
+        restriction = ""
+        if re.search(r"senior|must be 50", lower):
+            restriction = "50+ only (official row states the age limit)"
+        elif re.search(r"ladies|lips", lower):
+            restriction = "women's event (official row names it a Ladies / LIPS event)"
+        elif "tag team" in lower or "team" in lower:
+            restriction = "team event"
         if "bounty" in lower or "pko" in lower or "knock-out" in lower or "knockout" in lower:
             fmt = "bounty"
         elif "satellite" in lower:
@@ -292,6 +299,7 @@ def main() -> int:
             "guarantee_seats": sheet.get("guarantee_seats") if sheet_ok else None,
             "gtd_conflict": gtd_conflict,
             "format": fmt,
+            "restriction": restriction,
             "verdict": verdict,
             "single_entry_confirmed": verdict == "single_entry_confirmed",
             "one_day_minutes": one_day_minutes,

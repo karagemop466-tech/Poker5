@@ -514,7 +514,9 @@ def events_table(rows, base="", show_rules=True) -> str:
             ratio_cell(e),
             format_badge(e) + (" " + badge("warn", "Guarantee conflict")
                                if e.get("gtd_conflict") else ""),
-            verdict_badge(e),
+            (verdict_badge(e) +
+             ('<br><span class="badge badge-warn" title="{}">Restricted</span>'
+              .format(esc(e.get("restriction"))) if e.get("restriction") else "")),
             ("{} min".format(lvls["value"])
              if lvls.get("value") else '<span class="blank">blank</span>'),
             (money(chips["value"])
@@ -621,45 +623,65 @@ def day_plans():
     """Per-day primary event + conditional fallback from official times.
 
     A day's primary event is the confirmed single-entry row with the largest
-    published guarantee. The fallback is a later event on the same day that a
-    player can still reach: its start must be at least 30 minutes after the
-    primary's derived playing-day length ends. If none fits, the fallback is
-    "none feasible" rather than an impossible sequence.
+    published guarantee (always preferring a row whose own sheet could be read).
+    The fallback is a later row whose official start time is at least 30 minutes
+    after the primary's derived playing-day length ends. If none fits, the day
+    says "none feasible" instead of proposing an impossible sequence.
     """
     by_day: dict[str, list] = {}
     for e in EVENTS:
         if e.get("date"):
             by_day.setdefault(e["date"], []).append(e)
+    def playable(r):
+        """A row you can actually enter as a tournament.
+
+        Satellites only award a seat in another event, and restart rows are the
+        continuation of an event already counted, so neither can be a day's
+        primary tournament.
+        """
+        return (r.get("verdict") != "restart" and r.get("format") != "satellite"
+                and not r.get("restriction"))
+
     plans = {}
     for date, rows in by_day.items():
-        confirmed_today = [r for r in rows if r.get("verdict") == "single_entry_confirmed"]
-        if confirmed_today:
-            primary = max(confirmed_today, key=lambda r: (r.get("gtd") or 0))
-        else:
-            primary = max(rows, key=lambda r: (r.get("gtd") or 0))
+        cands0 = [r for r in rows if playable(r)] or rows
+        ranked = sorted(
+            cands0,
+            key=lambda r: (r.get("verdict") not in
+                           ("single_entry_confirmed", "multi_flight"),
+                           -(r.get("gtd") or 0),
+                           r.get("verdict") != "single_entry_confirmed"))
+        primary = ranked[0]
         end = None
         if primary.get("one_day_minutes") and primary.get("time"):
             end = (to_min(primary["time"]) or 0) + primary["one_day_minutes"]
         fallback = None
         if end is not None:
             cands = [r for r in rows
-                     if r is not primary
-                     and r.get("verdict") == "single_entry_confirmed"
+                     if r is not primary and playable(r)
                      and (to_min(r["time"]) or 0) >= end + 30]
             if cands:
-                fallback = min(cands, key=lambda r: to_min(r["time"]) or 0)
-        # real overlap: two confirmed events whose derived windows collide
+                fallback = max(
+                    cands, key=lambda r: (r.get("verdict") == "single_entry_confirmed",
+                                          to_min(r["time"]) or 0))
         overlaps = []
-        for a in confirmed_today:
-            for b in confirmed_today:
-                if a is b:
+        for a in rows:
+            if a.get("verdict") != "single_entry_confirmed" or not a.get("one_day_minutes"):
+                continue
+            for b in rows:
+                if a is b or b.get("verdict") == "restart":
                     continue
                 a0, b0 = to_min(a["time"]), to_min(b["time"])
-                if a0 is None or b0 is None or not a.get("one_day_minutes"):
+                if a0 is None or b0 is None:
                     continue
                 if a0 <= b0 < a0 + a["one_day_minutes"]:
                     overlaps.append((a, b))
+        cont = "; ".join(
+            "#{} &middot; {} &middot; {}".format(r.get("event_no"), ftime(r["time"]),
+                                              esc(r.get("name", "")[:48]))
+            for r in rows if r.get("verdict") == "restart")
         plans[date] = {"primary": primary, "fallback": fallback, "overlaps": overlaps,
+                       "continuation": cont,
                        "rows": sorted(rows, key=lambda r: to_min(r["time"]) or 0)}
     return plans
 
@@ -677,17 +699,20 @@ def page_schedule() -> str:
         plan_rows.append([
             "<strong>{}</strong>".format(esc(fdate(date))),
             name_cell(pr, "../") + "<br>" + ftime(pr["time"]) + " &middot; " + verdict_badge(pr),
-            (name_cell(fb, "../") + "<br>" + ftime(fb["time"])
-             if fb else '<span class="blank">none feasible</span>'),
-            (esc(end_txt) + ' <span class="tiny">(derived playing-day length, not a '
-             'scheduled finish)</span>' if end_txt else '<span class="blank">blank</span>'),
+            (name_cell(fb, "../") + "<br>" + ftime(fb["time"]) + " &middot; " +
+             verdict_badge(fb) if fb else '<span class="blank">none feasible</span>'),
+            (esc(end_txt) + '<br><span class="tiny">derived: official start + sheet '
+             'late-reg levels, not a published finish</span>' if end_txt
+             else '<span class="blank">blank</span>'),
             ("; ".join("#{} &times; #{}".format(a["event_no"], b["event_no"])
                        for a, b in p["overlaps"]) or "None") if p["overlaps"] else "None",
+            p["continuation"] or '<span class="muted">none</span>',
             row_source_cell(pr, "../"),
         ])
     plan_tbl = table(["Date", "Primary event", "Conditional fallback", "Earliest realistic "
-                      "exit from the primary", "Confirmed events whose windows collide",
-                      "Source"], plan_rows, 5, "dayplan")
+                      "exit from the primary", "Other entries whose windows collide",
+                      "Continuation of an earlier event (official restart row)",
+                      "Source"], plan_rows, 6, "dayplan")
     day_rows = []
     for date in sorted(plans):
         for e in plans[date]["rows"]:
