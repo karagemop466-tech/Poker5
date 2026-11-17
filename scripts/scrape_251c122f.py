@@ -312,6 +312,13 @@ def parse_structure(text: str) -> dict:
 
     m = re.search(r"Level Duration\s*:\s*(\d+)\s*minute", level_line, re.I)
     level_minutes = int(m.group(1)) if m else None
+    if level_minutes is None:
+        # Fallback: the blind table's own rows are "level  minutes  ante  blinds".
+        for line in lines:
+            m = re.match(r"^1\s+(\d{1,3})\s+[\d,]+\s+[\d,]+-", line)
+            if m:
+                level_minutes = int(m.group(1))
+                break
 
     m = re.search(r"Late Registration\s*:\s*(.+)$", late_line, re.I)
     late_text = m.group(1).strip() if m else ""
@@ -321,6 +328,19 @@ def parse_structure(text: str) -> dict:
 
     m = re.search(r"Guarantee\s*:\s*\$([\d,]+)", gtd_line, re.I)
     guarantee = int(m.group(1).replace(",", "")) if m else None
+    # A shared sheet can print a guarantee that applies only to named events
+    # ("Guarantee: $30,000 ... Event #16" / "for Event #14 and #63"). Record
+    # which events the guarantee line names, so the merge never applies a
+    # guarantee to an event the sheet does not promise it for.
+    named = []
+    if gtd_line:
+        tail = re.sub(r"^.*?Guarantee\s*:", "", gtd_line, flags=re.I)
+        for tok in re.findall(r"(?:Event\s*#?\s*|#)(\d{1,2})", tail, re.I):
+            n = int(tok)
+            if n and n not in named:
+                named.append(n)
+    m = re.search(r"Guarantee\s*:\s*(\d+)\s*Seats?", gtd_line or "", re.I)
+    guarantee_seats = int(m.group(1)) if m else None
 
     m = re.search(r"\$([\d,]+)\s+of the\s+\$([\d,]+)\s+Buy-?In is withheld", fee_line, re.I)
     house_fee = int(m.group(1).replace(",", "")) if m else None
@@ -347,6 +367,12 @@ def parse_structure(text: str) -> dict:
             rule_hits.append({"keyword": kw,
                               "excerpt": flat[start:m.end() + 90].strip()})
 
+    level_count = 0
+    for line in lines:
+        m = re.match(r"^(\d{1,2})\s+\d{1,3}\s+[\d,]+\s+[\d,]+-[\d,]+", line)
+        if m:
+            level_count = max(level_count, int(m.group(1)))
+
     rules = []
     for line in lines:
         if re.match(r"^\d{1,2}\.\s", line) or re.match(r"^[a-d]\.\s", line):
@@ -361,12 +387,15 @@ def parse_structure(text: str) -> dict:
         "start_time_label": start_line,
         "starting_chips": starting_chips,
         "level_minutes": level_minutes,
+        "level_count": level_count,
         "late_registration": late_text,
         "late_registration_clock": late_clock,
         "late_registration_levels": late_levels,
         "chips_line": chips_line,
         "level_line": level_line,
         "guarantee": guarantee,
+        "guarantee_events": named,
+        "guarantee_seats": guarantee_seats,
         "guarantee_line": gtd_line,
         "house_fee": house_fee,
         "fee_buyin": fee_buyin,
@@ -378,6 +407,7 @@ def parse_structure(text: str) -> dict:
         "restriction_keywords": rule_hits,
         "adds_a_second_entry": bool(rule_hits),
         "rules_excerpt": rules_excerpt,
+        "rules_text": flat[:5000],
         "text_length": len(flat),
         "text_sha256": hashlib.sha256(flat.encode("utf-8")).hexdigest(),
     }
@@ -529,8 +559,10 @@ SAMPLE = """$200 No Limit Hold'em Bounty (1Day)
 $200 No Limit Hold'em Bounty (1Day)
 
 Level Time Big Blind Ante Blinds
-
+1 30 200 100-200
+2 30 300 200-300
 15 Minute Break / Remove 100 Chips Registration Closes
+3 30 400 200-400
 
 **Event Numbers:** 09, 11, 13, 15, 21, 22, 23, 25, 60, 61, 62, and 64
 **Start Time:** 5:10 PM
@@ -553,6 +585,8 @@ Level Time Big Blind Ante Blinds
 def main_self_test() -> int:
     got = parse_structure(SAMPLE)
     expect = {
+        "guarantee_events": [],
+        "guarantee_seats": None,
         "late_registration_clock": "21:40",
         "late_registration_levels": 8,
         "guarantee": 8000,
@@ -563,6 +597,7 @@ def main_self_test() -> int:
         "pool_per_entry": 160,
         "adds_a_second_entry": False,
         "start_time": "17:10",
+        "level_count": 3,
     }
     bad = []
     for k, v in expect.items():
@@ -580,6 +615,17 @@ def main_self_test() -> int:
     <td>$200 No Limit Hold'em Bounty $8K GTD (1Day)</td>
     <td><a href="https://www.venetianlasvegas.com/x/dse_nov_2026-structure_1.pdf">View</a></td></tr>
     </table>"""
+    # guarantee scoped to a named event must be recorded as scoped
+    scoped = parse_structure(SAMPLE.replace(
+        "**Guarantee:** $8,000 (prize pool + total bounties)",
+        "**Guarantee:** $30,000 for Event #14 and #63"))
+    if scoped.get("guarantee_events") != [14, 63] or scoped.get("guarantee") != 30000:
+        bad.append("scoped guarantee: {}".format(scoped.get("guarantee_events")))
+    seats = parse_structure(SAMPLE.replace(
+        "**Guarantee:** $8,000 (prize pool + total bounties)", "**Guarantee:** 2 Seats"))
+    if seats.get("guarantee_seats") != 2:
+        bad.append("seats: {}".format(seats.get("guarantee_seats")))
+
     rows = parse_schedule_html(html_sample)
     if len(rows) != 2:
         bad.append("html rows: {}".format(rows))

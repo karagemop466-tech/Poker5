@@ -75,7 +75,8 @@ def main() -> int:
                                   e["date"], e["time"], e["event_no"]))
         if v in ("unverified",) and sheet_ok and covered and not adds \
                 and not sheet.get("multi_day_format") \
-                and not sheet.get("flight_language"):
+                and not sheet.get("flight_language") \
+                and not re.search(r"\b1[a-f]\b", e.get("name", ""), re.I):
             errors.append("{} {} #{}: left unverified although its read sheet "
                           "supports single entry".format(
                               e["date"], e["time"], e["event_no"]))
@@ -89,6 +90,17 @@ def main() -> int:
             errors.append("{} {} #{}: confirmed without a sheet retrieval date".format(
                 e["date"], e["time"], e["event_no"]))
 
+    # A guarantee printed on a structure sheet must be recorded with the scope
+    # the sheet states, and a conflict must never be filled in silently.
+    for e in merged["events"]:
+        conf = e.get("gtd_conflict")
+        if conf:
+            if not conf.get("schedule") or not conf.get("sheet"):
+                errors.append("{} {} #{}: guarantee conflict not recorded with "
+                              "both values".format(e["date"], e["time"], e["event_no"]))
+            if e.get("gtd_basis") != "structure sheet":
+                errors.append("{} {} #{}: conflicted guarantee not attributed"
+                              .format(e["date"], e["time"], e["event_no"]))
     for n, s in structures["sheets"].items():
         if not s.get("url"):
             errors.append("sheet {}: no URL".format(n))

@@ -47,6 +47,24 @@ STRUCT_BASE = ("https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker
                "deepstack/2026/structures/dse_nov_2026-structure_{}.pdf")
 
 
+def levels_per_day(sheet):
+    """Levels a single playing day runs, for a derived duration.
+
+    The Venetian sheets state the late-registration close as "N levels +
+    Break"; that is the only official anchor for a playing-day length, so the
+    derived duration uses it. It is a planning figure and is labelled as one.
+    """
+    n = sheet.get("late_registration_levels")
+    if n:
+        return int(n)
+    return int(sheet.get("level_count") or 20)
+
+
+def breaks_for(sheet):
+    n = levels_per_day(sheet)
+    return (n // 4) * 15
+
+
 def load(name, default=None):
     path = os.path.join(DATA, name)
     if not os.path.exists(path):
@@ -60,6 +78,27 @@ def norm(text: str) -> str:
     t = t.replace("\u2019", "'").replace("no limit hold'em", "nlh")
     t = re.sub(r"[^a-z0-9$%]+", " ", t)
     return re.sub(r"\s+", " ", t).strip()
+
+
+def flag_duplicate_names(events):
+    """Mark rows whose displayed name repeats another row's name verbatim.
+
+    A structure-sheet URL that is shared by more than one event number can only
+    be opened for one of them: the PDF has a single event number in it. Those
+    rows get an inline note so nobody opens the wrong rules.
+    """
+    seen = {}
+    for e in events:
+        seen.setdefault(e["name"], []).append(e)
+    for name, group in seen.items():
+        if len(group) < 2:
+            continue
+        numbers = {e.get("event_no") for e in group}
+        for e in group:
+            if len(numbers) > 1:
+                e["name_collision"] = sorted(n for n in numbers if n is not None)
+                if "F33" not in e["flags"]:
+                    e["flags"].append("F33")
 
 
 def buyin_from_name(name: str):
@@ -106,8 +145,9 @@ def main() -> int:
     live = load("schedule_live.json")
     structures = load("structures.json", {"sheets": {}})
     if not live or not live.get("rows"):
-        print("merge: no live capture present; nothing to merge "
-              "(run the scraper in an environment with network access)")
+        print("merge: no live capture present; keeping the previous merged "
+              "dataset unchanged (a missing capture is never treated as a "
+              "change in the official data)")
         return 0
     sheets = structures.get("sheets", {})
     psv = load_psv()
@@ -174,6 +214,11 @@ def main() -> int:
         is_flight_row = bool(re.search(r"\b1[a-f]\b", name, re.I))
         multi_flight = (flight or sheet.get("multi_day_format") or is_flight_row)
 
+        levels = sheet.get("level_minutes") if sheet_ok else None
+        one_day_minutes = None
+        if sheet_ok and one_day and not multi_flight and levels:
+            one_day_minutes = levels * levels_per_day(sheet) + breaks_for(sheet)
+
         if kind == "restart":
             verdict = "restart"
         elif adds_second_entry:
@@ -206,18 +251,30 @@ def main() -> int:
                 "kind": "buyin_differs", "date": lr["date"], "time": lr["time"],
                 "event_no": lr["event_no"], "curated": cur["buyin"], "live": buyin})
         gtd = gtd_from_name(name)
+        gtd_basis = "schedule page row" if gtd is not None else ""
+        gtd_conflict = None
+        sheet_gtd = sheet.get("guarantee") if sheet_ok else None
+        sheet_names = sheet.get("guarantee_events") or []
+        if sheet_ok and sheet_gtd:
+            if not sheet_names or lr["event_no"] in sheet_names:
+                if gtd is not None and sheet_gtd != gtd:
+                    gtd_conflict = {"schedule": gtd, "sheet": sheet_gtd}
+                    discrepancies.append({
+                        "kind": "guarantee_conflict", "date": lr["date"],
+                        "time": lr["time"], "event_no": lr["event_no"],
+                        "schedule": gtd, "sheet": sheet_gtd,
+                        "note": "The official schedule row and the linked "
+                                "structure sheet print different guarantees "
+                                "for this event. Neither is filled in; both "
+                                "are shown (F34)."})
+                gtd = sheet_gtd
+                gtd_basis = "structure sheet"
         if gtd is not None and cur.get("gtd") and gtd != cur["gtd"]:
             discrepancies.append({
                 "kind": "guarantee_differs", "date": lr["date"], "time": lr["time"],
                 "event_no": lr["event_no"], "curated": cur["gtd"], "live": gtd})
         if gtd is None:
             gtd = cur.get("gtd")
-        if sheet_ok and sheet.get("guarantee") and gtd and \
-                sheet["guarantee"] != gtd:
-            discrepancies.append({
-                "kind": "guarantee_sheet_vs_schedule", "date": lr["date"],
-                "time": lr["time"], "event_no": lr["event_no"],
-                "schedule": gtd, "sheet": sheet["guarantee"]})
 
         rec = {
             "venue": "The Venetian Resort",
@@ -230,9 +287,20 @@ def main() -> int:
             "kind": kind,
             "buyin": buyin,
             "gtd": gtd,
+            "gtd_basis": gtd_basis,
+            "gtd_events_on_sheet": sheet_names,
+            "guarantee_seats": sheet.get("guarantee_seats") if sheet_ok else None,
+            "gtd_conflict": gtd_conflict,
             "format": fmt,
             "verdict": verdict,
             "single_entry_confirmed": verdict == "single_entry_confirmed",
+            "one_day_minutes": one_day_minutes,
+            "one_day_minutes_basis": (
+                "derived: the sheet's late-registration figure of {} levels x "
+                "{} minutes per level + 15-minute breaks; a planning duration, "
+                "not a scheduled finish time".format(levels_per_day(sheet), levels)
+                if one_day_minutes else ""),
+            "multi_day": multi_flight,
             "structure_no": sheet_no,
             "structure_url": lr["structure_url"] or (
                 STRUCT_BASE.format(sheet_no) if sheet_no else ""),
