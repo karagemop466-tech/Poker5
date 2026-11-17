@@ -638,7 +638,7 @@ def build_index():
     write("index.html", page("Las Vegas Strip poker trip planner", "".join(body), "index.html", 0))
 
 
-ARCHIVE_SKIP = {"pages", "assets", "data", "scripts", "work", "tools", "docs"}
+ARCHIVE_SKIP = {"pages", "assets", "data", "scripts", "work", "tools"}
 
 
 def archive_entries():
@@ -656,12 +656,13 @@ def archive_entries():
 
 def archive_block(depth):
     pre = "../" * depth
-    items = "".join('<li><a href="%s%s">%s</a></li>' % (pre, h, esc(t)) for h, t in archive_entries())
+    entries = archive_entries()
+    items = "".join('<li><a href="%s%s">%s</a></li>' % (pre, h, esc(t)) for h, t in entries)
     return ('<div class="panel"><h2>Earlier sessions (kept, not edited)</h2>'
             '<p class="muted">%d agent sessions built dashboards or planners in their own folders. They are '
             'preserved exactly as they were and are not part of this verified root site. Use the pages above for '
             'current answers.</p><div class="archive"><ul class="clean">%s</ul></div></div>'
-            % (len(items), items))
+            % (len(entries), items))
 
 
 def build_tournaments():
