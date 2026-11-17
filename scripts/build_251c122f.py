@@ -504,6 +504,30 @@ def page_index() -> str:
   <a class="card" href="pages/sources.html"><h3>Sources &amp; method</h3>
     <p>Every official URL, when it was read, and the confirmation standard used.</p></a>
 </section>
+<section class="panel">
+  <h2>Other dashboards preserved in this repository</h2>
+  <p class="muted">Earlier parallel sessions published their own dashboards on the same brief.
+  They are kept unchanged and are linked here so nothing is hidden; their numbers may differ
+  from this page because they were built before every structure sheet had been read.</p>
+  <ul class="tight">
+    <li><a href="site-b50aa7f5/index.html">Strict-entry research dashboard</a> — 11 event
+      records, a separate source ledger, and a strict rule that publishes no event as
+      single-entry until it is one-entry-overall verified.</li>
+    <li><a href="docs/index.html">Official-source site (session 581fea93)</a> — the
+      DeepStack Extravaganza IV schedule and the WPT / Wynn festival pages.</li>
+    <li><a href="dashboard-6d1e0039/index.html">Verified dashboard (session 6d1e0039)</a> —
+      change monitoring with a six-hourly source check.</li>
+    <li><a href="site-afff1fc9/index.html">Monitor site (session afff1fc9)</a> — a daily
+      official-source check with change markers.</li>
+    <li><a href="pages/method.html">Method</a>, <a href="pages/monitor.html">Monitor</a> and
+      <a href="pages/routes.html">Routes</a> pages from session ea99006a.</li>
+  </ul>
+  <p class="muted">The room tax is described in full on
+  <a href="pages/hotels.html">Hotels</a>: the 13.38% rate is the Clark County ordinance figure
+  for a resort hotel inside the primary gaming corridor, and whether the resort fee is included
+  in that tax base is not stated on the official pages read, so it remains unverified. The fee's
+  own tax treatment is confirmed on the folio at checkout.</p>
+</section>
 """.format(cards=cards, n_conf=n_conf, sheets=SCRAPE.get("sheets_read", "?"),
            best=best_tbl, fees=fee_tbl,
            window=(fdate(first) + " to " + fdate(last)) if first else "")
@@ -935,17 +959,22 @@ guesses it. This is a planning estimate, not a booking quote.
   <div class="calc-grid">
     <div>
       <h3>1. Stay</h3>
-      <label>Nights <input id="nights" type="number" min="1" value="7"></label>
+      <label>Nights <input id="nights" type="number" min="1" placeholder="e.g. 7"></label>
       <label>Hotel <select id="hotel" onchange="poker5LoadHotel()">
         <option value="">-- choose a hotel to load its official fee --</option>
         {hotels}
       </select></label>
       <label>Nightly room rate ($) — from the official booking page
-        <input id="rate" type="number" min="0" step="1" placeholder="e.g. 199"></label>
+        <input id="rate" type="number" min="0" step="1" placeholder="no date-specific quote recorded"></label>
       <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1"></label>
-      <label>Room tax (%) <input id="tax" type="number" min="0" step="0.01" value="{tax}"></label>
+      <label>Room tax (%) <input id="tax" type="number" min="0" step="0.01" value="{tax}"
+        title="Clark County ordinance rate for a resort hotel in the primary gaming corridor; confirm on the official booking page."></label>
       <p class="muted">Fee is loaded from the hotel you pick and confirmed on that hotel's
-      official page. Tax is the Clark County rate tied to the ordinance table.</p>
+      official page. Tax is the Clark County rate tied to the ordinance table. An unknown
+      rate is never treated as zero: the trip total stays incomplete until a dated room quote
+      is entered.</p>
+      <p class="tiny">The 13.38% figure is the Clark County ordinance rate for a resort hotel inside the primary gaming corridor. Whether the resort fee is included in the tax base remains unverified on the official pages read; the fee's own tax treatment is confirmed on the folio at checkout.</p>
+      <p id="hotel-status" class="tiny">Incomplete. No date-specific room quote is currently recorded for this stay, so the true nightly cost and the trip total cannot be completed yet.</p>
     </div>
     <div>
       <h3>2. Tournaments</h3>
@@ -1735,13 +1764,39 @@ border-top:1px solid var(--line)}
                                        maximumFractionDigits: 0 });
   }
 
+  /* A stay counts as complete only when nights, the official resort fee and a
+     dated room quote are all present. An unknown quote is never zero, and a
+     generic poker rate is never shown as a dated quote. */
+  window.hotelComplete = function () {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    return Boolean(nights > 0 && rate > 0 && fee !== "" && fee !== null &&
+                   fee !== undefined);
+  };
+
+  function hotelStatus() {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    if (!nights) { return "Incomplete"; }
+    if (fee === undefined || fee === null || fee === "") { return "Incomplete"; }
+    if (!rate) {
+      return "Incomplete. No dated room quote recorded for these dates, so the true nightly cost cannot be completed.";
+    }
+    return window.hotelComplete() ? "Complete" : "Incomplete";
+  }
+
   window.poker5LoadHotel = function () {
     var sel = document.getElementById("hotel");
     if (!sel || !sel.value) return;
     var opt = sel.options[sel.selectedIndex];
     var fee = opt.getAttribute("data-fee");
     var box = document.getElementById("fee");
-    if (box && fee !== null && fee !== "") { box.value = fee; }
+    if (box) {
+      /* An unknown fee stays blank, never zero. */
+      box.value = (fee !== null && fee !== "") ? fee : "";
+    }
     window.renderTotals();
   };
 
@@ -1794,6 +1849,8 @@ border-top:1px solid var(--line)}
     var nb = document.getElementById("sum-nightly");
     if (nb) { nb.textContent = usd(nightly); }
     document.getElementById("sum-total").textContent = usd(entriesTotal + hotel);
+    var statusBox = document.getElementById("hotel-status");
+    if (statusBox) { statusBox.textContent = hotelStatus(); }
   };
 
   document.addEventListener("DOMContentLoaded", function () {

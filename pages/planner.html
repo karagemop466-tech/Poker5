@@ -37,17 +37,22 @@ guesses it. This is a planning estimate, not a booking quote.
   <div class="calc-grid">
     <div>
       <h3>1. Stay</h3>
-      <label>Nights <input id="nights" type="number" min="1" value="7"></label>
+      <label>Nights <input id="nights" type="number" min="1" placeholder="e.g. 7"></label>
       <label>Hotel <select id="hotel" onchange="poker5LoadHotel()">
         <option value="">-- choose a hotel to load its official fee --</option>
         <option value="The Venetian Resort" data-fee="55" data-name="The Venetian Resort">The Venetian Resort &middot; fee $55 (+13.38% tax)</option><option value="The Palazzo (same resort as The Venetian)" data-fee="55" data-name="The Palazzo (same resort as The Venetian)">The Palazzo (same resort as The Venetian) &middot; fee $55 (+13.38% tax)</option><option value="Wynn Las Vegas" data-fee="55" data-name="Wynn Las Vegas">Wynn Las Vegas &middot; fee $55 (+13.38% tax)</option><option value="Encore at Wynn Las Vegas" data-fee="55" data-name="Encore at Wynn Las Vegas">Encore at Wynn Las Vegas &middot; fee $55 (+13.38% tax)</option><option value="Bellagio" data-fee="55" data-name="Bellagio">Bellagio &middot; fee $55 (+13.38% tax)</option><option value="ARIA Resort &amp; Casino" data-fee="55" data-name="ARIA Resort &amp; Casino">ARIA Resort &amp; Casino &middot; fee $55 (+13.38% tax)</option><option value="MGM Grand Las Vegas" data-fee="50" data-name="MGM Grand Las Vegas">MGM Grand Las Vegas &middot; fee $50 (+13.38% tax)</option><option value="Caesars Palace" data-fee="" data-name="Caesars Palace">Caesars Palace &middot; fee not verified (+13.38% tax)</option><option value="Horseshoe Las Vegas" data-fee="" data-name="Horseshoe Las Vegas">Horseshoe Las Vegas &middot; fee not verified (+13.38% tax)</option>
       </select></label>
       <label>Nightly room rate ($) — from the official booking page
-        <input id="rate" type="number" min="0" step="1" placeholder="e.g. 199"></label>
+        <input id="rate" type="number" min="0" step="1" placeholder="no date-specific quote recorded"></label>
       <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1"></label>
-      <label>Room tax (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"></label>
+      <label>Room tax (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"
+        title="Clark County ordinance rate for a resort hotel in the primary gaming corridor; confirm on the official booking page."></label>
       <p class="muted">Fee is loaded from the hotel you pick and confirmed on that hotel's
-      official page. Tax is the Clark County rate tied to the ordinance table.</p>
+      official page. Tax is the Clark County rate tied to the ordinance table. An unknown
+      rate is never treated as zero: the trip total stays incomplete until a dated room quote
+      is entered.</p>
+      <p class="tiny">The 13.38% figure is the Clark County ordinance rate for a resort hotel inside the primary gaming corridor. Whether the resort fee is included in the tax base remains unverified on the official pages read; the fee's own tax treatment is confirmed on the folio at checkout.</p>
+      <p id="hotel-status" class="tiny">Incomplete. No date-specific room quote is currently recorded for this stay, so the true nightly cost and the trip total cannot be completed yet.</p>
     </div>
     <div>
       <h3>2. Tournaments</h3>
@@ -76,7 +81,7 @@ guesses it. This is a planning estimate, not a booking quote.
   <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
   Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
   If gambling is a problem, call 1-800-522-4700.</div>
-  <div>Site built 2026-11-17T22:52Z from the official-source capture of 2026-11-17T22:49:01Z.
+  <div>Site built 2026-11-17T22:57Z from the official-source capture of 2026-11-17T22:49:01Z.
     Code: <a href="https://github.com/karagemop466-tech/Poker5">github.com/karagemop466-tech/Poker5</a> &middot;
     Task board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
     Data: <a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></div>

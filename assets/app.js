@@ -69,13 +69,39 @@
                                        maximumFractionDigits: 0 });
   }
 
+  /* A stay counts as complete only when nights, the official resort fee and a
+     dated room quote are all present. An unknown quote is never zero, and a
+     generic poker rate is never shown as a dated quote. */
+  window.hotelComplete = function () {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    return Boolean(nights > 0 && rate > 0 && fee !== "" && fee !== null &&
+                   fee !== undefined);
+  };
+
+  function hotelStatus() {
+    var nights = parseFloat((document.getElementById("nights") || {}).value) || 0;
+    var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
+    var fee = (document.getElementById("fee") || {}).value;
+    if (!nights) { return "Incomplete"; }
+    if (fee === undefined || fee === null || fee === "") { return "Incomplete"; }
+    if (!rate) {
+      return "Incomplete. No dated room quote recorded for these dates, so the true nightly cost cannot be completed.";
+    }
+    return window.hotelComplete() ? "Complete" : "Incomplete";
+  }
+
   window.poker5LoadHotel = function () {
     var sel = document.getElementById("hotel");
     if (!sel || !sel.value) return;
     var opt = sel.options[sel.selectedIndex];
     var fee = opt.getAttribute("data-fee");
     var box = document.getElementById("fee");
-    if (box && fee !== null && fee !== "") { box.value = fee; }
+    if (box) {
+      /* An unknown fee stays blank, never zero. */
+      box.value = (fee !== null && fee !== "") ? fee : "";
+    }
     window.renderTotals();
   };
 
@@ -128,6 +154,8 @@
     var nb = document.getElementById("sum-nightly");
     if (nb) { nb.textContent = usd(nightly); }
     document.getElementById("sum-total").textContent = usd(entriesTotal + hotel);
+    var statusBox = document.getElementById("hotel-status");
+    if (statusBox) { statusBox.textContent = hotelStatus(); }
   };
 
   document.addEventListener("DOMContentLoaded", function () {
