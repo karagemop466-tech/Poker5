@@ -1493,34 +1493,22 @@ def page_planner():
             when=esc(fmt_date(date)) if date else "recurring",
             venue=esc(venue), tag=esc(tag), qual="1" if (buyin or 0) >= 300 else "0")
         for name, buyin, gtd, venue, date, tag in options)
-    hotel_opts, h_note = [], {}
+    hotel_opts = []
     for h in hotels:
-        fee = h.get("resort_fee_usd")
-        rate = h.get("nightly_rate") or h.get("poker_rate") or ""
-        m = re.search(r"\$([0-9][0-9,]*)", rate or "")
-        rate_num = float(m.group(1).replace(",", "")) if m else None
-        h_note[h.get("hotel")] = (rate_num, fee)
-        label = "{hotel} (rate {rate}, fee {fee}{note})".format(
+        # Never turn a generic "from" / poker-suite rate into a dated booking quote.
+        # Only the user-entered, date-specific rate can populate the calculator.
+        fee = h.get("resort_fee_usd") if h.get("fee_verified") else None
+        label = "{hotel} (official fee {fee}; dated room rate not recorded)".format(
             hotel=esc(h.get("hotel")),
-            rate=("" if rate_num is None else "${:,.0f}".format(rate_num)),
-            fee=("" if fee is None else "${:,.0f}".format(fee)),
-            note="" if rate_num is not None else ", rate not verified")
-        hotel_opts.append((h.get("hotel"), rate_num, fee, label))
+            fee=("${:,.2f}".format(fee) if fee is not None else "not verified"))
+        fee_source = h.get("fee_source") or h.get("source") or ""
+        hotel_opts.append((h.get("hotel"), fee, fee_source, h.get("resort_fee_retrieved", ""), label))
     h_opts = "\n".join(
-        '      <option value="{name}" data-rate="{rate}" data-fee="{fee}">{label}</option>'.format(
-            name=esc(name), rate=("" if rate is None else rate), fee=("" if fee is None else fee),
-            label=label)
-        for name, rate, fee, label in hotel_opts)
-    nights = 7
-    venetian = h_note.get("The Venetian Resort", (None, 55))
+        '      <option value="{name}" data-fee="{fee}" data-fee-source="{source}" data-fee-date="{date}">{label}</option>'.format(
+            name=esc(name), fee=("" if fee is None else fee), source=esc(source),
+            date=esc(date), label=label)
+        for name, fee, source, date, label in hotel_opts)
     worked = ""
-    if venetian[0]:
-        per_night = (venetian[0] + venetian[1]) * 1.1338
-        worked = ("<tr><td>Worked example: 7 nights at the official poker-suite rate</td>"
-                  "<td>(${r} + ${f}) &times; (1 + {t}%) &times; {n} nights</td><td>{tot}</td>"
-                  "<td>Rate is 'as low as' and conditional on the published play requirement - "
-                  "not a quote (F28, F29)</td></tr>").format(
-            r=venetian[0], f=venetian[1], t="13.38", n=nights, tot=money(round(per_night * nights)))
     logged = [e for e in rates_log.get("entries", []) if e.get("checkout_total")]
     for e in logged:
         worked += ("<tr><td>{h}: logged booking-UI total, {ci} &rarr; {co}</td>"
@@ -1531,26 +1519,28 @@ def page_planner():
             ts=esc(e.get("rate_timestamp", "")))
     body = """
 <section class="panel">
-  <strong>Trip cost calculator.</strong> Total = (entries &times; buy-ins) + (nights &times; true
-  hotel cost per night), where true hotel cost = room rate + mandatory resort fee + tax.
-  Every buy-in comes from the linked official source; the entry list is not limited to confirmed
-  single-entry events because no event in this series is confirmed single-entry (F27) - each option
-  carries its status label instead. This is a planning estimate, not a booking quote.
+  <strong>Trip cost calculator.</strong> Estimated total = (entries &times; buy-ins) + (nights &times; true
+  hotel cost per night), where true hotel cost = dated room rate + mandatory resort fee + tax.
+  No date-specific room quote is currently recorded, so the hotel and grand totals stay incomplete
+  until a rate is supplied; missing inputs are never treated as zero. Every buy-in comes from the linked
+  official schedule. Event options show their entry-policy status and do not imply single-entry when
+  the source is silent. This is a planning estimate, not a booking quote.
 </section>
 <div class="panel">
   <div class="calc-grid">
     <div>
       <h3>1. Trip</h3>
-      <label>Nights <input id="nights" type="number" min="1" value="7"></label>
-      <label>Nightly room rate ($) <input id="rate" type="number" min="0" step="1" placeholder="not verified - enter a quoted rate"></label>
-      <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1" value="55"></label>
+      <label>Nights <input id="nights" type="number" min="1" step="1" placeholder="enter stay length"></label>
+      <label>Dated nightly room rate ($) <input id="rate" type="number" min="0.01" step="0.01" placeholder="no date-specific quote recorded"></label>
+      <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="0.01" placeholder="select hotel or enter verified fee"></label>
       <label>Tax rate (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"></label>
       <label>Hotel <select id="hotel">
-          <option value="">-- pick a hotel to load its logged rate/fee --</option>
+          <option value="">-- select hotel to load only its verified fee --</option>
 {h_opts}
         </select></label>
-      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax is the Clark County
-      corridor rate cited on the Hotels page; the fee's own tax treatment is confirmed on the folio (F45).</p>
+      <p id="hotel-evidence" class="muted">No hotel source selected. A dated room quote is required for a hotel total.</p>
+      <p class="muted">Modeled formula = (room rate + resort fee) &times; (1 + tax%). The 13.38% rate is cited on the Hotels page;
+      whether the resort fee is included in the tax base remains unverified (F45), so this is not an itemized quote.</p>
     </div>
     <div>
       <h3>2. Entries</h3>
@@ -1960,7 +1950,7 @@ APP_JS = r"""
   var entries = [];
   window.poker5AddEntry = function () {
     var sel = document.getElementById("event");
-    var count = parseInt(document.getElementById("count").value, 10) || 1;
+    var count = Math.max(1, parseInt(document.getElementById("count").value, 10) || 1);
     if (!sel.value) return;
     var opt = sel.options[sel.selectedIndex];
     var buyin = parseFloat(opt.getAttribute("data-buyin").replace(/[^0-9.]/g, "")) || 0;
@@ -1999,20 +1989,26 @@ APP_JS = r"""
     var sumT = document.getElementById("sum-total");
     if (!sumE) return;
     var entriesTotal = entries.reduce(function (s, e) { return s + e.buyin * e.count; }, 0);
-    var nights = parseFloat(document.getElementById("nights").value) || 0;
-    var rate = parseFloat(document.getElementById("rate").value) || 0;
-    var fee = parseFloat(document.getElementById("fee").value) || 0;
-    var tax = (parseFloat(document.getElementById("tax").value) || 0) / 100;
-    var trueNightly = (rate + fee) * (1 + tax);
-    var hotelTotal = trueNightly * nights;
+    var nightsInput = document.getElementById("nights").value;
+    var rateInput = document.getElementById("rate").value;
+    var feeInput = document.getElementById("fee").value;
+    var taxInput = document.getElementById("tax").value;
+    var nights = nightsInput === "" ? NaN : Number(nightsInput);
+    var rate = rateInput === "" ? NaN : Number(rateInput);
+    var fee = feeInput === "" ? NaN : Number(feeInput);
+    var tax = taxInput === "" ? NaN : Number(taxInput) / 100;
+    var hotelComplete = Number.isFinite(nights) && nights > 0 &&
+      Number.isFinite(rate) && rate > 0 && Number.isFinite(fee) && fee >= 0 &&
+      Number.isFinite(tax) && tax >= 0;
+    var hotelTotal = hotelComplete ? (rate + fee) * (1 + tax) * nights : null;
     sumE.textContent = "$" + entriesTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-    sumH.textContent = "$" + hotelTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-    sumT.textContent = "$" + (entriesTotal + hotelTotal).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    sumH.textContent = hotelComplete ? "$" + hotelTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) : "Incomplete";
+    sumT.textContent = hotelComplete ? "$" + (entriesTotal + hotelTotal).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) : "Incomplete";
     var qualBox = document.getElementById("sum-qual");
     if (qualBox) {
       var nightsCovered = 0;
       entries.forEach(function (e) { if (e.qualifies) nightsCovered += e.count; });
-      qualBox.textContent = nightsCovered + " of " + nights + " night(s)";
+      qualBox.textContent = Number.isFinite(nights) ? nightsCovered + " of " + nights + " night(s)" : "Enter nights";
     }
   };
 
@@ -2022,11 +2018,36 @@ APP_JS = r"""
     if (hotel) {
       hotel.addEventListener("change", function () {
         var opt = hotel.options[hotel.selectedIndex];
-        if (!opt.value) return;
-        var rate = opt.getAttribute("data-rate");
-        var fee = opt.getAttribute("data-fee");
-        if (rate !== "") document.getElementById("rate").value = parseFloat(rate).toFixed(0);
-        if (fee !== "") document.getElementById("fee").value = parseFloat(fee).toFixed(0);
+        var rateInput = document.getElementById("rate");
+        var feeInput = document.getElementById("fee");
+        var evidence = document.getElementById("hotel-evidence");
+        // A hotel change invalidates the previous hotel's manually entered quote.
+        rateInput.value = "";
+        feeInput.value = "";
+        if (evidence) {
+          evidence.textContent = opt.value ? "No dated room quote recorded for " + opt.value + "." :
+            "No hotel source selected. A dated room quote is required for a hotel total.";
+          var fee = opt.getAttribute("data-fee");
+          var source = opt.getAttribute("data-fee-source");
+          var date = opt.getAttribute("data-fee-date");
+          if (opt.value && fee !== "") {
+            feeInput.value = Number(fee).toFixed(2);
+            evidence.textContent += " Official resort fee: $" + Number(fee).toFixed(2) +
+              " per night" + (date ? " (retrieved " + date + ")" : "") + ". Source: ";
+            if (source && /^https:\/\//.test(source)) {
+              var a = document.createElement("a");
+              a.href = source;
+              a.target = "_blank";
+              a.rel = "noopener";
+              a.textContent = "official fee page";
+              evidence.appendChild(a);
+            } else {
+              evidence.appendChild(document.createTextNode("not recorded"));
+            }
+          } else if (opt.value) {
+            evidence.textContent += " No official fee amount is verified; hotel total remains incomplete.";
+          }
+        }
         renderTotals();
       });
     }

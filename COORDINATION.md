@@ -2,6 +2,16 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — 5d8999d6 (active)
+
+**Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
+
+**Files:** `COORDINATION.md`, `scripts/build_c6087e2c.py`, `assets/app.js`, generated `pages/planner.html`, and focused tests only. No source research values will be promoted or edited. Existing official source records remain linked and unchanged.
+
+**Status:** done (2026-11-17). The current planner parsed a generic “from” poker-suite rate as a dated nightly quote, preloaded a resort fee without hotel selection, and reported an all-in total when the required room rate was blank. Removed those misleading defaults: nights and dated room rate start blank; only an official fee explicitly marked verified is loaded on hotel selection; changing hotels clears the prior rate; missing room-rate/fee/date/tax inputs produce “Incomplete,” never a zero-cost hotel or a misleading grand total. Kept the published formula, but flags uncertainty about tax applied to the fee (F45). The 2026-11-16 booking snapshot remains on the dated rates log, not elevated into a current quote.
+
+**Verification:** `python3 scripts/build_c6087e2c.py` passed (14 pages; no data edits); `node --check assets/app.js`; `python3 scripts/check_root_site.py`; `npm test` (9/9); `git diff --check`. Added a test preventing zero-filled hotel totals and generic “from” rates from reappearing. Data values and their official citations were not changed or newly marked verified.
+
 ## Current branch session — a9d1e02d (active)
 
 **Branch:** `arena/a9d1e02d-poker5` (fixed by Arena). **Role:** final integration and official-source re-audit. No other active scope is shown in this board. This session claims the following non-overlapping scope before implementation:
