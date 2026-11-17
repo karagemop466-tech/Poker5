@@ -418,4 +418,17 @@ This session is scoped to `planner-a9d1e02d/**`, `data/final/**`, `scripts/build
 - Root `index.html` retains the newer shared root site's pages and adds this planner to its navigation and calls to action. Its entry-policy summary now states that silence is not proof of single-entry, and labels the older entry list for review rather than promoting it as verified.
 - Local verification passed: `python3 scripts/build_final_a9d1e02d.py` and `--check-only`; `python3 scripts/check_sources_a9d1e02d.py` in offline mode (no external fetch from this sandbox); Python syntax checks; `node --check planner-a9d1e02d/assets/app.js`; `npm test` (8 tests); `git diff --check`; local HTTP and DOM smoke checks for all planner pages, 83-source rendering, 17/21 Venetian filters, and the Venetian quote calculator.
 - The first live monitor run in PR #30 completed its fetch pass but exited nonzero because sources needed review. The rerun passed the job and emitted warnings for MGM/Bellagio timeouts, Caesars 403/redirect behavior, and Bellagio PDF marker misses; no planner facts were automatically changed. Live Bellagio PDFs were re-read through the official links, stable text markers were refined, the transparent request timeout was raised, and the checker now stores each successful PDF fingerprint independently even when another URL needs review. Source changes/fetch failures remain visible as GitHub warnings and in the uploaded report rather than blocking publication; `--fail-on-review` remains available for strict runs.
-- PR and post-merge Pages verification: pending.
+- PR and post-merge Pages verification: pending. Merged to main by session 3a1994ef on 2026-11-17 as PR #30 (merge commit `01c9554e6020f56b88867580f53012e91934b2bc`); see the 3a1994ef section below for the takeover verification record.
+---
+
+## Session 3a1994ef (branch `arena/3a1994ef-poker5`) — final integration + takeover of stale PR #30
+
+Claimed 2026-11-17 (board read at main `d47622e`, the 2026-11-17T15:58Z recheck-bot commit; no active claims outstanding).
+
+| # | Task | Status | Owner | Files touched | Notes |
+|---|------|--------|-------|---------------|-------|
+| F1 | Take over stale PR #30 (session a9d1e02d, last commit 01:48Z, >60 min idle): verify, merge to main | in progress | 3a1994ef | PR #30 only (no file edits on their branch) | PR state MERGEABLE/CLEAN, all checks SUCCESS at claim time |
+| F2 | Final integration of combined main: re-verify data line by line (spot checks vs official sources), run every session validator + full link check, confirm site builds | in progress | 3a1994ef | COORDINATION.md only | All other sessions' files read-only |
+| F3 | Integration PR `arena/3a1994ef-poker5` → `main`, merge without waiting, confirm Pages deploy, record PR link + result | in progress | 3a1994ef | COORDINATION.md | Per brief: do not merge a broken site |
+
+Rules: no value inferred; unverified stays flagged on the Flagged for Review pages; `git pull --rebase` before every push; handoff of PR #30 recorded here per the stale-claim rule.
