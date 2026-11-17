@@ -2,6 +2,23 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — a9d1e02d (active)
+
+**Branch:** `arena/a9d1e02d-poker5` (fixed by Arena). **Role:** final integration and official-source re-audit. No other active scope is shown in this board. This session claims the following non-overlapping scope before implementation:
+
+- `COORDINATION.md` — this claim and final integration log only.
+- `index.html` — final landing-page integration/link only.
+- `planner-a9d1e02d/**` — new unified Pages dashboard and its venue pages/assets.
+- `data/final/**` — official-source event/rule records, hotel/source ledgers and monitoring baselines.
+- `scripts/build_final_a9d1e02d.py`, `scripts/check_sources_a9d1e02d.py` — owned build/monitor scripts.
+- `.github/workflows/source-monitor-a9d1e02d.yml` — scheduled source re-check workflow.
+
+**Tasks:** read the live Venetian DSE IV schedule and all 37 referenced structure PDFs; represent entry caps, re-entry, add-ons, fees, late registration and rule citations separately; carry forward other official venue records only with explicit uncertainty; build the unified, dated, filterable planner and trip-cost calculator; provide venue pages, official hotel booking/source links, route links and explicit unknowns; schedule official-source change checks; validate build, links and row-level sourcing; then create the requested PR and verify Pages deployment without overwriting any other session's research.
+
+**Status at claim:** research in progress; no event or hotel value newly promoted as verified. Initial PDF notes are in `data/final/structure-notes.md` and remain uncommitted until this claim is published.
+
+---
+
 ## Session
 
 | Session ID | Status | Branch |
