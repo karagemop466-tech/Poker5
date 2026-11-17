@@ -339,6 +339,8 @@ def parse_structure(text: str) -> dict:
         "late_registration": late_text,
         "late_registration_clock": late_clock,
         "late_registration_levels": late_levels,
+        "chips_line": chips_line,
+        "level_line": level_line,
         "guarantee": guarantee,
         "guarantee_line": gtd_line,
         "house_fee": house_fee,
