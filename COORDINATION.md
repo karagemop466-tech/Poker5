@@ -827,3 +827,12 @@ Full ledger with links on `pages/method.html`.
   and appending this one; no other session's record was discarded.
 - **Integration PR #43:** https://github.com/karagemop466-tech/Poker5/pull/43
   (base `main`, head `arena/ea99006a-poker5`).
+  Merged 2026-11-17T22:44:33Z as merge commit `a9d7ddddb1de79bdec2fc77742d039cc9443c73a` with
+  `gh pr merge 43 --merge`.
+- **Follow-up PR #44:** https://github.com/karagemop466-tech/Poker5/pull/44 - fixed the session count in the
+  landing-page archive panel (it printed a string length, 766, instead of 13 folders) and included `docs/` in
+  the auto-discovered archive. Merged 2026-11-17T22:46:53Z.
+- **GitHub Pages deployment confirmed live:** source `main` `/`, Pages status `built` (build
+  2026-11-17T22:47:37Z), https://karagemop466-tech.github.io/Poker5/ fetched successfully and shows the
+  published landing page: 247 verified schedule rows, 0 confirmed single-entry, 47 rows with no re-entry text,
+  92 re-entry/multi-flight rows, 27 flagged items, and 13 preserved session folders.
