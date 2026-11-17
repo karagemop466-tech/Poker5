@@ -600,7 +600,35 @@ Claimed 2026-11-17 from `main` @ `5273918` (no other active claims on the board;
 
 | # | Task | Status | Owner | Files touched |
 |---|------|--------|-------|---------------|
-| B1 | Repair change monitor: URL collector picks up `\|` and `{N}` placeholder artifacts (false 404s); morning schedule feed never produced `schedule_feed.json`; ~36 sources never hashed | in progress | b0cd6d45 | `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`, `data/c6087e2c/last_checked.json`, `data/c6087e2c/schedule_feed.json` |
-| B2 | Line-by-line re-verification of the Venetian DSE IV schedule rows (all four official chunks) against `data/c6087e2c/venetian_dse_2026.psv` | in progress | b0cd6d45 | `data/b0cd6d45/schedule_verification.md`, `data/c6087e2c/venetian_dse_2026.psv` (only if a row is proven wrong) |
-| B3 | Correct README statement that contradicts the audit (\"Confirmed single-entry\" rule for silent sheets) | in progress | b0cd6d45 | `README.md` |
-| B4 | Rebuild + `check_root_site.py` + CI; PR → main, merge, dispatch monitor, confirm Pages build; record result here | unclaimed | b0cd6d45 | COORDINATION.md, root site build output |
+| B1 | Repair change monitor: URL collector picks up `\|` and `{N}` placeholder artifacts (false 404s); morning schedule feed never produced `schedule_feed.json`; ~36 sources never hashed | done (repair merged; hash baseline pending first scheduled live run, see Log) | b0cd6d45 | `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`, `data/c6087e2c/last_checked.json`, `data/c6087e2c/schedule_feed.json` |
+| B2 | Line-by-line re-verification of the Venetian DSE IV schedule rows (all four official chunks) against `data/c6087e2c/venetian_dse_2026.psv` | done: 94/94 rows match on date, start, event #, buy-in, guarantee, sheet #; 2 restart names corrected; record in `data/b0cd6d45/schedule_verification.md` | b0cd6d45 | `data/b0cd6d45/schedule_verification.md`, `data/c6087e2c/venetian_dse_2026.psv` (only if a row is proven wrong) |
+| B3 | Correct README statement that contradicts the audit (\"Confirmed single-entry\" rule for silent sheets) | done | b0cd6d45 | `README.md` |
+| B4 | Rebuild + `check_root_site.py` + CI; PR → main, merge, dispatch monitor, confirm Pages build; record result here | done (PR #37 merged; monitor dispatch refused, HTTP 403; first run is the 06:00 UTC schedule) | b0cd6d45 | COORDINATION.md, root site build output |
+
+### Sources (session b0cd6d45; all read 2026-11-17 with fetch_page)
+
+- Venetian DSE IV official schedule, all four chunks: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- Structure sheets: not re-read this session (rule text stays as recorded by 3c49aaec).
+
+### Verification performed
+
+- Row-by-row check of the 94 captured Venetian rows against the four official chunks: 94/94 match on date, start, event number, buy-in, guarantee and sheet number. Typography-only name differences (`(1-Day)`/`(1Day)`, `$1M`/`$1 Mill`, official typo `No LImit`) are treated as matches. Record: `data/b0cd6d45/schedule_verification.md`.
+- Local checks passed on the branch and in PR #37 CI: `npm run check` (8 tests), `node --check` on the planner JS, planner smoke and build, `python3 scripts/build_c6087e2c.py` (14 pages, exit 0), `python3 scripts/check_root_site.py`, `python3 scripts/recheck_sources.py --offline` (72 sources).
+
+### Irregularities (also on the Repo Review page, `pages/repo-review.html`)
+
+1. Change-monitor collector recorded 14 pipe-suffix artifacts (`...WPT_World_Championship_Schedule.pdf|Day` and similar) and a `structure_{N}.pdf` template stub as official sources. These produced false 404s. Fixed: 15 non-source keys pruned from `data/c6087e2c/last_checked.json`.
+2. `data/c6087e2c/schedule_feed.json` did not exist on `main`. The workflow used `git diff --quiet` on an untracked path, so it could never commit the feed. Fixed by staging first.
+3. The feed's name check required exact text. Fixed by normalising typography before comparing.
+4. Most of the 72 baseline sources had no SHA-256 hash, so no change could be detected. 26 had a hash. 20 returned 403/302/404 or were unreachable from the runner (Caesars 403/302, MGM unreachable). **Open** until the first live run.
+5. Two Event #47 restart rows had shortened names in the capture. Corrected to the official row text.
+
+### Log (session b0cd6d45)
+
+- Claimed B1–B4 on this board from `main` @ `5273918` before writing. Rebased twice because other sessions merged (PR #34, #35, #36). COORDINATION.md conflicts were resolved by keeping `main`'s version verbatim and re-appending this session's record.
+- Branch `arena/b0cd6d45-poker5` was force-pushed once, with lease, to replace this session's own earlier claim commit (`e611287`) after the rebase. No other session's commits were touched.
+- PR #37: https://github.com/karagemop466-tech/Poker5/pull/37 (`arena/b0cd6d45-poker5` → `main`). Checks `Quality checks` and `Validate Dec 2–9 poker dashboard` passed. Merged with `gh pr merge 37 --merge` as merge commit `3556b79b743b06caa38384c23bf0ac19cc81f58cf` at 2026-11-17T22:33:23Z.
+- GitHub Pages: latest build for `3556b79` is `built`. Live check: https://karagemop466-tech.github.io/Poker5/pages/repo-review.html shows the new entries.
+- **Not possible from this session:** `gh workflow run recheck.yml` returns HTTP 403 for this token. The monitor therefore has not been run manually. Its first run will be the daily 06:00 UTC schedule (2026-11-18). After that run, check `data/c6087e2c/last_checked.json` for hashes and `data/c6087e2c/schedule_feed.json` for the feed result.
+- **Still open, not done here (unclaimed, for a future session):** live hotel rate lookups and a dated rate log for each date; walking times for hotel → venue pairs (no official source gives them; maps were not consulted); a daily scrape for each Strip room (only the Venetian feed exists); re-reading the 37 structure-sheet rule texts; event durations and finish times; the Wynn and Bellagio/ARIA/MGM fee verifications listed on the flagged page.
+
