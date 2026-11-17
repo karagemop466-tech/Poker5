@@ -1,0 +1,686 @@
+{
+  "note": "Verified facts for rows already captured in the read-only data/other_rooms.txt, keyed date|time|event name exactly as that file spells them. The build merges these onto the matching row instead of adding a duplicate; nothing in other_rooms.txt is edited.",
+  "retrieved": "2026-11-17",
+  "terms": {
+    "2026-11-27|11:00|No Limit Hold'em Day 1A": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-27|17:00|No Limit Hold'em Day 1B": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-28|11:00|No Limit Hold'em Day 1C": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1C",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-28|17:00|No Limit Hold'em Day 1D": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1D",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-29|11:00|No Limit Hold'em Day 1E": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1E",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-29|18:00|No Limit Hold'em Day 1F": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "20/40",
+      "my_name": "No Limit Hold'em Day 1F",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 No Limit Hold'em ($400,000 GTD). Nov 27-30, 2026 (Day 1A-1F) + Day 2 Nov 30",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$510 prize pool + $65 tournament fee + $25 poker staff service charge",
+      "stack": 40000
+    },
+    "2026-11-30|11:00|No Limit Hold'em Day 1A": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-11-30|17:00|No Limit Hold'em Day 1B": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-12-01|11:00|No Limit Hold'em Day 1C": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1C",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-12-01|17:00|No Limit Hold'em Day 1D": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1D",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-12-02|11:00|No Limit Hold'em Day 1E": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "30/40",
+      "my_name": "No Limit Hold'em Day 1E",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-12-02|18:00|No Limit Hold'em Day 1F": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "20/40",
+      "my_name": "No Limit Hold'em Day 1F",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $800 No Limit Hold'em ($1,000,000 GTD). Nov 30 - Dec 4, 2026 (Day 1A-1F, Day 2, final table)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$695 + $72 + $33",
+      "stack": 40000
+    },
+    "2026-12-03|11:00|No Limit Hold'em Day 1A": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,600 No Limit Hold'em ($1,000,000 GTD). Dec 3-5, 2026 (Day 1A, 1B, Day 2)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$1,430 + $120 + $50",
+      "stack": 40000
+    },
+    "2026-12-04|11:00|No Limit Hold'em Day 1B": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,600 No Limit Hold'em ($1,000,000 GTD). Dec 3-5, 2026 (Day 1A, 1B, Day 2)",
+      "reentry": "Unlimited re-entry for each starting flight ... until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$1,430 + $120 + $50",
+      "stack": 40000
+    },
+    "2026-12-05|11:00|No Limit Hold'em Day 2": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40/60",
+      "my_name": "WPT Prime Championship Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,100 WPT Prime Championship ($5,000,000 GTD). Dec 5-12, 2026 (4 starting flights)",
+      "reentry": "One (1) Entry and One (1) re-entry for each starting flight ... until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$970 + $90 + $40",
+      "stack": 40000
+    },
+    "2026-12-06|11:00|WPT Prime Championship Day 1B": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40/60",
+      "my_name": "WPT Prime Championship Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,100 WPT Prime Championship ($5,000,000 GTD). Dec 5-12, 2026 (4 starting flights)",
+      "reentry": "One (1) Entry and One (1) re-entry for each starting flight ... until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$970 + $90 + $40",
+      "stack": 40000
+    },
+    "2026-12-07|11:00|WPT Prime Championship Day 1C": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40/60",
+      "my_name": "WPT Prime Championship Day 1C",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,100 WPT Prime Championship ($5,000,000 GTD). Dec 5-12, 2026 (4 starting flights)",
+      "reentry": "One (1) Entry and One (1) re-entry for each starting flight ... until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$970 + $90 + $40",
+      "stack": 40000
+    },
+    "2026-12-08|11:00|WPT Prime Championship Day 1D": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "40/60",
+      "my_name": "WPT Prime Championship Day 1D",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $1,100 WPT Prime Championship ($5,000,000 GTD). Dec 5-12, 2026 (4 starting flights)",
+      "reentry": "One (1) Entry and One (1) re-entry for each starting flight ... until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight.",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$970 + $90 + $40",
+      "stack": 40000
+    },
+    "2026-12-10|10:00|Super Gold Million Mystery Bounty Day 1A": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30/40",
+      "my_name": "Super Gold Million Mystery Bounty Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-10|18:00|Super Gold Million Mystery Bounty Day 1B": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20/40",
+      "my_name": "Super Gold Million Mystery Bounty Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-11|10:00|Super Gold Million Mystery Bounty Day 1C": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30/40",
+      "my_name": "Super Gold Million Mystery Bounty Day 1C",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-11|18:00|Super Gold Million Mystery Bounty Day 1D": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20/40",
+      "my_name": "Super Gold Million Mystery Bounty Day 1D",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-12|10:00|No Limit Hold'em": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30",
+      "my_name": "No Limit Hold'em",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-12|21:00|NLH Turbo": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "20",
+      "my_name": "NLH Turbo",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 NLH Turbo ($50,000 GTD). Dec 5, 6, 7, 8, 9, 12, 14 at 9 PM; Dec 21 at 6 PM",
+      "reentry": "Unlimited re-entry will be available until the start of level 9",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$515 + $60 + $25",
+      "stack": 30000
+    },
+    "2026-12-13|11:00|Ladies NLH Championship (2 Day)": {
+      "category": "single",
+      "flags": [
+        "F26"
+      ],
+      "level_minutes": "40",
+      "my_name": "Ladies NLH Championship (2 Day)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-13|11:00|No Limit Hold'em Day 1A": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-13|11:00|WPT World Championship Day 1A ($1,000,000 added)": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "60/90",
+      "my_name": "WPT World Championship Day 1A ($1,000,000 added by ClubWPT Gold)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 100000
+    },
+    "2026-12-14|11:00|No Limit Hold'em Day 1B": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-14|11:00|WPT World Championship Day 1B ($1,000,000 added)": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "60/90",
+      "my_name": "WPT World Championship Day 1B ($1,000,000 added by ClubWPT Gold)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 100000
+    },
+    "2026-12-15|11:00|WPT World Championship Day 1C ($1,000,000 added)": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "60/90",
+      "my_name": "WPT World Championship Day 1C ($1,000,000 added by ClubWPT Gold)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 100000
+    },
+    "2026-12-17|11:00|Seniors NLH Championship (3 Day)": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "Seniors NLH Championship (3 Day)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-17|12:00|No Limit Hold'em Day 1A": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-18|11:00|No Limit Hold'em Day 1A": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-18|12:00|No Limit Hold'em Day 1B": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "No Limit Hold'em Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-18|19:00|No Limit Hold'em Day 1B": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20",
+      "my_name": "NLH Turbo",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-19|11:00|NLH Mystery Bounty Day 1A": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "NLH Mystery Bounty Day 1A",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-19|11:00|Seniors High Roller (3 Day)": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "60",
+      "my_name": "Seniors High Roller (3 Day)",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 50000
+    },
+    "2026-12-19|13:00|NLH 6-Max": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30",
+      "my_name": "NLH 6-Max",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-19|18:00|NLH 6-Max Turbo": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20",
+      "my_name": "NLH 6-Max Turbo",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-19|19:00|NLH Mystery Bounty Day 1B": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20/40",
+      "my_name": "NLH Mystery Bounty Day 1B",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-20|11:00|NLH Mystery Bounty Day 1C": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "40",
+      "my_name": "NLH Mystery Bounty Day 1C",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-20|12:00|No Limit Hold'em": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30",
+      "my_name": "No Limit Hold'em",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-20|19:00|NLH Mystery Bounty Day 1D": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "20/40",
+      "my_name": "NLH Mystery Bounty Day 1D",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 40000
+    },
+    "2026-12-21|12:00|No Limit Hold'em": {
+      "category": "single",
+      "flags": [
+        "F35"
+      ],
+      "level_minutes": "30",
+      "my_name": "No Limit Hold'em",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: this row. no sentence transcribed for this row",
+      "reentry": "",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "",
+      "stack": 30000
+    },
+    "2026-12-21|20:00|NLH Turbo": {
+      "category": "multi",
+      "flags": [],
+      "level_minutes": "20",
+      "my_name": "NLH Turbo",
+      "note": "Entry terms read from the official WPT structures PDF on 2026-11-17: $600 NLH Turbo ($50,000 GTD). Dec 5, 6, 7, 8, 9, 12, 14 at 9 PM; Dec 21 at 6 PM",
+      "reentry": "Unlimited re-entry will be available until the start of level 9",
+      "retrieved": "2026-11-17",
+      "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "single_entry": "not stated",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "split": "$515 + $60 + $25",
+      "stack": 30000
+    }
+  }
+}

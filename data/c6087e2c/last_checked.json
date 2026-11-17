@@ -1,28 +1,44 @@
 {
   "last_run": "2026-11-17T15:00:06Z",
-  "official_source_count": 51,
+  "official_source_count": 87,
   "sources": {
     "https://aria.mgmresorts.com/en/casino/poker.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "The read operation timed out",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "unreachable"
+    },
+    "https://bellagio.mgmresorts.com/book-room/": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
     },
     "https://bellagio.mgmresorts.com/en/casino/poker.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/walking.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "The read operation timed out",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "unreachable"
     },
+    "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf": {
+      "file": "data/c6087e2c/wynn_terms.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/other_events.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "3e044b35d9e175ad550acb3242ae9a6cba70f2793b64fd76faae31d23248815b",
       "status": "ok"
     },
@@ -35,10 +51,10 @@
       "status": "http_error"
     },
     "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "95c63a1317edfc86f733d81d96c726c55efe663f872eaa9541a7d21b51ef87cf",
       "status": "ok"
     },
@@ -67,10 +83,10 @@
       "status": "http_error"
     },
     "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/wynn_terms.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "14bddae06616462772d382533e6e95667e9c64bc5479c725e7f62ae84302a58c",
       "status": "ok"
     },
@@ -146,13 +162,45 @@
       "sha256": "",
       "status": "http_error"
     },
+    "https://cosmopolitanlasvegas.mgmresorts.com/en.html": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://cosmopolitanlasvegas.mgmresorts.com/redirect/bookaroom": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/walking.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "The read operation timed out",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "unreachable"
+    },
+    "https://parkmgm.mgmresorts.com/book-room/": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://parkmgm.mgmresorts.com/en.html": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
     },
     "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2": {
       "file": "data/c6087e2c/rates_log.json",
@@ -169,6 +217,22 @@
       "note": "HTTP 200",
       "sha256": "7d2f4f08d41b5e2e19fc726a949a0af6de3f7f008317ab3f4357f13cf56a0f01",
       "status": "ok"
+    },
+    "https://www.caesars.com/book/?propcode=CLV&action=FindRooms": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.caesars.com/caesars-palace": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
     },
     "https://www.caesars.com/caesars-palace/hotel": {
       "file": "data/c6087e2c/last_checked.json",
@@ -195,26 +259,34 @@
       "status": "http_error"
     },
     "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/walking.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "HTTP 302",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "http_error"
     },
+    "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf": {
+      "file": "data/c6087e2c/rates_log.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.mgmresorts.com/en/casino-resort-fees.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "The read operation timed out",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "unreachable"
     },
     "https://www.mgmresorts.com/en/hotel-policies.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "The read operation timed out",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "unreachable"
     },
@@ -229,106 +301,306 @@
     "https://www.venetianlasvegas.com/booking?adults[": {
       "file": "data/c6087e2c/rates_log.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "e5081aae74d81132618b55ab96483f2f5013c354acf6981d0a672d059d775efc",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "6a6605d79043462f09c85e5a03e9980aeffc1ccf0ba5064cce75d0e90dacb492",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
       "status": "ok"
     },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/structure_sheets.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
       "status": "ok"
+    },
+    "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf": {
+      "file": "data/c6087e2c/structure_sheets.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
     },
     "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_{N}.pdf": {
       "file": "data/c6087e2c/last_checked.json",
@@ -339,58 +611,74 @@
       "status": "http_error"
     },
     "https://www.venetianlasvegas.com/hotel/hotel-policies.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "HTTP 404",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "http_error"
     },
     "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/walking.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "ca488d2a4bf7507c4e00842f88b0e0b4c811050decc6d2ea0fc04f2678221d5c",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html": {
-      "file": "data/c6087e2c/rates_log.json",
+      "file": "data/c6087e2c/walking.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "34dfc3aa141c183f36f696ce150295936a8cda5319b3132f3da9659dc61fae2e",
       "status": "ok"
     },
     "https://www.venetianlasvegas.com/resort/resort-fee.html": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/hotels.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "30f6c5132a022fa21068d6634855de79cf6b42c4ea70d1461d82f25131067b66",
       "status": "ok"
     },
     "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/other_events.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "c9f127d260a505379ca3320ca91b5eda563a564295ad5c5ec619d2acc7c737ba",
       "status": "ok"
     },
+    "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026/details": {
+      "file": "data/c6087e2c/flags.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.worldpokertour.com/events/wpt-world-championship-2026/": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/flags.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-16",
-      "note": "HTTP 404",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "",
       "status": "http_error"
     },
+    "https://www.wynnlasvegas.com/": {
+      "file": "data/c6087e2c/hotels.json",
+      "first_recorded": "2026-11-17",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
+      "sha256": "",
+      "status": "recorded"
+    },
     "https://www.wynnlasvegas.com/casino/poker": {
-      "file": "data/c6087e2c/rates_log.json",
+      "file": "data/c6087e2c/wynn_terms.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "ef95acad7865dcec015460bcf3746e29dfcc630fdf93e827ddb63771fc73f8d3",
       "status": "ok"
     },
@@ -403,10 +691,10 @@
       "status": "ok"
     },
     "https://www.wynnlasvegas.com/terms-and-conditions/849338": {
-      "file": "data/c6087e2c/last_checked.json",
+      "file": "data/c6087e2c/rates_log.json",
       "first_recorded": "2026-11-16",
-      "last_checked": "2026-11-17T15:00:06Z",
-      "note": "HTTP 200",
+      "last_checked": "2026-11-17",
+      "note": "read in full by session 3c49aaec on 2026-11-17; content hash recorded by the next scheduled re-check run",
       "sha256": "a89a168ba3ea8b57d78998d2a1f6bb1677d617ff34b34266da689c4208fcb50b",
       "status": "ok"
     }

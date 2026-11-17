@@ -460,3 +460,82 @@ Claimed 2026-11-17 (board read at main `d47622e`, the 2026-11-17T15:58Z recheck-
 - GitHub Pages: source `main` `/`; the Pages build for the merge commit `b07089c` is `built` (Pages API `builds/latest`, created 2026-11-17T22:08:07Z; the sandbox cannot make direct HTTP requests to `github.io`); live at https://karagemop466-tech.github.io/Poker5/ with the planner subsite at https://karagemop466-tech.github.io/Poker5/planner-a9d1e02d/ .
 
 Rules: no value inferred; unverified stays flagged on the Flagged for Review pages; `git pull --rebase` before every push; handoff of PR #30 recorded here per the stale-claim rule.
+
+---
+
+## Session 3c49aaec (branch `arena/3c49aaec-poker5`) — full structure-sheet audit + root-site integration
+
+Started 2026-11-17 from `main` @ `d47622e`. Scope: the shared root site (`index.html`, `pages/**`, `assets/**`, `data/c6087e2c/**`, `scripts/build_c6087e2c.py`, `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`) plus this board. Other sessions' isolated folders (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`, other `scripts/*`) are read-only and are not edited.
+
+**Handoff note (per the 60-minute rule):** session 6d1e0039 left N1–N9 "in progress" with no commits after `d47622e` (15:58Z; this session started ~22:00Z). This session takes over the remaining items and records its own verification; `data-6d1e0039/` and `dashboard-6d1e0039/` are preserved untouched and used as a cross-check input only.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| K1 | Read EVERY Venetian DSE IV structure sheet (all 37 PDFs) and record the entry-rule text verbatim per event | in progress | 3c49aaec | data/c6087e2c/structure_sheets.json | venetianlasvegas.com structure PDFs, fetched 2026-11-17 | Goal: remove "unverified" only where a sheet states the rule; silence stays flagged |
+| K2 | Structured rule fields per event (single-entry, re-entry, add-on, fee) each with source excerpt + retrieval date | in progress | 3c49aaec | data/c6087e2c/, pages/tournaments.html | K1 sheets | |
+| K3 | Official-schedule re-capture (all 4 chunks) incl. the truncated Event #40 row | in progress | 3c49aaec | data/c6087e2c/venetian_dse_2026.psv | Official DSE IV page | |
+| K4 | Wynn/WPT + other Strip rooms official re-verification (schedule + structures) | in progress | 3c49aaec | data/c6087e2c/other_events.json | cdn.wynnresorts.com, WPT terms, official room pages | |
+| K5 | Hotels: official resort fee + tax basis, dated rate log, itemised totals, rate timestamp | in progress | 3c49aaec | data/c6087e2c/hotels.json, rates_log.json | Each property's official resort-fee page | |
+| K6 | Walking-route check (official addresses, ≤30 min filter) | in progress | 3c49aaec | data/c6087e2c/walking.json | Official property pages / maps deep links | Durations only where a source states them |
+| K7 | Root site: search box, date filter, single-entry toggle, trip-cost calculator, per-venue pages, overlap check, ratio ranking, exec summary, suggestions, questions, Flagged page | in progress | 3c49aaec | scripts/build_c6087e2c.py, index.html, pages/** | — | |
+| K8 | Scheduled source re-check: every official URL, last-checked per row, changed-source markers | in progress | 3c49aaec | scripts/recheck_sources.py, .github/workflows/recheck.yml, data/c6087e2c/last_checked.json | — | |
+| K9 | Build + validate (every row source-linked, no broken links), commit, push | unclaimed | 3c49aaec | all of this session's files | — | |
+| K10 | PR → main, merge, confirm Pages deploy, record result | unclaimed | 3c49aaec | COORDINATION.md | gh / Pages API | — |
+
+### Results (session 3c49aaec) — audit data applied to the root site, 2026-11-17
+
+Verification run locally, all green before the PR:
+
+```
+python3 scripts/audit_3c49aaec.py     -> writes the audited datasets into data/c6087e2c/
+python3 scripts/build_c6087e2c.py     -> built 14 pages; confirmed=0 unverified=48 multis=98 bounties=32 flags=47
+python3 scripts/check_root_site.py    -> root site check: links, source anchors and baseline OK
+python3 scripts/recheck_sources.py --offline -> baseline: 86 official sources recorded
+node --check assets/app.js            -> ok
+npm run check                         -> 8/8 tests pass (incl. the site-b50aa7f5 root-link assertion)
+node scripts/smoke_aa83f1e1.mjs / build_aa83f1e1.mjs -> ok; planner-aa83f1e1/ left untouched
+HTML tag-balance pass over index.html + pages/**      -> 0 files with unclosed or stray tags
+```
+
+What changed, file by file:
+
+| File | Change | Source basis |
+|------|--------|--------------|
+| `data/c6087e2c/venetian_dse_2026.psv` | Event #40 row recovered (`2026-12-10 12:10 $600 Pot Limit Omaha Bounty $25K GTD`, sheet 27); the `ROW TRUNCATED IN CAPTURE` placeholder is gone | official DSE IV schedule page + structure sheet 27, both read 2026-11-17 (F38) |
+| `data/c6087e2c/structure_sheets.json` (new) | 37 sheets → per-event `single_entry` / `re_entry` / `add_on` / fee split / guarantee wording / payout / late-registration close / stack / levels / verbatim excerpt / `retrieved: 2026-11-17`; 64 event numbers covered | `data-audit-3c49aaec/sheetnotes.md` |
+| `data/c6087e2c/other_events.json` | 4 prior WPT rows relabelled from the structures PDF (incl. the "$1,600 PLO $1M GTD" row corrected to $1,600 No Limit Hold'em $1M GTD, discrepancy recorded); 14 undated prior rows marked `superseded` instead of deleted; Wynn daily notes refreshed | WPT structures + schedule PDFs, Wynn poker page, read 2026-11-17 |
+| `data/c6087e2c/wpt_row_terms.json` (new) | 45 dated WPT rows' verified facts, keyed to the exact spellings in the read-only `data/other_rooms.txt` so the build enriches those rows instead of duplicating them | same PDFs |
+| `data/c6087e2c/hotels.json` | official fee pages per property (Venetian $55 + tax, Wynn $55 + tax for bookings on/after 2025-01-15); unverified numerics for Bellagio/ARIA/MGM Grand cleared to blank; parking/quality/cancellation blank with flags; official booking links added | each property's official page, read 2026-11-17 |
+| `data/c6087e2c/rates_log.json` | three dated observations with caveats (2026-11-16 booking-UI snapshots + the 2026-11-17 official poker-suite-rate page read); tax basis note tied to the Clark County ordinance | official booking UI + suite-rate page + ordinance PDF |
+| `data/c6087e2c/walking.json` | 22 routes; minutes only where an official source states them (on-property 0 min; "the poker room is located in the Encore tower"); every other pair blank with a Google Maps route link to measure once | official pages |
+| `data/c6087e2c/flags.json` | 22 new flags F27–F48 alongside the existing 25; F38 records the #40 recovery as cleared by this audit | as above |
+| `data/c6087e2c/questions.json`, `suggestions.json`, `repo_review.json`, `wynn_terms.json` (new) | 12 open questions, 11 suggestions, 9 repo findings, 13 WPT event terms + 9 general-term facts | as above |
+| `data/c6087e2c/last_checked.json` | 86 official URLs recorded as read 2026-11-17 (hashes left to the next scheduled run) | — |
+| `scripts/build_c6087e2c.py` | consumes the sheet audit: status `N` = "sheet read, no entry rule stated"; confirmed count now 0; new structured-rule-fields table (single-entry / re-entry / add-on / fee, each with the source excerpt and retrieval date); buy-in split, late-reg close, stack/levels columns; date selector wired to the shared filter; overlap check now uses official late-registration closes where published; planner lists all ranked candidates with a per-entry ≥$300 poker-rate qualifier check; questions/suggestions/repo-review render from data; multi-entry page rebuilt (A stated re-entry / B flights / C spend-advantage footnotes / D hotel play requirement) | — |
+| `scripts/recheck_sources.py` + `.github/workflows/recheck.yml` | new `--feed` mode: morning presence check of all 94 captured Venetian rows against the official page, writing `data/c6087e2c/schedule_feed.json`; a failed fetch keeps the previous feed and never marks a row changed | — |
+| `index.html`, `pages/**`, `assets/app.js`, `assets/css/style.css` | regenerated output of the build above, including the "Earlier session outputs" section that links each prior folder read-only | — |
+
+Decisions and standards applied (no other session's file was edited):
+- Written-rule standard: silence in a structure sheet is not a freezeout. Prior "31 confirmed single-entry" is now 0, with 51 Venetian rows labelled "sheet read, no entry rule stated" and every other field verified. This is flag F27, not a silent re-label.
+- Multi-flight Venetian events (#01, #07, #19, #26, #47, #49, #56) and every WPT event with a stated re-entry rule live on the multi-entry / advantage-through-spend page; satellites and no-guarantee events are excluded from the cash ranking (F39, F40, F41).
+- Nothing unverifiable was filled: Bellagio/Caesars/ARIA/MGM Grand resort fees, all hotel quality scores, all off-property walking minutes, event finish times and the $10,400 WPT entry cap are blank with flags (F33, F34, F42, F43, F44, F35).
+- Source-internal inconsistencies were flagged instead of corrected: Event #26 sheet cross-references (F37), the WPT schedule PDF's Dec 17/18 ordering and repeated lines (F47), the Wynn $55 fee coming from a 2025-dated promotional terms page (F30).
+- **Request to the root-site owner / next integration session:** `README.md` still describes the pre-audit state ("31 single-entry events confirmed" style counts from session 18e480cb) and does not mention the 37-sheet audit or `data-audit-3c49aaec/sheetnotes.md`. `README.md` is outside this session's claimed scope, so it was not edited. Please restate the headline counts from the regenerated site, or point the README at index.html as the source of truth.
+- `pages/hotels.html` previously showed a booking URL template with `{ci}`/`{co}` placeholders in a clickable link; the data now carries the worked-example dates (Dec 2–9, 2026) and labels them as an example rather than a quote.
+
+Rebase / conflict log (this session, required by the protocol):
+- `git pull --rebase origin main` hit COORDINATION.md twice because sessions a9d1e02d and 3a1994ef appended their
+  own sections at the same place. Resolved by taking `origin/main`'s file verbatim and re-appending only this
+  session's two blocks, so no other session's record was altered or dropped.
+- Their commit also touched the shared root site (`scripts/build_c6087e2c.py`, `data/c6087e2c/flags.json`,
+  `index.html`, `pages/**`). Resolved by keeping this session's regenerated versions and then re-applying their
+  three additive changes: the three cross-session nav links (`site-b50aa7f5/`, `dashboard-6d1e0039/`,
+  `planner-a9d1e02d/`), the "Final source-audited planner" entry in the earlier-session list, and the Horseshoe
+  venue-row wording ("6 starts; official page states a mixture of buy-ins; no uniform buy-in given"). Their strict
+  framing of the index is superseded by this audit's wording, which states the same standard with the sheet count.
+- Flag-id collision: session a9d1e02d added `F26` (WPT Ladies Championship buy-in footnote) to the shared
+  `data/c6087e2c/flags.json` while this session had numbered its findings `F26-F47`. Resolved by shifting this
+  session's ids to `F27-F48` everywhere (flags, rows, pages, this board) and keeping their `F26` byte-for-byte;
+  the Ladies row now also carries `F26` as a cross-reference. `flags.json` is contiguous `F01-F48` (48 items).
+- Their `data/c6087e2c/last_checked.json` baseline is preserved: this session only added newly seen official URLs
+  (87 recorded) and never rewrote an entry's earlier `first_recorded` date.
