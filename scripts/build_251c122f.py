@@ -269,7 +269,7 @@ def row_source_cell(e, base: str = "") -> str:
 
 
 # ------------------------------------------------------------------ tables
-def table(headers, rows, source_col=None, caption=""):
+def table(headers, rows, source_col=None, caption="", searchable=True):
     """Render a data table. Every row must supply a source cell."""
     if source_col is not None:
         for i, r in enumerate(rows):
@@ -277,7 +277,8 @@ def table(headers, rows, source_col=None, caption=""):
             if "href=" not in cell and "Flagged" not in cell:
                 errors.append("row {} of table '{}' has no source link".format(
                     i, caption or (headers[0] if headers else "?")))
-    out = ['<div class="tablewrap"><table class="tbl" data-searchable>',
+    attr = " data-searchable" if searchable else ""
+    out = ['<div class="tablewrap"><table class="tbl"' + attr + '>',
            "<thead><tr>"]
     out += ["<th>{}</th>".format(h) for h in headers]
     out.append("</tr></thead><tbody>")
@@ -524,8 +525,8 @@ def budget_tiers():
         biggest = max(rows, key=lambda e: (e.get("gtd") or 0))
         dates = sorted({e["date"] for e in rows})
         out.append([label, str(len(rows)),
-                    "{} &ndash; {}".format(money(cheapest.get("buyin")),
-                                          money(max(r["buyin"] for r in rows))),
+                    (money(min(r["buyin"] for r in rows)) + " &ndash; " +
+                     money(max(r["buyin"] for r in rows))),
                     (money(biggest.get("gtd")) + " ({})".format(
                         esc(shorten(biggest["name"], 40)))
                      if biggest.get("gtd") else '<span class="blank">blank</span>'),
@@ -1208,7 +1209,7 @@ def page_qa() -> str:
         cells.append([esc(r[0]), esc(r[1]), badge(k, label), esc(r[2]), esc(r[3]), esc(r[4])])
     tbl = table(["#", "Question", "Status", "Why it matters", "What we know", "How to get "
                  "the answer / what it needs"], cells, None, "qa")
-    return panel("""
+    return controls() + panel("""
 Every question below is either answered from an official source, answered with a stated
 assumption, or open. An open question is not a reason to guess: it is a reason to leave the
 value blank, which is why several columns on this site are empty.
@@ -1279,7 +1280,7 @@ def page_suggestions() -> str:
                       badge(k, label), r[5]])
     tbl = table(["#", "Suggestion", "Impact (1-3)", "Cost (1-5)", "Status", "Detail"], cells,
                 None, "suggestions")
-    return panel("""
+    return controls() + panel("""
 This is the review board: every idea, what it changes, what it costs, and the decision it
 needs. Nothing here is implemented without the decision it names, and the implemented ones
 are marked so you can see the difference.
@@ -1313,9 +1314,10 @@ def page_flagged() -> str:
              if f.get("sources") else
              '<a href="#{}">Flagged: no official source exists</a>'.format(esc(f["id"]))),
             esc(f.get("to_clear", "")),
+            esc(f.get("last_checked") or LAST_SCRAPE or ""),
         ])
     tbl = table(["ID", "Item", "What the site shows", "Status", "Sources",
-                 "What would clear it"], rows, 4, "flags")
+                 "What would clear it", "Last checked"], rows, 4, "flags")
     disc = EV.get("discrepancies", []) or []
     disc_rows = []
     for d in disc:
@@ -1338,7 +1340,7 @@ transcribed schedule and against its structure sheet. {n} differences were found
     disc_tbl = (table(["Difference", "Date", "Event #", "Detail", "Source"], disc_rows, 4,
                       "discrepancies") if disc_rows else
                 "<p class=\"muted\">No differences outside cosmetic wording.</p>")
-    return panel("""
+    return controls() + panel("""
 Flagged items do not block publication and none of them is a reason to guess. Each one says
 what the site currently shows, which official source was read, and what would clear it. Links
 go straight to the official page or PDF.
@@ -1357,7 +1359,7 @@ def page_sources() -> str:
             link(url, "Open"),
         ])
     tbl = table(["HTTP", "Read at", "Content hash", "Note", "Source"], rows, 4, "sources")
-    return panel("""
+    return controls() + panel("""
 <strong>Confirmation standard used on this site.</strong>
 <ol class="tight">
   <li>A value is shown only when an official source states it, and the row links that source.</li>
@@ -1569,7 +1571,7 @@ def page_repo_review() -> str:
          "Rates are now a dated log. One snapshot can never stand in for another stay."],
     ]
     ftbl = table(["ID", "Finding", "Type", "Detail"], findings, None, "findings")
-    return panel("""
+    return controls() + panel("""
 This page is the repo review: what changed, what was irregular, and what was done about it.
 It is written so a reviewer can check each claim against the linked file.
 """) + tbl + "<h2>Irregularities found while reviewing the repository</h2>" + ftbl
