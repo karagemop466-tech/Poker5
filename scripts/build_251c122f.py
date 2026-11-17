@@ -763,8 +763,7 @@ def page_hotels() -> str:
             esc(h.get("poker_rate_published") or "") or '<span class="blank">blank</span>',
             esc(h.get("cancellation") or "") or '<span class="blank">blank</span>',
             srcs((h.get("resort_fee_source") or h.get("poker_rate_source") or
-                  h.get("source"), "Official page"),
-                 (None, "")) ,
+                  h.get("source"), "Official page")),
         ])
     tbl = table(["Hotel", "Walk to the poker room", "Resort fee / night",
                  "Fee + tax / night", "Poker rate published", "Cancellation",
@@ -1030,7 +1029,8 @@ def page_venue_others() -> str:
         badge("ok", "0 min (on-property)") if h.get("walk_minutes") == 0 else badge("bad", "Not verified"),
         money_or_blank(h.get("resort_fee_usd")),
         esc(h.get("resort_fee_status", "")),
-        srcs((h.get("resort_fee_source") or h.get("source"), "Official page")),
+        srcs((h.get("resort_fee_source") or h.get("poker_rate_source")
+              or h.get("source"), "Official page")),
     ] for h in hs]
     htbl = table(["Hotel", "Walk", "Resort fee / night", "Fee status", "Source"],
                  hotel_rows, 4, "other-hotels")
