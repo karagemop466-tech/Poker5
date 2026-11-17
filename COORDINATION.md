@@ -8,7 +8,9 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Files:** `COORDINATION.md`, `scripts/build_c6087e2c.py`, `assets/app.js`, generated `pages/planner.html`, and focused tests only. No source research values will be promoted or edited. Existing official source records remain linked and unchanged.
 
-**Status:** in progress. The current planner parses generic “from” poker-suite rates as dated nightly quotes, preloads a resort fee without hotel selection, and reports an all-in total when the required room rate is blank. This task will remove those misleading defaults and label the estimate limitations.
+**Status:** done (2026-11-17). The current planner parsed a generic “from” poker-suite rate as a dated nightly quote, preloaded a resort fee without hotel selection, and reported an all-in total when the required room rate was blank. Removed those misleading defaults: nights and dated room rate start blank; only an official fee explicitly marked verified is loaded on hotel selection; changing hotels clears the prior rate; missing room-rate/fee/date/tax inputs produce “Incomplete,” never a zero-cost hotel or a misleading grand total. Kept the published formula, but flags uncertainty about tax applied to the fee (F45). The 2026-11-16 booking snapshot remains on the dated rates log, not elevated into a current quote.
+
+**Verification:** `python3 scripts/build_c6087e2c.py` passed (14 pages; no data edits); `node --check assets/app.js`; `python3 scripts/check_root_site.py`; `npm test` (9/9); `git diff --check`. Added a test preventing zero-filled hotel totals and generic “from” rates from reappearing. Data values and their official citations were not changed or newly marked verified.
 
 ## Current branch session — a9d1e02d (active)
 
