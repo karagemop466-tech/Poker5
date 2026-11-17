@@ -76,6 +76,8 @@ def offline_check(ledger: dict[str, Any]) -> list[str]:
             errors.append(f"{sid}: normalized-text baseline comparison is reserved for static PDFs")
         if monitor.get("minBytes", 0) < 0:
             errors.append(f"{sid}: minBytes must be nonnegative")
+        if monitor.get("timeoutSeconds", 1) < 1:
+            errors.append(f"{sid}: timeoutSeconds must be positive")
         if mode == "pdf-markers" and source.get("kind") != "pdf":
             errors.append(f"{sid}: pdf-markers monitor must point to a PDF")
     if not any(source.get("id") == "venetian-schedule" for source in ledger["sources"]):
@@ -108,10 +110,11 @@ def check_source(source: dict[str, Any], timeout: int, max_bytes: int) -> dict[s
         "bytes": 0, "sha256": None, "normalizedTextSha256": None, "missingMarkers": [], "error": None,
     }
     request = urllib.request.Request(
-        source["url"], headers={"User-Agent": "Poker5-official-source-monitor/1.0 (+https://github.com/karagemop466-tech/Poker5)"}
+        source["url"], headers={"User-Agent": "Mozilla/5.0 (compatible; Poker5SourceMonitor/1.0; +https://github.com/karagemop466-tech/Poker5)"}
     )
+    source_timeout = int(source.get("monitor", {}).get("timeoutSeconds", timeout))
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with urllib.request.urlopen(request, timeout=source_timeout) as response:
             result["httpStatus"] = response.status
             content_type = response.headers.get("Content-Type", "")
             payload = response.read(max_bytes + 1)
@@ -174,7 +177,7 @@ def main() -> None:
     parser.add_argument("--report", type=Path, help="write machine-readable JSON results to this path")
     parser.add_argument("--state", type=Path, help="read / update normalized text fingerprints for static PDFs")
     parser.add_argument("--fail-on-review", action="store_true", help="exit nonzero when any live source needs human review")
-    parser.add_argument("--timeout", type=int, default=35, help="per-source network timeout in seconds")
+    parser.add_argument("--timeout", type=int, default=60, help="default per-source network timeout in seconds; a ledger-specific timeout may override it")
     parser.add_argument("--workers", type=int, default=8, help="parallel source checks")
     parser.add_argument("--max-bytes", type=int, default=20_000_000, help="per-source download size cap")
     args = parser.parse_args()
@@ -254,7 +257,10 @@ def main() -> None:
             f.write(summary)
 
     problems = any(r.get("status") not in {"ok", "baseline"} for r in results)
-    if args.state and not problems:
+    if args.state:
+        # Advance each successful static-PDF fingerprint independently. An unrelated
+        # URL timeout must not prevent good documents from establishing their baseline;
+        # changed/failed PDFs keep their previous fingerprint for another review.
         next_hashes = dict(previous_hashes)
         for result in results:
             if result.get("normalizedTextSha256") and result.get("status") in {"ok", "baseline"}:

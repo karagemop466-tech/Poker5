@@ -913,7 +913,8 @@
           "$1,000",
           "Sunday",
           "$400"
-        ]
+        ],
+        "timeoutSeconds": 60
       }
     },
     {
@@ -923,14 +924,15 @@
       "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf",
       "kind": "pdf",
       "checkedAt": "2026-11-17",
-      "notes": "Official linked PDF allows re-entry through the end of Level 8. Optional staff gratuity is separate from the event buy-in.",
+      "notes": "Official linked PDF allows re-entry through the end of Level 8. Optional staff gratuity is separate from the event buy-in. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
       "monitor": {
         "mode": "pdf-markers",
         "minBytes": 1000,
         "markers": [
-          "re-entry",
-          "Level 8",
-          "$600"
+          "NLH",
+          "$600",
+          "re-enter",
+          "end of level 8"
         ],
         "compareNormalizedText": true
       }
@@ -942,14 +944,15 @@
       "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf",
       "kind": "pdf",
       "checkedAt": "2026-11-17",
-      "notes": "Official page lists $1,000; filename says $1,000; PDF heading says $1,100 while its terms refer to $600 and a Sept 2026 Day 2. Do not use for a Dec 2026 buy-in or entry rule.",
+      "notes": "Official page lists $1,000; filename says $1,000; PDF heading says $1,100 while its terms refer to $600 and a Sept 2026 Day 2. Do not use for a Dec 2026 buy-in or entry rule. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
       "monitor": {
         "mode": "pdf-markers",
         "minBytes": 1000,
         "markers": [
-          "$1,100",
+          "NLH",
+          "$1100",
           "$600",
-          "Saturday"
+          "Saturdays"
         ],
         "compareNormalizedText": true
       }
@@ -961,14 +964,15 @@
       "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf",
       "kind": "pdf",
       "checkedAt": "2026-11-17",
-      "notes": "Official linked PDF allows re-entry through end of Level 8; optional staff gratuity is separate from the event buy-in.",
+      "notes": "Official linked PDF allows re-entry through end of Level 8; optional staff gratuity is separate from the event buy-in. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
       "monitor": {
         "mode": "pdf-markers",
         "minBytes": 1000,
         "markers": [
-          "re-entry",
-          "Level 8",
-          "$400"
+          "H.O.R.S.E.",
+          "$400",
+          "re-enter",
+          "end of level 8"
         ],
         "compareNormalizedText": true
       }
@@ -986,7 +990,8 @@
         "markers": [
           "$55.00",
           "plus applicable tax"
-        ]
+        ],
+        "timeoutSeconds": 60
       }
     },
     {
@@ -1011,7 +1016,8 @@
         "markers": [
           "$55.00",
           "plus applicable tax"
-        ]
+        ],
+        "timeoutSeconds": 60
       }
     },
     {
@@ -1045,7 +1051,8 @@
         "markers": [
           "$50.00",
           "plus applicable tax"
-        ]
+        ],
+        "timeoutSeconds": 60
       }
     },
     {
@@ -1068,10 +1075,11 @@
       "monitor": {
         "mode": "markers",
         "markers": [
-          "11:00 AM",
-          "7:00 PM",
-          "11:00 PM"
-        ]
+          "11:00am",
+          "7:00pm",
+          "11:00pm"
+        ],
+        "timeoutSeconds": 60
       }
     },
     {
