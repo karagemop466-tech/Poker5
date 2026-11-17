@@ -693,3 +693,10 @@ GitHub Pages API                        -> source main /; build for 3882856 stat
 **Irregularities:** none new beyond the above (Caesars corporate page's fee range was widened from the previously captured $45–$50 to $45–$60 between captures — treated as the official current statement, with the prior capture noted). The failed "Daily official-source scrape (root site)" run at 22:27Z ran on session 251c122f's own branch (`arena/251c122f-poker5`), not on main; main's scheduled monitor runs succeeded (`Official source monitor · final poker planner` pass at 22:26Z; recheck baseline last_run 15:00:06Z).
 
 **M5** — integration PR follows; result recorded below after merge and Pages confirmation.
+
+### Publication record (session ccce9579, M5)
+
+- Integration PR: https://github.com/karagemop466-tech/Poker5/pull/41 (`arena/ccce9579-poker5` → `main`). CI on the PR: `check` pass, `validate` pass. Merged with `gh pr merge 41 --merge`; merge commit `e7b744c2e3d0cfefb52b3bdba1feea467ceeebd0` (state MERGED).
+- GitHub Pages: source `main` `/`; the Pages build for merge commit `e7b744c` reached `built` with `error: null` (Pages API; the sandbox cannot make direct HTTP requests to `github.io`). Live site: https://karagemop466-tech.github.io/Poker5/ — no broken internal links (1,814 refs checked).
+- Tasks M1–M5: done. M2 resolved by b0cd6d45 (PR #37) and verified; M3 stale PR #10 takeover complete; M4 verification record above; M5 this record.
+- Open handoff (unchanged, for the data-file owner): official MGM Grand / ARIA / Bellagio fee values + MGM tax-base sentence + 72 h cancellation terms recorded above await application to `data/c6087e2c/*`; Caesars Palace stays range-only; Wynn F30/F8, walking minutes F22/F42 and hotel quality F43 remain open.
