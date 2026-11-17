@@ -1,0 +1,40 @@
+name: afff1fc9 site - daily official-source check and build
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # 15:00 UTC every day (07:00 PST / 08:00 PDT in Las Vegas)
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "site-afff1fc9/**"
+      - "scripts/*afff1fc9*"
+      - ".github/workflows/afff1fc9-monitor.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  monitor-build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Re-read official URLs (hash + last checked)
+        run: python3 scripts/monitor_afff1fc9.py
+      - name: Rebuild site
+        run: python3 scripts/build_afff1fc9.py
+      - name: Validate (fails on any table row without an official source link)
+        run: python3 scripts/check_afff1fc9.py
+      - name: Commit monitor results and rebuilt pages (scheduled runs only)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "afff1fc9-monitor"
+          git config user.email "actions@users.noreply.github.com"
+          git add site-afff1fc9
+          if git diff --cached --quiet; then echo "no changes"; else
+            git commit -m "afff1fc9: daily official-source check $(date -u +%F)"
+            git pull --rebase -q origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi

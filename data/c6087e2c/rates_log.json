@@ -1,0 +1,103 @@
+{
+  "note": "Dated log of hotel rate observations. Rates are dynamic; each entry is a snapshot with its retrieval timestamp and source. A later entry supersedes an earlier one only for the same hotel + stay dates + occupancy. Values that were not returned by the official booking UI are blank and flagged. This is not a live quote; reconfirm on the official booking page before paying.",
+  "tax_note": "Clark County room tax is cited from the official Clark County room-tax ordinance PDF captured 2026-11-16 (see sources). The exact current rate must be confirmed on the booking page; tax totals below are the figures returned by each booking UI where captured.",
+  "entries": [
+    {
+      "hotel": "The Venetian Resort",
+      "checkin": "2026-12-02",
+      "checkout": "2026-12-09",
+      "nights": 7,
+      "occupancy": "2 adults, 1 room",
+      "room_rate_per_night": null,
+      "checkout_total": 7054.77,
+      "nightly_average": 1007.82,
+      "resort_fee_per_night": 55,
+      "resort_fee_total": 385.00,
+      "tax_total": 832.52,
+      "parking": "",
+      "cancellation_deadline": "",
+      "rate_timestamp": "2026-11-16",
+      "room_type": "Newly remodeled Luxury King Suite",
+      "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
+      "source_label": "Venetian official booking UI (captured 2026-11-16)",
+      "verified": false,
+      "caveats": [
+        "Booking UI also showed suites designed for 4+ guests and a maximum-capacity warning; reconfirm the exact room and availability.",
+        "Nightly average = checkout_total / nights (derived), not a printed per-night rate.",
+        "Resort fee $55/night is the official Venetian figure; the booking total's fee component is $385 for 7 nights."
+      ]
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "checkin": "2026-12-02",
+      "checkout": "2026-12-09",
+      "nights": 7,
+      "occupancy": "2 adults, 1 room",
+      "room_rate_per_night": null,
+      "checkout_total": null,
+      "nightly_average": 711.00,
+      "resort_fee_per_night": 55,
+      "resort_fee_total": null,
+      "tax_total": null,
+      "parking": "Self-parking for up to 2 vehicles included in resort fee (per Wynn offer terms)",
+      "cancellation_deadline": "",
+      "rate_timestamp": "2026-11-16",
+      "room_type": "King room (direct booking)",
+      "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/02/2026&checkout=12/09/2026&rooms=1&adults=2",
+      "source_label": "Wynn official booking UI (captured 2026-11-16)",
+      "verified": false,
+      "caveats": [
+        "Booking engine returned a rounded $711 average/night including resort fee but excluding tax; it did not return an exact tax-inclusive total.",
+        "After-tax estimate ($711 x 7 x 1.1338 ~ $5,642.92) is a calculation from the rounded average, not a booking quote."
+      ]
+    },
+    {
+      "hotel": "The Venetian Resort",
+      "checkin": "2026-12-13",
+      "checkout": "2026-12-20",
+      "nights": 7,
+      "occupancy": "2 adults, 1 room",
+      "room_rate_per_night": null,
+      "checkout_total": 2420.40,
+      "nightly_average": 345.77,
+      "resort_fee_per_night": 55,
+      "resort_fee_total": null,
+      "tax_total": null,
+      "parking": "",
+      "cancellation_deadline": "",
+      "rate_timestamp": "2026-11-16",
+      "room_type": "Not captured",
+      "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "source_label": "Venetian official poker suite rates page (captured 2026-11-16)",
+      "verified": false,
+      "caveats": [
+        "Total is room + resort fees + taxes for 7 nights; the per-night room rate and tax split were not captured.",
+        "Poker-suite rate may require qualifying play; reconfirm eligibility."
+      ]
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "checkin": "2026-12-13",
+      "checkout": "2026-12-20",
+      "nights": 7,
+      "occupancy": "2 adults, 1 room",
+      "room_rate_per_night": null,
+      "checkout_total": null,
+      "nightly_average": 355.00,
+      "resort_fee_per_night": 55,
+      "resort_fee_total": null,
+      "tax_total": null,
+      "parking": "",
+      "cancellation_deadline": "",
+      "rate_timestamp": "2026-11-16",
+      "room_type": "Not captured",
+      "source": "https://www.wynnlasvegas.com/casino/poker",
+      "source_label": "Wynn official poker page display (captured 2026-11-16)",
+      "verified": false,
+      "caveats": [
+        "Display showed $355 average/night including resort fee, excluding tax; no tax-inclusive total was returned.",
+        "13.38% tax math is an estimate based on the cited Clark County guide, not a Wynn quote."
+      ]
+    }
+  ]
+}

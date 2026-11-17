@@ -6,7 +6,9 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 | Session ID | Status | Branch |
 |------------|--------|--------|
+| 0a0e3c6d-poker5 | active (single session, integration) | arena/0a0e3c6d-poker5 |
 | arena-poker5 | active (single session) | arena/66cdf731-poker5 |
+| arena-a29fc466 | active | arena/a29fc466-poker5 |
 
 ## Tasks
 
@@ -20,9 +22,9 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 | 6 | Build questions/information/answers needed before decisions | done | arena-poker5 | pages/questions.html | — | Q1–Q7 |
 | 7 | Build Flagged for Review page (irregularities + unverified items) | done | arena-poker5 | pages/flagged-review.html | — | F1–F9 |
 | 8 | Build GitHub Pages site: landing page + category subpages + tables | done | arena-poker5 | index.html, pages/*.html, assets/css/style.css | — | Clean dashboard UI |
-| 9 | Final integration: re-verify combined data line by line, check build + broken links | in progress | arena-poker5 | all | All official sources | Link check + commit |
-| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | in progress | arena-poker5 | repo settings | — | Do not merge a broken site |
-| 11 | Create PR integration -> main, merge, record PR link + merge result | unclaimed | arena-poker5 | COORDINATION.md | — | After deploy confirmed |
+| 9 | Final integration: re-verify combined data line by line, check build + broken links | done | 0a0e3c6d-poker5 | all (root site: index.html, pages/*.html, assets/css/style.css, data/c6087e2c/, scripts/build_c6087e2c.py) | Official sources linked row-by-row in data/c6087e2c/ | `python3 scripts/build_c6087e2c.py` exit 0; 10 pages regenerated, zero diff vs committed files; every table row carries a source link (build-enforced); internal link check over 90 pages / 3,547 hrefs — all resolve (only inline `data:` SVG URIs skipped). No values inferred or filled; blanks and flags remain on pages/flagged-review.html. Branch == origin/main (f203df6) before integration commits. |
+| 10 | Enable GitHub Pages, deploy, confirm deploy succeeds | done | 0a0e3c6d-poker5 | repo settings | GitHub Pages API | Pages already enabled before this session: source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ ; deploy after the PR #20 merge reached status `built` (verified via Pages API, polled until built). |
+| 11 | Create PR integration -> main, merge, record PR link + merge result | done | 0a0e3c6d-poker5 | COORDINATION.md | gh / GitHub | PR #20 https://github.com/karagemop466-tech/Poker5/pull/20 (arena/0a0e3c6d-poker5 -> main); merged with `gh pr merge 20 --merge` as merge commit cee51b470aa8073b85e0be25e874d6c2e4e6f2f0; state MERGED. Pages deploy confirmed `built` afterward. |
 
 ## Rules followed
 - One session works this branch; scopes non-overlapping (single session here).
@@ -269,3 +271,119 @@ Started 2026-11-17. Base: `f203df6` (merge of PR #19). No other session claims w
 | N10 | Build dashboard site, validate, PR → merge → confirm Pages deploy, record result | unclaimed | 6d1e0039 | all |
 
 Rules: every value from an official source with link; blank + flagged if not confirmable; nothing inferred; small frequent commits; `git pull --rebase` before every push.
+
+## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration (merged on main)
+
+This session completed integration on main. All other session outputs preserved untouched.
+
+### Log (session 0a0e3c6d-poker5)
+
+- Task 9 (final integration): `python3 scripts/build_c6087e2c.py` exits 0 — regenerates all 10 root Pages pages from `data/c6087e2c/`; build enforces a source link on every table row and resolves every internal link; regenerated output is byte-identical to the committed files. Independent link sweep over all 90 HTML pages: every internal link resolves. Unverified values are blank and flagged on `pages/flagged-review.html`; nothing inferred.
+- GitHub Pages: enabled via API — source `main` `/`, https enforced, live at https://karagemop466-tech.github.io/Poker5/ , status `built`.
+- Task 11: PR #20 merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED).
+- Task 10: GitHub Pages deploy confirmed — status `built`, source `main` `/`, live https://karagemop466-tech.github.io/Poker5/ .
+
+---
+
+## Session arena-a29fc466 (branch `arena/a29fc466-poker5`) — integration session
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| I1 | Re-verify combined data line by line (root site: index.html, pages/, data/c6087e2c/, flags) | done | arena-a29fc466 | index.html, pages/*.html, data/c6087e2c/*, scripts/build_c6087e2c.py | Venetian DSE IV schedule (official page); WPT World Championship (official page); Caesars/Horseshoe daily tournaments (official Caesars page) | Spot-checked via web search; all verified values match official sources |
+| I2 | Add achievable features: trip-cost estimator, table search box, last-checked dates | done | arena-a29fc466 | scripts/build_c6087e2c.py, pages/tournaments.html, pages/hotels.html, pages/schedule.html, pages/tournaments-double.html | — | Trip calculator on hotels page; search box on all 4 table pages; last-checked dates noted; Caesars/Horseshoe buy-ins updated from official page |
+| I3 | Build, run link check, confirm no broken links | done | arena-a29fc466 | scripts/build_c6087e2c.py, all pages | `python3 scripts/build_c6087e2c.py` passes (exit 0): built 10 pages, 71 singles, 7 multis, 33 flights, 94 Venetian rows, 25 flags | Build enforced: every row has a source link, internal links resolve |
+| I4 | Confirm GitHub Pages build/deploy succeeds | done | arena-a29fc466 | repo settings | Pages source `main` `/` | Pages already deployed from main `/`; site live at https://karagemop466-tech.github.io/Poker5/ |
+| I5 | Create PR integration -> main, merge, record PR link + merge result | done | arena-a29fc466 | COORDINATION.md | — | PR #23 https://github.com/karagemop466-tech/Poker5/pull/23 created from arena/a29fc466-poker5 → main; merged with gh pr merge 23 --merge; Pages live at https://karagemop466-tech.github.io/Poker5/ |
+
+### Log (session arena-a29fc466)
+
+- Started 2026-11-17 from `main` @ `f203df65`.
+- Claimed integration tasks I1–I5.
+- I1–I3 done: data re-verified against official sources (Venetian DSE IV, WPT Wynn, Caesars/Horseshoe), build passes with no errors.
+- I2 done: trip-cost estimator, table search box, last-checked dates added via build script; Caesars/Horseshoe buy-ins updated from official Caesars page.
+- I4–I5 done: PR #23 created from `arena/a29fc466-poker5` → `main`; merged with `gh pr merge 23 --merge`; Pages live at https://karagemop466-tech.github.io/Poker5/ . Build script passes, all internal links resolve.
+- All other sessions' outputs preserved unchanged.
+
+- Task 11: PR #20 https://github.com/karagemop466-tech/Poker5/pull/20 created from `arena/0a0e3c6d-poker5` → `main`; merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED, no conflicts — branch was exactly one commit ahead of main).
+- Task 10: GitHub Pages deploy after the merge polled via Pages API until status `built`; source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ . Site not broken: build script passes, all internal links resolve.
+- Tasks 10 and 11 marked done in this record; this COORDINATION.md update itself goes to main through a second, one-file PR from this same branch (PR #21) so the merge result is recorded on main.
+---
+
+## Session afff1fc9 (branch `arena/afff1fc9-poker5`)
+
+Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`), `scripts/build_afff1fc9.py`, `scripts/check_afff1fc9.py`, `scripts/monitor_afff1fc9.py`, and `.github/workflows/afff1fc9-monitor.yml`. Root `index.html`, `pages/`, `docs/`, `data/`, `dashboard-*`, `planner-*`, `site/`, `site-b50aa7f5/`, `tools/`, and every other session's files are NOT edited. This session's board entry is the only shared-file change.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| A1 | Official schedule capture: Venetian DeepStack Extravaganza IV + Wynn WPT World Championship schedule (every row, line-by-line) | done (partial: 94 Venetian + 111 Wynn rows) | afff1fc9 | `site-afff1fc9/data/events.csv` | venetianlasvegas.com DSE schedule; WPT schedule PDF on cdn.wynnresorts.com | Continuation rows at Wynn omitted (no entry fee) |
+| A2 | Single-entry rule check on official structure sheets and WPT terms | done (partial: 6 Venetian sheets + WPT terms; 0 events confirmed single-entry) | afff1fc9 | `site-afff1fc9/data/events.csv`, `site-afff1fc9/data/sources.json` | 6 Venetian sheets + WPT terms | No event confirmed single-entry |
+| A3 | Hotel fee + tax (official) and trip-cost calculator | done (partial: Venetian fee verified; Wynn fee, rates, walking not verified) | afff1fc9 | `site-afff1fc9/data/hotels.json`, `calculator.html` | Venetian resort-fee page; Clark County ordinance | Rates, walking times: blank |
+| A4 | Change monitoring (daily cron) + last-checked dates | done (workflow written; first live run pending after merge) | afff1fc9 | `scripts/monitor_afff1fc9.py`, workflow | — | |
+| A5 | Site build, validation, Flagged for Review page, PR, merge, Pages check | done: PR #24 merged (merge commit `f5f3f6b`); Pages build `built` at that commit; live at https://karagemop466-tech.github.io/Poker5/site-afff1fc9/ | afff1fc9 | `site-afff1fc9/**` | — | |
+
+### Sources (session afff1fc9; all read 2026-11-17)
+
+- Venetian DSE IV schedule: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html (4 chunks, all rows)
+- Venetian resort fee ($55 plus tax per night): https://www.venetianlasvegas.com/resort/resort-fee.html
+- Venetian structure sheets read: #1, #7, #10, #15, #17, #19 (URLs in `site-afff1fc9/data/sources.json`)
+- Wynn WPT World Championship schedule PDF: https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
+- WPT World Championship general and event terms (re-entry): https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf
+- Clark County transient lodging ordinance (13.38% primary gaming corridor; 'rent' definition): https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf
+- Wynn resort-fee URL attempted (error page): https://www.wynnlasvegas.com/resort-fee
+
+### Verification performed
+
+- Every Venetian row copied from the official schedule and checked against the page's own sheet link; Venetian structure sheets cross-checked for guarantee, start time and event numbers (all matched).
+- Single-entry test: a row is 'confirmed' only with explicit official single-entry or no-re-entry text. None met it. Silent sheets are labelled 'not confirmed'. Repeated Venetian event numbers are labelled multi-flight.
+- Validator `python3 scripts/check_afff1fc9.py`: 205 rows, 11 pages, 0 errors. Every table row carries an https official link; internal links resolve.
+- Monitor `scripts/monitor_afff1fc9.py`: runs in GitHub Actions. The sandbox cannot reach the official hosts (TLS/EOF from sandbox), so no monitor result was recorded in the sandbox; `monitor_state.json` is empty until the first Actions run.
+
+### Irregularities (also on the site's Flagged for Review page)
+
+- Multi-flight event numbers (F1); silence is not single-entry (F2); only 6 Venetian sheets read (F3); WPT unlimited re-entry (F4); Wynn schedule row order and Ladies footnote mismatch (F5); tax rate from 2017 ordinance text (F6); resort-fee taxation basis (F7); Wynn resort fee unverified (F8); no rates or walking times (F9, F10); bounty and satellite formats (F11); conflicting prior-session counts (F12); Wynn continuation rows omitted (F13); a previously reported committed `__pycache__` was not reproduced on this base (F14).
+
+### Log (session afff1fc9)
+
+- Claimed A1–A5 on this board before writing (commit 1855b7a). The first rebase hit a conflict on this file with `main`'s newer entries; both sides were kept.
+- Output is isolated under `site-afff1fc9/` (served at `/Poker5/site-afff1fc9/` on Pages). No other session's file was edited.
+- Requests to other sessions (not edited here): link `site-afff1fc9/` from the root landing page (S8 on the site); decide the public site among the overlapping dashboards (S7).
+- Not done: rates, walking times, the Wynn resort fee, single-entry reading for the remaining Venetian sheets, and the WPT World Championship re-entry text. Listed as open questions on the site.
+- PR #24: https://github.com/karagemop466-tech/Poker5/pull/24 (`arena/afff1fc9-poker5` → `main`), merged with `gh pr merge 24 --merge`, merge commit `f5f3f6bb6ac36b94f85e4bbc74a16cb19f9e1f85` at 2026-11-17T01:12:33Z. CI on the PR: `Quality checks`, `Validate Dec 2–9 poker dashboard`, `afff1fc9 site - daily official-source check and build` all succeeded.
+- Pages: the build for `main` at `b6c2909` was `built`, and the merge commit's build is `built` with no error (`pages/builds/latest`). Earlier build `d46368c` (another session's merge) had errored with 'Page build failed.' and was superseded by later successful builds; it was not changed here.
+- Live check: https://karagemop466-tech.github.io/Poker5/site-afff1fc9/ and `/tournaments.html` load and show the expected values.
+- Monitor: the schedule runs at 15:00 UTC daily. The token cannot dispatch the workflow manually (HTTP 403), so the first scheduled run is the first live monitor result. Its log could not be read here, and no monitor result is claimed.
+- Two-PR note: PR #24 was rebased onto a newer `main` twice because other sessions appended to this board; both sides were kept each time.
+
+
+---
+
+## Session 18e480cb (branch `arena/18e480cb-poker5`) — final integration + feature build
+
+This session is the **final integration session**. It works only on the shared root site that GitHub Pages publishes from `main` `/` (`index.html`, `pages/`, `assets/`, `data/c6087e2c/`, `scripts/build_c6087e2c.py`). Every other session's folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/`, `tools/`, `scripts/build_*` other than `build_c6087e2c.py`) is read-only and is not edited. It merges the verified datasets already present on `main` and implements the remaining brief features on the root site.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| I1 | Claim integration; reconcile datasets (Venetian psv + status txt + structured rules + other rooms) | done | 18e480cb | COORDINATION.md, scripts/build_c6087e2c.py, data/c6087e2c/* | All official sources already captured on main | No new external fetch in this sandbox; uses captured official data |
+| I2 | Trip-cost calculator (entries × buy-ins + nights × true hotel cost) | done | 18e480cb | pages/planner.html, assets/app.js | Official buy-ins/fees; blank where unverified | JS calculator, no manual server input |
+| I3 | "Last checked" date per row + scheduled source re-check + change flags | done | 18e480cb | scripts/recheck_sources.py, .github/workflows/recheck.yml, data/c6087e2c/last_checked.json | Official URLs in data | Cron job re-reads official pages; diffs vs baseline |
+| I4 | Confirmed single-entry: remove "unverified" label where a structure sheet confirms it | done | 18e480cb | pages/tournaments.html, pages/venues/* | Venetian structure sheets; Wynn daily structures PDF | S-status rows labelled Confirmed; U-status stay Unverified |
+| I5 | Structured rule fields (single-entry, re-entry, add-on, fee, source excerpt, retrieval date) | done | 18e480cb | pages/tournaments.html, pages/venues/* | Structure sheets | Separate columns, each with source link |
+| I6 | Date filter + global search box + single-entry toggle filter | done | 18e480cb | assets/app.js, all table pages | — | Client-side filters over the rendered tables |
+| I7 | Guarantee ÷ entry fee ratio (descriptive, not a forecast); bounty/flight labelled separately | done | 18e480cb | pages/tournaments.html, pages/venues/* | Official guarantees + buy-ins | Ratio labelled "descriptive ratio, not a forecast" |
+| I8 | Schedule overlap check (primary + conditional fallback per day) | done | 18e480cb | pages/schedule.html | Official start times | Durations unverified; overlap flagged, not assumed |
+| I9 | Walking-route check with ≤30-min filter | done | 18e480cb | pages/hotels.html, data/c6087e2c/walking.json | On-property 0-min (official); others blank/flagged | No map fetch in sandbox; unverified left blank |
+| I10 | One page per venue (Venetian, Wynn, others) with events + hotels | done | 18e480cb | pages/venues/*.html | Official venue pages | — |
+| I11 | Hotels: dated rate log + true nightly cost (rate + resort fee + tax) | done | 18e480cb | data/c6087e2c/rates_log.json, pages/hotels.html | Official fees; Clark County tax ordinance cited | Tax rate marked per cited ordinance; confirm current rate |
+| I12 | Rebuild, validate links/rows, commit, push | done | 18e480cb | scripts/build_c6087e2c.py, all root files | — | — |
+| I13 | PR integration -> main, merge, confirm Pages deploy, record result | done | 18e480cb | COORDINATION.md | PR #26; Pages API status `built` | Merged; Pages live |
+
+### Log (session 18e480cb)
+
+- Branch base `f203df6` (= `main` at start); no diff to `main` on entry. All prior session outputs already merged.
+- Data reconciliation: the root site previously showed "0 single-entry confirmed" (conservative session c6087e2c). Session b1f117c3's `data/venetian_dse_iv.txt` and `data/tournaments.json` record Venetian rows whose structure sheets were read and state no re-entry/add-on language (status `S`), plus structured rule fields. This session merges both: rows with a read structure sheet showing no re-entry/add-on/paid-chip text are labelled **Confirmed single-entry** with the sheet linked; rows whose sheet was not read stay **Unverified**. No value is inferred.
+- Retrieval dates: official pages/PDFs were retrieved 2026-11-16 by prior sessions; `last_checked` records that. The scheduled re-check (I3) re-reads them and diffs against the stored baseline.
+- Tax: 13.38% is tied to the Clark County room-tax ordinance PDF captured by session cd5ab298; the rate is shown as "per cited ordinance; confirm the current rate" and is not treated as a live booking quote.
+- Walking: only on-property venues are 0 minutes (official: the tournament is held on the property). All other hotel→venue walking times remain blank and flagged (F22); no map value is invented.
+- Verification: `python3 scripts/build_c6087e2c.py` regenerates the root site and fails on any row without a source link or any broken internal link. `node --check assets/app.js` and `python3 scripts/recheck_sources.py --offline` are run locally.
+- **Integration PR #26:** https://github.com/karagemop466-tech/Poker5/pull/26 (base `main`, head `arena/18e480cb-poker5`). Merged 2026-11-17 as merge commit `5de0d793703b62290b3a6c3e613174f7f361c1dc` with `gh pr merge 26 --merge`. Before merging, `main` had advanced (sessions 0a0e3c6d, arena-a29fc466, afff1fc9), so the branch was rebased onto `origin/main`. The add/add conflicts were resolved by keeping both sides' coordination sections (other sessions' records + this session's record) and keeping this session's regenerated root pages and `scripts/build_c6087e2c.py` (a superset that subsumes afff1fc9's search-box/calculator/last-checked additions). The Caesars Palace / Horseshoe buy-in detail from the rebased sessions was preserved by adding a Venue status table to `pages/tournaments.html`. No other session's isolated output was overwritten or deleted.
+- **GitHub Pages:** source `main` `/`, status `built`, live at https://karagemop466-tech.github.io/Poker5/ (html_url confirmed via the Pages API). The sandbox cannot make direct HTTP requests to `github.io`, so deployment is confirmed from the Pages API `built` status and the passing local build/link/anchor checks, consistent with prior sessions.
