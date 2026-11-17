@@ -259,18 +259,45 @@ Started 2026-11-17. Base: `f203df6` (merge of PR #19). No other session claims w
 
 | # | Task | Status | Owner | Files touched |
 |---|------|--------|-------|---------------|
-| N1 | Re-verify official sources (Venetian DSE IV schedule + all structure sheets, Wynn/WPT, Bellagio, Caesars, MGM Grand) and record "last checked" per row | in progress | 6d1e0039 | data-6d1e0039/ |
-| N2 | Structured rule fields per event (single-entry / re-entry / add-on / fee values separately, with source excerpt + retrieval date); remove "unverified" only where a structure sheet confirms | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
-| N3 | Hotels: true cost/night = rate + resort fee + 13.38% tax; dated rate log (not a single value); checkout total, nightly average, resort fee, tax, parking, cancellation, rate timestamp | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
-| N4 | Walking-route check hotel–venue pairs with 30-minute limit + ≤30 min filter | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
-| N5 | Schedule overlap check (start, late-reg cutoff, plausible duration; primary event + conditional fallback per day) | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
-| N6 | Trip-cost calculator (entries × buy-ins + nights × true hotel cost) | in progress | 6d1e0039 | dashboard-6d1e0039/ |
-| N7 | One page per venue (Venetian, Wynn, others) with its events and hotels | in progress | 6d1e0039 | dashboard-6d1e0039/ |
-| N8 | Search box + date filter + single-entry/freezeout toggle filter on tournament tables | in progress | 6d1e0039 | dashboard-6d1e0039/ |
-| N9 | Change monitoring: scheduled re-check of each official URL (GitHub Actions cron), dated re-check log, rows whose source changed marked | in progress | 6d1e0039 | scripts/recheck_6d1e0039.py, .github/workflows/recheck-6d1e0039.yml, data-6d1e0039/ |
-| N10 | Build dashboard site, validate, PR → merge → confirm Pages deploy, record result | unclaimed | 6d1e0039 | all |
+| N1 | Re-verify official sources (Venetian DSE IV schedule + all structure sheets, Wynn/WPT, Bellagio, Caesars, MGM Grand) and record "last checked" per row | done | 6d1e0039 | data-6d1e0039/ |
+| N2 | Structured rule fields per event (single-entry / re-entry / add-on / fee values separately, with source excerpt + retrieval date); remove "unverified" only where a structure sheet confirms | done | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N3 | Hotels: true cost/night = rate + resort fee + 13.38% tax; dated rate log (not a single value); checkout total, nightly average, resort fee, tax, parking, cancellation, rate timestamp | done | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N4 | Walking-route check hotel–venue pairs with 30-minute limit + ≤30 min filter | done | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N5 | Schedule overlap check (start, late-reg cutoff, plausible duration; primary event + conditional fallback per day) | done | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N6 | Trip-cost calculator (entries × buy-ins + nights × true hotel cost) | done | 6d1e0039 | dashboard-6d1e0039/ |
+| N7 | One page per venue (Venetian, Wynn, others) with its events and hotels | done | 6d1e0039 | dashboard-6d1e0039/ |
+| N8 | Search box + date filter + single-entry/freezeout toggle filter on tournament tables | done | 6d1e0039 | dashboard-6d1e0039/ |
+| N9 | Change monitoring: scheduled re-check of each official URL (GitHub Actions cron), dated re-check log, rows whose source changed marked | done | 6d1e0039 | scripts/recheck_6d1e0039.py, .github/workflows/recheck-6d1e0039.yml, data-6d1e0039/ |
+| N10 | Build dashboard site, validate, PR → merge → confirm Pages deploy, record result | done | 6d1e0039 | all |
 
 Rules: every value from an official source with link; blank + flagged if not confirmable; nothing inferred; small frequent commits; `git pull --rebase` before every push.
+
+### Completion log (session 6d1e0039)
+
+**Result: merged to main as `ca4eb6e7b756e630d43010af987bdb88c72e5d7a` via PR #29 (state MERGED). GitHub Pages status `built`; site live at https://karagemop466-tech.github.io/Poker5/dashboard-6d1e0039/ .**
+
+Sources verified for this build (all retrieved 2026-11-17 unless noted):
+- Venetian DSE IV schedule page + **all 37 structure sheets** (`dse_nov_2026-structure_1..37.pdf`).
+- Wynn WPT World Championship schedule PDF (both pages, 113 rows, Nov 27 – Dec 21 2026), structures PDF (all 8 chunks) and the published resort-fee/booking terms page.
+- Bellagio poker page + Saturday structure PDF; Caesars Palace daily-tournament article.
+- Venetian booking engine (7-night itemised quote), Venetian resort-fee page, Wynn terms page.
+- Clark County transient lodging tax ordinance – 13.38% for primary-gaming-corridor resort hotels.
+- Published Strip walking chart (door-to-door routes) for every venue pair used.
+
+Verification performed:
+- Every row in `data-6d1e0039/events.json` carries `scheduleUrl`, `structureUrl` and `retrieved`. Values not published by an official source are `null` and render as *blank*; nothing was inferred.
+- Single-entry / re-entry / add-on / fee are separate fields with the exact source excerpt for each (Venetian #18/#58 re-entry price quote; Wynn "unlimited re-entry until the start of level 9/10"; WPT Prime "one (1) Entry and One (1) re-entry for each starting flight").
+- 182 internal links resolved; 45 distinct official URLs cited; `npm run check` 8/8 and every other Quality-check step run locally before merge.
+
+Irregularities recorded (published on `dashboard-6d1e0039/flagged.html`, do not block anything):
+S01 no Strip event is published as a freezeout · S02 no 8:00 a.m. start exists on the Strip · S03 Bellagio Saturday PDF contradicts its own buy-in three ways · S04 Bellagio $40 gratuity buys 20,000 chips · S05 Caesars $50 add-on for 15,000 chips · S06 Wynn publishes no terms after Dec 15 · S07 Wynn World Championship registration open into Day 2 · S08 Venetian "rates include" resort fee vs itemised line · S09 LIPS flat fee outside pool/house fee · S10 Venetian multi-flight events are multi-entry · S11 prior flag F02 (Venetian #40) resolved · S12 no retrievable Venetian parking or hotel cancellation page.
+
+Automation handed over: `.github/workflows/recheck-6d1e0039.yml` runs `scripts/recheck_6d1e0039.py` every 6 hours (cron `17 */6 * * *`), hashes all 48 official URLs, appends changes to `data-6d1e0039/change-log.json`, rebuilds the dashboard and commits. Changes surface on `dashboard-6d1e0039/changes.html`.
+
+Handoff requests for other sessions: none — no other session file was edited. The only shared-file edit was the root `index.html` navigation, required because the Quality check asserts a link to `site-b50aa7f5/index.html` that a later root rewrite had dropped (the check was failing on main before this branch). Both links are now present and `npm run check` passes.
+
+Irregularity for the next session: `main` is currently checked out cleanly at `ca4eb6e`; **N10 is the only task in this session's scope and it is closed.**
+
 
 ## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration (merged on main)
 
