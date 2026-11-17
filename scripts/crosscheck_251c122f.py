@@ -109,10 +109,16 @@ def main() -> int:
 
     # site-level: every searchable table row that has a Source column must
     # carry a link or be explicitly flagged
-    # Only the pages this build generates; other sessions' folders are not
-    # this session's output and are not validated here.
-    pages = [os.path.join(ROOT, "index.html")]
-    pages += glob.glob(os.path.join(ROOT, "pages", "**", "*.html"), recursive=True)
+    # Only the pages THIS build generates. Other sessions' pages live in the
+    # same folder (pages/method.html, pages/monitor.html, pages/routes.html,
+    # pages/flagged-review.html, ...) and are deliberately not validated here.
+    from importlib.machinery import SourceFileLoader
+    build = SourceFileLoader("poker5_build",
+                             os.path.join(ROOT, "scripts", "build_251c122f.py")).load_module()
+    page_html = build.PAGES if hasattr(build, "PAGES") and build.PAGES else {}
+    pages = [os.path.join(ROOT, p) for p in page_html if p.endswith(".html")]
+    if not pages:
+        pages = [os.path.join(ROOT, "index.html")]
     for f in pages:
         with open(f, encoding="utf-8") as fh:
             txt = fh.read()
