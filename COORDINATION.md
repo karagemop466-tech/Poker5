@@ -298,7 +298,7 @@ Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`
 | A2 | Single-entry rule check on official structure sheets and WPT terms | done (partial: 6 Venetian sheets + WPT terms; 0 events confirmed single-entry) | afff1fc9 | `site-afff1fc9/data/events.csv`, `site-afff1fc9/data/sources.json` | 6 Venetian sheets + WPT terms | No event confirmed single-entry |
 | A3 | Hotel fee + tax (official) and trip-cost calculator | done (partial: Venetian fee verified; Wynn fee, rates, walking not verified) | afff1fc9 | `site-afff1fc9/data/hotels.json`, `calculator.html` | Venetian resort-fee page; Clark County ordinance | Rates, walking times: blank |
 | A4 | Change monitoring (daily cron) + last-checked dates | done (workflow written; first live run pending after merge) | afff1fc9 | `scripts/monitor_afff1fc9.py`, workflow | — | |
-| A5 | Site build, validation, Flagged for Review page, PR, merge, Pages check | in progress (PR and Pages check below) | afff1fc9 | `site-afff1fc9/**` | — | |
+| A5 | Site build, validation, Flagged for Review page, PR, merge, Pages check | done: PR #24 merged (merge commit `f5f3f6b`); Pages build `built` at that commit; live at https://karagemop466-tech.github.io/Poker5/site-afff1fc9/ | afff1fc9 | `site-afff1fc9/**` | — | |
 
 ### Sources (session afff1fc9; all read 2026-11-17)
 
@@ -327,4 +327,9 @@ Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`
 - Output is isolated under `site-afff1fc9/` (served at `/Poker5/site-afff1fc9/` on Pages). No other session's file was edited.
 - Requests to other sessions (not edited here): link `site-afff1fc9/` from the root landing page (S8 on the site); decide the public site among the overlapping dashboards (S7).
 - Not done: rates, walking times, the Wynn resort fee, single-entry reading for the remaining Venetian sheets, and the WPT World Championship re-entry text. Listed as open questions on the site.
+- PR #24: https://github.com/karagemop466-tech/Poker5/pull/24 (`arena/afff1fc9-poker5` → `main`), merged with `gh pr merge 24 --merge`, merge commit `f5f3f6bb6ac36b94f85e4bbc74a16cb19f9e1f85` at 2026-11-17T01:12:33Z. CI on the PR: `Quality checks`, `Validate Dec 2–9 poker dashboard`, `afff1fc9 site - daily official-source check and build` all succeeded.
+- Pages: the build for `main` at `b6c2909` was `built`, and the merge commit's build is `built` with no error (`pages/builds/latest`). Earlier build `d46368c` (another session's merge) had errored with 'Page build failed.' and was superseded by later successful builds; it was not changed here.
+- Live check: https://karagemop466-tech.github.io/Poker5/site-afff1fc9/ and `/tournaments.html` load and show the expected values.
+- Monitor: the schedule runs at 15:00 UTC daily. The token cannot dispatch the workflow manually (HTTP 403), so the first scheduled run is the first live monitor result. Its log could not be read here, and no monitor result is claimed.
+- Two-PR note: PR #24 was rebased onto a newer `main` twice because other sessions appended to this board; both sides were kept each time.
 
