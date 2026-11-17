@@ -354,7 +354,7 @@ This session is the **final integration session**. It works only on the shared r
 | I10 | One page per venue (Venetian, Wynn, others) with events + hotels | done | 18e480cb | pages/venues/*.html | Official venue pages | — |
 | I11 | Hotels: dated rate log + true nightly cost (rate + resort fee + tax) | done | 18e480cb | data/c6087e2c/rates_log.json, pages/hotels.html | Official fees; Clark County tax ordinance cited | Tax rate marked per cited ordinance; confirm current rate |
 | I12 | Rebuild, validate links/rows, commit, push | done | 18e480cb | scripts/build_c6087e2c.py, all root files | — | — |
-| I13 | PR integration -> main, merge, confirm Pages deploy, record result | in progress | 18e480cb | COORDINATION.md | — | Do not merge a broken site |
+| I13 | PR integration -> main, merge, confirm Pages deploy, record result | done | 18e480cb | COORDINATION.md | PR #26; Pages API status `built` | Merged; Pages live |
 
 ### Log (session 18e480cb)
 
@@ -364,4 +364,5 @@ This session is the **final integration session**. It works only on the shared r
 - Tax: 13.38% is tied to the Clark County room-tax ordinance PDF captured by session cd5ab298; the rate is shown as "per cited ordinance; confirm the current rate" and is not treated as a live booking quote.
 - Walking: only on-property venues are 0 minutes (official: the tournament is held on the property). All other hotel→venue walking times remain blank and flagged (F22); no map value is invented.
 - Verification: `python3 scripts/build_c6087e2c.py` regenerates the root site and fails on any row without a source link or any broken internal link. `node --check assets/app.js` and `python3 scripts/recheck_sources.py --offline` are run locally.
-- Integration PR and Pages result: recorded below after merge.
+- **Integration PR #26:** https://github.com/karagemop466-tech/Poker5/pull/26 (base `main`, head `arena/18e480cb-poker5`). Merged 2026-11-17 as merge commit `5de0d793703b62290b3a6c3e613174f7f361c1dc` with `gh pr merge 26 --merge`. Before merging, `main` had advanced (sessions 0a0e3c6d, arena-a29fc466, afff1fc9), so the branch was rebased onto `origin/main`. The add/add conflicts were resolved by keeping both sides' coordination sections (other sessions' records + this session's record) and keeping this session's regenerated root pages and `scripts/build_c6087e2c.py` (a superset that subsumes afff1fc9's search-box/calculator/last-checked additions). The Caesars Palace / Horseshoe buy-in detail from the rebased sessions was preserved by adding a Venue status table to `pages/tournaments.html`. No other session's isolated output was overwritten or deleted.
+- **GitHub Pages:** source `main` `/`, status `built`, live at https://karagemop466-tech.github.io/Poker5/ (html_url confirmed via the Pages API). The sandbox cannot make direct HTTP requests to `github.io`, so deployment is confirmed from the Pages API `built` status and the passing local build/link/anchor checks, consistent with prior sessions.
