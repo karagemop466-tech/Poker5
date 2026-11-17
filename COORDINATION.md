@@ -282,3 +282,49 @@ This session completed integration on main. All other session outputs preserved 
 - I2 done: trip-cost estimator, table search box, last-checked dates added via build script; Caesars/Horseshoe buy-ins updated from official Caesars page.
 - I4–I5 done: PR #23 created from `arena/a29fc466-poker5` → `main`; merged with `gh pr merge 23 --merge`; Pages live at https://karagemop466-tech.github.io/Poker5/ . Build script passes, all internal links resolve.
 - All other sessions' outputs preserved unchanged.
+
+- Task 11: PR #20 https://github.com/karagemop466-tech/Poker5/pull/20 created from `arena/0a0e3c6d-poker5` → `main`; merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED, no conflicts — branch was exactly one commit ahead of main).
+- Task 10: GitHub Pages deploy after the merge polled via Pages API until status `built`; source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ . Site not broken: build script passes, all internal links resolve.
+- Tasks 10 and 11 marked done in this record; this COORDINATION.md update itself goes to main through a second, one-file PR from this same branch (PR #21) so the merge result is recorded on main.
+---
+
+## Session afff1fc9 (branch `arena/afff1fc9-poker5`)
+
+Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`), `scripts/build_afff1fc9.py`, `scripts/check_afff1fc9.py`, `scripts/monitor_afff1fc9.py`, and `.github/workflows/afff1fc9-monitor.yml`. Root `index.html`, `pages/`, `docs/`, `data/`, `dashboard-*`, `planner-*`, `site/`, `site-b50aa7f5/`, `tools/`, and every other session's files are NOT edited. This session's board entry is the only shared-file change.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| A1 | Official schedule capture: Venetian DeepStack Extravaganza IV + Wynn WPT World Championship schedule (every row, line-by-line) | done (partial: 94 Venetian + 111 Wynn rows) | afff1fc9 | `site-afff1fc9/data/events.csv` | venetianlasvegas.com DSE schedule; WPT schedule PDF on cdn.wynnresorts.com | Continuation rows at Wynn omitted (no entry fee) |
+| A2 | Single-entry rule check on official structure sheets and WPT terms | done (partial: 6 Venetian sheets + WPT terms; 0 events confirmed single-entry) | afff1fc9 | `site-afff1fc9/data/events.csv`, `site-afff1fc9/data/sources.json` | 6 Venetian sheets + WPT terms | No event confirmed single-entry |
+| A3 | Hotel fee + tax (official) and trip-cost calculator | done (partial: Venetian fee verified; Wynn fee, rates, walking not verified) | afff1fc9 | `site-afff1fc9/data/hotels.json`, `calculator.html` | Venetian resort-fee page; Clark County ordinance | Rates, walking times: blank |
+| A4 | Change monitoring (daily cron) + last-checked dates | done (workflow written; first live run pending after merge) | afff1fc9 | `scripts/monitor_afff1fc9.py`, workflow | — | |
+| A5 | Site build, validation, Flagged for Review page, PR, merge, Pages check | in progress (PR and Pages check below) | afff1fc9 | `site-afff1fc9/**` | — | |
+
+### Sources (session afff1fc9; all read 2026-11-17)
+
+- Venetian DSE IV schedule: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html (4 chunks, all rows)
+- Venetian resort fee ($55 plus tax per night): https://www.venetianlasvegas.com/resort/resort-fee.html
+- Venetian structure sheets read: #1, #7, #10, #15, #17, #19 (URLs in `site-afff1fc9/data/sources.json`)
+- Wynn WPT World Championship schedule PDF: https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
+- WPT World Championship general and event terms (re-entry): https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf
+- Clark County transient lodging ordinance (13.38% primary gaming corridor; 'rent' definition): https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf
+- Wynn resort-fee URL attempted (error page): https://www.wynnlasvegas.com/resort-fee
+
+### Verification performed
+
+- Every Venetian row copied from the official schedule and checked against the page's own sheet link; Venetian structure sheets cross-checked for guarantee, start time and event numbers (all matched).
+- Single-entry test: a row is 'confirmed' only with explicit official single-entry or no-re-entry text. None met it. Silent sheets are labelled 'not confirmed'. Repeated Venetian event numbers are labelled multi-flight.
+- Validator `python3 scripts/check_afff1fc9.py`: 205 rows, 11 pages, 0 errors. Every table row carries an https official link; internal links resolve.
+- Monitor `scripts/monitor_afff1fc9.py`: runs in GitHub Actions. The sandbox cannot reach the official hosts (TLS/EOF from sandbox), so no monitor result was recorded in the sandbox; `monitor_state.json` is empty until the first Actions run.
+
+### Irregularities (also on the site's Flagged for Review page)
+
+- Multi-flight event numbers (F1); silence is not single-entry (F2); only 6 Venetian sheets read (F3); WPT unlimited re-entry (F4); Wynn schedule row order and Ladies footnote mismatch (F5); tax rate from 2017 ordinance text (F6); resort-fee taxation basis (F7); Wynn resort fee unverified (F8); no rates or walking times (F9, F10); bounty and satellite formats (F11); conflicting prior-session counts (F12); Wynn continuation rows omitted (F13); a previously reported committed `__pycache__` was not reproduced on this base (F14).
+
+### Log (session afff1fc9)
+
+- Claimed A1–A5 on this board before writing (commit 1855b7a). The first rebase hit a conflict on this file with `main`'s newer entries; both sides were kept.
+- Output is isolated under `site-afff1fc9/` (served at `/Poker5/site-afff1fc9/` on Pages). No other session's file was edited.
+- Requests to other sessions (not edited here): link `site-afff1fc9/` from the root landing page (S8 on the site); decide the public site among the overlapping dashboards (S7).
+- Not done: rates, walking times, the Wynn resort fee, single-entry reading for the remaining Venetian sheets, and the WPT World Championship re-entry text. Listed as open questions on the site.
+
