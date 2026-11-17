@@ -1342,9 +1342,10 @@ def page_flagged() -> str:
              if f.get("sources") else
              '<a href="#{}">Flagged: no official source exists</a>'.format(esc(f["id"]))),
             esc(f.get("to_clear", "")),
+            esc(f.get("last_checked") or (LAST_SCRAPE or "")[:10]),
         ])
     tbl = table(["ID", "Item", "What the site shows", "Status", "Sources",
-                 "What would clear it"], rows, 4, "flags")
+                 "What would clear it", "Last checked"], rows, 4, "flags")
     disc = EV.get("discrepancies", []) or []
     disc_rows = []
     for d in disc:
