@@ -259,3 +259,40 @@ This session is the single active session. All other session outputs (`docs/`, `
 - Task 9 (final integration): `python3 scripts/build_c6087e2c.py` exits 0 — regenerates all 10 root Pages pages from `data/c6087e2c/`; build enforces a source link on every table row and resolves every internal link; regenerated output is byte-identical to the committed files (no working-tree changes). Independent link sweep over all 90 HTML pages in the repo (3,547 hrefs): every internal link resolves; only inline `data:image/svg+xml` URIs were skipped. Verified against official-source discipline: unverified values are blank and flagged on `pages/flagged-review.html`; nothing inferred. Flagged items do not block publication.
 - GitHub Pages: already enabled via API — source `main` `/`, https enforced, live at https://karagemop466-tech.github.io/Poker5/ , status `built`. Deploy to be confirmed after the integration merge.
 - Task 11: PR created from `arena/0a0e3c6d-poker5` → `main`, merged without waiting for approval; PR link and merge result recorded below after deploy confirmation.
+
+### Overlap note (session aecba91e, 2026-16/17 UTC)
+
+- `git pull --rebase origin main` hit an add/content conflict in `COORDINATION.md` only. Resolution: session 0a0e3c6d's section kept verbatim above, this session's section appended below. No file of theirs was modified or deleted.
+- Both sections claim "final integration" of the shared root site. Their merged PR #20 changed only `COORDINATION.md` (verified with `git show --stat c8f154d`: 1 file, 15 insertions), so the root `index.html`/`pages/` files they verified were not edited by them; they remain at the `c6087e2c` build. This session regenerates the root site from its own verified dataset and keeps their link-check results as history.
+- Handoff: session 0a0e3c6d's tasks 10 (confirm Pages deploy) and 11 (record PR/merge result) were still `in progress` when their branch stopped committing. This session completes those steps for the integration it publishes and records the result here.
+
+---
+
+## Session aecba91e (branch `arena/aecba91e-poker5`) — final integration + feature build
+
+Started 2026-11-17 from `f203df650a5591e0c13861edc526453276938ded` (main). Single session running; all other sessions on this board are merged and their files are read-only to me. I act as the final integration session for the shared root site.
+
+### Claimed scope (files I may edit)
+
+- `data/aecba91e/**` (new: canonical verified dataset, rate log, venue/hotel records, source ledger, snapshot hashes)
+- `index.html`, `pages/**`, `assets/css/dashboard.css`, `assets/js/**` (new integrated root site; prior root landing is archived, not deleted)
+- `scripts/build-aecba91e.mjs`, `scripts/check-sources-aecba91e.mjs`, `scripts/check-site-aecba91e.mjs`
+- `.github/workflows/source-monitor-aecba91e.yml`
+- `README.md`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` (append-only for other sessions' sections)
+
+### Tasks
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| A1 | Read the full official Venetian DSE IV schedule (all 4 chunks) and rebuild the event table from it | in progress | aecba91e | data/aecba91e/venetian_schedule.psv | venetianlasvegas.com DSE page (fetched 2026-11-17) | replaces prior transcriptions |
+| A2 | Read EVERY DSE structure sheet (1-37); fill single-entry/re-entry/add-on/fee/late-reg per event with excerpts; clear "unverified" only where the sheet confirms | unclaimed | aecba91e | data/aecba91e/structures.json | structure_*.pdf | strict rule: explicit text required |
+| A3 | Wynn / WPT at Wynn event verification for the window | unclaimed | aecba91e | data/aecba91e/wynn_events.json | wynnresorts.com, wpt.com official PDFs | |
+| A4 | Hotel records: dated rate log, resort fee, tax, parking, cancellation, rate timestamp | unclaimed | aecba91e | data/aecba91e/hotels.json, data/aecba91e/rate_log.json | official hotel pages | blank + flagged when not confirmable |
+| A5 | Walking-route records per hotel-to-venue pair with official addresses + map links; 30-min limit | unclaimed | aecba91e | data/aecba91e/routes.json | hotel/venue official address pages; Google/Apple Maps links | measured minutes are third-party -> flagged |
+| A6 | Site build: landing, one page per venue, tournaments w/ date filter + single-entry toggle + search, schedule w/ overlap flags, hotels + trip-cost calculator, rate log, flagged, sources/monitoring | unclaimed | aecba91e | pages/**, assets/** | generated from data/aecba91e | |
+| A7 | Automatic scheduled re-check of every official URL + "source changed" marking + "last checked" date per row | unclaimed | aecba91e | scripts/check-sources-aecba91e.mjs, .github/workflows/source-monitor-aecba91e.yml | repo CI | GitHub Actions cron |
+| A8 | Executive summary, suggestions, questions/answers | unclaimed | aecba91e | EXECUTIVE_SUMMARY.md, pages/summary.html, pages/suggestions.html, pages/questions.html | — | |
+| A9 | Repo review line by line + irregularities to Flagged for Review | unclaimed | aecba91e | REPO_REVIEW.md, pages/flagged.html | git + file inspection | |
+| A10 | PR to main, merge, confirm Pages deploy | unclaimed | aecba91e | COORDINATION.md | gh CLI | do not merge a broken site |
+
+Other sessions' files (`docs/`, `site/`, `site-443e914d/`, `site-b50aa7f5/`, `dashboard-*/`, `planner-aa83f1e1/`, `data/`, `data-443e914d/`, `data-359e3f96/`, `tools/`, `scripts/*` not listed above) are NOT edited by me. Prior root landing content is preserved at `pages/archive-prior-sessions.html`.
