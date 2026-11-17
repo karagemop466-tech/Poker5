@@ -109,6 +109,8 @@ def main() -> int:
 
     # site-level: every searchable table row that has a Source column must
     # carry a link or be explicitly flagged
+    # Only the pages this build generates; other sessions' folders are not
+    # this session's output and are not validated here.
     pages = [os.path.join(ROOT, "index.html")]
     pages += glob.glob(os.path.join(ROOT, "pages", "**", "*.html"), recursive=True)
     for f in pages:

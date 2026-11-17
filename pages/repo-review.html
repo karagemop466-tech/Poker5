@@ -3,36 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Repo Review | Poker5</title>
-<meta name="description" content="Las Vegas Strip poker tournament and hotel planner built from official sources. Unverified values are blank and flagged.">
-<link rel="stylesheet" href="../assets/css/style.css">
+<title>Repo review | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel trip planner built only from official sources. Anything not confirmed is blank and flagged.">
+<link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
-  <nav class="nav"><a href="../index.html">Home</a>
-<a href="executive-summary.html">Executive Summary</a>
-<a href="tournaments.html">Single-Entry</a>
-<a href="tournaments-double.html">Multi-Entry</a>
-<a href="schedule.html">Schedule</a>
-<a href="hotels.html">Hotels</a>
-<a href="planner.html">Trip Planner</a>
-<a href="venues/venetian.html">Venetian</a>
-<a href="venues/wynn.html">Wynn</a>
-<a href="venues/others.html">Other Venues</a>
-<a href="questions.html">Questions</a>
-<a href="suggestions.html">Suggestions</a>
-<a href="flagged-review.html">Flagged</a>
-<a href="repo-review.html">Repo Review</a></nav>
+  <div class="brand"><span class="logo">P5</span> Poker5
+    <small>Las Vegas Strip poker trip planner</small></div>
+  <nav class="nav"><a href="../index.html">Dashboard</a>
+<a href="../pages/executive-summary.html">Executive summary</a>
+<a href="../pages/single-entry.html">Single-entry events</a>
+<a href="../pages/multientry.html">Advantage &amp; multi-entry</a>
+<a href="../pages/schedule.html">Day schedule</a>
+<a href="../pages/hotels.html">Hotels &amp; true cost</a>
+<a href="../pages/planner.html">Trip calculator</a>
+<a href="../pages/qa.html">Questions to resolve</a>
+<a href="../pages/suggestions.html">Suggestions</a>
+<a href="../pages/flagged.html">Flagged for review</a>
+<a href="../pages/sources.html">Sources &amp; method</a>
+<a href="../pages/repo-review.html">Repo review</a></nav>
 </header>
 <main class="wrap">
-<h1>Repo Review</h1>
-<p class="muted">Line-by-line review of the repo on main and the integration changes. Findings are about content, not people.</p>
-<div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>File / area</th><th>Finding</th><th>Action in this session</th><th>Evidence</th></tr></thead><tbody><tr><td>Root site (index.html, pages/, assets/)</td><td>Prior build showed 0 single-entry confirmed and used a conservative standard.</td><td>Rebuilt in this integration session: confirmed single-entry rows are labelled from read structure sheets; unverified rows stay unverified; new planner, venue, schedule, hotel and re-check features added.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/index.html" target="_blank" rel="noopener">index.html</a></td></tr><tr><td>data/c6087e2c/</td><td>Holds the verified inputs (psv, json) for the root site.</td><td>Extended with rates_log.json, walking.json and last_checked.json for the new features.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/data/c6087e2c/" target="_blank" rel="noopener">data/c6087e2c</a></td></tr><tr><td>scripts/build_c6087e2c.py</td><td>Regenerated the root site from data/c6087e2c/.</td><td>Rewritten to merge all verified datasets, enforce source links, and generate the new pages and calculator.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/build_c6087e2c.py" target="_blank" rel="noopener">build script</a></td></tr><tr><td>scripts/recheck_sources.py</td><td>Did not exist.</td><td>Added: scheduled re-check of every official URL, diff vs baseline, change flags.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/recheck_sources.py" target="_blank" rel="noopener">recheck script</a></td></tr><tr><td>.github/workflows/recheck.yml</td><td>Did not exist.</td><td>Added: daily cron re-check that commits the updated baseline.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/.github/workflows/recheck.yml" target="_blank" rel="noopener">workflow</a></td></tr><tr><td>assets/app.js</td><td>Did not exist on the root site.</td><td>Added: global search, single-entry toggle, date filter and the trip-cost calculator.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/assets/app.js" target="_blank" rel="noopener">app.js</a></td></tr><tr><td>Other sessions' folders (docs/, site/, dashboard-*/, planner-aa83f1e1/, site-*/, data-*/, tools/)</td><td>Parallel-session outputs.</td><td>Read-only in this session; not edited. Preserved on main.</td><td><a href="https://github.com/karagemop466-tech/Poker5" target="_blank" rel="noopener">Repo root</a></td></tr><tr><td>Walking times</td><td>No official source; prior rows used third-party estimates.</td><td>Only on-property 0-minute routes are verified; all others are blank and flagged (F22). No value inferred.</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener">Venetian schedule</a></td></tr><tr><td>Tax rate 13.38%</td><td>Previously cited from third-party sources only.</td><td>Tied to the official Clark County room-tax ordinance PDF; still labelled 'confirm the current rate'.</td><td><a href="https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf" target="_blank" rel="noopener">Clark County ordinance</a></td></tr><tr><td>README.md</td><td>Described the repo and prior sessions.</td><td>Updated to document the integration build and new features.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/README.md" target="_blank" rel="noopener">README.md</a></td></tr></tbody></table></div>
+<h1>Repo review</h1>
+<section class="panel">
+This page is the repo review: what changed, what was irregular, and what was done about it.
+It is written so a reviewer can check each claim against the linked file.
+</section><div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>File or area</th><th>Change</th><th>What it does</th><th>Link</th></tr></thead><tbody><tr><td>Root site (index.html, pages/, assets/)</td><td>Rebuilt</td><td>The previously published root site was replaced by this build, which is generated only from the official capture in data/c6087e2c/. Every prior page is still in Git history.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/index.html" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/index.html">index.html</a></td></tr><tr><td>scripts/scrape_251c122f.py</td><td>New</td><td>Reads the official schedule page and all linked structure sheets, stores excerpts, never decides anything.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/scrape_251c122f.py" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/scrape_251c122f.py">scraper</a></td></tr><tr><td>scripts/merge_251c122f.py</td><td>New</td><td>Applies the single-entry standard to the capture, records the basis for every verdict, and records source disagreements instead of resolving them.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/merge_251c122f.py" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/merge_251c122f.py">merge</a></td></tr><tr><td>scripts/crosscheck_251c122f.py</td><td>New</td><td>Re-derives every verdict and fails the build if one cannot be reproduced from the stored rule fields.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/crosscheck_251c122f.py" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/crosscheck_251c122f.py">cross-check</a></td></tr><tr><td>scripts/build_251c122f.py</td><td>New</td><td>Generates this site. It refuses to publish a data row without a source link or an internal link that does not resolve.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/build_251c122f.py" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/scripts/build_251c122f.py">builder</a></td></tr><tr><td>data/c6087e2c/</td><td>Extended</td><td>Adds schedule_live.json, structures.json, events_verified.json, scrape_status.json, watch_status.json, hotels_251c122f.json, other_venues_251c122f.json and flags_251c122f.json to the existing capture.</td><td><a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></td></tr><tr><td>.github/workflows/daily-scrape.yml</td><td>New</td><td>Daily read of every official source, merge, rebuild, validate, commit. Branch runs also refresh the capture so a change is never only local.</td><td><a href="https://github.com/karagemop466-tech/Poker5/blob/main/.github/workflows/daily-scrape.yml" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5/blob/main/.github/workflows/daily-scrape.yml">workflow</a></td></tr><tr><td>Other sessions' folders (docs/, site/, site-*/, dashboard-*/, planner-aa83f1e1/, data-*/, tools/)</td><td>Left unchanged</td><td>Parallel-session output from earlier passes. Not edited here; still reachable in the repository.</td><td><a href="https://github.com/karagemop466-tech/Poker5" target="_blank" rel="noopener" title="https://github.com/karagemop466-tech/Poker5">repository</a></td></tr></tbody></table></div><h2>Irregularities found while reviewing the repository</h2><div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>ID</th><th>Finding</th><th>Type</th><th>Detail</th></tr></thead><tbody><tr><td>F-R1</td><td>Multiple parallel dashboards for the same brief</td><td>Irregularity (organisational)</td><td>docs/, site/, five dashboard-* folders and three site-* folders all answer the same questions, with different numbers. This pass publishes one root site and leaves the others untouched.</td></tr><tr><td>F-R2</td><td>Earlier root site stated figures that the official sheets contradict</td><td>Irregularity (data)</td><td>The previous build reported 31 confirmed single-entry events; reading all 37 sheets gives 55 confirmed. The earlier figure is superseded, not deleted.</td></tr><tr><td>F-R3</td><td>Third-party resort fees on the earlier hotels page</td><td>Irregularity (sourcing)</td><td>Bellagio, ARIA and MGM Grand fees previously came from a news article. All three are now read from each hotel's own reservation terms; MGM Grand is $50, not $55.</td></tr><tr><td>F-R4</td><td>Tax rate cited without a working official reference</td><td>Irregularity (sourcing)</td><td>13.38% is now tied to the ordinance table row 'Resort hotel within primary gaming corridor | 12.5% | 0.88% | 13.38%' and the caveat that the rate may change.</td></tr><tr><td>F-R5</td><td>A single hotel rate treated as a value</td><td>Irregularity (method)</td><td>Rates are now a dated log. One snapshot can never stand in for another stay.</td></tr></tbody></table></div>
 </main>
 <footer class="foot">
-  <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
-  <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
+  <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
+  Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
+  If gambling is a problem, call 1-800-522-4700.</div>
+  <div>Site built 2026-11-17T22:35Z from the official-source capture of 2026-11-17T22:28:32Z.
+    Code: <a href="https://github.com/karagemop466-tech/Poker5">github.com/karagemop466-tech/Poker5</a> &middot;
+    Task board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
+    Data: <a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

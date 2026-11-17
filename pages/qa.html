@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions to resolve | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel trip planner built only from official sources. Anything not confirmed is blank and flagged.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">P5</span> Poker5
+    <small>Las Vegas Strip poker trip planner</small></div>
+  <nav class="nav"><a href="../index.html">Dashboard</a>
+<a href="../pages/executive-summary.html">Executive summary</a>
+<a href="../pages/single-entry.html">Single-entry events</a>
+<a href="../pages/multientry.html">Advantage &amp; multi-entry</a>
+<a href="../pages/schedule.html">Day schedule</a>
+<a href="../pages/hotels.html">Hotels &amp; true cost</a>
+<a href="../pages/planner.html">Trip calculator</a>
+<a href="../pages/qa.html">Questions to resolve</a>
+<a href="../pages/suggestions.html">Suggestions</a>
+<a href="../pages/flagged.html">Flagged for review</a>
+<a href="../pages/sources.html">Sources &amp; method</a>
+<a href="../pages/repo-review.html">Repo review</a></nav>
+</header>
+<main class="wrap">
+<h1>Questions to resolve</h1>
+<section class="panel">
+Every question below is either answered from an official source, answered with a stated
+assumption, or open. An open question is not a reason to guess: it is a reason to leave the
+value blank, which is why several columns on this site are empty.
+</section><div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>#</th><th>Question</th><th>Status</th><th>Why it matters</th><th>What we know</th><th>How to get the answer / what it needs</th></tr></thead><tbody><tr><td>Q01</td><td>When is the trip, and how many are travelling?</td><td><span class="badge badge-bad">Unresolved</span></td><td>Blocks the trip total and the hotel log</td><td>Nothing official depends on it, but every cost answer does: the rate log, the number of nights and the party size all key off these three facts.</td><td>You provide the dates and the number of adults. Until then the planner uses the logged snapshot stay (Dec 2 - Dec 9, 2026) as an example only.</td></tr><tr><td>Q02</td><td>What is the nightly budget and the minimum hotel quality?</td><td><span class="badge badge-bad">Unresolved</span></td><td>Blocks the hotel choice</td><td>The brief asks for cost and quality over distance, but no official page publishes a quality score, so quality has no source yet.</td><td>Pick a quality standard (for example a published star rating) and a nightly cap. Then the hotels page can rank with numbers instead of blanks.</td></tr><tr><td>Q03</td><td>Is the 8:00 AM start a hard requirement?</td><td><span class="badge badge-ok">Answered</span></td><td>Resolved by the official schedules: no 8:00 AM start exists</td><td>The earliest official start found is 9:00 AM (Horseshoe, six daily events). Caesars Palace starts at 10:00 AM; the Venetian&#x27;s earliest is 9:10 AM.</td><td>Either accept a 9:00 AM start or add a non-tournament morning activity. No source can move a room&#x27;s published start time.</td></tr><tr><td>Q04</td><td>Which events are genuinely single-entry?</td><td><span class="badge badge-ok">Answered</span></td><td>Answered for 55 rows</td><td>Each confirmed row&#x27;s own structure sheet was read, lists that event number, is a one-day event and contains no re-entry, rebuy, add-on or purchased-stack language.</td><td>For the rows still unverified, the sheet is either unreadable or does not name the event; the row links both the schedule and the sheet so it can be checked.</td></tr><tr><td>Q05</td><td>How long does a hotel-to-room walk take?</td><td><span class="badge badge-bad">Unresolved</span></td><td>Blocks the 30-minute rule for every off-property hotel</td><td>No casino publishes a walking time. Only on-property routes are zero minutes by definition.</td><td>Measure each route once on a named map service, record the provider, the route and the date, and it can enter the walking table with that source.</td></tr><tr><td>Q06</td><td>What is the true nightly hotel cost?</td><td><span class="badge badge-warn">Partly answered</span></td><td>Partly answered: every fee and tax is official, the room rate is not</td><td>Resort fees: Venetian/Palazzo $55, Wynn/Encore $55, Bellagio $55, ARIA $55, MGM Grand $50. Room tax 13.38% per the county ordinance table. Room rates are dynamic.</td><td>Read the rate off the official booking page for your dates and add fee + tax. The calculator does exactly that.</td></tr><tr><td>Q07</td><td>Which events can be played back to back on one day?</td><td><span class="badge badge-warn">Answered with an assumption</span></td><td>Answered from official start times and derived lengths</td><td>The schedule page gives each day a primary event, a derived exit time and a fallback only when a later official start clears that exit by 30 minutes.</td><td>Finishing times are not published, so the exit is derived from the sheet&#x27;s late-registration level count. Treat it as a planning figure.</td></tr><tr><td>Q08</td><td>Caesars Palace and Horseshoe resort fees</td><td><span class="badge badge-bad">Unresolved</span></td><td>Missing</td><td>No official Caesars resort-fee page was found; the fees stay blank.</td><td>The Caesars booking page price breakdown for your dates will show the fee.</td></tr><tr><td>Q09</td><td>Bellagio, MGM Grand and ARIA tournament schedules</td><td><span class="badge badge-bad">Unresolved</span></td><td>Missing or stale</td><td>Bellagio&#x27;s PDFs are undated and its Saturday buy-in contradicts itself; MGM Grand&#x27;s PDF is titled August; ARIA lists no tournaments.</td><td>Only the rooms themselves can confirm; their contact details are on the official poker pages.</td></tr><tr><td>Q10</td><td>Wynn festival event-by-event schedule</td><td><span class="badge badge-bad">Unresolved</span></td><td>Not read row by row</td><td>The festival window and the Main Event dates are official. The per-event structures PDF is linked from the Wynn poker page and is watched daily.</td><td>Read the festival structures PDF for the events you care about, or ask the Wynn poker desk.</td></tr><tr><td>Q11</td><td>Guarantee disagreements</td><td><span class="badge badge-warn">Flagged</span></td><td>Recorded, not resolved</td><td>Three Venetian rows print a different guarantee on the schedule row than on the structure sheet.</td><td>The site shows both figures side by side and never picks one. Ask the poker room if the difference matters for your decision.</td></tr><tr><td>Q12</td><td>Is a second-entry rule ever a single-entry event?</td><td><span class="badge badge-ok">Answered</span></td><td>Standard published</td><td>A sheet that allows a player to buy a second entry is never called single-entry here, even if the schedule is one day.</td><td>Nothing to do: the rule is stated on the Sources &amp;amp; method page.</td></tr></tbody></table></div>
+</main>
+<footer class="foot">
+  <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
+  Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
+  If gambling is a problem, call 1-800-522-4700.</div>
+  <div>Site built 2026-11-17T22:35Z from the official-source capture of 2026-11-17T22:28:32Z.
+    Code: <a href="https://github.com/karagemop466-tech/Poker5">github.com/karagemop466-tech/Poker5</a> &middot;
+    Task board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
+    Data: <a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

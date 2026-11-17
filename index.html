@@ -3,74 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Poker5 | Las Vegas Strip poker planner | Poker5</title>
-<meta name="description" content="Las Vegas Strip poker tournament and hotel planner built from official sources. Unverified values are blank and flagged.">
-<link rel="stylesheet" href="assets/css/style.css">
+<title>Dashboard | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel trip planner built only from official sources. Anything not confirmed is blank and flagged.">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
-  <nav class="nav"><a href="index.html">Home</a>
-<a href="pages/executive-summary.html">Executive Summary</a>
-<a href="pages/tournaments.html">Single-Entry</a>
-<a href="pages/tournaments-double.html">Multi-Entry</a>
-<a href="pages/schedule.html">Schedule</a>
-<a href="pages/hotels.html">Hotels</a>
-<a href="pages/planner.html">Trip Planner</a>
-<a href="pages/venues/venetian.html">Venetian</a>
-<a href="pages/venues/wynn.html">Wynn</a>
-<a href="pages/venues/others.html">Other Venues</a>
-<a href="pages/questions.html">Questions</a>
+  <div class="brand"><span class="logo">P5</span> Poker5
+    <small>Las Vegas Strip poker trip planner</small></div>
+  <nav class="nav"><a href="index.html">Dashboard</a>
+<a href="pages/executive-summary.html">Executive summary</a>
+<a href="pages/single-entry.html">Single-entry events</a>
+<a href="pages/multientry.html">Advantage &amp; multi-entry</a>
+<a href="pages/schedule.html">Day schedule</a>
+<a href="pages/hotels.html">Hotels &amp; true cost</a>
+<a href="pages/planner.html">Trip calculator</a>
+<a href="pages/qa.html">Questions to resolve</a>
 <a href="pages/suggestions.html">Suggestions</a>
-<a href="pages/flagged-review.html">Flagged</a>
-<a href="pages/repo-review.html">Repo Review</a></nav>
+<a href="pages/flagged.html">Flagged for review</a>
+<a href="pages/sources.html">Sources &amp; method</a>
+<a href="pages/repo-review.html">Repo review</a></nav>
 </header>
 <main class="wrap">
-<h1>Poker5 | Las Vegas Strip poker planner</h1>
+<h1>Dashboard</h1>
 
 <section class="hero">
-  <h2>Plan a Las Vegas Strip poker trip from official sources</h2>
-  <p>Live tournaments on the Strip, hotels with their resort fees and dated rate log,
-     a trip-cost calculator, and a day plan built from the official start times.
-     Every row links to the official page it came from. Anything that is not confirmed
-     is left blank and flagged.</p>
+  <h2>A Las Vegas Strip poker trip you can actually plan</h2>
+  <p>One dashboard built only from official casino, tour and county pages: which
+  tournaments are genuinely single-entry, what each one costs in total, how long a
+  playing day runs, which days overlap, and what a hotel night really costs once the
+  resort fee and room tax are added. Every value links to the official page or PDF it
+  came from. Anything that could not be confirmed is blank and listed on
+  <a href="pages/flagged.html">Flagged for review</a>.</p>
   <div class="ctas">
-    <a class="btn" href="pages/planner.html">Trip cost calculator</a>
-    <a class="btn ghost" href="pages/tournaments.html">Single-entry tournaments</a>
-    <a class="btn ghost" href="pages/schedule.html">Day schedule + overlap check</a>
-    <a class="btn ghost" href="pages/hotels.html">Hotels + true nightly cost</a>
+    <a class="btn" href="pages/single-entry.html">Single-entry events</a>
+    <a class="btn ghost" href="pages/schedule.html">Day-by-day schedule</a>
+    <a class="btn ghost" href="pages/hotels.html">Hotels &amp; true nightly cost</a>
+    <a class="btn ghost" href="pages/planner.html">Trip calculator</a>
   </div>
 </section>
-<section class="stats"><div class="stat"><div class="num">64</div><div class="lbl">Official Venetian event numbers</div></div><div class="stat"><div class="num">31</div><div class="lbl">Confirmed single-entry events</div></div><div class="stat"><div class="num">75</div><div class="lbl">Single-entry unverified</div></div><div class="stat"><div class="num">90</div><div class="lbl">Multi-flight / multi-entry</div></div><div class="stat"><div class="num">31</div><div class="lbl">Bounty events</div></div><div class="stat"><div class="num">25</div><div class="lbl">Flagged items for review</div></div></section>
+<section class="stats"><div class="stat"><div class="num">94</div><div class="lbl">Schedule rows read</div></div><div class="stat"><div class="num">55</div><div class="lbl">Confirmed single-entry</div></div><div class="stat"><div class="num">28</div><div class="lbl">Multi-flight / multi-entry</div></div><div class="stat"><div class="num">11</div><div class="lbl">Restart rows</div></div><div class="stat"><div class="num">37/37</div><div class="lbl">Official PDFs read</div></div><div class="stat"><div class="num">22</div><div class="lbl">Items flagged for review</div></div></section>
+<div class="grid2">
 <section class="panel">
-  <h2>Headline findings</h2>
-  <ul>
-    <li><strong>31 events are confirmed single-entry</strong> from a structure sheet that was read and shows no re-entry, rebuy, add-on or paid-chip text. A further 75 candidate rows remain <strong>Unverified</strong> because their structure sheet was not read; they are never assumed to be single-entry.</li>
-    <li><strong>Guarantee &divide; entry fee is shown as a descriptive ratio, not a forecast.</strong> It describes the published guarantee per dollar of buy-in; it is not a prediction of winnings.</li>
-    <li><strong>Bounty and flight events are labelled separately.</strong> Bounty guarantees include bounty payouts; flight events allow more than one entry per flight.</li>
-    <li><strong>Every row carries a "last checked" date.</strong> A scheduled job re-reads each official URL and flags any row whose source changed (see the Flagged page).</li>
-    <li><strong>No official 8:00 AM start was found.</strong> The earliest verified Venetian start is 9:10 AM. The day plan starts from the earliest verified start.</li>
-    <li><strong>Hotel true nightly cost = room rate + resort fee + tax.</strong> Room rates are dynamic; only dated booking-UI snapshots are logged. Walking times are verified only for on-property venues.</li>
+  <h2>What changed in this pass</h2>
+  <ul class="tight">
+    <li><strong>55 events are confirmed single-entry</strong> because their own
+      official structure sheet was read, lists that event number, is a one-day event, and
+      contains no re-entry, rebuy, add-on or purchased-stack language. That is the
+      published standard; nothing else is treated as confirmed.</li>
+    <li><strong>Every Venetian structure sheet was read</strong> (37 official PDFs),
+      so the rule fields (late-registration cutoff, level length, starting chips, house fee,
+      prize-pool share) are official values, not estimates.</li>
+    <li><strong>Hotel resort fees are now official for The Venetian / The Palazzo ($55),
+      Wynn / Encore ($55), Bellagio ($55), ARIA ($55) and MGM Grand ($50)</strong>, each with
+      the sentence it was read from. Caesars Palace and Horseshoe fees are still blank.</li>
+    <li><strong>Room tax 13.38%</strong> is tied to the Clark County ordinance table for a
+      resort hotel inside the primary gaming corridor.</li>
+    <li><strong>Guarantee conflicts are shown, not resolved.</strong> Where the schedule row
+      and the structure sheet print different guarantees, the row says so and links both.</li>
   </ul>
-  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py. Last source re-check: 2026-11-17T15:00:06Z.</p>
+</section>
+<section class="panel warn-panel">
+  <h2>What the data still cannot tell you</h2>
+  <ul class="tight">
+    <li><strong>No 8:00 AM start exists</strong> on the Strip. The earliest official start
+      found is 9:00 AM (Horseshoe, six daily events). The all-day plan therefore starts at
+      9:00 AM, not 8:00 AM.</li>
+    <li><strong>Room rates are dynamic.</strong> No official page quotes a fixed rate; the
+      rate log stores dated booking-UI snapshots with their timestamp and nothing else.</li>
+    <li><strong>Walking times between different resorts are not verified.</strong> Only
+      on-property routes (0 minutes) pass the 30-minute filter.</li>
+    <li><strong>Finishing times are not published.</strong> A playing-day length is derived
+      from each sheet's late-registration level count and is labelled as derived.</li>
+  </ul>
+  <p class="muted">The full list, with what would clear each item, is on
+  <a href="pages/qa.html">Questions to resolve</a> and
+  <a href="pages/flagged.html">Flagged for review</a>.</p>
+</section>
+</div>
+<section class="panel">
+  <h2>Best published guarantee per dollar of buy-in (descriptive, not a forecast)</h2>
+  <p class="muted">Confirmed single-entry rows only. The ratio is the published guarantee
+  divided by the buy-in. It says nothing about your chance of winning; it is only a way to
+  compare how much prize money a room publishes per dollar of entry. Bounty events include
+  bounties in that guarantee, so their ratio is not comparable with a standard event; the
+  Format column on the events page marks them.</p>
+  <div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>Event</th><th>Date &middot; start</th><th>Buy-in</th><th>Guarantee</th><th>Guarantee &divide; buy-in</th><th>Source</th></tr></thead><tbody><tr><td><strong>#18</strong> &middot; $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) POKERATLAS PRO MEMBER $20 RAKE DISCOUNT</td><td>Sat Nov 28, 2026 &middot; 5:10 PM</td><td>$200</td><td>$20,000</td><td>100.0&times; <span class="tiny">(sheet)</span></td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html">Official schedule</a> &middot; <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf">Structure sheet</a></td></tr><tr><td><strong>#58</strong> &middot; $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) POKERATLAS PRO MEMBER $20 RAKE DISCOUNT</td><td>Sat Dec 19, 2026 &middot; 5:10 PM</td><td>$200</td><td>$20,000</td><td>100.0&times; <span class="tiny">(sheet)</span></td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html">Official schedule</a> &middot; <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf">Structure sheet</a></td></tr><tr><td><strong>#36</strong> &middot; $800 No Limit Hold&#x27;em Bounty $75K GTD (1Day) $200 bounties to start &amp; $500 bounties in the money</td><td>Wed Dec 9, 2026 &middot; 11:10 AM</td><td>$800</td><td>$75,000</td><td>93.8&times; <span class="tiny">(sheet)</span></td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html">Official schedule</a> &middot; <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf">Structure sheet</a></td></tr><tr><td><strong>#52</strong> &middot; $1,100 No Limit Hold&#x27;em $75K GTD (1Day) Progressive Knock-Out Bounty (PKO)</td><td>Tue Dec 15, 2026 &middot; 11:10 AM</td><td>$1,100</td><td>$75,000</td><td>68.2&times; <span class="tiny">(sheet)</span></td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html">Official schedule</a> &middot; <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf">Structure sheet</a></td></tr><tr><td><strong>#24</strong> &middot; $600 No Limit Hold&#x27;em Seniors $40K GTD (1Day) Must be 50+ years of age to participate</td><td>Wed Dec 2, 2026 &middot; 10:10 AM</td><td>$600</td><td>$40,000</td><td>66.7&times; <span class="tiny">(sheet)</span></td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html">Official schedule</a> &middot; <a href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf">Structure sheet</a></td></tr></tbody></table></div>
+</section>
+<section class="panel">
+  <h2>Hotel fees confirmed from official pages</h2>
+  <div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>Hotel</th><th>Resort fee / night</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td><strong>The Venetian Resort</strong></td><td>$55</td><td>verified (official)</td><td><a href="https://www.venetianlasvegas.com/resort/resort-fee.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/resort-fee.html">Official fee page</a></td></tr><tr><td><strong>The Palazzo (same resort as The Venetian)</strong></td><td>$55</td><td>verified for the two-tower suite-rate programme (official)</td><td><a href="https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html" target="_blank" rel="noopener" title="https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html">Official fee page</a></td></tr><tr><td><strong>Wynn Las Vegas</strong></td><td>$55</td><td>partly verified: the fee sentence is official, but it sits on an offer terms page whose offer ran through June 30, 2025. Confirm on the booking page (flagged F28).</td><td><a href="https://www.wynnlasvegas.com/terms-and-conditions/849338" target="_blank" rel="noopener" title="https://www.wynnlasvegas.com/terms-and-conditions/849338">Official fee page</a></td></tr><tr><td><strong>Encore at Wynn Las Vegas</strong></td><td>$55</td><td>partly verified: the same offer terms list Encore room types and the $55 fee (flagged F28).</td><td><a href="https://www.wynnlasvegas.com/terms-and-conditions/849338" target="_blank" rel="noopener" title="https://www.wynnlasvegas.com/terms-and-conditions/849338">Official fee page</a></td></tr><tr><td><strong>Bellagio</strong></td><td>$55</td><td>verified (official hotel reservation terms)</td><td><a href="https://bellagio.mgmresorts.com/en/terms-and-conditions.html" target="_blank" rel="noopener" title="https://bellagio.mgmresorts.com/en/terms-and-conditions.html">Official fee page</a></td></tr><tr><td><strong>ARIA Resort &amp; Casino</strong></td><td>$55</td><td>verified (official hotel reservation terms)</td><td><a href="https://aria.mgmresorts.com/en/terms-and-conditions.html" target="_blank" rel="noopener" title="https://aria.mgmresorts.com/en/terms-and-conditions.html">Official fee page</a></td></tr><tr><td><strong>MGM Grand Las Vegas</strong></td><td>$50</td><td>verified (official hotel reservation terms). Note: this corrects the earlier secondary-source figure of $55.</td><td><a href="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html" target="_blank" rel="noopener" title="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html">Official fee page</a></td></tr></tbody></table></div>
+  <p class="muted">True nightly cost = room rate + resort fee + tax on both. See
+  <a href="pages/hotels.html">Hotels</a> for the dated rate log and each hotel's terms.</p>
 </section>
 <section class="grid3">
-  <a class="card" href="pages/tournaments.html"><h3>Single-entry</h3><p>Confirmed events with structured rules, ratio and filters.</p></a>
-  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on and multi-flight events, kept separate.</p></a>
-  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official row by date, with the overlap check and primary/fallback.</p></a>
-  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost and the 30-minute walk filter.</p></a>
-  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost.</p></a>
-  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events and on-property hotels.</p></a>
-  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship and daily events.</p></a>
-  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand.</p></a>
-  <a class="card" href="pages/questions.html"><h3>Questions</h3><p>What is missing and how to find it.</p></a>
-  <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>25 items with source links. These do not block publication.</p></a>
+  <a class="card" href="pages/single-entry.html"><h3>Single-entry events</h3>
+    <p>Confirmed rows with every rule field, guarantee ratio, date filter and search.</p></a>
+  <a class="card" href="pages/multientry.html"><h3>Advantage &amp; multi-entry</h3>
+    <p>Re-entry, rebuy, add-on and multi-flight rows, kept apart from single entry.</p></a>
+  <a class="card" href="pages/schedule.html"><h3>Day schedule</h3>
+    <p>Primary event and conditional fallback per day, plus the overlap check.</p></a>
+  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3>
+    <p>DeepStack Extravaganza IV: all rows, all rule fields, on-property hotels.</p></a>
+  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3>
+    <p>WPT World Championship and the daily slate, with the suspension rules.</p></a>
+  <a class="card" href="pages/venues/others.html"><h3>Other rooms</h3>
+    <p>Caesars Palace, Horseshoe, Bellagio, MGM Grand, ARIA: what the official pages state.</p></a>
+  <a class="card" href="pages/qa.html"><h3>Questions to resolve</h3>
+    <p>Every open question, why it blocks a decision, and how to get the answer.</p></a>
+  <a class="card" href="pages/suggestions.html"><h3>Suggestions board</h3>
+    <p>Ranked improvements with impact, cost and the choice each one needs.</p></a>
+  <a class="card" href="pages/sources.html"><h3>Sources &amp; method</h3>
+    <p>Every official URL, when it was read, and the confirmation standard used.</p></a>
 </section>
 
 </main>
 <footer class="foot">
-  <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
-  <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
+  <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
+  Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
+  If gambling is a problem, call 1-800-522-4700.</div>
+  <div>Site built 2026-11-17T22:35Z from the official-source capture of 2026-11-17T22:28:32Z.
+    Code: <a href="https://github.com/karagemop466-tech/Poker5">github.com/karagemop466-tech/Poker5</a> &middot;
+    Task board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
+    Data: <a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></div>
 </footer>
 <script src="assets/app.js"></script>
 </body>
