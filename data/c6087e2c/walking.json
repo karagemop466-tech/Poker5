@@ -1,0 +1,105 @@
+{
+  "note": "Walking times from each hotel to a tournament venue. Only on-property venues are verified at 0 minutes (the official source states the tournament is held on the property). All other hotel-to-venue walking times are NOT verified from an official or map source in this repository and are left null. The site's <=30-minute filter shows only verified entries; unverified routes are shown blank and flagged. Do not infer a walking time.",
+  "limit_minutes": 30,
+  "routes": [
+    {
+      "hotel": "The Venetian Resort",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "source_label": "Venetian official DSE IV page (event held on the property)",
+      "note": "On-property: 0 minutes to the poker suite."
+    },
+    {
+      "hotel": "The Palazzo",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "source_label": "Venetian official suite page (The Venetian and The Palazzo are the same resort)",
+      "note": "The Palazzo is the same resort complex as The Venetian; the poker suite is on the property."
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://www.wynnlasvegas.com/casino/poker",
+      "source_label": "Wynn official poker page (events held on the property)",
+      "note": "On-property: 0 minutes."
+    },
+    {
+      "hotel": "Encore at Wynn",
+      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
+      "walk_minutes": null,
+      "verified": false,
+      "source": "https://www.wynnlasvegas.com/casino/poker",
+      "source_label": "Wynn official poker page",
+      "note": "Encore is the sister property; the walk to the Wynn poker room is not verified from an official source. Left blank."
+    },
+    {
+      "hotel": "Bellagio",
+      "venue": "Bellagio (poker room)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "source_label": "Bellagio official poker page (events held on the property)",
+      "note": "On-property: 0 minutes."
+    },
+    {
+      "hotel": "Caesars Palace",
+      "venue": "Caesars Palace (daily NLH)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+      "source_label": "Caesars official poker page (events held on the property)",
+      "note": "On-property: 0 minutes."
+    },
+    {
+      "hotel": "Horseshoe Las Vegas",
+      "venue": "Horseshoe Las Vegas (daily NLH)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+      "source_label": "Caesars official poker page (events held on the property)",
+      "note": "On-property: 0 minutes."
+    },
+    {
+      "hotel": "MGM Grand",
+      "venue": "MGM Grand (daily NLH)",
+      "walk_minutes": 0,
+      "verified": true,
+      "source": "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html",
+      "source_label": "MGM Grand official poker page (events held on the property)",
+      "note": "On-property: 0 minutes."
+    },
+    {
+      "hotel": "ARIA Resort & Casino",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "walk_minutes": null,
+      "verified": false,
+      "source": "",
+      "source_label": "",
+      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+    },
+    {
+      "hotel": "Caesars Palace",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "walk_minutes": null,
+      "verified": false,
+      "source": "",
+      "source_label": "",
+      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+    },
+    {
+      "hotel": "MGM Grand",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "walk_minutes": null,
+      "verified": false,
+      "source": "",
+      "source_label": "",
+      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+    }
+  ]
+}

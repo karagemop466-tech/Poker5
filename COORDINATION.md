@@ -328,3 +328,35 @@ Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`
 - Requests to other sessions (not edited here): link `site-afff1fc9/` from the root landing page (S8 on the site); decide the public site among the overlapping dashboards (S7).
 - Not done: rates, walking times, the Wynn resort fee, single-entry reading for the remaining Venetian sheets, and the WPT World Championship re-entry text. Listed as open questions on the site.
 
+
+---
+
+## Session 18e480cb (branch `arena/18e480cb-poker5`) — final integration + feature build
+
+This session is the **final integration session**. It works only on the shared root site that GitHub Pages publishes from `main` `/` (`index.html`, `pages/`, `assets/`, `data/c6087e2c/`, `scripts/build_c6087e2c.py`). Every other session's folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/`, `tools/`, `scripts/build_*` other than `build_c6087e2c.py`) is read-only and is not edited. It merges the verified datasets already present on `main` and implements the remaining brief features on the root site.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| I1 | Claim integration; reconcile datasets (Venetian psv + status txt + structured rules + other rooms) | done | 18e480cb | COORDINATION.md, scripts/build_c6087e2c.py, data/c6087e2c/* | All official sources already captured on main | No new external fetch in this sandbox; uses captured official data |
+| I2 | Trip-cost calculator (entries × buy-ins + nights × true hotel cost) | done | 18e480cb | pages/planner.html, assets/app.js | Official buy-ins/fees; blank where unverified | JS calculator, no manual server input |
+| I3 | "Last checked" date per row + scheduled source re-check + change flags | done | 18e480cb | scripts/recheck_sources.py, .github/workflows/recheck.yml, data/c6087e2c/last_checked.json | Official URLs in data | Cron job re-reads official pages; diffs vs baseline |
+| I4 | Confirmed single-entry: remove "unverified" label where a structure sheet confirms it | done | 18e480cb | pages/tournaments.html, pages/venues/* | Venetian structure sheets; Wynn daily structures PDF | S-status rows labelled Confirmed; U-status stay Unverified |
+| I5 | Structured rule fields (single-entry, re-entry, add-on, fee, source excerpt, retrieval date) | done | 18e480cb | pages/tournaments.html, pages/venues/* | Structure sheets | Separate columns, each with source link |
+| I6 | Date filter + global search box + single-entry toggle filter | done | 18e480cb | assets/app.js, all table pages | — | Client-side filters over the rendered tables |
+| I7 | Guarantee ÷ entry fee ratio (descriptive, not a forecast); bounty/flight labelled separately | done | 18e480cb | pages/tournaments.html, pages/venues/* | Official guarantees + buy-ins | Ratio labelled "descriptive ratio, not a forecast" |
+| I8 | Schedule overlap check (primary + conditional fallback per day) | done | 18e480cb | pages/schedule.html | Official start times | Durations unverified; overlap flagged, not assumed |
+| I9 | Walking-route check with ≤30-min filter | done | 18e480cb | pages/hotels.html, data/c6087e2c/walking.json | On-property 0-min (official); others blank/flagged | No map fetch in sandbox; unverified left blank |
+| I10 | One page per venue (Venetian, Wynn, others) with events + hotels | done | 18e480cb | pages/venues/*.html | Official venue pages | — |
+| I11 | Hotels: dated rate log + true nightly cost (rate + resort fee + tax) | done | 18e480cb | data/c6087e2c/rates_log.json, pages/hotels.html | Official fees; Clark County tax ordinance cited | Tax rate marked per cited ordinance; confirm current rate |
+| I12 | Rebuild, validate links/rows, commit, push | done | 18e480cb | scripts/build_c6087e2c.py, all root files | — | — |
+| I13 | PR integration -> main, merge, confirm Pages deploy, record result | in progress | 18e480cb | COORDINATION.md | — | Do not merge a broken site |
+
+### Log (session 18e480cb)
+
+- Branch base `f203df6` (= `main` at start); no diff to `main` on entry. All prior session outputs already merged.
+- Data reconciliation: the root site previously showed "0 single-entry confirmed" (conservative session c6087e2c). Session b1f117c3's `data/venetian_dse_iv.txt` and `data/tournaments.json` record Venetian rows whose structure sheets were read and state no re-entry/add-on language (status `S`), plus structured rule fields. This session merges both: rows with a read structure sheet showing no re-entry/add-on/paid-chip text are labelled **Confirmed single-entry** with the sheet linked; rows whose sheet was not read stay **Unverified**. No value is inferred.
+- Retrieval dates: official pages/PDFs were retrieved 2026-11-16 by prior sessions; `last_checked` records that. The scheduled re-check (I3) re-reads them and diffs against the stored baseline.
+- Tax: 13.38% is tied to the Clark County room-tax ordinance PDF captured by session cd5ab298; the rate is shown as "per cited ordinance; confirm the current rate" and is not treated as a live booking quote.
+- Walking: only on-property venues are 0 minutes (official: the tournament is held on the property). All other hotel→venue walking times remain blank and flagged (F22); no map value is invented.
+- Verification: `python3 scripts/build_c6087e2c.py` regenerates the root site and fails on any row without a source link or any broken internal link. `node --check assets/app.js` and `python3 scripts/recheck_sources.py --offline` are run locally.
+- Integration PR and Pages result: recorded below after merge.

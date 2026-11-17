@@ -12,14 +12,17 @@
   <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
   <nav class="nav"><a href="index.html">Home</a>
 <a href="pages/executive-summary.html">Executive Summary</a>
-<a href="site-b50aa7f5/index.html">Strict Entry Research</a>
-<a href="planner-aa83f1e1/index.html">Poker &amp; Stay Planner</a>
-<a href="pages/tournaments-double.html">Re-Entry / Multi-Flight</a>
-<a href="pages/hotels.html">Hotels</a>
+<a href="pages/tournaments.html">Single-Entry</a>
+<a href="pages/tournaments-double.html">Multi-Entry</a>
 <a href="pages/schedule.html">Schedule</a>
-<a href="pages/questions.html">Questions &amp; Answers</a>
+<a href="pages/hotels.html">Hotels</a>
+<a href="pages/planner.html">Trip Planner</a>
+<a href="pages/venues/venetian.html">Venetian</a>
+<a href="pages/venues/wynn.html">Wynn</a>
+<a href="pages/venues/others.html">Other Venues</a>
+<a href="pages/questions.html">Questions</a>
 <a href="pages/suggestions.html">Suggestions</a>
-<a href="pages/flagged-review.html">Flagged for Review</a>
+<a href="pages/flagged-review.html">Flagged</a>
 <a href="pages/repo-review.html">Repo Review</a></nav>
 </header>
 <main class="wrap">
@@ -27,46 +30,39 @@
 
 <section class="hero">
   <h2>Plan a Las Vegas Strip poker trip from official sources</h2>
-  <p>Live tournaments on the Strip, hotels with their resort fees, and a day plan starting from the official start times.
-     Every row links to the official page it came from. Anything that is not confirmed is left blank and flagged.</p>
+  <p>Live tournaments on the Strip, hotels with their resort fees and dated rate log,
+     a trip-cost calculator, and a day plan built from the official start times.
+     Every row links to the official page it came from. Anything that is not confirmed
+     is left blank and flagged.</p>
   <div class="ctas">
-    <a class="btn" href="site-b50aa7f5/index.html">Strict-entry research (0 verified)</a>
-    <a class="btn ghost" href="planner-aa83f1e1/index.html">Poker &amp; stay planner</a>
-    <a class="btn ghost" href="pages/hotels.html">Hotels and true nightly cost</a>
-    <a class="btn ghost" href="pages/executive-summary.html">Executive summary</a>
+    <a class="btn" href="pages/planner.html">Trip cost calculator</a>
+    <a class="btn ghost" href="pages/tournaments.html">Single-entry tournaments</a>
+    <a class="btn ghost" href="pages/schedule.html">Day schedule + overlap check</a>
+    <a class="btn ghost" href="pages/hotels.html">Hotels + true nightly cost</a>
   </div>
 </section>
-<section class="stats"><div class="stat"><div class="num">64</div><div class="lbl">Venetian event numbers (official)</div></div><div class="stat"><div class="num">0</div><div class="lbl">Single-entry status confirmed</div></div><div class="stat"><div class="num">7</div><div class="lbl">Re-entry / rebuy / add-on verified</div></div><div class="stat"><div class="num">33</div><div class="lbl">Multi-flight events (rules unverified)</div></div><div class="stat"><div class="num">25</div><div class="lbl">Flagged items for review</div></div></section>
+<section class="stats"><div class="stat"><div class="num">64</div><div class="lbl">Official Venetian event numbers</div></div><div class="stat"><div class="num">31</div><div class="lbl">Confirmed single-entry events</div></div><div class="stat"><div class="num">75</div><div class="lbl">Single-entry unverified</div></div><div class="stat"><div class="num">90</div><div class="lbl">Multi-flight / multi-entry</div></div><div class="stat"><div class="num">31</div><div class="lbl">Bounty events</div></div><div class="stat"><div class="num">25</div><div class="lbl">Flagged items for review</div></div></section>
 <section class="panel">
   <h2>Headline findings</h2>
   <ul>
-    <li><strong>No event is confirmed single-entry.</strong> The official pages read do not say "no re-entry" or "freezeout" for any event. All candidates are shown as Unverified.</li>
-    <li><strong>No official start at 8:00 AM was found.</strong> The earliest official start found is 9:00 AM (Horseshoe, daily). Earliest Venetian start is 9:10 AM (Dec 12, event #46).</li>
-    <li><strong>Resort fees verified for two resorts:</strong> The Venetian (and The Palazzo) at $55 per night plus tax, and Wynn at $55 plus tax. Other resort fees are secondary-only or not checked.</li>
-    <li><strong>Walking times and room rates are not verified</strong> except the Venetian poker-suite "as low as $119" figure, which needs qualifying play.</li>
+    <li><strong>31 events are confirmed single-entry</strong> from a structure sheet that was read and shows no re-entry, rebuy, add-on or paid-chip text. A further 75 candidate rows remain <strong>Unverified</strong> because their structure sheet was not read; they are never assumed to be single-entry.</li>
+    <li><strong>Guarantee &divide; entry fee is shown as a descriptive ratio, not a forecast.</strong> It describes the published guarantee per dollar of buy-in; it is not a prediction of winnings.</li>
+    <li><strong>Bounty and flight events are labelled separately.</strong> Bounty guarantees include bounty payouts; flight events allow more than one entry per flight.</li>
+    <li><strong>Every row carries a "last checked" date.</strong> A scheduled job re-reads each official URL and flags any row whose source changed (see the Flagged page).</li>
+    <li><strong>No official 8:00 AM start was found.</strong> The earliest verified Venetian start is 9:10 AM. The day plan starts from the earliest verified start.</li>
+    <li><strong>Hotel true nightly cost = room rate + resort fee + tax.</strong> Room rates are dynamic; only dated booking-UI snapshots are logged. Walking times are verified only for on-property venues.</li>
   </ul>
-  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py.</p>
-</section>
-<section class="panel">
-  <h2>Other dashboards in this repo</h2>
-  <p class="muted">Separate, session-scoped research outputs are preserved. The strict-entry updates below use a single-entry-overall standard; older candidate lists remain unverified.</p>
-  <ul>
-    <li><a href="site-b50aa7f5/index.html">Strict-entry research (current snapshot)</a>: no event verified as single-entry overall; re-entry and unknown caps remain separate.</li>
-    <li><a href="docs/index.html">docs/</a>: official-source site (session 581fea93)</li>
-    <li><a href="dashboard-de0bebd4/index.html">dashboard-de0bebd4/</a>: dashboard (session de0bebd4)</li>
-    <li><a href="dashboard-053f694f/index.html">dashboard-053f694f/</a>: dashboard (session 053f694f)</li>
-    <li><a href="site/index.html">site/</a>: site (session b1f117c3)</li>
-    <li><a href="dashboard-cd5ab298/index.html">dashboard-cd5ab298/</a>: Dec 2–9, 2026 source-backed poker and hotel research (session cd5ab298)</li>
-    <li><a href="planner-aa83f1e1/index.html">Source-linked poker and hotel planner (session aa83f1e1)</a></li>
-  </ul>
+  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py. Last source re-check: 2026-11-16.</p>
 </section>
 <section class="grid3">
-  <a class="card" href="site-b50aa7f5/index.html"><h3>Strict-entry research</h3><p>Current snapshot; zero events verified as single-entry overall.</p></a>
-  <a class="card" href="planner-aa83f1e1/index.html"><h3>Poker &amp; stay planner</h3><p>Date-specific research, tournament filters, hotel quotes, and review flags.</p></a>
-  <a class="card" href="pages/tournaments.html"><h3>Single-entry candidates</h3><p>Legacy candidates remain unverified; do not assume single-entry from missing rules.</p></a>
-  <a class="card" href="pages/tournaments-double.html"><h3>Re-entry / multi-flight</h3><p>Events where official text allows re-entry, rebuys or add-ons, plus multi-flight events.</p></a>
-  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official Venetian row by date and time, with the 8 AM check.</p></a>
-  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>On-property tournament venues, resort fees with source, and blank room rates.</p></a>
+  <a class="card" href="pages/tournaments.html"><h3>Single-entry</h3><p>Confirmed events with structured rules, ratio and filters.</p></a>
+  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on and multi-flight events, kept separate.</p></a>
+  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official row by date, with the overlap check and primary/fallback.</p></a>
+  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost and the 30-minute walk filter.</p></a>
+  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost.</p></a>
+  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events and on-property hotels.</p></a>
+  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship and daily events.</p></a>
+  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand.</p></a>
   <a class="card" href="pages/questions.html"><h3>Questions</h3><p>What is missing and how to find it.</p></a>
   <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>25 items with source links. These do not block publication.</p></a>
 </section>
@@ -76,5 +72,6 @@
   <div>Poker5 is an independent planning dashboard, not affiliated with any casino, poker room, or hotel. Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.</div>
   <div>Repo: <a href="https://github.com/karagemop466-tech/Poker5">karagemop466-tech/Poker5</a> &middot; Coordination board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot; Site: <a href="https://karagemop466-tech.github.io/Poker5/">https://karagemop466-tech.github.io/Poker5/</a></div>
 </footer>
+<script src="assets/app.js"></script>
 </body>
 </html>
