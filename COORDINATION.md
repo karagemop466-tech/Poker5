@@ -539,3 +539,27 @@ Rebase / conflict log (this session, required by the protocol):
   the Ladies row now also carries `F26` as a cross-reference. `flags.json` is contiguous `F01-F48` (48 items).
 - Their `data/c6087e2c/last_checked.json` baseline is preserved: this session only added newly seen official URLs
   (87 recorded) and never rewrote an entry's earlier `first_recorded` date.
+
+Publication record (session 3c49aaec):
+- PR #33 https://github.com/karagemop466-tech/Poker5/pull/33 (`arena/3c49aaec-poker5` → `main`) merged
+  2026-11-17 with `gh pr merge 33 --merge`; merge commit `5273918`.
+- CI on the PR before merging: `Quality checks` (job `check`) pass, `Validate Dec 2–9 poker dashboard`
+  (`validate`) pass, and the a9d1e02d source monitor (`Check official URLs and fact markers`) pass —
+  i.e. the root site regenerates deterministically from `data/c6087e2c/`, every ranked row carries a
+  source link, the 8 strict-entry tests still pass, and no official URL was reported as changed.
+- GitHub Pages: source `main` at `/` (unchanged), build for `527391850fb253d0ba0b9603a97e55e8a406cc53`
+  started 2026-11-17T22:27:44Z with `error: null`; status confirmed `built` after the deploy (the
+  sandbox cannot make direct HTTP requests to `github.io`, so the Pages API is the authority, as in
+  earlier sessions). Live at https://karagemop466-tech.github.io/Poker5/.
+- Tasks K1–K10: done. K1/K2 (all 37 sheets read, per-event rule fields with excerpts + retrieval date),
+  K3 (Event #40 recovered into the psv), K4 (WPT schedule + structures verified; 45 dated rows enriched
+  onto the read-only `data/other_rooms.txt` capture instead of duplicated), K5 (official fee pages,
+  dated rate log, unverified numerics cleared), K6 (22 routes, sourced minutes only), K7 (root site
+  rebuilt), K8 (`--feed` presence check added to the 06:00 UTC job), K9/K10 (build + push + PR + merge).
+- Open flags handed to the next session, unchanged by this audit: F32 (MGM/Caesars/Bellagio/ARIA resort
+  fees — no official fee page retrievable; `bellagio.mgmresorts.com/en/resort/fees.html` is a 404),
+  F33 (Caesars/Horseshoe daily details not re-read), F34 ($10,400 WPT entry cap not transcribed),
+  F42 (off-property walking minutes), F43 (no official hotel quality score), F44 (whether the resort
+  fee sits inside the tax base — folio check). The single-entry question itself is F27.
+- `README.md` still carries the pre-audit headline counts; it is outside this session's claimed scope,
+  so the request to restate them (or point the README at `index.html`) is logged above instead.

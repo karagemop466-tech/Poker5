@@ -13,7 +13,7 @@ VENETIAN_CONTACT = "https://www.venetianlasvegas.com/resort/casino/poker/suite-r
 # ------------------------------------------------------------------- flags ----
 FLAGS = [
     dict(id="F27", item="No Venetian DSE IV structure sheet states single entry",
-         value_shown="'No entry rule stated' on 76 candidate rows; 0 rows labelled Confirmed single-entry",
+         value_shown="'No entry rule stated' on the 51 ranked Venetian rows; 0 rows labelled Confirmed single-entry",
          status="Unverified",
          sources=[DSE_URL, SHEET_URL.format(n=1), SHEET_URL.format(n=32)],
          to_clear="All 37 official structure sheets were read in full on 2026-11-17: none contains the words "
@@ -251,7 +251,7 @@ QUESTIONS = [
               "and URL. Without your choice the column stays blank (F44).", source=None),
     dict(id="Q12", q="Should events whose sheet is silent stay in the main list?",
          status="Needs your choice",
-         need="76 candidate rows are ranked with every field verified except the entry rule; moving them to a "
+         need="51 ranked rows carry every field verified except the entry rule; moving them to a "
               "watchlist would leave the main list empty for this series.",
          how="Decide: keep them labelled 'No entry rule stated' (current behaviour) or restrict the main list to "
               "confirmed rows only. Nothing is asserted about their entry rule either way.", source=DSE_URL),
@@ -261,7 +261,7 @@ QUESTIONS = [
 SUGGESTIONS = [
     dict(id="S1", title="Keep the written-rule standard for 'single entry' on every page",
          detail="Three states, never two: CONFIRMED (a sheet says so), NO RULE STATED (sheet read, silent) and "
-                "NOT READ. This series has 0 confirmed, 76 no-rule-stated rows and 7 events explicitly limited "
+                "NOT READ. This series has 0 confirmed rows, 51 no-rule-stated rows and 7 events (24 rows) limited "
                 "to one flight, which ends the 31/30/20/0 disagreement between earlier sessions.",
          impact="high", effort="low",
          decide="Your choice: keep NO RULE STATED rows in the ranked list (current) or move them to a watchlist."),
@@ -309,7 +309,7 @@ SUGGESTIONS = [
                 "instead of showing an estimate.",
          impact="medium", effort="low", decide="Approve your own timed walks as a source class."),
     dict(id="S10", title="Rank only events with both a confirmed entry fee and a confirmed guarantee",
-         detail="This is the rule the site enforces: 74 candidate rows carry both numbers, 4 events publish no "
+         detail="This is the rule the site enforces: 47 of the 51 ranked rows carry both numbers, 4 events publish no "
                 "guarantee at all and are excluded from the ranking (F39), and satellites guarantee seats so they "
                 "are ranked separately (F40). Keeping it means no row is ever filled from memory or a "
                 "third-party page.",
@@ -336,9 +336,9 @@ REPO_REVIEW = [
          finding="Sessions published 31, 30, 20 and 0 'confirmed single-entry' counts from the same 37 structure "
                  "sheets, depending on whether silence was treated as confirmation.",
          evidence="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md",
-         action="All 37 sheets were read in full and the written-rule standard adopted: 0 confirmed, 76 rows "
-                "labelled 'no entry rule stated', 7 events labelled multi-flight. Site-wide copy now states the "
-                "standard instead of asserting freezeouts."),
+         action="All 37 sheets were read in full and the written-rule standard adopted: 0 confirmed rows, 51 "
+                "labelled 'no entry rule stated', 24 rows (7 events) labelled multi-flight, 7 satellite rows and "
+                "11 restart rows. Site-wide copy now states the standard instead of asserting freezeouts."),
     dict(item="A truncated data row was published as a gap",
          finding="The Event #40 row of data/c6087e2c/venetian_dse_2026.psv shipped with 'ROW TRUNCATED IN CAPTURE' "
                  "as the event name and no buy-in, guarantee or time, while the official page lists the event.",

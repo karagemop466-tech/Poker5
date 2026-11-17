@@ -453,12 +453,20 @@ def update_walking():
 # --------------------------------------------------------------------- flags ----
 def update_flags():
     prior = load("flags.json", [])
-    have = {f["id"] for f in prior}
-    add = [f for f in C.FLAGS if f["id"] not in have]
-    for f in add:
+    mine = {f["id"]: f for f in C.FLAGS}
+    for f in mine.values():
         f["session"] = "3c49aaec"
         f["recorded"] = D.RETRIEVED
-    out = prior + add
+    # refresh this session's own entries in place (other sessions' flags are never touched)
+    out = []
+    for f in prior:
+        if f.get("session") == "3c49aaec" and f["id"] in mine:
+            out.append(mine.pop(f["id"]))
+        else:
+            out.append(f)
+    have = {f["id"] for f in out}
+    add = [f for fid, f in mine.items() if fid not in have]
+    out.extend(add)
     dump("flags.json", out)
     return len(prior), len(add)
 
