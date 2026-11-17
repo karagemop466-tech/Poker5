@@ -1,0 +1,56 @@
+name: Official source monitor · final poker planner
+
+on:
+  schedule:
+    - cron: "23 14 * * 1"
+  workflow_dispatch:
+  push:
+    paths:
+      - "data/final/**"
+      - "scripts/check_sources_a9d1e02d.py"
+      - ".github/workflows/source-monitor-a9d1e02d.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: source-monitor-a9d1e02d-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    name: Check official URLs and fact markers
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Restore last successful normalized-PDF baseline
+        uses: actions/cache/restore@v4
+        with:
+          path: source-monitor-baseline.json
+          key: official-source-baseline-${{ github.run_id }}
+          restore-keys: |
+            official-source-baseline-
+      - name: Install pinned PDF text extraction for official structure checks
+        run: python -m pip install "pypdf==5.9.0"
+      - name: Fetch and compare monitored official sources
+        run: python3 scripts/check_sources_a9d1e02d.py --live --state source-monitor-baseline.json --report source-monitor-report.json
+      - name: Save accepted normalized-PDF baseline
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: source-monitor-baseline.json
+          key: official-source-baseline-${{ github.run_id }}
+      - name: Save source monitor report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-source-monitor-${{ github.run_id }}
+          path: source-monitor-report.json
+          if-no-files-found: ignore
+          retention-days: 30

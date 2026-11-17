@@ -2,6 +2,23 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — a9d1e02d (active)
+
+**Branch:** `arena/a9d1e02d-poker5` (fixed by Arena). **Role:** final integration and official-source re-audit. No other active scope is shown in this board. This session claims the following non-overlapping scope before implementation:
+
+- `COORDINATION.md` — this claim and final integration log only.
+- `index.html` — final landing-page integration/link and strict-entry-summary correction only.
+- `planner-a9d1e02d/**` — new unified Pages dashboard and its venue pages/assets.
+- `data/final/**` — official-source event/rule records, hotel/source ledgers and monitoring baselines.
+- `scripts/build_final_a9d1e02d.py`, `scripts/check_sources_a9d1e02d.py` — owned build/monitor scripts.
+- `.github/workflows/source-monitor-a9d1e02d.yml` — scheduled source re-check workflow.
+
+**Tasks:** read the live Venetian DSE IV schedule and all 37 referenced structure PDFs; represent entry caps, re-entry, add-ons, fees, late registration and rule citations separately; carry forward other official venue records only with explicit uncertainty; build the unified, dated, filterable planner and trip-cost calculator; provide venue pages, official hotel booking/source links, route links and explicit unknowns; schedule official-source change checks; validate build, links and row-level sourcing; then create the requested PR and verify Pages deployment without overwriting any other session's research.
+
+**Status at claim:** research in progress; no event or hotel value newly promoted as verified. Initial PDF notes are in `data/final/structure-notes.md` and remain uncommitted until this claim is published.
+
+---
+
 ## Session
 
 | Session ID | Status | Branch |
@@ -387,3 +404,18 @@ This session is the **final integration session**. It works only on the shared r
 - Verification: `python3 scripts/build_c6087e2c.py` regenerates the root site and fails on any row without a source link or any broken internal link. `node --check assets/app.js` and `python3 scripts/recheck_sources.py --offline` are run locally.
 - **Integration PR #26:** https://github.com/karagemop466-tech/Poker5/pull/26 (base `main`, head `arena/18e480cb-poker5`). Merged 2026-11-17 as merge commit `5de0d793703b62290b3a6c3e613174f7f361c1dc` with `gh pr merge 26 --merge`. Before merging, `main` had advanced (sessions 0a0e3c6d, arena-a29fc466, afff1fc9), so the branch was rebased onto `origin/main`. The add/add conflicts were resolved by keeping both sides' coordination sections (other sessions' records + this session's record) and keeping this session's regenerated root pages and `scripts/build_c6087e2c.py` (a superset that subsumes afff1fc9's search-box/calculator/last-checked additions). The Caesars Palace / Horseshoe buy-in detail from the rebased sessions was preserved by adding a Venue status table to `pages/tournaments.html`. No other session's isolated output was overwritten or deleted.
 - **GitHub Pages:** source `main` `/`, status `built`, live at https://karagemop466-tech.github.io/Poker5/ (html_url confirmed via the Pages API). The sandbox cannot make direct HTTP requests to `github.io`, so deployment is confirmed from the Pages API `built` status and the passing local build/link/anchor checks, consistent with prior sessions.
+
+---
+
+## Session a9d1e02d (branch `arena/a9d1e02d-poker5`) — final source audit and planner
+
+This session is scoped to `planner-a9d1e02d/**`, `data/final/**`, `scripts/build_final_a9d1e02d.py`, `scripts/check_sources_a9d1e02d.py`, `.github/workflows/source-monitor-a9d1e02d.yml`, the root `index.html` integration/correction, and this coordination record. All other session outputs remain intact. The Dec 2–9 `dashboard-cd5ab298` hotel snapshot is not used in this planner.
+
+- `data/final/structure-notes.md` records the audit of all 37 official Venetian DSE IV structure PDFs. The final QA table matches all 17 Dec 13–20 entry rows by date + event number + flight to their schedule row, linked PDF, time, buy-in, guarantee, fee split and late-registration field. Four Venetian restarts and two WPT continuation rows are kept separate from new entries. Each Venetian total-entry-cap, re-entry, rebuy and add-on field remains unknown where the official sheet is silent; the Day 2 bagging restriction is not treated as a bust re-entry rule or total cap.
+- `data/final/events.json`: 110 dated planner rows, including 17 Venetian entries and 4 Venetian restarts, 2 WPT continuation rows, and selected WPT, Bellagio, Caesars Palace and Horseshoe rows. The reviewed subset has zero strict single-entry confirmations; recurring patterns, unknowns and the Bellagio Saturday conflict are labeled. `data/final/hotels.json` is the distinct Dec 13–20 one-adult/seven-night snapshot. The Venetian $2,369.38 display carries its availability caveat; Wynn's $2,817.49 is a tax estimate, not a hotel quote. `data/final/source-ledger.json` contains 83 unique official source records.
+- `planner-a9d1e02d/` is generated by `scripts/build_final_a9d1e02d.py`. It includes date/venue/status/search filters; distinct entry-cap, re-entry, rebuy, add-on, late-registration, fee and citation facts; seven venue guides; official booking links; Google Maps route links with no asserted walk times; and a calculator that does not reprice quotes or silently add unknown costs.
+- `.github/workflows/source-monitor-a9d1e02d.yml` runs weekly or manually. `scripts/check_sources_a9d1e02d.py` monitors official URL availability, minimum sizes and expected fact markers; 44 static PDFs also use normalized-text fingerprints restored/saved through GitHub Actions cache. Changes are reported for human review and never modify research data automatically.
+- Root `index.html` retains the newer shared root site's pages and adds this planner to its navigation and calls to action. Its entry-policy summary now states that silence is not proof of single-entry, and labels the older entry list for review rather than promoting it as verified.
+- Local verification passed: `python3 scripts/build_final_a9d1e02d.py` and `--check-only`; `python3 scripts/check_sources_a9d1e02d.py` in offline mode (no external fetch from this sandbox); Python syntax checks; `node --check planner-a9d1e02d/assets/app.js`; `npm test` (8 tests); `git diff --check`; local HTTP and DOM smoke checks for all planner pages, 83-source rendering, 17/21 Venetian filters, and the Venetian quote calculator.
+- The first live monitor run in PR #30 completed its fetch pass but exited nonzero because sources needed review. The rerun passed the job and emitted warnings for MGM/Bellagio timeouts, Caesars 403/redirect behavior, and Bellagio PDF marker misses; no planner facts were automatically changed. Live Bellagio PDFs were re-read through the official links, stable text markers were refined, the transparent request timeout was raised, and the checker now stores each successful PDF fingerprint independently even when another URL needs review. Source changes/fetch failures remain visible as GitHub warnings and in the uploaded report rather than blocking publication; `--fail-on-review` remains available for strict runs.
+- PR and post-merge Pages verification: pending.

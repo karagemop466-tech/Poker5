@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "researchedAt": "2026-11-17",
+    "window": {
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "isUserSelected": false,
+      "note": "Working snapshot only; neither the travel dates nor occupancy were chosen by the user. Quotes do not reprice when calculator dates are changed."
+    },
+    "currency": "USD",
+    "taxEstimateRate": 0.1338,
+    "taxEstimateSourceId": "county-tax-guide",
+    "summary": "The Venetian booking page displayed an estimated tax-and-resort-fee-inclusive stay total on Nov 17, but also showed a capacity/availability warning. Wynn displayed an average nightly rate including resort fee but excluding tax; its tax-inclusive total was not returned. Wynn's all-in number below is an estimate from an older county tax guide, not a hotel quote.",
+    "notComparable": "Do not claim a cheapest hotel from these different quote states. Confirm matching dates, occupancy, room class, cancellation terms and taxes at checkout."
+  },
+  "properties": [
+    {
+      "id": "venetian",
+      "name": "The Venetian Resort",
+      "address": "3355 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.venetianlasvegas.com/",
+      "bookingSourceId": "venetian-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus tax",
+        "status": "officially-published",
+        "sourceIds": [
+          "venetian-fee"
+        ]
+      },
+      "note": "Poker-room events take place on the property; internal walking distance is not measured.",
+      "addressSourceId": "venetian-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "palazzo",
+      "name": "The Palazzo",
+      "address": null,
+      "website": "https://www.venetianlasvegas.com/",
+      "bookingSourceId": "venetian-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus tax",
+        "status": "official-page-covers-resort",
+        "sourceIds": [
+          "venetian-fee"
+        ]
+      },
+      "note": "The resort-fee policy covers The Palazzo, but a separate address and date-matched room quote were not verified in this snapshot.",
+      "addressSourceId": null,
+      "addressStatus": "not-verified"
+    },
+    {
+      "id": "wynn",
+      "name": "Wynn Las Vegas",
+      "address": "3131 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.wynnlasvegas.com/",
+      "bookingSourceId": "wynn-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus tax",
+        "status": "officially-published",
+        "sourceIds": [
+          "wynn-fee"
+        ]
+      },
+      "note": "WPT events are at Wynn/Encore; internal walking distance is not measured.",
+      "addressSourceId": "wynn-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "encore",
+      "name": "Encore at Wynn Las Vegas",
+      "address": "3131 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.wynnlasvegas.com/",
+      "bookingSourceId": "wynn-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus tax",
+        "status": "official-Wynn-terms-cover-resort",
+        "sourceIds": [
+          "wynn-fee"
+        ]
+      },
+      "note": "No matched date-specific Encore room quote.",
+      "addressSourceId": "wynn-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "bellagio",
+      "name": "Bellagio",
+      "address": "3600 S Las Vegas Blvd, Las Vegas, NV 89109",
+      "website": "https://bellagio.mgmresorts.com/",
+      "bookingSourceId": "bellagio-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus applicable tax",
+        "status": "officially-published",
+        "sourceIds": [
+          "bellagio-fee"
+        ]
+      },
+      "note": "No matched Dec 13–20 room quote.",
+      "addressSourceId": "bellagio-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "aria",
+      "name": "ARIA Resort & Casino",
+      "address": "3730 S Las Vegas Blvd, Las Vegas, NV 89158",
+      "website": "https://aria.mgmresorts.com/",
+      "bookingSourceId": "aria-booking",
+      "fee": {
+        "amountUsdPerNight": 55,
+        "tax": "plus applicable tax",
+        "status": "officially-published",
+        "sourceIds": [
+          "aria-fee"
+        ]
+      },
+      "note": "No matched Dec 13–20 room quote.",
+      "addressSourceId": "aria-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "mgm-grand",
+      "name": "MGM Grand Las Vegas",
+      "address": "3799 S Las Vegas Blvd, Las Vegas, NV 89109",
+      "website": "https://mgmgrand.mgmresorts.com/",
+      "bookingSourceId": "mgm-booking",
+      "fee": {
+        "amountUsdPerNight": 50,
+        "tax": "plus applicable tax",
+        "status": "officially-published",
+        "sourceIds": [
+          "mgm-fee"
+        ]
+      },
+      "note": "No matched Dec 13–20 room quote.",
+      "addressSourceId": "mgm-contact",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "caesars-palace",
+      "name": "Caesars Palace",
+      "address": "3570 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.caesars.com/caesars-palace",
+      "bookingSourceId": "caesars-booking",
+      "fee": {
+        "amountUsdPerNight": 54.95,
+        "tax": "tax extra; booking snapshot displayed $7.35 tax",
+        "status": "prior-official-booking-snapshot-not-rechecked",
+        "displayedTaxUsd": 7.35,
+        "sourceIds": [
+          "caesars-booking-snapshot"
+        ]
+      },
+      "note": "Fee snapshot was not date-specific and was last checked Nov 16; recheck on the live booking page.",
+      "addressSourceId": "caesars-palace-faq",
+      "addressStatus": "official-property-page"
+    },
+    {
+      "id": "horseshoe",
+      "name": "Horseshoe Las Vegas",
+      "address": "3645 Las Vegas Blvd S, Las Vegas, NV 89109",
+      "website": "https://www.caesars.com/horseshoe-las-vegas",
+      "bookingSourceId": "horseshoe-booking",
+      "fee": {
+        "amountUsdPerNight": null,
+        "tax": "unknown",
+        "status": "not-verified",
+        "sourceIds": []
+      },
+      "note": "No official Horseshoe resort-fee amount was checked for this snapshot.",
+      "addressSourceId": "horseshoe-address",
+      "addressStatus": "official-property-page"
+    }
+  ],
+  "quotes": [
+    {
+      "id": "venetian-dec13-20-2026",
+      "propertyId": "venetian",
+      "hotel": "The Venetian Resort",
+      "roomType": "Newly Remodeled Luxury King Suite",
+      "roomSizeSqFt": 650,
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "quoteStatus": "direct_booking_page_estimate_includes_fees_and_tax",
+      "roomSubtotalUsd": 1704.75,
+      "resortFeeUsd": 385,
+      "resortFeePerNightUsd": 55,
+      "taxUsd": 279.63,
+      "displayedTotalUsd": 2369.38,
+      "displayedAverageRateBeforeTaxUsd": 298.54,
+      "allInPerNightUsd": 338.48,
+      "availabilityConfirmed": false,
+      "sourceIds": [
+        "venetian-rate-snapshot",
+        "venetian-fee"
+      ],
+      "note": "The live page called $2,369.38 an estimated cost of stay and listed resort fees and taxes. It also displayed a maximum-capacity/availability warning despite one adult; recheck the exact suite and availability before relying on this estimate. Snapshot checked Nov 17, 2026."
+    },
+    {
+      "id": "wynn-dec13-20-2026",
+      "propertyId": "wynn",
+      "hotel": "Wynn Las Vegas",
+      "roomType": "Wynn Resort King",
+      "roomSizeSqFt": 640,
+      "checkIn": "2026-12-13",
+      "checkOut": "2026-12-20",
+      "nights": 7,
+      "adults": 1,
+      "quoteStatus": "direct_nightly_rate_tax_excluded_total_not_returned",
+      "displayedAverageNightUsd": 355,
+      "displayedRateIncludesResortFee": true,
+      "displayedRateExcludesTax": true,
+      "preTaxStayCalculationUsd": 2485,
+      "taxRateUsedForEstimate": 0.1338,
+      "estimatedTaxUsd": 332.49,
+      "estimatedAllInStayUsd": 2817.49,
+      "hotelQuotedTaxInclusiveTotalUsd": null,
+      "sourceIds": [
+        "wynn-hotel-rate",
+        "wynn-fee",
+        "county-tax-guide"
+      ],
+      "note": "Wynn displayed $355 average/night including the resort fee and excluding tax; it did not return a tax-inclusive total. $2,817.49 is arithmetic using a 13.38% rate from a 2021 Clark County guide, not a hotel quote; verify current tax treatment at booking. Snapshot checked Nov 17, 2026."
+    }
+  ],
+  "venetianPokerSuiteOffer": {
+    "label": "Official ‘as low as’ poker suite offer",
+    "rateFromUsd": [
+      119,
+      209
+    ],
+    "currency": "USD",
+    "towerMapping": "not clear on the official page",
+    "qualifyingPlay": "Per night stayed: six hours of active live cash play or a tournament buy-in of $300 or more.",
+    "includesResortFee": false,
+    "sourceIds": [
+      "venetian-poker-suite-rates",
+      "venetian-fee"
+    ],
+    "note": "Promotional floor only; not a matched date-specific rate and not included in the quote comparison or budget default."
+  },
+  "parking": [
+    {
+      "propertyId": "venetian",
+      "summary": "Registered hotel guest self-parking $20/day; non-guest $20 Mon–Thu and $25 Fri–Sun; poker-room players with at least three hours of tournament or cash play may receive complimentary self-parking for that day after supervisor confirmation. Event rates may apply.",
+      "sourceIds": [
+        "venetian-parking"
+      ]
+    },
+    {
+      "propertyId": "wynn",
+      "summary": "Complimentary self-parking for registered resort guests and Wynn Poker Room guests, subject to availability; non-guest $25/day after the first three hours; valet $40/day.",
+      "sourceIds": [
+        "wynn-parking"
+      ]
+    }
+  ]
+}

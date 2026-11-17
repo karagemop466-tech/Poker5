@@ -1,0 +1,1278 @@
+{
+  "meta": {
+    "researchedAt": "2026-11-17",
+    "timezone": "America/Los_Angeles",
+    "note": "Official source records are research snapshots. The weekly monitor checks availability, selected fact markers, and normalized extracted text for audited static PDFs; a reported change requires human review. Every price, schedule and rule must still be reconfirmed before booking or registration."
+  },
+  "sources": [
+    {
+      "id": "venetian-schedule",
+      "title": "DeepStack Extravaganza IV official schedule",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Nov 16–Dec 23, 2026. Source for schedule dates, times, listed buy-ins, guarantees and structure-sheet links.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "DeepStack Extravaganza IV",
+          "2026"
+        ]
+      }
+    },
+    {
+      "id": "venetian-structure-01",
+      "title": "Venetian DSE IV structure sheet 01",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-02",
+      "title": "Venetian DSE IV structure sheet 02",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$400"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-03",
+      "title": "Venetian DSE IV structure sheet 03",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$400"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-04",
+      "title": "Venetian DSE IV structure sheet 04",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-05",
+      "title": "Venetian DSE IV structure sheet 05",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$300"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-06",
+      "title": "Venetian DSE IV structure sheet 06",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$400"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-07",
+      "title": "Venetian DSE IV structure sheet 07",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-08",
+      "title": "Venetian DSE IV structure sheet 08",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-09",
+      "title": "Venetian DSE IV structure sheet 09",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$300"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-10",
+      "title": "Venetian DSE IV structure sheet 10",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$300"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-11",
+      "title": "Venetian DSE IV structure sheet 11",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-12",
+      "title": "Venetian DSE IV structure sheet 12",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$800"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-13",
+      "title": "Venetian DSE IV structure sheet 13",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$800"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-14",
+      "title": "Venetian DSE IV structure sheet 14",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$800"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-15",
+      "title": "Venetian DSE IV structure sheet 15",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$300"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-16",
+      "title": "Venetian DSE IV structure sheet 16",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$800"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-17",
+      "title": "Venetian DSE IV structure sheet 17",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-18",
+      "title": "Venetian DSE IV structure sheet 18",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-19",
+      "title": "Venetian DSE IV structure sheet 19",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$100"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-20",
+      "title": "Venetian DSE IV structure sheet 20",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$1,100"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-21",
+      "title": "Venetian DSE IV structure sheet 21",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$2,200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-22",
+      "title": "Venetian DSE IV structure sheet 22",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$300"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-23",
+      "title": "Venetian DSE IV structure sheet 23",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-24",
+      "title": "Venetian DSE IV structure sheet 24",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$260"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-25",
+      "title": "Venetian DSE IV structure sheet 25",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$260"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-26",
+      "title": "Venetian DSE IV structure sheet 26",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$400"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-27",
+      "title": "Venetian DSE IV structure sheet 27",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-28",
+      "title": "Venetian DSE IV structure sheet 28",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-29",
+      "title": "Venetian DSE IV structure sheet 29",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-30",
+      "title": "Venetian DSE IV structure sheet 30",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-31",
+      "title": "Venetian DSE IV structure sheet 31",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-32",
+      "title": "Venetian DSE IV structure sheet 32",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$800"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-33",
+      "title": "Venetian DSE IV structure sheet 33",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$600"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-34",
+      "title": "Venetian DSE IV structure sheet 34",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$1,100"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-35",
+      "title": "Venetian DSE IV structure sheet 35",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$1,100"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-36",
+      "title": "Venetian DSE IV structure sheet 36",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$1,100"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-structure-37",
+      "title": "Venetian DSE IV structure sheet 37",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official structure PDF linked from the DSE IV schedule; sheet-level terms summarized in data/final/structure-notes.md.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "$2,200"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "venetian-fee",
+      "title": "Venetian Resort Fee policy",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "States $55 plus tax per night for The Venetian / The Palazzo resort.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$55",
+          "plus tax"
+        ]
+      }
+    },
+    {
+      "id": "venetian-rate-snapshot",
+      "title": "Venetian direct booking page — Dec 13–20, 2026, one adult",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/booking?adults%5B%5D=1&arrival_date=2026-12-13&children%5B%5D=0&departure_date=2026-12-20&view=calendar",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Nov 17 page displayed an estimated $2,369.38 total for the Newly Remodeled Luxury King, including listed resort fees and taxes; the same result showed a capacity/availability warning. Recheck before relying on availability.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "2,369.38",
+          "December 13, 2026",
+          "December 20, 2026"
+        ]
+      }
+    },
+    {
+      "id": "venetian-poker-suite-rates",
+      "title": "Venetian Poker Room suite rates and qualification",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "“As low as” suite rates; tower mapping is unclear. Qualifying play is required per night; do not treat as a general room quote.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$119",
+          "$209"
+        ]
+      }
+    },
+    {
+      "id": "venetian-parking",
+      "title": "Venetian Poker Room parking policy",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Hotel-guest self-parking $20/day; non-guest $20 Mon–Thu / $25 Fri–Sun; poker-room players with at least three hours of tournament or cash play can receive complimentary self-parking for the day, with supervisor confirmation. Rates may change.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$20/day",
+          "$25/day",
+          "three hours"
+        ]
+      }
+    },
+    {
+      "id": "venetian-contact",
+      "title": "Venetian contact and official address",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/resort/contact.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official property address: 3355 Las Vegas Blvd S, Las Vegas, NV 89109."
+    },
+    {
+      "id": "wpt-festival-schedule",
+      "title": "WPT World Championship Festival schedule PDF (Wynn-hosted)",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official Wynn-hosted festival schedule PDF; use with event-specific WPT pages and structures. The current page is not treated as a complete citywide calendar.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "Dec 13-20",
+          "$10,400"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "wpt-world-details",
+      "title": "WPT World Championship event details and terms",
+      "publisher": "World Poker Tour / Wynn Las Vegas",
+      "url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026/details",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Dec 13–20, $10,400; four-entry maximum: one entry per starting flight plus one Day 2 entry before Day 2; $1,000,000 added refers to mystery payouts, not a guaranteed player prize pool.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "Four (4) Entries maximum",
+          "$10,400",
+          "One (1) Day 2 Entry"
+        ]
+      }
+    },
+    {
+      "id": "wpt-super-gold",
+      "title": "ClubWPT Gold Super Gold Million event page",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-clubwpt-gold-super-gold-million-season-2026",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Dec 10–14, $400, $3,000,000 guarantee; page schedule lists Day 3 Dec 13 and Final Table Dec 14 as continuations. No new entry is listed on those days.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "Dec 10-14",
+          "$400",
+          "$3,000,000"
+        ]
+      }
+    },
+    {
+      "id": "wpt-super-gold-press",
+      "title": "WPT Super Gold Million announcement and entry terms",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/article/wpt-world-championship-at-wynn-las-vegas-set-for-season-24-finale-with-over-85-events-and-20m-in-gte",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official release says the Super Gold Million has four starting flights and unlimited re-entry; its Dec 10–14 series dates overlap the research window only for continuation days.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "four starting flights",
+          "unlimited re-entry"
+        ]
+      }
+    },
+    {
+      "id": "wpt-structures",
+      "title": "WPT World Championship festival structures and event terms",
+      "publisher": "World Poker Tour / Wynn Las Vegas",
+      "url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official event-specific schedules and rules. Includes $600 NLH Turbo and Mixed Triple Draw re-entry terms and WPT entry/fee rules.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "Four (4) Entries maximum",
+          "Unlimited re-entry",
+          "$600 Entry Fee"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "wpt-ladies",
+      "title": "WPT Ladies Championship official event page and details",
+      "publisher": "World Poker Tour",
+      "url": "https://www.worldpokertour.com/event/special-events-special-event-wpt-ladies-championship-season-2026/details",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Dec 13–14, $1,100, $250,000 guarantee, 11 a.m. start; the reviewed official page does not establish an entry cap or re-entry rule.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "Dec 13-14",
+          "$1,100",
+          "$250,000"
+        ]
+      }
+    },
+    {
+      "id": "wynn-hotel-rate",
+      "title": "Wynn Resort King direct room-rate page — Dec 13–20, 2026",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12%2F13%2F2026&checkout=12%2F20%2F2026",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Nov 17 display: $355 average/night including resort fee, excluding taxes; no tax-inclusive total returned. The $2,817.49 value is an estimate, not a hotel quote.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "355",
+          "Includes Resort Fee",
+          "Excludes taxes"
+        ]
+      }
+    },
+    {
+      "id": "wynn-fee",
+      "title": "Wynn resort fee and reservation terms",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/about-us/resort-information",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "$55 daily resort fee plus tax for purchased or complimentary room nights; page includes Wynn and Encore terms.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$55 plus tax"
+        ]
+      }
+    },
+    {
+      "id": "wynn-parking",
+      "title": "Wynn parking policy",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/about-us/parking",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Registered hotel guests and Wynn Poker Room guests get complimentary self-parking, subject to availability; non-guests pay $25/day after the first three hours; valet $40/day.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$25 per day",
+          "$40 per day",
+          "Wynn Poker Room guests"
+        ]
+      }
+    },
+    {
+      "id": "wynn-contact",
+      "title": "Wynn Las Vegas official contact and address",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/about-us/contact-information",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official Wynn address: 3131 Las Vegas Blvd South, Las Vegas, NV 89109."
+    },
+    {
+      "id": "wynn-poker",
+      "title": "Wynn Poker Room information",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/casino/poker",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Previously fetched page returned generic homepage content; not used as an authoritative event-rule source."
+    },
+    {
+      "id": "bellagio-poker",
+      "title": "Bellagio Poker Room and weekly tournament list",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Lists Friday $600 NLH, Saturday $1,000 NLH and Sunday $400 H.O.R.S.E.; linked structures supply Friday/Sunday re-entry terms. Date-specific availability should be reconfirmed.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "Friday",
+          "$600",
+          "Saturday",
+          "$1,000",
+          "Sunday",
+          "$400"
+        ],
+        "timeoutSeconds": 60
+      }
+    },
+    {
+      "id": "bellagio-friday",
+      "title": "Bellagio Friday $600 NLH structure and rules",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official linked PDF allows re-entry through the end of Level 8. Optional staff gratuity is separate from the event buy-in. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "NLH",
+          "$600",
+          "re-enter",
+          "end of level 8"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "bellagio-saturday",
+      "title": "Bellagio Saturday NLH linked structure flyer",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official page lists $1,000; filename says $1,000; PDF heading says $1,100 while its terms refer to $600 and a Sept 2026 Day 2. Do not use for a Dec 2026 buy-in or entry rule. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "NLH",
+          "$1100",
+          "$600",
+          "Saturdays"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "bellagio-sunday",
+      "title": "Bellagio Sunday $400 H.O.R.S.E. structure and rules",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official linked PDF allows re-entry through end of Level 8; optional staff gratuity is separate from the event buy-in. Live check uses these stable headings/text; normalized-PDF fingerprint also flags document changes for review.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "H.O.R.S.E.",
+          "$400",
+          "re-enter",
+          "end of level 8"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "bellagio-fee",
+      "title": "Bellagio hotel reservation terms",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "$55 daily resort fee plus applicable tax.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$55.00",
+          "plus applicable tax"
+        ],
+        "timeoutSeconds": 60
+      }
+    },
+    {
+      "id": "bellagio-contact",
+      "title": "Bellagio official contact and address",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/contact-us.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official address: 3600 S Las Vegas Blvd, Las Vegas, NV 89109."
+    },
+    {
+      "id": "aria-fee",
+      "title": "ARIA hotel reservation terms",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/terms-and-conditions.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "$55 daily resort fee plus applicable tax.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$55.00",
+          "plus applicable tax"
+        ],
+        "timeoutSeconds": 60
+      }
+    },
+    {
+      "id": "aria-contact",
+      "title": "ARIA official address and directions",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/contact-us.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official address: 3730 S Las Vegas Blvd, Las Vegas, NV 89158."
+    },
+    {
+      "id": "aria-poker",
+      "title": "ARIA Poker Room information",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/casino/poker.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official page directs players to check current status; no dated tournament schedule used in this planner."
+    },
+    {
+      "id": "mgm-fee",
+      "title": "MGM Grand hotel reservation terms",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "$50 daily resort fee plus applicable tax.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "$50.00",
+          "plus applicable tax"
+        ],
+        "timeoutSeconds": 60
+      }
+    },
+    {
+      "id": "mgm-contact",
+      "title": "MGM Grand official address and directions",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://mgmgrand.mgmresorts.com/en/contact-us.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official address: 3799 S Las Vegas Blvd, Las Vegas, NV 89109."
+    },
+    {
+      "id": "mgm-poker",
+      "title": "MGM Grand poker information and current schedule page",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Current page shows daily start times 11 a.m., 7 p.m. and 11 p.m.; schedule PDF is titled August and says 11:10/7:10/11:10. Excluded from dated event rows pending reconciliation.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "11:00am",
+          "7:00pm",
+          "11:00pm"
+        ],
+        "timeoutSeconds": 60
+      }
+    },
+    {
+      "id": "mgm-schedule-pdf",
+      "title": "MGM Grand tournament schedule PDF (titled August)",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt5f25277b8918da08/mgm-grand-casino-poker-tournament_schedule.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Titled August; listed starts 11:10 a.m., 7:10 p.m., 11:10 p.m.; conflicts with the current page by ten minutes.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "August",
+          "11:10",
+          "7:10"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "mgm-120-structure",
+      "title": "MGM Grand $120 NLH structure PDF",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/bltb2a45da7e8ee5621/mgm-grand-casino-poker-120_nlh.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "Official $120 NLH structure; schedule applicability is unresolved because the linked schedule is titled August.",
+      "monitor": {
+        "mode": "availability",
+        "minBytes": 1000
+      }
+    },
+    {
+      "id": "caesars-daily-article",
+      "title": "Caesars Palace and Horseshoe daily poker tournament article",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official article (July 2026) gives Caesars four daily start times and Horseshoe six daily start times; article buy-in summary conflicts with the linked 2026 Caesars flyer, so the flyer governs Caesars buy-ins.",
+      "monitor": {
+        "mode": "markers",
+        "markers": [
+          "10 a.m.",
+          "2 p.m.",
+          "9 a.m.",
+          "11 p.m."
+        ]
+      }
+    },
+    {
+      "id": "caesars-daily-flyer-2026",
+      "title": "Caesars Palace 2026 daily NLH tournament flyer",
+      "publisher": "Caesars Palace / Caesars Entertainment",
+      "url": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-17",
+      "notes": "10 a.m./6 p.m. $100 and 2 p.m./9 p.m. $160; permits re-entry after elimination within the first break; $50 add-on +15,000 chips at first break; registration closes at Level 7.",
+      "monitor": {
+        "mode": "pdf-markers",
+        "minBytes": 1000,
+        "markers": [
+          "10 AM",
+          "$100",
+          "re-enter",
+          "first break",
+          "15,000"
+        ],
+        "compareNormalizedText": true
+      }
+    },
+    {
+      "id": "caesars-palace-poker",
+      "title": "Caesars Palace casino page / official poker room schedule link",
+      "publisher": "Caesars Palace / Caesars Entertainment",
+      "url": "https://www.caesars.com/caesars-palace/casino",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official poker room page links the 2026 tournament flyer and gives property contact context."
+    },
+    {
+      "id": "caesars-palace-faq",
+      "title": "Caesars Palace hotel FAQ and address",
+      "publisher": "Caesars Palace / Caesars Entertainment",
+      "url": "https://www.caesars.com/caesars-palace/faqs",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official address: 3570 Las Vegas Blvd South, Las Vegas, NV 89109."
+    },
+    {
+      "id": "horseshoe-poker",
+      "title": "Horseshoe Las Vegas Poker Room page",
+      "publisher": "Horseshoe Las Vegas / Caesars Entertainment",
+      "url": "https://www.caesars.com/horseshoe-las-vegas/casino",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official page says six tournament times daily; no buy-in, guarantee, or event-specific entry terms in the page reviewed."
+    },
+    {
+      "id": "horseshoe-address",
+      "title": "Horseshoe Las Vegas official hotel/address page",
+      "publisher": "Horseshoe Las Vegas / Caesars Entertainment",
+      "url": "https://www.caesars.com/horseshoe-las-vegas/shows",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official address: 3645 Las Vegas Blvd South, Las Vegas, NV 89109."
+    },
+    {
+      "id": "caesars-booking-snapshot",
+      "title": "Caesars Palace booking result — fee context only",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&flexibleMonth=December&propCode=clv&tripCode=CYBER26",
+      "kind": "webpage",
+      "checkedAt": "2026-11-16",
+      "notes": "A prior official booking-page snapshot showed a $54.95 resort fee plus $7.35 fee tax ($62.30) but was not a date-specific Dec 13–20 room quote. Recheck before use."
+    },
+    {
+      "id": "county-tax-guide",
+      "title": "Clark County lodging tax guide (July 2021)",
+      "publisher": "Clark County Department of Business License",
+      "url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:689ef54f-ec0d-4bb6-b8ea-05a82887561f/original/as/genl-info-guide-for-tles-july-2021.pdf",
+      "kind": "pdf",
+      "checkedAt": "2026-11-16",
+      "notes": "Appendix III lists 13.38% for a resort hotel in the Stadium District and Primary Gaming Corridor. This is an older guide; do not treat the rate/tax base as current without checking at booking.",
+      "monitor": {
+        "mode": "availability",
+        "minBytes": 1000
+      }
+    },
+    {
+      "id": "caesars-booking",
+      "title": "Caesars Palace direct hotel booking",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&flexibleMonth=December&propCode=clv&tripCode=CYBER26",
+      "kind": "webpage",
+      "checkedAt": "2026-11-16",
+      "notes": "Official booking entry point; no matched date-specific total in this snapshot."
+    },
+    {
+      "id": "horseshoe-booking",
+      "title": "Horseshoe Las Vegas direct hotel booking",
+      "publisher": "Caesars Entertainment",
+      "url": "https://www.caesars.com/book/?propCode=blv",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official booking entry point; no date-specific room quote retrieved."
+    },
+    {
+      "id": "bellagio-booking",
+      "title": "Bellagio direct hotel booking",
+      "publisher": "Bellagio / MGM Resorts",
+      "url": "https://bellagio.mgmresorts.com/en/hotel.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official booking entry point; no matched Dec 13–20 room quote retrieved."
+    },
+    {
+      "id": "aria-booking",
+      "title": "ARIA direct hotel booking",
+      "publisher": "ARIA / MGM Resorts",
+      "url": "https://aria.mgmresorts.com/en/hotel.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official booking entry point; no matched Dec 13–20 room quote retrieved."
+    },
+    {
+      "id": "mgm-booking",
+      "title": "MGM Grand direct hotel booking",
+      "publisher": "MGM Grand / MGM Resorts",
+      "url": "https://mgmgrand.mgmresorts.com/en/hotel.html",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official booking entry point; no matched Dec 13–20 room quote retrieved."
+    },
+    {
+      "id": "wynn-booking",
+      "title": "Wynn direct hotel booking",
+      "publisher": "Wynn Las Vegas",
+      "url": "https://www.wynnlasvegas.com/",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official hotel booking entry point. The dated room-rate detail is linked separately in the rate source."
+    },
+    {
+      "id": "venetian-booking",
+      "title": "The Venetian direct hotel booking",
+      "publisher": "The Venetian Resort",
+      "url": "https://www.venetianlasvegas.com/book",
+      "kind": "webpage",
+      "checkedAt": "2026-11-17",
+      "notes": "Official hotel booking entry point. The date-specific estimate is linked separately in the quote source."
+    }
+  ]
+}
