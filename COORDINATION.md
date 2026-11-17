@@ -282,3 +282,20 @@ This session completed integration on main. All other session outputs preserved 
 - I2 done: trip-cost estimator, table search box, last-checked dates added via build script; Caesars/Horseshoe buy-ins updated from official Caesars page.
 - I4–I5 done: PR #23 created from `arena/a29fc466-poker5` → `main`; merged with `gh pr merge 23 --merge`; Pages live at https://karagemop466-tech.github.io/Poker5/ . Build script passes, all internal links resolve.
 - All other sessions' outputs preserved unchanged.
+
+- Task 11: PR #20 https://github.com/karagemop466-tech/Poker5/pull/20 created from `arena/0a0e3c6d-poker5` → `main`; merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED, no conflicts — branch was exactly one commit ahead of main).
+- Task 10: GitHub Pages deploy after the merge polled via Pages API until status `built`; source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ . Site not broken: build script passes, all internal links resolve.
+- Tasks 10 and 11 marked done in this record; this COORDINATION.md update itself goes to main through a second, one-file PR from this same branch (PR #21) so the merge result is recorded on main.
+---
+
+## Session afff1fc9 (branch `arena/afff1fc9-poker5`)
+
+Scope: all output isolated under `site-afff1fc9/` (site, data, `data/*.json|csv`), `scripts/build_afff1fc9.py`, `scripts/check_afff1fc9.py`, `scripts/monitor_afff1fc9.py`, and `.github/workflows/afff1fc9-monitor.yml`. Root `index.html`, `pages/`, `docs/`, `data/`, `dashboard-*`, `planner-*`, `site/`, `site-b50aa7f5/`, `tools/`, and every other session's files are NOT edited. This session's board entry is the only shared-file change.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| A1 | Official schedule capture: Venetian DeepStack Extravaganza IV + Wynn WPT World Championship schedule (every row, line-by-line) | in progress | afff1fc9 | `site-afff1fc9/data/events.csv` | venetianlasvegas.com DSE schedule; WPT schedule PDF on cdn.wynnresorts.com | Continuation rows at Wynn omitted (no entry fee) |
+| A2 | Single-entry rule check on official structure sheets and WPT terms | in progress | afff1fc9 | `site-afff1fc9/data/events.csv`, `site-afff1fc9/data/sources.json` | 6 Venetian sheets + WPT terms | No event confirmed single-entry |
+| A3 | Hotel fee + tax (official) and trip-cost calculator | in progress | afff1fc9 | `site-afff1fc9/data/hotels.json`, `calculator.html` | Venetian resort-fee page; Clark County ordinance | Rates, walking times: blank |
+| A4 | Change monitoring (daily cron) + last-checked dates | in progress | afff1fc9 | `scripts/monitor_afff1fc9.py`, workflow | — | |
+| A5 | Site build, validation, Flagged for Review page, PR, merge, Pages check | in progress | afff1fc9 | `site-afff1fc9/**` | — | |
