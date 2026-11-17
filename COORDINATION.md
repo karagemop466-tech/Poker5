@@ -387,3 +387,25 @@ This session is the **final integration session**. It works only on the shared r
 - Verification: `python3 scripts/build_c6087e2c.py` regenerates the root site and fails on any row without a source link or any broken internal link. `node --check assets/app.js` and `python3 scripts/recheck_sources.py --offline` are run locally.
 - **Integration PR #26:** https://github.com/karagemop466-tech/Poker5/pull/26 (base `main`, head `arena/18e480cb-poker5`). Merged 2026-11-17 as merge commit `5de0d793703b62290b3a6c3e613174f7f361c1dc` with `gh pr merge 26 --merge`. Before merging, `main` had advanced (sessions 0a0e3c6d, arena-a29fc466, afff1fc9), so the branch was rebased onto `origin/main`. The add/add conflicts were resolved by keeping both sides' coordination sections (other sessions' records + this session's record) and keeping this session's regenerated root pages and `scripts/build_c6087e2c.py` (a superset that subsumes afff1fc9's search-box/calculator/last-checked additions). The Caesars Palace / Horseshoe buy-in detail from the rebased sessions was preserved by adding a Venue status table to `pages/tournaments.html`. No other session's isolated output was overwritten or deleted.
 - **GitHub Pages:** source `main` `/`, status `built`, live at https://karagemop466-tech.github.io/Poker5/ (html_url confirmed via the Pages API). The sandbox cannot make direct HTTP requests to `github.io`, so deployment is confirmed from the Pages API `built` status and the passing local build/link/anchor checks, consistent with prior sessions.
+
+---
+
+## Session 251c122f (branch `arena/251c122f-poker5`) — final integration + structure-sheet verification pass
+
+**Claim written before any file was edited** (2026-11-17). Branch name is fixed by Arena (`arena/251c122f-poker5`); the brief's `session-<id>/<task>` naming cannot be used because the session is pinned to this branch. Single active session on this branch, so scopes are non-overlapping by construction.
+
+**Scope claimed (shared root site only, the one GitHub Pages publishes from `main` `/`):**
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| J1 | Read **every** Venetian DSE IV structure sheet (all 37 distinct sheet numbers) and record the official rule fields: event numbers covered, start time, starting chips, level duration, **late-registration cutoff**, guarantee, house fee / prize-pool split, and any re-entry / rebuy / add-on / paid-stack text | in progress | 251c122f | `data/c6087e2c/structures.json`, `scripts/fetch_structures_251c122f.py` |
+| J2 | Remove the "unverified" label from every event whose sheet was read and shows no re-entry/rebuy/add-on/paid-stack text; keep the rest unverified | in progress | 251c122f | `data/c6087e2c/*`, `pages/tournaments.html`, `pages/venues/*` |
+| J3 | Structured rule fields per event (single-entry, re-entry, add-on, fee) each with the official source excerpt + retrieval date | in progress | 251c122f | `data/c6087e2c/structures.json`, build script |
+| J4 | Overlap check from **official** start time + late-registration cutoff + scheduled level duration (primary event + conditional fallback per day) | in progress | 251c122f | `pages/schedule.html` |
+| J5 | Re-verify hotel resort fees on official pages; dated rate log kept as a log, true nightly cost | in progress | 251c122f | `data/c6087e2c/hotels.json`, `rates_log.json`, `pages/hotels.html` |
+| J6 | Missing-information register (questions → why it blocks a decision → concrete way to obtain it) + suggestions board | in progress | 251c122f | `pages/questions.html`, `pages/suggestions.html` |
+| J7 | Rebuild, validate, PR → main, merge, confirm Pages deploy, record result | pending | 251c122f | all of the above |
+
+**Read-only for this session** (other sessions' output): `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/`, `tools/`, every `scripts/build_*` other than `build_c6087e2c.py`.
+
+**Verification note.** The sandbox has no direct network access to casino/hotel hosts (TLS is closed: `curl` → `SSL_ERROR_SYSCALL`). Official pages and PDFs are read through the agent's page-fetch tool, and every retrieved value records its retrieval date and the exact official URL. Nothing is inferred; silence in a structure sheet is recorded as "no re-entry text found on the sheet", which is the stated confirmation standard, and the standard itself is published on the site.
