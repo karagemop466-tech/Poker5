@@ -576,6 +576,24 @@ Publication record (session 3c49aaec):
 
 ---
 
+## Session 05d77503 (branch `arena/05d77503-poker5`) — final root-site verification and integration record
+
+Started 2026-11-17 from `main` @ `5273918` (PR #33 merged). Branch was == main at claim; rebased onto origin/main `3882856` for this PR. No other session's files are touched. This session claims the shared root-site final verification and its own coordination record only:
+
+- `COORDINATION.md` — this session's record (this section) only.
+- Root site (verified, not modified): `index.html`, `pages/**`, `assets/**`, `data/c6087e2c/**`, `scripts/build_c6087e2c.py`, `scripts/recheck_sources.py`, `.github/workflows/recheck.yml`.
+- `planner-a9d1e02d/`, `data/final/`, `scripts/build_final_a9d1e02d.py`, `scripts/check_sources_a9d1e02d.py`, `.github/workflows/source-monitor-a9d1e02d.yml` belong to session a9d1e02d (merged via PR #30) and are not edited here.
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| V1 | Final build + checks of the shared root site | done | 05d77503 | scripts/build_c6087e2c.py, scripts/check_root_site.py, scripts/recheck_sources.py | `python3 scripts/build_c6087e2c.py` exit 0 — built 14 pages; confirmed=0 unverified=48 multis=98 bounties=32 flags=48. `python3 scripts/check_root_site.py` OK (links, source anchors, baseline). `python3 scripts/recheck_sources.py --offline` OK — 87 official sources, last_run 2026-11-17T15:00:06Z | Working tree clean; regenerated output byte-identical to committed files |
+| V2 | GitHub Pages deploy | done | 05d77503 | repo settings | Pages API: status `built`, source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ | Build had started in `building` state and completed `built` |
+| V3 | PR integration branch -> main, merge, record PR link + result | in progress | 05d77503 | COORDINATION.md | gh / GitHub | PR #35 from arena/05d77503-poker5 -> main; merge and Pages re-confirm pending |
+
+Rules followed: no value inferred; nothing edited outside this session's scope; unverified items remain flagged on pages/flagged-review.html; `git pull --rebase` before every push; small commit, pushed immediately as the claim.
+
+---
+
 ## Session b0cd6d45 (branch `arena/b0cd6d45-poker5`) — monitor repair + line-by-line schedule re-verification
 
 Claimed 2026-11-17 from `main` @ `5273918` (no other active claims on the board; last session 3c49aaec merged as PR #33). Scope:
