@@ -1,76 +1,75 @@
-# Poker5
+# Poker5 — Las Vegas Strip poker trip planner
 
-Las Vegas Strip poker tournament and hotel planner, published with GitHub Pages.
+**Live site:** https://karagemop466-tech.github.io/Poker5/
 
-Live site: https://karagemop466-tech.github.io/Poker5/
+An independent, evidence-first planner for a Las Vegas Strip poker trip: which
+tournaments are genuinely single-entry, what each one costs, how long a playing
+day runs, which days fit two events, and what a hotel night really costs once the
+resort fee and room tax are added.
 
-## What is in this repo
+Every value on the site comes from an official source — a casino's own schedule,
+structure sheet, hotel terms page, or the Clark County room-tax ordinance — and
+every row links to it. Anything that could not be confirmed is blank and listed on
+the **Flagged for review** page. Nothing is inferred.
 
-- `index.html`, `pages/*.html`, `pages/venues/*.html`, `assets/css/style.css`,
-  `assets/app.js`: the static root site (built output), published from `main` `/`.
-- `data/c6087e2c/`: the verified inputs for the root site — Venetian schedule rows
-  (`venetian_dse_2026.psv`), other rooms (`other_events.json`), hotels
-  (`hotels.json`), flags (`flags.json`), the dated rate log (`rates_log.json`),
-  walking routes (`walking.json`) and the source re-check baseline
-  (`last_checked.json`).
-- `scripts/build_c6087e2c.py`: regenerates the root site from `data/c6087e2c/`.
-  Run `python3 scripts/build_c6087e2c.py`.
-- `scripts/recheck_sources.py`: scheduled re-check of every official source URL.
-  `--seed` records the baseline, `--offline` prints it, a live run fetches and
-  diffs each URL.
-- `scripts/check_root_site.py`: validates links, source anchors and the baseline.
-- Other sessions' outputs (`docs/`, `site/`, `site-*/`, `dashboard-*/`,
-  `planner-aa83f1e1/`, `data-*/`, `tools/`, `scripts/build_*` other than
-  `build_c6087e2c.py`) are preserved as they were and are linked from the landing
-  page. They are not edited by the root-site integration.
-- `COORDINATION.md`: the shared task board for parallel work.
+## How the site is built
 
-## Features of the root site
-
-- **Confirmed single-entry vs unverified.** A structure sheet that was read and
-  shows no re-entry, rebuy, add-on or paid-chip text marks an event *Confirmed
-  single-entry*. Rows whose sheet was not read stay *Unverified* and are never
-  assumed to be single-entry.
-- **Structured rule fields.** Each event row carries the entry rule, buy-in,
-  guarantee, format (standard / bounty / flight) and a source link, with a
-  retrieval date.
-- **Guarantee ÷ entry fee** is shown as a *descriptive ratio, not a forecast*.
-  Bounty and flight events are labelled separately.
-- **Last checked** date on every row, from the scheduled source re-check.
-- **Scheduled source re-check.** `scripts/recheck_sources.py` runs daily
-  (`.github/workflows/recheck.yml`), re-reads every official URL, diffs it
-  against the stored baseline and flags rows whose source changed.
-- **Trip-cost calculator** (`pages/planner.html`): entries × buy-ins + nights ×
-  true hotel cost (room rate + resort fee + tax).
-- **Hotels** with a dated rate log (checkout total, nightly average, resort fee,
-  tax, parking, rate timestamp) and the true nightly cost, plus a ≤30-minute
-  walking-route filter (only on-property 0-minute routes are verified).
-- **Per-venue pages** (`pages/venues/`): Venetian, Wynn and other venues, each
-  with its events and hotels.
-- **Filters**: a global search box, a date filter and a confirmed-single-entry
-  toggle on the tables.
-- **Overlap check** (`pages/schedule.html`): a per-day primary event and a
-  conditional fallback, using a clearly-labelled duration assumption (durations
-  are not verified from official sources).
-
-## Verification rule
-
-Each table value comes from an official source linked in its row. Values that
-cannot be confirmed are left blank and listed on the Flagged for Review page.
-Nothing is inferred or filled in. The build fails if a row has no source link
-or if an internal link is broken.
-
-This is an independent planning tool. It is not affiliated with any casino,
-poker room or hotel. Values change without notice. Confirm before booking or
-playing. Must be 21+.
-
-## Build and validate
-
-```sh
-python3 scripts/build_c6087e2c.py     # regenerate the root site
-python3 scripts/check_root_site.py    # links, source anchors, baseline
-python3 scripts/recheck_sources.py --offline   # print the re-check baseline
+```
+official pages / PDFs
+        │  scripts/scrape_251c122f.py      (runs daily in GitHub Actions)
+        ▼
+data/c6087e2c/schedule_live.json, structures.json, scrape_status.json, watch_status.json
+        │  scripts/merge_251c122f.py       (applies the single-entry standard)
+        ▼
+data/c6087e2c/events_verified.json
+        │  scripts/build_251c122f.py       (generates index.html + pages/)
+        ▼
+index.html, pages/**, assets/            (published by GitHub Pages from main `/`)
+        │  scripts/crosscheck_251c122f.py  (fails if a verdict cannot be reproduced)
 ```
 
-CI (`.github/workflows/quality.yml`) runs the build, the root-site check and the
-offline re-check on every push and pull request.
+* `scripts/scrape_251c122f.py` reads the official Venetian DeepStack Extravaganza IV
+  schedule and every structure-sheet PDF it links (37 sheets), extracts the
+  late-registration cutoff, level length, starting chips, guarantee and house fee
+  with the exact excerpt each value came from, and hashes the hotel/venue pages on
+  a watch list so a change can be spotted. It has a network-free `--self-test`.
+* `scripts/merge_251c122f.py` applies one published standard: a row is
+  **confirmed single-entry** only when its own sheet was read, lists that event
+  number, is a one-day event, and contains no re-entry, rebuy, add-on,
+  double-entry, alternate-stack or purchased-chip language. Disagreements between
+  two official sources are recorded and shown, never resolved by picking one.
+* `scripts/build_251c122f.py` generates the site and refuses to publish a data row
+  without a source link or an internal link that does not resolve.
+* `scripts/crosscheck_251c122f.py` re-derives every verdict from the stored rule
+  fields and fails the build if one cannot be reproduced.
+
+Daily job: `.github/workflows/daily-scrape.yml` (13:37 UTC). Quality gate:
+`.github/workflows/quality.yml`.
+
+## Local commands
+
+```sh
+python3 scripts/scrape_251c122f.py --self-test   # parser self-test, no network
+python3 scripts/merge_251c122f.py                # capture -> events_verified.json
+python3 scripts/build_251c122f.py                # regenerate the site
+python3 scripts/crosscheck_251c122f.py           # verify verdicts, sources, links
+node serve.mjs 4173                              # local preview on 0.0.0.0:4173
+```
+
+The agent sandbox that authored this repository cannot open a TCP connection to
+casino hosts, so the live reading happens on GitHub Actions runners; the capture
+is committed to `data/c6087e2c/` and every excerpt in it can be checked against
+the linked PDF.
+
+## Other files in the repo
+
+`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/` and
+`tools/` are output from earlier parallel sessions. They are preserved unchanged
+and are not part of the published root site. `COORDINATION.md` is the shared task
+board and records every session's scope and results.
+
+## Notes
+
+Independent planning tool, not affiliated with any casino, poker room or hotel.
+Values change without notice; confirm before you book or play. Must be 21+.
+If gambling is a problem, call 1-800-522-4700.
