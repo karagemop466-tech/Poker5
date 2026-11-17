@@ -12,6 +12,8 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Verification:** `python3 scripts/build_c6087e2c.py` passed (14 pages; no data edits); `node --check assets/app.js`; `python3 scripts/check_root_site.py`; `npm test` (9/9); `git diff --check`. Added a test preventing zero-filled hotel totals and generic “from” rates from reappearing. Data values and their official citations were not changed or newly marked verified.
 
+**PR / deployment:** PR [#36](https://github.com/karagemop466-tech/Poker5/pull/36) (`arena/5d8999d6-poker5` → `main`) merged at `0bb1b21cc058beffa5da896b7a9e665df10f79fe`. GitHub Actions checks `Quality checks` and `Validate Dec 2–9 poker dashboard` both passed. Pages deployment run [#44191194360](https://github.com/karagemop466-tech/Poker5/actions/runs/44191194360) completed successfully on main commit `3556b79743b06caa38384c23bf0ac19cc81f58cf`, which includes PR #36. A later parallel integration advanced `main`; its follow-on Pages build is being checked separately.
+
 ## Current branch session — a9d1e02d (active)
 
 **Branch:** `arena/a9d1e02d-poker5` (fixed by Arena). **Role:** final integration and official-source re-audit. No other active scope is shown in this board. This session claims the following non-overlapping scope before implementation:
