@@ -12,7 +12,7 @@
   <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
   <nav class="nav"><a href="../index.html">Home</a>
 <a href="executive-summary.html">Executive Summary</a>
-<a href="tournaments.html">Legacy entry list</a>
+<a href="tournaments.html">Single-Entry</a>
 <a href="tournaments-double.html">Multi-Entry</a>
 <a href="schedule.html">Schedule</a>
 <a href="hotels.html">Hotels</a>
@@ -33,102 +33,267 @@
 
 <section class="panel">
   <strong>Trip cost calculator.</strong> Total = (entries &times; buy-ins) + (nights &times; true
-  hotel cost per night). True hotel cost = nightly room rate + mandatory resort fee + tax.
-  Room rates are dynamic; the calculator uses the value you enter or the logged snapshot. This is a
-  planning estimate, not a booking quote. Confirm on the official booking page before paying.
+  hotel cost per night), where true hotel cost = room rate + mandatory resort fee + tax.
+  Every buy-in comes from the linked official source; the entry list is not limited to confirmed
+  single-entry events because no event in this series is confirmed single-entry (F27) - each option
+  carries its status label instead. This is a planning estimate, not a booking quote.
 </section>
 <div class="panel">
   <div class="calc-grid">
     <div>
       <h3>1. Trip</h3>
-      <label>Nights
-        <input id="nights" type="number" min="1" value="7">
-      </label>
-      <label>Nightly room rate ($)
-        <input id="rate" type="number" min="0" step="1" placeholder="e.g. 200">
-      </label>
-      <label>Resort fee per night ($)
-        <input id="fee" type="number" min="0" step="1" placeholder="e.g. 55">
-      </label>
-      <label>Tax rate (%)
-        <input id="tax" type="number" min="0" step="0.01" value="13.38">
-      </label>
-      <label>Hotel
-        <select id="hotel">
+      <label>Nights <input id="nights" type="number" min="1" value="7"></label>
+      <label>Nightly room rate ($) <input id="rate" type="number" min="0" step="1" placeholder="not verified - enter a quoted rate"></label>
+      <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1" value="55"></label>
+      <label>Tax rate (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"></label>
+      <label>Hotel <select id="hotel">
           <option value="">-- pick a hotel to load its logged rate/fee --</option>
-      <option value="The Venetian Resort" data-rate="$119" data-fee="$55">The Venetian Resort (rate $119, fee $55)</option>
-      <option value="The Palazzo" data-rate="$209" data-fee="$55">The Palazzo (rate $209, fee $55)</option>
-      <option value="Wynn Las Vegas" data-rate="" data-fee="$55">Wynn Las Vegas (rate , fee $55)</option>
-      <option value="Encore at Wynn" data-rate="" data-fee="$55">Encore at Wynn (rate , fee $55)</option>
-      <option value="Bellagio" data-rate="" data-fee="$55">Bellagio (rate , fee $55)</option>
-      <option value="ARIA Resort &amp; Casino" data-rate="" data-fee="$55">ARIA Resort &amp; Casino (rate , fee $55)</option>
-      <option value="MGM Grand" data-rate="" data-fee="$50">MGM Grand (rate , fee $50)</option>
-      <option value="Caesars Palace" data-rate="" data-fee="">Caesars Palace (rate , fee )</option>
-      <option value="Horseshoe Las Vegas" data-rate="" data-fee="">Horseshoe Las Vegas (rate , fee )</option>
-      <option value="Encore Las Vegas" data-rate="" data-fee="">Encore Las Vegas (rate , fee )</option>
-      <option value="Planet Hollywood" data-rate="" data-fee="">Planet Hollywood (rate , fee )</option>
-      <option value="Golden Nugget Las Vegas" data-rate="" data-fee="">Golden Nugget Las Vegas (rate , fee )</option>
-      <option value="Resorts World Las Vegas" data-rate="" data-fee="">Resorts World Las Vegas (rate , fee )</option>
-        </select>
-      </label>
-      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax rate is cited from the
-      Clark County ordinance; confirm the current rate.</p>
+      <option value="The Venetian Resort" data-rate="119.0" data-fee="55">The Venetian Resort (rate $119, fee $55)</option>
+      <option value="The Palazzo" data-rate="209.0" data-fee="55">The Palazzo (rate $209, fee $55)</option>
+      <option value="Wynn Las Vegas" data-rate="" data-fee="55">Wynn Las Vegas (rate , fee $55, rate not verified)</option>
+      <option value="Encore at Wynn" data-rate="" data-fee="">Encore at Wynn (rate , fee , rate not verified)</option>
+      <option value="Bellagio" data-rate="" data-fee="">Bellagio (rate , fee , rate not verified)</option>
+      <option value="ARIA Resort &amp; Casino" data-rate="" data-fee="">ARIA Resort &amp; Casino (rate , fee , rate not verified)</option>
+      <option value="MGM Grand" data-rate="" data-fee="">MGM Grand (rate , fee , rate not verified)</option>
+      <option value="Caesars Palace" data-rate="" data-fee="">Caesars Palace (rate , fee , rate not verified)</option>
+      <option value="Horseshoe Las Vegas" data-rate="" data-fee="">Horseshoe Las Vegas (rate , fee , rate not verified)</option>
+      <option value="Park MGM" data-rate="" data-fee="">Park MGM (rate , fee , rate not verified)</option>
+      <option value="The Cosmopolitan of Las Vegas" data-rate="" data-fee="">The Cosmopolitan of Las Vegas (rate , fee , rate not verified)</option>
+      <option value="Encore Las Vegas" data-rate="" data-fee="">Encore Las Vegas (rate , fee , rate not verified)</option>
+      <option value="Planet Hollywood" data-rate="" data-fee="">Planet Hollywood (rate , fee , rate not verified)</option>
+      <option value="Golden Nugget Las Vegas" data-rate="" data-fee="">Golden Nugget Las Vegas (rate , fee , rate not verified)</option>
+      <option value="Resorts World Las Vegas" data-rate="" data-fee="">Resorts World Las Vegas (rate , fee , rate not verified)</option>
+        </select></label>
+      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax is the Clark County
+      corridor rate cited on the Hotels page; the fee's own tax treatment is confirmed on the folio (F45).</p>
     </div>
     <div>
       <h3>2. Entries</h3>
-      <label>Event
-        <select id="event">
+      <label>Event <select id="event">
           <option value="">-- pick an event to add --</option>
-      <option value="$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO)" data-buyin="$1,100" data-gtd="$75,000">$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO) &middot; The Venetian Resort &middot; $1,100</option>
-      <option value="$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day)" data-buyin="$800" data-gtd="$75,000">$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day) &middot; The Venetian Resort &middot; $800</option>
-      <option value="$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day)" data-buyin="$600" data-gtd="$50,000">$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="$600 No Limit Hold&#x27;em $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000">$600 No Limit Hold&#x27;em $40K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000">$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="NLH Rebuy and Add-on, $240, $40K GTD (Friday)" data-buyin="$240" data-gtd="$40,000">NLH Rebuy and Add-on, $240, $40K GTD (Friday) &middot; Wynn Las Vegas &middot; $240</option>
-      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty &middot; The Venetian Resort &middot; $600</option>
-      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; The Venetian Resort &middot; $600</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; The Venetian Resort &middot; $300</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; The Venetian Resort &middot; $200</option>
-        </select>
-      </label>
-      <label>Entries (count)
-        <input id="count" type="number" min="1" value="1">
-      </label>
+      <option value="WPT Prime Championship Day 1A" data-buyin="$1,100" data-gtd="$5,000,000" data-qualifies="1">WPT Prime Championship Day 1A &middot; Sat, Dec 5, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="Super Gold Million Mystery Bounty Day 1A" data-buyin="$400" data-gtd="$3,000,000" data-qualifies="1">Super Gold Million Mystery Bounty Day 1A &middot; Thu, Dec 10, 2026 &middot; Wynn &middot; $400 &middot; </option>
+      <option value="Super Gold Million Mystery Bounty Day 1B" data-buyin="$400" data-gtd="$3,000,000" data-qualifies="1">Super Gold Million Mystery Bounty Day 1B &middot; Thu, Dec 10, 2026 &middot; Wynn &middot; $400 &middot; </option>
+      <option value="Super Gold Million Mystery Bounty Day 1C" data-buyin="$400" data-gtd="$3,000,000" data-qualifies="1">Super Gold Million Mystery Bounty Day 1C &middot; Fri, Dec 11, 2026 &middot; Wynn &middot; $400 &middot; </option>
+      <option value="Super Gold Million Mystery Bounty Day 1D" data-buyin="$400" data-gtd="$3,000,000" data-qualifies="1">Super Gold Million Mystery Bounty Day 1D &middot; Fri, Dec 11, 2026 &middot; Wynn &middot; $400 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1A" data-buyin="$3,000" data-gtd="$2,000,000" data-qualifies="1">No Limit Hold&#x27;em Day 1A &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $3,000 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1B" data-buyin="$3,000" data-gtd="$2,000,000" data-qualifies="1">No Limit Hold&#x27;em Day 1B &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $3,000 &middot; </option>
+      <option value="$2,200 No Limit Hold&#x27;em 1A $1M GTD, PokerAtlas Championship title event" data-buyin="$2,200" data-gtd="$1,000,000" data-qualifies="1">$2,200 No Limit Hold&#x27;em 1A $1M GTD, PokerAtlas Championship title event &middot; Sat, Dec 12, 2026 &middot; The Venetian Resort &middot; $2,200 &middot; </option>
+      <option value="$2,200 No Limit Hold&#x27;em 1B $1M GTD, PokerAtlas Championship title event" data-buyin="$2,200" data-gtd="$1,000,000" data-qualifies="1">$2,200 No Limit Hold&#x27;em 1B $1M GTD, PokerAtlas Championship title event &middot; Sat, Dec 12, 2026 &middot; The Venetian Resort &middot; $2,200 &middot; </option>
+      <option value="No Limit Hold&#x27;em (2 Day)" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">No Limit Hold&#x27;em (2 Day) &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="PLO Day 1A" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">PLO Day 1A &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="PLO Day 1B" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">PLO Day 1B &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="NLH Mystery Bounty Day 1A" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">NLH Mystery Bounty Day 1A &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="NLH Mystery Bounty Day 1B" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">NLH Mystery Bounty Day 1B &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="NLH Mystery Bounty Day 1C" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">NLH Mystery Bounty Day 1C &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="NLH Mystery Bounty Day 1D" data-buyin="$1,600" data-gtd="$1,000,000" data-qualifies="1">NLH Mystery Bounty Day 1D &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1A" data-buyin="$1,100" data-gtd="$1,000,000" data-qualifies="1">No Limit Hold&#x27;em Day 1A &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1B" data-buyin="$1,100" data-gtd="$1,000,000" data-qualifies="1">No Limit Hold&#x27;em Day 1B &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="NLH 6-Max" data-buyin="$3,000" data-gtd="$500,000" data-qualifies="1">NLH 6-Max &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $3,000 &middot; sheet not read</option>
+      <option value="PLO Mystery Bounty Day 1A" data-buyin="$1,600" data-gtd="$500,000" data-qualifies="1">PLO Mystery Bounty Day 1A &middot; Sun, Dec 6, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="PLO Mystery Bounty Day 1B" data-buyin="$1,600" data-gtd="$500,000" data-qualifies="1">PLO Mystery Bounty Day 1B &middot; Sun, Dec 6, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em 1A $500K GTD" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em 1A $500K GTD &middot; Thu, Dec 17, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="Seniors NLH Championship (3 Day)" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">Seniors NLH Championship (3 Day) &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em 1B $500K GTD" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em 1B $500K GTD &middot; Thu, Dec 17, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em 1C $500K GTD" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em 1C $500K GTD &middot; Fri, Dec 18, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em 1D $500K GTD" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em 1D $500K GTD &middot; Fri, Dec 18, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em 1E $500K GTD" data-buyin="$1,100" data-gtd="$500,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em 1E $500K GTD &middot; Sat, Dec 19, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1A $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1A $500K GTD &middot; Thu, Dec 3, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1B $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1B $500K GTD &middot; Thu, Dec 3, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1C $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1C $500K GTD &middot; Fri, Dec 4, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1D $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1D $500K GTD &middot; Fri, Dec 4, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1E $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1E $500K GTD &middot; Sat, Dec 5, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="$800 No Limit Hold&#x27;em 1F (Turbo) $500K GTD" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">$800 No Limit Hold&#x27;em 1F (Turbo) $500K GTD &middot; Sat, Dec 5, 2026 &middot; The Venetian Resort &middot; $800 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1A" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">No Limit Hold&#x27;em Day 1A &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $800 &middot; </option>
+      <option value="No Limit Hold&#x27;em Day 1B" data-buyin="$800" data-gtd="$500,000" data-qualifies="1">No Limit Hold&#x27;em Day 1B &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $800 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em Seniors 1A $300K GTD" data-buyin="$1,100" data-gtd="$300,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em Seniors 1A $300K GTD &middot; Sun, Dec 13, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="$1,100 No Limit Hold&#x27;em Seniors 1B $300K GTD" data-buyin="$1,100" data-gtd="$300,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em Seniors 1B $300K GTD &middot; Mon, Dec 14, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; </option>
+      <option value="Seniors High Roller (3 Day)" data-buyin="$5,000" data-gtd="$250,000" data-qualifies="1">Seniors High Roller (3 Day) &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $5,000 &middot; </option>
+      <option value="PLO $1,000 Bounty" data-buyin="$3,000" data-gtd="$250,000" data-qualifies="1">PLO $1,000 Bounty &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $3,000 &middot; sheet not read</option>
+      <option value="PLO" data-buyin="$3,000" data-gtd="$250,000" data-qualifies="1">PLO &middot; Sat, Dec 12, 2026 &middot; Wynn &middot; $3,000 &middot; sheet not read</option>
+      <option value="PLO Progressive Bounty (PKO)" data-buyin="$3,000" data-gtd="$250,000" data-qualifies="1">PLO Progressive Bounty (PKO) &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $3,000 &middot; sheet not read</option>
+      <option value="Ladies NLH Championship (2 Day)" data-buyin="$1,100" data-gtd="$250,000" data-qualifies="1">Ladies NLH Championship (2 Day) &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="$600 No Limit Hold&#x27;em 1A $150K GTD" data-buyin="$600" data-gtd="$150,000" data-qualifies="1">$600 No Limit Hold&#x27;em 1A $150K GTD &middot; Sun, Dec 20, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em 1B $150K GTD" data-buyin="$600" data-gtd="$150,000" data-qualifies="1">$600 No Limit Hold&#x27;em 1B $150K GTD &middot; Mon, Dec 21, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em 1C $150K GTD" data-buyin="$600" data-gtd="$150,000" data-qualifies="1">$600 No Limit Hold&#x27;em 1C $150K GTD &middot; Tue, Dec 22, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="PLO $500 Bounty" data-buyin="$1,600" data-gtd="$100,000" data-qualifies="1">PLO $500 Bounty &middot; Mon, Dec 7, 2026 &middot; Wynn &middot; $1,600 &middot; sheet not read</option>
+      <option value="NIH $500 Bounty Turbo" data-buyin="$1,600" data-gtd="$100,000" data-qualifies="1">NIH $500 Bounty Turbo &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $1,600 &middot; sheet not read</option>
+      <option value="PLO Turbo" data-buyin="$1,100" data-gtd="$100,000" data-qualifies="1">PLO Turbo &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $1,100 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$1,100" data-gtd="$100,000" data-qualifies="1">NLH Turbo &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $1,100 &middot; sheet not read</option>
+      <option value="No Limit Hold&#x27;em" data-buyin="$1,100" data-gtd="$100,000" data-qualifies="1">No Limit Hold&#x27;em &middot; Mon, Dec 21, 2026 &middot; Wynn &middot; $1,100 &middot; sheet not read</option>
+      <option value="No Limit Hold&#x27;em" data-buyin="$800" data-gtd="$100,000" data-qualifies="1">No Limit Hold&#x27;em &middot; Sat, Dec 12, 2026 &middot; Wynn &middot; $800 &middot; sheet not read</option>
+      <option value="No Limit Hold&#x27;em" data-buyin="$600" data-gtd="$100,000" data-qualifies="1">No Limit Hold&#x27;em &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO)" data-buyin="$1,100" data-gtd="$75,000" data-qualifies="1">$1,100 No Limit Hold&#x27;em $75K GTD (1-Day), Progressive Knock-Out Bounty (PKO) &middot; Tue, Dec 15, 2026 &middot; The Venetian Resort &middot; $1,100 &middot; sheet read, rule not stated</option>
+      <option value="$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day)" data-buyin="$800" data-gtd="$75,000" data-qualifies="1">$800 No Limit Hold&#x27;em Bounty $75K GTD (1-Day) &middot; Wed, Dec 9, 2026 &middot; The Venetian Resort &middot; $800 &middot; sheet read, rule not stated</option>
+      <option value="$400 No Limit Hold&#x27;em 1A $75K GTD" data-buyin="$400" data-gtd="$75,000" data-qualifies="1">$400 No Limit Hold&#x27;em 1A $75K GTD &middot; Mon, Nov 23, 2026 &middot; The Venetian Resort &middot; $400 &middot; </option>
+      <option value="$400 No Limit Hold&#x27;em 1B $75K GTD" data-buyin="$400" data-gtd="$75,000" data-qualifies="1">$400 No Limit Hold&#x27;em 1B $75K GTD &middot; Tue, Nov 24, 2026 &middot; The Venetian Resort &middot; $400 &middot; </option>
+      <option value="$400 No Limit Hold&#x27;em 1A $75K GTD" data-buyin="$400" data-gtd="$75,000" data-qualifies="1">$400 No Limit Hold&#x27;em 1A $75K GTD &middot; Sun, Nov 29, 2026 &middot; The Venetian Resort &middot; $400 &middot; </option>
+      <option value="$400 No Limit Hold&#x27;em 1B $75K GTD" data-buyin="$400" data-gtd="$75,000" data-qualifies="1">$400 No Limit Hold&#x27;em 1B $75K GTD &middot; Mon, Nov 30, 2026 &middot; The Venetian Resort &middot; $400 &middot; </option>
+      <option value="$400 No Limit Hold&#x27;em 1C $75K GTD" data-buyin="$400" data-gtd="$75,000" data-qualifies="1">$400 No Limit Hold&#x27;em 1C $75K GTD &middot; Tue, Dec 1, 2026 &middot; The Venetian Resort &middot; $400 &middot; </option>
+      <option value="$300 No Limit Hold&#x27;em 1A $75K GTD" data-buyin="$300" data-gtd="$75,000" data-qualifies="1">$300 No Limit Hold&#x27;em 1A $75K GTD &middot; Mon, Nov 16, 2026 &middot; The Venetian Resort &middot; $300 &middot; </option>
+      <option value="$300 No Limit Hold&#x27;em 1B $75K GTD" data-buyin="$300" data-gtd="$75,000" data-qualifies="1">$300 No Limit Hold&#x27;em 1B $75K GTD &middot; Mon, Nov 16, 2026 &middot; The Venetian Resort &middot; $300 &middot; </option>
+      <option value="$300 No Limit Hold&#x27;em 1C $75K GTD" data-buyin="$300" data-gtd="$75,000" data-qualifies="1">$300 No Limit Hold&#x27;em 1C $75K GTD &middot; Tue, Nov 17, 2026 &middot; The Venetian Resort &middot; $300 &middot; </option>
+      <option value="$300 No Limit Hold&#x27;em 1D $75K GTD" data-buyin="$300" data-gtd="$75,000" data-qualifies="1">$300 No Limit Hold&#x27;em 1D $75K GTD &middot; Tue, Nov 17, 2026 &middot; The Venetian Resort &middot; $300 &middot; </option>
+      <option value="NLH $1,100 buy-in (link text says $1,000)" data-buyin="$1,100" data-gtd="$50,000" data-qualifies="1">NLH $1,100 buy-in (link text says $1,000) &middot; Saturdays (dates not printed on page) &middot; Bellagio &middot; $1,100 &middot; </option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Sat, Dec 5, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Sun, Dec 6, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Mon, Dec 7, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Tue, Dec 8, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH Turbo &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day)" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">$600 No Limit Hold&#x27;em Bounty $50K GTD (1-Day) &middot; Wed, Dec 16, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="NLH 6-Max Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">NLH 6-Max Turbo &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="No Limit Hold&#x27;em" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">No Limit Hold&#x27;em &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="5-Card PLO Turbo" data-buyin="$600" data-gtd="$50,000" data-qualifies="1">5-Card PLO Turbo &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="$800 No Limit Hold&#x27;em LIPS Ladies $40K GTD (2-Day), Women in Poker main event" data-buyin="$800" data-gtd="$40,000" data-qualifies="1">$800 No Limit Hold&#x27;em LIPS Ladies $40K GTD (2-Day), Women in Poker main event &middot; Thu, Dec 10, 2026 &middot; The Venetian Resort &middot; $800 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em Seniors $40K GTD (1-Day), 50+ only" data-buyin="$600" data-gtd="$40,000" data-qualifies="1">$600 No Limit Hold&#x27;em Seniors $40K GTD (1-Day), 50+ only &middot; Wed, Dec 2, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000" data-qualifies="1">$600 No Limit Hold&#x27;em $40K GTD (1-Day) &middot; Sun, Dec 6, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day)" data-buyin="$600" data-gtd="$40,000" data-qualifies="1">$600 No Limit Hold&#x27;em Bounty $40K GTD (1-Day) &middot; Mon, Dec 7, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em Seniors $40K GTD (1-Day), 50+ only" data-buyin="$600" data-gtd="$40,000" data-qualifies="1">$600 No Limit Hold&#x27;em Seniors $40K GTD (1-Day), 50+ only &middot; Tue, Dec 8, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="Friday NLH Rebuy &amp; Add-on $240 $40K guarantee" data-buyin="$240" data-gtd="$40,000" data-qualifies="0">Friday NLH Rebuy &amp; Add-on $240 $40K guarantee &middot; Fri, Nov 20, 2026 &middot; Wynn &middot; $240 &middot; </option>
+      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000" data-qualifies="1">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; Fri, Nov 27, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000" data-qualifies="1">$600 No Limit Hold&#x27;em Bounty $30K GTD (1-Day) &middot; Sat, Nov 28, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty" data-buyin="$600" data-gtd="$30,000" data-qualifies="1">$600 No Limit Hold&#x27;em LIPS $30K GTD (1-Day), KINGS and QUEENS Bounty &middot; Fri, Dec 11, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 No Limit Hold&#x27;em $30K GTD (1-Day)" data-buyin="$600" data-gtd="$30,000" data-qualifies="1">$600 No Limit Hold&#x27;em $30K GTD (1-Day) &middot; Wed, Dec 23, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 BIG O $25K GTD (1-Day)" data-buyin="$600" data-gtd="$25,000" data-qualifies="1">$600 BIG O $25K GTD (1-Day) &middot; Thu, Dec 3, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 Pot Limit Omaha Bounty $25K GTD (1-Day)" data-buyin="$600" data-gtd="$25,000" data-qualifies="1">$600 Pot Limit Omaha Bounty $25K GTD (1-Day) &middot; Thu, Dec 10, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="$600 Pot Limit Omaha $25K GTD (1-Day), Double Board Bomb Pot" data-buyin="$600" data-gtd="$25,000" data-qualifies="1">$600 Pot Limit Omaha $25K GTD (1-Day), Double Board Bomb Pot &middot; Thu, Dec 17, 2026 &middot; The Venetian Resort &middot; $600 &middot; sheet read, rule not stated</option>
+      <option value="Saturday NLH $200 $25K guarantee" data-buyin="$200" data-gtd="$25,000" data-qualifies="0">Saturday NLH $200 $25K guarantee &middot; Sat, Nov 21, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Sunday NLH $200 $25K guarantee" data-buyin="$200" data-gtd="$25,000" data-qualifies="0">Sunday NLH $200 $25K guarantee &middot; Sun, Nov 22, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1-Day)" data-buyin="$200" data-gtd="$20,000" data-qualifies="0">$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1-Day) &middot; Sat, Nov 28, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1-Day)" data-buyin="$200" data-gtd="$20,000" data-qualifies="0">$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1-Day) &middot; Sat, Dec 19, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$400 No Limit Hold&#x27;em $15K GTD (1-Day)" data-buyin="$400" data-gtd="$15,000" data-qualifies="1">$400 No Limit Hold&#x27;em $15K GTD (1-Day) &middot; Wed, Nov 25, 2026 &middot; The Venetian Resort &middot; $400 &middot; sheet read, rule not stated</option>
+      <option value="$400 Pot Limit Omaha Bounty $15K GTD (1-Day)" data-buyin="$400" data-gtd="$15,000" data-qualifies="1">$400 Pot Limit Omaha Bounty $15K GTD (1-Day) &middot; Sat, Nov 28, 2026 &middot; The Venetian Resort &middot; $400 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Sun, Dec 6, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Mon, Dec 7, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Tue, Dec 8, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Wed, Dec 9, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Thu, Dec 10, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Sun, Dec 13, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Mon, Dec 14, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Tue, Dec 15, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day)" data-buyin="$300" data-gtd="$15,000" data-qualifies="1">$300 No Limit Hold&#x27;em Bounty $15K GTD (1-Day) &middot; Wed, Dec 16, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1-Day)" data-buyin="$600" data-gtd="$10,000" data-qualifies="1">$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1-Day) &middot; Wed, Dec 9, 2026 &middot; The Venetian Resort &middot; $600 &middot; team event</option>
+      <option value="$300 No Limit Hold&#x27;em $10K GTD (1-Day)" data-buyin="$300" data-gtd="$10,000" data-qualifies="1">$300 No Limit Hold&#x27;em $10K GTD (1-Day) &middot; Wed, Nov 18, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 No Limit Hold&#x27;em $10K GTD (1-Day)" data-buyin="$300" data-gtd="$10,000" data-qualifies="1">$300 No Limit Hold&#x27;em $10K GTD (1-Day) &middot; Thu, Nov 26, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="$300 Pot Limit Omaha $10K GTD (1-Day), Double Board Bomb Pot" data-buyin="$300" data-gtd="$10,000" data-qualifies="1">$300 Pot Limit Omaha $10K GTD (1-Day), Double Board Bomb Pot &middot; Sun, Nov 29, 2026 &middot; The Venetian Resort &middot; $300 &middot; sheet read, rule not stated</option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Mon, Nov 16, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Tue, Nov 17, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Wed, Nov 18, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Thu, Nov 19, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Mon, Nov 23, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Tue, Nov 24, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Wed, Nov 25, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Daily $200 NLH $10K guarantee (Mon-Thu)" data-buyin="$200" data-gtd="$10,000" data-qualifies="0">Daily $200 NLH $10K guarantee (Mon-Thu) &middot; Thu, Nov 26, 2026 &middot; Wynn &middot; $200 &middot; </option>
+      <option value="Nightly $160 NLH $10K guarantee" data-buyin="$160" data-gtd="$10,000" data-qualifies="0">Nightly $160 NLH $10K guarantee &middot; 2026-11-16..2026-11-26 &middot; Wynn &middot; $160 &middot; sheet not read</option>
+      <option value="$200 No Limit Hold&#x27;em $8K GTD (1-Day), Progressive Knock-Out Bounty (PKO)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em $8K GTD (1-Day), Progressive Knock-Out Bounty (PKO) &middot; Mon, Nov 23, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Tue, Nov 24, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Wed, Nov 25, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Thu, Nov 26, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Fri, Nov 27, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Sun, Nov 29, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Mon, Nov 30, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Tue, Dec 1, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Wed, Dec 2, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Sun, Dec 20, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Mon, Dec 21, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Tue, Dec 22, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day)" data-buyin="$200" data-gtd="$8,000" data-qualifies="0">$200 No Limit Hold&#x27;em Bounty $8K GTD (1-Day) &middot; Wed, Dec 23, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="NLH Saturday, $150, $2,000 GTD" data-buyin="$150" data-gtd="$2,000" data-qualifies="0">NLH Saturday, $150, $2,000 GTD &middot; recurring &middot; MGM Grand &middot; $150 &middot; </option>
+      <option value="Saturday $150 NLH - $2,000 guarantee" data-buyin="$150" data-gtd="$2,000" data-qualifies="0">Saturday $150 NLH - $2,000 guarantee &middot; Weekly (Saturday) &middot; MGM Grand &middot; $150 &middot; sheet not read</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1A/8" data-buyin="$1,100" data-gtd="$75" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1A/8 &middot; Sat, Dec 12, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $1,100 Prime Championship" data-buyin="$200" data-gtd="$50" data-qualifies="0">Milestone Satellite to $1,100 Prime Championship &middot; Sun, Dec 6, 2026 &middot; Wynn &middot; $200 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite Package to Prime and World Championship" data-buyin="$1,600" data-gtd="$25" data-qualifies="1">Milestone Satellite Package to Prime and World Championship &middot; Mon, Dec 7, 2026 &middot; Wynn &middot; $1,600 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship &middot; Tue, Dec 8, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1A/8" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1A/8 &middot; Sat, Dec 12, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1B" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1B &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1B/C" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1B/C &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1C" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1C &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1C" data-buyin="$1,100" data-gtd="$25" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1C &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Double Play Milestone Satellite (2 x $1,100 ticket)" data-buyin="$400" data-gtd="$25" data-qualifies="1">Double Play Milestone Satellite (2 x $1,100 ticket) &middot; Thu, Dec 3, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Double Play Milestone Satellite (2 x $1,100 ticket)" data-buyin="$400" data-gtd="$25" data-qualifies="1">Double Play Milestone Satellite (2 x $1,100 ticket) &middot; Fri, Dec 4, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Double Play Milestone Satellite (2 x $1,100 ticket)" data-buyin="$400" data-gtd="$25" data-qualifies="1">Double Play Milestone Satellite (2 x $1,100 ticket) &middot; Sun, Dec 6, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $3,000 NLH" data-buyin="$400" data-gtd="$25" data-qualifies="1">Milestone Satellite to $3,000 NLH &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $3,000 NLH" data-buyin="$400" data-gtd="$25" data-qualifies="1">Milestone Satellite to $3,000 NLH &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $3,000 NLH" data-buyin="$400" data-gtd="$25" data-qualifies="1">Milestone Satellite to $3,000 NLH &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship 1C/Day 2" data-buyin="$1,100" data-gtd="$10" data-qualifies="1">Milestone Satellite to $10,400 World Championship 1C/Day 2 &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 World Championship Day 2" data-buyin="$1,100" data-gtd="$10" data-qualifies="1">Milestone Satellite to $10,400 World Championship Day 2 &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $1,100 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $5,000 Seniors High Roller" data-buyin="$600" data-gtd="$10" data-qualifies="1">Milestone Satellite to $5,000 Seniors High Roller &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $600 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $3,000 NLH" data-buyin="$400" data-gtd="$10" data-qualifies="1">Milestone Satellite to $3,000 NLH &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $400 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $1,600 Mystery Bounty" data-buyin="$300" data-gtd="$10" data-qualifies="1">Milestone Satellite to $1,600 Mystery Bounty &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $300 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $1,600 Mystery Bounty" data-buyin="$300" data-gtd="$10" data-qualifies="1">Milestone Satellite to $1,600 Mystery Bounty &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $300 &middot; satellite (seat prize)</option>
+      <option value="Milestone Satellite to $10,400 Ladies NLH Championship" data-buyin="$200" data-gtd="$10" data-qualifies="0">Milestone Satellite to $10,400 Ladies NLH Championship &middot; Sat, Dec 12, 2026 &middot; Wynn &middot; $200 &middot; satellite (seat prize)</option>
+      <option value="NLH High Roller (2 Day)" data-buyin="$25,800" data-gtd="" data-qualifies="1">NLH High Roller (2 Day) &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $25,800 &middot; </option>
+      <option value="PLO 6-Max" data-buyin="$10,500" data-gtd="" data-qualifies="1">PLO 6-Max &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $10,500 &middot; sheet not read</option>
+      <option value="NLH 6-Max" data-buyin="$10,500" data-gtd="" data-qualifies="1">NLH 6-Max &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $10,500 &middot; sheet not read</option>
+      <option value="PLO" data-buyin="$10,500" data-gtd="" data-qualifies="1">PLO &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $10,500 &middot; sheet not read</option>
+      <option value="NLH 8-Max" data-buyin="$10,500" data-gtd="" data-qualifies="1">NLH 8-Max &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $10,500 &middot; sheet not read</option>
+      <option value="NLH 6-Max, $10,500 (no guarantee shown)" data-buyin="$10,500" data-gtd="" data-qualifies="1">NLH 6-Max, $10,500 (no guarantee shown) &middot; recurring &middot; Wynn Las Vegas &middot; $10,500 &middot; </option>
+      <option value="WPT World Championship Day 1A ($1,000,000 added)" data-buyin="$10,400" data-gtd="" data-qualifies="1">WPT World Championship Day 1A ($1,000,000 added) &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $10,400 &middot; </option>
+      <option value="WPT World Championship Day 1B ($1,000,000 added)" data-buyin="$10,400" data-gtd="" data-qualifies="1">WPT World Championship Day 1B ($1,000,000 added) &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $10,400 &middot; </option>
+      <option value="WPT World Championship Day 1C ($1,000,000 added)" data-buyin="$10,400" data-gtd="" data-qualifies="1">WPT World Championship Day 1C ($1,000,000 added) &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $10,400 &middot; </option>
+      <option value="Milestone Satellite to $25K NIH High Roller" data-buyin="$3,000" data-gtd="" data-qualifies="1">Milestone Satellite to $25K NIH High Roller &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $3,000 &middot; satellite (seat prize)</option>
+      <option value="Wynn Mixed Championship (2 Day)" data-buyin="$1,600" data-gtd="" data-qualifies="1">Wynn Mixed Championship (2 Day) &middot; Thu, Dec 17, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="Limit Omaha 8 Championship (2 Day)" data-buyin="$1,600" data-gtd="" data-qualifies="1">Limit Omaha 8 Championship (2 Day) &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="TORSE Championship (2 Day)" data-buyin="$1,600" data-gtd="" data-qualifies="1">TORSE Championship (2 Day) &middot; Sat, Dec 19, 2026 &middot; Wynn &middot; $1,600 &middot; </option>
+      <option value="Limit Omaha 8 Championship (2 Day), $1,600 (no guarantee shown)" data-buyin="$1,600" data-gtd="" data-qualifies="1">Limit Omaha 8 Championship (2 Day), $1,600 (no guarantee shown) &middot; recurring &middot; Wynn Las Vegas &middot; $1,600 &middot; </option>
+      <option value="TORSE Championship (2 Day), $1,600 (no guarantee shown)" data-buyin="$1,600" data-gtd="" data-qualifies="1">TORSE Championship (2 Day), $1,600 (no guarantee shown) &middot; recurring &middot; Wynn Las Vegas &middot; $1,600 &middot; </option>
+      <option value="PLO" data-buyin="$1,100" data-gtd="" data-qualifies="1">PLO &middot; Tue, Dec 1, 2026 &middot; Wynn &middot; $1,100 &middot; sheet not read</option>
+      <option value="HORSE (2 Day)" data-buyin="$1,100" data-gtd="" data-qualifies="1">HORSE (2 Day) &middot; Mon, Dec 7, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="TORSE (2 Day)" data-buyin="$1,100" data-gtd="" data-qualifies="1">TORSE (2 Day) &middot; Sun, Dec 13, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="Mixed Triple Draw (A-5, 2-7, Badugi) (2 Day)" data-buyin="$1,100" data-gtd="" data-qualifies="1">Mixed Triple Draw (A-5, 2-7, Badugi) (2 Day) &middot; Mon, Dec 14, 2026 &middot; Wynn &middot; $1,100 &middot; </option>
+      <option value="Big O" data-buyin="$1,100" data-gtd="" data-qualifies="1">Big O &middot; Tue, Dec 15, 2026 &middot; Wynn &middot; $1,100 &middot; sheet not read</option>
+      <option value="Limit Omaha 8" data-buyin="$800" data-gtd="" data-qualifies="1">Limit Omaha 8 &middot; Wed, Dec 9, 2026 &middot; Wynn &middot; $800 &middot; sheet not read</option>
+      <option value="PLO Double Board Bomb Pot" data-buyin="$800" data-gtd="" data-qualifies="1">PLO Double Board Bomb Pot &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $800 &middot; sheet not read</option>
+      <option value="HORSE" data-buyin="$800" data-gtd="" data-qualifies="1">HORSE &middot; Fri, Dec 18, 2026 &middot; Wynn &middot; $800 &middot; sheet not read</option>
+      <option value="TORSE" data-buyin="$600" data-gtd="" data-qualifies="1">TORSE &middot; Fri, Nov 27, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="Mixed Triple Draw (A-5, 2-7, Badugi)" data-buyin="$600" data-gtd="" data-qualifies="1">Mixed Triple Draw (A-5, 2-7, Badugi) &middot; Sat, Nov 28, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="Limit Omaha 8" data-buyin="$600" data-gtd="" data-qualifies="1">Limit Omaha 8 &middot; Mon, Nov 30, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="Limit Omaha 8/5/Stud 8" data-buyin="$600" data-gtd="" data-qualifies="1">Limit Omaha 8/5/Stud 8 &middot; Tue, Dec 1, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="HORSE" data-buyin="$600" data-gtd="" data-qualifies="1">HORSE &middot; Fri, Dec 4, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="Mixed Triple Draw (A-5, 2-7, Badugi)" data-buyin="$600" data-gtd="" data-qualifies="1">Mixed Triple Draw (A-5, 2-7, Badugi) &middot; Sun, Dec 20, 2026 &middot; Wynn &middot; $600 &middot; sheet not read</option>
+      <option value="NLH $600 buy-in" data-buyin="$600" data-gtd="" data-qualifies="1">NLH $600 buy-in &middot; Fridays (dates not printed on page) &middot; Bellagio &middot; $600 &middot; </option>
+      <option value="PLO" data-buyin="$400" data-gtd="" data-qualifies="1">PLO &middot; Fri, Nov 27, 2026 &middot; Wynn &middot; $400 &middot; sheet not read</option>
+      <option value="H.O.R.S.E. Sunday" data-buyin="$400" data-gtd="" data-qualifies="1">H.O.R.S.E. Sunday &middot; recurring &middot; Bellagio &middot; $400 &middot; </option>
+      <option value="$400 H.O.R.S.E." data-buyin="$400" data-gtd="" data-qualifies="1">$400 H.O.R.S.E. &middot; Sundays (dates not printed on page) &middot; Bellagio &middot; $400 &middot; sheet not read</option>
+      <option value="$260 NLH Milestone Satellite (1-Day)" data-buyin="$260" data-gtd="" data-qualifies="0">$260 NLH Milestone Satellite (1-Day) &middot; Thu, Dec 10, 2026 &middot; The Venetian Resort &middot; $260 &middot; satellite (seat prize)</option>
+      <option value="$260 NLH Milestone Satellite (1-Day)" data-buyin="$260" data-gtd="" data-qualifies="0">$260 NLH Milestone Satellite (1-Day) &middot; Fri, Dec 11, 2026 &middot; The Venetian Resort &middot; $260 &middot; satellite (seat prize)</option>
+      <option value="$260 NLH Turbo Milestone Satellite (1-Day)" data-buyin="$260" data-gtd="" data-qualifies="0">$260 NLH Turbo Milestone Satellite (1-Day) &middot; Fri, Dec 11, 2026 &middot; The Venetian Resort &middot; $260 &middot; satellite (seat prize)</option>
+      <option value="$260 NLH Turbo Milestone Satellite (1-Day)" data-buyin="$260" data-gtd="" data-qualifies="0">$260 NLH Turbo Milestone Satellite (1-Day) &middot; Sat, Dec 12, 2026 &middot; The Venetian Resort &middot; $260 &middot; satellite (seat prize)</option>
+      <option value="$260 NLH Turbo Milestone Satellite (1-Day)" data-buyin="$260" data-gtd="" data-qualifies="0">$260 NLH Turbo Milestone Satellite (1-Day) &middot; Sat, Dec 12, 2026 &middot; The Venetian Resort &middot; $260 &middot; satellite (seat prize)</option>
+      <option value="$200 NLH RaceDay Stack (1-Day); race to finish before the Race" data-buyin="$200" data-gtd="" data-qualifies="0">$200 NLH RaceDay Stack (1-Day); race to finish before the Race &middot; Thu, Nov 19, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 NLH RaceDay Stack (1-Day); race to finish before the Race" data-buyin="$200" data-gtd="" data-qualifies="0">$200 NLH RaceDay Stack (1-Day); race to finish before the Race &middot; Fri, Nov 20, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 NLH RaceDay Stack (1-Day); race to finish before the Race" data-buyin="$200" data-gtd="" data-qualifies="0">$200 NLH RaceDay Stack (1-Day); race to finish before the Race &middot; Sat, Nov 21, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="$200 No Limit Hold&#x27;em (1-Day)" data-buyin="$200" data-gtd="" data-qualifies="0">$200 No Limit Hold&#x27;em (1-Day) &middot; Sun, Nov 22, 2026 &middot; The Venetian Resort &middot; $200 &middot; sheet read, rule not stated</option>
+      <option value="NLH daily, $120" data-buyin="$120" data-gtd="" data-qualifies="0">NLH daily, $120 &middot; recurring &middot; MGM Grand &middot; $120 &middot; </option>
+      <option value="Daily $120 NLH (Sun-Fri &amp; Sun)" data-buyin="$120" data-gtd="" data-qualifies="0">Daily $120 NLH (Sun-Fri &amp; Sun) &middot; Weekly (day-of-week; dates not printed) &middot; MGM Grand &middot; $120 &middot; </option>
+      <option value="Daily $120 NLH" data-buyin="$120" data-gtd="" data-qualifies="0">Daily $120 NLH &middot; Weekly (day-of-week; dates not printed) &middot; MGM Grand &middot; $120 &middot; </option>
+      <option value="Daily $120 NLH" data-buyin="$120" data-gtd="" data-qualifies="0">Daily $120 NLH &middot; Weekly (day-of-week; dates not printed) &middot; MGM Grand &middot; $120 &middot; </option>
+      <option value="$100 NLH LIPS Ladies Milestone Satellite (1-Day)" data-buyin="$100" data-gtd="" data-qualifies="0">$100 NLH LIPS Ladies Milestone Satellite (1-Day) &middot; Tue, Dec 8, 2026 &middot; The Venetian Resort &middot; $100 &middot; satellite (seat prize)</option>
+      <option value="$100 NLH LIPS Ladies Milestone Satellite (1-Day)" data-buyin="$100" data-gtd="" data-qualifies="0">$100 NLH LIPS Ladies Milestone Satellite (1-Day) &middot; Wed, Dec 9, 2026 &middot; The Venetian Resort &middot; $100 &middot; satellite (seat prize)</option>
+        </select></label>
+      <label>Entries (count) <input id="count" type="number" min="1" value="1"></label>
       <button class="btn add-entry" onclick="poker5AddEntry()">Add to trip</button>
       <div id="entries" class="entries"></div>
-      <p class="muted">Only confirmed single-entry events are listed. Multi-entry events are on the
-      Multi-Entry page and are not added here.</p>
+      <p class="muted">Add-on / re-entry events are listed on the
+      <a href="tournaments-double.html">multi-entry page</a> and are not in this dropdown.
+      Each entry of $300 or more also satisfies the Venetian poker-suite play requirement for that
+      night (F29) - the calculator shows a qualifier note per entry.</p>
     </div>
   </div>
   <div class="calc-total">
     <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
     <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">$0</strong></div>
     <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">$0</strong></div>
+    <div><span>Nights that qualify for the poker rate</span><strong id="sum-qual">0</strong></div>
   </div>
+  <table class="tbl"><thead><tr><th>Reference totals (not quotes)</th><th>Arithmetic</th>
+  <th>Amount</th><th>Status</th></tr></thead><tbody><tr><td>Worked example: 7 nights at the official poker-suite rate</td><td>($119.0 + $55) &times; (1 + 13.38%) &times; 7 nights</td><td>$1,381</td><td>Rate is 'as low as' and conditional on the published play requirement - not a quote (F28, F29)</td></tr><tr><td>The Venetian Resort: logged booking-UI total, 2026-12-02 &rarr; 2026-12-09</td><td>7 nights, all-in from the official booking page</td><td>$7,055</td><td>Snapshot dated 2026-11-16, not a current rate</td></tr></tbody></table>
 </div>
-<p class="muted">No manual input is required to read the site; this calculator is an optional
-planning tool. Every buy-in and fee shown comes from the linked official source.</p>
+<p class="muted">No manual input is needed to read the site; the calculator is an optional planning tool.
+Nothing typed here is stored or sent anywhere - it is computed in your browser only.</p>
 
 </main>
 <footer class="foot">

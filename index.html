@@ -12,7 +12,7 @@
   <div class="brand"><span class="logo">P5</span> Poker5 <small>Las Vegas Strip poker planner</small></div>
   <nav class="nav"><a href="index.html">Home</a>
 <a href="pages/executive-summary.html">Executive Summary</a>
-<a href="pages/tournaments.html">Legacy entry list</a>
+<a href="pages/tournaments.html">Single-Entry</a>
 <a href="pages/tournaments-double.html">Multi-Entry</a>
 <a href="pages/schedule.html">Schedule</a>
 <a href="pages/hotels.html">Hotels</a>
@@ -33,43 +33,81 @@
 
 <section class="hero">
   <h2>Plan a Las Vegas Strip poker trip from official sources</h2>
-  <p>Live tournaments on the Strip, hotels with their resort fees and dated rate log,
-     a trip-cost calculator, and a day plan built from the official start times.
-     Every row links to the official page it came from. Anything that is not confirmed
-     is left blank and flagged.</p>
+  <p>Live tournaments on the Strip, hotels with their resort fees and a dated rate log, a
+     trip-cost calculator, and a day plan built from official start times and official
+     late-registration deadlines. Every row links the official page it came from. Anything an
+     official source does not state is left blank and flagged - never inferred.</p>
   <div class="ctas">
     <a class="btn" href="pages/planner.html">Trip cost calculator</a>
-    <a class="btn ghost" href="pages/tournaments.html">Legacy entry list — review rules</a>
+    <a class="btn ghost" href="pages/tournaments.html">Single-entry candidates</a>
+    <a class="btn ghost" href="pages/tournaments-double.html">Multi-entry &amp; spend-advantage</a>
     <a class="btn ghost" href="pages/schedule.html">Day schedule + overlap check</a>
     <a class="btn ghost" href="pages/hotels.html">Hotels + true nightly cost</a>
-    <a class="btn ghost" href="planner-a9d1e02d/index.html">Final source-audited planner</a>
   </div>
 </section>
-<section class="stats"><div class="stat"><div class="num">37</div><div class="lbl">Venetian structure PDFs audited</div></div><div class="stat"><div class="num">17</div><div class="lbl">Venetian entry rows QA&#x27;d for Dec 13–20</div></div><div class="stat"><div class="num">0</div><div class="lbl">Strict single-entry events verified in the final reviewed subset</div></div><div class="stat"><div class="num">83</div><div class="lbl">Official source records in the final planner</div></div></section>
+<section class="stats"><div class="stat"><div class="num">64</div><div class="lbl">Official Venetian event numbers</div></div><div class="stat"><div class="num">37</div><div class="lbl">Structure sheets read in full</div></div><div class="stat"><div class="num">0</div><div class="lbl">Confirmed single-entry events</div></div><div class="stat"><div class="num">51</div><div class="lbl">Sheet read, entry rule not stated</div></div><div class="stat"><div class="num">48</div><div class="lbl">Structure sheet not read</div></div><div class="stat"><div class="num">98</div><div class="lbl">Multi-entry / multi-flight (separate page)</div></div><div class="stat"><div class="num">32</div><div class="lbl">Bounty or PKO events</div></div><div class="stat"><div class="num">48</div><div class="lbl">Flagged items for review</div></div></section>
 <section class="panel">
   <h2>Headline findings</h2>
   <ul>
-    <li><strong>No strict single-entry event is confirmed in the final reviewed subset.</strong> A structure sheet's silence about re-entry, rebuy or add-ons is not proof of a one-entry limit. The final source-audited planner keeps each term separate and unknown where unstated.</li>
-    <li><strong>Guarantee &divide; entry fee is shown as a descriptive ratio, not a forecast.</strong> It describes the published guarantee per dollar of buy-in; it is not a prediction of winnings.</li>
-    <li><strong>A bagging rule is not a bust-re-entry rule.</strong> A multi-flight rule that bars later flights after a player bags for Day 2 does not establish an overall entry cap or the rights of a player who busts.</li>
-    <li><strong>Every row carries a "last checked" date.</strong> A scheduled job re-reads each official URL and flags any row whose source changed (see the Flagged page).</li>
-    <li><strong>No official 8:00 AM start was found.</strong> The earliest verified Venetian start is 9:10 AM. The day plan starts from the earliest verified start.</li>
-    <li><strong>Hotel true nightly cost = room rate + resort fee + tax.</strong> Room rates are dynamic; only dated booking-UI snapshots are logged. Walking times are verified only for on-property venues.</li>
+    <li><strong>No Venetian event in this series can be labelled a confirmed freezeout.</strong>
+        All 37 structure sheets behind the DeepStack Extravaganza IV schedule were read in
+        full on 2026-11-17; none states single entry, no rebuys or no add-ons, and none caps entries.
+        51 rows therefore show every other field as <em>verified</em> and the entry rule as
+        <em>not stated</em>; 0 rows carry a confirmed single-entry label. Prior sessions
+        published 31, 30, 20 and 0 for this count (flag F27).</li>
+    <li><strong>Seven multi-flight events are advantage-through-spend by design.</strong> Events
+        #01, #07, #19, #26, #47, #49 and #56 each run 2-5 Day 1 flights and state only
+        "Any player who bags chips for Day 2 may not play a subsequent flight" - a player can buy
+        into more than one flight. They live on the multi-entry page, not the ranking (F04).</li>
+    <li><strong>At the Wynn, the opposite is documented: every WPT World Championship event read
+        states re-entry.</strong> 11 events state "Unlimited re-entry" until level 9 or 10 and the
+        $1,100 WPT Prime Championship ($5,000,000 GTD) allows one entry plus one re-entry per
+        starting flight, so no WPT event qualifies as single-entry (F36).</li>
+    <li><strong>Guarantee &divide; buy-in is a descriptive ratio, not a forecast,</strong> and it is
+        only shown where both numbers are published. Four events (#03, #04, #05, #06) publish no
+        guarantee at all and are not ranked (F39); seven satellites guarantee seats, not cash (F40);
+        bounty guarantees include the bounty pool (F41).</li>
+    <li><strong>Day plan uses official clocks.</strong> Overlaps are checked from the scheduled start
+        against each sheet's published late-registration close, not from a guessed duration; event
+        finish times are not published anywhere (F42).</li>
+    <li><strong>Hotel cost is a dated log.</strong> The Venetian poker rate ("as low as $119" /
+        $209 Palazzo, conditional on 6 hours of cash play or a $300+ tournament buy-in each night),
+        the $55 + tax resort fee at both the Venetian and Wynn, and the 13.38% Clark County room tax
+        are each cited to an official page with the date read. No machine-readable live rate exists
+        in this environment, so nothing is shown as a current price (F28).</li>
+    <li><strong>No official 8:00 AM start exists.</strong> Earliest verified starts: 9:10 AM at the
+        Venetian (event #46, Fri Dec 12), 10:00 AM at the Wynn. The plan is built from the earliest
+        verified start, and the day still runs all day: 10:10 AM / 11:10 AM events are common.</li>
+    <li><strong>Walking routes are blank, not estimated.</strong> Only on-property routes (0 minutes)
+        and "the Wynn poker room is located in the Encore tower" are sourced; every other pair has a
+        route link to time it once, which is then reused (F43).</li>
   </ul>
-  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py. Last source re-check: 2026-11-17T15:00:06Z.</p>
+  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py; the audited
+  datasets are written by scripts/audit_3c49aaec.py (source notes:
+  data-audit-3c49aaec/sheetnotes.md). Last scheduled source re-check: 2026-11-17T15:00:06Z. Audit date: 2026-11-17.</p>
 </section>
 <section class="grid3">
-  <a class="card" href="pages/tournaments.html"><h3>Legacy entry list · review</h3><p>Earlier entry classifications are not confirmed by the final one-entry-overall standard; use the final source-audited planner for current rule labels.</p></a>
-  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on and multi-flight events, kept separate.</p></a>
-  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official row by date, with the overlap check and primary/fallback.</p></a>
-  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost and the 30-minute walk filter.</p></a>
-  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost.</p></a>
-  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events and on-property hotels.</p></a>
-  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship and daily events.</p></a>
-  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand.</p></a>
-  <a class="card" href="planner-a9d1e02d/index.html"><h3>Final source-audited planner</h3><p>37 Venetian structure sheets, 17 row-level schedule checks, venue pages, source ledger, routes and trip-cost calculator.</p></a>
-  <a class="card" href="pages/questions.html"><h3>Questions</h3><p>What is missing and how to find it.</p></a>
-  <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>26 items with source links. These do not block publication.</p></a>
+  <a class="card" href="pages/tournaments.html"><h3>Single-entry candidates</h3><p>Ranking, ratio, structured rule fields and the sheet excerpt for every row.</p></a>
+  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on, multi-flight and spend-for-chances events.</p></a>
+  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official dated row, with the overlap check and primary + fallback per day.</p></a>
+  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost, 30-minute walk filter.</p></a>
+  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost, with the poker-rate qualifier check.</p></a>
+  <a class="card" href="pages/executive-summary.html"><h3>Executive summary</h3><p>The decision-relevant findings in ten lines.</p></a>
+  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events, sheets and on-property hotels.</p></a>
+  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship terms, dated rows and corrections applied.</p></a>
+  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand - with what is unverified.</p></a>
+  <a class="card" href="pages/questions.html"><h3>Questions</h3><p>Exactly what is missing before you can decide, and who to ask.</p></a>
+  <a class="card" href="pages/suggestions.html"><h3>Suggestions</h3><p>Options with impact, effort and the decision each one needs.</p></a>
+  <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>48 items, each with source links. Flags do not block publication.</p></a>
+  <a class="card" href="pages/repo-review.html"><h3>Repo review</h3><p>Irregularities found in the repository itself while auditing.</p></a>
+</section>
+<section class="panel">
+  <h2>Earlier session outputs (read-only, not rebuilt by this audit)</h2>
+  <p class="muted">Each planning session published its own folder before the shared board settled on one
+  root site. They are left untouched so their captures stay reviewable, but the numbers in them were
+  audited at different times and several label the same rows differently (see the Repo review page).
+  This root site is the one built from the 2026-11-17 structure-sheet audit.</p>
+  <div class="grid3"><a class="card" href="site-b50aa7f5/index.html"><h3>Strict-entry dashboard</h3><p>The dashboard npm run check validates; same official schedule, different labelling standard.</p></a><a class="card" href="planner-a9d1e02d/index.html"><h3>Final source-audited planner</h3><p>Session a9d1e02d&#x27;s integrated planner: the same 37 structure sheets, row-level schedule checks and a source ledger.</p></a><a class="card" href="site-src/index.html"><h3>Source snapshot of the strict-entry dashboard</h3><p>What is published under site-b50aa7f5/; the build test asserts the two are identical.</p></a><a class="card" href="dashboard-6d1e0039/index.html"><h3>Cross-check dashboard</h3><p>Earlier event data, including a dead structure-sheet path (/content/dam/venetianlasvegas/...) - see the Repo review page.</p></a><a class="card" href="dashboard-053f694f/index.html"><h3>Session 053f694f dashboard</h3><p>Prior snapshot.</p></a><a class="card" href="dashboard-bafafd7c/index.html"><h3>Session bafafd7c dashboard</h3><p>Prior snapshot.</p></a><a class="card" href="dashboard-cd5ab298/index.html"><h3>Booking-snapshot dashboard</h3><p>Source of the dated hotel rate log entries for Dec 2-9, 2026.</p></a><a class="card" href="dashboard-de0bebd4/index.html"><h3>Session de0bebd4 dashboard</h3><p>Prior snapshot (30 single-entry count).</p></a><a class="card" href="planner-aa83f1e1/index.html"><h3>Isolated planner</h3><p>Client-side planner; its own build and smoke test run in CI.</p></a><a class="card" href="site-afff1fc9/index.html"><h3>Session afff1fc9 site</h3><p>Added the search box, calculator and last-checked dates now on this root site.</p></a><a class="card" href="site-443e914d/index.html"><h3>Session 443e914d site</h3><p>Prior snapshot.</p></a><a class="card" href="site/index.html"><h3>Session &#x27;site&#x27; folder</h3><p>Prior snapshot.</p></a><a class="card" href="docs/index.html"><h3>Docs folder</h3><p>Prior session documentation.</p></a></div>
 </section>
 
 </main>

@@ -55,6 +55,16 @@ CLARK_TAX_URL = ("https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:"
 # overlaps and pick a primary + fallback. It is never shown as a fact.
 DEFAULT_DURATION_HOURS = 4.0
 
+# Date the 37 structure sheets and the WPT terms were read line by line.
+AUDIT_DATE = "2026-11-17"
+AUDIT_NOTES = "data-audit-3c49aaec/sheetnotes.md"
+VENETIAN_DESK = "702.414.7657 / lv_cas_poker@venetianlasvegas.com (printed on the official suite-rate page)"
+WYNN_DESK = "702.770-7654 (printed on the official WPT schedule PDF)"
+WPT_STRUCT_URL = ("https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/"
+                 "WPT/WPT_World_Championship_Structures.pdf")
+WPT_SCHEDULE_PDF_URL = ("https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/"
+                        "WPT/WPT_World_Championship_Schedule.pdf")
+
 errors = []
 
 
@@ -164,6 +174,37 @@ def load_venetian_psv():
     return rows
 
 
+def load_structure_sheets():
+    """Per-event facts from the 37 official structure sheets, read 2026-11-17.
+
+    Written by scripts/audit_3c49aaec.py from data-audit-3c49aaec/sheetnotes.md.
+    Status codes used by the site:
+      S  a sheet states single entry / no rebuy      (none in this series)
+      N  sheet read in full, entry rule not stated    (silence is NOT a freezeout)
+      M  multi-flight event limited to one bagged field
+      SAT satellite (seat prize)   T team event   R restart row
+    """
+    path = os.path.join(ROOT, "data", "c6087e2c", "structure_sheets.json")
+    if not os.path.exists(path):
+        errors.append("missing data/c6087e2c/structure_sheets.json (run scripts/audit_3c49aaec.py)")
+        return {}, []
+    data = load_json(path)
+    return data.get("by_event", {}), data.get("sheets", [])
+
+
+def load_narrative(name, keys):
+    """Questions / suggestions / repo-review content, written by the audit pass."""
+    path = os.path.join(ROOT, "data", "c6087e2c", name)
+    if not os.path.exists(path):
+        errors.append("missing data/c6087e2c/" + name)
+        return []
+    rows = load_json(path)
+    out = []
+    for r in rows:
+        out.append({k: r.get(k, "") for k in keys})
+    return out
+
+
 def load_venetian_status():
     """Status + structure sheet from the structure-sheet-read capture.
 
@@ -265,6 +306,7 @@ def build_events():
     other_events = load_other_events()
     rules = load_structured_rules()
 
+    sheet_rules, sheets = load_structure_sheets()
     events = []
     for r in venetian:
         st = status.get((r["date"], r["event_no"], r["time"]), {})
@@ -283,8 +325,25 @@ def build_events():
         if rule:
             entry_rule = rule.get("entry_rule", "")
             pool_note = rule.get("pool_note", "")
-        confirmed = status_code == "S" or (
-            entry_rule and re.search(r"single entry|no re-entry|no reentry", entry_rule, re.I))
+        # The 2026-11-17 sheet audit is the authority for this series: a row is
+        # only "confirmed single-entry" if a sheet states it, and none does.
+        sheet = sheet_rules.get(str(r["event_no"]))
+        if sheet and status_code == "S":
+            status_code = "N"
+        if sheet:
+            entry_rule = sheet.get("entry_rule") or ""
+            if sheet.get("gtd_override"):
+                r["gtd"] = int(sheet["gtd_override"])
+        if r["kind"] == "restart":
+            status_code = "R"
+        elif sheet and sheet.get("satellite"):
+            status_code = "SAT"
+        elif sheet and "Tag Team" in (r["name"] or ""):
+            status_code = "T"
+        elif sheet and sheet.get("multi_flight"):
+            status_code = "M"
+        elif sheet:
+            status_code = "N"
         rec = {
             "venue": r["venue"],
             "venue_group": "venetian",
@@ -303,13 +362,34 @@ def build_events():
             "notes": r["notes"] or st.get("note", ""),
             "entry_rule": entry_rule,
             "pool_note": pool_note,
-            "single_entry_confirmed": confirmed,
+            "single_entry_confirmed": bool(sheet and sheet.get("single_entry", "").lower().startswith("single")),
+            "sheet": sheet,
+            "sheet_read": bool(sheet and sheet.get("sheet_read")),
+            "late_reg_close": (sheet or {}).get("late_registration_close") or "",
+            "starting_stack": (sheet or {}).get("starting_stack"),
+            "level_minutes": (sheet or {}).get("level_minutes"),
+            "house_fee": (sheet or {}).get("house_fee"),
+            "prize_portion": (sheet or {}).get("prize_pool_portion"),
+            "fee_note": (sheet or {}).get("fee_note") or "",
+            "re_entry_rule": (sheet or {}).get("re_entry") or "",
+            "add_on_rule": (sheet or {}).get("add_on") or "",
+            "single_entry_rule": (sheet or {}).get("single_entry") or "",
+            "payout_basis": (sheet or {}).get("payout") or "",
+            "bounty": (sheet or {}).get("bounty") or "",
+            "guarantee_note": (sheet or {}).get("guarantee_note") or "",
+            "retrieved": (sheet or {}).get("retrieved") or "",
             "flags": [],
         }
-        if status_code == "U":
+        if status_code in ("U", "N"):
             rec["flags"].append("F01")
+        if status_code == "N":
+            rec["flags"].append("F27")
         if status_code == "M":
             rec["flags"].append("F04")
+        if r["gtd"] is None and sheet:
+            rec["flags"].append("F39")
+        if sheet and (sheet.get("guantee_note") or sheet.get("guarantee_note", "").startswith("Guarantee: 2 Seats")):
+            rec["flags"].append("F40")
         if "Bounty" in r["name"] or "PKO" in r["name"]:
             rec["format"] = "bounty"
         elif status_code == "M":
@@ -318,8 +398,15 @@ def build_events():
             rec["format"] = "standard"
         events.append(rec)
 
-    # Other rooms dated rows
+    # Other rooms dated rows. Wynn/WPT rows are enriched from the audit's
+    # wpt_row_terms.json (the prior capture in data/other_rooms.txt is read-only, so
+    # the verified facts are merged at build time instead of duplicated as new rows).
+    wpt_terms = {}
+    terms_path = os.path.join(ROOT, "data", "c6087e2c", "wpt_row_terms.json")
+    if os.path.exists(terms_path):
+        wpt_terms = load_json(terms_path).get("terms", {})
     for r in other_rooms:
+        wterm = wpt_terms.get("{}|{}|{}".format(r["date"], r["time"], r["name"]))
         rec = {
             "venue": r["venue"],
             "venue_group": "wynn" if "wynn" in r["venue"].lower() else "other",
@@ -336,21 +423,52 @@ def build_events():
             "source": r["source"],
             "source_type": "official",
             "notes": r["notes"],
-            "entry_rule": "",
+            "entry_rule": r["notes"] if r["status"] in ("X", "M") else "",
             "pool_note": "",
             "single_entry_confirmed": r["status"] == "S",
+            "sheet": None, "sheet_read": False, "late_reg_close": "", "starting_stack": None,
+            "level_minutes": None, "house_fee": None, "prize_portion": None, "fee_note": "",
+            "re_entry_rule": "", "add_on_rule": "", "single_entry_rule": "", "payout_basis": "",
+            "bounty": "", "guarantee_note": "", "retrieved": "",
             "flags": [],
-            "format": "flight" if r["status"] == "M" else "standard",
+            "format": "flight" if r["status"] in ("M", "X") else "standard",
         }
         if r["status"] == "U":
             rec["flags"].append("F01")
         if r["status"] == "M":
             rec["flags"].append("F04")
+        if r["status"] == "X":
+            rec["flags"].append("F04")
+        if wterm:
+            rec["entry_rule"] = wterm.get("reentry") or rec["entry_rule"]
+            rec["re_entry_rule"] = wterm.get("reentry") or ""
+            rec["single_entry_rule"] = wterm.get("single_entry") or "not stated"
+            rec["add_on_rule"] = "not stated in the terms read"
+            rec["pool_note"] = wterm.get("split") or ""
+            rec["fee_note"] = wterm.get("split") or ""
+            rec["starting_stack"] = wterm.get("stack")
+            rec["level_minutes"] = wterm.get("level_minutes")
+            rec["retrieved"] = wterm.get("retrieved") or ""
+            rec["structure"] = wterm.get("source") or ""
+            rec["notes"] = (r["notes"] + " | " if r["notes"] else "") + (wterm.get("note") or "")
+            if wterm.get("category") == "multi" and rec["status"] in ("M", "U", "single", "X"):
+                rec["status"] = "multi"
+                rec["format"] = "flight"
+                if "F36" not in rec["flags"]:
+                    rec["flags"].append("F36")
+            if not wterm.get("reentry"):
+                if "F35" not in rec["flags"]:
+                    rec["flags"].append("F35")
         events.append(rec)
 
     # Other rooms recurring rows
     for r in other_events:
-        confirmed = bool(re.search(r"single entry|no re-entry|no reentry", r.get("reentry", ""), re.I))
+        if r.get("superseded"):
+            continue
+        confirmed = bool(re.search(r"single entry|freezeout|no re-entry|no reentry",
+                                   r.get("reentry", ""), re.I))
+        multi = bool(re.search(r"re-entry|reentry|rebuy|add-on|addon|Unlimited",
+                               r.get("reentry", ""), re.I))
         rec = {
             "venue": r["venue"],
             "venue_group": "wynn" if "wynn" in r["venue"].lower() else "other",
@@ -362,17 +480,30 @@ def build_events():
             "buyin": r.get("buyin"),
             "gtd": r.get("gtd"),
             "status": r.get("category", "single"),
+            "date": r.get("date", ""),
+            "time": r.get("time", ""),
             "structure_no": None,
-            "structure": "",
+            "structure": r.get("structure", ""),
             "source": r["source"],
             "source_type": r.get("source_type", "official"),
             "notes": r.get("notes", ""),
             "entry_rule": r.get("reentry", ""),
             "pool_note": r.get("buyin_note", ""),
             "single_entry_confirmed": confirmed,
+            "sheet": None, "sheet_read": False,
+            "late_reg_close": "", "starting_stack": r.get("stack"),
+            "level_minutes": r.get("level_minutes"), "house_fee": None, "prize_portion": None,
+            "fee_note": r.get("buyin_note", ""), "re_entry_rule": r.get("reentry", ""),
+            "add_on_rule": "", "single_entry_rule": "", "payout_basis": "", "bounty": "",
+            "guarantee_note": "", "retrieved": r.get("retrieved", ""),
             "flags": list(r.get("flags", [])),
-            "format": "flight" if r.get("category") == "flight" else "standard",
+            "format": "bounty" if "Bounty" in (r.get("name") or "") else (
+                "flight" if r.get("category") in ("flight", "multi") else "standard"),
         }
+        rec["date"] = r.get("date", "") or ""
+        rec["time"] = r.get("time", "") or ""
+        if multi:
+            rec["status"] = "multi"
         if not confirmed and rec["status"] in ("single", "flight"):
             rec["flags"].append("F01")
         events.append(rec)
@@ -423,20 +554,24 @@ def overlap_plan(events):
     plans = {}
     for date, rows in by_day.items():
         rows = sorted(rows, key=lambda r: (to_minutes(r["time"]) or 0, -(r["gtd"] or 0)))
-        primaries = [r for r in rows if r.get("single_entry_confirmed")]
-        primary = None
-        if primaries:
-            primary = max(primaries, key=lambda r: (r.get("gtd") or 0))
-        else:
-            # No confirmed single-entry event that day: use the top event as a
-            # provisional primary, clearly marked unverified.
-            primary = max(rows, key=lambda r: (r.get("gtd") or 0)) if rows else None
+        # Primary = the biggest guaranteed pool the day that is not a known
+        # multi-entry/rebuy event. The entry rule is only confirmed as multi where
+        # a source states it (F27), so candidates are ranked, never assumed.
+        playable = [r for r in rows if r.get("status") not in ("multi", "M", "flight", "R")]
+        pool = playable or rows
+        primary = max(pool, key=lambda r: (r.get("gtd") or 0, ratio(r) or 0)) if pool else None
         fallback = None
+        basis = "{}h assumption".format(DEFAULT_DURATION_HOURS)
         if primary:
-            end = (to_minutes(primary["time"]) or 0) + int(DEFAULT_DURATION_HOURS * 60)
+            close = to_minutes(primary.get("late_reg_close"))
+            if close is not None:
+                end = close
+                basis = "verified late-registration close ({})".format(fmt_time(primary["late_reg_close"]))
+            else:
+                end = (to_minutes(primary["time"]) or 0) + int(DEFAULT_DURATION_HOURS * 60)
             candidates = [r for r in rows
                           if r is not primary
-                          and r.get("single_entry_confirmed")
+                          and r.get("status") not in ("multi", "M", "flight", "R")
                           and (to_minutes(r["time"]) or 0) >= end]
             if candidates:
                 fallback = max(candidates, key=lambda r: (r.get("gtd") or 0))
@@ -454,6 +589,7 @@ def overlap_plan(events):
             "fallback": fallback,
             "overlaps": overlaps,
             "assumption_hours": DEFAULT_DURATION_HOURS,
+            "basis": basis,
         }
     return plans
 
@@ -467,6 +603,10 @@ def badge(kind, text):
 def single_entry_badge(rec):
     if rec.get("single_entry_confirmed"):
         return badge("ok", "Confirmed single-entry")
+    if rec.get("status") in ("multi", "X"):
+        return badge("bad", "Re-entry / add-on allowed (official)")
+    if rec.get("status") == "N":
+        return badge("warn", "Sheet read - no entry rule stated")
     if rec.get("status") in ("M", "flight"):
         return badge("warn", "Multi-flight / multi-entry")
     if rec.get("status") == "SAT":
@@ -485,7 +625,50 @@ def ratio_cell(rec):
     return "{:.1f}x".format(r)
 
 
-def table(headers, rows, row_source_index=None):
+def fee_cell(rec):
+    """Buy-in split as the structure sheet states it: to prize pool + house fees."""
+    fee, pool = rec.get("house_fee"), rec.get("prize_portion")
+    if fee is None and pool is None:
+        return '<span class="blank">not extracted</span>'
+    txt = "{} + {} fee".format(money(pool), money(fee))
+    if rec.get("fee_note"):
+        txt += '<br><small class="muted">{}</small>'.format(esc(rec["fee_note"]))
+    return txt
+
+
+def late_reg_cell(rec):
+    close = rec.get("late_reg_close")
+    if not close:
+        return '<span class="blank">not published</span>'
+    return esc(fmt_time(close))
+
+
+def stack_cell(rec):
+    stack, level = rec.get("starting_stack"), rec.get("level_minutes")
+    bits = []
+    if stack:
+        bits.append("{:,} chips".format(int(stack)))
+    if level not in (None, ""):
+        bits.append("{}-min levels".format(level))
+    return " &middot; ".join(esc(b) for b in bits) if bits else '<span class="blank">blank</span>'
+
+
+def entry_cells(rec):
+    """The four structured rule fields, each as stated by the official source."""
+    single = rec.get("single_entry_rule") or "not stated"
+    reentry = rec.get("re_entry_rule") or rec.get("entry_rule") or "not stated"
+    addon = rec.get("add_on_rule") or "not stated"
+    fee = "buy-in {}; {} to prize pool + {} house fee".format(
+        money(rec.get("buyin")), money(rec.get("prize_portion")), money(rec.get("house_fee")))
+    if rec.get("buyin") and rec.get("pool_note"):
+        fee = "buy-in {}; {}".format(money(rec.get("buyin")), rec["pool_note"])
+    elif rec.get("buyin") and rec.get("house_fee") is None:
+        fee = "buy-in {}; split not published".format(money(rec.get("buyin")))
+    return single, reentry, addon, fee
+
+
+def table(headers, rows, row_source_index=None, dates=None):
+    """A table. `dates` (same length as `rows`) drives the shared date selector."""
     out = ['<div class="tablewrap"><table class="tbl" data-searchable>']
     out.append("<thead><tr>")
     for h in headers:
@@ -495,7 +678,10 @@ def table(headers, rows, row_source_index=None):
         src = cells[row_source_index] if row_source_index is not None else "<a "
         if row_source_index is not None and "<a " not in src:
             errors.append("row {} has no source link in table with headers {}".format(i, headers[:3]))
-        out.append("<tr>")
+        attr = ""
+        if dates and i < len(dates) and dates[i]:
+            attr = ' data-date="{}"'.format(esc(dates[i]))
+        out.append("<tr" + attr + ">")
         for c in cells:
             out.append("<td>{}</td>".format(c))
         out.append("</tr>")
@@ -508,7 +694,7 @@ def page_shell(path, title, body, depth):
     nav_items = [
         ("index.html", "Home"),
         ("pages/executive-summary.html", "Executive Summary"),
-        ("pages/tournaments.html", "Legacy entry list"),
+        ("pages/tournaments.html", "Single-Entry"),
         ("pages/tournaments-double.html", "Multi-Entry"),
         ("pages/schedule.html", "Schedule"),
         ("pages/hotels.html", "Hotels"),
@@ -520,7 +706,7 @@ def page_shell(path, title, body, depth):
         ("pages/suggestions.html", "Suggestions"),
         ("pages/flagged-review.html", "Flagged"),
         ("pages/repo-review.html", "Repo Review"),
-        # Cross-session dashboards (kept from PR #30 integration; owners listed in COORDINATION.md)
+        # Cross-session outputs kept reachable from the nav (owners listed in COORDINATION.md).
         ("site-b50aa7f5/index.html", "Strict-entry research"),
         ("dashboard-6d1e0039/index.html", "Verified dashboard 6d1e0039"),
         ("planner-a9d1e02d/index.html", "Final source-audited planner"),
@@ -573,8 +759,25 @@ def page_shell(path, title, body, depth):
 # ---------------------------------------------------------------- data (global)
 
 events = build_events()
+_sheets_obj = load_json(os.path.join(ROOT, "data", "c6087e2c", "structure_sheets.json")) \
+    if os.path.exists(os.path.join(ROOT, "data", "c6087e2c", "structure_sheets.json")) else {}
+sheets_by_number = _sheets_obj.get("sheets", [])
+_wynn = load_json(os.path.join(ROOT, "data", "c6087e2c", "wynn_terms.json")) \
+    if os.path.exists(os.path.join(ROOT, "data", "c6087e2c", "wynn_terms.json")) else {}
+wpt_terms = _wynn.get("events", [])
+wpt_notes = _wynn.get("not_read", [])
+wynn_facts = _wynn.get("general_terms", [])
+_oe_path = os.path.join(ROOT, "data", "c6087e2c", "other_events.json")
+superseded_rows = [r for r in (load_json(_oe_path) if os.path.exists(_oe_path) else []) if r.get("superseded")]
 hotels = load_hotels()
 flags = load_json(os.path.join(ROOT, "data", "c6087e2c", "flags.json"))
+questions_data = load_narrative("questions.json", ["id", "question", "status", "what_we_know",
+                                                   "how_to_find_it", "sources", "retrieved"])
+suggestions_data = load_narrative("suggestions.json", ["id", "suggestion", "why", "impact", "effort",
+                                                        "decision_needed", "status"])
+repo_review_data = load_narrative("repo_review.json", ["item", "finding", "action", "evidence"])
+_feed_path = os.path.join(ROOT, "data", "c6087e2c", "schedule_feed.json")
+schedule_feed = load_json(_feed_path) if os.path.exists(_feed_path) else {}
 rates_log = load_json(os.path.join(ROOT, "data", "c6087e2c", "rates_log.json"))
 walking = load_json(os.path.join(ROOT, "data", "c6087e2c", "walking.json"))
 
@@ -589,22 +792,30 @@ except (OSError, ValueError):
 source_last_checked = {}
 if isinstance(baseline, dict):
     for url, info in (baseline.get("sources") or {}).items():
-        source_last_checked[url] = info.get("last_checked", LAST_RUN)
+        source_last_checked[url] = str(info.get("last_checked", LAST_RUN))[:10]
 
 
 def last_checked_for(rec):
+    """Latest date anything in this row was re-read: the sheet audit date or the
+    scheduled re-check baseline, whichever is newer."""
     url = rec.get("source") or rec.get("structure") or ""
-    return source_last_checked.get(url, LAST_RUN)
+    dates = [d for d in (source_last_checked.get(url, ""), rec.get("retrieved") or "") if d]
+    return str(max(dates + [LAST_RUN]))[:10]
 
 
 # ---------------------------------------------------------------- derived sets
 
 confirmed = [e for e in events if e.get("single_entry_confirmed")]
+# sheet read in full but silent about entries: verified fields, unverified entry rule
+no_rule_stated = [e for e in events
+                  if not e.get("single_entry_confirmed")
+                  and e.get("status") == "N"
+                  and e.get("format") != "flight"]
 unverified_single = [e for e in events
                      if not e.get("single_entry_confirmed")
                      and e.get("status") in ("U", "single", None)
                      and e.get("format") != "flight"]
-multis = [e for e in events if e.get("status") in ("M", "multi", "flight")]
+multis = [e for e in events if e.get("status") in ("M", "multi", "flight", "X")]
 flights = [e for e in events if e.get("format") == "flight"]
 bounties = [e for e in events if e.get("format") == "bounty"]
 restarts = [e for e in events if e.get("status") == "R"]
@@ -657,198 +868,419 @@ def fmt_sched(r):
 
 # ---------------------------------------------------------------- pages
 
-def search_bar(placeholder="Search this table (event, venue, date, status)..."):
+def search_bar(placeholder="Search this table (event, venue, date, status)...", dates=None,
+               n_confirmed=None):
+    """Search box + single-entry toggle + date selector, shared by every table on a page."""
+    opts = ""
+    if dates:
+        # only ISO dates get a selector entry; range labels such as "Mon-Fri" stay in the table text
+        uniq = sorted({d for d in dates if d and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(d))})
+        opts = '<select id="date-filter" onchange="poker5Filter()"><option value="">All dates</option>' + "".join(
+            '<option value="{v}">{l}</option>'.format(v=esc(d), l=esc(fmt_date(d))) for d in uniq) + "</select>"
+    toggle = '<label class="toggle"><input id="se-toggle" type="checkbox" ' \
+              'onchange="poker5Filter()"> Confirmed single-entry only'
+    if n_confirmed is not None:
+        toggle += ' <span class="muted">({} rows in this build)</span>'.format(n_confirmed)
+    toggle += "</label>"
     return ('<div class="controls">'
             '<input id="q" class="search" type="search" placeholder="{}" '
-            'oninput="poker5Filter()">'
-            '<label class="toggle"><input id="se-toggle" type="checkbox" '
-            'onchange="poker5Filter()"> Confirmed single-entry only</label>'
+            'oninput="poker5Filter()">' + opts + toggle +
             '</div>').format(esc(placeholder))
+
+
+
+PRIOR_SESSION_OUTPUTS = [
+    ("site-b50aa7f5/index.html", "Strict-entry dashboard", "The dashboard npm run check validates; same "
+     "official schedule, different labelling standard."),
+    ("planner-a9d1e02d/index.html", "Final source-audited planner", "Session a9d1e02d's integrated "
+     "planner: the same 37 structure sheets, row-level schedule checks and a source ledger."),
+    ("site-src/index.html", "Source snapshot of the strict-entry dashboard", "What is published under "
+     "site-b50aa7f5/; the build test asserts the two are identical."),
+    ("dashboard-6d1e0039/index.html", "Cross-check dashboard", "Earlier event data, including a dead "
+     "structure-sheet path (/content/dam/venetianlasvegas/...) - see the Repo review page."),
+    ("dashboard-053f694f/index.html", "Session 053f694f dashboard", "Prior snapshot."),
+    ("dashboard-bafafd7c/index.html", "Session bafafd7c dashboard", "Prior snapshot."),
+    ("dashboard-cd5ab298/index.html", "Booking-snapshot dashboard", "Source of the dated hotel rate log "
+     "entries for Dec 2-9, 2026."),
+    ("dashboard-de0bebd4/index.html", "Session de0bebd4 dashboard", "Prior snapshot (30 single-entry "
+     "count)."),
+    ("planner-aa83f1e1/index.html", "Isolated planner", "Client-side planner; its own build and smoke test "
+     "run in CI."),
+    ("site-afff1fc9/index.html", "Session afff1fc9 site", "Added the search box, calculator and last-checked "
+     "dates now on this root site."),
+    ("site-443e914d/index.html", "Session 443e914d site", "Prior snapshot."),
+    ("site/index.html", "Session 'site' folder", "Prior snapshot."),
+    ("docs/index.html", "Docs folder", "Prior session documentation."),
+]
+
+
+def prior_session_cards():
+    """Cards for the other sessions' published folders - only if the file exists."""
+    out = []
+    for href, title, note in PRIOR_SESSION_OUTPUTS:
+        if not os.path.exists(os.path.join(ROOT, href)):
+            continue
+        out.append('<a class="card" href="{href}"><h3>{title}</h3><p>{note}</p></a>'.format(
+            href=esc(href), title=esc(title), note=esc(note)))
+    return "".join(out)
 
 
 def page_index():
     n_confirmed = len(confirmed)
-    n_unverified = len(unverified_single)
+    n_no_rule = len(no_rule_stated)
+    n_not_read = len(unverified_single)
     stats = [
         ("Official Venetian event numbers", len({e["event_no"] for e in events if e.get("event_no")})),
+        ("Structure sheets read in full", len({e.get("structure_no") for e in events if e.get("structure_no")})),
         ("Confirmed single-entry events", n_confirmed),
-        ("Single-entry unverified", n_unverified),
-        ("Multi-flight / multi-entry", len(multis)),
-        ("Bounty events", len(bounties)),
+        ("Sheet read, entry rule not stated", n_no_rule),
+        ("Structure sheet not read", n_not_read),
+        ("Multi-entry / multi-flight (separate page)", len(multis)),
+        ("Bounty or PKO events", len(bounties)),
         ("Flagged items for review", len(flags)),
     ]
-    cards = "".join('<div class="stat"><div class="num">{}</div><div class="lbl">{}</div></div>'.format(v, esc(k)) for k, v in stats)
-    # Strict-standard stats ported from the PR #30 integration (session a9d1e02d).
-    # Values come from data/final/events.json (meta.qa + counts) and data/final/source-ledger.json
-    # (83 unique official source records; 37 Venetian structure PDFs audited).
-    strict_stats = [
-        ("Venetian structure PDFs audited", "37"),
-        ("Venetian entry rows QA'd for Dec 13–20", "17"),
-        ("Strict single-entry events verified in the final reviewed subset", "0"),
-        ("Official source records in the final planner", "83"),
-    ]
-    strict_cards = "".join('<div class="stat"><div class="num">{}</div><div class="lbl">{}</div></div>'.format(v, esc(k)) for k, v in strict_stats)
+    cards = "".join('<div class="stat"><div class="num">{}</div><div class="lbl">{}</div></div>'.format(
+        v, esc(k)) for k, v in stats)
     body = """
 <section class="hero">
   <h2>Plan a Las Vegas Strip poker trip from official sources</h2>
-  <p>Live tournaments on the Strip, hotels with their resort fees and dated rate log,
-     a trip-cost calculator, and a day plan built from the official start times.
-     Every row links to the official page it came from. Anything that is not confirmed
-     is left blank and flagged.</p>
+  <p>Live tournaments on the Strip, hotels with their resort fees and a dated rate log, a
+     trip-cost calculator, and a day plan built from official start times and official
+     late-registration deadlines. Every row links the official page it came from. Anything an
+     official source does not state is left blank and flagged - never inferred.</p>
   <div class="ctas">
     <a class="btn" href="pages/planner.html">Trip cost calculator</a>
-    <a class="btn ghost" href="pages/tournaments.html">Legacy entry list — review rules</a>
+    <a class="btn ghost" href="pages/tournaments.html">Single-entry candidates</a>
+    <a class="btn ghost" href="pages/tournaments-double.html">Multi-entry &amp; spend-advantage</a>
     <a class="btn ghost" href="pages/schedule.html">Day schedule + overlap check</a>
     <a class="btn ghost" href="pages/hotels.html">Hotels + true nightly cost</a>
-    <a class="btn ghost" href="planner-a9d1e02d/index.html">Final source-audited planner</a>
   </div>
 </section>
-<section class="stats">{strict_cards}</section>
+<section class="stats">{cards}</section>
 <section class="panel">
   <h2>Headline findings</h2>
   <ul>
-    <li><strong>No strict single-entry event is confirmed in the final reviewed subset.</strong> A structure sheet's silence about re-entry, rebuy or add-ons is not proof of a one-entry limit. The final source-audited planner keeps each term separate and unknown where unstated.</li>
-    <li><strong>Guarantee &divide; entry fee is shown as a descriptive ratio, not a forecast.</strong> It describes the published guarantee per dollar of buy-in; it is not a prediction of winnings.</li>
-    <li><strong>A bagging rule is not a bust-re-entry rule.</strong> A multi-flight rule that bars later flights after a player bags for Day 2 does not establish an overall entry cap or the rights of a player who busts.</li>
-    <li><strong>Every row carries a "last checked" date.</strong> A scheduled job re-reads each official URL and flags any row whose source changed (see the Flagged page).</li>
-    <li><strong>No official 8:00 AM start was found.</strong> The earliest verified Venetian start is 9:10 AM. The day plan starts from the earliest verified start.</li>
-    <li><strong>Hotel true nightly cost = room rate + resort fee + tax.</strong> Room rates are dynamic; only dated booking-UI snapshots are logged. Walking times are verified only for on-property venues.</li>
+    <li><strong>No Venetian event in this series can be labelled a confirmed freezeout.</strong>
+        All {sheets} structure sheets behind the DeepStack Extravaganza IV schedule were read in
+        full on {audit}; none states single entry, no rebuys or no add-ons, and none caps entries.
+        {n_no_rule} rows therefore show every other field as <em>verified</em> and the entry rule as
+        <em>not stated</em>; {n_confirmed} rows carry a confirmed single-entry label. Prior sessions
+        published 31, 30, 20 and 0 for this count (flag F27).</li>
+    <li><strong>Seven multi-flight events are advantage-through-spend by design.</strong> Events
+        #01, #07, #19, #26, #47, #49 and #56 each run 2-5 Day 1 flights and state only
+        "Any player who bags chips for Day 2 may not play a subsequent flight" - a player can buy
+        into more than one flight. They live on the multi-entry page, not the ranking (F04).</li>
+    <li><strong>At the Wynn, the opposite is documented: every WPT World Championship event read
+        states re-entry.</strong> 11 events state "Unlimited re-entry" until level 9 or 10 and the
+        $1,100 WPT Prime Championship ($5,000,000 GTD) allows one entry plus one re-entry per
+        starting flight, so no WPT event qualifies as single-entry (F36).</li>
+    <li><strong>Guarantee &divide; buy-in is a descriptive ratio, not a forecast,</strong> and it is
+        only shown where both numbers are published. Four events (#03, #04, #05, #06) publish no
+        guarantee at all and are not ranked (F39); seven satellites guarantee seats, not cash (F40);
+        bounty guarantees include the bounty pool (F41).</li>
+    <li><strong>Day plan uses official clocks.</strong> Overlaps are checked from the scheduled start
+        against each sheet's published late-registration close, not from a guessed duration; event
+        finish times are not published anywhere (F42).</li>
+    <li><strong>Hotel cost is a dated log.</strong> The Venetian poker rate ("as low as $119" /
+        $209 Palazzo, conditional on 6 hours of cash play or a $300+ tournament buy-in each night),
+        the $55 + tax resort fee at both the Venetian and Wynn, and the 13.38% Clark County room tax
+        are each cited to an official page with the date read. No machine-readable live rate exists
+        in this environment, so nothing is shown as a current price (F28).</li>
+    <li><strong>No official 8:00 AM start exists.</strong> Earliest verified starts: 9:10 AM at the
+        Venetian (event #46, Fri Dec 12), 10:00 AM at the Wynn. The plan is built from the earliest
+        verified start, and the day still runs all day: 10:10 AM / 11:10 AM events are common.</li>
+    <li><strong>Walking routes are blank, not estimated.</strong> Only on-property routes (0 minutes)
+        and "the Wynn poker room is located in the Encore tower" are sourced; every other pair has a
+        route link to time it once, which is then reused (F43).</li>
   </ul>
-  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py. Last source re-check: {lastrun}.</p>
+  <p class="muted">Site generated from data/c6087e2c/ by scripts/build_c6087e2c.py; the audited
+  datasets are written by scripts/audit_3c49aaec.py (source notes:
+  data-audit-3c49aaec/sheetnotes.md). Last scheduled source re-check: {lastrun}. Audit date: {audit}.</p>
 </section>
 <section class="grid3">
-  <a class="card" href="pages/tournaments.html"><h3>Legacy entry list · review</h3><p>Earlier entry classifications are not confirmed by the final one-entry-overall standard; use the final source-audited planner for current rule labels.</p></a>
-  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on and multi-flight events, kept separate.</p></a>
-  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official row by date, with the overlap check and primary/fallback.</p></a>
-  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost and the 30-minute walk filter.</p></a>
-  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost.</p></a>
-  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events and on-property hotels.</p></a>
-  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship and daily events.</p></a>
-  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand.</p></a>
-  <a class="card" href="planner-a9d1e02d/index.html"><h3>Final source-audited planner</h3><p>37 Venetian structure sheets, 17 row-level schedule checks, venue pages, source ledger, routes and trip-cost calculator.</p></a>
-  <a class="card" href="pages/questions.html"><h3>Questions</h3><p>What is missing and how to find it.</p></a>
-  <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>{nflags} items with source links. These do not block publication.</p></a>
+  <a class="card" href="pages/tournaments.html"><h3>Single-entry candidates</h3><p>Ranking, ratio, structured rule fields and the sheet excerpt for every row.</p></a>
+  <a class="card" href="pages/tournaments-double.html"><h3>Multi-entry</h3><p>Re-entry, rebuy, add-on, multi-flight and spend-for-chances events.</p></a>
+  <a class="card" href="pages/schedule.html"><h3>Schedule</h3><p>Every official dated row, with the overlap check and primary + fallback per day.</p></a>
+  <a class="card" href="pages/hotels.html"><h3>Hotels</h3><p>Resort fees, dated rate log, true nightly cost, 30-minute walk filter.</p></a>
+  <a class="card" href="pages/planner.html"><h3>Trip planner</h3><p>Entries x buy-ins + nights x true hotel cost, with the poker-rate qualifier check.</p></a>
+  <a class="card" href="pages/executive-summary.html"><h3>Executive summary</h3><p>The decision-relevant findings in ten lines.</p></a>
+  <a class="card" href="pages/venues/venetian.html"><h3>Venetian</h3><p>DeepStack Extravaganza IV events, sheets and on-property hotels.</p></a>
+  <a class="card" href="pages/venues/wynn.html"><h3>Wynn</h3><p>WPT World Championship terms, dated rows and corrections applied.</p></a>
+  <a class="card" href="pages/venues/others.html"><h3>Other venues</h3><p>Caesars, Horseshoe, Bellagio, MGM Grand - with what is unverified.</p></a>
+  <a class="card" href="pages/questions.html"><h3>Questions</h3><p>Exactly what is missing before you can decide, and who to ask.</p></a>
+  <a class="card" href="pages/suggestions.html"><h3>Suggestions</h3><p>Options with impact, effort and the decision each one needs.</p></a>
+  <a class="card" href="pages/flagged-review.html"><h3>Flagged for review</h3><p>{nflags} items, each with source links. Flags do not block publication.</p></a>
+  <a class="card" href="pages/repo-review.html"><h3>Repo review</h3><p>Irregularities found in the repository itself while auditing.</p></a>
 </section>
-""".format(cards=cards, strict_cards=strict_cards, n_confirmed=n_confirmed, n_unverified=n_unverified,
-           lastrun=esc(LAST_RUN), nflags=len(flags))
+<section class="panel">
+  <h2>Earlier session outputs (read-only, not rebuilt by this audit)</h2>
+  <p class="muted">Each planning session published its own folder before the shared board settled on one
+  root site. They are left untouched so their captures stay reviewable, but the numbers in them were
+  audited at different times and several label the same rows differently (see the Repo review page).
+  This root site is the one built from the {audit} structure-sheet audit.</p>
+  <div class="grid3">{prior}</div>
+</section>
+""".format(prior=prior_session_cards(), cards=cards, n_confirmed=n_confirmed,
+           n_no_rule=n_no_rule, n_not_read=n_not_read,
+           sheets=len({e.get("structure_no") for e in events if e.get("structure_no")}),
+           audit=AUDIT_DATE, lastrun=esc(LAST_RUN), nflags=len(flags))
     return body
+
 
 
 def tournaments_table(rows, with_rules=True):
     cells = []
     for r in rows:
+        single, reentry, addon, fee = entry_cells(r)
         cells.append([
             name_cell(r),
             fmt_sched(r),
             esc(r["venue"]),
             buyin_cell(r),
+            fee_cell(r),
             gtd_cell(r),
             ratio_cell(r),
             badge("warn", "Bounty") if r.get("format") == "bounty" else (
                 badge("warn", "Flight") if r.get("format") == "flight" else badge("muted", "Standard")),
             single_entry_badge(r),
-            esc(r.get("entry_rule") or "") if with_rules else "",
+            late_reg_cell(r),
+            stack_cell(r),
             esc(last_checked_for(r)),
             src_cell(r),
         ])
-    headers = ["Event", "Date &middot; time", "Venue", "Buy-in", "Guarantee",
-               "Guarantee &divide; buy-in", "Format", "Single-entry status",
-               "Entry rule (official excerpt)", "Last checked", "Source"]
-    return table(headers, cells, 10)
+    headers = ["Event", "Date &middot; time", "Venue", "Buy-in", "To prize pool + house fee",
+               "Guarantee", "Guarantee &divide; buy-in", "Format", "Single-entry status",
+               "Late reg closes", "Start stack &middot; levels", "Last checked", "Source"]
+    return table(headers, cells, 12, [r.get("date") for r in rows])
+
+
+def rules_table(rows):
+    """The four structured rule fields, each with what the official source states."""
+    cells = []
+    for r in rows:
+        single, reentry, addon, fee = entry_cells(r)
+        excerpt = r.get("notes") or ""
+        if r.get("sheet"):
+            excerpt = (r["sheet"] or {}).get("source_excerpt") or excerpt
+        cells.append([
+            name_cell(r),
+            esc(fmt_date(r.get("date") or "")) if r.get("date") else '<span class="blank">recurring</span>',
+            "<strong>" + esc(single) + "</strong>",
+            esc(reentry),
+            esc(addon),
+            esc(fee),
+            esc(r.get("payout_basis") or ""),
+            esc(guarantee_note_of(r)),
+            '<small>' + esc(excerpt) + '</small>',
+            esc(r.get("retrieved") or last_checked_for(r)),
+            src_cell(r),
+        ])
+    headers = ["Event", "Date", "Single-entry (as stated)", "Re-entry (as stated)",
+               "Add-on (as stated)", "Fee (as stated)", "Payout basis (sheet)",
+               "Guarantee wording (sheet)", "Source excerpt", "Retrieved", "Source"]
+    return table(headers, cells, 10, [r.get("date") for r in rows])
+
+
+def guarantee_note_of(rec):
+    note = rec.get("guarantee_note") or rec.get("pool_note") or ""
+    if note:
+        return note
+    if rec.get("gtd") is None:
+        return "no guarantee published on the official sheet"
+    return ""
+
 
 
 def page_tournaments():
+    no_rule_rows = sort_rank([e for e in no_rule_stated if e.get("format") != "flight"])
     confirmed_rows = sort_rank([e for e in confirmed if e.get("format") != "flight"])
-    unverified_rows = sort_rank([e for e in unverified_single if e.get("format") != "flight"])
+    not_read_rows = sort_rank([e for e in unverified_single if e.get("format") != "flight"])
+    dates = [e.get("date") for e in events if e.get("date")]
     venue_rows = [
-        ["The Venetian Resort", "Hosts DeepStack Extravaganza IV; 64 event numbers on the official schedule", link(DSE_URL, "Official schedule")],
-        ["Wynn Las Vegas", "WPT World Championship festival (Nov 27-Dec 21); daily tournaments suspended during the festival", link(WYNN_POKER_URL, "Official poker page")],
-        ["Caesars Palace", "Daily NLH: $100 buy-in, $1,000 GTD, 4 starts (official Caesars page)", link(CAESARS_URL, "Official Caesars page")],
-        ["Horseshoe Las Vegas", "Daily NLH: 6 starts (official Caesars page states a mixture of buy-ins; no uniform buy-in given)", link(CAESARS_URL, "Official Caesars page")],
-        ["Bellagio", "Friday, Saturday and Sunday events on official PDFs/page (undated)", link("https://bellagio.mgmresorts.com/en/casino/poker.html", "Official poker page")],
-        ["MGM Grand", "Daily NLH on official page; PDF titled 'August' (stale)", link("https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html", "Official poker page")],
-        ["ARIA", "Official page has no tournament list. Call the poker room (F12)", link("https://aria.mgmresorts.com/en/casino/poker.html", "Official poker page")],
+        ["The Venetian Resort", "Hosts DeepStack Extravaganza IV. All {} structure sheets read in full on {}: "
+         "no sheet states an entry limit, so 0 events are confirmed single-entry.".format(
+             len({e.get("structure_no") for e in events if e.get("structure_no")}), AUDIT_DATE),
+         link(DSE_URL, "Official schedule")],
+        ["Wynn Las Vegas", "WPT World Championship (Nov 27 - Dec 21). Every WPT event read in the official "
+         "structures PDF states re-entry is allowed; the poker room is located in the Encore tower.",
+         link(WPT_URL, "Official WPT event page") + " &middot; " + link(WPT_STRUCT_URL, "WPT structures PDF")],
+        ["Caesars Palace", "Daily NLH listed on the official Caesars page with a $50 add-on, i.e. an "
+         "extra-money event; the details were not re-read in this audit (F34).",
+         link(CAESARS_URL, "Official Caesars page")],
+        ["Horseshoe Las Vegas", "Daily NLH: 6 starts (the official Caesars page states a mixture of buy-ins; "
+         "no uniform buy-in is given) (F13).",
+         link(CAESARS_URL, "Official Caesars page")],
+        ["Bellagio", "Friday/Saturday/Sunday events on undated official PDFs; the Saturday buy-in conflicts "
+         "($1,000 title vs $1,100 body) and no official resort-fee page could be retrieved (F10, F33).",
+         link("https://bellagio.mgmresorts.com/en/casino/poker.html", "Official poker page")],
+        ["MGM Grand", "Daily NLH on the official page; the schedule PDF is titled 'August' (stale) (F11).",
+         link("https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html", "Official poker page")],
+        ["ARIA", "Official page lists no tournament schedule (F12).",
+         link("https://aria.mgmresorts.com/en/casino/poker.html", "Official poker page")],
     ]
-    venues = table(["Venue", "Status", "Source"], venue_rows, 2)
+    venues = table(["Venue", "Status after this audit", "Source"], venue_rows, 2)
+    n_sheets = len({e.get("structure_no") for e in events if e.get("structure_no")})
     body = """
 <section class="panel warn-panel">
-  <strong>Entry-rule caveat (final one-entry-overall standard):</strong> the &ldquo;Confirmed single-entry&rdquo; label on this
-  legacy page follows an earlier standard &mdash; a read structure sheet with no re-entry, rebuy, add-on or paid-chip text.
-  A sheet's silence is not proof of a one-entry limit. Under the stricter standard used by the
-  <a href="../planner-a9d1e02d/index.html">final source-audited planner</a>, zero events in the reviewed subset are confirmed
-  strict single-entry. Treat this page as a candidate list for review, not a confirmation, and read each event's own rules.
-</section>
-<section class="panel warn-panel">
-  <strong>Confirmed single-entry</strong> means a structure sheet was read and shows no
-  re-entry, rebuy, add-on or paid-chip text. Rows marked <strong>Unverified</strong> have not had
-  their structure sheet read; they are candidates only and must be confirmed before you play.
-  The guarantee &divide; buy-in column is a <strong>descriptive ratio, not a forecast</strong>.
+  <strong>What "single-entry" means on this site.</strong> A row is only labelled
+  <strong>Confirmed single-entry</strong> when an official structure sheet states the rule. Silence is
+  never read as a freezeout: {n_norule} Venetian rows had their sheet read in full on {audit} and are
+  listed below as <strong>No entry rule stated</strong> &mdash; every other field on those rows
+  (buy-in, fee split, guarantee, start time, stack, level length, late-registration deadline, payout
+  percentage) <em>is</em> verified and linked. The guarantee &divide; buy-in column is a
+  <strong>descriptive ratio, not a forecast</strong>.
 </section>
 {search}
-<h2>Confirmed single-entry events</h2>
+<h2>Ranked: structure sheet read, entry rule not stated ({n_norule} rows)</h2>
+<p class="muted">Sorted by guaranteed prize pool, then buy-in. To rank any of these as single-entry the
+room has to state the rule in writing: {desk}.</p>
+{norule}
+<h2>Structured rule fields (single-entry / re-entry / add-on / fee)</h2>
+<p class="muted">Each field holds the words the official source uses, or "not stated", with the date the
+sheet was read. First 40 rows shown; the full list is on the venue pages.</p>
+{rules}
+<h2>Confirmed single-entry ({n_conf} rows)</h2>
+<p class="muted">{conf_note}</p>
 {confirmed}
-<h2>Single-entry candidates &mdash; unverified (structure sheet not read)</h2>
-<p class="muted">These are not confirmed. Do not assume single-entry from a missing rule.</p>
-{unverified}
+<h2>Structure sheet not read &mdash; unverified ({n_notread} rows)</h2>
+<p class="muted">Other rooms and rows whose sheet was not read in this audit. Not comparable with the
+ranked list above.</p>
+{notread}
 <h2>Venue status</h2>
 {venues}
-""".format(search=search_bar(), confirmed=tournaments_table(confirmed_rows),
-           unverified=tournaments_table(unverified_rows), venues=venues)
+""".format(search=search_bar("Search: event, venue, date, format, status...", dates, len(confirmed_rows)),
+           n_norule=len(no_rule_rows), n_conf=len(confirmed_rows), n_notread=len(not_read_rows),
+           audit=AUDIT_DATE, desk=VENETIAN_DESK,
+           conf_note=("No official source for this series states a freezeout, so this section is empty by "
+                      "design (see flag F27)." if not confirmed_rows else
+                      "Each row links the sheet sentence that states the rule."),
+           norule=tournaments_table(no_rule_rows),
+           rules=rules_table(no_rule_rows[:40]),
+           confirmed=(tournaments_table(confirmed_rows) if confirmed_rows else
+                      '<p class="muted">Empty: 0 of {} structure sheets state a single-entry, no-rebuy '
+                      'or no-add-on rule.</p>'.format(n_sheets)),
+           notread=tournaments_table(not_read_rows), venues=venues)
     return body
+
 
 
 def page_double():
-    a_rows = sort_rank([e for e in multis if e.get("status") in ("M", "multi")])
-    b_rows = sort_rank([e for e in events if e.get("status") in ("U", "single") and e.get("format") == "flight"])
-    a_cells = []
-    for r in a_rows:
-        a_cells.append([
+    """Events where spending more buys more chances, or the pool is not pure cash."""
+    rows_multi = sort_rank([e for e in events if e.get("status") in ("multi", "M", "flight", "X")])
+    a_cells, b_cells, a_dates, b_dates = [], [], [], []
+    for r in rows_multi:
+        rule = r.get("entry_rule") or r.get("re_entry_rule") or r.get("notes") or ""
+        row = [
             name_cell(r),
             fmt_sched(r),
             esc(r["venue"]),
             buyin_cell(r),
             gtd_cell(r),
-            esc(r.get("entry_rule") or r.get("notes") or ""),
+            badge("ok", "single entry stated") if r.get("single_entry_confirmed")
+            else badge("warn", "not stated"),
+            '<small>' + esc(rule) + '</small>',
             esc(last_checked_for(r)),
             src_cell(r),
-        ])
-    a = table(["Event", "Date &middot; time", "Venue", "Buy-in", "Guarantee",
-               "Verified entry rule (official)", "Last checked", "Source"], a_cells, 7)
-    b_cells = []
-    for r in b_rows:
-        b_cells.append([
-            name_cell(r),
-            fmt_sched(r),
-            esc(r["venue"]),
-            buyin_cell(r),
-            gtd_cell(r),
-            single_entry_badge(r),
-            esc(last_checked_for(r)),
-            src_cell(r),
-        ])
-    b = table(["Event", "Date &middot; time", "Venue", "Buy-in", "Guarantee",
-               "Status", "Last checked", "Source"], b_cells, 7)
-    c_rows = [[
+        ]
+        if r.get("status") in ("multi", "flight", "X") or re.search(
+                r"re-entry|Rebuy|rebuy|add-on|Unlimited", rule):
+            a_cells.append(row)
+            a_dates.append(r.get("date"))
+        else:
+            b_cells.append(row)
+            b_dates.append(r.get("date"))
+    headers = ["Event", "Date &middot; time", "Venue", "Buy-in", "Guarantee", "Single-entry stated?",
+               "Entry rule (official wording)", "Last checked", "Source"]
+    a = table(headers, a_cells, 8, a_dates)
+    b = table(headers, b_cells, 8, b_dates)
+    # spend-advantage footnotes taken from the sheets themselves
+    foot = []
+    foot_dates = []
+    for e in events:
+        note = e.get("fee_note") or ""
+        if re.search(r"discount|subsequent buy|PRO|\$180", note, re.I):
+            foot.append([name_cell(e), fmt_sched(e), esc(note), link(e.get("structure"), "Structure sheet")])
+            foot_dates.append(e.get("date"))
+    restart_rows = [e for e in events if e.get("status") == "R"]
+    for r in restart_rows:
+        foot.append([name_cell(r), fmt_sched(r),
+                     "Restart/rebuy row on the official schedule with no separate price published: the "
+                     "schedule lists it as a continuation of the day's event, so the entry cost of a restart "
+                     "is not verified (F27, F01)",
+                     link(r.get("structure") or r.get("source"), "Official row")])
+        foot_dates.append(r.get("date"))
+    c = table(["Event", "Date &middot; time", "Spend-advantage or unpriced detail (official wording)", "Source"],
+              foot, 3, foot_dates)
+    suite_rows = [[
         "Daily, Nov 16 - Dec 23 (playing requirement)",
         "The Venetian / The Palazzo poker suite",
-        "Poker suite rate requires six hours of active live cash play OR a buy-in to a $300-or-higher tournament for each night stayed (official)",
-        "from $119 (as low as)",
+        "Requires six hours of active live cash play OR a buy-in to a $300-or-higher tournament for each "
+        "night stayed, met before 2 a.m. on the last night, or the rate reverts to the prevailing rate "
+        "(official)",
+        "as low as $119 (Venetian) / $209 (Palazzo)",
         link(SUITE_URL, "Official suite-rate page"),
     ]]
-    c = table(["Schedule", "Venue", "Spending requirement (official)", "Rate", "Source"], c_rows, 4)
+    suite = table(["Schedule", "Venue", "Spending requirement (official)", "Rate", "Source"], suite_rows, 4)
+    dates = [e.get("date") for e in events if e.get("date")]
     body = """
-<p class="muted">Kept separate from single-entry because re-entry, rebuys, add-ons, entry caps or
-flights can let a player spend more for more chances. Section A rows have a rule in an official
-source. Section B lists multi-flight events whose per-flight entry rule is not yet verified.</p>
+<p class="muted">Kept separate from the single-entry candidates because re-entry, rebuys, add-ons and
+multiple flights let a player spend more for more chances, or because the published guarantee is not
+pure cash. Section A rows have an official sentence stating re-entry; Section B rows are multi-flight
+events whose per-flight entry limit is not stated.</p>
 {search}
-<h2>A. Re-entry, rebuy, add-on or entry-cap rules (official)</h2>
+<h2>A. Official sources that state re-entry, rebuy or add-on ({n_a})</h2>
 {a}
-<h2>B. Multi-flight events (per-flight entry rule unverified)</h2>
+<h2>B. Multi-flight events: bagging chips closes the other flights ({n_b})</h2>
+<p class="muted">The only entry rule these sheets state is "Any player who bags chips for Day 2 may not
+play a subsequent flight", which limits Day 2 entries, not Day 1 entries - so more than one flight can
+be played while a seat is free.</p>
 {b}
-<h2>C. Spending that buys a better hotel rate</h2>
+<h2>C. Other ways spending changes the outcome</h2>
+<p class="muted">Fee discounts for pre-registering, capped member discounts and restart rows, quoted from
+the official sheets. No prize-pool effect is claimed.</p>
 {c}
-""".format(search=search_bar(), a=a, b=b, c=c)
+<h2>D. Spending that buys a better hotel rate</h2>
+{suite}
+""".format(search=search_bar("Search multi-entry events...", dates, 0), n_a=len(a_cells), n_b=len(b_cells),
+           a=a, b=b, c=c, suite=suite)
     return body
+
+
+
+def feed_table():
+    """Render the latest morning feed, or say honestly that it has not run since the audit."""
+    if not schedule_feed:
+        return ('<p class="muted">No feed file yet: the scheduled job has not run since the {} audit, '
+                'when every row was re-read from the official page by hand. The first feed appears after '
+                'the next 06:00 UTC run.</p>').format(AUDIT_DATE)
+    status = schedule_feed.get("status")
+    if status != "ok":
+        return ('<p class="muted"><strong>Last attempt {}:</strong> the official page could not be read '
+                '("{}"), so no row is marked changed. The feed keeps the previous result instead of '
+                'guessing.</p>').format(esc(schedule_feed.get("last_attempt", "")),
+                                       esc(schedule_feed.get("note", "no detail recorded")))
+    rows_ = schedule_feed.get("rows", [])
+    missing = [r for r in rows_ if not r.get("present")]
+    cells = [[esc(r.get("date", "")), str(r.get("event_no", "")), esc(r.get("name", "")),
+              badge("ok", "still printed on the official page") if r.get("present")
+              else badge("bad", "name not found on the page - re-read this row"),
+              link(schedule_feed.get("source"), "Official page")] for r in missing]
+    head = ('<p>Feed run <strong>{}</strong>: {} of {} captured rows are still printed on the official '
+            'page.</p>').format(esc(schedule_feed.get("last_run", "")), len(rows_) - len(missing), len(rows_))
+    if not cells:
+        return head + '<p class="muted">No row went missing on this run.</p>'
+    return head + table(["Date", "Event #", "Event (our capture)", "Feed status", "Source"], cells, 4)
+
+
+
+
+def earliest_text(rows):
+    """(time, event) of the earliest dated row, for the 8 AM panel text."""
+    timed = [r for r in rows if r.get("time")]
+    if not timed:
+        return "not captured", "no dated row"
+    r = min(timed, key=lambda x: to_minutes(x["time"]) or 9999)
+    return fmt_time(r["time"]), "{} on {}".format(r["name"], fmt_date(r["date"]))
 
 
 def page_schedule():
@@ -857,9 +1289,11 @@ def page_schedule():
                   key=lambda r: (r["date"], to_minutes(r["time"]) or 0, r.get("event_no") or 0))
     cells = []
     for r in rows:
-        kind = {"S": "Entry (confirmed single)", "M": "Entry (flight)", "U": "Entry (unverified)",
-                "R": "Restart row", "SAT": "Satellite", "T": "Team"}.get(r.get("status"), r.get("status", ""))
-        src = src_cell(r)
+        kind = {"S": "Entry (confirmed single)", "M": "Entry (multi-flight)",
+                "N": "Entry (sheet read)", "X": "Entry (excluded: re-entry/add-on)",
+                "U": "Entry (sheet not read)", "R": "Restart row", "SAT": "Satellite", "T": "Team",
+                "multi": "Entry (re-entry allowed)", "flight": "Entry (flights)"}.get(
+                    r.get("status"), r.get("status") or "Entry")
         cells.append([
             esc(fmt_date(r["date"])),
             esc(fmt_time(r["time"])),
@@ -867,254 +1301,411 @@ def page_schedule():
             esc(r["name"]),
             buyin_cell(r),
             gtd_cell(r),
-            badge("ok", "Confirmed") if r.get("single_entry_confirmed") else badge("warn", "Unverified"),
+            late_reg_cell(r),
+            single_entry_badge(r),
             esc(kind),
             esc(last_checked_for(r)),
-            src,
+            src_cell(r),
         ])
-    v = table(["Date", "Start", "Event #", "Event (official)", "Buy-in", "Guarantee",
-               "Single-entry", "Row type", "Last checked", "Source"], cells, 9)
-
-    # Overlap / primary-fallback section
+    v = table(["Date", "Start", "Event #", "Event (official)", "Buy-in", "Guarantee", "Late reg closes",
+               "Single-entry status", "Row type", "Last checked", "Source"], cells, 10,
+              [r.get("date") for r in rows])
     plan_cells = []
     for date in sorted(plans):
         p = plans[date]
-        primary = p["primary"]
-        fallback = p["fallback"]
+        primary, fallback = p["primary"], p["fallback"]
         overlap_txt = "; ".join("{} &times; {}".format(esc(a), esc(b)) for a, b in p["overlaps"]) or "None"
         plan_cells.append([
             esc(fmt_date(date)),
-            name_cell(primary) if primary else '<span class="blank">none</span>',
-            name_cell(fallback) if fallback else '<span class="blank">none feasible</span>',
+            name_cell(primary) + " <small>({}/{})</small>".format(
+                money(primary.get("buyin")), money(primary.get("gtd"))) if primary
+            else '<span class="blank">none</span>',
+            name_cell(fallback) + " <small>({})</small>".format(fmt_time(fallback.get("time")))
+            if fallback else '<span class="blank">none feasible</span>',
             esc(overlap_txt),
-            '<span class="muted">{}h assumed</span>'.format(p["assumption_hours"]),
+            esc(p.get("basis") or "{}h assumption".format(DEFAULT_DURATION_HOURS)),
         ])
-    plan = table(["Date", "Primary event", "Conditional fallback",
-                  "Flagged overlaps (assumption)", "Duration assumption"], plan_cells, None)
-
+    plan = table(["Date", "Primary event (biggest published guarantee)", "Conditional fallback",
+                  "Same-day windows that collide", "Basis"], plan_cells, None)
     body = """
 <section class="panel warn-panel">
-  <strong>8:00 AM all-day start: not supported by the official sources read.</strong>
-  Earliest official start found: 9:00 AM (Horseshoe). Earliest Venetian start: 9:10 AM.
-  Blocks of play from 8:00 AM cannot be built from verified listings.
+  <strong>8:00 AM all-day start: not supported by any official source read.</strong> Earliest verified
+  start in this build is {earliest} ({earliest_ev}); the Venetian's earliest start is 9:10 AM (event #46,
+  Fri Dec 12) and the Wynn's is 10:00 AM. A day plan can still run all day: most Venetian days have a
+  10:10 or 11:10 AM start and an evening 5:10 PM event.
 </section>
 <section class="panel">
-  <strong>Overlap check.</strong> Event durations are not verified from official sources, so a
-  fixed {h}-hour planning assumption is used to flag potential overlaps and to pick a primary
-  event and a conditional fallback each day. This is a planning aid, not a verified schedule.
-  The fallback only lists an event that can start after the primary's estimated end; if none fits,
-  it is shown as "none feasible" rather than an impossible sequence.
+  <strong>How the overlap check works.</strong> Official sheets publish a start time and a
+  late-registration deadline, never an expected finish time, so a day is planned as: primary event first,
+  and a fallback that can still be entered <em>after the primary's registration window closes</em> - i.e.
+  a conditional re-entry if you are knocked out early. Where a row has no published deadline, the
+  {h}-hour planning assumption is used and the row says so. This is a planning aid, not a verified finish time (F42).
 </section>
 {search}
-<h2>Every official dated row</h2>
-{v}
+<h2>Morning schedule feed</h2>
+<p class="muted">A scheduled job (06:00 UTC daily, <code>.github/workflows/recheck.yml</code>) re-reads
+the official DeepStack Extravaganza IV page and checks that every event name this site ranks is still
+printed there, then writes <code>data/c6087e2c/schedule_feed.json</code>. It is a presence check, not a
+price parse: a name missing from the page means a human must re-read the row, and a failed fetch never
+marks anything as changed.</p>
+{feed}
 <h2>Per-day plan: primary + conditional fallback</h2>
 {plan}
-""".format(h=DEFAULT_DURATION_HOURS, search=search_bar(), v=v, plan=plan)
+<h2>Every official dated row ({n} rows)</h2>
+<p class="muted">Row types: "Entry (sheet read)" = the Venetian structure sheet was read in full and every
+field except the entry rule is verified; "Entry (multi-flight)" = more than one Day 1 flight exists;
+"Entry (excluded)" = an official source states re-entry, rebuys or add-ons, so the row also lives on the
+multi-entry page; "Entry (sheet not read)" = an earlier session's row whose sheet this audit did not
+read.</p>
+{v}
+""".format(feed=feed_table(), search=search_bar("Search the schedule: event, venue, date...", [r.get("date") for r in rows], 0),
+           plan=plan, v=v, n=len(rows), h=DEFAULT_DURATION_HOURS,
+           earliest=earliest_text(rows)[0], earliest_ev=earliest_text(rows)[1])
     return body
+
 
 
 def page_hotels():
-    # true cost = room rate + resort fee + tax (tax cited, confirm current rate)
+    """Hotels: official fee, dated rate log with every capture item, walking filter."""
     cells = []
     for h in hotels:
-        fee = h.get("resort_fee_usd")
-        rate_str = h.get("nightly_rate") or h.get("room_rate_per_night") or ""
-        true_cost = h.get("true_cost") or h.get("true_nightly_cost") or ""
-        status = badge("ok", "Official fee") if h.get("source_type") == "official" and fee else (
-            badge("warn", "Secondary fee") if fee else badge("warn", "Not verified"))
-        walk = h.get("walk_to_tournament") or h.get("walk_to_tournament_venue") or ""
-        walk_badge = ""
-        if walk:
-            if "0 min" in walk:
-                walk_badge = badge("ok", "<=30 min (on-property)")
-            else:
-                walk_badge = badge("warn", "Unverified")
-        else:
-            walk_badge = badge("warn", "Unverified")
-        src = src_or_flag(h.get("source") or "", "Official page" if h.get("source_type") == "official" else "Source", base="")
+        fee_usd = h.get("resort_fee_usd")
+        fee_txt = h.get("resort_fee") or "blank"
+        status = (badge("ok", "Official fee") if h.get("fee_verified") and fee_usd
+                  else badge("warn", "Not verified"))
+        walk = h.get("walk_to_tournament") or ""
+        walk_badge = badge("ok", "0 min (on-property)") if "0 min" in walk else badge("warn", "Not verified")
+        rate = h.get("nightly_rate") or h.get("poker_rate") or ""
+        src = link(h.get("fee_source") or h.get("source") or "", "Official fee page") if (
+            h.get("fee_source") or h.get("source")) else link("flagged-review.html", "Flagged (no source)")
+        if h.get("booking"):
+            src += " &middot; " + link(h["booking"], "Booking page")
         cells.append([
-            "<strong>{}</strong><br><small>{}</small>".format(esc(h.get("hotel")), esc(h.get("role") or h.get("area") or "")),
+            "<strong>{}</strong><br><small>{}</small>".format(esc(h.get("hotel")),
+                                                               esc(h.get("role") or h.get("area") or "")),
             walk_badge + (("<br><small>{}</small>".format(esc(walk))) if walk else ""),
-            esc(rate_str) if rate_str else '<span class="blank">blank</span>',
-            esc(h.get("resort_fee") or ("${} per night".format(fee) if fee else "")) or '<span class="blank">blank</span>',
-            esc(true_cost) if true_cost else '<span class="blank">blank</span>',
-            esc(h.get("parking") or "") or '<span class="blank">blank</span>',
+            esc(rate) if rate else '<span class="blank">blank</span>',
+            esc(fee_txt) + (" <small>({})</small>".format(esc(h.get("resort_fee_retrieved", "")))
+                            if h.get("resort_fee_retrieved") else ""),
+            esc(h.get("fee_inclusions") or "Not verified"),
+            esc(h.get("parking") or "Not verified"),
+            esc(h.get("cancellation") or "Not verified"),
+            esc(h.get("quality") or "Not verified"),
+            esc(h.get("true_cost") or "Not computed"),
             status + "<br>" + src,
         ])
-    main = table(["Hotel", "Walk to tournament", "Nightly room rate", "Resort fee (per night)",
-                  "True cost per night", "Parking", "Status &amp; source"], cells, 6)
+    main = table(["Hotel", "Walk to the tournament", "Nightly room rate", "Resort fee (per night)",
+                  "What the fee covers (official)", "Parking", "Cancellation", "Quality",
+                  "True cost per night", "Status &amp; source"], cells, 9)
 
-    # dated rate log
-    log_cells = []
+    log_cells, log_dates = [], []
     for e in rates_log.get("entries", []):
+        def num(key, per_night=False):
+            v = e.get(key)
+            return money(v) if v else '<span class="blank">blank</span>'
+        notes = e.get("caveats") or []
+        note_html = "<br><small class='muted'>" + esc(" ".join(notes)) + "</small>" if notes else ""
         log_cells.append([
             "<strong>{}</strong>".format(esc(e["hotel"])),
-            esc(e.get("checkin", "")) + " &rarr; " + esc(e.get("checkout", "")),
+            esc(e.get("checkin", "")) + " &rarr; " + esc(e.get("checkout", "")) +
+            ((" &middot; " + esc(e.get("room_type"))) if e.get("room_type") else ""),
             str(e.get("nights", "")),
             esc(e.get("occupancy", "")),
-            money(e.get("checkout_total")) if e.get("checkout_total") else '<span class="blank">blank</span>',
-            money(e.get("nightly_average")) if e.get("nightly_average") else '<span class="blank">blank</span>',
-            money(e.get("resort_fee_per_night")) if e.get("resort_fee_per_night") else '<span class="blank">blank</span>',
-            money(e.get("tax_total")) if e.get("tax_total") else '<span class="blank">blank</span>',
+            num("room_rate_per_night"),
+            num("checkout_total"),
+            num("nightly_average"),
+            num("resort_fee_per_night"),
+            num("tax_total"),
+            esc(e.get("parking") or "blank"),
+            esc(e.get("cancellation_deadline") or "blank"),
             esc(e.get("rate_timestamp", "")),
-            link(e.get("source", ""), "Booking source"),
+            (badge("ok", "Official page read") if e.get("verified") else badge("warn", "Snapshot - not a live quote"))
+            + "<br>" + link(e.get("source", ""), e.get("source_label") or "Booking source") + note_html,
         ])
-    log = table(["Hotel", "Stay", "Nights", "Occupancy", "Checkout total", "Nightly average",
-                 "Resort fee/night", "Tax total", "Rate timestamp", "Source"], log_cells, 9)
+        log_dates.append(e.get("checkin"))
+    log = table(["Hotel", "Stay &middot; room type", "Nights", "Occupancy", "Room rate/night",
+                 "Checkout total", "Nightly average", "Resort fee/night", "Tax total", "Parking",
+                 "Cancellation deadline", "Rate timestamp", "Status &amp; source"], log_cells, 12, log_dates)
 
-    # walking routes with <=30 filter
     walk_cells = []
     for w in walking.get("routes", []):
-        ok = w.get("walk_minutes") is not None and w["walk_minutes"] <= walking.get("limit_minutes", 30)
+        mins = w.get("walk_minutes")
+        limit = walking.get("limit_minutes", 30)
+        ok = mins is not None and mins <= limit
+        route = link(w.get("route_url"), "Route link") if w.get("route_url") else \
+            '<a href="flagged-review.html">Flagged (no measured route)</a>'
+        src = link(w.get("source"), "Official source") if w.get("source") else \
+            '<a href="flagged-review.html">Flagged (no source)</a>'
         walk_cells.append([
             "<strong>{}</strong>".format(esc(w["hotel"])),
             esc(w["venue"]),
-            str(w["walk_minutes"]) + " min" if w.get("walk_minutes") is not None else '<span class="blank">unverified</span>',
-            badge("ok", "Passes <=30") if ok else badge("warn", "Not verified / fails"),
+            (str(mins) + " min") if mins is not None else '<span class="blank">unverified</span>',
+            badge("ok", "Passes &le;{} min".format(limit)) if ok else badge("warn", "Not verified"),
             esc(w.get("note", "")),
-            src_or_flag(w.get("source", ""), "Source", base=""),
+            src,
+            route,
         ])
-    walk_tbl = table(["Hotel", "Venue", "Walk", "<=30-min filter", "Note", "Source"], walk_cells, 5)
-
+    walk_tbl = table(["Hotel", "Venue", "Walk", "&le;30-min filter", "Note", "Source", "Measure it"],
+                     walk_cells, 5)
+    tax_pct = rates_log.get("tax_rate_pct")
     body = """
 <section class="panel">
-  <strong>How true nightly cost is built:</strong> nightly room rate + mandatory resort fee + tax.
-  Room rates are dynamic and were not retrieved as a single static value; the dated rate log below
-  records each booking-UI snapshot. The Clark County room-tax rate is cited from the official
-  ordinance: <a href="{tax}" target="_blank" rel="noopener">Clark County room-tax ordinance</a>;
-  confirm the current rate on the booking page. Where a room rate is blank, the true cost is blank.
+  <strong>How the true nightly cost is built:</strong> nightly room rate + mandatory resort fee + tax.
+  Room rates are dynamic and no official machine-readable rate feed exists, so nothing here is a
+  "current rate": the dated log below stores each observation with the date and source it came from, and
+  the hotels table shows the official "as low as" poker rate only with its conditions.
+  Tax: <strong>{tax}%</strong> for a resort hotel inside the Clark County Primary Gaming Corridor, cited
+  from <a href="{taxurl}" target="_blank" rel="noopener">the official ordinance document</a>; whether the
+  resort fee sits inside the tax base is confirmed only on the itemised folio (F45).
 </section>
 {search}
-<h2>Hotels hosting or near tournaments</h2>
+<h2>Hotels hosting or near the tournaments</h2>
 {main}
-<h2>Dated rate log (each entry is a snapshot, not a live quote)</h2>
+<h2>Dated rate log &mdash; the capture items, per observation</h2>
+<p class="muted">Checkout total, nightly average, resort fee, tax, parking, cancellation deadline and the
+rate timestamp, each as reported by the linked official source on the date given. Blank means the source
+does not state it; nothing is computed from an assumption.</p>
 {log}
-<h2>Walking-route check (&le;30-minute filter)</h2>
-<p class="muted">Only on-property venues are verified at 0 minutes. All other routes are unverified
-and left blank; the filter shows only verified entries. No walking time is inferred.</p>
+<h2>Walking-route check (&le;{limit}-minute filter)</h2>
+<p class="muted">Only routes an official source or a measurement states are shown with minutes; every
+other pair is blank and hidden by the filter, with a route link so the number can be measured once and
+recorded in data/c6087e2c/walking.json (F43).</p>
 {walk}
-""".format(tax=CLARK_TAX_URL, search=search_bar(), main=main, log=log, walk=walk_tbl)
+""".format(tax=tax_pct, taxurl=CLARK_TAX_URL, limit=walking.get("limit_minutes", 30),
+           search=search_bar("Search hotels, fees, routes...", None, None), main=main, log=log, walk=walk_tbl)
     return body
 
 
+
 def page_planner():
-    # Build an event options list for the calculator from confirmed single-entry events.
+    """Trip-cost calculator: entries x buy-ins + nights x true nightly cost, with the
+    Venetian poker-rate qualifier check (a $300+ tournament buy-in per night)."""
+    pool = [e for e in events if e.get("buyin") and e.get("status") not in ("multi", "flight", "R")]
     options = []
-    for r in sort_rank([e for e in confirmed if e.get("format") != "flight"]):
-        options.append((r["name"], r.get("buyin"), r.get("gtd"), r.get("venue")))
+    for r in sort_rank(pool):
+        tag = {"N": "sheet read, rule not stated", "U": "sheet not read", "S": "confirmed single-entry",
+               "SAT": "satellite (seat prize)", "T": "team event"}.get(r.get("status"), "")
+        options.append((r["name"], r.get("buyin"), r.get("gtd"), r.get("venue"), r.get("date"), tag))
     opts = "\n".join(
-        '      <option value="{name}" data-buyin="{buyin}" data-gtd="{gtd}">{name} &middot; {venue} &middot; {buyin}</option>'.format(
+        '      <option value="{name}" data-buyin="{buyin}" data-gtd="{gtd}" data-qualifies="{qual}">'
+        '{name} &middot; {when} &middot; {venue} &middot; {buyin} &middot; {tag}</option>'.format(
             name=esc(name), buyin=money(buyin) if buyin else "", gtd=money(gtd) if gtd else "",
-            venue=esc(venue))
-        for name, buyin, gtd, venue in options)
-    hotel_opts = []
+            when=esc(fmt_date(date)) if date else "recurring",
+            venue=esc(venue), tag=esc(tag), qual="1" if (buyin or 0) >= 300 else "0")
+        for name, buyin, gtd, venue, date, tag in options)
+    hotel_opts, h_note = [], {}
     for h in hotels:
         fee = h.get("resort_fee_usd")
-        rate = h.get("nightly_rate") or h.get("room_rate_per_night") or ""
-        # parse a leading $ number from the rate string if present
-        rate_num = None
+        rate = h.get("nightly_rate") or h.get("poker_rate") or ""
         m = re.search(r"\$([0-9][0-9,]*)", rate or "")
-        if m:
-            rate_num = float(m.group(1).replace(",", ""))
-        hotel_opts.append((h.get("hotel"), rate_num, fee))
+        rate_num = float(m.group(1).replace(",", "")) if m else None
+        h_note[h.get("hotel")] = (rate_num, fee)
+        label = "{hotel} (rate {rate}, fee {fee}{note})".format(
+            hotel=esc(h.get("hotel")),
+            rate=("" if rate_num is None else "${:,.0f}".format(rate_num)),
+            fee=("" if fee is None else "${:,.0f}".format(fee)),
+            note="" if rate_num is not None else ", rate not verified")
+        hotel_opts.append((h.get("hotel"), rate_num, fee, label))
     h_opts = "\n".join(
-        '      <option value="{name}" data-rate="{rate}" data-fee="{fee}">{name} (rate {rate}, fee {fee})</option>'.format(
-            name=esc(name), rate=("" if rate is None else "${:,.0f}".format(rate)),
-            fee=("" if fee is None else "${:,.0f}".format(fee)), )
-        for name, rate, fee in hotel_opts)
+        '      <option value="{name}" data-rate="{rate}" data-fee="{fee}">{label}</option>'.format(
+            name=esc(name), rate=("" if rate is None else rate), fee=("" if fee is None else fee),
+            label=label)
+        for name, rate, fee, label in hotel_opts)
+    nights = 7
+    venetian = h_note.get("The Venetian Resort", (None, 55))
+    worked = ""
+    if venetian[0]:
+        per_night = (venetian[0] + venetian[1]) * 1.1338
+        worked = ("<tr><td>Worked example: 7 nights at the official poker-suite rate</td>"
+                  "<td>(${r} + ${f}) &times; (1 + {t}%) &times; {n} nights</td><td>{tot}</td>"
+                  "<td>Rate is 'as low as' and conditional on the published play requirement - "
+                  "not a quote (F28, F29)</td></tr>").format(
+            r=venetian[0], f=venetian[1], t="13.38", n=nights, tot=money(round(per_night * nights)))
+    logged = [e for e in rates_log.get("entries", []) if e.get("checkout_total")]
+    for e in logged:
+        worked += ("<tr><td>{h}: logged booking-UI total, {ci} &rarr; {co}</td>"
+                   "<td>{} nights, all-in from the official booking page</td><td>{tot}</td>"
+                   "<td>Snapshot dated {ts}, not a current rate</td></tr>").format(
+            e["nights"], tot=money(e["checkout_total"]),
+            h=esc(e["hotel"]), ci=esc(e.get("checkin", "")), co=esc(e.get("checkout", "")),
+            ts=esc(e.get("rate_timestamp", "")))
     body = """
 <section class="panel">
   <strong>Trip cost calculator.</strong> Total = (entries &times; buy-ins) + (nights &times; true
-  hotel cost per night). True hotel cost = nightly room rate + mandatory resort fee + tax.
-  Room rates are dynamic; the calculator uses the value you enter or the logged snapshot. This is a
-  planning estimate, not a booking quote. Confirm on the official booking page before paying.
+  hotel cost per night), where true hotel cost = room rate + mandatory resort fee + tax.
+  Every buy-in comes from the linked official source; the entry list is not limited to confirmed
+  single-entry events because no event in this series is confirmed single-entry (F27) - each option
+  carries its status label instead. This is a planning estimate, not a booking quote.
 </section>
 <div class="panel">
   <div class="calc-grid">
     <div>
       <h3>1. Trip</h3>
-      <label>Nights
-        <input id="nights" type="number" min="1" value="7">
-      </label>
-      <label>Nightly room rate ($)
-        <input id="rate" type="number" min="0" step="1" placeholder="e.g. 200">
-      </label>
-      <label>Resort fee per night ($)
-        <input id="fee" type="number" min="0" step="1" placeholder="e.g. 55">
-      </label>
-      <label>Tax rate (%)
-        <input id="tax" type="number" min="0" step="0.01" value="13.38">
-      </label>
-      <label>Hotel
-        <select id="hotel">
+      <label>Nights <input id="nights" type="number" min="1" value="7"></label>
+      <label>Nightly room rate ($) <input id="rate" type="number" min="0" step="1" placeholder="not verified - enter a quoted rate"></label>
+      <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1" value="55"></label>
+      <label>Tax rate (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"></label>
+      <label>Hotel <select id="hotel">
           <option value="">-- pick a hotel to load its logged rate/fee --</option>
 {h_opts}
-        </select>
-      </label>
-      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax rate is cited from the
-      Clark County ordinance; confirm the current rate.</p>
+        </select></label>
+      <p class="muted">True cost/night = (rate + fee) &times; (1 + tax%). Tax is the Clark County
+      corridor rate cited on the Hotels page; the fee's own tax treatment is confirmed on the folio (F45).</p>
     </div>
     <div>
       <h3>2. Entries</h3>
-      <label>Event
-        <select id="event">
+      <label>Event <select id="event">
           <option value="">-- pick an event to add --</option>
 {opts}
-        </select>
-      </label>
-      <label>Entries (count)
-        <input id="count" type="number" min="1" value="1">
-      </label>
+        </select></label>
+      <label>Entries (count) <input id="count" type="number" min="1" value="1"></label>
       <button class="btn add-entry" onclick="poker5AddEntry()">Add to trip</button>
       <div id="entries" class="entries"></div>
-      <p class="muted">Only confirmed single-entry events are listed. Multi-entry events are on the
-      Multi-Entry page and are not added here.</p>
+      <p class="muted">Add-on / re-entry events are listed on the
+      <a href="tournaments-double.html">multi-entry page</a> and are not in this dropdown.
+      Each entry of $300 or more also satisfies the Venetian poker-suite play requirement for that
+      night (F29) - the calculator shows a qualifier note per entry.</p>
     </div>
   </div>
   <div class="calc-total">
     <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
     <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">$0</strong></div>
     <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">$0</strong></div>
+    <div><span>Nights that qualify for the poker rate</span><strong id="sum-qual">0</strong></div>
   </div>
+  <table class="tbl"><thead><tr><th>Reference totals (not quotes)</th><th>Arithmetic</th>
+  <th>Amount</th><th>Status</th></tr></thead><tbody>{worked}</tbody></table>
 </div>
-<p class="muted">No manual input is required to read the site; this calculator is an optional
-planning tool. Every buy-in and fee shown comes from the linked official source.</p>
-""".format(h_opts=h_opts, opts=opts)
+<p class="muted">No manual input is needed to read the site; the calculator is an optional planning tool.
+Nothing typed here is stored or sent anywhere - it is computed in your browser only.</p>
+""".format(h_opts=h_opts, opts=opts, worked=worked)
     return body
+
 
 
 def page_venue(group, title, intro):
     rows = [e for e in events if e.get("venue_group") == group]
-    venue_hotels = [h for h in hotels if group == "venetian" and "venetian" in (h.get("hotel", "") + h.get("role", "")).lower()]
+    venue_hotels = [h for h in hotels if group == "venetian" and
+                    any(k in (h.get("hotel", "") + h.get("role", "")).lower()
+                        for k in ("venetian", "palazzo", "cosmopolitan", "park mgm"))]
     if group == "wynn":
-        venue_hotels = [h for h in hotels if "wynn" in (h.get("hotel", "") + h.get("role", "")).lower() or "encore" in h.get("hotel", "").lower()]
+        venue_hotels = [h for h in hotels if "wynn" in (h.get("hotel", "") + h.get("role", "")).lower()
+                        or "encore" in h.get("hotel", "").lower()]
     if group == "other":
-        venue_hotels = [h for h in hotels if any(k in h.get("hotel", "").lower() for k in ("caesars", "horseshoe", "bellagio", "mgm", "aria", "planet", "golden", "resorts world"))]
+        venue_hotels = [h for h in hotels if any(k in h.get("hotel", "").lower() for k in
+                                                 ("caesars", "horseshoe", "bellagio", "mgm", "aria",
+                                                  "planet", "golden", "resorts world", "cosmopolitan"))]
     cells = []
     for r in sort_rank(rows):
+        single, reentry, addon, fee = entry_cells(r)
         cells.append([
             name_cell(r),
             fmt_sched(r),
             buyin_cell(r),
+            fee_cell(r),
             gtd_cell(r),
             ratio_cell(r),
             single_entry_badge(r),
-            esc(r.get("entry_rule") or ""),
+            esc(single),
+            esc(reentry),
+            esc(addon),
+            late_reg_cell(r),
+            stack_cell(r),
             esc(last_checked_for(r)),
             src_cell(r),
         ])
-    t = table(["Event", "Date &middot; time", "Buy-in", "Guarantee", "Guarantee &divide; buy-in",
-               "Single-entry status", "Entry rule (official excerpt)", "Last checked", "Source"], cells, 8)
+    t = table(["Event", "Date &middot; time", "Buy-in", "To prize pool + house fee", "Guarantee",
+               "Guarantee &divide; buy-in", "Single-entry status", "Single-entry (as stated)",
+               "Re-entry (as stated)", "Add-on (as stated)", "Late reg closes",
+               "Start stack &middot; levels", "Last checked", "Source"],
+              cells, 13, [r.get("date") for r in rows])
     h_cells = []
     for h in venue_hotels:
         h_cells.append([
-            "<strong>{}</strong><br><small>{}</small>".format(esc(h.get("hotel")), esc(h.get("role") or h.get("area") or "")),
-            esc(h.get("resort_fee") or "") or '<span class="blank">blank</span>',
-            esc(h.get("nightly_rate") or h.get("room_rate_per_night") or "") or '<span class="blank">blank</span>',
-            src_or_flag(h.get("source") or "", "Source", base="../"),
+            "<strong>{}</strong><br><small>{}</small>".format(esc(h.get("hotel")),
+                                                              esc(h.get("role") or h.get("area") or "")),
+            esc(h.get("resort_fee") or "blank") +
+            (" <small>({})</small>".format(esc(h.get("resort_fee_retrieved")))
+             if h.get("resort_fee_retrieved") else ""),
+            esc(h.get("nightly_rate") or h.get("poker_rate") or "") or '<span class="blank">blank</span>',
+            esc(h.get("true_cost") or "Not computed"),
+            esc(h.get("parking") or "Not verified"),
+            src_or_flag(h.get("fee_source") or h.get("source") or "", "Source", base="../") +
+            (" &middot; " + link("../" + "flagged-review.html", "Flags: " + ", ".join(h.get("flags", [])))
+             if h.get("flags") else ""),
         ])
-    ht = table(["Hotel", "Resort fee", "Nightly rate", "Source"], h_cells, 3) if h_cells else ""
+    ht = table(["Hotel", "Resort fee (official)", "Nightly rate", "True cost per night", "Parking",
+                "Source"], h_cells, 5) if h_cells else \
+        '<p class="muted">No hotel row is verified for this venue in data/c6087e2c/hotels.json.</p>'
+    extra = ""
+    if group == "venetian" and sheets_by_number:
+        sc = []
+        for sh in sheets_by_number:
+            sc.append([
+                "Sheet {}".format(sh["sheet"]),
+                esc(sh["title"]),
+                esc(", ".join("#{}".format(e) for e in sh["events"])),
+                esc(sh["starting_stack"]) + " chips" if sh["starting_stack"] else '<span class="blank">blank</span>',
+                esc(sh["level_minutes"]) + " min" if sh["level_minutes"] else '<span class="blank">blank</span>',
+                esc(sh["late_registration"]) or '<span class="blank">not published</span>',
+                money(sh["guarantee"]) if sh["guarantee"] else '<span class="blank">no guarantee stated</span>',
+                esc(sh["guarantee_note"] or ""),
+                esc(sh["payout"] or ""),
+                "{} + {} fee".format(money(sh["prize_pool_portion"]), money(sh["house_fee"])),
+                esc(sh["bounty"] or "none stated"),
+                "single entry: " + esc(sh.get("single_entry") or "not stated") +
+                "; re-entry: " + esc(sh.get("re_entry") or "not stated") +
+                "; add-on: " + esc(sh.get("add_on") or "not stated"),
+                esc(sh["retrieved"]),
+                link(sh["url"], "Structure sheet {}".format(sh["sheet"])),
+            ])
+        extra = ("<h2>Every structure sheet read in full ({})</h2>"
+                 "<p class='muted'>One row per official PDF, transcribed {}. 'not stated' means the sheet "
+                 "is silent about entries - it is not evidence of a freezeout (F27).</p>{}").format(
+                     len(sheets_by_number), AUDIT_DATE,
+                     table(["Sheet", "Title (official)", "Event numbers", "Start stack", "Level length",
+                            "Late registration", "Guarantee", "Guarantee wording", "Payout",
+                            "Buy-in split", "Bounty", "Single-entry statement", "Retrieved", "Source"],
+                           sc, 13))
+    if group == "wynn":
+        sup_rows = [[esc(r.get("name")),
+                      esc(r.get("schedule") or "undated"),
+                      money(r.get("buyin")) if r.get("buyin") else '<span class="blank">blank</span>',
+                      money(r.get("gtd")) if r.get("gtd") else '<span class="blank">blank</span>',
+                      esc(r.get("superseded")),
+                      link(r.get("source"), "Official source")] for r in superseded_rows]
+        cc = [[esc(n), link(WPT_STRUCT_URL, "WPT structures PDF")] for n in wpt_notes]
+        terms_tbl = table(
+            ["Event (official)", "Dates", "Buy-in", "Guarantee", "Buy-in split", "Start stack",
+             "Registration / re-entry (verbatim)", "Levels", "Tables", "Source"],
+            [[esc(t.get("name")), esc(t.get("dates")), money(t.get("buyin")),
+              money(t["gtd"]) if t.get("gtd") else '<span class="blank">none published</span>',
+              esc(t.get("buyin_split") or ""),
+              ("{:,} chips".format(int(t["starting_stack"])) if t.get("starting_stack")
+               else '<span class="blank">blank</span>'),
+              esc(t.get("registration") or "not transcribed in this audit"),
+              esc(t.get("level_minutes") or ""), esc(t.get("tables") or ""),
+              link(t.get("source") or WPT_STRUCT_URL, "Structures PDF")]
+             for t in wpt_terms], 9)
+        sup_tbl = ("" if not sup_rows else
+                   "<h2>Corrections applied to earlier session data</h2>" +
+                   table(["Superseded row from data/c6087e2c/other_events.json", "Date &middot; time",
+                          "Buy-in", "Guarantee", "Superseded by", "Source"], sup_rows, 5))
+        gaps_tbl = ("" if not cc else "<h2>Rows whose entry rule was not transcribed in this audit</h2>" +  # noqa: E501
+                    table(["What is missing", "Source to read"], cc, 1))
+        extra = ("<h2>WPT event terms as stated in the official structures PDF</h2>"
+                 "<p class='muted'>Read {} from the official Wynn/WPT PDF. Every event read there states "
+                 "re-entry, so none of them belongs in the single-entry ranking (F36).</p>"
+                 "{}{}{}").format(AUDIT_DATE, terms_tbl, gaps_tbl, sup_tbl)
+        extra += ("<h2>General terms that change what you can do at the desk</h2>" +
+                  table(["Fact (official)", "What it says", "Source"],
+                        [[esc(f["fact"]), esc(f["value"]), link(f["source"], "Official source")]
+                         for f in wynn_facts], 2))
+    if group == "other":
+        extra = ("<p class='muted'>These rooms were captured by earlier sessions and were not re-read "
+                 "line by line in the {} audit, so their entry rules stay unverified: Bellagio (F10), "
+                 "MGM Grand (F11), ARIA (F12), Horseshoe (F13), Caesars add-on (F34). Rows whose sheet "
+                 "was not read are shown as candidates, never as single-entry.</p>").format(AUDIT_DATE)
     body = """
 <p class="muted">{intro}</p>
 {search}
@@ -1122,121 +1713,165 @@ def page_venue(group, title, intro):
 {t}
 <h2>Hotels</h2>
 {ht}
-""".format(intro=intro, search=search_bar(), t=t, ht=ht)
+{extra}
+""".format(intro=intro, search=search_bar("Search {} events...".format(title),
+                                          [e.get("date") for e in rows if e.get("date")], 0),
+           t=t, ht=ht, extra=extra)
     return body
 
 
+
 def page_exec():
-    n_confirmed = len(confirmed)
-    top = sort_rank([e for e in confirmed if e.get("format") != "flight"])[:5]
+    n_sheets = len({e.get("structure_no") for e in events if e.get("structure_no")})
+    top = sort_rank([e for e in no_rule_stated if e.get("gtd")])[:6]
     top_rows = "".join(
-        "<li><strong>{}</strong> &mdash; {} &middot; {} &middot; guarantee {} &middot; ratio {} (descriptive). "
-        "<a href=\"{}\" target=\"_blank\" rel=\"noopener\">Structure sheet</a>.</li>".format(
-            esc(r["name"]), esc(fmt_sched(r)), money(r.get("buyin")), money(r.get("gtd")),
-            ratio_cell(r), esc(r.get("structure") or r["source"]))
+        "<li><strong>{name}</strong> &mdash; {when} &middot; {buy} in, {pool} of it to the prize pool "
+        "({fee} house fee) &middot; guarantee {gtd} &middot; ratio {ratio} (descriptive, not a forecast) "
+        "&middot; registration closes {close}. <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">"
+        "Structure sheet {sheet}</a>.</li>".format(
+            name=esc(r["name"]), when=esc(fmt_sched(r)), buy=money(r.get("buyin")),
+            pool=money(r.get("prize_portion")), fee=money(r.get("house_fee")),
+            gtd=money(r.get("gtd")), ratio=ratio_cell(r), close=esc(fmt_time(r.get("late_reg_close")) or
+                                                                        "not published"),
+            url=esc(r.get("structure") or r["source"]), sheet=r.get("structure_no"))
         for r in top)
+    best_value = sort_rank([e for e in no_rule_stated if ratio(e)])
+    best_value = max(best_value, key=lambda e: ratio(e)) if best_value else None
     body = """
 <section class="panel">
   <h2>Executive summary</h2>
   <ol class="numbered">
-    <li><strong>Main live series in the window:</strong> The Venetian DeepStack Extravaganza IV
-      (Nov 16 - Dec 23, 2026). Official page: 64 event numbers, more than $3.6 million in guaranteed
-      prize pools. Source: <a href="{dse}" target="_blank" rel="noopener">official schedule</a>.</li>
-    <li><strong>Confirmed single-entry events: {n}.</strong> A structure sheet was read and shows no
-      re-entry, rebuy, add-on or paid-chip text. These rows are labelled Confirmed. All other
-      candidates stay Unverified.</li>
-    <li><strong>Top confirmed single-entry events by guarantee:</strong>
-      <ul>{top}</ul>
-    </li>
-    <li><strong>Guarantee &divide; entry fee is a descriptive ratio, not a forecast.</strong> It
-      describes the published guarantee per dollar of buy-in. Bounty guarantees include bounty
-      payouts; flight events are labelled separately.</li>
-    <li><strong>Multi-entry events are separate.</strong> Wynn daily (re-entry), Wynn Friday
-      (rebuy/add-on), WPT Main Event (up to 4 entries), Caesars daily ($50 add-on) and Bellagio
-      (re-entry + optional gratuity) are on the Multi-Entry page.</li>
-    <li><strong>8:00 AM start: not met.</strong> Earliest official start found is 9:00 AM (Horseshoe).
-      Earliest Venetian start is 9:10 AM.</li>
-    <li><strong>Hotels:</strong> The Venetian (and The Palazzo) and Wynn have an official resort fee
-      of $55 per night plus tax. Room rates are dynamic and recorded as a dated log. Walking times are
-      verified only for on-property venues; others are blank and flagged.</li>
-    <li><strong>Verification:</strong> every row links to its official source and carries a last-checked
-      date. A scheduled job re-reads each source and flags changes. Unverified values are blank, never
-      inferred.</li>
+    <li><strong>What is actually on in the window.</strong> The Venetian DeepStack Extravaganza IV runs
+      Nov 16 - Dec 23, 2026 with 64 event numbers and "more than $3.6 Million in guaranteed tournament
+      prize pools" ({dse_link}). The Wynn hosts the WPT World Championship Nov 27 - Dec 21, 2026
+      ({wpt_link}), and its daily tournaments continue to be advertised on the official poker page.
+      Caesars/Horseshoe dailies, Bellagio and MGM Grand rows come from earlier sessions and were not
+      re-read line by line, so they stay candidates (F34).</li>
+    <li><strong>The single-entry question cannot be answered from the published structure sheets.</strong>
+      All {n_sheets} sheets behind the Venetian schedule were read in full on {audit}: none states
+      single entry, freezeout, no rebuys or no add-ons, and none caps entries. {n_norule} rows are
+      therefore "sheet read, entry rule not stated" with every other field verified, and the count of
+      <strong>confirmed single-entry events is {n_conf}</strong>. A prior session labelled 31 rows
+      "confirmed" by treating silence as a rule; that label is removed here and flagged (F27).</li>
+    <li><strong>Seven Venetian events are advantage-through-spend by their own wording.</strong> Events
+      #01, #07, #19, #26, #47, #49 and #56 each run 2-5 starting flights and state only that a player
+      who bags chips for Day 2 may not play a later flight - so the same $400-$2,200 can be paid for
+      several Day 1 shots. They are on the multi-entry page (F04).</li>
+    <li><strong>At the Wynn, re-entry is written down.</strong> Of the 13 WPT events transcribed from the
+      official structures PDF, 11 state "Unlimited re-entry" until level 9 or 10, the $1,100 WPT Prime
+      Championship ($5,000,000 GTD) states one entry plus one re-entry per starting flight, and the
+      $10,400 World Championship was not fully captured (F35). The $600 HORSE (Fri Dec 4) and the
+      $600 NLH Turbo ($50,000 GTD) are likewise unlimited-re-entry events. No WPT event qualifies as
+      single-entry (F36).</li>
+    <li><strong>Ranking is on verified numbers only.</strong> guarantee / buy-in is descriptive, never a
+      forecast; four events (#03, #04, #05, #06) publish no guarantee and are not ranked (F39); seven
+      satellites guarantee seats (F40); bounty guarantees include the bounty pool (F41). Best published
+      ratio among ranked rows: <strong>{best}</strong>.</li>
+    <li><strong>Highest guaranteed pools in the ranked list:</strong>
+      <ul>{top}</ul></li>
+    <li><strong>The day plan uses official clocks only.</strong> Start time plus the sheet's own
+      late-registration deadline decide whether a second event the same day is enterable; finish times
+      are never published, so the fallback is explicitly conditional on being knocked out before the
+      cutoff (F42). No official 8:00 AM start exists - earliest verified is {earliest_start}.</li>
+    <li><strong>Hotel cost is a dated log, not a rate.</strong> Venetian poker suites are "as low as $119
+      / $209" conditional on 6 hours of cash play or a $300+ tournament buy-in every night (F29); both
+      the Venetian and the Wynn state a $55 + tax resort fee (Wynn's figure comes from a promotional terms
+      page, F30); Clark County room tax is 13.38% in the corridor (F45). The only booking-UI total in the
+      log is {logged}. Parking, quality and cancellation for most properties stay blank (F31, F44).</li>
+    <li><strong>Two events a day is the realistic maximum.</strong> A 10:10/11:10 AM flight-style event
+      runs into the evening, and the evening events start 5:10 PM. Late registration for the 11:10 AM
+      one-day events closes around 4:55 PM, so a bust-out can still enter the 5:10 PM field the same day
+      - which is also what makes double-buy-in worth pricing in the calculator.</li>
+    <li><strong>What is left before you book.</strong> {n_flags} flagged items and {n_q} open questions,
+      each naming the source that would clear it. The two that change the plan most are the Venetian
+      entry rule (ask {desk}) and the live room rate for your dates (F28).</li>
   </ol>
-  <p>Next steps: <a href="questions.html">Questions &amp; Answers</a>,
-  <a href="suggestions.html">Suggestions</a>, and the <a href="planner.html">trip calculator</a>.</p>
+  <p>Working pages: <a href="tournaments.html">ranked candidates + rule fields</a>,
+  <a href="tournaments-double.html">multi-entry</a>, <a href="schedule.html">day plan</a>,
+  <a href="hotels.html">hotels + rate log</a>, <a href="planner.html">trip cost</a>,
+  <a href="questions.html">questions</a>, <a href="suggestions.html">suggestions</a>,
+  <a href="flagged-review.html">flagged items</a>.</p>
 </section>
-""".format(dse=DSE_URL, n=n_confirmed, top=top_rows)
+""".format(dse_link=link(DSE_URL, "official schedule"), wpt_link=link(WPT_URL, "official WPT event page"),
+           n_sheets=n_sheets, audit=AUDIT_DATE, n_norule=len(no_rule_stated), n_conf=len(confirmed),
+           best=("<strong>#{} {}</strong> at {} ({} guarantee / {} buy-in)".format(
+               best_value.get("event_no") or "", esc(best_value["name"]), ratio_cell(best_value),
+               money(best_value.get("gtd")), money(best_value.get("buyin"))) if best_value else "n/a"),
+           top=top_rows, logged="{} at the Venetian for Dec 2-9".format(money(7054.77)) if any(
+               e.get("checkout_total") for e in rates_log.get("entries", [])) else "not captured",
+           n_flags=len(flags), n_q=len(questions_data), desk=VENETIAN_DESK,
+           earliest_start="9:10 AM (Fri Dec 12, event #46)")
     return body
+
 
 
 def page_questions():
-    rows = [
-        ["Q1", "Which events are truly single-entry?", "Answered for confirmed rows",
-         "{} events are confirmed from a read structure sheet with no re-entry/add-on text. The rest are unverified.".format(len(confirmed)),
-         "Re-read any unverified structure sheet.", link(DSE_URL, "Venetian schedule")],
-        ["Q2", "Is there an official 8:00 AM start?", "Gap",
-         "Earliest verified start is 9:00 AM (Horseshoe); earliest Venetian 9:10 AM.",
-         "Read official schedules of every Strip room.", link(CAESARS_URL, "Caesars page")],
-        ["Q3", "How long does each event take?", "Unverified",
-         "Start times only. Durations are not verified; the overlap check uses a labelled assumption.",
-         "Read the level-length line of each structure sheet.", link(DSE_URL, "Venetian schedule")],
-        ["Q4", "Hotel room rates for the travel dates", "Dated log",
-         "Booking-UI snapshots are logged with timestamps; no static rate exists.",
-         "Check each official booking page for the dates chosen.", link(SUITE_URL, "Venetian suite rates")],
-        ["Q5", "Walking time from each hotel to the tournament room", "Blank / on-property only",
-         "On-property venues are 0 minutes (official). All other routes are unverified.",
-         "Measure each route on a map; the 30-minute filter shows only verified entries.", link(DSE_URL, "Venetian schedule")],
-        ["Q6", "Resort fees for MGM properties, Caesars and Horseshoe", "Secondary or blank",
-         "Wynn and Venetian fees are official ($55). Others are secondary or not checked.",
-         "Find each property's official resort-fee page.", link(CLARK_TAX_URL, "Clark County")],
-        ["Q7", "Current Bellagio dated schedule and Saturday buy-in", "Unverified",
-         "Undated PDFs; Saturday buy-in conflicts ($1,000 title vs $1,100 body).",
-         "Ask the Bellagio poker room or read the PDF buy-in line.", link("https://bellagio.mgmresorts.com/en/casino/poker.html", "Bellagio poker page")],
-        ["Q8", "Current MGM Grand schedule", "Stale",
-         "Official PDF titled 'August'; times differ from the page.",
-         "Ask the MGM Grand poker room.", link("https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html", "MGM Grand poker page")],
-        ["Q9", "ARIA daily tournaments", "No official list",
-         "Official page lists no tournaments.",
-         "Call the ARIA poker room.", link("https://aria.mgmresorts.com/en/casino/poker.html", "ARIA poker page")],
-        ["Q10", "Wynn daily availability Nov 16-26 and nightly $160 re-entry", "Unverified",
-         "Daily tournaments suspended during the WPT festival (Nov 27-Dec 21).",
-         "Ask the Wynn poker room or read the current structures PDF.", link(WYNN_POKER_URL, "Wynn poker page")],
-        ["Q11", "WPT festival day-by-day dates", "Partial",
-         "Main Event Dec 13-20 (official). Other events: day not captured.",
-         "Read the WPT schedule PDF day by day.", link(WPT_URL, "WPT event page")],
-        ["Q12", "Hotel quality criteria", "Needs your input",
-         "No official quality source chosen; quality is blank.",
-         "Choose a quality source and its scale.", link(REPO_URL, "Repo")],
-        ["Q13", "Travel dates and party size", "Needs your input",
-         "Needed to compute trip cost and pick events; cannot be looked up.",
-         "Provide dates and party size for the planner.", link(REPO_URL, "Repo")],
-        ["Q14", "Venetian event #40 (Dec 10 row)", "Truncated",
-         "Row was cut off in the capture.",
-         "Re-read the official schedule for event #40.", link(DSE_URL, "Venetian schedule")],
-    ]
-    t = table(["#", "Question", "Status", "What we know", "How to find it", "Source"], rows, 5)
-    body = '<p class="muted">Each item lists the status, what is known and how to find it. Only items with an official source appear in the table.</p>\n' + t
+    rows = []
+    for q in questions_data:
+        srcs = q.get("sources") or []
+        src = " &middot; ".join(link(u, "Official source") for u in srcs if u) or \
+            '<a href="flagged-review.html">Flagged (no source)</a>'
+        badge_txt = "Answered" if str(q.get("status", "")).lower().startswith("answered") else (
+            "Partly answered" if "partly" in str(q.get("status", "")).lower() else "Open")
+        rows.append([
+            esc(q["id"]),
+            "<strong>" + esc(q["question"]) + "</strong>",
+            badge("ok" if badge_txt == "Answered" else ("warn" if badge_txt == "Partly answered" else "bad"),
+                  badge_txt),
+            esc(q.get("what_we_know") or ""),
+            esc(q.get("how_to_find_it") or ""),
+            esc(q.get("status") or ""),
+            src,
+        ])
+    t = table(["#", "Question to settle before deciding", "Status", "What the official sources already say",
+               "What would answer it", "Current status detail", "Source"], rows, 6)
+    body = """
+<p class="muted">These are the open decisions and gaps, each with the source that closes it. Nothing here
+is answered by inference: where an official page is silent the answer has to come from the room
+({venetian_desk} / {wynn_desk}) or from your own choices (dates, party size, quality source).</p>
+{t}
+""".format(t=t, venetian_desk=VENETIAN_DESK, wynn_desk=WYNN_DESK)
     return body
 
 
+
+
 def page_suggestions():
-    items = [
-        ("S1", "Scheduled source re-check (implemented)", "A daily job re-reads each official URL and flags changed rows. Implemented in scripts/recheck_sources.py and .github/workflows/recheck.yml."),
-        ("S2", "Add travel dates and party size", "Turns the schedule into an actual plan of entries and a total trip cost (see the Trip Planner)."),
-        ("S3", "Choose a hotel quality source", "Quality is blank because none is verified (Q12)."),
-        ("S4", "Choose the ranking rule", "Current rule is guarantee, then buy-in. The ratio column is descriptive, not a ranking."),
-        ("S5", "Read every structure sheet", "Resolves single-entry status for the unverified rows. Each confirmed row already links its sheet."),
-        ("S6", "Confirm Bellagio and MGM Grand dates", "Clears the stale/undated rows (Q7, Q8)."),
-        ("S7", "Live hotel rate lookup per date", "The dated rate log records snapshots; a per-date lookup would need the official booking engines."),
-        ("S8", "Walking-route verification", "On-property routes are verified; other routes need a map measurement before they can pass the 30-minute filter."),
-    ]
-    cells = [[esc(i), esc(t), esc(d), badge("ok", "Implemented") if "implemented" in d.lower() else badge("warn", "Awaiting your choice")] for i, t, d in items]
-    rows_html = ['<div class="tablewrap"><table class="tbl"><thead><tr><th>#</th><th>Suggestion</th><th>Why</th><th>Status</th></tr></thead><tbody>']
-    for c in cells:
-        rows_html.append("<tr>" + "".join("<td>{}</td>".format(x) for x in c) + "</tr>")
-    rows_html.append("</tbody></table></div>")
-    body = '<p class="muted">These are options for decision-making. Implemented items are built; the rest need your choice before they are built.</p>\n' + "".join(rows_html)
+    rows = []
+    for su in suggestions_data:
+        st = str(su.get("status") or "")
+        rows.append([
+            esc(su["id"]),
+            "<strong>" + esc(su["suggestion"]) + "</strong>",
+            esc(su.get("why") or ""),
+            "{} impact / {} effort".format(esc(su.get("impact") or ""), esc(su.get("effort") or "")),
+            badge("ok", st) if st.lower().startswith("implemented") else badge("warn", st or "Open"),
+            esc(su.get("decision_needed") or ""),
+            link(REPO_URL + "/blob/main/COORDINATION.md", "Coordination board"),
+        ])
+    t = table(["#", "Suggestion", "Why it matters", "Impact / effort", "Status",
+               "The decision it needs from you", "Where the choice is recorded"], rows, 6)
+    body = ('<p class="muted">Options for the next iteration. Items marked Implemented are already built '
+            'into this site; the rest need your choice before they are built, because each one changes '
+            'what may be presented as a fact.</p>\n' + t)
+    return body
+
+
+def page_repo_review():
+    gh = REPO_URL + "/blob/main/"
+    rows = []
+    for r in repo_review_data:
+        rows.append([
+            "<strong>" + esc(r["item"]) + "</strong>",
+            esc(r.get("finding") or ""),
+            esc(r.get("action") or ""),
+            link(r.get("evidence") or gh, "Evidence"),
+        ])
+    t = table(["File / area", "Finding", "Action in this audit", "Evidence"], rows, 3)
+    body = ('<p class="muted">Line-by-line review of the repository on main, from the '
+            '{} structure-sheet audit. Findings are about content, not people. Read-only folders belonging '
+            'to other sessions were not edited: their conflicts are recorded here and on the flagged '
+            'page instead.</p>\n' + t).format(AUDIT_DATE)
     return body
 
 
@@ -1266,26 +1901,15 @@ def page_flagged():
     else:
         body = ('<p class="muted">Flagged items do not block publication. Each is listed with its source link and what is needed to clear it. '
                 'No official source has been recorded as changed since the last scheduled re-check.</p>\n' + t)
+    feed_missing = [r for r in (schedule_feed.get("rows") or []) if not r.get("present")]
+    if schedule_feed and (schedule_feed.get("status") != "ok" or feed_missing):
+        body += ('<h2>Morning feed needs a look</h2><p class="muted">Written by '
+                 'scripts/recheck_sources.py --feed. A failed fetch is reported as a failed fetch, never as '
+                 'a change.</p>' + feed_table())
+
     return body
 
 
-def page_repo_review():
-    gh = REPO_URL + "/blob/main/"
-    rows = [
-        ["Root site (index.html, pages/, assets/)", "Prior build showed 0 single-entry confirmed and used a conservative standard.", "Rebuilt in this integration session: confirmed single-entry rows are labelled from read structure sheets; unverified rows stay unverified; new planner, venue, schedule, hotel and re-check features added.", link(gh + "index.html", "index.html")],
-        ["data/c6087e2c/", "Holds the verified inputs (psv, json) for the root site.", "Extended with rates_log.json, walking.json and last_checked.json for the new features.", link(gh + "data/c6087e2c/", "data/c6087e2c")],
-        ["scripts/build_c6087e2c.py", "Regenerated the root site from data/c6087e2c/.", "Rewritten to merge all verified datasets, enforce source links, and generate the new pages and calculator.", link(gh + "scripts/build_c6087e2c.py", "build script")],
-        ["scripts/recheck_sources.py", "Did not exist.", "Added: scheduled re-check of every official URL, diff vs baseline, change flags.", link(gh + "scripts/recheck_sources.py", "recheck script")],
-        [".github/workflows/recheck.yml", "Did not exist.", "Added: daily cron re-check that commits the updated baseline.", link(gh + ".github/workflows/recheck.yml", "workflow")],
-        ["assets/app.js", "Did not exist on the root site.", "Added: global search, single-entry toggle, date filter and the trip-cost calculator.", link(gh + "assets/app.js", "app.js")],
-        ["Other sessions' folders (docs/, site/, dashboard-*/, planner-aa83f1e1/, site-*/, data-*/, tools/)", "Parallel-session outputs.", "Read-only in this session; not edited. Preserved on main.", link(REPO_URL, "Repo root")],
-        ["Walking times", "No official source; prior rows used third-party estimates.", "Only on-property 0-minute routes are verified; all others are blank and flagged (F22). No value inferred.", link(DSE_URL, "Venetian schedule")],
-        ["Tax rate 13.38%", "Previously cited from third-party sources only.", "Tied to the official Clark County room-tax ordinance PDF; still labelled 'confirm the current rate'.", link(CLARK_TAX_URL, "Clark County ordinance")],
-        ["README.md", "Described the repo and prior sessions.", "Updated to document the integration build and new features.", link(gh + "README.md", "README.md")],
-    ]
-    t = table(["File / area", "Finding", "Action in this session", "Evidence"], rows, 3)
-    body = '<p class="muted">Line-by-line review of the repo on main and the integration changes. Findings are about content, not people.</p>\n' + t
-    return body
 
 
 # ---------------------------------------------------------------- app.js
@@ -1296,15 +1920,20 @@ APP_JS = r"""
 (function () {
   "use strict";
 
-  function visible(tr, query, onlyConfirmed) {
+  function visible(tr, query, onlyConfirmed, dateValue) {
     var cells = tr.querySelectorAll("td");
     var text = "";
     for (var i = 0; i < cells.length; i++) text += (cells[i].textContent || "") + " ";
     text = text.toLowerCase();
     if (query && text.indexOf(query) === -1) return false;
+    if (dateValue && tr.getAttribute("data-date") !== dateValue) return false;
     if (onlyConfirmed) {
-      var badge = tr.querySelector(".badge");
-      if (!badge || badge.textContent.indexOf("Confirmed single-entry") === -1) return false;
+      // the format column also uses .badge, so scan every badge in the row
+      var badges = tr.querySelectorAll(".badge"), hit = false;
+      for (var j = 0; j < badges.length; j++) {
+        if (badges[j].textContent.indexOf("Confirmed single-entry") !== -1) hit = true;
+      }
+      if (!hit) return false;
     }
     return true;
   }
@@ -1312,13 +1941,14 @@ APP_JS = r"""
   window.poker5Filter = function () {
     var q = (document.getElementById("q") || {}).value || "";
     var only = document.getElementById("se-toggle") && document.getElementById("se-toggle").checked;
+    var dv = (document.getElementById("date-filter") || {}).value || "";
     q = q.trim().toLowerCase();
     var tables = document.querySelectorAll("table[data-searchable]");
     var anyVisible = false;
     tables.forEach(function (tbl) {
       var rows = tbl.querySelectorAll("tbody tr");
       rows.forEach(function (tr) {
-        var show = visible(tr, q, only);
+        var show = visible(tr, q, only, dv);
         tr.style.display = show ? "" : "none";
         if (show) anyVisible = true;
       });
@@ -1334,8 +1964,9 @@ APP_JS = r"""
     if (!sel.value) return;
     var opt = sel.options[sel.selectedIndex];
     var buyin = parseFloat(opt.getAttribute("data-buyin").replace(/[^0-9.]/g, "")) || 0;
+    var qualifies = opt.getAttribute("data-qualifies") === "1";
     var name = opt.value;
-    entries.push({ name: name, buyin: buyin, count: count });
+    entries.push({ name: name, buyin: buyin, count: count, qualifies: qualifies });
     renderEntries();
     renderTotals();
   };
@@ -1347,8 +1978,11 @@ APP_JS = r"""
     entries.forEach(function (e, i) {
       var row = document.createElement("div");
       row.className = "entry-row";
+      var qual = e.qualifies ?
+        ' <em class="muted">(\u2265 $300: satisfies the Venetian poker-suite play requirement for one night)</em>' :
+        ' <em class="muted">(&lt; $300: does not satisfy the poker-suite play requirement alone)</em>';
       row.innerHTML = "<span>" + e.count + " &times; " + e.name + " (" +
-        e.buyin.toLocaleString("en-US", { style: "currency", currency: "USD" }) + ")</span>" +
+        e.buyin.toLocaleString("en-US", { style: "currency", currency: "USD" }) + ")" + qual + "</span>" +
         "<button class=\"btn ghost small\" onclick=\"poker5RemoveEntry(" + i + ")\">Remove</button>";
       box.appendChild(row);
     });
@@ -1374,6 +2008,12 @@ APP_JS = r"""
     sumE.textContent = "$" + entriesTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
     sumH.textContent = "$" + hotelTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
     sumT.textContent = "$" + (entriesTotal + hotelTotal).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    var qualBox = document.getElementById("sum-qual");
+    if (qualBox) {
+      var nightsCovered = 0;
+      entries.forEach(function (e) { if (e.qualifies) nightsCovered += e.count; });
+      qualBox.textContent = nightsCovered + " of " + nights + " night(s)";
+    }
   };
 
   // Wire hotel select to load logged rate/fee.
@@ -1402,6 +2042,12 @@ APP_JS = r"""
 
 CSS = open(os.path.join(ROOT, "assets", "css", "style.css"), encoding="utf-8").read()
 # Append calculator/control styles if not already present.
+if ".badge-muted" not in CSS:
+    CSS += """
+.badge-muted{background:#eef1f5;color:var(--muted)}
+.entry-row em{font-style:normal;color:var(--muted)}
+"""
+
 if ".calc-grid" not in CSS:
     CSS += """
 .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:12px 0}
@@ -1441,8 +2087,8 @@ def main():
         "pages/suggestions.html": (page_suggestions, "Suggestions", 1),
         "pages/flagged-review.html": (page_flagged, "Flagged for Review", 1),
         "pages/repo-review.html": (page_repo_review, "Repo Review", 1),
-        "pages/venues/venetian.html": (lambda: page_venue("venetian", "Venetian", "The Venetian Resort hosts the DeepStack Extravaganza IV (Nov 16 - Dec 23, 2026). Events and on-property hotels below."), "Venetian", 2),
-        "pages/venues/wynn.html": (lambda: page_venue("wynn", "Wynn", "Wynn Las Vegas hosts the WPT World Championship (Nov 27 - Dec 21, 2026) and daily tournaments (suspended during the festival)."), "Wynn", 2),
+        "pages/venues/venetian.html": (lambda: page_venue("venetian", "Venetian", "The Venetian Resort hosts the DeepStack Extravaganza IV, Nov 16 - Dec 23, 2026: 64 event numbers, more than $3.6 million in guaranteed prize pools. Every event below has its official structure sheet read in full on 2026-11-17; the sheets state fees, stacks, levels and registration deadlines but never an entry limit (F27)."), "Venetian", 2),
+        "pages/venues/wynn.html": (lambda: page_venue("wynn", "Wynn", "Wynn Las Vegas hosts the WPT World Championship (Nov 27 - Dec 21, 2026); the poker room is located in the Encore tower. Daily tournaments are advertised on the official page and are suspended during the Wynn Signature, Wynn Millions and Classic series - the WPT festival is not named in that sentence (F32)."), "Wynn", 2),
         "pages/venues/others.html": (lambda: page_venue("other", "Other Venues", "Caesars Palace, Horseshoe, Bellagio and MGM Grand daily tournaments. Rules and schedules are from official pages."), "Other Venues", 2),
     }
     for path, (fn, title, depth) in builders.items():

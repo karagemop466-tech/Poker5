@@ -1,105 +1,227 @@
 {
-  "note": "Walking times from each hotel to a tournament venue. Only on-property venues are verified at 0 minutes (the official source states the tournament is held on the property). All other hotel-to-venue walking times are NOT verified from an official or map source in this repository and are left null. The site's <=30-minute filter shows only verified entries; unverified routes are shown blank and flagged. Do not infer a walking time.",
   "limit_minutes": 30,
+  "note": "Walking minutes are recorded only where an official or measured source states them. On-property routes are 0 minutes by definition. Every other pair is blank with a Google Maps route link so the number can be measured once and entered into this file; nothing is estimated.",
+  "retrieved": "2026-11-17",
   "routes": [
     {
       "hotel": "The Venetian Resort",
-      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
-      "walk_minutes": 0,
-      "verified": true,
+      "note": "On the same property: the DeepStack Extravaganza IV poker suite is in the Venetian/Palazzo resort complex.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort&destination=The+Venetian+poker+room+(Palazzo+Level+2)&travelmode=walking",
       "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-      "source_label": "Venetian official DSE IV page (event held on the property)",
-      "note": "On-property: 0 minutes to the poker suite."
+      "venue": "The Venetian poker room (Palazzo Level 2)",
+      "verified": true,
+      "walk_minutes": 0
     },
     {
       "hotel": "The Palazzo",
-      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
-      "walk_minutes": 0,
-      "verified": true,
+      "note": "The Venetian suite-rate page treats The Venetian and The Palazzo as one resort for the poker rate, so the walk is inside the same complex.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=The+Palazzo&destination=The+Venetian+poker+room&travelmode=walking",
       "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
-      "source_label": "Venetian official suite page (The Venetian and The Palazzo are the same resort)",
-      "note": "The Palazzo is the same resort complex as The Venetian; the poker suite is on the property."
+      "venue": "The Venetian poker room",
+      "verified": true,
+      "walk_minutes": 0
     },
     {
       "hotel": "Wynn Las Vegas",
-      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
-      "walk_minutes": 0,
-      "verified": true,
-      "source": "https://www.wynnlasvegas.com/casino/poker",
-      "source_label": "Wynn official poker page (events held on the property)",
-      "note": "On-property: 0 minutes."
+      "note": "The official WPT terms state registration is in the Wynn Las Vegas Poker Room LOCATED IN ENCORE, so the tower-to-room walk is not zero; the minutes are not published.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Wynn+Las+Vegas&destination=Wynn+poker+room+(in+Encore)&travelmode=walking",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "venue": "Wynn poker room (in Encore)",
+      "verified": false,
+      "walk_minutes": null
     },
     {
-      "hotel": "Encore at Wynn",
-      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
-      "walk_minutes": null,
+      "hotel": "Encore at Wynn Las Vegas",
+      "note": "The poker room is in the Encore tower (official WPT general terms, rule 3).",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Encore+at+Wynn+Las+Vegas&destination=Wynn+poker+room+(in+Encore)&travelmode=walking",
+      "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+      "venue": "Wynn poker room (in Encore)",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Park MGM",
+      "note": "No official or map duration captured; open the route link to time it.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Park+MGM&destination=The+Venetian+poker+room&travelmode=walking",
+      "source": null,
+      "venue": "The Venetian poker room",
       "verified": false,
-      "source": "https://www.wynnlasvegas.com/casino/poker",
-      "source_label": "Wynn official poker page",
-      "note": "Encore is the sister property; the walk to the Wynn poker room is not verified from an official source. Left blank."
+      "walk_minutes": null
+    },
+    {
+      "hotel": "The Cosmopolitan of Las Vegas",
+      "note": "No official or map duration captured; open the route link to time it.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=The+Cosmopolitan+of+Las+Vegas&destination=The+Venetian+poker+room&travelmode=walking",
+      "source": null,
+      "venue": "The Venetian poker room",
+      "verified": false,
+      "walk_minutes": null
     },
     {
       "hotel": "Bellagio",
-      "venue": "Bellagio (poker room)",
-      "walk_minutes": 0,
-      "verified": true,
+      "note": "On the same property.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Bellagio&destination=Bellagio+poker+room&travelmode=walking",
       "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
-      "source_label": "Bellagio official poker page (events held on the property)",
-      "note": "On-property: 0 minutes."
+      "venue": "Bellagio poker room",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Bellagio",
+      "note": "No official or map duration captured.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Bellagio&destination=The+Venetian+poker+room&travelmode=walking",
+      "source": null,
+      "venue": "The Venetian poker room",
+      "verified": false,
+      "walk_minutes": null
     },
     {
       "hotel": "Caesars Palace",
-      "venue": "Caesars Palace (daily NLH)",
-      "walk_minutes": 0,
+      "note": "On the same property.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Caesars+Palace&destination=Caesars+Palace+poker+room&travelmode=walking",
+      "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+      "venue": "Caesars Palace poker room",
       "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Caesars Palace",
+      "note": "No official or map duration captured.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Caesars+Palace&destination=The+Venetian+poker+room&travelmode=walking",
+      "source": null,
+      "venue": "The Venetian poker room",
+      "verified": false,
+      "walk_minutes": null
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "note": "Wynn and the Venetian face each other across Sands Avenue, but no official source publishes a walking time; verify with the route link before relying on it.",
+      "retrieved": "2026-11-17",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Wynn+Las+Vegas&destination=The+Venetian+poker+room&travelmode=walking",
+      "source": null,
+      "venue": "The Venetian poker room",
+      "verified": false,
+      "walk_minutes": null
+    },
+    {
+      "hotel": "The Venetian Resort",
+      "note": "On-property: 0 minutes to the poker suite.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort&destination=The+Venetian+Resort+(DeepStack+Extravaganza+IV)&travelmode=walking",
+      "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "source_label": "Venetian official DSE IV page (event held on the property)",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "The Palazzo",
+      "note": "The Palazzo is the same resort complex as The Venetian; the poker suite is on the property.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=The+Palazzo&destination=The+Venetian+Resort+(DeepStack+Extravaganza+IV)&travelmode=walking",
+      "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "source_label": "Venetian official suite page (The Venetian and The Palazzo are the same resort)",
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Wynn Las Vegas",
+      "note": "On-property: 0 minutes.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Wynn+Las+Vegas&destination=Wynn+Las+Vegas+(WPT+/+daily+tournaments)&travelmode=walking",
+      "source": "https://www.wynnlasvegas.com/casino/poker",
+      "source_label": "Wynn official poker page (events held on the property)",
+      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Encore at Wynn",
+      "note": "Encore is the sister property; the walk to the Wynn poker room is not verified from an official source. Left blank.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Encore+at+Wynn&destination=Wynn+Las+Vegas+(WPT+/+daily+tournaments)&travelmode=walking",
+      "source": "https://www.wynnlasvegas.com/casino/poker",
+      "source_label": "Wynn official poker page",
+      "venue": "Wynn Las Vegas (WPT / daily tournaments)",
+      "verified": false,
+      "walk_minutes": null
+    },
+    {
+      "hotel": "Bellagio",
+      "note": "On-property: 0 minutes.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Bellagio&destination=Bellagio+(poker+room)&travelmode=walking",
+      "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+      "source_label": "Bellagio official poker page (events held on the property)",
+      "venue": "Bellagio (poker room)",
+      "verified": true,
+      "walk_minutes": 0
+    },
+    {
+      "hotel": "Caesars Palace",
+      "note": "On-property: 0 minutes.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Caesars+Palace&destination=Caesars+Palace+(daily+NLH)&travelmode=walking",
       "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
       "source_label": "Caesars official poker page (events held on the property)",
-      "note": "On-property: 0 minutes."
+      "venue": "Caesars Palace (daily NLH)",
+      "verified": true,
+      "walk_minutes": 0
     },
     {
       "hotel": "Horseshoe Las Vegas",
-      "venue": "Horseshoe Las Vegas (daily NLH)",
-      "walk_minutes": 0,
-      "verified": true,
+      "note": "On-property: 0 minutes.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe+Las+Vegas&destination=Horseshoe+Las+Vegas+(daily+NLH)&travelmode=walking",
       "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
       "source_label": "Caesars official poker page (events held on the property)",
-      "note": "On-property: 0 minutes."
+      "venue": "Horseshoe Las Vegas (daily NLH)",
+      "verified": true,
+      "walk_minutes": 0
     },
     {
       "hotel": "MGM Grand",
-      "venue": "MGM Grand (daily NLH)",
-      "walk_minutes": 0,
-      "verified": true,
+      "note": "On-property: 0 minutes.",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=MGM+Grand&destination=MGM+Grand+(daily+NLH)&travelmode=walking",
       "source": "https://mgmgrand.mgmresorts.com/en/casino/poker-tables.html",
       "source_label": "MGM Grand official poker page (events held on the property)",
-      "note": "On-property: 0 minutes."
+      "venue": "MGM Grand (daily NLH)",
+      "verified": true,
+      "walk_minutes": 0
     },
     {
       "hotel": "ARIA Resort & Casino",
-      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
-      "walk_minutes": null,
-      "verified": false,
+      "note": "No official or map walking time captured. Left blank and flagged (F22).",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=ARIA+Resort+&+Casino&destination=The+Venetian+Resort+(DeepStack+Extravaganza+IV)&travelmode=walking",
       "source": "",
       "source_label": "",
-      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "verified": false,
+      "walk_minutes": null
     },
     {
       "hotel": "Caesars Palace",
-      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
-      "walk_minutes": null,
-      "verified": false,
+      "note": "No official or map walking time captured. Left blank and flagged (F22).",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=Caesars+Palace&destination=The+Venetian+Resort+(DeepStack+Extravaganza+IV)&travelmode=walking",
       "source": "",
       "source_label": "",
-      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "verified": false,
+      "walk_minutes": null
     },
     {
       "hotel": "MGM Grand",
-      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
-      "walk_minutes": null,
-      "verified": false,
+      "note": "No official or map walking time captured. Left blank and flagged (F22).",
+      "route_url": "https://www.google.com/maps/dir/?api=1&origin=MGM+Grand&destination=The+Venetian+Resort+(DeepStack+Extravaganza+IV)&travelmode=walking",
       "source": "",
       "source_label": "",
-      "note": "No official or map walking time captured. Left blank and flagged (F22)."
+      "venue": "The Venetian Resort (DeepStack Extravaganza IV)",
+      "verified": false,
+      "walk_minutes": null
     }
   ]
 }

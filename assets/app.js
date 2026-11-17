@@ -3,15 +3,20 @@
 (function () {
   "use strict";
 
-  function visible(tr, query, onlyConfirmed) {
+  function visible(tr, query, onlyConfirmed, dateValue) {
     var cells = tr.querySelectorAll("td");
     var text = "";
     for (var i = 0; i < cells.length; i++) text += (cells[i].textContent || "") + " ";
     text = text.toLowerCase();
     if (query && text.indexOf(query) === -1) return false;
+    if (dateValue && tr.getAttribute("data-date") !== dateValue) return false;
     if (onlyConfirmed) {
-      var badge = tr.querySelector(".badge");
-      if (!badge || badge.textContent.indexOf("Confirmed single-entry") === -1) return false;
+      // the format column also uses .badge, so scan every badge in the row
+      var badges = tr.querySelectorAll(".badge"), hit = false;
+      for (var j = 0; j < badges.length; j++) {
+        if (badges[j].textContent.indexOf("Confirmed single-entry") !== -1) hit = true;
+      }
+      if (!hit) return false;
     }
     return true;
   }
@@ -19,13 +24,14 @@
   window.poker5Filter = function () {
     var q = (document.getElementById("q") || {}).value || "";
     var only = document.getElementById("se-toggle") && document.getElementById("se-toggle").checked;
+    var dv = (document.getElementById("date-filter") || {}).value || "";
     q = q.trim().toLowerCase();
     var tables = document.querySelectorAll("table[data-searchable]");
     var anyVisible = false;
     tables.forEach(function (tbl) {
       var rows = tbl.querySelectorAll("tbody tr");
       rows.forEach(function (tr) {
-        var show = visible(tr, q, only);
+        var show = visible(tr, q, only, dv);
         tr.style.display = show ? "" : "none";
         if (show) anyVisible = true;
       });
@@ -41,8 +47,9 @@
     if (!sel.value) return;
     var opt = sel.options[sel.selectedIndex];
     var buyin = parseFloat(opt.getAttribute("data-buyin").replace(/[^0-9.]/g, "")) || 0;
+    var qualifies = opt.getAttribute("data-qualifies") === "1";
     var name = opt.value;
-    entries.push({ name: name, buyin: buyin, count: count });
+    entries.push({ name: name, buyin: buyin, count: count, qualifies: qualifies });
     renderEntries();
     renderTotals();
   };
@@ -54,8 +61,11 @@
     entries.forEach(function (e, i) {
       var row = document.createElement("div");
       row.className = "entry-row";
+      var qual = e.qualifies ?
+        ' <em class="muted">(\u2265 $300: satisfies the Venetian poker-suite play requirement for one night)</em>' :
+        ' <em class="muted">(&lt; $300: does not satisfy the poker-suite play requirement alone)</em>';
       row.innerHTML = "<span>" + e.count + " &times; " + e.name + " (" +
-        e.buyin.toLocaleString("en-US", { style: "currency", currency: "USD" }) + ")</span>" +
+        e.buyin.toLocaleString("en-US", { style: "currency", currency: "USD" }) + ")" + qual + "</span>" +
         "<button class=\"btn ghost small\" onclick=\"poker5RemoveEntry(" + i + ")\">Remove</button>";
       box.appendChild(row);
     });
@@ -81,6 +91,12 @@
     sumE.textContent = "$" + entriesTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
     sumH.textContent = "$" + hotelTotal.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
     sumT.textContent = "$" + (entriesTotal + hotelTotal).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    var qualBox = document.getElementById("sum-qual");
+    if (qualBox) {
+      var nightsCovered = 0;
+      entries.forEach(function (e) { if (e.qualifies) nightsCovered += e.count; });
+      qualBox.textContent = nightsCovered + " of " + nights + " night(s)";
+    }
   };
 
   // Wire hotel select to load logged rate/fee.

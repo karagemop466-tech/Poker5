@@ -93,6 +93,88 @@ def fetch(url):
         return "unreachable", "", str(exc)[:120]
 
 
+def fetch_text(url):
+    """Return (status, body_text). Only used by the schedule feed; never raises."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            return "ok", resp.read(4_000_000).decode("utf-8", "replace")
+    except Exception as exc:  # noqa: BLE001 - any network failure is recorded, never guessed
+        return "unreachable", str(exc)[:200]
+
+
+def psv_rows():
+    """The Venetian rows the site ranks, as captured from the official schedule."""
+    path = os.path.join(ROOT, "data", "c6087e2c", "venetian_dse_2026.psv")
+    rows = []
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.rstrip("\n")
+            if not line or line.startswith("#"):
+                continue
+            parts = line.split("|")
+            if len(parts) != 9:
+                continue
+            rows.append({"date": parts[0], "time": parts[1], "event_no": int(parts[2]),
+                         "name": parts[3], "buy_in_usd": parts[4], "guarantee_usd": parts[5],
+                         "structure_pdf_no": parts[6], "kind": parts[7]})
+    return rows
+
+
+def schedule_feed():
+    """Morning feed: is each row of our capture still present on the official page?
+
+    Deliberately a presence check on the event name, not a parsed diff: the page markup
+    is not ours to depend on, and a wrong regex must never be reported as 'the schedule
+    changed'. A row whose name is not found is reported as 'text not found on the page'
+    and needs a human look; a failed fetch keeps the previous feed with its date.
+    """
+    url = ("https://www.venetianlasvegas.com/resort/casino/poker/"
+           "deepstack-extravaganza-poker-tournament/dse-nov-2026.html")
+    out_path = os.path.join(DATA, "schedule_feed.json")
+    previous = {}
+    if os.path.exists(out_path):
+        try:
+            with open(out_path, encoding="utf-8") as fh:
+                previous = json.load(fh)
+        except (OSError, ValueError):
+            previous = {}
+    status, body = fetch_text(url)
+    now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if status != "ok":
+        feed = dict(previous)
+        feed.update({"status": "unreachable", "last_attempt": now, "note": body,
+                     "source": url,
+                     "explanation": ("The official page could not be read on this run, so the previous feed "
+                                     "is kept with its earlier date. No row is marked changed from a failed "
+                                     "fetch.")})
+        with open(out_path, "w", encoding="utf-8") as fh:
+            json.dump(feed, fh, indent=2, sort_keys=True)
+        print("schedule feed: page unreachable ({}); previous feed kept".format(body[:80]))
+        return 0
+    flat = re.sub(r"\s+", " ", body)
+    rows = psv_rows()
+    missing = []
+    for r in rows:
+        needle = re.sub(r"\s+", " ", r["name"]).strip()
+        r["present"] = needle in flat or needle.replace("'", "&#8217;") in flat
+        if not r["present"]:
+            missing.append(r)
+    feed = {"status": "ok", "last_run": now, "retrieved": now[:10], "source": url,
+            "rows_checked": len(rows), "rows_not_found": len(missing),
+            "rows": rows,
+            "note": ("Presence check of every event name in data/c6087e2c/venetian_dse_2026.psv against the "
+                     "official DeepStack Extravaganza IV page. 'present' means the exact event name is on the "
+                     "page today; it does not re-verify prices, which need the structure sheet. Buy-in and "
+                     "guarantee columns below are our capture, not a fresh parse.")}
+    with open(out_path, "w", encoding="utf-8") as fh:
+        json.dump(feed, fh, indent=2, sort_keys=True)
+    print("schedule feed: {} rows checked, {} not found on the official page".format(len(rows), len(missing)))
+    for r in missing[:20]:
+        print("  - event #{} {} ({})".format(r["event_no"], r["name"][:60], r["date"]))
+    return 0
+
+
 def load_baseline():
     if os.path.exists(BASELINE):
         with open(BASELINE, encoding="utf-8") as fh:
@@ -107,7 +189,13 @@ def main():
     ap.add_argument("--seed", action="store_true",
                     help="record the current source list as the baseline without fetching "
                          "(used to seed the baseline from the data already captured)")
+    ap.add_argument("--feed", action="store_true",
+                    help="run the morning schedule feed: check every captured Venetian row against the "
+                         "official page and write data/c6087e2c/schedule_feed.json")
     args = ap.parse_args()
+
+    if args.feed:
+        return schedule_feed()
 
     urls = collect_urls()
     baseline = load_baseline()

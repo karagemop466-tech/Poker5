@@ -51,3 +51,6 @@ code{background:#eef2f8;padding:1px 5px;border-radius:4px}
 .calc-total span{font-size:12px;color:var(--muted)}
 .calc-total strong{font-size:20px}
 .calc-total .grand strong{color:var(--accent);font-size:24px}
+
+.badge-muted{background:#eef1f5;color:var(--muted)}
+.entry-row em{font-style:normal;color:var(--muted)}

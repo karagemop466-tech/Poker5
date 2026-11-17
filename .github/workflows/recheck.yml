@@ -28,14 +28,17 @@ jobs:
       - name: Re-read every official source URL and diff against the baseline
         run: python3 scripts/recheck_sources.py
 
+      - name: Morning schedule feed (is each captured row still on the official page?)
+        run: python3 scripts/recheck_sources.py --feed
+
       - name: Commit and push the updated baseline if anything changed
         run: |
-          if git diff --quiet data/c6087e2c/last_checked.json; then
+          if git diff --quiet data/c6087e2c/last_checked.json data/c6087e2c/schedule_feed.json; then
             echo "No official source changed; nothing to commit."
           else
             git config user.name "poker5-recheck[bot]"
             git config user.email "recheck@users.noreply.github.com"
-            git add data/c6087e2c/last_checked.json
-            git commit -m "chore: re-check official sources [skip ci]"
+            git add data/c6087e2c/last_checked.json data/c6087e2c/schedule_feed.json
+            git commit -m "chore: re-check official sources and schedule feed [skip ci]"
             git push
           fi
