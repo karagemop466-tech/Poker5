@@ -59,7 +59,7 @@ DSE_URL = ("https://www.venetianlasvegas.com/resort/casino/poker/"
            "deepstack-extravaganza-poker-tournament/dse-nov-2026.html")
 UA = ("Mozilla/5.0 (compatible; Poker5-official-source-scraper/1.0; "
       "+https://github.com/karagemop466-tech/Poker5)")
-TIMEOUT = 45
+TIMEOUT = 25   # per-connection ceiling; MGM hosts can black-hole a TCP connect
 MONTHS = {m: i for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July",
      "August", "September", "October", "November", "December"], start=1)}
@@ -113,6 +113,31 @@ def fetch(url: str) -> tuple[bytes | None, dict]:
             rec["note"] = "{}: {}".format(type(exc).__name__, exc)
         time.sleep(2 * attempt)
     return None, rec
+
+
+def fetch_many(urls, workers: int = 8) -> dict:
+    """Fetch many URLs concurrently, each with its own hard deadline."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    out: dict[str, tuple] = {}
+    if not urls:
+        return out
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(fetch, u): u for u in urls}
+        for fut in as_completed(futures, timeout=420):
+            url = futures[fut]
+            try:
+                out[url] = fut.result()
+            except Exception as exc:  # noqa: BLE001 - a stuck worker must not hang the run
+                out[url] = (None, {"url": url, "retrieved_at": now_iso(),
+                                   "status": "error", "sha256": "", "bytes": 0,
+                                   "note": "worker failed: {}: {}".format(
+                                       type(exc).__name__, exc)})
+    for u in urls:
+        if u not in out:
+            out[u] = (None, {"url": u, "retrieved_at": now_iso(), "status": "error",
+                             "sha256": "", "bytes": 0, "note": "no result (timeout)"})
+    return out
 
 
 def now_iso() -> str:
@@ -395,9 +420,10 @@ def main_live() -> int:
             sheet_urls.setdefault(r["structure_no"], r["structure_url"])
 
     structures: dict[str, dict] = {}
+    fetched = fetch_many([sheet_urls[n] for n in sorted(sheet_urls)])
     for n in sorted(sheet_urls):
         url = sheet_urls[n]
-        body, srec = fetch(url)
+        body, srec = fetched[url]
         status[url] = srec
         entry: dict = {"sheet_no": n, "url": url,
                        "retrieved_at": srec["retrieved_at"],
@@ -420,12 +446,12 @@ def main_live() -> int:
         print("sheet {:>2}: events={} late={} gtd={} fee_hits={}".format(
             n, entry["event_numbers"], entry["late_registration_clock"] or "-",
             entry["guarantee"], len(entry["restriction_keywords"])))
-        time.sleep(0.7)
 
     # ---- watched hotel / venue pages: hash + verbatim fee lines only
     watch: dict[str, dict] = {}
+    watched = fetch_many(list(WATCH_URLS.values()), workers=6)
     for key, url in WATCH_URLS.items():
-        body, wrec = fetch(url)
+        body, wrec = watched[url]
         status[url] = wrec
         entry = {"url": url, "name": key, "http_status": wrec["status"],
                  "sha256": wrec["sha256"], "retrieved_at": wrec["retrieved_at"],
@@ -452,7 +478,6 @@ def main_live() -> int:
             entry["resort_fee_excerpts"] = hits
         watch[key] = entry
         print("watch {:>28}: HTTP {} bytes {}".format(key, wrec["status"], wrec["bytes"]))
-        time.sleep(0.4)
     write_json("watch_status.json", {
         "last_run": now_iso(),
         "note": ("HTTP status + content hash + verbatim 'resort fee' sentences for "
