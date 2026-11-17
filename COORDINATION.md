@@ -251,6 +251,27 @@ Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`
 - PR CI passed at head `6fe6345`: Quality `check` run [43942160910](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160910) and Dec 2–9 `validate` run [43942160914](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160914). Local `npm run check` (8 tests), aa83 syntax/smoke/data/link/build checks, `python3 scripts/check_site_cd5ab298.py`, root rebuild, HTML parse, and local HTTP checks all passed.
 - GitHub Pages API reports source `main` `/`, status `built`, and [deployment run 43942237181](https://github.com/karagemop466-tech/Poker5/actions/runs/43942237181) succeeded (deployment ID `7834506681`, URL `https://karagemop466-tech.github.io/Poker5/`). The aa83 subsite path is `https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/`. The sandbox cannot make direct HTTP requests to `github.io`; verification is from the successful Pages build/deploy API plus the passing local HTTP smoke checks.
 
+---
+
+## Session 6d1e0039 (branch `arena/6d1e0039-poker5`) — feature build + final integration
+
+Started 2026-11-17. Base: `f203df6` (merge of PR #19). No other session claims were active on the board, so this session claims the remaining brief items below. Scope kept isolated in `data-6d1e0039/`, `scripts/recheck_6d1e0039.py`, `.github/workflows/recheck-6d1e0039.yml`, `dashboard-6d1e0039/`, plus its own sections of `COORDINATION.md`. Root `index.html` navigation, `README.md`, and this board are edited only for final integration at the end.
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| N1 | Re-verify official sources (Venetian DSE IV schedule + all structure sheets, Wynn/WPT, Bellagio, Caesars, MGM Grand) and record "last checked" per row | in progress | 6d1e0039 | data-6d1e0039/ |
+| N2 | Structured rule fields per event (single-entry / re-entry / add-on / fee values separately, with source excerpt + retrieval date); remove "unverified" only where a structure sheet confirms | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N3 | Hotels: true cost/night = rate + resort fee + 13.38% tax; dated rate log (not a single value); checkout total, nightly average, resort fee, tax, parking, cancellation, rate timestamp | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N4 | Walking-route check hotel–venue pairs with 30-minute limit + ≤30 min filter | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N5 | Schedule overlap check (start, late-reg cutoff, plausible duration; primary event + conditional fallback per day) | in progress | 6d1e0039 | data-6d1e0039/, dashboard-6d1e0039/ |
+| N6 | Trip-cost calculator (entries × buy-ins + nights × true hotel cost) | in progress | 6d1e0039 | dashboard-6d1e0039/ |
+| N7 | One page per venue (Venetian, Wynn, others) with its events and hotels | in progress | 6d1e0039 | dashboard-6d1e0039/ |
+| N8 | Search box + date filter + single-entry/freezeout toggle filter on tournament tables | in progress | 6d1e0039 | dashboard-6d1e0039/ |
+| N9 | Change monitoring: scheduled re-check of each official URL (GitHub Actions cron), dated re-check log, rows whose source changed marked | in progress | 6d1e0039 | scripts/recheck_6d1e0039.py, .github/workflows/recheck-6d1e0039.yml, data-6d1e0039/ |
+| N10 | Build dashboard site, validate, PR → merge → confirm Pages deploy, record result | unclaimed | 6d1e0039 | all |
+
+Rules: every value from an official source with link; blank + flagged if not confirmable; nothing inferred; small frequent commits; `git pull --rebase` before every push.
+
 ## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration (merged on main)
 
 This session completed integration on main. All other session outputs preserved untouched.
