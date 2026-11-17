@@ -634,3 +634,62 @@ Claimed 2026-11-17 from `main` @ `5273918` (no other active claims on the board;
 - **Not possible from this session:** `gh workflow run recheck.yml` returns HTTP 403 for this token. The monitor therefore has not been run manually. Its first run will be the daily 06:00 UTC schedule (2026-11-18). After that run, check `data/c6087e2c/last_checked.json` for hashes and `data/c6087e2c/schedule_feed.json` for the feed result.
 - **Still open, not done here (unclaimed, for a future session):** live hotel rate lookups and a dated rate log for each date; walking times for hotel → venue pairs (no official source gives them; maps were not consulted); a daily scrape for each Strip room (only the Venetian feed exists); re-reading the 37 structure-sheet rule texts; event durations and finish times; the Wynn and Bellagio/ARIA/MGM fee verifications listed on the flagged page.
 
+## Session ccce9579 (branch `arena/ccce9579-poker5`) — repo review, README restatement check, stale-PR takeover, integration verification
+
+Claim written before any file was edited (board read at origin/main `3882856`, PR #34 merge). Branch fixed by Arena. **Non-overlap check performed against the board:** session `251c122f` is active (claim `62953d9` at 21:58Z, manual commits through 22:27Z, workflow auto-commit `aa8156a` at 22:28Z) and owns the shared root site (`data/c6087e2c/*`, `pages/**`, `index.html`, `assets/**`, `scripts/build_c6087e2c.py`, workflows) via J1–J7 — none of those files are touched by this session. While this session was verifying the tree, PRs #35 (05d77503, coordination record only) and #37 (b0cd6d45, change-monitor repair + schedule re-verification + **README correction B3**) merged to main; after the rebase at `3556b79` this session re-checked the README state before deciding whether M2 still needs an edit (recorded below).
+
+| # | Task | Status | Owner | Files touched | Notes |
+|---|------|--------|-------|---------------|-------|
+| M1 | Read board, claim non-overlapping scope, commit+push claim | done | ccce9579 | COORDINATION.md (this section only) | Rebased onto `3556b79` (PRs #35/#37 merged during verification); add/add conflict on this file resolved by keeping main's board verbatim and re-appending only this section |
+| M2 | Restate `README.md` to the post-audit state — 3c49aaec's logged handoff request | done by b0cd6d45 (PR #37, B3); verified by ccce9579, no duplicate edit | b0cd6d45 | README.md (owner) / none (this session) | This session verified the merged README against the build's headline counts; result recorded in M4 |
+| M3 | Stale-PR takeover per the 60-minute rule: PR #10 (session `2ed7df1a`, last commit 2026-11-16T19:12:56Z, >27 h idle, merge state conflicted/UNKNOWN, task completed and superseded by merged sessions #3/#13–#37) — close with a handoff comment, record here | in progress | ccce9579 | GitHub PR state only; no commits to that branch | Merging it would regress main (its tree predates PRs #13–#37); "do not merge a broken site" |
+| M4 | Repo-level verification of the combined tree at `3556b79`: run every session's committed validator/build offline, full internal-link sweep, GitHub Pages API check (read-only — any generator diffs are reported on this board, never committed over another session's scope) | in progress | ccce9579 | none (results recorded in this section) | Data spot-checks vs official sources via the page-fetch tool (sandbox egress to casino hosts is blocked) |
+| M5 | Integration PR `arena/ccce9579-poker5` → `main` (board record), merge without waiting, confirm GitHub Pages deploy via API, record PR link + merge result | pending | ccce9579 | COORDINATION.md | Flagged/unverified items do not block the merge |
+
+Rules followed: no value inferred; every stated fact on the site stays source-linked; small frequent commits; `git pull --rebase` before every push; conflicts resolved without discarding the other side.
+>>>>>>> d1452be (coord(ccce9579): claim non-overlapping scope (README handoff, PR #10 takeover, integration verification))
+
+### Results (session ccce9579) — repo-level verification + official-source re-checks, 2026-11-17/18
+
+**M2 (README) — resolved by b0cd6d45, verified by this session.** 3c49aaec's handoff request is satisfied on main by PR #37 (task B3): the README now states the audit standard (sheet silence ≠ single-entry), the 37-sheet audit, confirmed count 0 and flag F27 — matching the build's headline output exactly. This session made no README edit (no duplicate work, file owned by B3's claim).
+
+**M3 (stale PR #10) — done.** Takeover per the 60-minute rule: session `2ed7df1a` last committed 2026-11-16T19:12:56Z (>27 h before takeover), its own final commit records a merge blocker, its branch predates merged PRs #3/#13–#40, and GitHub reported merge state UNKNOWN (conflicted). Closed as superseded with a takeover comment on the PR; no commits were made to its branch; its work remains in git history.
+
+**M4 (offline validators, root-site files unchanged by board-only PRs #35–#40):**
+
+```
+python3 scripts/build_c6087e2c.py      -> exit 0; built 14 pages; confirmed=0 unverified=48 multis=98 bounties=32 flags=48;
+                                          regenerated output byte-identical (git status clean)
+python3 scripts/check_root_site.py     -> root site check: links, source anchors and baseline OK
+python3 scripts/recheck_sources.py --offline -> baseline: 87 official sources recorded; last_run=2026-11-17T15:00:06Z
+python3 scripts/check_afff1fc9.py      -> events=205 pages=11 errors=0 warnings=0
+python3 scripts/check_site_cd5ab298.py -> 7 HTML pages, 56 dated rows, 4 hotels OK
+python3 scripts/build_final_a9d1e02d.py --check-only -> Data validation passed
+node scripts/check.mjs                 -> 33 tournament rows, 7 data files OK
+npm run check                          -> exit 0 (8 tests, site-b50aa7f5)
+node scripts/build_aa83f1e1.mjs / smoke_aa83f1e1.mjs -> exit 0
+python3 scripts/check_bafafd7c.py      -> PASS (rows, source links, counts)
+node --check assets/app.js + all session dashboard JS -> OK
+Repo-wide internal-link sweep (custom, /tmp)          -> 140 HTML files, 1,814 internal refs, 0 broken
+GitHub Pages API                        -> source main /; build for 3882856 status built, error null
+```
+
+**M4 (live official-source checks via page fetch; sandbox egress to casino hosts remains blocked, consistent with prior sessions):**
+
+| Value | Official source (retrieved 2026-11-17/18 UTC) | Result |
+|---|---|---|
+| Venetian resort fee | https://www.venetianlasvegas.com/resort/resort-fee.html — "daily Resort Fee of $55 plus tax per night, payable upon check-in" | matches site data exactly ✓ |
+| Venetian DSE IV schedule rows #19 (Nov 29 11:10 $400 1A $75K GTD, sheet 3), #24 (Dec 2 10:10 $600 Seniors $40K GTD, sheet 17), #26 (Dec 3 11:10 $800 1A $500K GTD, sheet 12), #36 (Dec 9 11:10 $800 Bounty $75K GTD, sheet 16), #40 (Dec 10 12:10 $600 PLO Bounty $25K GTD, sheet 27) | https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html | all 5 spot-checked rows match `data/c6087e2c/venetian_dse_2026.psv` byte-for-byte on date/time/number/name/buy-in/guarantee/sheet ✓ |
+| **MGM Grand resort fee (NEW — part of F32)** | https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html — "A daily resort fee of $50.00 plus applicable tax will be applied to all reservations" | official value found; site row is blank (F32) — handoff below |
+| **ARIA resort fee (NEW — part of F32)** | https://aria.mgmresorts.com/en/terms-and-conditions.html — "A daily resort fee of $55.00 plus applicable tax will be applied to all reservations" | official value found; handoff below |
+| **Bellagio resort fee (NEW — part of F32)** | https://bellagio.mgmresorts.com/en/terms-and-conditions.html — "A daily resort fee of $55.00 plus applicable tax will be applied to all reservations" (the `/en/resort/fees.html` 404 noted in F32 is superseded by this live URL) | official value found; handoff below |
+| Caesars Palace / CET Las Vegas resort fee (partial) | https://www.caesars.com/corporate/disclaimer (Hotel Disclaimer) — "Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort fees are waived for Diamond and Seven Stars." (page now says $45–$60; earlier third-party captures quoted $45–$50) | official range only, not a per-property value — Caesars Palace row stays partially blank |
+| Tax base of the resort fee (evidence for F44) | all three MGM T&C pages: "Lodging taxes apply to the basic room rate, any resort fee, additional per occupant charges, upgrades, as well as any other charges" | official confirmation that the resort fee is inside the lodging-tax base for MGM Grand / ARIA / Bellagio |
+| Cancellation policy (MGM Grand / ARIA / Bellagio) | same three T&C pages — first night's deposit fully refundable with ≥72 h notice; later cancellation forfeits first night's deposit | official cancellation-deadline values for those properties; handoff below |
+| Wynn resort fee | https://www.wynnlasvegas.com/resort-fee and https://www.wynnlasvegas.com/hotel/resort-fee both still error pages | F30/F8 unchanged ($55 from the 2025-dated promo terms page remains the only official capture) |
+
+**Handoff request to the root-site data owner (251c122f's claimed scope, not edited by this session):** the official MGM Grand $50 + tax, ARIA $55 + tax and Bellagio $55 + tax daily resort fees, the MGM tax-base sentence, and the three 72-hour cancellation terms are now verifiable from the official T&C pages listed above (retrieved 2026-11-17/18 UTC). When applying them to `data/c6087e2c/hotels.json` / `rates_log.json` / `flags.json`, keep F32 open for Caesars Palace (official source states only a $45–$60 citywide range) and record the retrieval dates. This session did not edit those files.
+
+**Irregularities:** none new beyond the above (Caesars corporate page's fee range was widened from the previously captured $45–$50 to $45–$60 between captures — treated as the official current statement, with the prior capture noted). The failed "Daily official-source scrape (root site)" run at 22:27Z ran on session 251c122f's own branch (`arena/251c122f-poker5`), not on main; main's scheduled monitor runs succeeded (`Official source monitor · final poker planner` pass at 22:26Z; recheck baseline last_run 15:00:06Z).
+
+**M5** — integration PR follows; result recorded below after merge and Pages confirmation.
