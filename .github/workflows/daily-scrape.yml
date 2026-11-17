@@ -1,0 +1,82 @@
+name: Daily official-source scrape (root site)
+
+# Every morning this job reads the official pages and PDFs behind the root
+# planner, records exactly what they say (with the excerpt and the retrieval
+# timestamp), rebuilds the site from that data and pushes the result. The
+# agent sandbox that authors this repo cannot open a connection to casino
+# hosts, so the reading happens here, on a runner with normal internet access.
+#
+# A changed source never silently changes a displayed value: the scraper writes
+# new excerpts and hashes, the build regenerates the pages from the data, and
+# any field that disappeared from a source becomes blank + flagged.
+
+on:
+  schedule:
+    - cron: "37 13 * * *"   # 13:37 UTC daily (~06:37 Las Vegas)
+  workflow_dispatch:
+  push:
+    branches: ["arena/**", "main"]
+    paths:
+      - "scripts/scrape_251c122f.py"
+      - "scripts/build_c6087e2c.py"
+      - "scripts/check_root_site.py"
+      - ".github/workflows/daily-scrape.yml"
+      - "data/c6087e2c/verification_251c122f.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-scrape-root
+  cancel-in-progress: false
+
+jobs:
+  scrape-build-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the branch this run belongs to
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PDF reader
+        run: python3 -m pip install --quiet pypdf==5.1.0
+
+      - name: Parser self-test (no network)
+        run: python3 scripts/scrape_251c122f.py --self-test
+
+      - name: Read every official schedule row and structure sheet
+        run: python3 scripts/scrape_251c122f.py
+
+      - name: Merge the live capture into the verified dataset
+        run: python3 scripts/merge_251c122f.py
+
+      - name: Rebuild the site from the data
+        run: python3 scripts/build_c6087e2c.py
+
+      - name: Validate links, source anchors and cross-checks
+        run: |
+          python3 scripts/check_root_site.py
+          python3 scripts/crosscheck_251c122f.py
+
+      - name: Commit the refreshed capture (scheduled and branch runs)
+        run: |
+          git config user.name  "poker5-source-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/c6087e2c/ index.html pages/
+          if git diff --cached --quiet; then
+            echo "no change in the capture or the site"
+            exit 0
+          fi
+          git commit -m "scrape(251c122f): daily official-source capture $(date -u +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && break
+            echo "rebase attempt $attempt failed; retrying"
+            sleep 5
+          done
+          git push origin "HEAD:${GITHUB_REF_NAME}"
