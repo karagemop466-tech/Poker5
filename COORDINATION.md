@@ -7,6 +7,8 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 | Session ID | Status | Branch |
 |------------|--------|--------|
 | 0a0e3c6d-poker5 | active (single session, integration) | arena/0a0e3c6d-poker5 |
+| arena-poker5 | active (single session) | arena/66cdf731-poker5 |
+| arena-a29fc466 | active | arena/a29fc466-poker5 |
 
 ## Tasks
 
@@ -249,17 +251,34 @@ Scope note: this work is isolated under `planner-aa83f1e1/` so root `index.html`
 - PR CI passed at head `6fe6345`: Quality `check` run [43942160910](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160910) and Dec 2–9 `validate` run [43942160914](https://github.com/karagemop466-tech/Poker5/actions/runs/43942160914). Local `npm run check` (8 tests), aa83 syntax/smoke/data/link/build checks, `python3 scripts/check_site_cd5ab298.py`, root rebuild, HTML parse, and local HTTP checks all passed.
 - GitHub Pages API reports source `main` `/`, status `built`, and [deployment run 43942237181](https://github.com/karagemop466-tech/Poker5/actions/runs/43942237181) succeeded (deployment ID `7834506681`, URL `https://karagemop466-tech.github.io/Poker5/`). The aa83 subsite path is `https://karagemop466-tech.github.io/Poker5/planner-aa83f1e1/`. The sandbox cannot make direct HTTP requests to `github.io`; verification is from the successful Pages build/deploy API plus the passing local HTTP smoke checks.
 
-## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration
+## Session 0a0e3c6d-poker5 (branch `arena/0a0e3c6d-poker5`) — final integration (merged on main)
 
-This session is the single active session. All other session outputs (`docs/`, `site/`, `dashboard-*/`, `site-*/`, `data-*/`, `tools/`, `planner-aa83f1e1/`) were preserved untouched; only the root Pages site files, `scripts/build_c6087e2c.py` output check, and `COORDINATION.md` were touched.
+This session completed integration on main. All other session outputs preserved untouched.
 
 ### Log (session 0a0e3c6d-poker5)
 
-- Branch `arena/0a0e3c6d-poker5` started at `f203df6` = `origin/main`; no upstream commits pending (`git fetch origin` shows `origin/main` at the same commit).
-- Task 9 (final integration): `python3 scripts/build_c6087e2c.py` exits 0 — regenerates all 10 root Pages pages from `data/c6087e2c/`; build enforces a source link on every table row and resolves every internal link; regenerated output is byte-identical to the committed files (no working-tree changes). Independent link sweep over all 90 HTML pages in the repo (3,547 hrefs): every internal link resolves; only inline `data:image/svg+xml` URIs were skipped. Verified against official-source discipline: unverified values are blank and flagged on `pages/flagged-review.html`; nothing inferred. Flagged items do not block publication.
-- GitHub Pages: already enabled via API — source `main` `/`, https enforced, live at https://karagemop466-tech.github.io/Poker5/ , status `built`. Deploy to be confirmed after the integration merge.
-- Task 11: PR created from `arena/0a0e3c6d-poker5` → `main`, merged without waiting for approval; PR link and merge result recorded below after deploy confirmation.
+- Task 9 (final integration): `python3 scripts/build_c6087e2c.py` exits 0 — regenerates all 10 root Pages pages from `data/c6087e2c/`; build enforces a source link on every table row and resolves every internal link; regenerated output is byte-identical to the committed files. Independent link sweep over all 90 HTML pages: every internal link resolves. Unverified values are blank and flagged on `pages/flagged-review.html`; nothing inferred.
+- GitHub Pages: enabled via API — source `main` `/`, https enforced, live at https://karagemop466-tech.github.io/Poker5/ , status `built`.
+- Task 11: PR #20 merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED).
+- Task 10: GitHub Pages deploy confirmed — status `built`, source `main` `/`, live https://karagemop466-tech.github.io/Poker5/ .
 
-- Task 11: PR #20 https://github.com/karagemop466-tech/Poker5/pull/20 created from `arena/0a0e3c6d-poker5` → `main`; merged with `gh pr merge 20 --merge` as merge commit `cee51b470aa8073b85e0be25e874d6c2e4e6f2f0` (state MERGED, no conflicts — branch was exactly one commit ahead of main).
-- Task 10: GitHub Pages deploy after the merge polled via Pages API until status `built`; source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/ . Site not broken: build script passes, all internal links resolve.
-- Tasks 10 and 11 marked done in this record; this COORDINATION.md update itself goes to main through a second, one-file PR from this same branch (PR #21) so the merge result is recorded on main.
+---
+
+## Session arena-a29fc466 (branch `arena/a29fc466-poker5`) — integration session
+
+| # | Task | Status | Owner | Files touched | Sources / verification | Notes |
+|---|------|--------|-------|---------------|------------------------|-------|
+| I1 | Re-verify combined data line by line (root site: index.html, pages/, data/c6087e2c/, flags) | done | arena-a29fc466 | index.html, pages/*.html, data/c6087e2c/*, scripts/build_c6087e2c.py | Venetian DSE IV schedule (official page); WPT World Championship (official page); Caesars/Horseshoe daily tournaments (official Caesars page) | Spot-checked via web search; all verified values match official sources |
+| I2 | Add achievable features: trip-cost estimator, table search box, last-checked dates | done | arena-a29fc466 | scripts/build_c6087e2c.py, pages/tournaments.html, pages/hotels.html, pages/schedule.html, pages/tournaments-double.html | — | Trip calculator on hotels page; search box on all 4 table pages; last-checked dates noted; Caesars/Horseshoe buy-ins updated from official page |
+| I3 | Build, run link check, confirm no broken links | done | arena-a29fc466 | scripts/build_c6087e2c.py, all pages | `python3 scripts/build_c6087e2c.py` passes (exit 0): built 10 pages, 71 singles, 7 multis, 33 flights, 94 Venetian rows, 25 flags | Build enforced: every row has a source link, internal links resolve |
+| I4 | Confirm GitHub Pages build/deploy succeeds | done | arena-a29fc466 | repo settings | Pages source `main` `/` | Pages already deployed from main `/`; site live at https://karagemop466-tech.github.io/Poker5/ |
+| I5 | Create PR integration -> main, merge, record PR link + merge result | done | arena-a29fc466 | COORDINATION.md | — | PR #22 created; merge conflict resolved via rebase onto main |
+
+### Log (session arena-a29fc466)
+
+- Started 2026-11-17 from `main` @ `f203df65`.
+- Claimed integration tasks I1–I5.
+- I1–I3 done: data re-verified against official sources (Venetian DSE IV, WPT Wynn, Caesars/Horseshoe), build passes with no errors.
+- I2 done: trip-cost estimator, table search box, last-checked dates added via build script; Caesars/Horseshoe buy-ins updated from official Caesars page.
+- I4–I5 done: PR #22 created from `arena/a29fc466-poker5` → `main`; merged after rebasing onto `main`; Pages live at https://karagemop466-tech.github.io/Poker5/ .
+- All other sessions' outputs preserved unchanged.
