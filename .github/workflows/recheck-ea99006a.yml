@@ -1,0 +1,51 @@
+name: recheck-ea99006a
+
+# Session ea99006a - re-fetch every official source that backs a table row,
+# hash it, and record what changed. 13:00 UTC == 6:00 AM Las Vegas, so the
+# change log is fresh before the day's tournaments start.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recheck-ea99006a
+  cancel-in-progress: false
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate the source ledger offline
+        run: python3 scripts/recheck_ea99006a.py --offline
+
+      - name: Re-fetch every official source
+        run: python3 scripts/recheck_ea99006a.py
+
+      - name: Rebuild the site
+        run: |
+          python3 scripts/build_ea99006a.py
+          python3 scripts/check_ea99006a.py
+
+      - name: Commit any change to the ledger or the site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/ea99006a pages index.html assets)" ]; then
+            git add data/ea99006a pages index.html assets
+            git commit -m "ea99006a: automated official-source re-check"
+            git push
+          else
+            echo "no changes"
+          fi

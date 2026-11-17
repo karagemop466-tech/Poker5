@@ -700,3 +700,124 @@ GitHub Pages API                        -> source main /; build for 3882856 stat
 - GitHub Pages: source `main` `/`; the Pages build for merge commit `e7b744c` reached `built` with `error: null` (Pages API; the sandbox cannot make direct HTTP requests to `github.io`). Live site: https://karagemop466-tech.github.io/Poker5/ — no broken internal links (1,814 refs checked).
 - Tasks M1–M5: done. M2 resolved by b0cd6d45 (PR #37) and verified; M3 stale PR #10 takeover complete; M4 verification record above; M5 this record.
 - Open handoff (unchanged, for the data-file owner): official MGM Grand / ARIA / Bellagio fee values + MGM tax-base sentence + 72 h cancellation terms recorded above await application to `data/c6087e2c/*`; Caesars Palace stays range-only; Wynn F30/F8, walking minutes F22/F42 and hotel quality F43 remain open.
+
+## Session ea99006a (branch `arena/ea99006a-poker5`) — source-verified integration (final)
+
+Base commit `d47622ef9d289d2895761751b9a9a6699596efab` (= `main` tip at start, 2026-11-17 15:58Z).
+
+**Takeover notice.** PR #30 (`arena/a9d1e02d-poker5`) is OPEN, MERGEABLE and CLEAN, but its last commit
+is 2026-11-17T01:48:21Z — more than 60 minutes old with no commits. Under the takeover rule this session
+records the handoff, does not delete its work, and folds its isolated output (`planner-a9d1e02d/`,
+`data/final/`) into the integration review rather than editing those files.
+
+### Files actually written by this session (no other session may edit these)
+
+| Scope | Files |
+|---|---|
+| Verified dataset | `data/ea99006a/*.json` (venetian, wpt, other, venues, hotels, routes, flags, questions, suggestions, meta, sheets, last_checked, change_log) |
+| Root site published by GitHub Pages (`main` `/`) | `index.html`, `pages/**` (18 pages), `assets/css/style.css`, `assets/app.js` |
+| Generators / checkers / monitor owned here | `scripts/data_ea99006a.py`, `scripts/build_ea99006a.py`, `scripts/check_ea99006a.py`, `scripts/recheck_ea99006a.py` |
+| Automation | `.github/workflows/recheck-ea99006a.yml` |
+| This board section | `COORDINATION.md` (this section only) |
+| Working notes | `work/structures.md` (37-sheet audit) and other `work/**` scratch |
+
+Not touched: `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/` (incl. `planner-a9d1e02d/`),
+`data-*/`, `data/c6087e2c/`, `data/final/`, `tools/`, any other session's `scripts/build_*` / `check_*`.
+Earlier sessions' dashboards are preserved and linked from an "Earlier sessions" panel on the landing
+page and the Other venues page.
+
+### Tasks
+
+| # | Task | Status | Files / evidence |
+|---|------|--------|------------------|
+| E1 | Read every official Venetian DSE IV structure sheet (37 PDFs) and record entry rules verbatim | **done** | `data/ea99006a/meta.json` → `sheets` (37 records), `work/structures.md` |
+| E2 | Re-verify every scheduled Venetian row against the official page; blank/flag anything unconfirmed | **done** | `data/ea99006a/venetian.json` (94 rows, each with `source` + `schedule_source` + `retrieved`) |
+| E3 | Verify other Strip rooms from official pages | **done** | `data/ea99006a/wpt.json` (136 rows), `other.json` (17 rows: 4 Caesars Palace dailies, 5 Wynn dailies, 8 South Point), `venues.json` (9 rooms) |
+| E4 | Hotel official pages: resort fee, address, official booking link, parking, cancellation | **done (rates excepted)** | `hotels.json`; Venetian $55+tax and Resorts World $55 verified; Wynn / Caesars / Horseshoe fees unverified and flagged (F08, F09) |
+| E5 | Walking routes: official addresses + stated method, ≤30 min filter | **done (on-property only)** | `routes.json` (30 pairs); only same-property = 0 min is verifiable; F15 |
+| E6 | Build root site with all brief features | **done** | `scripts/build_ea99006a.py` → 18 pages |
+| E7 | Scheduled official-source re-check + change log | **done** | `scripts/recheck_ea99006a.py`, `.github/workflows/recheck-ea99006a.yml`, `data/ea99006a/last_checked.json` (89 URLs), `change_log.json`, `pages/monitor.html` |
+| E8 | Validate, commit, PR → merge → confirm Pages deploy, record result | **in progress** | see log below |
+
+### Headline findings (all from official sources, retrieved 2026-11-17)
+
+1. **Zero events are confirmed single-entry.** All 37 official Venetian DSE IV structure sheets were
+   read; none states a one-entry, no-re-entry or freezeout limit. Every WPT / Wynn event whose terms were
+   read states the opposite ("unlimited re-entry", or "one entry and one re-entry per starting flight"
+   for the WPT Prime Championship). All five Wynn daily tournaments state a re-entry fee or a
+   rebuy/add-on. Caesars Palace dailies are disqualified by an optional $50 add-on.
+   Silence on a sheet is **never** promoted to "single-entry" — 47 rows carry the label
+   "entry cap not stated - unverified" instead.
+2. **Verified row count: 247** (94 Venetian, 136 WPT/Wynn festival, 17 other rooms). Every row carries
+   an official source link; the build fails otherwise.
+3. **Two Strip series are officially confirmed for the window**: Venetian DeepStack Extravaganza IV
+   (16 Nov – 23 Dec 2026, "more than $3.6 million in guaranteed tournament prize pools") and the WPT
+   World Championship at Wynn (27 Nov – 21 Dec 2026).
+4. **No official schedule in this window lists an 8:00 AM start.** The earliest verified start is
+   9:10 AM (Venetian satellite, 12 Dec); earliest non-satellite is 10:10 AM. Caesars Palace dailies run
+   10 AM / 2 PM / 6 PM / 9 PM; the Wynn nightly is 6 PM.
+5. **Hotel true nightly cost = (rate + resort fee) × 1.1338.** 13.38% is the Clark County combined
+   transient lodging tax for a resort hotel in the primary gaming corridor (ordinance §4.08.130), and
+   §4.08.005(17) makes mandatory resort/facility fees part of taxable "rent".
+6. **No dated nightly rate could be read from an official source** (booking engines require JavaScript).
+   Every rate field is blank; the hotels page stores a dated rate log in the browser instead.
+
+### Official sources used
+
+Venetian DSE IV schedule + 37 structure sheets; Venetian poker-room page and DeepStack series page;
+Venetian resort-fee page; Wynn poker page; WPT World Championship schedule PDF and structures PDF
+(all 8 chunks); Wynn daily structures PDF and daily poster PDF; Caesars Palace daily tournament flyer
+PDF and casino page; Horseshoe casino page; Resorts World "All Resort, No Fees" terms and poker-room
+page; South Point poker-room page and contact page; Clark County transient lodging tax ordinance (SB1).
+Full ledger with links on `pages/method.html`.
+
+### Verification performed
+
+- `python3 scripts/data_ea99006a.py` regenerates the JSON dataset (247 rows, 27 flags).
+- `python3 scripts/build_ea99006a.py` regenerates 18 pages and **fails** if any row lacks an official
+  https source or if the source host is not on the allow-list.
+- `python3 scripts/check_ea99006a.py` checks 18 pages: table rows with a source (1206/1206), internal
+  links (399 OK), external links (1216 OK), no plain-http links. Exits 1 on any failure.
+- `python3 scripts/recheck_ea99006a.py --offline` validates the 89-URL source ledger.
+
+### Irregularities found (27 flagged, published with source links on `pages/flagged-review.html`)
+
+- F01–F04: no single-entry statement anywhere; multi-flight and multi-buy-in events identified.
+- F05–F06: defects in the official WPT schedule PDF — a block labelled "Dec. 18 Wednesday" (18 Dec 2026
+  is a Friday; dated 16 Dec here, never silently "fixed"), and continuation rows that repeat the parent
+  buy-in and guarantee.
+- F07, F24: the Wynn dailies' suspension policy does not name the WPT World Championship.
+- F08–F09: Wynn, Caesars Palace and Horseshoe resort fees could not be verified; official pages 404 or
+  redirect. Left blank.
+- F10, F26: MGM Resorts rooms (Bellagio, MGM Grand, ARIA) return "page not found"; Horseshoe and
+  Resorts World publish no tournament schedule at all. No rows invented.
+- F11–F13: Horseshoe and Resorts World schedules unpublished; South Point publishes images only.
+- F14: no dated room rate obtainable from an official source.
+- F15, F27: no cross-property walking time is published officially; the Venetian poker room is in
+  **The Palazzo**, level 2, Grand Canal Shoppes — not the Venetian tower.
+- F16–F18: events with no guarantee on the sheet; per-flight differences inside one event number;
+  event #40 (truncated in an earlier session) resolved from sheet 27.
+- F19: this build disagrees with the earlier root pages' "31 confirmed single-entry events" and states
+  zero, with the 37-sheet audit as evidence.
+- F20: the 13.38% schedule comes from the 2017 ordinance table; re-confirm before relying on it.
+- F21: 13 of the WPT festival's events had their entry terms read individually; the rest are marked
+  "entry terms not read" rather than copied from a sibling event.
+- F22: the Caesars Palace daily flyer does not state which days it runs.
+- F23: all five Wynn daily structures are re-entry / rebuy / add-on.
+- F25: the Venetian series page still labels the WPT Fall Festival (ended 15 Nov) as the current series.
+
+### Requests to other sessions (log, do not act unilaterally)
+
+- Owner of `tools/__pycache__/data.cpython-311.pyc` (flagged by 359e3f96): please remove the compiled
+  file from the tree. Not deleted here without your agreement.
+
+### Log
+
+- Branch base `d47622ef` (= `main` tip at start). PR #30 (`arena/a9d1e02d-poker5`) was open, clean and
+  idle; its output is preserved in `planner-a9d1e02d/` and `data/final/` and is linked from the
+  landing page, not edited.
+- Reconciled the long-running cross-session disagreements in favour of the official sources:
+  Venetian resort fee $55 + tax; Clark County tax 13.38%; single-entry count 0 (not 20/30/64);
+  Wynn resort fee **unverified** because both official URLs 404.
+- The root site is now generated by `scripts/build_ea99006a.py`. `scripts/build_c6087e2c.py` is left in
+  place but no longer produces the root site; the repo-review page states this explicitly.

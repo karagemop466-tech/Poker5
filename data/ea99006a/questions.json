@@ -1,0 +1,72 @@
+[
+ {
+  "id": "Q01",
+  "q": "What are your exact trip dates and your nightly budget / quality floor?",
+  "have": "A default window of 6-13 December 2026 is set and every page follows it. It was chosen to sit inside both verified Strip series and to maximise the number of Venetian events with no re-entry text.",
+  "missing": "Your real dates, your nightly budget ceiling and the minimum hotel quality you will accept.",
+  "how": "Change the dates with the date filter on any table, or read the 'How the default window was chosen' block on the Trip planner page. Nothing else on the site has to be re-entered."
+ },
+ {
+  "id": "Q02",
+  "q": "Is any DSE IV event actually a freezeout?",
+  "have": "All 37 official structure sheets read; none states a one-entry limit.",
+  "missing": "An official statement of the entry cap for the events whose sheets are silent.",
+  "how": "Ask the Venetian poker cage / tournament desk to confirm the re-entry policy for a specific event number, or check the printed structure sheet posted in the room on the day. Until then the row stays 'unverified' and is never promoted to single-entry."
+ },
+ {
+  "id": "Q03",
+  "q": "What is the true nightly hotel cost for your dates?",
+  "have": "Resort fees: Venetian $55 + tax (official), Resorts World $55 per room per day (official, waived on the 'All Resort, No Fees' offer through 28 Dec 2026). Tax: 13.38% (Clark County ordinance).",
+  "missing": "The nightly room rate itself, parking charges, and each hotel's cancellation deadline for your dates.",
+  "how": "Open the official booking link on the Hotels page for your dates, read the itemised total on the checkout screen (room, resort fee, tax, parking) and paste the figures into the rate log. The log keeps each entry dated and computes true cost/night = rate + resort fee + tax."
+ },
+ {
+  "id": "Q04",
+  "q": "Is the walk from your hotel to the poker room under 30 minutes?",
+  "have": "On-property pairs are 0 minutes and verified from official pages.",
+  "missing": "Every cross-property walking time. No official source publishes one.",
+  "how": "Open the route link on the Routes page (Google Maps walking directions) and time it yourself, or ask the hotel. The 30-minute filter works on what you record."
+ },
+ {
+  "id": "Q05",
+  "q": "Can two events on the same day actually be played back to back?",
+  "have": "Official start times, official level lengths, official late-registration close times, and the rule that each Day 1 plays down to about 12.5% of the field.",
+  "missing": "Finish times. No official source states when an event ends.",
+  "how": "The schedule page gives each day a primary event and a conditional fallback, and marks overlap using the structure clock rather than a guessed finish time. Confirm the day's plan at the desk on the morning."
+ },
+ {
+  "id": "Q06",
+  "q": "Do the Wynn daily tournaments run during the WPT World Championship?",
+  "have": "The official page says dailies are suspended during Wynn Signature, Wynn Millions and Classic series.",
+  "missing": "Whether the WPT World Championship festival (27 Nov - 21 Dec 2026) also suspends them.",
+  "how": "Call the Wynn poker room on (702) 770-7654 (printed on the official schedule PDF) or check wynnpoker.com."
+ },
+ {
+  "id": "Q07",
+  "q": "Are the MGM Resorts rooms (Bellagio, MGM Grand, ARIA) running tournaments in this window?",
+  "have": "Nothing. The official poker-room URLs returned 'page not found' during this session.",
+  "missing": "Any official schedule or structure for those rooms.",
+  "how": "Search each property's own site for its poker room and its tournament calendar, then add the source to the Sources page. No rows were invented for these rooms."
+ },
+ {
+  "id": "Q08",
+  "q": "What is the entry fee split and the real cost of an entry?",
+  "have": "House fee and prize-pool contribution for every Venetian event, straight from each structure sheet.",
+  "missing": "The equivalent split for WPT events not individually read, and for the Caesars daily.",
+  "how": "Read the 'Entry Fee' line on the official structure sheet for the event. The Tournaments page shows the split where it was published."
+ },
+ {
+  "id": "Q09",
+  "q": "How many entries should the trip budget for?",
+  "have": "Buy-in for every verified row, plus a calculator for entries x buy-ins + nights x true hotel cost.",
+  "missing": "Your bankroll and your appetite for re-entry (which multiplies the cost of a multi-entry event).",
+  "how": "Set the number of entries per event on the Trip planner page; it prices single-entry and multi-entry plans side by side."
+ },
+ {
+  "id": "Q10",
+  "q": "Are the guarantees in this table comparable to each other?",
+  "have": "Each guarantee exactly as the official sheet states it, including whether bounties are inside it.",
+  "missing": "A like-for-like comparison where one room counts bounties in the guarantee and another does not.",
+  "how": "The ratio column (guarantee / entry fee) is labelled descriptive, not a forecast, and bounty and flight events are labelled separately. Compare only within a format."
+ }
+]

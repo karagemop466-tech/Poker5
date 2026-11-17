@@ -1,0 +1,90 @@
+[
+ {
+  "id": "S01",
+  "title": "Put a one-line entry rule on every table row",
+  "problem": "A reader cannot tell at a glance whether an event is a freezeout, a re-entry or simply unknown.",
+  "options": [
+   "Keep the three-way label (confirmed / multi-entry / unverified)",
+   "Add a plain-English sentence per row ('You may buy in again until 4:55 PM')",
+   "Add a colour-coded badge and drop the text"
+  ],
+  "effect": "The second option costs one more column and removes most misreads. It does not change any data."
+ },
+ {
+  "id": "S02",
+  "title": "Ask the poker rooms for a written single-entry statement",
+  "problem": "Silence on a structure sheet is not a one-entry promise, so nothing can be confirmed as a freezeout.",
+  "options": [
+   "Email each room's tournament desk and publish the reply with a date",
+   "Photograph the printed structure sheet in the room on the day",
+   "Leave the rows unverified and plan around them"
+  ],
+  "effect": "Only the first two can move an event from unverified to confirmed. Until then a freezeout plan is an assumption."
+ },
+ {
+  "id": "S03",
+  "title": "Capture dated hotel quotes instead of a single number",
+  "problem": "Room rates move daily; a single figure goes stale and the true nightly cost with it.",
+  "options": [
+   "Keep the dated rate log and paste a new quote each time you check",
+   "Add a screenshot field per log entry",
+   "Show only the resort fee and tax, which are stable"
+  ],
+  "effect": "The log is the only option that keeps a like-for-like history. Screenshots make disputes resolvable."
+ },
+ {
+  "id": "S04",
+  "title": "Time the walks yourself and record them",
+  "problem": "No official source publishes hotel-to-poker-room walking times, so the 30-minute filter is nearly empty.",
+  "options": [
+   "Record the walking time you measure and store it with a date",
+   "Only accept on-property hotels until a walk is measured",
+   "Accept a third-party routing estimate and label it as an estimate"
+  ],
+  "effect": "The first option makes the filter useful and stays honest. The third fills the table but is not an official value."
+ },
+ {
+  "id": "S05",
+  "title": "Run the official-source check every morning, not once a day at random",
+  "problem": "Schedules, structures and fees change without notice.",
+  "options": [
+   "GitHub Actions cron at 13:00 UTC (6 AM Las Vegas) every day",
+   "Twice daily (06:00 and 18:00 Las Vegas)",
+   "Weekly"
+  ],
+  "effect": "A morning run matches the brief's 'pull the schedule each morning'. Twice daily catches intraday changes at double the Actions minutes."
+ },
+ {
+  "id": "S06",
+  "title": "Publish one site instead of thirteen session dashboards",
+  "problem": "Earlier sessions each left a dashboard in its own folder; the same question has several different answers.",
+  "options": [
+   "Keep this root site as the single answer and demote the rest to an archive index",
+   "Keep every dashboard and add a comparison page",
+   "Delete the older dashboards"
+  ],
+  "effect": "The first option gives one answer per question and keeps earlier work reachable. Deleting loses source history."
+ },
+ {
+  "id": "S07",
+  "title": "Price a plan that assumes one entry, and one that assumes re-entry",
+  "problem": "A multi-entry event can cost two, three or more buy-ins; a plan that assumes one entry understates the cost badly.",
+  "options": [
+   "Show both totals side by side on the planner",
+   "Show only the single-entry total",
+   "Show a range with no assumptions stated"
+  ],
+  "effect": "Side-by-side totals make the downside visible before you commit money."
+ },
+ {
+  "id": "S08",
+  "title": "Reconfirm everything before any non-refundable payment",
+  "problem": "Every value here is a snapshot from an official page on 2026-11-17.",
+  "options": [
+   "Re-run the source check and read the change log before booking",
+   "Call the room and the hotel to confirm",
+   "Book a refundable rate only"
+  ],
+  "effect": "Refundable rates are the cheapest insurance; Caesars and Horseshoe advertise free 48-hour cancellation and Resorts World requires 48 hours' notice for a deposit refund."
+ }
+]
