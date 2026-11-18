@@ -1,76 +1,76 @@
 {
  "session": "6d1e0039",
- "updated": "2026-11-17T15:57:02Z",
+ "updated": "2026-11-18T00:56:57Z",
  "hashes": {
   "https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf": {
    "sha256": "e1fdbc3fef7fa03891f2c7082e1fb0a925d40752f9b53906b74a38c3ea3cc176",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
    "bytes": 1677400
   },
   "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf": {
    "sha256": "40522ad679c5d7a290b69a6a740dfd6f5f44ca883b3fee64c708249ae0540693",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
    "bytes": 2637121
   },
   "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf": {
    "sha256": "9291f60e5263033d9bd884849a56e36cb8180d91e6bee24aa319267d8634b3e0",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
    "bytes": 23785821
   },
   "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip": {
    "sha256": "d813d77e0c0a33644712aedfba7e3779a67de9c58a3f4e03bcc3735905ca2df0",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
-   "bytes": 590269
+   "bytes": 590091
   },
   "https://www.casinocompassapp.com/transportation/walking-the-strip": {
    "sha256": "5b8340a81ae9c70b1d5da0f5a95ff5335c0f0fb4fc4920cf2cbeca2542a05de2",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
    "bytes": 113862
   },
   "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf": {
    "sha256": "e49d537db3e9b382654be21b34f5f16ef4ce52f4355d8964be8325f1f53497e4",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
    "bytes": 109133
   },
   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html": {
    "sha256": "fb6a653843a1e0ce79494c4b79089ee4a78e44e0b22e05be2cd437caec3443ab",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
-   "bytes": 269911
+   "bytes": 269912
   },
   "https://www.venetianlasvegas.com/resort/resort-fee.html": {
    "sha256": "3320b7588dd9517f9259dcbf5b71020a3d762e0d262842851062e4beb9717c6b",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
-   "bytes": 227563
+   "bytes": 227564
   },
   "https://www.wynnlasvegas.com/terms-and-conditions/850257": {
-   "sha256": "213f7af0f2f91779870849eb74105f8ae3305c4eefaabbc6d49d85b33e553f49",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "sha256": "850785ba79a57127610fbd8b7a837ee7e8cefde9162e6c50fa83eee37192fa87",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
-   "bytes": 357711
+   "bytes": 359545
   },
   "https://www.wynnpoker.com/": {
-   "sha256": "f40a61dba1bc528020bf6a50874d8c24394b29fb4ad212801c1b5fbeb453debc",
-   "checked": "2026-11-17",
-   "at": "2026-11-17T15:57:02Z",
+   "sha256": "3cd269d32c75b6834d62e18a16632c91d454dade94b53b8bae0b9d21f4acd3ba",
+   "checked": "2026-11-18",
+   "at": "2026-11-18T00:56:57Z",
    "status": 200,
-   "bytes": 459680
+   "bytes": 461289
   }
  }
 }
