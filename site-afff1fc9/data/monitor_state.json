@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-17",
+  "last_run": "2026-11-18",
   "note": "Hash comparison of raw bytes. Pages with dynamic content may show false changes; review each one.",
   "checks": {
     "ven-dse-schedule": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
-      "sha256": "73df676c1c2ac4f7109d700b4ada86bbdf6dc8053f34b19ca37ccfcc5c1d9756",
-      "bytes": 269910,
-      "changed": false,
-      "changed_on": null,
+      "sha256": "476e044435c0ac63d4dc7c61efdc819649c3d77982049a27c4cfc666b5555aa3",
+      "bytes": 269915,
+      "changed": true,
+      "changed_on": "2026-11-18",
       "error": null
     },
     "ven-resort-fee": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
-      "sha256": "0b834ca92ae94c046d7573e7563b3be93476c6aec2844485f42cfe8fd762bbbc",
-      "bytes": 227562,
-      "changed": false,
-      "changed_on": null,
+      "sha256": "767db42dc42e03517eb3508cc2f6599c165ea4a29be3b64eefc8954540873cf7",
+      "bytes": 227567,
+      "changed": true,
+      "changed_on": "2026-11-18",
       "error": null
     },
     "ven-st-1": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
       "bytes": 381816,
@@ -30,7 +30,7 @@
       "error": null
     },
     "ven-st-7": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
       "bytes": 381642,
@@ -39,7 +39,7 @@
       "error": null
     },
     "ven-st-10": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
       "bytes": 390783,
@@ -48,7 +48,7 @@
       "error": null
     },
     "ven-st-15": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
       "bytes": 381826,
@@ -57,7 +57,7 @@
       "error": null
     },
     "ven-st-17": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
       "bytes": 382458,
@@ -66,7 +66,7 @@
       "error": null
     },
     "ven-st-19": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
       "bytes": 384214,
@@ -75,7 +75,7 @@
       "error": null
     },
     "wynn-wpt-schedule": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "9291f60e5263033d9bd884849a56e36cb8180d91e6bee24aa319267d8634b3e0",
       "bytes": 23785821,
@@ -84,7 +84,7 @@
       "error": null
     },
     "wpt-terms": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "25fd37dd6f1035286810a8c3304ecc78e32e76af5b3eb5863e7800126926ba97",
       "bytes": 2637046,
@@ -93,7 +93,7 @@
       "error": null
     },
     "clark-tax": {
-      "last_checked": "2026-11-17",
+      "last_checked": "2026-11-18",
       "http_status": 200,
       "sha256": "e49d537db3e9b382654be21b34f5f16ef4ce52f4355d8964be8325f1f53497e4",
       "bytes": 109133,
