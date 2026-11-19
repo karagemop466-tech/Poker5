@@ -180,11 +180,11 @@ for r in ven:
         ev = r.get("entry_evidence") or {}
         for holder in (r, ev):
             for k in ("entry_basis", "standard"):
-                if isinstance(holder.get(k), str) and "(flag F56)" in holder[k]:
-                    holder[k] = holder[k].replace("(flag F56)", "(flag F70)")
+                if isinstance(holder.get(k), str) and "(flag F71)" in holder[k]:
+                    holder[k] = holder[k].replace("(flag F71)", "(flag F71)")
                     fixed += 1
 save("data/ea99006a/venetian.json", ven)
-print("venetian.json: %d flag references renumbered (F56 -> F70)" % fixed)
+print("venetian.json: %d flag references renumbered (F56 -> F71)" % fixed)
 
 # ---------------------------------------------------------------- registers
 def next_id(items, prefix):

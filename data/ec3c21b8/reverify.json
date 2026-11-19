@@ -28,21 +28,21 @@
       "item": "WPT terms - the remaining schedule lines (88 rows after this session's Dec 3 attribution)",
       "result": "not readable in this environment - no label removed",
       "stored": "rows keep 'Entry terms not read - unverified'",
-      "detail": "This tool stops extracting PDF text at page 30 (mid-sentence in the Mystery Bounty rules); the Registration sections for the later events sit beyond the cutoff, and the per-event sheets the schedule footnotes call 'See structure sheet' were not found published on the Wynn poker page (session 98087225). Question Q21 asks; the rows keep their unverified label (flag F60 keeps the count history).",
+      "detail": "This tool stops extracting PDF text at page 30 (mid-sentence in the Mystery Bounty rules); the Registration sections for the later events sit beyond the cutoff, and the per-event sheets the schedule footnotes call 'See structure sheet' were not found published on the Wynn poker page (session 98087225). Question Q22 asks; the rows keep their unverified label (flag F60 keeps the count history).",
       "official_url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
     },
     {
       "item": "Wynn WPT schedule sign - all 136 rows (date, start, name, buy-in, guarantee)",
       "result": "match with 3 documented conflicts",
       "stored": "136 rows in wpt.json",
-      "detail": "133 rows match after 24 blank satellite seat/prize guarantees were filled verbatim from the sign (flag F71). The 3 'No Limit Hold'em Day 2' rows publish the event terms sections' figures while the sign prints the next event's money columns - both readings kept in each row's disagreement note, rows not ranked (flag F58, first published by session 98087225). Row-by-row diff: data/ec3c21b8/recheck.json.",
+      "detail": "133 rows match after 24 blank satellite seat/prize guarantees were filled verbatim from the sign (flag F72). The 3 'No Limit Hold'em Day 2' rows publish the event terms sections' figures while the sign prints the next event's money columns - both readings kept in each row's disagreement note, rows not ranked (flag F58, first published by session 98087225). Row-by-row diff: data/ec3c21b8/recheck.json.",
       "official_url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
     },
     {
       "item": "Wynn sign internal consistency",
       "result": "defects found in the official source",
       "stored": "rows dated 2026-12-16 and the Ladies row",
-      "detail": "The sign prints one block header 'Dec. 18 Wednesday' where the weekday and sequence show Dec 16 (flag F61); it also prints 'NIH' for 'NLH', 'BadugI', '1A/8' for '1A/B'; the Dec 21 NLH Turbo is 8 p.m. on the sign vs 6 p.m. in the terms sections (flag F59, row follows the sign); and a footnote 'The Tournament Entry for the Ladies Championship is $11,100' contradicts its own $1,100 table figure (flag F72). Stored rows use the corrected readings; the sign's own text is quoted in the flags.",
+      "detail": "The sign prints one block header 'Dec. 18 Wednesday' where the weekday and sequence show Dec 16 (flag F61); it also prints 'NIH' for 'NLH', 'BadugI', '1A/8' for '1A/B'; the Dec 21 NLH Turbo is 8 p.m. on the sign vs 6 p.m. in the terms sections (flag F59, row follows the sign); and a footnote 'The Tournament Entry for the Ladies Championship is $11,100' contradicts its own $1,100 table figure (flag F73). Stored rows use the corrected readings; the sign's own text is quoted in the flags.",
       "official_url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "item": "Venetian sheet 32 ($800 LIPS Ladies, event 39)",
-      "result": "mislabel corrected (flag F70)",
+      "result": "mislabel corrected (flag F71)",
       "stored": "was published multi-entry on 3 rows",
       "detail": "Re-read live: every economic field matches, but the sheet grants no second entry and has no flights - one Day 1 (Dec 10) continuing Dec 11. The earlier capture had quoted the Day-2 resume sentence as flight language. The three rows now read 'Cap not stated' (S1 condition 4 excludes multi-day structures from the confirmed set) with the corrected basis stored on each row.",
       "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf"
@@ -140,9 +140,9 @@
       "item": "South Point daily tournaments (8 rows)",
       "result": "schedule confirmed; entry terms not machine-readable",
       "stored": "4 rows $120 + 4 rows $300, all 'Entry terms not read - unverified'",
-      "detail": "The official poker-room page confirms 'tournaments daily ... at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300', matching the eight rows (the time/buy-in pairing stays unconfirmed per session 96160d8f). The entry rules live in linked JPG rules-sheet images on the daily-tournament-schedule page, which this tool cannot read; the rows keep their unverified label (question Q21).",
+      "detail": "The official poker-room page confirms 'tournaments daily ... at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300', matching the eight rows (the time/buy-in pairing stays unconfirmed per session 96160d8f). The entry rules live in linked JPG rules-sheet images on the daily-tournament-schedule page, which this tool cannot read; the rows keep their unverified label (questions Q21 and Q22).",
       "official_url": "https://southpointcasino.com/casino/poker-room"
     }
   ],
-  "not_changed": "No stored value was changed without a flag. The changes made from this re-read are: 24 blank WPT satellite seat/prize guarantees filled verbatim from the schedule sign (F71); the three 'No Limit Hold'em Day 2' rows now publish their event terms sections' figures with both official readings kept in each row's disagreement note (F58, first published by session 98087225), and the Dec 3 row is attributed to the $800 event's Day 2 by its terms section's own date and time, which also moves it out of 'unread'; event #39's three rows re-labelled from Multi-entry to Cap not stated with the corrected verdict basis (F70); the Dec 21 NLH Turbo carries the start-time conflict in its notes (F59). Every other value on every re-read row is identical to the previous capture, and last_checked on those rows now reads 2026-11-19. Nothing was newly marked verified that was not read live in this session. This record's schema matches the one session d615f79e introduced and session 8f0b323b extended; it is rendered by build_verification in scripts/build_ea99006a.py."
+  "not_changed": "No stored value was changed without a flag. The changes made from this re-read are: 24 blank WPT satellite seat/prize guarantees filled verbatim from the schedule sign (F72); the three 'No Limit Hold'em Day 2' rows now publish their event terms sections' figures with both official readings kept in each row's disagreement note (F58, first published by session 98087225), and the Dec 3 row is attributed to the $800 event's Day 2 by its terms section's own date and time, which also moves it out of 'unread'; event #39's three rows re-labelled from Multi-entry to Cap not stated with the corrected verdict basis (F71); the Dec 21 NLH Turbo carries the start-time conflict in its notes (F59). Every other value on every re-read row is identical to the previous capture, and last_checked on those rows now reads 2026-11-19. Nothing was newly marked verified that was not read live in this session. This record's schema matches the one session d615f79e introduced and session 8f0b323b extended; it is rendered by build_verification in scripts/build_ea99006a.py."
 }

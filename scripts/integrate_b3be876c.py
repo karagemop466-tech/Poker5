@@ -72,6 +72,65 @@ TODAY = dt.date.today().isoformat()
 # actually made. Use TODAY only for facts that are genuinely about the run.
 READ_DATE = "2026-11-19"
 
+# ------------------------------------------------- curation policy of the scheduled run (session 6dba9b3c)
+# READ_DATE is only correct while it names the day the stored captures were taken, and the "read"
+# fields in LIVE likewise. A constant goes stale the moment the capture is refreshed, so SRC (below,
+# in main()) is derived from the capture's own records instead: every provenance stamp that reaches a
+# published page uses SRC, and the constant stays the fallback for the first run after a fresh clone.
+#
+# keep_committed() is what stops this script reverting another session's wording. Sessions correct
+# hotel notes, flags, questions and suggestions directly on main; an unguarded update here overwrote
+# them with this script's own templates on the next scheduled run. Committed prose wins, numbers and
+# the re-derived per-row verdicts stay generator-authoritative (re-deriving those from the newest
+# capture is the job), and every skipped overwrite is listed in
+# data/b3be876c/integration_report.json under preserved_curation instead of being applied silently.
+LIVE_READ = READ_DATE
+
+PRESERVED: list[str] = []
+
+
+def _readable_date(v) -> str:
+    v = str(v or "")
+    return v[:10] if re.match(r"\d{4}-\d{2}-\d{2}", v) else ""
+
+
+def keep_committed(committed: dict, proposed: dict, label: str, keys=None) -> dict:
+    """Keep corrections already in the committed data instead of overwriting them."""
+    for k, v in list(proposed.items()):
+        if keys is not None and k not in keys:
+            continue
+        cur = committed.get(k)
+        if _readable_date(v) and _readable_date(cur):
+            if _readable_date(v) < _readable_date(cur):
+                proposed[k] = cur
+                PRESERVED.append("%s.%s (kept the later read date %s)" % (label, k, cur))
+            continue
+        if isinstance(v, (str, list, dict)) and isinstance(cur, type(v)) and cur and cur != v:
+            proposed[k] = cur
+            PRESERVED.append("%s.%s (kept the committed wording)" % (label, k))
+    return proposed
+
+
+def sources_read(ledger: dict) -> str:
+    """Newest date on which an official source behind this data was really fetched."""
+    dates = []
+    st = load(C6, "scrape_status.json", {}) or {}
+    recs = st.get("sources")
+    if isinstance(recs, dict):
+        recs = list(recs.values())
+    for rec in recs or []:
+        if isinstance(rec, dict) and rec.get("status") in (None, 200) and str(rec.get("error") or "") == "":
+            d = _readable_date(rec.get("retrieved_at"))
+            if d:
+                dates.append(d)
+    for rec in (ledger or {}).values():
+        if isinstance(rec, dict) and rec.get("status") == "ok":
+            d = _readable_date(rec.get("last_checked"))
+            if d:
+                dates.append(d)
+    return max(dates or [LIVE_READ])
+
+
 # ----------------------------------------------------------------- official rule text
 # Anything in a sheet's numbered rule list that grants a further entry, or prices
 # a second buy-in, is multi-entry. "re-entry / rebuy / add-on" alone is not enough:
@@ -138,7 +197,7 @@ def entry_language(rules_text: str) -> list[str]:
 def flight_language(rules_text: str) -> list[str]:
     # only rule sentences that speak of bagging chips or another flight count;
     # a bare "Day 2" continuation sentence is NOT flight language (a single-flight
-    # multi-day event has no flights - session ec3c21b8, flag F70); the blind
+    # multi-day event has no flights - session ec3c21b8, flag F71); the blind
     # table's "Day 2" note is handled by the sheet's own parsed fields
     return [clip(s) for s in sentences(rules_text)
             if re.search(r"bags? chips|subsequent flight|starting flight", s, re.I)]
@@ -326,7 +385,7 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
                       registration close, or the event is not named on it), or
                       the event is a multi-day structure that grants no second
                       entry and has no flights (S1 condition 4 excludes it from
-                      the no-second-entry set; Cap not stated - ec3c21b8, F70).
+                      the no-second-entry set; Cap not stated - ec3c21b8, F71).
     unread            no official sheet was read for this row.
     """
     ev = {"sheet_no": None, "sheet_sha256": "", "sheet_retrieved": "", "rules_read": 0,
@@ -359,7 +418,7 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
         return ("unknown",
                 "continuation row (Day 2 / final table) of a single-flight event whose "
                 "sheet grants no second entry; entry terms carry over from the Day 1 row "
-                "- Cap not stated (session ec3c21b8, flag F70)", ev)
+                "- Cap not stated (session ec3c21b8, flag F71)", ev)
     if kind in ("restart", "final", "final_table") or ev["flight_sentences"]:
         why = "the row is a Day 2 / final-table continuation" if kind != "entry" else \
               "flight language on the sheet: " + ev["flight_sentences"][0][:150]
@@ -370,7 +429,7 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
                 "rules and the event has no starting flights, but the sheet documents a "
                 "multi-day structure, so S1 condition (4) - no flight or multi-day "
                 "structure - is not met and the row is published as Cap not stated "
-                "(session ec3c21b8, flag F70)", ev)
+                "(session ec3c21b8, flag F71)", ev)
     if sheet.get("http_status") != 200:
         return "unread", "the official sheet could not be retrieved", ev
     if not ev["covers_event"]:
@@ -558,6 +617,8 @@ LIVE = {
 def apply_hotels(hotels: list[dict]) -> list[str]:
     """Add today's official hotel re-reads. Returns the notes for the report."""
     notes = []
+    # Snapshot before any template is applied, so keep_committed() can put a later session's wording back.
+    _snap = {h.get("key"): json.loads(json.dumps(h)) for h in hotels}
     by_key = {h["key"]: h for h in hotels}
 
     def set_note(h, new_text):
@@ -691,6 +752,10 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h.setdefault("rate_floor_source", "")
         h.setdefault("rate_caveat", "this property publishes no nightly rate on any official page we could read; "
                                     "the booking link is the only way to get a dated quote")
+    for h in hotels:
+        _c = _snap.get(h.get("key"))
+        if _c:
+            keep_committed(_c, h, "hotels.%s" % h.get("key"))
     return notes
 
 
@@ -776,6 +841,8 @@ def main() -> int:
     questions = load(EA, "questions.json")
     suggestions = load(EA, "suggestions.json")
     ledger = load(EA, "last_checked.json", {})
+    # The date the official sources behind this run were really read (see sources_read()).
+    SRC = sources_read(ledger)
     changes = load(EA, "change_log.json", [])
     verification = load(B3, "verification.json", None)
     value_changes = load(B3, "value_changes.json", [])
@@ -890,7 +957,7 @@ def main() -> int:
         if live:
             dates.append((live.get("checked_at") or "")[:10])
             row["schedule_row_match"] = live.get("status", "")
-        row["last_checked"] = max([d for d in dates if d] or [TODAY])
+        row["last_checked"] = max([d for d in dates if d] or [SRC])
         chg = [changed_urls[u] for u in filter(None, urls) if u in changed_urls]
         row["source_changed_at"] = max([c for c in chg if c] or [""])
         n = reconcile_gtd(row, vrow)
@@ -906,7 +973,7 @@ def main() -> int:
         for row in rows:
             urls = [row.get("source"), row.get("schedule_source"), row.get("terms_source")]
             dates = [(ledger.get(u) or {}).get("last_checked", "")[:10] for u in filter(None, urls)]
-            row["last_checked"] = max([d for d in dates if d] or [meta.get("retrieved", TODAY)])
+            row["last_checked"] = max([d for d in dates if d] or [meta.get("retrieved") or SRC])
             chg = [changed_urls[u] for u in filter(None, urls) if u in changed_urls]
             row["source_changed_at"] = max([c for c in chg if c] or [""])
         other_counts[name] = len(rows)
@@ -942,7 +1009,11 @@ def main() -> int:
         meta["trip"] = {
             "check_in": cin.isoformat(),
             "check_out": cout.isoformat(),
-            "nights": 7, "adults": 2, "rooms": 1,
+            "nights": (cout - cin).days, "adults": 2, "rooms": 1,
+            # The scored playing span is [cin, cout): the check-out morning is a travel day, not a
+            # playing day. Pages cut their event lists at this value, so the planner cannot advertise
+            # events on a day the window was never scored on.
+            "last_play_day": (cout - dt.timedelta(days=1)).isoformat(),
             "rationale": ("Chosen automatically on %s from the S1-screened entry set: %s to %s (7 nights, 7 "
                           "full playing days) carries %d Venetian full-field entries whose own official structure "
                           "sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry "
@@ -1011,7 +1082,7 @@ def main() -> int:
         # no value differed, so nothing was rewritten from it.
         "reverified_by": {"session": "2723deea", "date": "2026-11-19",
                           "record": "data/2723deea/reverify.json"},
-        "live_reads": {k: v.get("read", READ_DATE) for k, v in LIVE.items() if isinstance(v, dict)},
+        "live_reads": {k: v.get("read", LIVE_READ) for k, v in LIVE.items() if isinstance(v, dict)},
         "sheet_spot_checks": LIVE["sheet_live_spot_checks"],
         "verification_records": bool(verification),
     })
@@ -1030,10 +1101,13 @@ def main() -> int:
             return (f.get("detail"), f.get("source"), f.get("status")) == (detail, source, status)
         for f in flags:
             if f.get("title") == title:
+                if same(f):
+                    return
+                f.update(keep_committed(f, {"detail": detail, "source": source, "status": status},
+                                         "flags.%s" % fid, keys=("detail", "status")))
                 if preserve or same(f):
                     return
-                f.update({"detail": detail, "source": source, "status": status,
-                          "last_updated": READ_DATE})
+                f["last_updated"] = SRC   # restamp only when the flag's own content moved
                 return
         if fid in RESERVED_FLAG_IDS:
             used = {f["id"] for f in flags}
@@ -1044,10 +1118,13 @@ def main() -> int:
             return
         for f in flags:
             if f["id"] == fid:
+                if same(f):
+                    return
+                f.update(keep_committed(f, {"title": title, "detail": detail, "status": status},
+                                        "flags.%s" % fid, keys=("title", "detail", "status")))
                 if preserve or same(f):
                     return
-                f.update({"title": title, "detail": detail, "source": source, "status": status,
-                          "last_updated": READ_DATE})
+                f["last_updated"] = SRC
                 return
         flags.append({"id": fid, "area": area, "title": title, "detail": detail, "source": source,
                       "status": status, "last_updated": READ_DATE})
@@ -1232,7 +1309,9 @@ def main() -> int:
             if it.get("id") == iid:
                 if preserve:
                     return
-                it.update(kw)
+                # Field-level merge: an existing entry keeps wording a later session corrected, and a
+                # run with nothing new to say leaves the entry byte-identical instead of restamping it.
+                it.update(keep_committed(it, kw, "%s" % iid, keys=tuple(kw)))
                 return
         items.append(dict(kw, id=iid))
 
@@ -1403,7 +1482,7 @@ def main() -> int:
              "excerpt": LIVE["venetian_poker_rate"]["excerpt"],
              "used_for": "Dated rate log + planner's optional published-floor rate (never a default)"},
         ],
-        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": READ_DATE,
+        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": SRC,
                      "corroboration": ("https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:"
                                        "7436500e-cac4-420a-b23a-02d3fec69900/original/as/"
                                        "room-tax-increase-transient-lodging-letter-111616.pdf"),
@@ -1446,6 +1525,10 @@ def main() -> int:
         "spot_check_mismatches": sum(1 for r in ven if r.get("spot_check", {}).get("mismatches")),
         "guarantee_disagreements": guarantee_notes,
         "hotel_notes": apply_hotels(hotels),
+        # what this run deliberately did NOT overwrite (another session's correction). An empty list
+        # means nothing was preserved; the list is the audit trail for the curation policy above.
+        "preserved_curation": sorted(set(PRESERVED)),
+        "sources_read_on": SRC,
         "rate_log_entries": 2,
         "live_reads": {k: (v.get("read"), v.get("url")) for k, v in LIVE.items() if isinstance(v, dict)},
         "flags_total": len(flags),
