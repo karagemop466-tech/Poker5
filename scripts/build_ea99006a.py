@@ -164,9 +164,31 @@ def pretty_time(t):
 LATE_RE = re.compile(r"\(?~?\s*(\d{1,2}):(\d{2})\s*(AM|PM)?\s*\)?", re.I)
 
 
+SHARED_SHEET_RE = re.compile(r"#[0-9]|Event\s*#", re.I)
+
+
 def late_reg_close(row):
-    """Return (minutes, label) using only what the official sheet states."""
-    txt = row.get("late_reg") or ""
+    """Return (minutes, label) using only what the official sheet states.
+
+    Precedence (defect fixed 2026-11-19 by session 2723deea): the stored
+    ``late_reg`` is the text the ingest pipeline copied, and for a sheet shared by
+    several events it can be the line of the *first* event on that sheet - sheet 25
+    prints one "Late Registration: 6 levels" line that belongs to all three of its
+    events, and an earlier pass had attached "#45 8:10 PM / #46 9:10 AM / #48 12:10 PM
+    ... 6 levels" to rows starting at 09:10 and 12:10.  When the structure-sheet
+    capture itself printed an explicit clock time for the close (``late_registration_clock``),
+    that value is used instead of re-parsing a possibly wrong string.  No time is
+    ever invented: if neither source states a clock time, the row keeps its text and
+    no minutes are returned.
+    """
+    raw = row.get("late_reg") or ""
+    txt = raw
+    if SHARED_SHEET_RE.search(raw):
+        clock = row.get("late_reg_clock") or ""
+        m = re.match(r"^(\d{1,2}):(\d{2})$", clock) if clock else None
+        if not m:
+            return None, raw
+        return int(m.group(1)) * 60 + int(m.group(2)), raw
     if not txt:
         return None, ""
     m = LATE_RE.search(txt)
@@ -332,6 +354,42 @@ def fmt_start(row):
     return pretty_time(row["start"])
 
 
+def entry_status(row):
+    """(short label, class) for the entry-rule cell.
+
+    A row can satisfy the S1 test - no second entry can be bought - and still be closed
+    to a general entrant (Seniors 50+, a female-only field, a two-player tag team).  The
+    published label has to say so, otherwise the page offers a playable "single-entry"
+    event that the reader is not allowed to enter.  The restriction is only ever taken
+    from the row's own structure sheet; see RESTRICTION_RULES in
+    scripts/integrate_b3be876c.py.
+    """
+    rule = row.get("entry_rule")
+    rest = row.get("restriction") or {}
+    if rest and rule == "confirmed_single":
+        return ("S1, entry restricted - %s" % (rest.get("label") or "restricted field"), "warn")
+    if rest:
+        return ("Multi-entry, restricted - %s" % (rest.get("label") or "restricted field"),
+                RULE_CLASS.get(rule, "warn2"))
+    return (RULE_LABEL.get(rule, rule or ""), RULE_CLASS.get(rule, "warn2"))
+
+
+def restriction_note(row):
+    """The official sentence and link that close the field, or an empty string."""
+    rest = row.get("restriction") or {}
+    if not rest:
+        return ""
+    return ('<br><span class="pill pill-warn" data-no-search="1">%s</span>'
+            '<br><span class="muted sm">%s</span>'
+            % (esc(rest.get("label") or "restricted field"),
+               src_link_opt(rest.get("source"), "sheet rule")))
+
+
+def is_open_to_general(row):
+    """True only when no official restriction is recorded on the row."""
+    return not (row.get("restriction") or {}).get("label")
+
+
 def event_row_cells(row, with_venue=True):
     cells = []
     if with_venue:
@@ -362,8 +420,10 @@ def event_row_cells(row, with_venue=True):
     cells.append('<td class="num">%s</td>' % gcell)
     cells.append('<td class="num">%s</td>' % (ratio_text(row) if rankable(row)
                                               else '<span class="blank">not rankable</span>'))
-    cells.append('<td><span class="pill pill-%s">%s</span>%s%s%s</td>' % (
-        RULE_CLASS[row["entry_rule"]], esc(RULE_LABEL[row["entry_rule"]]),
+    st_label, st_class = entry_status(row)
+    cells.append('<td><span class="pill pill-%s">%s</span>%s%s%s%s</td>' % (
+        st_class, esc(st_label),
+        restriction_note(row),
         ('<br><span class="quote">%s</span>' % esc(row["rule_excerpt"][:220])) if row.get("rule_excerpt") else "",
         ('<br><span class="muted sm">%s</span>' % esc(row["entry_basis"][:200])) if row.get("entry_basis") else "",
         changed_marker(row)))
@@ -930,6 +990,16 @@ UNREAD = [r for r in ALL_EVENTS if r["entry_rule"] == "unread"]
 _UNREAD_SHOWN = [r for r in ALL_EVENTS if r["entry_rule"] in ("unread", "unknown")]
 UNREAD_ALL = [r for r in _UNREAD_SHOWN if r not in MULTI]
 SATS = [r for r in ALL_EVENTS if r["kind"] == "satellite"]
+# Rows whose own official sheet closes the field (Seniors 50+, female-only, tag team).
+# They still count in CONFIRMED - the S1 question is whether a second entry can be
+# bought - but they must not be offered as a playable pick to a general reader.
+RESTRICTED_ROWS = [r for r in ALL_EVENTS if r.get("restriction")]
+if not (os.environ.get("POKER5_SKIP_RESTRICTION_GUARD") == "1"):
+    for _r in RESTRICTED_ROWS:
+        _src = (_r.get("restriction") or {}).get("source") or ""
+        if not _src.startswith("https://"):
+            raise SystemExit("BUILD FAILED: restricted row %s #%s carries no official sheet link"
+                             % (_r.get("date"), _r.get("event_no")))
 VENUE_OPTS = "".join('<option value="%s">%s</option>' % (esc(v["name"]), esc(v["name"]))
                      for v in [x for x in VENUES if x["key"] in ("venetian", "wynn", "caesars", "southpoint")])
 _all_days = sorted({r.get("date") for r in ALL_EVENTS if r.get("date")})
@@ -1250,13 +1320,14 @@ def build_schedule():
                     0 if rankable(r) else 1,
                     0 if r["kind"] == "entry" else 1,
                     -(guarantee_value(r) or 0), minutes(r["start"]))
-        entries = [r for r in evs if r["kind"] == "entry"]
-        prim = min(entries or evs, key=_rank)
+        # A restricted field (Seniors 50+, female-only, tag team) can be recorded on the
+        # page but can never be the day's plan for a general entrant.
+        open_evs = [r for r in evs if is_open_to_general(r)]
+        entries = [r for r in (open_evs or evs) if r["kind"] == "entry"]
+        prim = min(entries or open_evs or evs, key=_rank)
         ps, pe = minutes(prim["start"]), (late_reg_close(prim)[0] or minutes(prim["start"]))
         fb = None
-        for r in evs:
-            if r is prim:
-                continue
+        for r in sorted((r for r in (open_evs or evs) if r is not prim), key=lambda r: minutes(r["start"])):
             s = minutes(r["start"])
             if s >= pe:
                 fb = r
@@ -1300,7 +1371,8 @@ def build_schedule():
     for d, evs, prim, fb, conflicts in rows_by_date:
         inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
         hay = "%s %s %s" % (pretty_date(d), weekday(d),
-                            " ".join("%s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]]) for r in evs))
+                            " ".join("%s %s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]],
+                                                     (r.get("restriction") or {}).get("label", "")) for r in evs))
         out.append('<div class="panel daycard%s" data-date="%s" data-daysel="1"%s '
                    'data-search="%s">' % (" inwin" if inwin else "", esc(d), ' data-outside="1"' if not inwin else "",
                                          esc(hay.lower())))
@@ -1317,6 +1389,12 @@ def build_schedule():
         else:
             out.append("<dt>Conditional fallback</dt><dd><span class=\"blank\">None fits.</span> "
                        "No later event on this date starts after the primary's registration window closes.</dd>")
+        restr_today = [r for r in evs if not is_open_to_general(r)]
+        if restr_today:
+            out.append("<dt>Restricted field (not a plan for a general entrant)</dt><dd>%s</dd>" % "; ".join(
+                "<b>%s</b> (%s) &mdash; %s" % (esc(c["name"]), esc(pretty_time(c["start"])),
+                                              esc((c.get("restriction") or {}).get("label", "")))
+                for c in restr_today))
         if conflicts:
             out.append("<dt>Cannot be combined</dt><dd>%s</dd>" % "; ".join(
                 "<b>%s</b> (%s, starts %s)" % (esc(c["name"]), esc(c["venue"]), esc(pretty_time(c["start"])))
@@ -1341,8 +1419,7 @@ def build_schedule():
                           esc(pretty_time(r["start"])), esc(r["venue"]), esc(r.get("event_no") or ""),
                           esc(r["name"]) + (" <span class=\"tag tag-b\">primary</span>" if r is prim else ""),
                           money(r.get("buyin")),
-                          '<span class="pill pill-%s">%s</span>' % (RULE_CLASS[r["entry_rule"]],
-                                                                    esc(RULE_LABEL[r["entry_rule"]])),
+                          '<span class="pill pill-%s">%s</span>' % entry_status(r),
                           esc(label) if label else '<span class="blank">not stated</span>',
                           src_link(r["source"], "source")))
         out.append("</tbody></table>")
@@ -1644,6 +1721,8 @@ def build_planner():
             and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
+    restricted_here = [r for r in rows if not is_open_to_general(r)]
+    rows = [r for r in rows if is_open_to_general(r)]
     body = ["<h1>Trip planner: cost of the trip</h1>"]
     body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
@@ -1807,8 +1886,12 @@ def build_exec():
                 and guarantee_value(r) is not None
                 and r.get("source")
                 and r.get("date", "") > RETRIEVED]
-    regular = [r for r in rankable if not is_bounty(r)]
-    bounty = [r for r in rankable if is_bounty(r)]
+    # An event whose own sheet closes the field to a general entrant is listed, but it cannot
+    # rank as a best pick here: the ranking is meant to be actionable for any reader.
+    eligible = [r for r in rankable if is_open_to_general(r)]
+    excluded_restricted = [r for r in rankable if not is_open_to_general(r)]
+    regular = [r for r in eligible if not is_bounty(r)]
+    bounty = [r for r in eligible if is_bounty(r)]
     rank_key = lambda r: -(guarantee_value(r) / float(r["buyin"]))
     regular.sort(key=rank_key)
     bounty.sort(key=rank_key)
@@ -1853,6 +1936,17 @@ def build_exec():
     else:
         body.append('<p class="muted">No non-bounty rows meet the complete-data ranking gate.</p>')
     body.append('<p class="muted sm">Sorted by published guarantee &divide; listed total buy-in. This is a descriptive ratio, not a forecast or expected return. Rankings are withheld when buy-in, house fee, or guarantee is missing. Event restrictions and S1 caveats remain on each linked row.</p>')
+    if excluded_restricted:
+        body.append('<p class="muted sm"><b>%d otherwise-rankable rows are excluded from this ranking because their own '
+                    'official structure sheet restricts the field</b> (Seniors 50+, a female-only LIPS field, or a '
+                    'two-player tag team): %s. They remain listed on '
+                    '<a href="single-entry.html">Single-entry</a> with the rule and its source. A reader who is '
+                    'eligible can still play them.</p>'
+                    % (len(excluded_restricted),
+                       "; ".join("%s #%s &mdash; %s (%s)" % (esc(pretty_date(r["date"])), esc(r["event_no"]),
+                                                          esc(r["name"]),
+                                                          esc((r.get("restriction") or {}).get("label", "")))
+                                 for r in excluded_restricted)))
 
     body.append("<h2>Upcoming bounty / PKO S1 events (separate comparison)</h2>")
     if bounty:

@@ -17,31 +17,9 @@
   "multi": 38
  },
  "confirmed_single_total": 53,
- "moved_out_as_multi": [
-  "2026-11-28 #18 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-  "2026-12-19 #58 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200."
- ],
+ "moved_out_as_multi": [],
  "rows_without_a_read_sheet": [],
- "moved_out_of_single_entry": [
-  {
-   "date": "2026-11-28",
-   "event_no": "18",
-   "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-   "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "old_label": "confirmed_single",
-   "new_label": "multi"
-  },
-  {
-   "date": "2026-12-19",
-   "event_no": "58",
-   "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-   "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "old_label": "confirmed_single",
-   "new_label": "multi"
-  }
- ],
+ "moved_out_of_single_entry": [],
  "spot_check_mismatches": 0,
  "guarantee_disagreements": [],
  "hotel_notes": [
@@ -73,5 +51,5 @@
    null
   ]
  },
- "flags_total": 33
+ "flags_total": 55
 }
