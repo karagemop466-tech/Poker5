@@ -178,6 +178,25 @@ Every brief requirement was independently located and confirmed in the published
 
 **Read-only for this session:** every other session folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*` other than `data/2723deea` and `data/ea99006a`, `tools/`), `data/c6087e2c/`, `data/b3be876c/`, `data/d615f79e/`, and the scheduled workflows. No published value is changed without an official excerpt and retrieval date recorded next to it.
 
+## Current branch session — 45556d36 (active) — dated hotel quotes for the canonical trip window + planner true-cost wiring
+
+**Branch:** `arena/45556d36-poker5` (fixed by Arena), based on `main` @ `a8b7aa1`. Claimed 2026-11-19 before any file edit. **Non-overlap check:** open PRs #79 (session 96160d8f: `data/ea99006a/hotels.json`, `other.json`, generated `pages/hotels|tournaments|tournaments-double|venues/others.html`), #78 (session 9eb12353: `data/c6087e2c/**`, `scripts/merge_251c122f.py`, `scripts/crosscheck_251c122f.py`, `test/research.test.mjs`), #76 (session 98c6f29b: `COORDINATION.md` only) — none of their owned inputs are edited here. Generated pages are regenerated from the merged tree at integration, never hand-merged.
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| H1 | Capture official **dated, itemized hotel quotes for the canonical trip window 2026-12-06 → 2026-12-13** (2 adults, 1 room, 7 nights) from each property's own official booking engine — checkout total / nightly average, resort fee, tax, parking, cancellation deadline, rate timestamp; like-for-like only; anything not returned stays blank + flagged | in progress | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json` |
+| H2 | Wire the trip calculator/planner to a **window-matched dated quote** (no manual input): entries × buy-ins + nights × true nightly cost from the quote, labelled with its source + timestamp; stays "Incomplete" when no window-matched quote exists | in progress | `scripts/build_ea99006a.py`, generated `pages/planner.html`, `pages/hotels.html` |
+| H3 | Full check suite, PR → main, merge, confirm Pages deploy, record here | in progress | `COORDINATION.md` (this section) |
+
+**Read-only for this session:** `data/ea99006a/hotels.json`, `other.json`, `wpt.json`, `venetian.json`, `flags.json` (append only if a new irregularity is found), `data/c6087e2c/**`, every other session folder, workflows.
+
+### Sources (session 45556d36; read 2026-11-19)
+
+- Wynn official booking engine, dated stay Dec 6–13 2026 (7 nights, 2 adults, 1 room): https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/06/2026&checkout=12/13/2026&rooms=1&adults=2
+
+---
+
+
 ## Current branch session — 0a0d8e6b (active) — structure-sheet entry-rule re-read (single-entry claim check)
 
 **Branch:** `arena/0a0d8e6b-poker5`, based on `main` @ `f2eb22a`. **Claimed 2026-11-19 before any analysis.** No other session holds a claim on this scope; open PRs #76–#79 belong to other sessions and are not touched.
