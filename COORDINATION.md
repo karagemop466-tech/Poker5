@@ -7,7 +7,7 @@
 | # | Task | Status | Files touched |
 |---|------|--------|---------------|
 | R1 | Re-read every official Venetian DeepStack Extravaganza IV schedule page (4 chunks, 2026-11-19) and diff all rows (date, start, event no., name, buy-in, guarantee, structure-sheet number) against `data/ea99006a/venetian.json` by script | done — 94/94 rows match, 0 mismatches | `data/ea99006a/official_schedule_2026-11-19.tsv` (new), `data/ea99006a/schedule_recheck.json` (new), `scripts/recheck_schedule_25481cd8.py` (new) |
-| R2 | Rebuild the root site, run every existing check, PR to main, merge, confirm Pages deploy, record here | in progress (PR and merge record below) | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+| R2 | Rebuild the root site, run every existing check, PR to main, merge, confirm Pages deploy, record here | done (record below) | `index.html`, `pages/**` (generator output only), COORDINATION.md |
 
 Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared.
 
@@ -30,6 +30,11 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 - The official page prints "No LImit" (capital I) in the names of events 2, 5 and 12. Cosmetic only; the stored names use the correct spelling.
 - Structure sheets are shared across events (for example `structure_10` covers 1A, 1C and the Day 2 restart). The sheet's own text decides the rule for each event; this session did not re-read sheet text.
 - Not verified in this session: single-entry status of any row (unchanged from earlier sessions), hotel rates, resort fees, walking times, Wynn/other-venue schedules.
+
+**Publication record (25481cd8):**
+- PR [#66](https://github.com/karagemop466-tech/Poker5/pull/66) — "25481cd8: official Venetian schedule re-verified row by row (94/94) + verification panel" — merged 2026-11-19 as merge commit `fa26b6a` (checks `check` and `validate` passed on head `f74426c`; merged after rebasing onto main once, which conflicted only on this board and was resolved by keeping both sides).
+- Pages build and deployment run [44602370006](https://github.com/karagemop466-tech/Poker5/actions/runs/44602370006) succeeded. Live check: https://karagemop466-tech.github.io/Poker5/pages/verification.html shows "Venetian schedule re-check, 2026-11-19 — rows compared 94, matching 94, mismatches 0".
+- Not done in this session (no official source was reachable from this sandbox for these, or they need work beyond a verifiable slice): hotel live rate lookups, Maps walking times, per-event single-entry re-reads of the 37 structure sheets, the morning-scrape automation changes, and the free-form suggestions/questions refresh.
 
 
 ## Current branch session — fe101311 (active) — Strip room morning-feed repair (Bellagio / MGM)
