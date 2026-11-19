@@ -375,9 +375,17 @@ def main() -> int:
                                      for i, e in enumerate(entries)}})
         counts["error" if status == "unparseable" else ("changed" if status in ("changed", "reflow") else "ok")] += 1
         if status in ("changed", "reflow", "unparseable"):
-            change_log.append({"at": now, "url": url, "kind": status,
-                               "values": sorted({e["label"] for e in entries if e["field"]})[:8],
-                               "previous_sha256": prev.get("sha256"), "sha256": sha})
+            # Canonical change-log schema (the same keys scripts/recheck_ea99006a.py writes and
+            # scripts/build_ea99006a.py reads): changed_at / url / label / old_sha256 /
+            # new_sha256 / old_bytes / new_bytes. The monitor's own detail (kind, values) rides
+            # along as extra keys the builder ignores. Writing a different schema here previously
+            # broke the scheduled "Rebuild the canonical site" step with KeyError: 'changed_at'.
+            change_log.append({"changed_at": now, "url": url,
+                               "label": rec.get("label") or url,
+                               "old_sha256": prev.get("sha256") or "", "new_sha256": sha,
+                               "old_bytes": prev.get("bytes"), "new_bytes": len(raw),
+                               "kind": status,
+                               "values": sorted({e["label"] for e in entries if e["field"]})[:8]})
         if status == "changed" and url in rate_targets(rates):
             new_rate_rows.append({"hotel": value_changes[-1].get("venue") or "unknown",
                                   "hotel_key": "unknown", "observed_on": now[:10],
