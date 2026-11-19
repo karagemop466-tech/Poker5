@@ -1,5 +1,17 @@
 # Coordination - Poker5
 
+## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
+
+**Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| R1 | Re-read every official Venetian DeepStack Extravaganza IV schedule page (4 chunks, 2026-11-19) and diff all rows (date, start, event no., name, structure-sheet number) against `data/ea99006a/venetian.json` by script | in progress | `data/ea99006a/official_schedule_2026-11-19.tsv` (new), `data/ea99006a/schedule_recheck.json` (new), `scripts/recheck_schedule_25481cd8.py` (new) |
+| R2 | Rebuild the root site, run every existing check, PR to main, merge, confirm Pages deploy, record here | unclaimed | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+
+Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared.
+
+
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
 ## Current branch session — fe101311 (active) — Strip room morning-feed repair (Bellagio / MGM)
