@@ -110,3 +110,23 @@ test('quality workflow regenerates with the canonical builder and checks drift',
   assert.doesNotMatch(scrape, /build_c6087e2c\.py[\s\S]*index\.html pages\//);
   assert.match(scrape, /git add data\/c6087e2c\/$/m);
 });
+
+// Session d615f79e: the optional assumed-playing-length check on the day schedule.
+// A pair cannot be played in sequence only when neither order is possible; a missing
+// late-registration close is undecidable, never impossible.
+test('schedule: assumed-length sequencing check is optional and correct on known cases', async () => {
+  const t = await page('pages/schedule.html');
+  assert.match(t, /id="seqh"/);
+  assert.match(t, /id="seqdata"/);
+  const m = t.match(/\/\*SEQ-BEGIN\*\/([\s\S]*?)\/\*SEQ-END\*\//);
+  assert.ok(m, 'seqCheck block is present');
+  const seqCheck = new Function(m[1] + '; return seqCheck;')();
+  const A = { s: 600, l: 660 };   // starts 10:00, registration closes 11:00
+  const B = { s: 610, l: 700 };   // starts 10:10, registration closes 11:40
+  assert.equal(seqCheck([A, B], 180).cannot.length, 1, '3 h play: A cannot be finished before B closes, nor B before A');
+  assert.equal(seqCheck([A, B], 60).cannot.length, 0, '1 h play: B can be entered at 11:00 after A');
+  const C = { s: 720, l: null };  // no late-registration close stated
+  const r = seqCheck([A, C], 60);
+  assert.equal(r.cannot.length, 0, 'an unstated close is never treated as impossible');
+  assert.equal(r.unknown, 1);
+});

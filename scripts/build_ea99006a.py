@@ -866,6 +866,9 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
+  /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
+  try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
+    if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
   initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });
 """
@@ -970,21 +973,33 @@ def build_index():
              ("pages/method.html", "Method &amp; sources", "How every value was read, and the complete source ledger.")]
     body = []
     body.append("<h1>Las Vegas Strip poker trip planner</h1>")
+    body.append('<form class="filters" action="pages/tournaments.html" method="get" id="landsearch" role="search">'
+             '<input id="landq" name="q" class="search" type="search" placeholder="Search events, venues, dates, rule text, hotels..." aria-label="Search the site">'
+             '<select id="landpage" aria-label="Search in" onchange="this.form.action=this.value">'
+             '<option value="pages/tournaments.html">All tournaments</option>'
+             '<option value="pages/single-entry.html">Single-entry</option>'
+             '<option value="pages/tournaments-double.html">Multi-entry / advantage</option>'
+             '<option value="pages/schedule.html">Day schedule</option>'
+             '<option value="pages/hotels.html">Hotels</option>'
+             '<option value="pages/verification.html">Verification log</option>'
+             '<option value="pages/flagged-review.html">Flagged for review</option>'
+             '</select><button type="submit">Search</button></form>')
+    body.append('<p class="muted sm">Search runs inside the chosen table page (every table on that page is filtered). Pick the page with the drop-down.</p>')
     body.append('<p class="muted">Source-verified &middot; retrieved %s &middot; Venetian DeepStack Extravaganza IV and the WPT World Championship at Wynn</p>' % esc(RETRIEVED))
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),
                     (str(len(ALL_EVENTS)), "Verified schedule rows"),
-                    (str(len(CONFIRMED)), "Rows classified under S1 (incl. satellites)"),
+                    (str(len(CONFIRMED)), "Confirmed single-entry events (standard S1)"),
                     (str(len(UNREAD)), "Rows whose entry terms were not read"),
                     (str(len(MULTI)), "Rows that are re-entry / multi-flight"),
                     (str(len(FLAGS)), "Items flagged for review")):
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
     body.append("</div>")
-    body.append('<div class="badbox"><b>The single-entry headline: %d rows are classified single-entry under '
+    body.append('<div class="badbox"><b>The single-entry headline: %d events are confirmed single-entry under '
                 'standard S1.</b> All 37 official Venetian structure sheets were read on %s. Each confirmed row\'s '
                 'own sheet was read in full, names that event number, is a one-day entry row with a stated '
                 'registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in its numbered '
-                'rules (including subsequent-buy-in terms) - the sheet excerpt and retrieval date are on the row. The honest limit stays published: '
+                'rules - the sheet excerpt and retrieval date are on the row. The honest limit stays published: '
                 '<b>no sheet states "one entry only" in words</b>, so confirmation means <i>the published rules grant '
                 'no second entry</i>, not that the house promises a freezeout (flags '
                 '<a href="pages/flagged-review.html">F01 and F47</a> stay open). Every WPT / Wynn event whose terms '
@@ -1085,7 +1100,7 @@ def build_tournaments():
 
 def build_single():
     body = ["<h1>Single-entry tournaments</h1>"]
-    body.append('<div class="badbox"><b>Rows classified as confirmed single-entry (standard S1): %d.</b> Every official '
+    body.append('<div class="badbox"><b>Confirmed single-entry events (standard S1): %d.</b> Every official '
                 'structure sheet published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. '
                 'Each confirmed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
                 'with a stated registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in '
@@ -1095,7 +1110,7 @@ def build_single():
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
     body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
-    body.append("<h2>1. Rows classified under standard S1 (%d, including satellites)</h2>" % len(CONFIRMED))
+    body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
     else:
@@ -1142,6 +1157,51 @@ def build_multi():
     body.append(table_shell(SATS, EVENT_HEAD))
     write("pages/tournaments-double.html", page("Multi-entry and paid-advantage events", "".join(body),
                                                 "tournaments-double.html", 1, TABLE_JS_INIT))
+
+
+SEQ_JS = r"""<script>
+/*SEQ-BEGIN*/
+function seqCheck(evs, D) {
+  var cannot = [], unknown = 0, ok = 0;
+  for (var i = 0; i < evs.length; i++) {
+    for (var j = i + 1; j < evs.length; j++) {
+      var a = evs[i], b = evs[j];
+      // a then b is possible iff b's late-registration close is not before a's earliest finish (a.s + D).
+      var ab = (b.l === null) ? null : (b.l >= a.s + D);
+      var ba = (a.l === null) ? null : (a.l >= b.s + D);
+      if (ab === true || ba === true) { ok++; }
+      else if (ab === null || ba === null) { unknown++; }
+      else { cannot.push([a, b]); }
+    }
+  }
+  return { cannot: cannot, unknown: unknown, ok: ok };
+}
+/*SEQ-END*/
+function seqRender() {
+  var box = document.getElementById('seqh');
+  var data = JSON.parse(document.getElementById('seqdata').textContent);
+  var raw = parseFloat(box.value);
+  var valid = raw >= 0.5 && raw <= 12;
+  document.querySelectorAll('.seqout').forEach(function (dd) {
+    var day = data[dd.getAttribute('data-seqday')];
+    dd.textContent = '';
+    var msg = function (t) { var s = document.createElement('div'); s.textContent = t; dd.appendChild(s); };
+    if (!day) { msg('No listed events.'); return; }
+    if (box.value === '') { msg('Enter an assumed playing length above (0.5 to 12 hours) to test sequencing.'); return; }
+    if (!valid) { msg('Enter a length between 0.5 and 12 hours.'); return; }
+    var D = raw * 60, evs = day.ev, p = evs[day.p], fb = [];
+    evs.forEach(function (e, k) { if (k !== day.p && e.l !== null && e.l >= p.s + D) fb.push(e.lab); });
+    msg('After the primary (' + raw + ' h): ' + (fb.length ? 'can be entered after it: ' + fb.join('; ') : 'no listed event can be entered after it.'));
+    var r = seqCheck(evs, D);
+    msg('Cannot be played in sequence: ' + (r.cannot.length ? r.cannot.map(function (q) { return q[0].lab + ' + ' + q[1].lab; }).join('; ') : 'none'));
+    msg('Cannot be decided (a late-registration close is not stated): ' + r.unknown + ' pair(s).');
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var box = document.getElementById('seqh');
+  if (box) { box.addEventListener('input', seqRender); seqRender(); }
+});
+</script>"""
 
 
 def build_schedule():
@@ -1201,6 +1261,23 @@ def build_schedule():
     body.append('<label class="chk" style="margin:6px 0"><input type="checkbox" id="winonly"> '
                 'Only my %d nights (%s to %s, checkout day included for the day event)</label>'
                 % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+    # Optional what-if: the user's own playing-length estimate. Blank by default; no source supplies it,
+    # so it is never shown as an official value and never written into the data.
+    body.append('<div class="panel" id="seqbox"><label><b>Assumed playing length</b> (hours, optional) '
+                '<input type="number" id="seqh" min="0.5" max="12" step="0.5" placeholder="blank" '
+                'style="width:6em"></label> <span class="muted sm">Your own estimate. No official source publishes '
+                'a finishing time, so nothing on this page supplies one. With a length entered, each day also shows '
+                'which events cannot be played in sequence. Leave it blank to see only the start-time and '
+                'late-registration checks.</span></div>')
+    seq = {}
+    for d, evs, prim, _fb, _c in rows_by_date:
+        seq[d] = {
+            "p": next(i for i, r in enumerate(evs) if r is prim),
+            "ev": [{"lab": "%s %s%s" % (pretty_time(r["start"]), ("#%s " % r["event_no"]) if r.get("event_no") else "",
+                                        "%s, %s" % (r["venue"], r["name"])),
+                    "s": minutes(r["start"]), "l": late_reg_close(r)[0]} for r in evs],
+        }
+    seqjson = json.dumps(seq, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     out = []
     for d, evs, prim, fb, conflicts in rows_by_date:
         inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
@@ -1228,6 +1305,8 @@ def build_schedule():
                 for c in conflicts))
         else:
             out.append("<dt>Cannot be combined</dt><dd><span class=\"blank\">none</span></dd>")
+        out.append('<dt>At your assumed playing length</dt><dd class="seqout" data-seqday="%s">'
+                   '<span class="muted">Enter a length above to test sequencing.</span></dd>' % esc(d))
         out.append("</div>")
         out.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Start</th><th>Venue</th>'
                    "<th>#</th><th>Event</th><th class=\"num\">Buy-in</th><th>Entry rule</th>"
@@ -1254,13 +1333,13 @@ def build_schedule():
                    'is therefore built on start times and registration windows, which are published.</p>')
         out.append("</div>")
     body.append("".join(out))
+    body.append('<script type="application/json" id="seqdata">%s</script>' % seqjson)
     body.append('<div class="warnbox"><b>Earliest verified start: 9:10 AM</b> (Venetian Event #46, a satellite on '
                 '12 December). The earliest verified non-satellite start is 10:10 AM. No official schedule in this '
                 'window lists an 8:00 AM start, so a "play from 8 AM" day is not supported by the sources.</div>')
     write("pages/schedule.html", page("Day schedule and overlap check", "".join(body), "schedule.html", 1,
                                       TABLE_JS_INIT + "<script>document.addEventListener('DOMContentLoaded',"
-                                      "function(){initDays();});</script>")
-            )
+                                      "function(){initDays();});</script>" + SEQ_JS))
 
 
 def build_hotels():
@@ -2166,6 +2245,18 @@ def build_verification():
                 + "<dt>structure sheets read</dt><dd><b>" + str(len(META.get("sheets") or [])) + "</b></dd>"
                 + "<dt>URLs under daily monitor</dt><dd><b>" + str(len(LEDGER)) + "</b></dd>"
                 + "<dt>value-level changes open</dt><dd><b>" + str(len(VALCH)) + "</b></dd></div></div>")
+    # 25481cd8: full schedule re-read against the official page, row by row (scripts/recheck_schedule_25481cd8.py)
+    _sr = _opt(DATA, "schedule_recheck.json", {})
+    if _sr:
+        _bad = [r for r in (_sr.get("rows") or []) if r.get("result") != "match"]
+        body.append("<div class=\"panel\"><h2>Venetian schedule re-check, " + esc(_sr.get("checked_on", "")) + "</h2>"
+                    "<p>Every row of the official DeepStack Extravaganza IV schedule page was read again and compared field by field "
+                    "(date, start time, event number, name, buy-in, guarantee, structure-sheet number) with the stored row. "
+                    "Source: <a href=\"" + esc(_sr.get("official_source", "")) + "\" rel=\"noopener\">official Venetian schedule page</a>. "
+                    "Method and per-row result: <code>data/ea99006a/schedule_recheck.json</code>.</p>"
+                    "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
+                    "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
+                    "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])
@@ -2291,6 +2382,22 @@ def build_verification():
     body.append("<p class=\"muted sm\">A figure with no official page behind it is left blank and flagged, never "
                 "estimated. The open questions behind those blanks are on the "
                 "<a href=\"flagged-review.html\">Flagged for review</a> page.</p>")
+    # Re-read of the trip-critical official values (session d615f79e). Rendered from its own record.
+    rv_path = os.path.join(ROOT, "data", "d615f79e", "reverify.json")
+    if os.path.exists(rv_path):
+        with open(rv_path, encoding="utf-8") as fh:
+            rv = json.load(fh)
+        body.append("<h2>Re-read before payment (%s)</h2>" % esc(rv["retrieved"]))
+        body.append('<p class="muted">%s</p>' % esc(rv["scope"]))
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
+                    "<th>Stored value</th><th>What the official page says</th><th>Official source</th>"
+                    "</tr></thead><tbody>")
+        for c in rv["checks"]:
+            body.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(c["item"]), esc(c["result"]), esc(c["stored"]), esc(c["detail"]),
+                           src_link(c["official_url"], "official page")))
+        body.append("</tbody></table></div>")
+        body.append('<p class="muted sm">%s</p>' % esc(rv["not_changed"]))
     write("pages/verification.html", page("Verification log", "".join(body), "verification.html", 1))
 
 
