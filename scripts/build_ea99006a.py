@@ -1094,6 +1094,7 @@ def build_single():
                 'Every WPT World Championship event whose terms were read permits re-entry - "unlimited re-entry", '
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
+    body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
     body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
