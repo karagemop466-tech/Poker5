@@ -3,7 +3,7 @@
   "id": "F01",
   "area": "Entry rules",
   "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
-  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page.",
+  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
  },
  {
@@ -24,7 +24,7 @@
   "id": "F04",
   "area": "Entry rules",
   "title": "Every WPT / Wynn event whose terms were read permits re-entry",
-  "detail": "Unlimited re-entry (until level 9 or level 10) on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8 and NLH Turbo events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per flight.",
+  "detail": "Re-checked 2026-11-19 against all 14 event sections in the official structures PDF: unlimited re-entry on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8, Limit Omaha 8/Stud 8, $600 NLH Turbo and $1,600 PLO Mystery Bounty events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per starting flight. The Wynn daily structures PDF likewise states a re-entry fee on its $200 events, and 'Re-entry is NOT allowed' only on the $240 Friday NLH Rebuy & Add-on, which sells extra chips by rebuy ($200 for 25,000 chips while at 15,000 or less) and one $100 add-on instead. No WPT/Wynn event of any kind meets standard S1.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -61,22 +61,26 @@
   "id": "F09",
   "area": "Hotels",
   "title": "Caesars Palace and Horseshoe resort fees verified on their booking pages (was: not verified)",
-  "detail": "Resolved 2026-11-19: the official booking-page Hotel Policies blocks publish property fees - Caesars Palace $62.30 per night ($54.95 plus $7.35 tax), Horseshoe $56.63 per night ($49.95 plus $6.68 tax) - and are stored in hotels.json with deposits ($100/day, $50/day) and 48-hour cancellation. The old resort-fee URLs still redirect to marketing pages; the corporate $45-$60 range remains the only figure published for other Caesars properties.",
+  "detail": "Resolved 2026-11-19 (session f7676bd0): the official booking-page Hotel Policies blocks publish property fees - Caesars Palace $62.30 per night ($54.95 plus $7.35 tax), Horseshoe $56.63 per night ($49.95 plus $6.68 tax) - and are stored in hotels.json with deposits ($100/day, $50/day) and 48-hour cancellation. The old resort-fee URLs still redirect to marketing pages; the corporate $45-$60 range remains the only figure published for other Caesars properties.",
   "source": "https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
  },
  {
   "id": "F10",
   "area": "Coverage",
-  "title": "MGM Resorts rooms (Bellagio, MGM Grand, ARIA) not verified",
-  "detail": "The official poker-room URLs and the MGM resort-fee URL return 'page not found'. No rows were invented for these rooms.",
-  "source": "https://bellagio.mgmresorts.com/en/casino/poker-room.html"
+  "title": "MGM Resorts rooms (Bellagio, MGM Grand, ARIA): resort fee and cancellation term now read from official pages",
+  "detail": "CLOSED AS TO FEE AND TERM on 2026-11-19. Official hotel reservation terms were read for three MGM properties: Bellagio and ARIA state 'A daily resort fee of $55.00 plus applicable tax will be applied to all reservations'; MGM Grand states '$50.00'. All three state a first-night deposit refundable up to 72 hours before arrival unless the booked offer excludes it, and the MGM parking page states $20 self-parking for registered hotel guests and $40 valet. MGM fees are property-specific, so no single MGM figure is reused. Still open: no MGM room rate for 6-13 December 2026 is published on any page read, and the MGM poker-room URLs still return no page, so MGM rooms remain absent from the tournament tables (no row was invented).",
+  "source": "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+  "status": "fee and cancellation term verified; room rate and poker schedule still missing",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F11",
   "area": "Coverage",
-  "title": "Horseshoe publishes no schedule",
-  "detail": "The official casino page says the Hall of Fame Poker Room has 20 tables and '6 exciting tournament times daily' but links no schedule or structure sheet.",
-  "source": "https://www.caesars.com/horseshoe-las-vegas/casino"
+  "title": "Horseshoe publishes no poker schedule: the casino page promises six daily tournament times but prints none",
+  "detail": "Re-read on 2026-11-19: the official Horseshoe casino page states 'The Hall of Fame Poker Room at Horseshoe Las Vegas features 20 tables ... Test your luck with 6 exciting tournament times daily', and links no schedule, buy-in, guarantee or structure sheet. The claim that tournaments run is official; the times, prices and entry rules are not published anywhere this site can read, so no Horseshoe row is created and none is guessed.",
+  "source": "https://www.caesars.com/horseshoe-las-vegas/casino",
+  "status": "open - no official schedule published",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F12",
@@ -96,7 +100,7 @@
   "id": "F14",
   "area": "Hotels",
   "title": "Dated nightly rates: Wynn captured for the window; Venetian and Caesars Palace still missing",
-  "detail": "Updated 2026-11-19: the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F57/F59). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F71/F73). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
   "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -105,7 +109,7 @@
   "id": "F15",
   "area": "Routes",
   "title": "Cross-property walking times are not published officially",
-  "detail": "Updated 2026-11-19: still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F58/F59 on asymmetry). The on-property Venetian route remains zero minutes.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F72/F73 on asymmetry). The on-property Venetian route remains zero minutes.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
@@ -148,8 +152,8 @@
  {
   "id": "F21",
   "area": "Coverage",
-  "title": "Not every WPT event's entry terms were read individually",
-  "detail": "Terms were read for 13 distinct events in the official structures PDF. The rest are marked 'entry terms not read' rather than being copied from a sibling event.",
+  "title": "Some WPT festival events still have no terms section in the official structures PDF",
+  "detail": "Every event terms-and-conditions section printed in the official WPT World Championship structures PDF was read on 2026-11-19 (14 sections: $600 NLH, TORSE, $400 PLO, Mixed Triple Draw, $800 NLH, Limit Omaha 8, Limit Omaha 8/Stud 8, $1,100 PLO, $1,600 NLH, HORSE, WPT Prime Championship, $600 NLH Turbo, $1,600 PLO Mystery Bounty, plus the General Terms). Every one of them grants re-entry, so none can pass S1. 47 rows are covered by those sections (38 flights/entries plus 9 continuation days). The 89 rows below are not: milestone satellites, the Seniors, Ladies, High Roller, Big O, 6-Max, 8-Max and Turbo events and the $3,000 and $10,400 championships have no section in that PDF at all, and three names ('No Limit Hold'em Day 1A', 'No Limit Hold'em Day 1B', 'No Limit Hold'em') are used by more than one event with different buy-ins, so no section can be matched to a row without guessing. Those rows keep the unread label. See F60 for the same finding stated from the schedule side.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -226,21 +230,21 @@
   "id": "F32",
   "area": "Hotels",
   "title": "Dated stay captures are sparse and not like-for-like",
-  "detail": "Updated 2026-11-19: the dated log now holds two dated Wynn quotes, two December calendar captures (Horseshoe, Resorts World) and two logged engine attempts (Venetian, Caesars Palace) for the recommended window. They are still not like-for-like: averages vs raw daily displays vs attempts, differing rooms and rate plans, and no hotel returned an itemised checkout total.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): the dated log now holds two dated Wynn quotes, two December calendar captures (Horseshoe, Resorts World) and two logged engine attempts (Venetian, Caesars Palace) for the recommended window. They are still not like-for-like: averages vs raw daily displays vs attempts, differing rooms and rate plans, and no hotel returned an itemised checkout total.",
   "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026"
  },
  {
   "id": "F33",
   "area": "Hotels",
   "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
-  "detail": "Updated 2026-11-19: parking and cancellation terms are now captured for all five candidate hotels. Dollar parking fees are published only by the Venetian ($20/$25/$40 per day, poker validation 3+ hours). Caesars Palace and Horseshoe publish policy text (surcharge; free for Platinum+ and guests; locals 3 hours) without amounts; Resorts World comps self-parking for locals and Elite+ members; Wynn comps registered guests.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): parking and cancellation terms are now captured for all shortlisted hotels. Dollar parking fees are published by the Venetian ($20/$25/$40 per day, poker validation 3+ hours) and the MGM rooms ($20 self / $40 valet). Caesars Palace and Horseshoe publish policy text (surcharge; free for Platinum+ and guests; locals 3 hours) without amounts; Resorts World comps self-parking for locals and Elite+ members; Wynn comps registered guests.",
   "source": "https://www.venetianlasvegas.com/content/venetian/us/en/legal/hotel-terms-and-conditions.html"
  },
  {
   "id": "F46",
   "area": "Hotel fees",
   "title": "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",
-  "detail": "Resolved 2026-11-19 for the two candidate properties: booking-page Hotel Policies give exact fees (Caesars Palace $54.95 plus $7.35 tax; Horseshoe $49.95 plus $6.68 tax). The corporate disclaimer still publishes only the $45-$60 range for other Caesars properties.",
+  "detail": "Resolved 2026-11-19 (session f7676bd0) for the two candidate properties: booking-page Hotel Policies give exact fees (Caesars Palace $54.95 plus $7.35 tax; Horseshoe $49.95 plus $6.68 tax). The corporate disclaimer still publishes only the $45-$60 range for other Caesars properties.",
   "source": "https://www.caesars.com/corporate/disclaimer",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -276,8 +280,8 @@
   "id": "F50",
   "area": "Walking routes",
   "title": "No hotel page publishes a walking time between two properties (routes now measured on Google Maps)",
-  "detail": "Still true - and worked around on 2026-11-19 by measuring every pair on Google Maps walking directions between official street addresses. Values are routing estimates retrieved on one date, not hotel-published facts, and include only the sidewalk route to the property entrance, not in-property time.",
-  "source": "https://www.google.com/maps/dir/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/data=!4m2!4m1!3e2",
+  "detail": "Still true - and worked around on 2026-11-19 (session f7676bd0) by measuring every pair on Google Maps walking directions between official street addresses. Values are routing estimates retrieved on one date, not hotel-published facts, and include only the sidewalk route to the property entrance, not in-property time.",
+  "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2",
   "status": "open",
   "last_updated": "2026-11-19"
  },
@@ -285,7 +289,7 @@
   "id": "F51",
   "area": "Trip cost",
   "title": "The true-cost figure can now be completed for the Wynn stay, not for the others",
-  "detail": "Updated 2026-11-19: a dated official Wynn quote for Dec 6-13 exists ($688-$818 average per night, fee included, taxes excluded), so the planner's hotel side can be completed for a Wynn stay by typing that figure into the calculator. For the Venetian, Caesars Palace, Horseshoe and Resorts World no itemised checkout total for the window was returned, so the calculator stays incomplete for those until one is captured.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): a dated official Wynn quote for Dec 6-13 exists ($688-$818 average per night, fee included, taxes excluded), so the planner's hotel side can be completed for a Wynn stay by typing that figure into the calculator. For the Venetian, Caesars Palace, Horseshoe and Resorts World no itemised checkout total for the window was returned, so the calculator stays incomplete for those until one is captured.",
   "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "open by design",
   "last_updated": "2026-11-19"
@@ -321,36 +325,168 @@
   "id": "F55",
   "area": "Hotels",
   "title": "Wynn cancellation deadline: 72 hours was not reproducible; the live offer terms say 48 hours",
-  "detail": "Several records (rate snapshots, Q14, F33) stated a Wynn cancellation deadline of '72 hours before arrival, per the Wynn terms page read 2026-11-17'. No stored capture contains that text, so it cannot be reproduced. The Wynn terms page re-read on 2026-11-19 (offer DK26WLV2) says 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited', and its longer full-deposit and cancellation policy applies only to stays on 15-21 Nov, 29-31 Dec 2026 and 4-6 Jan 2027, not to 6-13 Dec. The 72-hour figure is therefore withdrawn and the record now carries 48 hours, labelled as the offer's terms. The standard (non-offer) rate policy was not read, so the planned rate's deadline is still unconfirmed. Re-read the booking-engine rate rules at quote time before any payment.",
-  "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "detail": "Several records (rate snapshots, Q14, F33) stated a Wynn cancellation deadline of '72 hours before arrival, per the Wynn terms page read 2026-11-17'. No stored capture contains that text, so it cannot be reproduced. The Wynn terms page re-read on 2026-11-19 (offer DK26WLV2) says 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited', and its longer full-deposit and cancellation policy applies only to stays on 15-21 Nov, 29-31 Dec 2026 and 4-6 Jan 2027, not to 6-13 Dec. The 72-hour figure is therefore withdrawn and the record now carries 48 hours, labelled as the offer's terms. The standard (non-offer) rate policy was not read, so the planned rate's deadline is still unconfirmed. Re-read the booking-engine rate rules at quote time before any payment. Update 2026-11-19 (session f7676bd0): the 72-hour figure IS reproducible after all - from the Wynn booking engine's dated rate-details page for Dec 6-13, where the Flexible Getaway ($818 avg/night) and 'Your Fall to Have It All' ($688 avg/night) rate plans each print '72-Hour Cancellation (One Night's Room Rate and Tax Penalty Charged To Card)' and charge one night's room rate and tax at booking. So both figures exist, per rate plan: 72 hours on the two dated plans, 48 hours on offer DK26WLV2 and the Wynn Rewards Exclusive rate. Quote-time re-confirmation before payment still stands.",
+  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "corrected by d615f79e; needs review",
   "last_updated": "2026-11-19"
  },
  {
   "id": "F56",
+  "area": "Entry rules",
+  "title": "Event #35 is a two-person team event but is stored as a single-entry row",
+  "detail": "The official sheet for event #35 ($600 NLH LIPS Poker Jingle Tag Team, sheet 31, start 10:10 AM, guarantee $10,000) is a team format: 'Teams will rotate their players at the start of every level' and teams must be Female / Female or Female / Male. The row is stored as confirmed single-entry (standard S1), the same as the individual events. A two-person team is not an individual single-entry freezeout in the sense of the brief. Review its classification before the single-entry filter is used for it.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "status": "open: classification review requested (user decision)",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F57",
+  "area": "Entry rules",
+  "title": "'TDA rules apply' is cited by all 22 single-entry sheets; the rulebook text was not captured",
+  "detail": "Every single-entry sheet read on 2026-11-19 opens its rule list with 'TDA rules apply to all Venetian Poker Room tournaments'. That is a reference to an external rulebook, not a rule written on the sheet. The rulebook text was not read, so any entry limit it contains is unknown to this dashboard. No official Venetian house-rules page covering re-entry was located in this session. Obtain the house-rules text from the poker room desk before payment.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+  "status": "open: unverified reference; request the house-rules text",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F58",
+  "area": "Source defect",
+  "title": "WPT Day 2 dates: the official schedule and the structures PDF disagree",
+  "detail": "Structures PDF: the $800 No Limit Hold'em Day 2 is Thu Dec 3 at 1 p.m. (the schedule prints Mon Nov 30 1 p.m.); the $1,600 No Limit Hold'em Day 2 is Sat Dec 5 at 11 a.m. (the schedule prints Thu Dec 3 1 p.m.). The schedule's Sat Dec 5 11 a.m. 'No Limit Hold'em Day 2' line carries $1,100 / $5,000,000, which matches neither event. Rows 2026-11-30 13:00, 2026-12-03 13:00 and 2026-12-05 11:00 keep the schedule's date and buy-in, so their date is not confirmed by the structures PDF. Ask the Wynn poker desk which date is correct before planning a Day 2.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F59",
+  "area": "Source defect",
+  "title": "WPT NLH Turbo on Mon Dec 21: 6 p.m. in the structures PDF, 8 p.m. in the schedule",
+  "detail": "The structures PDF lists the Monday Dec 21 NLH Turbo at 6 p.m.; the official schedule lists 8 p.m. The row keeps the schedule time (20:00). Confirm before relying on it.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F60",
+  "area": "Coverage",
+  "title": "91 WPT schedule lines have no entry terms in the document the site cited for them",
+  "detail": "All 136 WPT rows match the official schedule on date, start time and buy-in, and on guarantee where the schedule prints one (see data/98087225/wpt_schedule_check.json). The structures PDF (read in full on 2026-11-19) contains terms for 13 events only, and 45 site rows match them (re-entry granted, so classified multi). The other 91 lines (Milestone satellites, Super Gold Million Mystery Bounty, Seniors, Ladies, High Roller, Big O, PLO 6-Max, the Dec 18 NLH and NLH Turbo variants and similar) are not in it. Their rows previously cited that PDF; they now cite the schedule, and their entry terms remain unread and unverified. The schedule says 'See structure sheet for details'; those sheets were not located.",
+  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F61",
+  "area": "Source defect",
+  "title": "WPT schedule PDF prints two different weeks under a 'Dec. 18' heading",
+  "detail": "The official schedule PDF's 16 December block is headed 'Dec. 18 Wednesday' (18 December 2026 is a Friday; Wednesday is the 16th), and the block that follows it is headed 'Dec. 18 Friday' with a different set of events and start times. One of the two blocks must be misdated, and the PDF alone cannot say which: the first block's weekday disagrees with its printed date, the second block's agrees. Rows are stored under 16 December with the discrepancy printed on the row (F05 is the older, narrower note). Treat both days as provisional until Wynn publishes a corrected schedule.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+ },
+ {
+  "id": "F62",
+  "area": "Coverage",
+  "title": "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+  "detail": "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in data/8f0b323b/schedule_recheck.json.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "id_note": "reassigned during merge with main (id collision)",
+  "status": "open - cosmetic, no value affected",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F63",
+  "area": "Entry rules",
+  "title": "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+  "detail": "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "status": "open by design",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F64",
+  "area": "Entry rules",
+  "title": "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
+  "detail": "Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties.",
+  "source": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+  "status": "verified - figures official",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F65",
+  "area": "Monitoring",
+  "title": "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+  "detail": "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01); six of the sheets behind the trip window were not re-read in this session.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "status": "open - evidence limitation",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F66",
+  "area": "Schedule",
+  "title": "Shared structure sheets can print one registration close for several events on different start times",
+  "detail": "Structure sheet 25 covers events #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one line, 'Late Registration: 6 levels', with no clock. An earlier pass copied the 8:10 PM row's derived clock (9:40 PM) onto the two morning rows, which would have widened their registration window by more than ten hours. Fix applied: the builder now prefers the clock time the sheet itself printed, and where a shared sheet prints none the row keeps its text and states no close time instead of borrowing another event's. No close time is invented.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+  "status": "fixed by this session",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F67",
+  "area": "Eligibility",
+  "title": "Event #35 is a two-person team event: the S1 label describes one entry, not one player",
+  "detail": "Session 0a0d8e6b flagged that #35 ($600 LIPS Poker Jingle Tag Team, sheet 31) is stored as a confirmed single-entry row although the sheet describes a team format ('Teams: Female / Female OR Female / Male'; 'Teams will rotate their players at the start of every level'). Re-read on 2026-11-19 and extended by session 2723deea: the sheet states no second-buy-in path, so the S1 entry test itself still passes - but the row is not an individual event and it requires a partner, which the S1 label cannot express. The row now carries a restriction label with the official sentence, the ranking and the day plan exclude it, and this flag records that the S1 label alone is not sufficient for team formats.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "status": "labelled by this session; S1 label limitation kept open",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F68",
+  "area": "Entry rules",
+  "title": "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+  "detail": "The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December $600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints 'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived restriction label with its sentence and retrieval date, the label is shown on every row, the executive ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. A reader who is eligible can still play them; the label says who can.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+  "status": "fixed by this session; label visible on the row",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F59 was already held by another session's finding"
+ },
+ {
+  "id": "F69",
+  "area": "Monitoring",
+  "title": "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+  "detail": "The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the 2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F60 was already held by another session's finding"
+ },
+ {
+  "id": "F70",
   "area": "Hotels",
   "title": "The Caesars Palace booking calendar returned a technical error on 2026-11-19",
   "detail": "The official December 2026 rate calendar for Caesars Palace rendered 'Sorry! Our website is currently experiencing technical difficulties' and no rates, while the same engine rendered the Horseshoe calendar minutes later. No dated Caesars Palace quote is stored; retry needed.",
   "source": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
  },
  {
-  "id": "F57",
+  "id": "F71",
   "area": "Hotels",
   "title": "Resorts World calendar shows conflicting resort-fee captions",
   "detail": "One page displays both 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. Both captions are stored verbatim; the displayed calendar figures are kept as raw displays and no fee-inclusive interpretation is claimed.",
   "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2"
  },
  {
-  "id": "F58",
+  "id": "F72",
   "area": "Hotels",
   "title": "Google Maps walking routes are asymmetric by direction",
-  "detail": "Measured 2026-11-19: Wynn to Venetian 14 min (0.5 mi) but Venetian to Wynn 26 min (1.1 mi); Caesars Palace to Wynn 39 min but Wynn to Caesars Palace 47 min. Entrance pin placement and route choice differ per direction. Both directions are stored as measured; neither is smoothed or symmetrized.",
-  "source": "https://www.google.com/maps/dir/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/data=!4m2!4m1!3e2"
+  "detail": "Measured 2026-11-19 (session f7676bd0): Wynn to Venetian 14 min (0.5 mi) but Venetian to Wynn 26 min (1.1 mi); Caesars Palace to Wynn 39 min but Wynn to Caesars Palace 47 min. Entrance pin placement and route choice differ per direction. Both directions are stored as measured; neither is smoothed or symmetrized.",
+  "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
-  "id": "F59",
+  "id": "F73",
   "area": "Hotels",
-  "title": "Horseshoe to Venetian measures 31 minutes - over the 30-minute limit - in one direction",
+  "title": "Horseshoe to Venetian measures 31 minutes - over the 30-minute limit - in one direction; calendars do not define their per-date meaning",
   "detail": "Venetian to Horseshoe measured exactly 30 min (1.3 mi, via Krueger Dr) while Horseshoe to Venetian measured 31 min (1.3 mi) on 2026-11-19. Which direction the 30-minute limit applies to changes the verdict for this hotel; both figures are published so the reader can decide. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",
   "source": "https://www.google.com/maps/dir/3645+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  }

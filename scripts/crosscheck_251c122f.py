@@ -23,6 +23,8 @@ import os
 import re
 import sys
 
+from merge_251c122f import sheet_grants_second_entry
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "c6087e2c")
 errors: list[str] = []
@@ -56,7 +58,11 @@ def main() -> int:
         sheet = structures["sheets"].get(str(e.get("structure_no")), {})
         sheet_ok = bool(sheet) and "error" not in sheet
         covered = e["event_no"] in (sheet.get("event_numbers") or []) if sheet_ok else False
-        adds = bool(sheet.get("adds_a_second_entry")) if sheet_ok else False
+        adds = sheet_grants_second_entry(sheet)
+        if adds and v != "adds_second_entry":
+            errors.append("{} {} #{}: verdict misses an extra-entry grant in "
+                          "the official sheet text".format(
+                              e["date"], e["time"], e["event_no"]))
         if v == "single_entry_confirmed":
             if not sheet_ok:
                 errors.append("{} {} #{}: confirmed without a read sheet".format(

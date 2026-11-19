@@ -154,9 +154,31 @@
   "id": "S14"
  },
  {
-  "id": "S15",
+  "title": "Filter the tables by whether an event is actually open to you",
+  "problem": "Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are 50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this session they were ranked as ordinary picks and could become a day's primary event.",
+  "options": [
+   "Keep the per-row 'entry restricted' label only (implemented)",
+   "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+   "Let the reader tick which field types they qualify for and filter on that"
+  ],
+  "effect": "The label is implemented and the ranking plus the day schedule already exclude restricted rows. A reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age and gender are the reader's own facts, not the site's to assume), so it is left as an option.",
+  "id": "S15"
+ },
+ {
+  "title": "Have the monitor record its first-read baseline explicitly",
+  "problem": "The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57).",
+  "options": [
+   "Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+   "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+   "Drop the page-hash ledger and publish only value-level changes"
+  ],
+  "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
+  "id": "S16"
+ },
+ {
+  "id": "S17",
   "title": "Nightly calendar capture for the hotels whose booking engines render server-side",
-  "problem": "The Horseshoe and Resorts World calendars returned full December price maps in one read, while the Venetian and Caesars Palace engines returned nothing. One nightly scheduled capture of the two working engines would turn the rate log into a real price history.",
+  "problem": "The Horseshoe and Resorts World calendars returned full December price maps in one read (2026-11-19), while the Venetian and Caesars Palace engines returned nothing. One nightly scheduled capture of the two working engines would turn the rate log into a real price history.",
   "options": [
    "Extend the monitor's hotel group to the two booking-engine URLs and store the per-date map",
    "Snapshot only the seven trip nights to keep the diff small",
@@ -165,9 +187,9 @@
   "effect": "Price history and change badges for hotel rates, like the ones event rows already have. In review - not implemented."
  },
  {
-  "id": "S16",
+  "id": "S18",
   "title": "Show both directions of every walk and let the filter use the direction that matters",
-  "problem": "Walking routes are asymmetric (Wynn to Venetian 14 min vs Venetian to Wynn 26 min). The table shows one direction per row; a reader deciding on the walk home after midnight sees the reverse row only if they look for it.",
+  "problem": "Walking routes are asymmetric (Wynn to Venetian 14 min vs Venetian to Wynn 26 min; flag F72). The table shows one direction per row; a reader deciding on the walk home after midnight sees the reverse row only if they look for it.",
   "options": [
    "Add a 'reverse' column with the measured minutes",
    "Judge the 30-minute filter on the slower of the two directions",
@@ -176,7 +198,7 @@
   "effect": "Safer late-night planning. In review - not implemented."
  },
  {
-  "id": "S17",
+  "id": "S19",
   "title": "Store the GTD to entry-fee ratio as a data field",
   "problem": "The ratio is computed at render time (schedule tables, planner) but is not a stored field, so it cannot be sorted or exported from the data files alone.",
   "options": [

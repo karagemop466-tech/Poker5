@@ -11,7 +11,7 @@
   "nights": 7,
   "adults": 2,
   "rooms": 1,
-  "rationale": "Chosen automatically on 2026-11-19 from the corrected single-entry set: 2026-12-06 to 2026-12-12 (7 nights, 7 full playing days) carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
+  "rationale": "Chosen automatically on 2026-11-19 from the S1-screened entry set: 2026-12-06 to 2026-12-13 (7 nights, 7 full playing days) carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
   "chosen_by": "scripts/integrate_b3be876c.py",
   "budget_ceiling": {
    "per_night": 1007.82,
@@ -638,19 +638,26 @@
  },
  "rule_standard": {
   "id": "S1",
-  "text": "A Venetian row is published as CONFIRMED SINGLE-ENTRY only when all of these hold, each with the official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF was read (HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the row is an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or multi-day structure; (5) the sheet states a registration close; (6) nothing in the sheet's numbered rule list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second buy-in, or a purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields by scripts/check_ea99006a.py.",
+  "text": "A Venetian row is published as NO SECOND ENTRY GRANTED (S1 screen) when all of these hold, each with the official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF was read (HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the row is an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or multi-day structure; (5) the sheet states a registration close; (6) nothing in the sheet's numbered rule list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second buy-in, or a purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields by scripts/check_ea99006a.py. The screen is deliberately not a confirmation of a freezeout: no sheet in the series states a one-entry maximum in words (flag F01).",
   "limitation": "No official source in this series states 'one entry only' in words, and every sheet carries 'Management reserves the right to cancel or change the tournament'. Confirmation therefore means 'the published rules grant no second entry', not 'the house promises a freezeout'. That is flag F01 and it stays open."
  },
  "integration": {
   "session": "b3be876c",
   "run_at": "2026-11-19",
   "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
+  "reverified_by": {
+   "session": "2723deea",
+   "date": "2026-11-19",
+   "record": "data/2723deea/reverify.json"
+  },
   "live_reads": {
    "wynn_resort_fee": "2026-11-19",
    "caesars_resort_fee": "2026-11-19",
    "venetian_resort_fee": "2026-11-19",
    "venetian_poker_rate": "2026-11-19",
    "sheet_live_spot_checks": "2026-11-19",
+   "mgm_terms_2026_11_19": "2026-11-19",
+   "venetian_parking_2026_11_19": "2026-11-19",
    "venetian_hotel_terms": "2026-11-19",
    "venetian_contact_address": "2026-11-19",
    "wynn_contact_address": "2026-11-19",

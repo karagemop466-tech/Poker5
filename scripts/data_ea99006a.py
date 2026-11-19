@@ -696,30 +696,48 @@ HOTELS = [
                           "in-suite internet, boarding-pass printing, local calls, PressReader."),
          booking="https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date={IN}&children[]=0&departure_date={OUT}&view=calendar",
          address="", address_source="",
-         parking=("Complimentary self-parking for non-registered hotel guests who play for three hours or more in "
-                  "tournaments or cash games (official player-parking page). The poker room has direct access to "
-                  "The Palazzo self-parking garage."),
+         parking=("Registered hotel guest: $20/day self-parking, seven days a week; valet $40/day. Non-hotel guests: $20/day "
+                  "Mon-Thu, $25/day Fri-Sun. Poker players who play three hours or more in a tournament or cash game get "
+                  "complimentary self-parking for that day, confirmed by a supervisor (official player-parking page, re-read 2026-11-19)."),
          parking_source="https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+         parking_read="2026-11-19",
          cancel="", cancel_source="",
+         cancel_note=("No Venetian cancellation deadline has been read from an official page for a specific rate plan; only the "
+                      "checkout total and cancellation term printed by the booking flow would establish it (Q14/F33)."),
          poker_rate=("Reduced suite rates are offered to players who stay at The Venetian or The Palazzo and play "
                      "poker with a Venetian Rewards card (official poker suite-rates page)."),
          poker_rate_source="https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
          quality_note="AAA Five Diamond (Palazzo). On the same property as the Venetian poker room."),
     dict(key="wynn", name="Wynn Las Vegas / Encore", tier="Luxury", area="Strip - north",
          room="Wynn Las Vegas Poker Room (Encore)", on_property=True,
-         resort_fee=None, resort_fee_text="", resort_fee_source="",
-         resort_fee_note=("No official resort-fee page could be retrieved: both "
-                          "wynnlasvegas.com/resort-fee and wynnlasvegas.com/hotel/resort-fee.html return "
-                          "'this page has checked out'. Flagged for review."),
+         resort_fee=55.0, resort_fee_text="$55 plus tax per night", resort_fee_verified=True,
+         resort_fee_source="https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+         resort_fee_read="2026-11-19",
+         resort_fee_note=("Re-read 2026-11-19 from the official Wynn offer terms: 'A daily resort fee of $55 plus tax will be added "
+                          "to your room account for each room night, which entitles you to receive complimentary self-parking for up "
+                          "to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water ... "
+                          "fitness center ... digital newsstand.' The separate page the site previously looked for still returns "
+                          "'this page has checked out'; the fee is published in the offer terms instead."),
          booking="https://www.wynnlasvegas.com/",
-         parking="", parking_source="", cancel="", cancel_source="",
+         parking=("Complimentary self-parking for up to two vehicles is included in the $55 resort fee (official offer terms, "
+                  "re-read 2026-11-19)."),
+         parking_source="https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+         cancel=("'A deposit of one (1) night of room and tax will be charged at the time of booking and cancellations must be "
+                 "received at least 48 hours prior to arrival date or deposit will be forfeited.' (offer DK26WLV2, re-read 2026-11-19)"),
+         cancel_source="https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+         cancel_note=("This is the term of promotional offer DK26WLV2, which is limited to two consecutive nights on select dates "
+                      "and therefore cannot price a seven-night stay (F63)."),
          quality_note=("On the same property as the Wynn poker room: the official WPT terms state the "
                        "poker room is 'located in Encore at Wynn Las Vegas'.")),
     dict(key="caesars", name="Caesars Palace", tier="Upper upscale", area="Strip - centre",
          room="Caesars Palace Poker Room", on_property=True,
-         resort_fee=None, resort_fee_text="", resort_fee_source="",
-         resort_fee_note=("The official resort-fee URL redirects to the general hotel page and does not "
-                          "state a fee. Flagged for review."),
+         resort_fee=None,
+         resort_fee_text="between $45 and $60 plus applicable tax (corporate range, not this property's figure)",
+         resort_fee_source="https://www.caesars.com/corporate/disclaimer",
+         resort_fee_note=("Re-read on 2026-11-19 in the Hotel Disclaimer of the official Caesars corporate disclaimer page: "
+                          "'Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort "
+                          "fees are waived for Diamond and Seven Stars.' The sentence covers every Caesars property, so it is "
+                          "NOT this hotel's fee. The hotel page itself states no fee. The fee therefore stays blank."),
          booking="https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]",
          address="3570 Las Vegas Blvd South, Las Vegas, NV 89109",
          address_source="https://www.caesars.com/caesars-palace/casino",
@@ -729,8 +747,13 @@ HOTELS = [
          quality_note="On the same property as the Caesars Palace poker room (official casino page)."),
     dict(key="horseshoe", name="Horseshoe Las Vegas", tier="Upscale", area="Strip - centre",
          room="Hall of Fame Poker Room", on_property=True,
-         resort_fee=None, resort_fee_text="", resort_fee_source="",
-         resort_fee_note="No official resort-fee page was retrieved. Flagged for review.",
+         resort_fee=None,
+         resort_fee_text="between $45 and $60 plus applicable tax (corporate range, not this property's figure)",
+         resort_fee_source="https://www.caesars.com/corporate/disclaimer",
+         resort_fee_note=("Re-read on 2026-11-19 in the Hotel Disclaimer of the official Caesars corporate disclaimer page: "
+                          "'Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort "
+                          "fees are waived for Diamond and Seven Stars.' The hotel page itself states no fee, so the property "
+                          "figure stays blank."),
          booking="https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=blv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]",
          address="3645 Las Vegas Blvd South, Las Vegas, NV 89109",
          address_source="https://www.caesars.com/horseshoe-las-vegas/casino",
@@ -756,6 +779,67 @@ HOTELS = [
          cancel="Reservations must be cancelled at least 48 hours before check-in for a refund of the deposit.",
          cancel_source="https://www.rwlasvegas.com/offers/all-resort-no-fees/",
          quality_note="Newest large resort on the north Strip. Poker room status: official site shows a poker-room section; no tournament schedule retrieved."),
+    dict(key="bellagio", name="Bellagio", tier="Luxury", area="Strip - centre",
+         room="Bellagio Poker Room", on_property=True,
+         resort_fee=55.0, resort_fee_text="$55.00 plus applicable tax per night", resort_fee_verified=True,
+         resort_fee_source="https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+         resort_fee_read="2026-11-19",
+         resort_fee_note=("Official Bellagio Hotel Reservation Terms, re-read 2026-11-19: 'A daily resort fee of $55.00 plus applicable "
+                          "tax will be applied to all reservations.' Waived for MGM Rewards Gold+ on eligible reservations. Includes "
+                          "in-room wireless internet, domestic long distance and toll-free calls, Paramount+ with SHOWTIME On Demand, "
+                          "boarding-pass printing, digital newsstand, fitness center for guests 18+. Additional occupant charge $50 plus "
+                          "tax per occupant per night above two occupants."),
+         booking="https://bellagio.mgmresorts.com/en/",
+         address="", address_source="",
+         parking=("Registered hotel guest: $20 self-parking; valet $40 daily. Self-parking $20 Mon-Thu / $25 Fri-Sun for short-term "
+                  "visitors; registered hotel guests pay $20 either way. In-out privileges across MGM Las Vegas destinations within the "
+                  "same 24-hour period. Prices may be higher during special events."),
+         parking_source="https://www.mgmresorts.com/en/things-to-do/parking.html",
+         parking_read="2026-11-19",
+         cancel=("'The first night's deposit is fully refundable provided a timely notice of cancellation is received by Room "
+                 "Reservations at 888.987.6667 at least 72 hours prior to the arrival date, unless specifically excluded by booked offer.'"),
+         cancel_source="https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+         cancel_note="Standard reservation term, not a specific rate plan (F33).",
+         quality_note=("No Bellagio poker-room page could be retrieved (F10); the hotel is listed for the room-cost comparison only, and no "
+                       "Bellagio tournament row exists anywhere in this repository (F53).")),
+    dict(key="aria", name="ARIA Resort & Casino", tier="Luxury", area="Strip - centre / south",
+         room="ARIA Poker Room", on_property=True,
+         resort_fee=55.0, resort_fee_text="$55.00 plus applicable tax per night", resort_fee_verified=True,
+         resort_fee_source="https://aria.mgmresorts.com/en/terms-and-conditions.html",
+         resort_fee_read="2026-11-19",
+         resort_fee_note=("Official ARIA Hotel Reservation Terms, re-read 2026-11-19: 'A daily resort fee of $55.00 plus applicable tax "
+                          "will be applied to all reservations.' Check-in 3:00 pm, check-out 11:00 am. Waived for MGM Rewards Gold+ on "
+                          "eligible reservations. Additional occupant charge $50 plus tax per occupant per night above two occupants."),
+         booking="https://aria.mgmresorts.com/en/",
+         address="", address_source="",
+         parking=("Registered hotel guest: $20 self-parking; valet $40 daily. Prices may be higher during special events."),
+         parking_source="https://www.mgmresorts.com/en/things-to-do/parking.html",
+         parking_read="2026-11-19",
+         cancel=("'The first night's deposit is fully refundable provided a timely notice of cancellation is received by Room "
+                 "Reservations at 866.359.7757 at least 72 hours prior to the arrival date, unless specifically excluded by booked offer.'"),
+         cancel_source="https://aria.mgmresorts.com/en/terms-and-conditions.html",
+         cancel_note="Standard reservation term, not a specific rate plan (F33).",
+         quality_note=("No ARIA poker-room page could be retrieved (F10); the hotel is listed for the room-cost comparison only, and no ARIA "
+                       "tournament row exists in this repository.")),
+    dict(key="mgmgrand", name="MGM Grand", tier="Luxury", area="Strip - south",
+         room="MGM Grand Poker Room", on_property=True,
+         resort_fee=50.0, resort_fee_text="$50.00 plus applicable tax per night", resort_fee_verified=True,
+         resort_fee_source="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+         resort_fee_read="2026-11-19",
+         resort_fee_note=("Official MGM Grand Hotel Reservation Terms, re-read 2026-11-19: 'A daily resort fee of $50.00 plus applicable "
+                          "tax will be applied to all reservations.' Note it is $50 here and $55 at Bellagio and ARIA: MGM resort fees are "
+                          "property-specific (F64). Additional occupant charge $40 plus tax per occupant per night above two occupants."),
+         booking="https://mgmgrand.mgmresorts.com/en/",
+         address="", address_source="",
+         parking=("Registered hotel guest: $20 self-parking; valet $40 daily. Prices may be higher during special events."),
+         parking_source="https://www.mgmresorts.com/en/things-to-do/parking.html",
+         parking_read="2026-11-19",
+         cancel=("'The first night's deposit is fully refundable provided a timely notice of cancellation is received by Room "
+                 "Reservations at 877.880.0880 at least 72 hours prior to the arrival date, unless specifically excluded by booked offer.'"),
+         cancel_source="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+         cancel_note="Standard reservation term, not a specific rate plan (F33).",
+         quality_note=("No MGM Grand poker-room page could be retrieved (F10); the hotel is listed for the room-cost comparison only, and no "
+                       "MGM Grand tournament row exists in this repository.")),
 ]
 
 TAX_RATE = 13.38
@@ -803,6 +887,7 @@ def build_routes():
                 same_property=same,
                 minutes=0 if same else None,
                 verified=same,
+                minutes_source=(h.get("address_source") or h.get("resort_fee_source") or "") if same else "",
                 method=("On the same property: the poker room is inside the hotel. Verified from the "
                         "official pages linked on each row." if same else
                         "No official source states a walking time between these properties. "
@@ -927,6 +1012,28 @@ FLAGS = [
      "The Venetian lobby via the Waterfall Atrium escalator. Allow indoor walking time if you stay in the Venetian "
      "tower, and note the room is a long inside walk from the Strip entrance.",
      "https://www.venetianlasvegas.com/resort/casino/poker.html"),
+    # ---- session 8f0b323b (2026-11-19 live re-read) ----
+    ("F62", "Source mismatch", "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+     "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish "
+     "before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or "
+     "Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event "
+     "number, buy-in, guarantee and sheet number all match. Logged rather than edited: changing event names is a data-owner decision "
+     "and no displayed value is affected.", SCHEDULE_PAGE),
+    ("F63", "Hotel cost", "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+     "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates "
+     "2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and "
+     "is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete.",
+     "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2"),
+    ("F64", "Hotel cost", "MGM resort fees are property-specific ($55 at Bellagio and ARIA, $50 at MGM Grand) and were previously blank",
+     "Bellagio and ARIA print $55.00 plus applicable tax; MGM Grand prints $50.00 plus applicable tax (all re-read 2026-11-19). Before this "
+     "re-check every MGM room was blank (F10). The pages also supply the additional-occupant charge, the 72-hour standard cancellation "
+     "term and the parking rates. A single corporate figure must still not be reused across MGM properties, and no MGM room rate for the "
+     "trip dates is published anywhere.", "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html"),
+    ("F65", "Entry rules", "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+     "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, "
+     "re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 "
+     "standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01), and six of the sheets behind the "
+     "trip window were not re-read in this session.", SCHEDULE_PAGE),
 ]
 
 
