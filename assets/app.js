@@ -319,5 +319,8 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
+  /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
+  try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
+    if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
   initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });

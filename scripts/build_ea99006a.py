@@ -866,6 +866,9 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
+  /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
+  try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
+    if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
   initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });
 """
@@ -970,6 +973,18 @@ def build_index():
              ("pages/method.html", "Method &amp; sources", "How every value was read, and the complete source ledger.")]
     body = []
     body.append("<h1>Las Vegas Strip poker trip planner</h1>")
+    body.append('<form class="filters" action="pages/tournaments.html" method="get" id="landsearch" role="search">'
+             '<input id="landq" name="q" class="search" type="search" placeholder="Search events, venues, dates, rule text, hotels..." aria-label="Search the site">'
+             '<select id="landpage" aria-label="Search in" onchange="this.form.action=this.value">'
+             '<option value="pages/tournaments.html">All tournaments</option>'
+             '<option value="pages/single-entry.html">Single-entry</option>'
+             '<option value="pages/tournaments-double.html">Multi-entry / advantage</option>'
+             '<option value="pages/schedule.html">Day schedule</option>'
+             '<option value="pages/hotels.html">Hotels</option>'
+             '<option value="pages/verification.html">Verification log</option>'
+             '<option value="pages/flagged-review.html">Flagged for review</option>'
+             '</select><button type="submit">Search</button></form>')
+    body.append('<p class="muted sm">Search runs inside the chosen table page (every table on that page is filtered). Pick the page with the drop-down.</p>')
     body.append('<p class="muted">Source-verified &middot; retrieved %s &middot; Venetian DeepStack Extravaganza IV and the WPT World Championship at Wynn</p>' % esc(RETRIEVED))
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),

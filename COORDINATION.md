@@ -1131,3 +1131,32 @@ Merge decisions taken while reconciling this branch with main (all logged here a
 Verification before merge: `npm test` 20/20 (9 research + 11 acceptance/root-site), `check_ea99006a.py` OK (every table row carries an official https source), `check_root_site.py` OK, `recheck_ea99006a.py --offline` OK, `crosscheck_251c122f.py` OK, planner trio + scraper self-test OK, build deterministic (drift check clean except the intentionally-excluded repo-review inventory). CI on the PR head: Quality checks SUCCESS, Validate Dec 2-9 poker dashboard SUCCESS, Daily official-source capture SUCCESS.
 
 Publication: **PR #56 merged to main on 2026-11-19 07:22 UTC** (merge commit `73812bb1`). GitHub Pages ("pages build and deployment" run 44479203850) completed **success**; the live site at https://karagemop466-tech.github.io/Poker5/ was re-fetched after deployment and verified: the S1 headline and verdicts (53 confirmed under standard S1, 99 rows explicitly unverified, 42 flags live), the trip window (check-in 2026-12-06, check-out 2026-12-13, 7 nights), the search boxes and all 16 navigation pages render as generated. One caveat kept visible rather than smoothed over: the home-page rationale sentence still carries b3be876c's window wording "2026-12-06 to 2026-12-12 (7 nights, 7 full playing days)", which reads as the last playing day (the 12th) with checkout on the 13th; the authoritative dates are the key-value dates and `meta.json`. The earlier merge note above ("check_out corrected to 2026-12-13") describes the arithmetic fix that PR #61's later re-derivation then adopted - main now carries 2026-12-13 everywhere the date is authoritative.
+
+---
+
+## Session 1dd08538 (branch `arena/1dd08538-poker5`) — landing-page search, audit of remaining gaps
+
+Claimed 2026-11-19 from `main` @ `0011ea1` (no other active claim on the board for these files; PRs #53, #55 and #59/#60 are open but do not touch the landing page).
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| L1 | in progress | 1dd08538 | `scripts/build_ea99006a.py` (`build_index()` only), `index.html`, `assets/app.js` (query-string `?q=` hand-off only) |
+| L2 | in progress | 1dd08538 | `COORDINATION.md` (this section) |
+
+Not claimed here (out of scope, logged as requests below): per-field retrieval dates and an explicit `single_entry` field in `rule_fields` (owned by the `data/c6087e2c` merge step); a stored GTD÷entry ratio field; finish-time and overlap fields; live hotel rate capture. No data file is edited by this session.
+
+### Result — session 1dd08538 (landing-page search + gap audit)
+
+**Changed (L1):** `index.html` now has a search form (`#landsearch`) above the cards: the term plus a drop-down of table pages (All tournaments, Single-entry, Multi-entry, Day schedule, Hotels, Verification log, Flagged for review). Submitting opens that page with `?q=<term>`; `assets/app.js` pre-fills the page's existing search box and runs its filter, so the term is applied to every table on that page. `scripts/build_ea99006a.py` `build_index()` generates the form; the page's own filters are unchanged.
+
+**Verification:** `build_ea99006a.py` rebuilt (exit 0); `check_ea99006a.py` OK (every table row carries an official https source; no broken links); `check_root_site.py` OK; `crosscheck_251c122f.py` OK (67 discrepancies, unchanged); `node --check assets/app.js` OK; `npm test` run. `pages/repo-review.html` regenerates with a changing file count on every build and is outside this session's scope; it was reverted rather than committed.
+
+**Gap audit against the brief (not fixed here; logged for the data owner and integration session):**
+1. Per-field retrieval date: `rule_fields` in `data/c6087e2c/events_verified.json` stores `value`/`excerpt`/`source` per field, but the retrieval date is only at row level (`sheet_retrieved_at`). Fix belongs in `scripts/merge_251c122f.py` (data owner).
+2. Explicit `single_entry` rule field: the verdict is derived, not stored as its own field with excerpt and date.
+3. Stored GTD÷entry ratio: displayed on pages as a descriptive ratio but not present in the data.
+4. Finish-time and overlap fields: only the derived `one_day_minutes` (labelled "planning duration, not a scheduled finish time") exists; overlap check cannot be fully verified until finish times are sourced.
+5. Hotel true cost: most hotels still "Not computed" (Venetian floor only); needs dated itemized quotes.
+6. Walking times: no off-property pair has a measured time; blank by design.
+
+**Status:** L1 done, L2 done (this entry). Branch `arena/1dd08538-poker5`; PR and merge to be recorded below.
