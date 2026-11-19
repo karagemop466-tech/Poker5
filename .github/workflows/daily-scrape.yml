@@ -5,6 +5,10 @@ name: Daily official-source capture (research ledger)
 # site is rebuilt by recheck-ea99006a.yml from data/ea99006a. This capture job
 # must not regenerate or commit index.html/pages/assets: doing so would publish
 # a competing dataset and undo the canonical site's filters and layout.
+#
+# The validation steps below run after the capture commit: a red run here
+# means the official sources moved against the recorded research, not that
+# the site is broken (the site is rebuilt and validated by recheck-ea99006a).
 
 on:
   schedule:
@@ -15,6 +19,8 @@ on:
     paths:
       - "scripts/scrape_251c122f.py"
       - "scripts/merge_251c122f.py"
+      - "scripts/check_root_site.py"
+      - "scripts/check_ea99006a.py"
       - "scripts/crosscheck_251c122f.py"
       - "scripts/summary_251c122f.py"
       - ".github/workflows/daily-scrape.yml"
@@ -83,10 +89,11 @@ jobs:
           done
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
-      - name: Validate the source capture and canonical site links
-        run: |
-          python3 scripts/crosscheck_251c122f.py
-          python3 scripts/check_root_site.py
+      - name: Cross-check the source capture (verdicts, sheets, dates)
+        run: python3 scripts/crosscheck_251c122f.py
+
+      - name: Check canonical site links and source anchors
+        run: python3 scripts/check_root_site.py
 
       - name: Print the capture summary
         if: always()

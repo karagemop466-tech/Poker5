@@ -37,6 +37,85 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 ---
 
+## Current branch session — 6bc143b9 (active) — final integration + feature completion
+
+**Branch:** `arena/6bc143b9-poker5` (fixed by Arena), based on `main` @ `26a3508` (PR #48 merged). This session is the **final integration session** for the root GitHub Pages site (`index.html`, `pages/**`, `assets/**`, `data/ea99006a/**`, `scripts/build_ea99006a.py`, `scripts/check_ea99006a.py`, `scripts/recheck_ea99006a.py`, `.github/workflows/{quality,daily-scrape,recheck-ea99006a}.yml`) plus this board record. All other session folders (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/`, `tools/`, other `scripts/*`) are read-only for this session.
+
+**Claimed tasks (claimed before any file edit, this commit):**
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| C1 | Pipeline integrity: one canonical root-site builder (`build_ea99006a.py`); stop the daily scrape workflow from overwriting the root site with a different generator; make CI regenerate + diff-check the committed root site | done | `.github/workflows/quality.yml`, `.github/workflows/daily-scrape.yml` |
+| C2 | Global search box across **all** table pages + date selector + single-entry/freezeout-confirmed toggle + ≤30-min walk filter (fixed) | done | `assets/app.js`, `scripts/build_ea99006a.py` |
+| C3 | Hotel stay capture: checkout total, nightly average, resort fee + tax, parking, cancellation deadline, rate timestamp as a **dated rate log** (captured official quotes only; blank + flagged otherwise); true cost/night = rate + resort fee + 13.38% tax calculator kept | done | `data/ea99006a/rate_snapshots.json` (new), `scripts/build_ea99006a.py`, `pages/hotels.html` |
+| C4 | Trip planner: fixed trip dates (scenario), nightly budget ceiling + quality floor controls; incomplete-without-quote semantics preserved (PR #48) | done | `scripts/build_ea99006a.py`, `assets/app.js`, `pages/planner.html` |
+| C5 | Per-row "last checked" + "source changed" badges from the scheduled re-check change log | done | `scripts/build_ea99006a.py`, `data/ea99006a/change_log.json` (read) |
+| C6 | Morning live-data feed: each Strip room's official schedule source re-read daily, grouped per room, shown on the monitor page | done | `scripts/recheck_ea99006a.py`, `data/ea99006a/morning_feed.json` (new), `pages/monitor.html` |
+| C7 | Structure-sheet verdicts kept at the written-rule standard (0 confirmed single-entry; silence is not confirmation — verified again this session: zero positive freezeout/no-re-entry text in all 37 captured sheets); multi-entry/spend-advantage kept separate | done (no data change needed) | — |
+| C8 | Executive summary, suggestions board, questions/missing-info register refreshed; stale contradictory root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html` from the retired 251c122f build) replaced with redirect stubs | done | `data/ea99006a/{questions,suggestions}.json`, `scripts/build_ea99006a.py`, those 4 pages |
+| C9 | Full verification (build determinism, check_ea99006a.py, npm test, node --check, offline monitor), PR → main, merge, Pages deploy confirmed, recorded here | done (record below) | COORDINATION.md |
+
+
+### Log (session 6bc143b9) — final integration, 2026-11-19
+
+**Sources read this session** (all official; re-checked via the page-fetch tool, the sandbox cannot open
+TCP to casino hosts — the scheduled Actions jobs re-read them from a runner with normal egress):
+
+- Venetian DSE IV official schedule and all 37 structure-sheet captures in `data/c6087e2c/structures.json`
+  (re-grepped line by line for positive single-entry text: **zero** freezeout / one-entry / no-re-entry
+  statements exist, so the strict verdict (0 confirmed single-entry) stands and no row's "unverified"
+  label can honestly be removed).
+- Dated stay captures carried into `data/ea99006a/rate_snapshots.json` from the recorded official booking
+  reads of earlier sessions (each with its booking URL and rate timestamp): Venetian Dec 2–9 2026
+  (checkout total $7,054.77 / 7 nights / 2 adults, booking UI, captured 2026-11-16), Wynn Dec 2–9 2026
+  ($711 avg incl. fee, excl. tax, no checkout total returned), Venetian poker-suite rate page
+  ("as low as $119/$209", 2026-11-17), Venetian Dec 13–20 2026 ($2,369.38 estimated stay, availability
+  warning), Wynn Dec 13–20 2026 ($355 avg incl. fee, excl. tax; no tax-inclusive total).
+- Wynn terms page (72-hour cancellation), Venetian player-parking and suite-rates pages, Clark County
+  transient-lodging ordinance (13.38%) — all previously captured with retrieval dates and reused with
+  their links; nothing was promoted or newly marked verified.
+
+**Verification performed (all green):**
+
+- `python3 scripts/build_ea99006a.py` twice → byte-identical output (deterministic; `pages/repo-review.html`
+  excluded from drift checks because it embeds a live tree inventory).
+- `python3 scripts/check_ea99006a.py` — 1,248 table rows all carry an official https source; 417 internal
+  and 1,258 external link checks pass.
+- `python3 scripts/check_root_site.py` — links, source anchors and baseline OK (after fixing its
+  `data-nosrc` regex bug, F31).
+- `python3 scripts/recheck_ea99006a.py --offline` — 96 sources in the ledger, 4 booking templates
+  classified as non-fetchable; read-only in offline mode.
+- `python3 scripts/crosscheck_251c122f.py` — capture verdicts reproducible; 37/37 sheets read.
+- `npm test` — 18/18 (9 pre-existing + 9 new root-site regressions in `test/root_site.test.mjs`).
+- `node --check assets/app.js` — OK. Every page that contains a table now carries the search box.
+
+**Irregularities found and resolved here (published as flags F28–F31 on the Flagged page):**
+
+1. **F28** — three generators (`build_c6087e2c.py`, `build_251c122f.py`, `build_ea99006a.py`) and three
+   workflows each rebuilt the one published root site; the daily scrape job silently replaced pages with a
+   different builder's output (the `fd8edf2` auto-commit shows this happening). Fixed: one canonical
+   builder; the morning capture commits `data/c6087e2c/` only; Quality checks regenerates and fails on drift.
+2. **F29** — stale root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html`) from the
+   retired 251c122f build contradicted the published entry standard. Fixed: redirect stubs to canonical pages.
+3. **F30** — the monitor hashed unfetchable booking-template URLs and dynamic Google Maps route links,
+   producing permanent false "changed" events. Fixed: classified as template/route-link, never hashed,
+   and excluded from row "source changed" badges.
+4. **F31** — `check_root_site.py` matched `src="1"` inside `data-nosrc="1"`, reporting phantom broken links.
+   Fixed with a word-boundary regex.
+
+**Irregularities left open (F32–F33, F14/F15 restated):** dated stay captures remain sparse and are not
+like-for-like (different dates/occupancy), so no hotel ranking is published and the planner stays
+"Incomplete" without a date-specific quote (PR #48 semantics preserved); per-stay parking cost and
+cancellation deadlines are unknown except Wynn (72h); cross-property walking minutes remain unverified
+(no official source publishes them — routes page keeps one-click direction links and a user recorder).
+
+**Decisions taken (integration authority):** the strict written-rule standard stays (0 confirmed
+single-entry; 47 "no re-entry text" candidates are the planner basis and stay labelled unverified);
+the guarantee ÷ entry-fee ratio is labelled a descriptive ratio, not a forecast; bounty/flight rows are
+tagged separately; multi-entry/spend-advantage rows live on their own page.
+
+**Integration PR:** see the publication record appended below after the merge.
+
 ## Current branch session — b33a0c35 (active)
 
 **Branch:** `arena/b33a0c35-poker5` (fixed by Arena). **Claimed scope:** repair the generated trip-cost calculator so missing hotel quotes cannot produce a false zero-cost estimate; ensure entries × buy-ins + nights × true nightly hotel cost is shown only when required inputs are known. This is a stale-scope takeover of the prior calculator task: its owner logged completion on 2026-11-17, but the current checkout's generated planner still defaults hotel cost to $0 and its regression test fails.
@@ -1031,3 +1110,24 @@ Method corrections worth keeping:
 
 1. `pages/flagged.html`, `pages/multientry.html`, `pages/qa.html`, `pages/repo-review.html`-style orphan pages from earlier builds are still on the `main` tree, are not generated by `build_ea99006a.py` and do not load `assets/app.js`. They are stale duplicates of `flagged-review.html` / `tournaments-double.html` / `questions.html`. Their owners should delete them (this session does not delete files another session claimed); until then they are unreachable except by direct URL.
 2. `data/c6087e2c/events_verified.json` still carries `single_entry_confirmed` for the two rows named above. Its owner should re-run `scripts/integrate_b3be876c.py`'s standard or align its own verdict step with S1; this session does not write into `data/c6087e2c/`.
+
+---
+
+## Integration and publication record - session 6bc143b9 (2026-11-19, final)
+
+PR: https://github.com/karagemop466-tech/Poker5/pull/56 ("Final integration: one canonical root-site pipeline, feature completion, and monitoring repair").
+
+Merge decisions taken while reconciling this branch with main (all logged here as the board rules require; nothing from either side was discarded):
+
+1. **flags/questions/suggestions** - both sessions' additions kept. Mine: F28-F33, Q11-Q15, S09-S12. b3be876c's: F46-F51 and their new question/suggestion, renumbered to **Q16** and **S13-S14** where they collided with ids I had already claimed (Q11, S10, S11). Their newer verified rewrites of F08, F14, F20 were adopted in place. Totals now 39 flags, 16 questions, 14 suggestions.
+2. **meta.json trip window** - b3be876c's `check_out` of 2026-12-12 slipped a day against its own `nights: 7` (2026-12-06 + 7 nights = 2026-12-13). Both sessions agree on 7 nights, so `check_out` was corrected to **2026-12-13** and their Q01 text updated to match. Flagged here rather than silently.
+3. **assets/app.js** - one unified filter engine: global `initFilters()` (+ `initTable()` alias) covering both filter sets (date range, exact day, venue, rule, confirmed-single-entry (`#fse`, pinned contract), hide-multi (`#fsemulti`), entry-only, rankable-only, changed-only, <=30-min walk, hotel budget ceiling and quality floor). `searchText()` keeps evidence blocks out of search matching. The pinned test line `if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;` is preserved verbatim.
+4. **build_hotels** - both rate histories kept: the dated stay-capture table (`data/ea99006a/rate_snapshots.json`, 13-column like-for-like captures) and b3be876c's itemized budget/quality table plus their dated rate log (`data/ea99006a/rates_log.json`, rewritten by their monitor).
+5. **build_redirects + build_verification** - both kept (redirect stubs for the retired 251c122f pages, and the value-level verification log). The verification page now carries a search box like every other table page.
+6. **data/c6087e2c captures** - each conflict resolved by taking the newest coherent capture set (the bot's daily re-scrape), cross-checked after every pick.
+7. **Untracked build output leak (fixed this session)** - `build_ea99006a.py`'s "earlier sessions" archive auto-discovered any folder with an `index.html`, including untracked local test output (`_site-aa83f1e1/`). Those links resolved locally and broke in CI (found via `check_root_site.py` failures on Actions). The archive now lists only git-tracked folders. Root-site check failures are now emitted as workflow annotations so they are diagnosable without run logs.
+8. b3be876c's request about orphan pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html`) is resolved: they are redirect stubs generated by `build_redirects()`.
+
+Verification before merge: `npm test` 20/20 (9 research + 11 acceptance/root-site), `check_ea99006a.py` OK (every table row carries an official https source), `check_root_site.py` OK, `recheck_ea99006a.py --offline` OK, `crosscheck_251c122f.py` OK, planner trio + scraper self-test OK, build deterministic (drift check clean except the intentionally-excluded repo-review inventory). CI on the PR head: Quality checks SUCCESS, Validate Dec 2-9 poker dashboard SUCCESS, Daily official-source capture SUCCESS.
+
+Publication: PR #56 merged to main; the site deploys from `main` via GitHub Pages at https://karagemop466-tech.github.io/Poker5/ (deployment result recorded in the follow-up commit once verified live).

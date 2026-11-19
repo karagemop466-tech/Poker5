@@ -195,6 +195,48 @@
   "source": "https://www.venetianlasvegas.com/resort/casino/poker.html"
  },
  {
+  "id": "F28",
+  "area": "Repository",
+  "title": "Three generators fought over the one published root site",
+  "detail": "Until 2026-11-19 the repo contained three root-site builders (build_c6087e2c.py, build_251c122f.py, build_ea99006a.py) and three workflows that each rebuilt the root pages with a different one. CI regenerated the site with none of the published output, so the live pages could silently change generator between automated runs. Resolved 2026-11-19: scripts/build_ea99006a.py is the only root-site generator; the morning capture workflow commits capture data only; Quality checks regenerates the site and fails on drift.",
+  "source": "https://github.com/karagemop466-tech/Poker5/tree/main/.github/workflows"
+ },
+ {
+  "id": "F29",
+  "area": "Repository",
+  "title": "Stale root pages from a retired generator contradicted the entry standard",
+  "detail": "pages/qa.html, pages/flagged.html, pages/multientry.html and pages/sources.html were left behind by the retired 251c122f build and described a different single-entry verdict count than the published site. They were not linked from the published navigation. Resolved 2026-11-19: each is now a redirect stub to its canonical page.",
+  "source": "https://github.com/karagemop466-tech/Poker5/tree/main/pages"
+ },
+ {
+  "id": "F30",
+  "area": "Monitoring",
+  "title": "Monitor ledger tracked unfetchable booking-template URLs as sources",
+  "detail": "Official booking links that contain {IN}/{OUT} date placeholders were hashed by the source monitor and produced noise 'changed' events. Resolved 2026-11-19: template URLs are labelled as templates, excluded from hashing, and no row's 'source changed' badge can be caused by them.",
+  "source": "https://github.com/karagemop466-tech/Poker5/tree/main/data/ea99006a"
+ },
+ {
+  "id": "F31",
+  "area": "Monitoring",
+  "title": "Root-site link checker misread data-nosrc attributes as src links",
+  "detail": "scripts/check_root_site.py matched the 'src' inside 'data-nosrc=\"1\"' and reported broken links '1'. Fixed 2026-11-19 with a word-boundary match.",
+  "source": "https://github.com/karagemop466-tech/Poker5/blob/main/scripts/check_root_site.py"
+ },
+ {
+  "id": "F32",
+  "area": "Hotels",
+  "title": "Dated stay captures are sparse and not like-for-like",
+  "detail": "Only two dated booking-engine stay snapshots (Venetian Dec 2-9 and Dec 13-20) and one dated poker-suite-rate observation exist, each with a different occupancy (2 adults vs 1 adult) and different stay windows. Checkout totals, nightly averages, tax amounts and cancellation deadlines are blank wherever the booking UI did not return them (Wynn returned no tax-inclusive total at all). No hotel ranking is published from these, and the trip planner stays Incomplete without a date-specific quote.",
+  "source": "https://github.com/karagemop466-tech/Poker5/blob/main/data/ea99006a/rate_snapshots.json"
+ },
+ {
+  "id": "F33",
+  "area": "Hotels",
+  "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
+  "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (72 hours before arrival, per the Wynn terms page). Blank elsewhere and flagged.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+ },
+ {
   "id": "F46",
   "area": "Hotel fees",
   "title": "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",

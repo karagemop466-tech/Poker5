@@ -85,6 +85,9 @@ def main():
         print("ROOT SITE CHECK ERRORS:")
         for e in errors:
             print(" -", e)
+            # Surface each failure as a workflow annotation so CI run logs are
+            # not needed to see what broke.
+            print("::error title=root site check::{}".format(str(e)[:300]))
         sys.exit(1)
     print("root site check: links, source anchors and baseline OK")
 

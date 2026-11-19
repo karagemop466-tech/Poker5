@@ -1,12 +1,14 @@
-
-/* Poker5 - session ea99006a. Client-side filtering and calculators. */
+/* Poker5 - client-side filtering and calculators (root site, session ea99006a;
+   extended by 6bc143b9: unified search across every table on a page, date
+   selector, confirmed single-entry toggle, <=30-minute walk filter, hotel
+   budget/quality filters). No dependencies, no network calls. */
 function qsa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function norm(s){return (s||'').toLowerCase();}
 
-/* Searchable text of a row. The folded evidence block is skipped on purpose: it is full of
-   negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a row
-   merely because the sentence denying it is attached to it. The block stays readable, not searchable. */
 function searchText(tr){
+  /* Searchable text of a row. Folded evidence blocks are skipped on purpose: they are full of
+     negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a
+     row merely because the sentence denying it is attached to it. */
   var cached=tr.getAttribute('data-search');
   if(cached!==null && cached!=='') return cached;
   var t='';
@@ -22,66 +24,105 @@ function searchText(tr){
   return t.toLowerCase();
 }
 
-function initTable(id){
-  var t=document.getElementById(id); if(!t) return;
-  var rows=qsa('tbody tr',t);
+var poker5Bound=false;
+function initFilters(){
+  if(poker5Bound) return; poker5Bound=true;
   var q=document.getElementById('q'), from=document.getElementById('dfrom'),
       to=document.getElementById('dto'), ven=document.getElementById('fvenue'),
-      se=document.getElementById('fse'), en=document.getElementById('fentry'),
+      se=document.getElementById('fse'), mu=document.getElementById('fsemulti'),
+      en=document.getElementById('fentry'), walk=document.getElementById('walkfilter'),
+      budget=document.getElementById('pbudget'), quality=document.getElementById('pquality'),
       day=document.getElementById('fday'), rule=document.getElementById('frule'),
       rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
+  var tables=qsa('table.data');
+  var TIER_RANK={"Deluxe":1,"Luxury":2};
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
-        v=ven?ven.value:'', s=se?se.checked:false, e=en?en.checked:false, shown=0,
+        v=ven?ven.value:'', s=se?se.checked:false,
+        m2=mu?mu.checked:false, e=en?en.checked:false,
+        w=walk?walk.checked:false,
+        b=budget&&budget.value!==''?parseFloat(budget.value):null,
+        pmin=quality?parseInt(quality.value||'0',10):0,
         dy=day?day.value:'', rl=rule?rule.value:'',
-        rk=rank&&rank.checked, cg=chg&&chg.checked;
-    rows.forEach(function(tr){
-      var d=tr.getAttribute('data-date')||'';
-      var ok=true;
-      if(needle && norm(searchText(tr)).indexOf(needle)<0) ok=false;
-      if(ok && f && d && d<f) ok=false;
-      if(ok && t2 && d && d>t2) ok=false;
-      if(ok && dy && d!==dy) ok=false;
-      if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && rl && tr.getAttribute('data-rule')!==rl) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
-      if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
-      if(ok && rk && tr.getAttribute('data-rankable')!=='1') ok=false;
-      if(ok && cg && tr.getAttribute('data-changed')!=='1') ok=false;
-      tr.style.display=ok?'':'none'; if(ok) shown++;
+        rk=rank&&rank.checked, cg=chg&&chg.checked,
+        shown=0,total=0;
+    tables.forEach(function(t){
+      qsa('tbody tr',t).forEach(function(tr){
+        total++;
+        var d=tr.getAttribute('data-date')||'';
+        var rule=tr.getAttribute('data-rule')||'';
+        var kind=tr.getAttribute('data-kind')||'';
+        var ok=true;
+        if(needle){
+          var txt=tr.getAttribute('data-search');
+          txt=norm(txt!==null&&txt!==undefined?txt:searchText(tr));
+          if(txt.indexOf(needle)<0) ok=false;
+        }
+        if(ok&&f&&d&&d<f) ok=false;
+        if(ok&&t2&&d&&d>t2) ok=false;
+        if(ok&&dy&&d&&d!==dy) ok=false;
+        if(ok&&v&&tr.getAttribute('data-venue')!==v) ok=false;
+        if(ok&&rl&&rule&&rule!==rl) ok=false;
+        if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+        if(ok&&m2&&rule==='multi') ok=false;
+        if(ok&&e&&kind&&kind!=='entry') ok=false;
+        if(ok&&rk&&tr.getAttribute('data-rankable')!=='1') ok=false;
+        if(ok&&cg&&tr.getAttribute('data-changed')!=='1') ok=false;
+        if(ok&&w){
+          /* Hide only pairs that are known to exceed 30 minutes. Rows with no
+             verified minutes stay visible and stay marked unverified. */
+          var m=tr.getAttribute('data-min');
+          if(m!==null&&m!==''&&!isNaN(parseFloat(m))&&parseFloat(m)>30) ok=false;
+        }
+        if(ok&&pmin&&tr.getAttribute('data-tier')!==null){
+          if((TIER_RANK[tr.getAttribute('data-tier')]||0)<pmin) ok=false;
+        }
+        if(ok&&b!==null&&tr.getAttribute('data-cost')!==null&&tr.getAttribute('data-cost')!==''){
+          var c=parseFloat(tr.getAttribute('data-cost'));
+          if(!isNaN(c)&&c>b) ok=false;
+        }
+        tr.style.display=ok?'':'none'; if(ok) shown++;
+      });
     });
-    if(cnt) cnt.textContent=shown+' of '+rows.length+' rows';
-    if(empty) empty.hidden=!(shown===0);
+    if(cnt) cnt.textContent=shown+' of '+total+' rows';
+    if(empty) empty.hidden=!(shown===0&&total>0);
   }
   if(q) q.addEventListener('input',apply);
-  [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [from,to,day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
   if(ven) ven.addEventListener('change',apply);
-  [day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
-  [se,en,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [se,mu,en,walk,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
   var rst=document.getElementById('reset');
   if(rst) rst.addEventListener('click',function(){
     if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
     if(day)day.value=''; if(rule)rule.value='';
-    if(se)se.checked=false; if(en)en.checked=false; if(rank)rank.checked=false; if(chg)chg.checked=false;
+    if(se)se.checked=false; if(mu)mu.checked=false; if(en)en.checked=false;
+    if(rank)rank.checked=false; if(chg)chg.checked=false;
+    if(walk)walk.checked=false; if(budget)budget.value=''; if(quality)quality.value='';
     apply();});
-  qsa('thead th',t).forEach(function(th,i){
-    th.addEventListener('click',function(){
-      var tb=t.tBodies[0], arr=qsa('tr',tb);
-      var asc=th.getAttribute('data-asc')!=='1';
-      qsa('thead th',t).forEach(function(o){o.removeAttribute('data-asc');});
-      th.setAttribute('data-asc',asc?'1':'0');
-      arr.sort(function(a,b){
-        var A=a.children[i]||a.children[a.children.length-1],
-            B=b.children[i]||b.children[b.children.length-1];
-        var ka=A.getAttribute('data-order'); var kb=B.getAttribute('data-order');
-        var va=ka!==null?ka:A.textContent.trim(), vb=kb!==null?kb:B.textContent.trim();
-        var na=parseFloat(String(va).replace(/[^0-9.\-]/g,'')), nb=parseFloat(String(vb).replace(/[^0-9.\-]/g,''));
-        var cmp=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));
-        return asc?cmp:-cmp;});
-      arr.forEach(function(r){tb.appendChild(r);});});});
+  /* click-to-sort per table */
+  tables.forEach(function(t){
+    qsa('thead th',t).forEach(function(th,i){
+      th.addEventListener('click',function(){
+        var tb=t.tBodies[0], arr=qsa('tr',tb);
+        var asc=th.getAttribute('data-asc')!=='1';
+        qsa('thead th',t).forEach(function(o){o.removeAttribute('data-asc');});
+        th.setAttribute('data-asc',asc?'1':'0');
+        arr.sort(function(a,b){
+          var A=a.children[i]||a.children[a.children.length-1],
+              B=b.children[i]||b.children[b.children.length-1];
+          var ka=A.getAttribute('data-order'); var kb=B.getAttribute('data-order');
+          var va=ka!==null?ka:A.textContent.trim(), vb=kb!==null?kb:B.textContent.trim();
+          var na=parseFloat(String(va).replace(/[^0-9.\-]/g,'')), nb=parseFloat(String(vb).replace(/[^0-9.\-]/g,''));
+          var cmp=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));
+          return asc?cmp:-cmp;});
+        arr.forEach(function(r){tb.appendChild(r);});});});
+  });
   apply();
 }
+/* backwards-compatible name used by inline page scripts */
+function initTable(){initFilters();}
 
 /* ---- hotel true nightly cost + dated rate log ---- */
 var RATE_KEY='poker5.ratelog.v1';
@@ -91,7 +132,7 @@ function saveRateLog(l){try{localStorage.setItem(RATE_KEY,JSON.stringify(l));}ca
 function renderRateLog(){
   var box=document.getElementById('ratelog'); if(!box) return;
   var l=rateLog();
-  if(!l.length){box.innerHTML='<p class="muted sm">No dated quotes recorded yet. Add one above and it is stored in this browser only.</p>';return;}
+  if(!l.length){box.innerHTML='<p class="muted sm">No dated quotes recorded in this browser yet. Add one above and it is stored here only. The researched, source-linked captures are in the table above.</p>';return;}
   var h='<table class="data"><thead><tr><th>Recorded</th><th>Hotel</th><th>Dates</th><th class="num">Rate/night</th><th class="num">Resort fee</th><th class="num">Tax %</th><th class="num">True /night</th><th class="num">Stay total</th><th>Source</th><th></th></tr></thead><tbody>';
   l.slice().reverse().forEach(function(r,i){
     h+='<tr><td class="nowrap">'+r.ts+'</td><td>'+r.hotel+'</td><td class="nowrap">'+r.dates+'</td>'+
@@ -136,8 +177,8 @@ function initHotels(){
   if(walk) walk.addEventListener('change',function(){
     qsa('#routetable tbody tr').forEach(function(tr){
       var m=tr.getAttribute('data-min');
-      tr.style.display=(walk.checked && (m===''||m===null))?'':'';
-      if(walk.checked && m!==''){ if(parseFloat(m)>30) tr.style.display='none'; }
+      if(walk.checked && m!=='' && m!==null && parseFloat(m)>30) tr.style.display='none';
+      else tr.style.display='';
     });});
   var rec=document.getElementById('walkrecord');
   if(rec) rec.addEventListener('click',function(){
@@ -278,5 +319,5 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  initTable('tbl'); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
+  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });

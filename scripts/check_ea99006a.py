@@ -26,7 +26,8 @@ PAGES = ["index.html",
 
 ALLOWED_HOSTS = [
     "venetianlasvegas.com", "www.venetianlasvegas.com",
-    "cdn.wynnresorts.com", "www.wynnlasvegas.com", "wptmedia-mig.s3.amazonaws.com",
+    "cdn.wynnresorts.com", "www.wynnlasvegas.com", "wynnlasvegas.com",
+    "reservations.wynnlasvegas.com", "wptmedia-mig.s3.amazonaws.com",
     "www.caesars.com", "caesars.com", "southpointcasino.com", "www.southpointcasino.com",
     "www.rwlasvegas.com", "rwlasvegas.com", "reservations.rwlasvegas.com",
     "clarkcountynv.gov", "www.clarkcountynv.gov",
@@ -36,6 +37,8 @@ ALLOWED_HOSTS = [
     "github.com", "karagemop466-tech.github.io",
     # official property pages referenced as "no official schedule found"
     "bellagio.mgmresorts.com", "mgmgrand.mgmresorts.com", "aria.mgmresorts.com",
+    # repository-internal findings (repo review, pipeline fixes) cite the repo itself
+    "github.com", "www.github.com",
 ]
 
 LINK_RE = re.compile(r'<a\s[^>]*href="([^"]+)"', re.I)

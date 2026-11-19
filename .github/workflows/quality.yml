@@ -1,5 +1,13 @@
 name: Quality checks
 
+# One canonical root-site pipeline: scripts/build_ea99006a.py generates the
+# GitHub Pages root site from data/ea99006a/, and scripts/check_ea99006a.py
+# validates it (every table row links to an official source; every internal
+# link resolves). CI regenerates the site and fails if the committed output
+# drifted from the generator output. pages/repo-review.html is excluded from
+# the drift check because it embeds a live inventory of the repository tree
+# and changes whenever any file (including COORDINATION.md) changes size.
+
 on:
   pull_request:
   push:
@@ -20,6 +28,8 @@ jobs:
           node-version: 22
       - name: Validate and test the existing strict-entry dashboard
         run: npm run check
+      - name: Check the published site JavaScript
+        run: node --check assets/app.js
       - name: Check the isolated planner JavaScript
         run: node --check planner-aa83f1e1/assets/app.js
       - name: Smoke-render all isolated planner pages
@@ -28,7 +38,19 @@ jobs:
         run: node scripts/build_aa83f1e1.mjs
       - name: Parser self-test for the official-source scraper (no network)
         run: python3 scripts/scrape_251c122f.py --self-test
-      - name: Regenerate the root Pages site from the official capture
-        run: python3 scripts/build_251c122f.py
-      - name: Cross-check every verdict, source link and internal link
+      - name: Regenerate the root Pages site from the official data (canonical builder)
+        run: python3 scripts/build_ea99006a.py
+      - name: Validate rows, source links and internal links
+        run: |
+          python3 scripts/check_ea99006a.py
+          python3 scripts/check_root_site.py
+      - name: Validate the source-monitor ledger offline
+        run: python3 scripts/recheck_ea99006a.py --offline
+      - name: Cross-check every capture verdict and rule field
         run: python3 scripts/crosscheck_251c122f.py
+      - name: Committed site matches the generator output
+        run: |
+          if ! git diff --exit-code -- pages index.html assets ':(exclude)pages/repo-review.html'; then
+            echo "::error::The committed root site differs from scripts/build_ea99006a.py output. Re-run the builder and commit the result."
+            exit 1
+          fi

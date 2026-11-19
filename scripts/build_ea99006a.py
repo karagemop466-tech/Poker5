@@ -15,6 +15,7 @@ import html
 import json
 import os
 import re
+import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,6 +88,27 @@ ROUTES = load("routes.json")
 FLAGS = load("flags.json")
 QUESTIONS = load("questions.json")
 SUGGESTIONS = load("suggestions.json")
+RATE_SNAPSHOTS = load("rate_snapshots.json")
+CHANGE_LOG = load("change_log.json")
+
+
+def _load_optional(name):
+    p = os.path.join(DATA, name)
+    if not os.path.exists(p):
+        return None
+    with open(p) as fh:
+        return json.load(fh)
+
+
+MORNING_FEED = _load_optional("morning_feed.json")
+
+# url -> earliest change event, for "source changed since this row was read" badges
+CHANGED_AT = {}
+for _c in CHANGE_LOG:
+    u = _c.get("url")
+    if u and ("{" not in u) and ("google.com/maps" not in u):  # dynamic links never mark rows changed
+        if u not in CHANGED_AT or _c["changed_at"] < CHANGED_AT[u]:
+            CHANGED_AT[u] = _c["changed_at"]
 VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
@@ -342,11 +364,16 @@ def event_row_cells(row, with_venue=True):
     cells.append("<td>%s</td>" % esc(row.get("levels") or ""))
     cells.append("<td>%s</td>" % (esc(row["late_reg"]) if row.get("late_reg") else '<span class="blank">not stated</span>'))
     cells.append("<td>%s</td>" % src_link(row["source"], row.get("source_label") or "source"))
-    cells.append('<td class="nowrap">checked %s%s%s</td>' % (
-        esc(row.get("last_checked") or row.get("retrieved") or RETRIEVED),
-        (' <span class="muted sm">(first read %s)</span>' % esc(row["retrieved"])) if row.get("last_checked")
-        and row.get("retrieved") and row["last_checked"] != row["retrieved"] else "",
-        evidence_html(row)))
+    last = esc(row.get("last_checked") or row.get("retrieved") or RETRIEVED)
+    cell = 'checked %s%s' % (last, (' <span class="muted sm">(first read %s)</span>' % esc(row["retrieved"]))
+                             if row.get("last_checked") and row.get("retrieved")
+                             and row["last_checked"] != row["retrieved"] else "")
+    ch = CHANGED_AT.get(row.get("source"))
+    if ch and not row.get("value_changed_at") and not row.get("source_changed_at"):
+        cell += ('<br><span class="pill pill-bad" title="This official source changed after the row was read '
+                 '(detected %s UTC). Re-verify the row against the Source monitor page before use.">'
+                 'source changed</span>' % esc(ch[:10]))
+    cells.append('<td class="nowrap">%s%s</td>' % (cell, evidence_html(row)))
     return "".join(cells)
 
 
@@ -369,9 +396,19 @@ FILTER_BAR = """
     <option value="unknown">Cap not stated</option>
     <option value="unread">Terms not read</option></select>
   <label class="chk"><input type="checkbox" id="fse"> Confirmed single-entry / freezeout only</label>
+  <label class="chk"><input type="checkbox" id="fsemulti"> Hide rows with stated re-entry / flights</label>
   <label class="chk"><input type="checkbox" id="fentry"> Entry rows only (hide Day 2 / final tables)</label>
   <label class="chk"><input type="checkbox" id="frank"> Rankable only: total entry fee AND guarantee confirmed</label>
   <label class="chk"><input type="checkbox" id="fchanged"> Only rows whose official value changed</label>
+  <button type="button" id="reset" class="btn tiny">Reset</button>
+  <span class="count" id="count"></span>
+</div>
+"""
+
+SEARCH_BAR = """
+<div class="filters">
+  <input type="search" id="q" placeholder="%s" aria-label="Search">
+  %s
   <button type="button" id="reset" class="btn tiny">Reset</button>
   <span class="count" id="count"></span>
 </div>
@@ -508,15 +545,17 @@ table.pick td,table.pick th{padding:5px 8px;font-size:13px}
 @media(max-width:700px){.kv{grid-template-columns:1fr}.archive{columns:1}}
 """
 
-APP_JS = r"""
-/* Poker5 - session ea99006a. Client-side filtering and calculators. */
+APP_JS = r"""/* Poker5 - client-side filtering and calculators (root site, session ea99006a;
+   extended by 6bc143b9: unified search across every table on a page, date
+   selector, confirmed single-entry toggle, <=30-minute walk filter, hotel
+   budget/quality filters). No dependencies, no network calls. */
 function qsa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function norm(s){return (s||'').toLowerCase();}
 
-/* Searchable text of a row. The folded evidence block is skipped on purpose: it is full of
-   negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a row
-   merely because the sentence denying it is attached to it. The block stays readable, not searchable. */
 function searchText(tr){
+  /* Searchable text of a row. Folded evidence blocks are skipped on purpose: they are full of
+     negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a
+     row merely because the sentence denying it is attached to it. */
   var cached=tr.getAttribute('data-search');
   if(cached!==null && cached!=='') return cached;
   var t='';
@@ -532,66 +571,105 @@ function searchText(tr){
   return t.toLowerCase();
 }
 
-function initTable(id){
-  var t=document.getElementById(id); if(!t) return;
-  var rows=qsa('tbody tr',t);
+var poker5Bound=false;
+function initFilters(){
+  if(poker5Bound) return; poker5Bound=true;
   var q=document.getElementById('q'), from=document.getElementById('dfrom'),
       to=document.getElementById('dto'), ven=document.getElementById('fvenue'),
-      se=document.getElementById('fse'), en=document.getElementById('fentry'),
+      se=document.getElementById('fse'), mu=document.getElementById('fsemulti'),
+      en=document.getElementById('fentry'), walk=document.getElementById('walkfilter'),
+      budget=document.getElementById('pbudget'), quality=document.getElementById('pquality'),
       day=document.getElementById('fday'), rule=document.getElementById('frule'),
       rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
+  var tables=qsa('table.data');
+  var TIER_RANK={"Deluxe":1,"Luxury":2};
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
-        v=ven?ven.value:'', s=se?se.checked:false, e=en?en.checked:false, shown=0,
+        v=ven?ven.value:'', s=se?se.checked:false,
+        m2=mu?mu.checked:false, e=en?en.checked:false,
+        w=walk?walk.checked:false,
+        b=budget&&budget.value!==''?parseFloat(budget.value):null,
+        pmin=quality?parseInt(quality.value||'0',10):0,
         dy=day?day.value:'', rl=rule?rule.value:'',
-        rk=rank&&rank.checked, cg=chg&&chg.checked;
-    rows.forEach(function(tr){
-      var d=tr.getAttribute('data-date')||'';
-      var ok=true;
-      if(needle && norm(searchText(tr)).indexOf(needle)<0) ok=false;
-      if(ok && f && d && d<f) ok=false;
-      if(ok && t2 && d && d>t2) ok=false;
-      if(ok && dy && d!==dy) ok=false;
-      if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && rl && tr.getAttribute('data-rule')!==rl) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
-      if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
-      if(ok && rk && tr.getAttribute('data-rankable')!=='1') ok=false;
-      if(ok && cg && tr.getAttribute('data-changed')!=='1') ok=false;
-      tr.style.display=ok?'':'none'; if(ok) shown++;
+        rk=rank&&rank.checked, cg=chg&&chg.checked,
+        shown=0,total=0;
+    tables.forEach(function(t){
+      qsa('tbody tr',t).forEach(function(tr){
+        total++;
+        var d=tr.getAttribute('data-date')||'';
+        var rule=tr.getAttribute('data-rule')||'';
+        var kind=tr.getAttribute('data-kind')||'';
+        var ok=true;
+        if(needle){
+          var txt=tr.getAttribute('data-search');
+          txt=norm(txt!==null&&txt!==undefined?txt:searchText(tr));
+          if(txt.indexOf(needle)<0) ok=false;
+        }
+        if(ok&&f&&d&&d<f) ok=false;
+        if(ok&&t2&&d&&d>t2) ok=false;
+        if(ok&&dy&&d&&d!==dy) ok=false;
+        if(ok&&v&&tr.getAttribute('data-venue')!==v) ok=false;
+        if(ok&&rl&&rule&&rule!==rl) ok=false;
+        if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+        if(ok&&m2&&rule==='multi') ok=false;
+        if(ok&&e&&kind&&kind!=='entry') ok=false;
+        if(ok&&rk&&tr.getAttribute('data-rankable')!=='1') ok=false;
+        if(ok&&cg&&tr.getAttribute('data-changed')!=='1') ok=false;
+        if(ok&&w){
+          /* Hide only pairs that are known to exceed 30 minutes. Rows with no
+             verified minutes stay visible and stay marked unverified. */
+          var m=tr.getAttribute('data-min');
+          if(m!==null&&m!==''&&!isNaN(parseFloat(m))&&parseFloat(m)>30) ok=false;
+        }
+        if(ok&&pmin&&tr.getAttribute('data-tier')!==null){
+          if((TIER_RANK[tr.getAttribute('data-tier')]||0)<pmin) ok=false;
+        }
+        if(ok&&b!==null&&tr.getAttribute('data-cost')!==null&&tr.getAttribute('data-cost')!==''){
+          var c=parseFloat(tr.getAttribute('data-cost'));
+          if(!isNaN(c)&&c>b) ok=false;
+        }
+        tr.style.display=ok?'':'none'; if(ok) shown++;
+      });
     });
-    if(cnt) cnt.textContent=shown+' of '+rows.length+' rows';
-    if(empty) empty.hidden=!(shown===0);
+    if(cnt) cnt.textContent=shown+' of '+total+' rows';
+    if(empty) empty.hidden=!(shown===0&&total>0);
   }
   if(q) q.addEventListener('input',apply);
-  [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [from,to,day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
   if(ven) ven.addEventListener('change',apply);
-  [day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
-  [se,en,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [se,mu,en,walk,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
   var rst=document.getElementById('reset');
   if(rst) rst.addEventListener('click',function(){
     if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
     if(day)day.value=''; if(rule)rule.value='';
-    if(se)se.checked=false; if(en)en.checked=false; if(rank)rank.checked=false; if(chg)chg.checked=false;
+    if(se)se.checked=false; if(mu)mu.checked=false; if(en)en.checked=false;
+    if(rank)rank.checked=false; if(chg)chg.checked=false;
+    if(walk)walk.checked=false; if(budget)budget.value=''; if(quality)quality.value='';
     apply();});
-  qsa('thead th',t).forEach(function(th,i){
-    th.addEventListener('click',function(){
-      var tb=t.tBodies[0], arr=qsa('tr',tb);
-      var asc=th.getAttribute('data-asc')!=='1';
-      qsa('thead th',t).forEach(function(o){o.removeAttribute('data-asc');});
-      th.setAttribute('data-asc',asc?'1':'0');
-      arr.sort(function(a,b){
-        var A=a.children[i]||a.children[a.children.length-1],
-            B=b.children[i]||b.children[b.children.length-1];
-        var ka=A.getAttribute('data-order'); var kb=B.getAttribute('data-order');
-        var va=ka!==null?ka:A.textContent.trim(), vb=kb!==null?kb:B.textContent.trim();
-        var na=parseFloat(String(va).replace(/[^0-9.\-]/g,'')), nb=parseFloat(String(vb).replace(/[^0-9.\-]/g,''));
-        var cmp=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));
-        return asc?cmp:-cmp;});
-      arr.forEach(function(r){tb.appendChild(r);});});});
+  /* click-to-sort per table */
+  tables.forEach(function(t){
+    qsa('thead th',t).forEach(function(th,i){
+      th.addEventListener('click',function(){
+        var tb=t.tBodies[0], arr=qsa('tr',tb);
+        var asc=th.getAttribute('data-asc')!=='1';
+        qsa('thead th',t).forEach(function(o){o.removeAttribute('data-asc');});
+        th.setAttribute('data-asc',asc?'1':'0');
+        arr.sort(function(a,b){
+          var A=a.children[i]||a.children[a.children.length-1],
+              B=b.children[i]||b.children[b.children.length-1];
+          var ka=A.getAttribute('data-order'); var kb=B.getAttribute('data-order');
+          var va=ka!==null?ka:A.textContent.trim(), vb=kb!==null?kb:B.textContent.trim();
+          var na=parseFloat(String(va).replace(/[^0-9.\-]/g,'')), nb=parseFloat(String(vb).replace(/[^0-9.\-]/g,''));
+          var cmp=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));
+          return asc?cmp:-cmp;});
+        arr.forEach(function(r){tb.appendChild(r);});});});
+  });
   apply();
 }
+/* backwards-compatible name used by inline page scripts */
+function initTable(){initFilters();}
 
 /* ---- hotel true nightly cost + dated rate log ---- */
 var RATE_KEY='poker5.ratelog.v1';
@@ -601,7 +679,7 @@ function saveRateLog(l){try{localStorage.setItem(RATE_KEY,JSON.stringify(l));}ca
 function renderRateLog(){
   var box=document.getElementById('ratelog'); if(!box) return;
   var l=rateLog();
-  if(!l.length){box.innerHTML='<p class="muted sm">No dated quotes recorded yet. Add one above and it is stored in this browser only.</p>';return;}
+  if(!l.length){box.innerHTML='<p class="muted sm">No dated quotes recorded in this browser yet. Add one above and it is stored here only. The researched, source-linked captures are in the table above.</p>';return;}
   var h='<table class="data"><thead><tr><th>Recorded</th><th>Hotel</th><th>Dates</th><th class="num">Rate/night</th><th class="num">Resort fee</th><th class="num">Tax %</th><th class="num">True /night</th><th class="num">Stay total</th><th>Source</th><th></th></tr></thead><tbody>';
   l.slice().reverse().forEach(function(r,i){
     h+='<tr><td class="nowrap">'+r.ts+'</td><td>'+r.hotel+'</td><td class="nowrap">'+r.dates+'</td>'+
@@ -646,8 +724,8 @@ function initHotels(){
   if(walk) walk.addEventListener('change',function(){
     qsa('#routetable tbody tr').forEach(function(tr){
       var m=tr.getAttribute('data-min');
-      tr.style.display=(walk.checked && (m===''||m===null))?'':'';
-      if(walk.checked && m!==''){ if(parseFloat(m)>30) tr.style.display='none'; }
+      if(walk.checked && m!=='' && m!==null && parseFloat(m)>30) tr.style.display='none';
+      else tr.style.display='';
     });});
   var rec=document.getElementById('walkrecord');
   if(rec) rec.addEventListener('click',function(){
@@ -788,7 +866,7 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  initTable('tbl'); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
+  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });
 """
 
@@ -970,6 +1048,8 @@ def archive_entries():
             continue
         if not os.path.exists(os.path.join(path, "index.html")):
             continue
+        if tracked is not None and name not in tracked:
+            continue
         out.append(("%s/index.html" % name, name))
     return out
 
@@ -1014,6 +1094,7 @@ def build_single():
                 'Every WPT World Championship event whose terms were read permits re-entry - "unlimited re-entry", '
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
+    body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
     body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
@@ -1189,6 +1270,13 @@ def build_hotels():
                 '<b>Room rates are not filled in</b> - official booking engines are JavaScript applications and no '
                 'dated rate could be read from an official source. Use the booking link, then record what you see '
                 'in the dated log at the bottom of this page.</p>')
+    body.append(SEARCH_BAR % ("Search hotels, fees, parking, addresses...",
+                              '<label>Nightly budget ceiling $<input type="number" id="pbudget" min="0" step="10" placeholder="any"></label>'
+                              '<label>Quality floor<select id="pquality"><option value="">Any</option>'
+                              '<option value="1">Deluxe or better</option><option value="2">Luxury only</option></select></label>'))
+    body.append('<p class="muted sm">The budget and quality filters only hide rows that are <i>known</i> to miss '
+                'your ceiling or floor. Rows without a dated quote are never hidden by the budget filter - a '
+                'missing rate is not a cheap rate.</p>')
     body.append('<div class="panel"><h2>Room tax</h2><div class="kv">'
                 '<dt>Rate</dt><dd><b>%.2f%%</b> combined transient lodging tax</dd>'
                 '<dt>Applies to</dt><dd>Resort hotels inside the primary gaming corridor (every hotel below)</dd>'
@@ -1201,10 +1289,11 @@ def build_hotels():
     for h in HOTELS:
         fee = ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>'
         booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
-        body.append("<tr><td><b>%s</b><br><span class=\"muted sm\">%s</span></td><td>%s</td><td>%s</td>"
+        tier_rank = {"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), "")
+        body.append("<tr data-tier=\"%s\"><td><b>%s</b><br><span class=\"muted sm\">%s</span></td><td>%s</td><td>%s</td>"
                     "<td>%s</td><td>%s</td><td class=\"num\">%s<br><span class=\"muted sm\">%s</span></td>"
                     "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-                    % (esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
+                    % (tier_rank, esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
                        '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
                        else '<span class="blank">not verified</span>',
                        fee, esc(h["resort_fee_text"]),
@@ -1216,6 +1305,42 @@ def build_hotels():
                        src_link(h["resort_fee_source"], "official fee page") if h["resort_fee_source"]
                        else '<span class="blank">no official page found</span>'))
     body.append("</tbody></table></div>")
+
+    body.append('<h2>Dated stay captures (a log, never a single value)</h2>')
+    body.append('<p class="muted">Each row is a dated capture from an official booking page or official terms page, '
+                'kept exactly as returned. Fields the official UI did not return are blank and flagged. Captures '
+                'are comparable like-for-like only when the stay window, occupancy and room class match - these do '
+                'not, so no cheapest-hotel ranking is drawn from them.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Room type</th>'
+                '<th>Check-in</th><th>Check-out</th><th>Occupancy</th><th class="num">Checkout total</th>'
+                '<th class="num">Nightly average</th><th class="num">Resort fee / night</th><th class="num">Tax</th>'
+                '<th>Parking</th><th>Cancellation deadline</th><th>Rate timestamp</th><th>Source</th>'
+                '</tr></thead><tbody>')
+    for s in RATE_SNAPSHOTS["entries"]:
+        def cell(v, suffix=""):
+            return (esc(str(v)) + suffix) if v not in (None, "") else '<span class="blank">not returned</span>'
+        body.append("<tr><td><b>%s</b></td><td>%s</td><td class=\"nowrap\">%s</td><td class=\"nowrap\">%s</td>"
+                    "<td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td>"
+                    "<td class=\"num\">%s</td><td>%s</td><td>%s</td><td class=\"nowrap\">%s</td><td>%s</td></tr>"
+                    % (esc(s["hotel"]), esc(s["room_type"]),
+                       esc(s["checkin"]), esc(s["checkout"]),
+                       esc(s["occupancy"]),
+                       ("$%s" % format(s["checkout_total"], ",.2f")) if s.get("checkout_total") else '<span class="blank">not returned</span>',
+                       ("$%s" % format(s["nightly_average"], ",.2f")) if s.get("nightly_average") else '<span class="blank">not returned</span>',
+                       ("$%s" % format(s["resort_fee_per_night"], ",.2f")) if s.get("resort_fee_per_night") else '<span class="blank">not verified</span>',
+                       ("$%s" % format(s["tax_total"], ",.2f")) if s.get("tax_total") else '<span class="blank">not returned</span>',
+                       cell(s.get("parking")),
+                       cell(s.get("cancellation_deadline")),
+                       esc(s["rate_timestamp"]),
+                       src_link(s["source"], s["source_label"])))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">Tax note: %s</p>' % esc(RATE_SNAPSHOTS.get("tax_note", "")))
+    body.append('<div class="warnbox">Like-for-like rule: compare two captures only when check-in, check-out, '
+                'occupancy and room class match. True nightly cost for planning = the itemised checkout total '
+                '&divide; nights from a capture that matches your dates, or rate + resort fee + %.2f%% tax entered '
+                'in the calculator below. A blank cell means the official UI did not return that value; it is '
+                'never filled in.</div>' % TAX["rate"])
+
     # The brief sets a nightly budget as a ceiling and a quality floor; both have to be usable,
     # otherwise the page is a list and not a selector.
     _fee = TAX["rate"] / 100.0
@@ -1381,8 +1506,9 @@ def build_routes():
                 'zero minutes. No hotel or casino publishes a walking time to a <i>different</i> property, so those '
                 'cells are left blank rather than estimated. Use the route link to check one yourself, then record '
                 'the minutes below - the 30-minute filter works on what you record.</p>')
+    body.append(SEARCH_BAR % ("Search hotels, rooms, routes...", ""))
     body.append('<div class="panel"><label class="chk"><input type="checkbox" id="walkfilter"> '
-                'Show only pairs at or under 30 minutes</label>'
+                'Hide pairs known to exceed the 30-minute limit (rows without verified minutes stay, marked unverified)</label>'
                 '<div class="calc" style="margin-top:10px">'
                 '<label>Pair<select id="walkpair">%s</select></label>'
                 '<label>Minutes you measured<input id="walkmins" type="number" step="1" min="0"></label>'
@@ -1422,6 +1548,7 @@ def build_planner():
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     body = ["<h1>Trip planner: cost of the trip</h1>"]
+    body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
                 '<b>nights &times; true hotel cost</b>. The list below contains %d events in your window (%s to %s): '
                 'the ones whose own structure sheet was read in full and grants no further entry are the playable '
@@ -1441,6 +1568,31 @@ def build_planner():
                 % (esc(TRIP["check_in"]), esc(TRIP["check_out"]), TRIP["nights"],
                    esc("%s to %s" % (pretty_date(TRIP["check_in"]), pretty_date(TRIP["check_out"]))),
                    esc(TRIP["rationale"])))
+    body.append('<div class="panel"><h2>Nightly budget ceiling and quality floor</h2>'
+                '<div class="calc">'
+                '<label>Nightly budget ceiling $<input id="pbudget" type="number" min="0" step="10" placeholder="any"></label>'
+                '<label>Quality floor<select id="pquality"><option value="">Any</option>'
+                '<option value="1">Deluxe or better</option><option value="2">Luxury only</option></select></label>'
+                '</div>'
+                '<p class="muted sm">These two controls are the nightly budget ceiling and hotel quality floor. '
+                'They filter the hotel shortlist below; they never invent a rate. A hotel without a dated quote '
+                'for your dates stays listed as <i>quote needed</i> rather than being ranked or hidden.</p></div>')
+    body.append('<div class="panel"><h2>Hotel shortlist</h2>'
+                '<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Tier</th>'
+                '<th class="num">Resort fee / night</th><th>Walk to room</th><th>Dated quote for your dates</th>'
+                '<th>Official booking</th></tr></thead><tbody>')
+    for h in HOTELS:
+        booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
+        tier_rank = {"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), "")
+        body.append("<tr data-tier=\"%s\"><td><b>%s</b></td><td>%s</td><td class=\"num\">%s</td>"
+                    "<td>%s</td><td>%s</td><td>%s</td></tr>"
+                    % (tier_rank, esc(h["name"]), esc(h["tier"]),
+                       ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>',
+                       '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
+                       else '<span class="blank">not verified</span>',
+                       '<span class="blank">quote needed</span>',
+                       src_link(booking, "open official booking (%s to %s)" % (TRIP["check_in"], TRIP["check_out"]))))
+    body.append("</tbody></table></div></div>")
     body.append('<div class="panel"><div class="calc">'
                 '<label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" '
                 'placeholder="no date-specific quote recorded" value=""></label>'
@@ -1543,6 +1695,7 @@ def build_others():
 def build_exec():
     cand = [r for r in CANDIDATES if r["venue"] == "The Venetian Resort"]
     body = ["<h1>Executive summary</h1>"]
+    body.append(SEARCH_BAR % ("Search this summary...", ""))
     body.append('<div class="panel"><h2>The short version</h2><ul class="clean">')
     for item in (
         "Two Strip series are running and both are verified from official pages: the Venetian DeepStack "
@@ -1563,7 +1716,18 @@ def build_exec():
         "No official schedule in this window lists an 8:00 AM start. The earliest verified start is 9:10 AM, and "
         "the earliest non-satellite start is 10:10 AM.",
         "Walking: only a poker room inside your own hotel is verifiable (0 minutes). No cross-property walking "
-        "time is published officially, so none is estimated.",
+        "time is published officially, so none is estimated. The routes page carries one-click walking-direction "
+        "links and a recorder for minutes you measure yourself.",
+        "Rates are kept as a dated log, not a single value: %d source-linked stay captures are on the hotels page "
+        "(checkout totals, nightly averages, resort fee, tax, parking, cancellation deadline and rate timestamp, "
+        "each only where the official UI returned it). They differ in dates and occupancy, so no cheapest-hotel "
+        "ranking is published, and the trip planner stays Incomplete until a date-specific quote is entered."
+        % len(RATE_SNAPSHOTS["entries"]),
+        "Every official URL behind a row is re-read twice daily by the scheduled monitor; a row whose source "
+        "changed carries a 'source changed' badge and its values must be re-verified before use (see the "
+        "Source monitor page).",
+        "A nightly budget ceiling and a hotel quality floor can be set on the hotels and planner pages; they "
+        "filter the shortlist and never turn an unknown rate into a cheap one.",
         "%d items are flagged for review, each with its official source. None blocks publication." % len(FLAGS)):
         body.append("<li>%s</li>" % item)
     body.append("</ul></div>")
@@ -1608,8 +1772,9 @@ def build_exec():
 
 def build_questions():
     body = ["<h1>Questions, answers and what is still missing</h1>"]
-    body.append('<p class="muted">Ten questions that have to be answered before a decision is reasonable. For each: '
-                'what the verified data already answers, what is still missing, and how to close the gap.</p>')
+    body.append('<p class="muted">%d questions that have to be answered before a decision is reasonable. For each: '
+                'what the verified data already answers, what is still missing, and how to close the gap.</p>'
+                % len(QUESTIONS))
     for q in QUESTIONS:
         body.append('<div class="panel"><h3>%s. %s</h3><div class="kv">'
                     '<dt>What we have</dt><dd>%s</dd>'
@@ -1621,9 +1786,9 @@ def build_questions():
 
 def build_suggestions():
     body = ["<h1>Suggestions: choose a path before anything changes</h1>"]
-    body.append('<p class="muted">Eight improvements, each with the options and what each one costs you. Pick one '
+    body.append('<p class="muted">%d improvements, each with the options and what each one costs you. Pick one '
                 'option per suggestion and the list at the bottom becomes your change request. Nothing on this site '
-                'is altered until you ask for it.</p>')
+                'is altered until you ask for it.</p>' % len(SUGGESTIONS))
     body.append('<div id="sug">')
     for s in SUGGESTIONS:
         body.append('<div class="opt"><h3>%s. %s</h3><p class="muted sm"><b>Problem:</b> %s</p>'
@@ -1639,6 +1804,7 @@ def build_suggestions():
 
 def build_flagged():
     body = ["<h1>Flagged for review</h1>"]
+    body.append(SEARCH_BAR % ("Search flags, areas, items...", ""))
     body.append('<p class="muted">%d items. Each one is something that could not be confirmed from an official '
                 'source, or a defect found in an official source. Every row links to the source involved. '
                 'None of these blocks the site; they are here so you can check them yourself.</p>' % len(FLAGS))
@@ -1655,6 +1821,7 @@ def build_flagged():
 
 def build_method():
     body = ["<h1>Method and source ledger</h1>"]
+    body.append(SEARCH_BAR % ("Search sheets, sources, rules...", ""))
     body.append('<div class="panel"><h2>The verification rule</h2><ul class="clean">'
                 '<li>Every value on this site was read from an official source - the casino\'s own site or its own '
                 'PDF - during this session, on %s.</li>' % esc(RETRIEVED))
@@ -1733,6 +1900,7 @@ def build_monitor():
     ledger = LEDGER or load("last_checked.json")
     changelog = load("change_log.json")
     body = ["<h1>Source monitor</h1>"]
+    body.append(SEARCH_BAR % ("Search sources, rooms, changes...", ""))
     body.append('<p class="muted">Every official URL behind a table row is re-fetched on a schedule, hashed and '
                 'compared with the previous run. %d URLs are under monitor. A source that changes is listed here '
                 'and its rows should be re-verified before you rely on them.</p>' % len(ledger))
@@ -1744,12 +1912,37 @@ def build_monitor():
     for k in sorted(count):
         body.append('<div class="stat"><div class="num">%d</div><div class="lbl">%s</div></div>' % (count[k], esc(k)))
     body.append("</div>")
+    body.append("<h2>Morning room feed</h2>")
+    body.append('<p class="muted sm">Each morning the scheduled re-check re-reads every official schedule source '
+                'for every Strip room tracked here and records what it saw. A row marked <i>changed</i> means a '
+                'human should re-read that source before trusting the table.</p>')
+    if MORNING_FEED and MORNING_FEED.get("rooms"):
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Room</th><th>Official schedule source</th>'
+                    '<th>Last morning check (UTC)</th><th class="num">URLs</th><th class="num">OK</th>'
+                    '<th class="num">Changed</th><th class="num">Failed</th><th>Status</th></tr></thead><tbody>')
+        for room in MORNING_FEED["rooms"]:
+            st = "ok" if not room.get("failed") and not room.get("changed") else ("bad" if room.get("failed") else "warn")
+            body.append('<tr><td><b>%s</b></td><td>%s</td><td class="nowrap">%s</td><td class="num">%s</td>'
+                        '<td class="num">%s</td><td class="num">%s</td><td class="num">%s</td>'
+                        '<td><span class="pill pill-%s">%s</span></td></tr>'
+                        % (esc(room["room"]), src_link(room["source"], "official page"),
+                           esc(room.get("checked_at") or "not yet run"),
+                           esc(room.get("urls", 0)), esc(room.get("ok", 0)),
+                           esc(room.get("changed", 0)), esc(room.get("failed", 0)), st,
+                           "all sources read" if st == "ok" else ("changed - re-verify" if st == "warn" else "fetch failed")))
+        body.append("</tbody></table></div>")
+    else:
+        body.append('<div class="warnbox">The first morning feed has not been recorded yet. The scheduled '
+                    'recheck-ea99006a job writes <code>data/ea99006a/morning_feed.json</code> on its first run; '
+                    'until then the per-URL ledger below is the record.</div>')
     if changelog:
         body.append("<h2>Changes detected</h2>")
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Detected at (UTC)</th>'
                     '<th>What it backs</th><th>Old hash</th><th>New hash</th><th>Size</th>'
                     '<th>Link</th></tr></thead><tbody>')
-        for c in reversed(changelog[-200:]):
+        shown_changes = [c for c in changelog
+                         if "{" not in c.get("url", "") and "google.com/maps" not in c.get("url", "")]
+        for c in reversed(shown_changes[-200:]):
             body.append('<tr><td class="nowrap">%s</td><td>%s</td><td><code>%s</code></td>'
                         '<td><code>%s</code></td><td>%s</td><td>%s</td></tr>'
                         % (esc(c["changed_at"]), esc(c.get("label") or ""),
@@ -1905,6 +2098,10 @@ def build_repo_review():
         "is treated as read-only here.",
         "A compiled Python file, <code>tools/__pycache__/data.cpython-311.pyc</code>, is committed in the tree. It "
         "was flagged by an earlier session and is left in place rather than deleted without that session's say.",
+        "Session 6bc143b9 (2026-11-19) found and fixed a generator conflict: three builders and three "
+        "workflows could each overwrite the published root site, and CI validated none of the published output. "
+        "Now <code>scripts/build_ea99006a.py</code> is the only root-site generator, the morning capture job "
+        "commits capture data only, and Quality checks regenerates the site and fails on drift (see flags F28-F31).",
         "Session folders disagree with each other on three numbers: the count of confirmed single-entry Venetian "
         "events (20 / 30 / 64 / 0), the Bellagio Saturday buy-in ($1,000 / $1,100 / $600) and the Wynn resort fee "
         "($55 / unverified). This build resolves them from official sources and records the outcomes on the "
@@ -1930,9 +2127,28 @@ def build_repo_review():
                                          TABLE_JS_INIT))
 
 
+def build_redirects():
+    """The retired 251c122f build left four root pages behind that describe an
+    older verdict. They now redirect to the canonical page so no reader lands on
+    a contradictory copy."""
+    for rel, target, label in (
+        ("pages/qa.html", "questions.html", "Questions"),
+        ("pages/flagged.html", "flagged-review.html", "Flagged for review"),
+        ("pages/multientry.html", "tournaments-double.html", "Multi-entry / advantage"),
+        ("pages/sources.html", "method.html", "Method and sources"),
+    ):
+        stub = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+                '<meta http-equiv="refresh" content="0; url=%s">'
+                '<title>moved | Poker5</title></head><body>'
+                '<p>This page moved to <a href="%s">%s</a>.</p></body></html>'
+                % (target, target, label))
+        write(rel, stub)
+
+
 def build_verification():
     """Value-level verification log: standard, spot checks, reversals, disagreements, hotel figures."""
     body = ["<h1>Verification log</h1>"]
+    body.append(SEARCH_BAR % ("Search the verification log...", ""))
     body.append("<p class=\"muted\">Every published value on this site comes with the official sentence behind it, "
                 "the date that sentence was read, and a link to re-check it by hand. This page is the part of that "
                 "machinery that is about values rather than pages: the standard the verdicts apply, the rows "
@@ -2095,6 +2311,7 @@ def main():
     build_verification()
     build_repo_review()
     build_method()
+    build_redirects()
     write("assets/css/style.css", CSS)
     write("assets/app.js", APP_JS)
     print("wrote %d files" % len(WROTE))
