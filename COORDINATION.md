@@ -10,13 +10,31 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 | # | Task | Status | Owner | Files touched |
 |---|------|--------|-------|---------------|
-| D1 | Re-read live official sources behind the recommended window (Venetian DSE IV schedule page, Venetian resort-fee page, Wynn resort-fee / offer terms, Venetian poker rate page) and log match / mismatch per value with retrieval date | in progress | d615f79e | `data/d615f79e/reverify.json` (new), `data/ea99006a/flags.json` (append only, if a mismatch is found) |
-| D2 | Add a user-set "assumed playing length" what-if to the day-schedule overlap check: blank by default, labelled as the user's assumption, never written as a source value | unclaimed → in progress | d615f79e | `scripts/build_ea99006a.py` (schedule section + `APP_JS` only) |
-| D3 | Build, validate (every row sourced, no broken links, tests), PR → main, merge, confirm Pages deploy, record PR and merge result | pending | d615f79e | generated `index.html`, `pages/**`, `assets/app.js`, `COORDINATION.md` |
+| D1 | Re-read live official sources behind the recommended window (Venetian DSE IV schedule page, Venetian resort-fee page, Wynn resort-fee / offer terms, Venetian poker rate page) and log match / mismatch per value with retrieval date | done | d615f79e | `data/d615f79e/reverify.json` (new), `data/ea99006a/flags.json` (append only, if a mismatch is found) |
+| D2 | Add a user-set "assumed playing length" what-if to the day-schedule overlap check: blank by default, labelled as the user's assumption, never written as a source value | done | d615f79e | `scripts/build_ea99006a.py` (schedule section + `APP_JS` only) |
+| D3 | Build, validate (every row sourced, no broken links, tests), PR → main, merge, confirm Pages deploy, record PR and merge result | in progress | d615f79e | generated `index.html`, `pages/**`, `assets/app.js`, `COORDINATION.md` |
 
 **Read-only for this session:** every other session folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`), `data/c6087e2c/`, `data/b3be876c/`, and the scheduled workflows.
 
 ---
+
+### Log (d615f79e)
+
+- **Audit before any edit.** The brief's core items were already generated on `main`: date filter, search, single-entry toggle, dated rate log, true-cost calculator, per-row last-checked, per-venue pages with a hotel block, ≤30-minute walk filter, morning feed, value-level monitor. Two gaps were real: the plausible-duration part of the overlap check, and a stale trip-critical re-read.
+- **D1 (live re-read, 2026-11-19; full table in `data/d615f79e/reverify.json`, rendered on Verification log):**
+  - Venetian DSE IV schedule (all 4 chunks): all **28** stored rows for 6-13 Dec match the live page on date, start time, event number, name and buy-in.
+  - Venetian resort fee ($55 plus tax) and Venetian poker suite-rate page ("as low as $119 and $209", with the six-hour / $300+ buy-in per-night play condition) match the stored floor and caveat.
+  - Wynn offer terms DK26WLV2: $55 plus tax and self-parking match. **Cancellation mismatch:** the stored "72 hours" appears in no captured source and the live page says **48 hours** for this offer. Corrected in `rate_snapshots.json`, `questions.json` (Q14), `flags.json` (F33); new flag **F55**.
+  - Six of the eleven single-entry window sheets re-read live (7, 11, 15, 16, 24, 25): buy-ins, guarantees, event numbers, start times, late-registration closes and level lengths match; none grants re-entry, rebuy or add-on. **Not re-read this session:** 17, 19, 27, 31, 33 (single-entry) and 12, 20, 21, 32, 37 (multi-entry). Stated as not re-read; read them before payment.
+  - Clark County 13.38% ordinance not re-fetched this session.
+- **D2 (assumed playing length, optional):** a blank input on the Day schedule page. With a length entered (0.5-12 h), each day shows whether the primary can be followed by each listed event and which pairs **cannot be played in sequence** (neither order fits between start and late-registration close). An unstated close is shown as "cannot be decided", never as impossible. The length is the user's estimate: it is not written into any data file and not shown as a source value. Logic covered by a new test in `test/root_site.test.mjs`. Not exercised in a live browser from this sandbox.
+- **Question added:** Q17 (how long each event is played; no official source publishes a finish time).
+- **Irregularities corrected in the published copy:** the executive summary's "No event is confirmed as single-entry" contradicted its own S1 count (53) and the headline box; it now states the S1 count and the flag F01 limit. Its "only two resort fees verified" line omitted Wynn's verified $55; it now lists three.
+
+**Verification (2026-11-19):** `python3 scripts/build_ea99006a.py` (deterministic; `pages/repo-review.html` changes only with its live inventory, as before); `python3 scripts/check_ea99006a.py` OK (1,649 rows, all with an official https source; no broken internal links); `python3 scripts/check_root_site.py` OK; `npm test` 21/21; `node --check assets/app.js` OK; the schedule script extracted and syntax-checked; `python3 scripts/recheck_ea99006a.py --offline` ledger OK; `python3 scripts/integrate_b3be876c.py --report` read-only, unchanged.
+
+**Irregularities (for Flagged for review):** F55 (Wynn cancellation, corrected). The Q14/F33 text is updated to match. No other irregularity was found in the 28 window rows or the six sheets re-read.
+
 
 ## Current branch session — 8154689a (active)
 
