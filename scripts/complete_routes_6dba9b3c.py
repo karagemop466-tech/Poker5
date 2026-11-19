@@ -125,8 +125,14 @@ def build(routes, hotels_by_key, venues_by_key):
             r["basis"] = ("same property: the poker room is inside the hotel, so no street-to-street "
                           "measurement is needed (0 minutes)")
         elif both:
-            r["basis"] = ("measured between the two official street addresses below; no official "
-                          "source publishes a walking time between them")
+            if r.get("minutes") not in (None, ""):
+                r["basis"] = ("the walking time on this row is a dated Google Maps walking-directions "
+                              "observation between the official property names (see the method sentence); "
+                              "the two official street addresses below pin the same two properties")
+            else:
+                r["basis"] = ("no walking time recorded; the map links below run between the two official "
+                              "street addresses below, and no official source publishes a walking time "
+                              "between them")
         else:
             missing = [n for n, ok in ((r["hotel"], bool(r["origin_address"])),
                                        (r["venue"], bool(r["destination_address"]))) if not ok]
