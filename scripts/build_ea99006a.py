@@ -103,12 +103,19 @@ def _load_optional(name):
 MORNING_FEED = _load_optional("morning_feed.json")
 
 # url -> earliest change event, for "source changed since this row was read" badges
+# Entries are read defensively: the value-level monitor (scripts/monitor_b3be876c.py) and the
+# hash-level recheck (scripts/recheck_ea99006a.py) both append to this log, and an entry missing
+# the canonical keys must never break the build. Unknown keys are ignored; the timestamp falls
+# back to "at" (the monitor's older key) and then to "" (never marks a row changed).
 CHANGED_AT = {}
 for _c in CHANGE_LOG:
+    if not isinstance(_c, dict):
+        continue
     u = _c.get("url")
-    if u and ("{" not in u) and ("google.com/maps" not in u):  # dynamic links never mark rows changed
-        if u not in CHANGED_AT or _c["changed_at"] < CHANGED_AT[u]:
-            CHANGED_AT[u] = _c["changed_at"]
+    when = _c.get("changed_at") or _c.get("at") or ""
+    if u and when and ("{" not in u) and ("google.com/maps" not in u):  # dynamic links never mark rows changed
+        if u not in CHANGED_AT or when < CHANGED_AT[u]:
+            CHANGED_AT[u] = when
 VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
@@ -2023,12 +2030,18 @@ def build_monitor():
                     '<th>What it backs</th><th>Old hash</th><th>New hash</th><th>Size</th>'
                     '<th>Link</th></tr></thead><tbody>')
         shown_changes = [c for c in changelog
-                         if "{" not in c.get("url", "") and "google.com/maps" not in c.get("url", "")]
+                         if isinstance(c, dict) and "{" not in c.get("url", "")
+                         and "google.com/maps" not in c.get("url", "")]
         for c in reversed(shown_changes[-200:]):
+            # Read defensively (see CHANGED_AT): the value-level monitor historically wrote
+            # "at"/"previous_sha256"/"sha256" keys. Accept both spellings so a monitor-written
+            # entry can never break the build; missing hashes render as "-".
+            _old = (c.get("old_sha256") or c.get("previous_sha256") or "")[:12] or "-"
+            _new = (c.get("new_sha256") or c.get("sha256") or "")[:12] or "-"
             body.append('<tr><td class="nowrap">%s</td><td>%s</td><td><code>%s</code></td>'
                         '<td><code>%s</code></td><td>%s</td><td>%s</td></tr>'
-                        % (esc(c["changed_at"]), esc(c.get("label") or ""),
-                           esc(c["old_sha256"][:12]), esc(c["new_sha256"][:12]),
+                        % (esc(c.get("changed_at") or c.get("at") or ""), esc(c.get("label") or c.get("kind") or ""),
+                           esc(_old), esc(_new),
                            esc("%s to %s bytes" % (c.get("old_bytes"), c.get("new_bytes"))),
                            src_link(c["url"], "open")))
         body.append("</tbody></table></div>")

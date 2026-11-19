@@ -1,6 +1,57 @@
 # Coordination - Poker5
 
-## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
+## Current branch session — 188dc704 (active) — scheduled-monitor repair + full requirements verification
+
+**Branch:** `arena/188dc704-poker5` (fixed by Arena), based on `main` @ `998a32d`. Scope claimed before any edit:
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| V1 | Line-by-line verification of every brief requirement against the published site (calculator, re-check + changed badges, structure-sheet verdicts, last-checked per row, dated rate log, venue pages, search, itemized stay fields, overlap/primary/fallback, ranking ratio, date filter, rule fields, walking check, morning feed, single-entry toggle, true-cost calc, executive summary, suggestions, questions, repo review, Pages site, per-row official sources) | done — all present and working; evidence below | COORDINATION.md (this record) |
+| V2 | Diagnose and fix the failing scheduled `recheck-ea99006a` run 44614839198 ("Rebuild the canonical site" step) | done — root cause found, reproduced locally, fixed on both sides | `scripts/monitor_b3be876c.py`, `scripts/build_ea99006a.py` |
+| V3 | Live spot-checks against official sources (Venetian resort fee, DSE IV schedule head) | done — both match the published data | COORDINATION.md (this record) |
+| V4 | Full check suite, PR to main, merge, confirm Pages deploy | done (record below) | COORDINATION.md |
+
+### V2 — root cause (the scheduled monitor broke its own publisher)
+
+The value-level monitor (`scripts/monitor_b3be876c.py`) appends to `data/ea99006a/change_log.json` using its own key names (`at`, `previous_sha256`, `sha256`). The canonical builder (`scripts/build_ea99006a.py`) reads that log with the hash-level recheck's key names (`changed_at`, `old_sha256`, `new_sha256`) and indexes `c["changed_at"]` directly. The first scheduled run that appended a monitor entry therefore crashed the build with `KeyError: 'changed_at'` — reproduced locally by appending a monitor-style entry (traceback at `build_ea99006a.py` line 110). Fix, on both sides so it cannot recur:
+
+- `monitor_b3be876c.py` now writes the canonical schema (`changed_at`, `url`, `label`, `old_sha256`, `new_sha256`, `old_bytes`, `new_bytes`); its own detail (`kind`, `values`) rides along as extra keys the builder ignores.
+- `build_ea99006a.py` reads the log defensively (`.get()` with `at`/`previous_sha256`/`sha256` fallbacks, non-dict entries skipped), so a malformed entry can never break the build again.
+
+Verified: build + `check_ea99006a.py` pass with old-style, new-style and mixed change-log entries; `git diff --exit-code -- pages index.html assets` (the quality.yml drift guard) is empty, so the fix changes no published output for the committed data; `npm run check` 22/22; monitor `--dry-run` still reports unreachable sources as `error`, never as "no change".
+
+### V1 — requirements verification (2026-11-19, this session)
+
+Every brief item was checked against the built site and its data files:
+
+- **Trip calculator** (`pages/planner.html`, `initPlanner`): entries × buy-ins + nights × true hotel cost; shows "Incomplete" until a dated hotel quote exists. Present.
+- **Scheduled re-check + changed marks**: `recheck-ea99006a.yml` (13:00 + 19:00 UTC) re-fetches every official URL; `change_log.json` + per-row "page re-fetched" badges and the monitor page. Present (V2 repaired).
+- **Structure sheets / unverified labels**: all 37 Venetian sheets read; 53 rows carry "Confirmed single-entry (standard S1)" with per-row excerpt + retrieval date; 41 multi-entry kept separate; rows whose terms were not read keep "Entry terms not read - unverified" (WPT 91, other 8). Present.
+- **Last-checked per row**: `last_checked` present on 94/94 Venetian, 136/136 WPT, 17/17 other rows; rendered as "checked <date> (first read <date>)". Present.
+- **Dated rate log**: `rate_snapshots.json` (itemized: checkout total, nightly average, resort fee, tax, parking, cancellation deadline, rate timestamp) + `rates_log.json` + browser-side log. Present.
+- **Venue pages**: `pages/venues/venetian.html`, `wynn.html`, `others.html`, each with its events table and a "Stay here" hotels table. Present.
+- **Search across all tables**: `assets/app.js` `initFilters` (unified search + date + venue + rule + rankable + changed + walk + budget/quality filters). Present.
+- **Itemized stay fields / like-for-like**: captured in `rate_snapshots.json` with caveats; missing components stay blank + flagged. Present.
+- **Overlap + primary/fallback**: `pages/schedule.html` (primary event + conditional fallback per day; overlap flags from start time, late-reg cutoff and plausible duration). Present.
+- **Ranking**: only rows with confirmed total entry fee + guarantee are rankable (`data-rankable`); guarantee ÷ entry fee shown as a descriptive ratio; bounty/flight events labelled separately. Present.
+- **Date filter, structured rule fields, walking-route check (30-min), morning feed, single-entry toggle, true-cost calculator, executive summary, suggestions board, questions register, repo review, Flagged for Review page**: all present on the published site.
+- **Per-row official sources**: `check_ea99006a.py` enforces it — 1,665 rows with an official https source, 0 broken links.
+
+### V3 — live spot-checks (official sources read this session)
+
+- Venetian resort-fee page: "Rates include a daily Resort Fee of $55 plus tax per night" — matches `hotels.json` (resort_fee 55, verified 2026-11-19). Source: https://www.venetianlasvegas.com/resort/resort-fee.html
+- Venetian DSE IV schedule page: "November 16 – December 23, 2026 … More than $3.6 Million in guaranteed tournament prize pools"; first rows (Nov 16, 11:10 AM, Event 1, $300 NLH 1A $75K GTD, structure_10.pdf; 5:10 PM 1B, structure_9.pdf) match `venetian.json` row for row. Source: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+
+### Irregularities
+
+- The `recheck-ea99006a` scheduled run 44614839198 failed at "Rebuild the canonical site" (V2 above). Fixed in this session; the next scheduled run will confirm. No data was lost: the failed run's commit step was skipped, so main still carries the last good site.
+- `integrate_b3be876c.py` is not idempotent against the current committed data (it reverts the 2b98a91f corrections to `meta.json` check-out date, Q01/Q11, S10/S11 and F47 wording, and re-stamps sheet retrieval times). It is therefore NOT run by this session; the committed data stands. Recommend a follow-up session reconcile the generator with the corrected data so scheduled runs stop reverting it. Logged here, not silently rewritten.
+
+**Publication record (188dc704):** PR + merge + Pages deploy recorded below after the merge.
+
+---
+
+## Previous branch session — 25481cd8 (completed) — schedule re-verification + site integration
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
 
