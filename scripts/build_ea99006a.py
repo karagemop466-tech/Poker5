@@ -162,6 +162,40 @@ _V_FEE = next((h["resort_fee"] for h in HOTELS if h["key"] == "venetian"), 0) or
 FLOOR_TRUE_NIGHT = ((VEN_POKER.get("rate_low") or 0) + _V_FEE) * (1 + TAX["rate"] / 100.0)
 RETRIEVED = META["retrieved"]
 
+
+# Window-matched dated quotes: captures whose check-in and check-out equal the planning window
+# and that returned a nightly average. The trip planner prefills from these only; anything else
+# (floors, other windows, attempts with no price) never becomes a quote.
+# true nightly = the engine's checkout total / nights when one was returned, otherwise the
+# average (which the engine labels fee-inclusive) with the published lodging tax applied only
+# when the capture explicitly records that tax was excluded (tax_included is False).
+def _window_quotes():
+    out = []
+    for s in RATE_SNAPSHOTS.get("entries", []):
+        if not (s.get("checkin") == TRIP["check_in"] and s.get("checkout") == TRIP["check_out"]):
+            continue
+        true_nightly = None
+        if isinstance(s.get("checkout_total"), (int, float)) and s.get("nights"):
+            true_nightly = round(float(s["checkout_total"]) / float(s["nights"]), 2)
+        elif isinstance(s.get("nightly_average"), (int, float)) and s["nightly_average"] > 0:
+            if s.get("tax_included") is False:
+                true_nightly = round(float(s["nightly_average"]) * (1 + TAX["rate"] / 100.0), 2)
+            elif s.get("tax_included") is True:
+                true_nightly = round(float(s["nightly_average"]), 2)
+            # tax treatment unknown -> stays None; the planner keeps its Incomplete state
+        if true_nightly:
+            out.append({"entry": s, "hotel": s.get("hotel") or "",
+                        "room_type": s.get("room_type") or "",
+                        "avg": float(s["nightly_average"]) if isinstance(s.get("nightly_average"), (int, float)) else None,
+                        "true_nightly": true_nightly, "source": s.get("source") or "",
+                        "rate_timestamp": s.get("rate_timestamp") or ""})
+    out.sort(key=lambda q: (q["true_nightly"], q["hotel"]))
+    return out
+
+
+WINDOW_QUOTES = _window_quotes()
+WINDOW_BY_KEY = {q["entry"].get("hotel_key"): q for q in WINDOW_QUOTES if q["entry"].get("hotel_key")}
+
 ALL_EVENTS = VEN + WPT + OTH
 for _e in ALL_EVENTS:
     _e.setdefault("notes", "")
@@ -1482,9 +1516,14 @@ def build_hotels():
     body = ["<h1>Hotels: true cost per night</h1>"]
     body.append('<p class="muted">True nightly cost = room rate + resort fee + tax. The tax rate below is taken from '
                 'the Clark County ordinance; resort fees are stated only where an official page publishes them. '
-                '<b>Room rates are not filled in</b> - official booking engines are JavaScript applications and no '
-                'dated rate could be read from an official source. Use the booking link, then record what you see '
-                'in the dated log at the bottom of this page.</p>')
+                'A <b>dated, window-matched quote</b> now exists for %s: the official Wynn booking engine returned '
+                'per-room averages for this exact stay (read %s), and the calculator below and the trip planner use '
+                'it, labelled as computed at the published tax rate because the engine returned no checkout total. '
+                'Every other property\'s engine returned no dated price for these dates (attempt log on the '
+                'Flagged page, F14/F75), so their rate cells stay blank - use the booking link and record what you '
+                'see in the dated log at the bottom of this page.</p>'
+                % (esc("%s to %s" % (TRIP["check_in"], TRIP["check_out"])),
+                   esc(WINDOW_QUOTES[0]["rate_timestamp"] if WINDOW_QUOTES else RETRIEVED)))
     body.append(SEARCH_BAR % ("Search hotels, fees, parking, addresses...",
                               '<label>Nightly budget ceiling $<input type="number" id="pbudget" min="0" step="10" placeholder="any"></label>'
                               '<label>Quality floor<select id="pquality"><option value="">Any</option>'
@@ -1537,10 +1576,22 @@ def build_hotels():
     for s in RATE_SNAPSHOTS["entries"]:
         def cell(v, suffix=""):
             return (esc(str(v)) + suffix) if v not in (None, "") else '<span class="blank">not returned</span>'
-        body.append("<tr><td><b>%s</b></td><td>%s</td><td class=\"nowrap\">%s</td><td class=\"nowrap\">%s</td>"
+        is_window = s.get("checkin") == TRIP["check_in"] and s.get("checkout") == TRIP["check_out"]
+        if is_window and s.get("nightly_average"):
+            win_pill = ' <span class="pill pill-ok">your dates - priced</span>'
+        elif is_window:
+            win_pill = ' <span class="pill pill-warn">your dates - no price returned</span>'
+        else:
+            win_pill = ""
+        room_cell = esc(s["room_type"])
+        if s.get("room_type_rates"):
+            room_cell += ('<br><span class="muted sm">All room types returned for this stay: %s</span>'
+                          % esc("; ".join("%s $%s" % (r["room_type"], format(r["nightly_average"], ",.0f"))
+                                          for r in s["room_type_rates"])))
+        body.append("<tr><td><b>%s</b>%s</td><td>%s</td><td class=\"nowrap\">%s</td><td class=\"nowrap\">%s</td>"
                     "<td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td>"
                     "<td class=\"num\">%s</td><td>%s</td><td>%s</td><td class=\"nowrap\">%s</td><td>%s</td></tr>"
-                    % (esc(s["hotel"]), esc(s["room_type"]),
+                    % (esc(s["hotel"]), win_pill, room_cell,
                        esc(s["checkin"]), esc(s["checkout"]),
                        esc(s["occupancy"]),
                        ("$%s" % format(s["checkout_total"], ",.2f")) if s.get("checkout_total") else '<span class="blank">not returned</span>',
@@ -1592,6 +1643,7 @@ def build_hotels():
     for h in HOTELS:
         fee = h["resort_fee"] or 0
         rate = h.get("rate_floor")
+        wq = WINDOW_BY_KEY.get(h["key"])
         cells = ['<td><b>%s</b>%s</td>' % (esc(h["name"]),
                    (' <span class="muted sm">%s</span>' % esc(h.get("rate_floor_room") or "").split(",")[0])
                    if rate else "")
@@ -1606,7 +1658,31 @@ def build_hotels():
                    if (h["key"], "venetian") in ROUTE_INDEX
                       and ROUTE_INDEX[(h["key"], "venetian")].get("minutes") is not None
                    else "walking time not verified"))))
-        if rate:
+        if wq and wq.get("avg") and wq.get("true_nightly"):
+            # Window-matched official booking-engine average for these exact dates: the engine
+            # labels it fee-inclusive; the tax column is the published lodging tax applied only
+            # because the capture records that tax was excluded (tax_included is False).
+            taxable = wq["avg"]
+            true_n = wq["true_nightly"]
+            taxed = round(true_n - taxable, 2) if wq["entry"].get("tax_included") is False else 0.0
+            cells[0] += (' <span class="muted sm">%s</span>' % esc(wq["room_type"].split("(")[0].strip()))
+            cells.append('<td class="num">$%.2f<br><span class="muted sm">engine avg, incl. fee, excl. tax (%s)</span></td>'
+                         % (taxable, esc(wq["rate_timestamp"])))
+            cells.append('<td class="num">$%.2f<br><span class="muted sm">already inside the average</span></td>' % fee)
+            cells.append('<td class="num">$%.2f%s</td>'
+                         % (taxed, '' if taxed else '<br><span class="muted sm">already included</span>'))
+            cells.append('<td class="num"><b>$%.2f</b></td>' % true_n)
+            cells.append('<td class="num">$%.2f</td>' % (true_n * TRIP["nights"]))
+            cells.append('<td>%s</td>' % ('<span class="pill pill-bad">over</span>' if _ceil and true_n > _ceil
+                                          else '<span class="pill pill-ok">within</span>' if _ceil
+                                          else '<span class="muted sm">no ceiling set</span>'))
+            cells.append("<td>%s</td>" % ('<span class="pill pill-ok">meets it</span>' if h["tier"] in QUALITY_OK
+                          else '<span class="pill pill-warn">below the quality floor</span>'))
+            link = src_link(wq["source"], "official booking engine quote (%s to %s)"
+                            % (TRIP["check_in"], TRIP["check_out"]))
+            note = esc(((wq["entry"].get("caveats") or [""])[0])[:300])
+            row_ceil = "%.2f" % true_n
+        elif rate:
             taxable = rate + fee
             taxed = taxable * _fee
             cells.append('<td class="num">$%.2f<br><span class="muted sm">official starting rate</span></td>' % rate)
@@ -1621,6 +1697,7 @@ def build_hotels():
                           else '<span class="pill pill-warn">below the quality floor</span>'))
             link = src_link(h.get("rate_floor_source"), "official rate page")
             note = esc((h.get("rate_caveat") or "")[:300])
+            row_ceil = "%.2f" % ((rate + fee) * (1 + _fee))
         else:
             cells.append('<td class="blank">not published</td>' * 4)
             cells.append('<td class="blank">no rate</td>')
@@ -1631,11 +1708,12 @@ def build_hotels():
             link = src_link(h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"]),
                             "get a dated quote here")
             note = esc((h.get("rate_caveat") or "no official nightly rate published")[:300])
+            row_ceil = ""
         cells.append('<td class="sm">%s<br><span class="muted sm">%s</span></td>'
                      % (esc(h["resort_fee_text"] or "no official fee page")[:200], note))
         cells.append("<td>%s</td>" % link)
         body.append('<tr data-tier="%s" data-ceil="%s">%s</tr>' % (
-            esc(h["tier"]), "%.2f" % ((rate + fee) * (1 + _fee)) if rate else "", "".join(cells)))
+            esc(h["tier"]), row_ceil, "".join(cells)))
     body.append("</tbody></table></div>")
     body.append('<div class="panel"><h2>Dated rate log</h2>'
                 '<p class="muted sm">A rate is never one number, so this page keeps a dated log. Each row below is '
@@ -1649,6 +1727,9 @@ def build_hotels():
         for r in RATES:
             nights = r.get("nights")
             lo, hi = r.get("nightly_low"), r.get("nightly_high")
+            kind_cell = esc(r.get("kind") or "")
+            if r.get("checkin") == TRIP["check_in"] and r.get("checkout") == TRIP["check_out"]:
+                kind_cell += ' <span class="pill pill-ok">your dates</span>'
             room = (("%s &ndash; %s" % (money(lo), money(hi))) if lo and hi else
                     money(r.get("nightly_average")) if r.get("nightly_average")
                     else '<span class="blank">not published per night</span>')
@@ -1662,8 +1743,11 @@ def build_hotels():
                     if r.get("tax_rate_pct") else "not stated"))
             tr_ = ("%s &ndash; %s" % (money(r["true_nightly_low"]), money(r["true_nightly_high"]))
                    if r.get("true_nightly_low") else
-                   (money(r["nightly_average"]) + ' <span class="muted sm">room only</span>'
-                    if r.get("nightly_average") else '<span class="blank">no rate</span>'))
+                   (('$%.2f' % r["true_nightly"]) + ' <span class="muted sm">incl. %.2f%% tax (computed from the official rate)</span>'
+                    % (r.get("tax_rate_pct") or TAX["rate"])
+                    if r.get("true_nightly") else
+                    (money(r["nightly_average"]) + ' <span class="muted sm">room only</span>'
+                     if r.get("nightly_average") else '<span class="blank">no rate</span>')))
             body.append("<tr><td class=\"nowrap\">%s%s</td><td class=\"sm\">%s</td>"
                         "<td class=\"sm\"><b>%s</b><br><span class=\"muted nowrap\">%s</span></td>"
                         "<td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td>"
@@ -1671,7 +1755,7 @@ def build_hotels():
                         "<td class=\"sm\"><ul class=\"fldlist\">%s</ul></td><td>%s</td></tr>"
                         % (esc(r.get("observed_on") or ""),
                            "" if r.get("verified", True) else ' <span class="pill pill-warn">not re-verifiable</span>',
-                           esc(r.get("kind") or ""), esc(r.get("hotel") or ""),
+                           kind_cell, esc(r.get("hotel") or ""),
                            esc("%s to %s (%s nights)" % (r["checkin"], r["checkout"], nights)) if nights
                            else esc(r.get("room_type") or "no dates attached"),
                            room, fee, tax, tr_,
@@ -1683,9 +1767,12 @@ def build_hotels():
                            "".join("<li>%s</li>" % esc(c) for c in r.get("caveats") or []),
                            src_link(r.get("source"), r.get("source_label") or "official source")))
         body.append("</tbody></table>")
-        body.append('<p class="muted sm">Both rows are the Venetian because it is the only property in the shortlist '
-                    'with a number on an official page. The other four have no dated rate entry at all - the log is '
-                    'not padded with estimates to make the table look complete.</p></div>')
+        body.append('<p class="muted sm">Each row is one dated observation with the official page it was read from; '
+                    'the log is never padded with estimates. Only the row marked as matching the planning window '
+                    '(%s to %s) is a like-for-like quote for this trip; the other rows are different stay windows or '
+                    'a published starting rate, and the shortlist hotels with no row at all returned no dated price '
+                    'from their own booking engines (F14/F75).</p></div>'
+                    % (esc(TRIP["check_in"]), esc(TRIP["check_out"])))
     body.append("</div>")
     body.append('<div class="panel" id="hcalc"><h2>True nightly cost calculator</h2>'
                 '<div class="calc">'
@@ -1708,18 +1795,36 @@ def build_hotels():
                 'Rates are a log, not a single value - keep adding entries as prices move. The table above is the '
                 'server-side log, rebuilt from the official pages each morning.</p>'
                 '<div id="ratelog"></div></div>')
-    body.append('<div class="badbox"><b>The only official rate figure published for this trip is a floor, not a '
-                'quote.</b> The Venetian publishes poker-room suite rates that "start as low as %s and %s" for a '
-                'Luxury King Suite, plus the $%.0f resort fee, conditional on six hours of live play or a $300+ '
-                'tournament entry every night before 2 a.m. %s. The live booking page for %s to %s returned no rate '
-                'at all (the engine is a JavaScript application), so the average nightly figure behind the '
-                'reservation snapshot in the log above could not be re-verified against an official source and stays '
-                'marked as such. Every other hotel in the shortlist publishes no nightly rate anywhere official, so '
-                'its row is blank. See flag F14 on the <a href="flagged-review.html">Flagged page</a>.</div>'
-                % (money(VEN_POKER.get("rate_low")), money(VEN_POKER.get("rate_high")),
-                   float(HOTELS[0]["resort_fee"] or 55),
-                   src_link(VEN_POKER.get("url"), "official poker-room rates page"),
-                   esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+    if WINDOW_QUOTES:
+        _wq = WINDOW_QUOTES[0]
+        body.append('<div class="badbox"><b>One window-matched quote exists; the rest are still missing.</b> '
+                    'The official Wynn booking engine returned dated averages for %s to %s (read %s): the lowest, '
+                    '%s, is <b>$%.2f per night</b> including the $%.0f resort fee and excluding tax. The itemized '
+                    'table above and the trip planner compute its true nightly cost at the published %.2f%% lodging '
+                    'tax and label it <i>computed</i>, because the engine returned no checkout total - reconfirm at '
+                    'booking. The Venetian still publishes only a conditional poker-room floor ("start as low as %s '
+                    'and %s", %s) and its booking calendar returned no prices for these dates; the Caesars Palace '
+                    'and Horseshoe engines reported technical difficulties; Resorts World returned a calendar with '
+                    'contradictory fee legends and no stay total. Every other rate cell stays blank on purpose. See '
+                    'flags F14, F74 and F75 on the <a href="flagged-review.html">Flagged page</a>.</div>'
+                    % (esc(TRIP["check_in"]), esc(TRIP["check_out"]), esc(_wq["rate_timestamp"]),
+                       esc(_wq["room_type"].split("(")[0].strip()), _wq["avg"],
+                       float(HOTELS[0]["resort_fee"] or 55), TAX["rate"],
+                       money(VEN_POKER.get("rate_low")), money(VEN_POKER.get("rate_high")),
+                       src_link(VEN_POKER.get("url"), "official poker-room rates page")))
+    else:
+        body.append('<div class="badbox"><b>The only official rate figure published for this trip is a floor, not a '
+                    'quote.</b> The Venetian publishes poker-room suite rates that "start as low as %s and %s" for a '
+                    'Luxury King Suite, plus the $%.0f resort fee, conditional on six hours of live play or a $300+ '
+                    'tournament entry every night before 2 a.m. %s. The live booking page for %s to %s returned no rate '
+                    'at all (the engine is a JavaScript application), so the average nightly figure behind the '
+                    'reservation snapshot in the log above could not be re-verified against an official source and stays '
+                    'marked as such. Every other hotel in the shortlist publishes no nightly rate anywhere official, so '
+                    'its row is blank. See flag F14 on the <a href="flagged-review.html">Flagged page</a>.</div>'
+                    % (money(VEN_POKER.get("rate_low")), money(VEN_POKER.get("rate_high")),
+                       float(HOTELS[0]["resort_fee"] or 55),
+                       src_link(VEN_POKER.get("url"), "official poker-room rates page"),
+                       esc(TRIP["check_in"]), esc(TRIP["check_out"])))
     write("pages/hotels.html", page("Hotels and true nightly cost", "".join(body), "hotels.html", 1))
 
 
@@ -1862,33 +1967,56 @@ def build_planner():
     for h in HOTELS:
         booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
         tier_rank = {"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), "")
+        wq = WINDOW_BY_KEY.get(h["key"])
+        quote_cell = ('<span class="pill pill-ok">quoted $%.2f/night avg &middot; engine %s</span>'
+                      % (wq["avg"], esc(wq["rate_timestamp"]))) if wq and wq.get("avg") \
+                     else '<span class="blank">quote needed</span>'
         body.append("<tr data-tier=\"%s\"><td><b>%s</b></td><td>%s</td><td class=\"num\">%s</td>"
                     "<td>%s</td><td>%s</td><td>%s</td></tr>"
                     % (tier_rank, esc(h["name"]), esc(h["tier"]),
                        ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>',
                        (walk_cell(h["key"], "venetian")),
-                       '<span class="blank">quote needed</span>',
+                       quote_cell,
                        src_link(booking, "open official booking (%s to %s)" % (TRIP["check_in"], TRIP["check_out"]))))
     body.append("</tbody></table></div></div>")
-    body.append('<div class="panel"><div class="calc">'
-                '<label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" '
-                'placeholder="no date-specific quote recorded" value=""></label>'
-                '<label>Nights<input id="pnights" type="number" min="1" step="1" value="%d"></label>'
-                '</div><div class="result" id="ptotal"></div>'
-                '<p class="muted sm">The hotel side is deliberately blank: no dated, itemized quote for these '
-                'dates exists in the records, so the trip total stays <b>Incomplete</b> rather than being closed '
-                'with an estimate. For orientation only, the figure you would type in is $%.2f: the official '
-                'Venetian poker-suite rate of %s plus the $%.0f resort fee, taxed at %.2f%%. That is a published '
-                '<b>floor, not a quote</b> - the rate is conditional on six hours of live play or a $300+ tournament '
-                'entry every night before 2 a.m., and that page only publishes rates 150 days out, so December 2026 '
-                'is not on it. The resort-fee tax treatment is not verified for every hotel, so use the booking '
-                'checkout total, not an estimate. Record a dated quote in the log on the '
-                '<a href="hotels.html">hotels page</a> and the total becomes complete; until then flag F14 stays '
-                'open. Only single-entry and cap-not-stated '
-                'events are listed below: no official text bounds how many re-entries an event allows, so a '
-                're-entry event can never be priced.</p></div>'
-                % (TRIP["nights"], FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "not published",
-                   _V_FEE, TAX["rate"]))
+    _best = WINDOW_QUOTES[0] if WINDOW_QUOTES else None
+    ptrue_val = ("%.2f" % _best["true_nightly"]) if _best else ""
+    if _best:
+        phelp = ('<p class="muted sm">Prefilled from the dated quote for these exact dates: <b>%s</b> (%s), '
+                 'official booking engine read %s %s - average $%.2f per night including the resort fee and '
+                 'excluding tax. The figure above is that average with the published %.2f%% Clark County lodging '
+                 'tax applied, so it is <b>computed, not a checkout total</b> (the engine returned none); '
+                 'reconfirm the total at booking, because prices move. The Venetian, Caesars Palace, Horseshoe '
+                 'and Resorts World engines returned no dated price for these dates, so those hotels stay '
+                 '<i>quote needed</i> (F14/F75), and clearing this field returns the trip total to '
+                 '<b>Incomplete</b>. The resort-fee tax treatment is not verified for every hotel, so use the '
+                 'booking checkout total, not an estimate. Only single-entry and cap-not-stated events are '
+                 'listed below: no official text bounds how many re-entries an event allows, so a re-entry '
+                 'event can never be priced.</p>'
+                 % (esc(_best["hotel"]), esc(_best["room_type"].split("(")[0].strip()),
+                    esc(_best["rate_timestamp"]), src_link(_best["source"], "official booking page"),
+                    _best["avg"], TAX["rate"]))
+    else:
+        phelp = ('<p class="muted sm">The hotel side is deliberately blank: no dated, itemized quote for these '
+                 'dates exists in the records, so the trip total stays <b>Incomplete</b> rather than being closed '
+                 'with an estimate. For orientation only, the figure you would type in is $%.2f: the official '
+                 'Venetian poker-suite rate of %s plus the $%.0f resort fee, taxed at %.2f%%. That is a published '
+                 '<b>floor, not a quote</b> - the rate is conditional on six hours of live play or a $300+ tournament '
+                 'entry every night before 2 a.m., and that page only publishes rates 150 days out, so December 2026 '
+                 'is not on it. The resort-fee tax treatment is not verified for every hotel, so use the booking '
+                 'checkout total, not an estimate. Record a dated quote in the log on the '
+                 '<a href="hotels.html">hotels page</a> and the total becomes complete; until then flag F14 stays '
+                 'open. Only single-entry and cap-not-stated '
+                 'events are listed below: no official text bounds how many re-entries an event allows, so a '
+                 're-entry event can never be priced.</p>'
+                 % (FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "not published",
+                    _V_FEE, TAX["rate"]))
+    body.append(('<div class="panel"><div class="calc">'
+                 '<label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" '
+                 'placeholder="no date-specific quote recorded" value="%s"></label>'
+                 '<label>Nights<input id="pnights" type="number" min="1" step="1" value="%d"></label>'
+                 '</div><div class="result" id="ptotal"></div>'
+                 '%s</div>') % (ptrue_val, TRIP["nights"], phelp))
     body.append('<div class="panel" id="picks"><h2>Entries in your window (%d)</h2>' % len(rows))
     body.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Play?</th><th>Date</th><th>Start</th>'
                 '<th>#</th><th>Event</th><th class="num">Buy-in</th><th>House fee</th>'
@@ -2002,7 +2130,11 @@ def build_exec():
         "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as 'No second entry granted (S1 screen)', %d as multi-entry and %d as Cap not stated (event #39's two-day single-flight structure; flag F71). S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi), len(VEN) - len(ven_confirmed) - len(ven_multi)),
         "The recommended dates are %s to %s (%d nights; seven playing days, checkout the next day). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
-        "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
+        (("A window-matched hotel quote exists for this exact stay and occupancy: the official Wynn booking engine returned dated averages for %s to %s (lowest, Wynn Resort King, $%.2f per night including the resort fee and excluding tax; read %s). The trip planner prefills its true nightly cost from that capture at the published %.2f%% lodging tax and labels it computed, because the engine returned no checkout total. The Venetian and Caesars engines returned no dated price for these dates, so every other hotel's cell stays blank, the total goes back to Incomplete if that figure is cleared, and no cheapest-hotel ranking is drawn from mixed windows."
+          % (esc(TRIP["check_in"]), esc(TRIP["check_out"]), WINDOW_QUOTES[0]["avg"],
+             esc(WINDOW_QUOTES[0]["rate_timestamp"]), TAX["rate"]))
+         if WINDOW_QUOTES else
+         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known."),
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
         "Walking times for 30 hotel-to-venue pairs (the five candidate hotels to all six poker rooms) are dated Google Maps observations read on 2026-11-19 (distance and via-streets recorded per row, with Google's restricted-usage warnings kept); pairs over the 30-minute limit are marked and filtered, and unmeasured pairs stay blank and flagged. A room in the venue's own hotel remains 0 minutes. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
