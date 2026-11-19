@@ -1,0 +1,148 @@
+{
+  "retrieved": "2026-11-19",
+  "heading": "Live re-read and row-by-row re-check (session ec3c21b8)",
+  "scope": "Every official source behind the trip-critical rows was re-read live on 2026-11-19 and compared field by field with the stored data: the WPT World Championship structures PDF (all text this environment can extract: general terms, action-clock terms and 13 event terms covering 45 rows), the Wynn WPT schedule sign (both panels, transcribed to data/ec3c21b8/wpt_sign_2026-11-19.tsv and diffed against all 136 stored rows by scripts/recheck_ec3c21b8.py), the ten Venetian DSE IV structure sheets that session d615f79e left as 'read before payment' (12, 17, 19, 20, 21, 27, 31, 32, 33, 37; transcribed to data/ec3c21b8/sheets_reread_2026-11-19.json), the Clark County transient-lodging ordinance, the Venetian resort-fee page, the Wynn offer terms page and both South Point poker pages.",
+  "checks": [
+    {
+      "item": "WPT structures PDF - general terms (35 items) + action clock terms",
+      "result": "match",
+      "stored": "row sources point at this PDF",
+      "detail": "Read live. Nothing in the general terms grants or denies entry; per-event Registration sections govern, and each is read below.",
+      "official_url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+    },
+    {
+      "item": "WPT terms - $600 NLH $400K (6 flights), $600 TORSE, $400 PLO, $600 Mixed Triple Draw, $800 NLH $1M (6 flights), $600 Limit O8, $600 O8/Stud8, $1,100 PLO, $1,600 NLH $1M (2 flights), $600 HORSE, NLH Turbo, $1,600 PLO Mystery Bounty",
+      "result": "match",
+      "stored": "36 rows multi-entry with these Registration excerpts",
+      "detail": "Every one of these events' Registration sections grants re-entry ('Unlimited re-entry ... until the start of level 9/10'), most unlimited per flight. The 36 stored multi-entry rows quote these sections verbatim and stay multi-entry.",
+      "official_url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+    },
+    {
+      "item": "WPT terms - $1,100 WPT Prime Championship (flights 1A-1D)",
+      "result": "match",
+      "stored": "9 rows multi-entry, excerpt 'One (1) Entry and One (1) re-entry for each starting flight'",
+      "detail": "Registration: one entry plus one re-entry per flight until the start of level 10 - a capped re-entry, still an entry-cap advantage over a freezeout, so the rows stay in the multi-entry section. $10,400 of the pool is withheld for a 2027 WPT Championship seat (recorded on the rows' source).",
+      "official_url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+    },
+    {
+      "item": "WPT terms - events from Dec 7 onward (91 rows)",
+      "result": "not readable in this environment - no label removed",
+      "stored": "91 rows 'Entry terms not read - unverified'",
+      "detail": "This tool stops extracting PDF text at page 30 (mid-sentence in the Mystery Bounty rules); the Registration sections for HORSE 2-Day, PLO $500 Bounty, Super Gold Million, WPT World Championship, Ladies, Seniors, high rollers and all milestone satellites sit beyond the cutoff. Flagged as F60 with question Q18; the rows keep their unverified label.",
+      "official_url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+    },
+    {
+      "item": "Wynn WPT schedule sign - all 136 rows (date, start, name, buy-in, guarantee)",
+      "result": "match with 3 documented conflicts",
+      "stored": "136 rows in wpt.json",
+      "detail": "133 rows match after 24 blank satellite seat/prize guarantees were filled verbatim from the sign (F57). The 3 'No Limit Hold'em Day 2' rows publish the event terms pages' figures while the sign prints the next event's money columns - both readings kept in each row's disagreement note, rows not ranked (F58). Row-by-row diff: data/ec3c21b8/recheck.json.",
+      "official_url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+    },
+    {
+      "item": "Wynn sign internal consistency",
+      "result": "defects found in the official source",
+      "stored": "rows dated 2026-12-16",
+      "detail": "The sign prints one block header 'Dec. 18 Wednesday' where the weekday and sequence show Dec 16; it also prints 'NIH' for 'NLH', 'BadugI', '1A/8' for '1A/B', and a footnote 'The Tournament Entry for the Ladies Championship is $11,100' against its own $1,100 table figure (F58, F59). Stored rows use the corrected readings; the sign's own text is quoted in the flags.",
+      "official_url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+    },
+    {
+      "item": "Venetian sheet 12 ($800 NLH, event 26, flights A+C+E)",
+      "result": "match",
+      "stored": "buy-in $800, fee $110, pool $690, chips 40,000, 40 min, late '6 levels + Break (~ 3:40 PM)', $500K GTD",
+      "detail": "Re-read live: every field matches; rule 08 (no repeat flight after bagging) keeps the event multi-entry. Day 2 12:00 PM; sheet 13 covers flights B+D+F.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf"
+    },
+    {
+      "item": "Venetian sheet 17 ($600 Seniors, events 24 and 32)",
+      "result": "match",
+      "stored": "buy-in $600, fee $90, pool $510, chips 40,000, 30 min, late '10 levels + Break (~ 3:55 PM)', $40K GTD",
+      "detail": "Re-read live: every field matches; 10 numbered rules, none grants a second entry - the two rows keep their confirmed single-entry label (50+ only).",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf"
+    },
+    {
+      "item": "Venetian sheet 19 ($100 LIPS Ladies milestone satellite, events 33 and 37)",
+      "result": "match",
+      "stored": "buy-in $100, fee $20, pool $80, chips 20,000, 20 min, late '6 levels + Break (~6:25 PM)', 2 Seats",
+      "detail": "Re-read live: every field matches; 13 rules, none grants a second entry; 200,000 chips = instant seat into event #39. Seats, not cash; the two rows keep their confirmed single-entry label (female players only).",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf"
+    },
+    {
+      "item": "Venetian sheet 20 ($1,100 Seniors, event 49)",
+      "result": "match",
+      "stored": "buy-in $1,100, fee $140, pool $960, chips 40,000, 40 min, late '9 levels + Break (~ 4:55 PM)', $300K GTD",
+      "detail": "Re-read live: every field matches; rule 08 keeps the two-flight event multi-entry.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf"
+    },
+    {
+      "item": "Venetian sheet 21 ($2,200 PokerAtlas Championship Day 1A, event 47)",
+      "result": "match",
+      "stored": "buy-in $2,200, fee $225, pool $1,975, chips 40,000, 40 min, late '9 levels + Break (~ 4:55 PM)', $1M GTD",
+      "detail": "Re-read live: every field matches; rule 08 keeps the two-flight championship multi-entry; sheet 37 is Day 1B.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf"
+    },
+    {
+      "item": "Venetian sheet 27 ($600 PLO Bounty, event 40)",
+      "result": "match",
+      "stored": "buy-in $600, fee $90, pool $510, chips 30,000, 30 min, late '8 levels + break (~ 4:40 PM)', $25K GTD (prize pool + total bounties)",
+      "detail": "Re-read live: every field matches; 12 rules, none grants a second entry; $200 bounty per elimination; the row keeps its confirmed single-entry label.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf"
+    },
+    {
+      "item": "Venetian sheet 31 ($600 LIPS Jingle Tag Team, event 35)",
+      "result": "match",
+      "stored": "buy-in $600, fee $80 house + $10 LIPS, pool $510, chips 40,000, 30 min, late '8 levels + Break (~ 2:40 PM)', $10K GTD",
+      "detail": "Re-read live: every field matches; 11 rules, none grants a second entry; one buy-in per team; the row keeps its confirmed single-entry label.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf"
+    },
+    {
+      "item": "Venetian sheet 32 ($800 LIPS Ladies, event 39)",
+      "result": "mislabel corrected (F56)",
+      "stored": "was published multi-entry on 3 rows",
+      "detail": "Re-read live: every economic field matches, but the sheet grants no second entry and has no flights - one Day 1 (Dec 10) continuing Dec 11. The earlier capture had quoted the Day-2 resume sentence as flight language. The three rows now read 'Cap not stated' (S1 condition 4 excludes multi-day structures from the confirmed set) with the corrected basis stored on each row.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf"
+    },
+    {
+      "item": "Venetian sheet 33 ($600 LIPS Kings & Queens Bounty, event 43)",
+      "result": "match",
+      "stored": "buy-in $600, fee $80 house + $10 LIPS, pool $510, chips 40,000, 30 min, late '10 levels + Break (4:55 PM)', $30K GTD (prize pool + total bounties)",
+      "detail": "Re-read live: every field matches; 11 rules, none grants a second entry; $200 bounty; the row keeps its confirmed single-entry label (open to all players).",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf"
+    },
+    {
+      "item": "Venetian sheet 37 ($2,200 PokerAtlas Championship Day 1B, event 47)",
+      "result": "match",
+      "stored": "buy-in $2,200, fee $225, pool $1,975, chips 40,000, 30 min, late '9 levels + Break (~ 11:10 PM)', $1M GTD",
+      "detail": "Re-read live: every field matches; rule 08 keeps the flight multi-entry; sheet 21 is Day 1A.",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf"
+    },
+    {
+      "item": "Clark County combined transient lodging tax",
+      "result": "match",
+      "stored": "13.38%",
+      "detail": "The ordinance's rate schedule row 'Resort hotel within primary gaming corridor ... 13.38%' was read live (5% county + 0.5% state education + 2% + 1% + 1% + 3% + 0.88% stadium district).",
+      "official_url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"
+    },
+    {
+      "item": "Venetian resort fee",
+      "result": "match",
+      "stored": "$55 plus tax per night",
+      "detail": "Read live: 'Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in.'",
+      "official_url": "https://www.venetianlasvegas.com/resort/resort-fee.html"
+    },
+    {
+      "item": "Wynn resort fee, parking and cancellation (offer DK26WLV2)",
+      "result": "match",
+      "stored": "$55 plus tax; self-parking; 48-hour cancellation",
+      "detail": "Read live: 'A daily resort fee of $55 plus tax will be added ... complimentary self-parking for up to two vehicles ... cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited.' Confirms the correction session d615f79e made (72h -> 48h) and flag F55's wording.",
+      "official_url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2"
+    },
+    {
+      "item": "South Point daily tournaments (8 rows)",
+      "result": "schedule confirmed; entry terms not machine-readable",
+      "stored": "4 rows $120 + 4 rows $300, all 'Entry terms not read - unverified'",
+      "detail": "The official poker-room page confirms 'tournaments daily ... at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300', matching the eight rows. The entry rules live in linked JPG rules-sheet images on the daily-tournament-schedule page, which this tool cannot read; the rows keep their unverified label (F60, Q18).",
+      "official_url": "https://southpointcasino.com/casino/poker-room"
+    }
+  ],
+  "not_changed": "No stored value was changed without a flag. The changes made from this re-read are: 24 blank WPT satellite guarantees filled verbatim from the schedule sign (F57); the three 'No Limit Hold'em Day 2' rows now publish their event terms pages' figures with both official readings kept in each row's disagreement note (F58); event #39's three rows re-labelled from Multi-entry to Cap not stated with the corrected verdict basis (F56); Dec 21 NLH Turbo carries the terms-page vs sign start-time conflict in its notes (F58). Every other value on every re-read row is identical to the previous capture, and last_checked on those rows now reads 2026-11-19. Nothing was newly marked verified that was not read live in this session."
+}
