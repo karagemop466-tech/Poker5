@@ -39,6 +39,25 @@
 
 # Coordination - Poker5
 
+## Session 9eb12353 (active) — repair legacy re-entry classifier
+
+**Branch:** `arena/9eb12353-poker5` (Arena-fixed; based on `main` at `998a32d2`). The canonical `ea99006a` publisher already treats events #18 and #58 as multi-entry, but the legacy `c6087e2c` capture merge still labels them `single_entry_confirmed` because it trusts only the parser boolean `adds_a_second_entry`. This is a narrow data-quality repair; do not touch the canonical root site or unrelated active-session scopes.
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| L1 | done | 9eb12353 | `COORDINATION.md`, `scripts/merge_251c122f.py`, `scripts/crosscheck_251c122f.py`, `test/research.test.mjs`, and regenerated `data/c6087e2c/events_verified.json` only |
+
+**Evidence basis:** the checked-in official Venetian structure sheet 8 capture in `data/c6087e2c/structures.json` (source URL recorded in the row) contains rule 07: “All subsequent buy in's after the initial buy in will be $200.” The same event-specific evidence is documented in F47 and the canonical `ea99006a` data. No new live-source or hotel/tournament-value claims were made; only the verdict was re-derived from existing captured official rule text, preserving its source and retrieval timestamp.
+
+**Result and verification (2026-11-19):** `scripts/merge_251c122f.py` now checks official rules text for second-entry grants in addition to the scraper boolean, including subsequent/additional/second buy-in phrases. The shared predicate is also used by the cross-check, which now fails if a sheet grants another entry but the output verdict does not say so. Events #18 and #58 now have `adds_second_entry` / `single_entry_confirmed: false` verdicts (legacy ledger totals: 53 single-entry under its standard, 2 additional-entry, 28 multi-flight, 11 restart). Their `re_entry` field includes the exact excerpt, official PDF URL, and structure retrieval date; every structured rule field now carries the sheet retrieval date. Regression test asserts the two rows and evidence provenance. Checks: `python3 scripts/merge_251c122f.py`; `python3 scripts/crosscheck_251c122f.py` (pass; 67 pre-existing schedule-name text differences remain logged, not silently rewritten); `npm test` (23/23); Python compile; `python3 scripts/check_ea99006a.py` (1,665/1,665 table rows sourced, links pass); `python3 scripts/check_root_site.py`; `git diff --check`.
+
+**Official source for manual review:** [Venetian structure sheet 8 PDF](https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf). The checked-in capture includes its retrieval timestamp and SHA-256. The automated daily official-source capture workflow (run 44623915264, on this PR branch) subsequently re-read the official schedule and all 37 linked sheets; sheet 8 was refreshed at 2026-11-19T21:55:24Z and still contains the rule above. The capture job's merge/cross-check steps succeeded. This was an automated live refresh, not a manual PDF fetch by the agent.
+
+
+
+
+---
+
 ## Current branch session — 96160d8f (active) — line-by-line official-source verification + gap close
 
 **Branch:** `arena/96160d8f-poker5` (fixed by Arena), based on `main` @ `998a32d`. Scope claimed before any data edit:
