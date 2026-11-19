@@ -1,3 +1,36 @@
+# Coordination - Poker5
+
+## Current branch session — 2723deea (active) — line-by-line re-verification, defect repair, integration
+
+**Branch:** `arena/2723deea-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed before any file edit**, 2026-11-19. The board shows no other open claim (every entry is done or merged; open PRs #53, #55, #59, #60 belong to other sessions and are not touched).
+
+| # | Task | Status | Owner | Files in scope |
+|---|---|---|---|---|
+| V1 | Re-read the official sources behind the published trip-critical values with a fresh dated read and diff each value against `data/ea99006a/` | done — 18 reads logged, 0 value differences, 1 name-text difference | `data/2723deea/reverify.json`, `data/2723deea/official_schedule_window_2026-11-19.tsv`, `data/2723deea/schedule_diff.json`, `scripts/recheck_2723deea.py` |
+| V2 | Repair every defect the re-read exposed | done — F58, F59, F60 published; F61 extended; Q01 corrected; 3 regression tests added | `scripts/integrate_b3be876c.py`, `scripts/build_ea99006a.py`, `data/ea99006a/*` (generated), `test/root_site.test.mjs` |
+| V3 | Rebuild the root site, run every check, PR to `main`, merge, confirm the Pages deploy, record PR + deploy outcome here | in progress | `index.html`, `pages/**` (generator output only), `COORDINATION.md` |
+
+### Results — session 2723deea (2026-11-19)
+
+**Sources read live in this session (page-fetch tool, 2026-11-19).** Venetian DSE IV schedule page, all four chunks (94 rows); structure sheets 7, 11, 15, 16, 17, 19, 21, 24, 25, 27, 31, 33; the Venetian resort-fee page; the Venetian 2026 poker suite-rates page; the Clark County transient-lodging ordinance (rate schedule 4.08.130); the Wynn special-offer terms DK26WLV2; the WPT World Championship schedule PDF. Every value compared is recorded read-by-read in `data/2723deea/reverify.json`. The sandbox itself cannot open a TCP connection to casino hosts (HTTP 000 on a direct request), so reads went through the page-fetch tool and the 94-row transcription is stored in `data/2723deea/official_schedule_window_2026-11-19.tsv` and diffed by `scripts/recheck_2723deea.py`.
+
+**Verification result:** all 25 window rows match the official schedule page on date, start, event number and structure-sheet number (1 name-text difference: the page's `<br>- Tag Teams…` tail is not in the site's name field for #35). Buy-in, house fee, prize-pool share, chips, level length, late registration and guarantee match the sheets on every row read. No published tournament or hotel value was changed.
+
+**Defects found and fixed (all from official text, none inferred):**
+
+- **F58 — a restricted field was ranked as an ordinary pick.** The Executive Summary's ordinary ranking was led by the 2 and 8 December `$600 Seniors` events, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary event. The sheets close those fields: sheet 17 prints "MUST BE 50+ YEARS OF AGE TO PARTICPATE" (rule 2 forfeits the buy-in of an under-50 entrant), sheet 19 prints "Open to Female players", sheet 31 prints "Teams: Female / Female OR Female / Male". Each affected row now stores `restriction` with the official sentence, sheet link and retrieval date; the label shows on every row ("S1, entry restricted — …"); the executive ranking names them separately as excluded; the day schedule cannot make one primary; the planner drops them from the playable list. 8 rows carry a label (6 events plus two restarts). #43's LIPS sheet says "Open to all Players" and is deliberately NOT labelled.
+- **F59 — the source-change monitor has never recorded a successful first read.** `last_checked.json` has `first_checked` empty for all 96 URLs and its only run marked 13 URLs "changed" on first attempt, so 94 Venetian rows carry a "page re-fetched" note that says nothing about their values; `monitor_summary.json` still has `run: null`. Kept open and published.
+- **F60 — a shared structure sheet's single registration-close line was copied onto events with different start times.** Sheet 25 covers #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one "Late Registration: 6 levels" with no clock; the two morning rows carried the 8:10 PM event's derived 9:40 PM close, which the overlap check uses. `late_reg_close()` now prefers a clock the sheet itself printed and states no close time when a shared sheet gives none.
+- **F61 — team format vs the S1 label.** Session 0a0d8e6b's finding on #35 (two-player tag team) is extended rather than duplicated: the sheet grants no second entry, so S1 still passes, but the row is not an individual event. It is labelled, excluded from ranking and day plan, and the S1 limitation stays open.
+- **Q01 corrected.** It claimed check-out 2026-12-12 and that the budget ceiling/quality floor are "applied"; `meta.json` has check-out 2026-12-13 and both values are unverified defaults. It now says so.
+- **Id collisions with parallel sessions.** F56/F57 were already published by session 0a0d8e6b when this branch rebased, and Q18 by the same session; the three findings above were re-published as F58–F60 and the two new questions as Q19–Q20, and `flag()` now identifies a finding by title so a re-run cannot duplicate or overwrite another session's entry.
+
+**Checks on the final tree:** `npm run check` 26/26 pass (22 existing + 4 added: 3 new regression tests plus the existing suite recomputed); `node --check assets/app.js`; `python3 scripts/build_ea99006a.py` (deterministic on two consecutive runs, `pages/repo-review.html` excluded as designed); `python3 scripts/check_ea99006a.py` (19 pages, every table row with an official https source, no broken internal links); `python3 scripts/check_root_site.py`; `python3 scripts/crosscheck_251c122f.py` (67 known text/name notices, unchanged); `python3 scripts/recheck_ea99006a.py --offline`; `python3 scripts/scrape_251c122f.py --self-test`.
+
+**Limitations kept visible:** the value-level monitor has still never run live (F59); no dated hotel quote exists for the window, so the trip total stays "Incomplete"; cross-property walking times remain unverified; the sandbox cannot reach casino hosts directly, so every read in this session came through the page-fetch tool and is dated and logged rather than attributed to a runner.
+
+**Read-only for this session:** every other session folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*` other than `data/2723deea` and `data/ea99006a`, `tools/`), `data/c6087e2c/`, `data/b3be876c/`, `data/d615f79e/`, and the scheduled workflows. No published value is changed without an official excerpt and retrieval date recorded next to it.
+
 ## Current branch session — 0a0d8e6b (active) — structure-sheet entry-rule re-read (single-entry claim check)
 
 **Branch:** `arena/0a0d8e6b-poker5`, based on `main` @ `f2eb22a`. **Claimed 2026-11-19 before any analysis.** No other session holds a claim on this scope; open PRs #76–#79 belong to other sessions and are not touched.
@@ -190,6 +223,7 @@ Every brief item was checked against the built site and its data files:
 ---
 
 ## Previous branch session — 25481cd8 (completed) — schedule re-verification + site integration
+## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
 

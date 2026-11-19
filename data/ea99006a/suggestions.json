@@ -100,25 +100,25 @@
  },
  {
   "id": "S10",
-  "title": "Adopt a like-for-like comparison policy before any hotel ranking",
-  "problem": "Existing captures differ in stay window and occupancy (2 adults Dec 2-9 vs 1 adult Dec 13-20), so 'cheapest hotel' cannot be derived from them.",
+  "title": "Publish one root-site generator (done here) and retire the second one",
+  "problem": "Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
   "options": [
-   "Rank nothing until two hotels share dates, occupancy and room class",
-   "Rank with an explicit comparability grade per row",
-   "Rank on nightly average and mark differing occupancy"
+   "One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
+   "Give each session its own subdirectory and never let a scheduled job write the root",
+   "Freeze the scheduled rebuilds entirely and rebuild only by hand"
   ],
-  "effect": "Prevents a false ranking; the flagged page already refuses to name a cheapest hotel."
+  "effect": "The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches."
  },
  {
   "id": "S11",
-  "title": "Decide how walking minutes get verified",
-  "problem": "No official source publishes walking times between properties; the brief wants a 30-minute walking filter.",
+  "title": "Keep value-level monitoring, drop hash-level alarmism",
+  "problem": "Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
   "options": [
-   "Keep minutes blank + provide one-click walking-direction links (current)",
-   "Record user-measured minutes via the routes page recorder (already available, browser-only)",
-   "Add a maps-distance service to the morning job and label its output as third-party estimates"
+   "Compare extracted official sentences per value (implemented)",
+   "Keep page hashes but label them informational (kept)",
+   "Diff rendered text with a normalisation pass before hashing (future)"
   ],
-  "effect": "The 30-minute filter can only be honest about measured or officially stated minutes."
+  "effect": "A row is marked 'source changed' only when the sentence behind its value changes."
  },
  {
   "id": "S12",
@@ -152,5 +152,27 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "title": "Filter the tables by whether an event is actually open to you",
+  "problem": "Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are 50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this session they were ranked as ordinary picks and could become a day's primary event.",
+  "options": [
+   "Keep the per-row 'entry restricted' label only (implemented)",
+   "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+   "Let the reader tick which field types they qualify for and filter on that"
+  ],
+  "effect": "The label is implemented and the ranking plus the day schedule already exclude restricted rows. A reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age and gender are the reader's own facts, not the site's to assume), so it is left as an option.",
+  "id": "S15"
+ },
+ {
+  "title": "Have the monitor record its first-read baseline explicitly",
+  "problem": "The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57).",
+  "options": [
+   "Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+   "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+   "Drop the page-hash ledger and publish only value-level changes"
+  ],
+  "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
+  "id": "S16"
  }
 ]
