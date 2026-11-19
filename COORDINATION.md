@@ -8,7 +8,29 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Files I will touch:** `COORDINATION.md` (this entry), `scripts/recheck_ea99006a.py` only (add the readable official Bellagio/ARIA poker pages and the three Bellagio PDFs to the monitored set, and point the Bellagio room entry at the live page). The next scheduled run writes the ledger and `morning_feed.json`. No event, hotel, rate or flag data is edited by this session; data corrections found while reading are logged below as requests for the integration session.
 
-**Status:** in progress.
+**Status:** done (2026-11-19). Code change only; the next scheduled `recheck-ea99006a` run records the new sources in the ledger and rewrites `morning_feed.json`.
+
+**What changed:** `scripts/recheck_ea99006a.py` — `MORNING_FEED_EXTRA` (5 official URLs: Bellagio live poker page, the three Bellagio tournament PDFs, ARIA live poker page) are added to the monitored set; the Bellagio/MGM/ARIA room's feed source is the live Bellagio poker page; the room group also counts the Bellagio PDFs (hosted on contentstack, not mgmresorts.com). The timed-out `bellagio.mgmresorts.com/en/casino/poker-room.html` URL stays in the ledger as an `error` (not hidden). Simulated feed check: Bellagio/MGM/ARIA room = 8 sources, 7 ok, 1 failed (the old URL), no fabricated timestamp.
+
+**Official sources read this session (fetch tool, 2026-11-19):**
+- https://bellagio.mgmresorts.com/en/casino/poker.html — live poker page; lists the Friday $600 NLH, Saturday $1,000 NLH and Sunday $400 H.O.R.S.E. PDFs.
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf — Friday $600 NLH: 11:00 a.m.; $510 prize pool / $50 house fee / $40 optional gratuity; "Players may buy-in and re-enter through the end of level 8".
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf — Saturday NLH: 11:00 a.m.; heading "$1100 BUY-IN"; registration open until level 10; flights 1A–1D; Day 2 "9/13/26" at 12 pm.
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf — Sunday $400 H.O.R.S.E.: 11:00 a.m.; $340 prize / $35 house / $25 gratuity; "may buy-in and re-enter through the end of level 8"; 26 levels, 30-min levels.
+- https://aria.mgmresorts.com/en/casino/poker.html — live ARIA poker page (exclusive room rates for qualifying players; directs to the poker room for daily-tournament status; no schedule listed).
+- https://aria.mgmresorts.com/en/casino.html — readable on this session's re-read (the scheduled run had timed out).
+
+**Verification:** `python3 -m py_compile scripts/recheck_ea99006a.py`; `python3 scripts/recheck_ea99006a.py --offline` (78 official sources under monitor, ledger OK, read-only); simulated `write_morning_feed` on an in-memory ledger (no write to data); `npm test` 20/20; `python3 scripts/check_root_site.py` OK. No data file was edited.
+
+**Irregularities (for Flagged for review; none block):**
+- **I-fe1 — Saturday Bellagio PDF is internally inconsistent.** Heading "NLH $1100 BUY-IN", file name and page link say $1,000, the General Rules allocate a $600 buy-in ($510 + $50 + $40), and "Final Day 2 (9/13/26)" is a Sunday already in the past (today is Thu 2026-11-19). Treat the Saturday buy-in as unresolved; it is not single-entry confirmed by its text either (flights, registration to level 10).
+- **I-fe2 — stale notice on the live Bellagio poker page:** "Tournament play will resume on Saturday, July 26" — 26 July 2025 was a Saturday, so the notice is past.
+- **I-fe3 — the Bellagio poker-room.html URL the feed used to monitor timed out** on the scheduled run (ledger status `error`, `checked_at` empty). Replaced in the feed by the live poker page; the old URL stays visible as an error.
+
+**Requests for the integration session (data files owned by the shared build; not edited here):**
+- R1 — `data/c6087e2c/other_events.json`, Bellagio Sunday H.O.R.S.E.: the PDF now read states re-entry through level 8 and a 11:00 a.m. start; the row still says `reentry: Unverified` and `schedule: time not captured`. Update from the PDF (re-entry = multi-entry, so keep it in the re-entry/double buy-in section, not the single-entry list).
+- R2 — Bellagio flagged row F53 ($200/$300/$240/$320/$400 flyer prices "not re-verifiable") — the official PDFs above now give $600 (Fri), $1,000/$1,100 (Sat) and $400 (Sun); reconcile F53 against them.
+- R3 — Friday PDF re-entry (already recorded as "Re-entry through Level 8") is correct; keep it in the re-entry section.
 
 ## Current branch session — 8154689a (active)
 
