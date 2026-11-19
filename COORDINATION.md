@@ -10,15 +10,76 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 | # | Task | Status | Files touched |
 |---|------|--------|---------------|
-| C1 | Pipeline integrity: one canonical root-site builder (`build_ea99006a.py`); stop the daily scrape workflow from overwriting the root site with a different generator; make CI regenerate + diff-check the committed root site | in progress | `.github/workflows/quality.yml`, `.github/workflows/daily-scrape.yml` |
-| C2 | Global search box across **all** table pages + date selector + single-entry/freezeout-confirmed toggle + ≤30-min walk filter (fixed) | in progress | `assets/app.js`, `scripts/build_ea99006a.py` |
-| C3 | Hotel stay capture: checkout total, nightly average, resort fee + tax, parking, cancellation deadline, rate timestamp as a **dated rate log** (captured official quotes only; blank + flagged otherwise); true cost/night = rate + resort fee + 13.38% tax calculator kept | in progress | `data/ea99006a/rate_snapshots.json` (new), `scripts/build_ea99006a.py`, `pages/hotels.html` |
-| C4 | Trip planner: fixed trip dates (scenario), nightly budget ceiling + quality floor controls; incomplete-without-quote semantics preserved (PR #48) | in progress | `scripts/build_ea99006a.py`, `assets/app.js`, `pages/planner.html` |
-| C5 | Per-row "last checked" + "source changed" badges from the scheduled re-check change log | in progress | `scripts/build_ea99006a.py`, `data/ea99006a/change_log.json` (read) |
-| C6 | Morning live-data feed: each Strip room's official schedule source re-read daily, grouped per room, shown on the monitor page | in progress | `scripts/recheck_ea99006a.py`, `data/ea99006a/morning_feed.json` (new), `pages/monitor.html` |
+| C1 | Pipeline integrity: one canonical root-site builder (`build_ea99006a.py`); stop the daily scrape workflow from overwriting the root site with a different generator; make CI regenerate + diff-check the committed root site | done | `.github/workflows/quality.yml`, `.github/workflows/daily-scrape.yml` |
+| C2 | Global search box across **all** table pages + date selector + single-entry/freezeout-confirmed toggle + ≤30-min walk filter (fixed) | done | `assets/app.js`, `scripts/build_ea99006a.py` |
+| C3 | Hotel stay capture: checkout total, nightly average, resort fee + tax, parking, cancellation deadline, rate timestamp as a **dated rate log** (captured official quotes only; blank + flagged otherwise); true cost/night = rate + resort fee + 13.38% tax calculator kept | done | `data/ea99006a/rate_snapshots.json` (new), `scripts/build_ea99006a.py`, `pages/hotels.html` |
+| C4 | Trip planner: fixed trip dates (scenario), nightly budget ceiling + quality floor controls; incomplete-without-quote semantics preserved (PR #48) | done | `scripts/build_ea99006a.py`, `assets/app.js`, `pages/planner.html` |
+| C5 | Per-row "last checked" + "source changed" badges from the scheduled re-check change log | done | `scripts/build_ea99006a.py`, `data/ea99006a/change_log.json` (read) |
+| C6 | Morning live-data feed: each Strip room's official schedule source re-read daily, grouped per room, shown on the monitor page | done | `scripts/recheck_ea99006a.py`, `data/ea99006a/morning_feed.json` (new), `pages/monitor.html` |
 | C7 | Structure-sheet verdicts kept at the written-rule standard (0 confirmed single-entry; silence is not confirmation — verified again this session: zero positive freezeout/no-re-entry text in all 37 captured sheets); multi-entry/spend-advantage kept separate | done (no data change needed) | — |
-| C8 | Executive summary, suggestions board, questions/missing-info register refreshed; stale contradictory root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html` from the retired 251c122f build) replaced with redirect stubs | in progress | `data/ea99006a/{questions,suggestions}.json`, `scripts/build_ea99006a.py`, those 4 pages |
-| C9 | Full verification (build determinism, check_ea99006a.py, npm test, node --check, offline monitor), PR → main, merge, Pages deploy confirmed, recorded here | pending | COORDINATION.md |
+| C8 | Executive summary, suggestions board, questions/missing-info register refreshed; stale contradictory root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html` from the retired 251c122f build) replaced with redirect stubs | done | `data/ea99006a/{questions,suggestions}.json`, `scripts/build_ea99006a.py`, those 4 pages |
+| C9 | Full verification (build determinism, check_ea99006a.py, npm test, node --check, offline monitor), PR → main, merge, Pages deploy confirmed, recorded here | done (record below) | COORDINATION.md |
+
+
+### Log (session 6bc143b9) — final integration, 2026-11-19
+
+**Sources read this session** (all official; re-checked via the page-fetch tool, the sandbox cannot open
+TCP to casino hosts — the scheduled Actions jobs re-read them from a runner with normal egress):
+
+- Venetian DSE IV official schedule and all 37 structure-sheet captures in `data/c6087e2c/structures.json`
+  (re-grepped line by line for positive single-entry text: **zero** freezeout / one-entry / no-re-entry
+  statements exist, so the strict verdict (0 confirmed single-entry) stands and no row's "unverified"
+  label can honestly be removed).
+- Dated stay captures carried into `data/ea99006a/rate_snapshots.json` from the recorded official booking
+  reads of earlier sessions (each with its booking URL and rate timestamp): Venetian Dec 2–9 2026
+  (checkout total $7,054.77 / 7 nights / 2 adults, booking UI, captured 2026-11-16), Wynn Dec 2–9 2026
+  ($711 avg incl. fee, excl. tax, no checkout total returned), Venetian poker-suite rate page
+  ("as low as $119/$209", 2026-11-17), Venetian Dec 13–20 2026 ($2,369.38 estimated stay, availability
+  warning), Wynn Dec 13–20 2026 ($355 avg incl. fee, excl. tax; no tax-inclusive total).
+- Wynn terms page (72-hour cancellation), Venetian player-parking and suite-rates pages, Clark County
+  transient-lodging ordinance (13.38%) — all previously captured with retrieval dates and reused with
+  their links; nothing was promoted or newly marked verified.
+
+**Verification performed (all green):**
+
+- `python3 scripts/build_ea99006a.py` twice → byte-identical output (deterministic; `pages/repo-review.html`
+  excluded from drift checks because it embeds a live tree inventory).
+- `python3 scripts/check_ea99006a.py` — 1,248 table rows all carry an official https source; 417 internal
+  and 1,258 external link checks pass.
+- `python3 scripts/check_root_site.py` — links, source anchors and baseline OK (after fixing its
+  `data-nosrc` regex bug, F31).
+- `python3 scripts/recheck_ea99006a.py --offline` — 96 sources in the ledger, 4 booking templates
+  classified as non-fetchable; read-only in offline mode.
+- `python3 scripts/crosscheck_251c122f.py` — capture verdicts reproducible; 37/37 sheets read.
+- `npm test` — 18/18 (9 pre-existing + 9 new root-site regressions in `test/root_site.test.mjs`).
+- `node --check assets/app.js` — OK. Every page that contains a table now carries the search box.
+
+**Irregularities found and resolved here (published as flags F28–F31 on the Flagged page):**
+
+1. **F28** — three generators (`build_c6087e2c.py`, `build_251c122f.py`, `build_ea99006a.py`) and three
+   workflows each rebuilt the one published root site; the daily scrape job silently replaced pages with a
+   different builder's output (the `fd8edf2` auto-commit shows this happening). Fixed: one canonical
+   builder; the morning capture commits `data/c6087e2c/` only; Quality checks regenerates and fails on drift.
+2. **F29** — stale root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html`) from the
+   retired 251c122f build contradicted the published entry standard. Fixed: redirect stubs to canonical pages.
+3. **F30** — the monitor hashed unfetchable booking-template URLs and dynamic Google Maps route links,
+   producing permanent false "changed" events. Fixed: classified as template/route-link, never hashed,
+   and excluded from row "source changed" badges.
+4. **F31** — `check_root_site.py` matched `src="1"` inside `data-nosrc="1"`, reporting phantom broken links.
+   Fixed with a word-boundary regex.
+
+**Irregularities left open (F32–F33, F14/F15 restated):** dated stay captures remain sparse and are not
+like-for-like (different dates/occupancy), so no hotel ranking is published and the planner stays
+"Incomplete" without a date-specific quote (PR #48 semantics preserved); per-stay parking cost and
+cancellation deadlines are unknown except Wynn (72h); cross-property walking minutes remain unverified
+(no official source publishes them — routes page keeps one-click direction links and a user recorder).
+
+**Decisions taken (integration authority):** the strict written-rule standard stays (0 confirmed
+single-entry; 47 "no re-entry text" candidates are the planner basis and stay labelled unverified);
+the guarantee ÷ entry-fee ratio is labelled a descriptive ratio, not a forecast; bounty/flight rows are
+tagged separately; multi-entry/spend-advantage rows live on their own page.
+
+**Integration PR:** see the publication record appended below after the merge.
 
 ## Current branch session — b33a0c35 (active)
 
