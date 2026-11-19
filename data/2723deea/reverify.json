@@ -137,22 +137,22 @@
  },
  "irregularities": [
   {
-   "id": "F58",
+   "id": "F64",
    "summary": "Restricted fields (Seniors 50+, female-only, tag team) were ranked as ordinary single-entry picks and could become a day's primary event.",
    "status": "fixed this session",
-   "note": "published as F58"
+   "note": "published as F64"
   },
   {
-   "id": "F59",
+   "id": "F65",
    "summary": "The whole-page change ledger has no successful first read, so its 'changed' marks are unproven.",
    "status": "open, published",
-   "note": "published as F59"
+   "note": "published as F65"
   },
   {
-   "id": "F60",
+   "id": "F66",
    "summary": "A shared structure sheet's single late-registration line had been copied onto events with different start times.",
    "status": "fixed this session",
-   "note": "published as F60"
+   "note": "published as F66"
   },
   {
    "id": "Q01",
@@ -160,8 +160,12 @@
    "status": "corrected this session"
   },
   {
-   "id": "F61",
-   "note": "Event #35 team format - label limitation kept open (raised by session 0a0d8e6b, extended here)"
+   "id": "F67",
+   "note": "published as F67"
+  },
+  {
+   "id": "F63",
+   "note": "the legacy 'subsequent buy in's' keyword miss, re-published here by the rebased main"
   }
  ]
 }

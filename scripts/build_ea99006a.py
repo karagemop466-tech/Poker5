@@ -985,6 +985,10 @@ CANDIDATES = [r for r in ALL_EVENTS if r["kind"] == "entry" and r["entry_rule"] 
 CONFIRMED = [r for r in ALL_EVENTS if r["entry_rule"] == "confirmed_single"]
 MULTI = [r for r in ALL_EVENTS if r["entry_rule"] == "multi"]
 UNREAD = [r for r in ALL_EVENTS if r["entry_rule"] == "unread"]
+# The multi-entry page lists every row whose terms were not read, including the rows that already sit in
+# the "stated re-entry" table above it (a WPT flight row can have a read section AND appear here once).
+_UNREAD_SHOWN = [r for r in ALL_EVENTS if r["entry_rule"] in ("unread", "unknown")]
+UNREAD_ALL = [r for r in _UNREAD_SHOWN if r not in MULTI]
 SATS = [r for r in ALL_EVENTS if r["kind"] == "satellite"]
 # Rows whose own official sheet closes the field (Seniors 50+, female-only, tag team).
 # They still count in CONFIRMED - the S1 question is whether a second entry can be
@@ -1223,11 +1227,16 @@ def build_multi():
     body.append("<h2>Official re-entry, add-on or multi-flight text</h2>")
     body.append(FILTER_BAR % FILTER_ARGS)
     body.append(table_shell(MULTI, EVENT_HEAD))
-    body.append("<h2>Entry terms not read individually (%d rows)</h2>" % len(UNREAD))
-    body.append('<p class="muted">Mostly WPT World Championship festival events. The official structures PDF was '
-                'read for 13 of the festival\'s events and every one of them permits re-entry, but this site does '
-                'not copy a rule from one event onto another. These rows stay unverified.</p>')
-    body.append(table_shell(UNREAD, EVENT_HEAD))
+    body.append("<h2>Entry terms not read individually (%d rows)</h2>" % len(UNREAD_ALL))
+    body.append('<p class="muted">Every event terms-and-conditions section printed in the official WPT World '
+                'Championship structures PDF was read on 2026-11-19 (14 sections, transcript in '
+                '<code>data/ea99006a/wpt_terms_2026-11-19.json</code>); every one of them permits re-entry, so '
+                'none of those rows can pass standard S1. The %d rows below are the ones the PDF prints <b>no</b> '
+                'terms section for - milestone satellites, high-roller and championship events, and a few names '
+                'the schedule uses more than once with different buy-ins, which makes the matching section '
+                'ambiguous. They stay unverified rather than having a rule copied onto them from a sibling '
+                'event.</p>' % len(UNREAD_ALL))
+    body.append(table_shell(UNREAD_ALL, EVENT_HEAD))
     body.append("<h2>Satellites (%d rows)</h2>" % len(SATS))
     body.append('<p class="muted">Satellites pay seats into a target event rather than a cash prize pool, so they '
                 'are not comparable on guarantee &divide; entry fee.</p>')
@@ -1303,9 +1312,11 @@ def build_schedule():
         # confirmed. The oldest rule here was "prefer a row whose cap is not stated", which is how a
         # schedule ends up built on an unverified event.
         def _rank(r):
+            # An event whose entry terms were NOT read (or whose cap is not stated) must not become a day's
+            # primary plan just because its guarantee is bigger. It sorts after every row whose terms were read.
             return (0 if r["entry_rule"] == "confirmed_single" else
-                    1 if r["entry_rule"] == "unknown" else
-                    2 if r["entry_rule"] == "unread" else 3,
+                    1 if r["entry_rule"] == "multi" else
+                    2 if r["entry_rule"] == "unknown" else 3,
                     0 if rankable(r) else 1,
                     0 if r["kind"] == "entry" else 1,
                     -(guarantee_value(r) or 0), minutes(r["start"]))
@@ -1852,6 +1863,12 @@ def build_others():
     if evs:
         body.append(FILTER_BAR % FILTER_ARGS)
         body.append(table_shell(evs, EVENT_HEAD))
+    body.append('<div class="warnbox"><b>Checked again on %s and still not readable as text.</b> South Point\'s daily '
+                'schedule is published as image files only (the schedule page embeds the flyer plus eight rules-sheet '
+                'JPGs), and the poker-room page states four start times - 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm - with '
+                '"buy-ins of $120 and $300" without pairing a time to a buy-in. Caesars Palace\'s daily flyer was not '
+                're-read in this session. Rows that cannot be tied to a stated price/rule stay blank or unverified.</div>'
+                % esc(RETRIEVED))
     body.append(archive_block(2))
     write("pages/venues/others.html", page("Other venues", "".join(body), "others.html", 2,
                                            TABLE_JS_INIT if evs else ""))
@@ -1888,7 +1905,7 @@ def build_exec():
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
         "Only on-property hotel-to-poker-room walks have verified zero-minute routes. Cross-property walking times remain blank/flagged. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
-        "%d rows across other venues/series still have unread entry terms; they remain explicitly unverified and are not included in the single-entry comparison." % len(UNREAD),
+        "%d rows across the other venues and series still have entry terms this project has not read (every WPT event whose own terms-and-conditions section is printed in the official structures PDF was read on %s: %d rows, and every one of them grants re-entry). The unread rows remain explicitly unverified and are not included in the single-entry comparison." % (len(UNREAD), esc(RETRIEVED), len([r for r in WPT if r.get("terms_read")])),
         "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),
     ]
     for item in summary_items:
@@ -2505,6 +2522,25 @@ def build_verification():
                            src_link(c["official_url"], "official page")))
         body.append("</tbody></table></div>")
         body.append('<p class="muted sm">%s</p>' % esc(rv["not_changed"]))
+    # Live re-read by session 22f06ff9 (fetch_page on the official URLs, 2026-11-19).
+    rv2_path = os.path.join(ROOT, "data", "22f06ff9", "reverify.json")
+    if os.path.exists(rv2_path):
+        with open(rv2_path, encoding="utf-8") as fh:
+            rv2 = json.load(fh)
+        body.append("<h2>Live re-read of the official sources (%s)</h2>" % esc(rv2["retrieved"]))
+        body.append('<p class="muted">%s</p>' % esc(rv2["scope"]))
+        body.append('<p class="muted sm">Read by: %s. %s</p>' % (esc(rv2["read_method"]), esc(rv2["not_changed"])))
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
+                    "<th>Stored value</th><th>What the official source says</th><th>Official source</th>"
+                    "</tr></thead><tbody>")
+        for c in rv2["checks"]:
+            res = c.get("result", "")
+            pill = {"match": "pill pill-ok", "mismatch": "pill pill-bad",
+                    "mismatch - corrected": "pill pill-warn"}.get(res, "pill pill-warn")
+            body.append("<tr><td>%s</td><td><span class=\"%s\">%s</span></td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(c["item"]), pill, esc(res), esc(c["stored"]), esc(c["detail"]),
+                           src_link(c["official_url"], "official page")))
+        body.append("</tbody></table></div>")
     write("pages/verification.html", page("Verification log", "".join(body), "verification.html", 1))
 
 
