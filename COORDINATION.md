@@ -2,6 +2,22 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — d615f79e (active) — gap audit against the brief + live re-verification
+
+**Branch:** `arena/d615f79e-poker5` (fixed by Arena), based on `main` @ `0011ea1`. **Claimed 2026-11-19 before any file edit.** No other session holds an open claim on `main` (every board entry is done, merged, or >60 min idle; open PRs #53, #55, #59, #60 belong to other sessions and are not touched).
+
+**Audit result before claiming (what the brief asks vs. what `main` already does):** the date filter, search box, single-entry/freezeout toggle, dated rate log, true-cost calculator, per-row last-checked column, per-venue pages with a "Stay here" hotel block, ≤30-min walk filter, morning feed and value-level monitor are all present and generated. Gaps this session targets: (a) the brief's **plausible event duration** in the overlap check is absent by design (no official source publishes finish times); (b) the **trip-critical official values** were last re-read on 2026-11-19 by an earlier session and need a fresh, logged re-read before any non-refundable payment.
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| D1 | Re-read live official sources behind the recommended window (Venetian DSE IV schedule page, Venetian resort-fee page, Wynn resort-fee / offer terms, Venetian poker rate page) and log match / mismatch per value with retrieval date | in progress | d615f79e | `data/d615f79e/reverify.json` (new), `data/ea99006a/flags.json` (append only, if a mismatch is found) |
+| D2 | Add a user-set "assumed playing length" what-if to the day-schedule overlap check: blank by default, labelled as the user's assumption, never written as a source value | unclaimed → in progress | d615f79e | `scripts/build_ea99006a.py` (schedule section + `APP_JS` only) |
+| D3 | Build, validate (every row sourced, no broken links, tests), PR → main, merge, confirm Pages deploy, record PR and merge result | pending | d615f79e | generated `index.html`, `pages/**`, `assets/app.js`, `COORDINATION.md` |
+
+**Read-only for this session:** every other session folder (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`), `data/c6087e2c/`, `data/b3be876c/`, and the scheduled workflows.
+
+---
+
 ## Current branch session — 8154689a (active)
 
 **Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.
