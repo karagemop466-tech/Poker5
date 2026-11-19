@@ -1461,3 +1461,18 @@ Not claimed here (already in progress or done by other sessions, or out of this 
 - Not re-verified here: hotel rates, resort fees and tax, Wynn/other rooms, walking times, the morning feed, and the other 36 structure sheets. Those remain as previously recorded.
 
 **Publication:** board-only change; no site, data or build output changed, so no Pages rebuild is expected to change content.
+
+---
+
+## Session 8f0b323b (branch `arena/8f0b323b-poker5`) — live re-verification + gap closure
+
+**Claimed 2026-11-19 before any file edit**, based on `main` @ `998a32d`. No other board entry is unclaimed/in-progress within this scope (every earlier entry is done/merged or >60 min idle with no commits). Session ID: `8f0b323b`.
+
+| # | Task | Status | Owner | Files in scope |
+|---|------|--------|-------|----------------|
+| A1 | Fresh live re-read of the official Venetian DSE IV schedule page (all 4 chunks, 2026-11-19) and a scripted diff of all 94 stored rows (date, start, event no., name, buy-in, sheet number) | in progress | 8f0b323b | `scripts/recheck_8f0b323b.py` (new), `data/8f0b323b/*` (new) |
+| A2 | Live re-read of the official fee/rate/tax pages behind the trip plan and a match/mismatch log per value | in progress | 8f0b323b | `data/8f0b323b/*` (new) |
+| A3 | Attempt to close the documented "no official source retrieved" gaps (resort fees and schedules for Caesars/Horseshoe/MGM rooms/Resorts World) using the platform page reader; record each result as read / not readable, never guessed | in progress | 8f0b323b | `data/8f0b323b/*` (new) |
+| A4 | Publish the session's findings as a generated section on the canonical site, rebuild, run every checker, PR → `main`, merge, confirm Pages, record here | in progress | 8f0b323b | `scripts/build_ea99006a.py` (new section only, appended last), `index.html`, `pages/**` (generator output), `COORDINATION.md` |
+
+**Out of scope / read-only for this session:** `data/c6087e2c/`, `data/b3be876c/`, `data/d615f79e/`, all legacy `dashboard-*`, `site-*`, `planner-*`, `docs/` trees, and the scheduled workflows. No stored value is changed unless the live official page contradicts it; in that case the change is logged as a new flag with the source link.
