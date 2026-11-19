@@ -1433,6 +1433,53 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 - Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
 - Status: L1 done, L2 done, session closed.
 
+
+## Current branch session — 98c6f29b (active) — final root-site verification + PR, merge and Pages close-out
+
+**Branch:** `arena/98c6f29b-poker5` (fixed by Arena), rebased onto `main` @ `a8b7aa1` after `main` advanced while this session worked (conflict on `COORDINATION.md` resolved by keeping `main`'s board verbatim and re-appending this section; nothing from either side was discarded). This branch is now one commit ahead of `main`.
+
+**Scope (owned by this session):** `COORDINATION.md` (this section only). **Read-only for this session:** `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/`, `data/final/`, `tools/`, and every `scripts/build_*`/`check_*` other than `scripts/build_ea99006a.py`, `scripts/check_ea99006a.py`, `scripts/recheck_ea99006a.py`, `scripts/crosscheck_251c122f.py`, `scripts/scrape_251c122f.py`, `scripts/monitor_b3be876c.py`, `scripts/integrate_b3be876c.py`. No event, hotel, rate, flag, question or suggestion value was edited, inferred or filled.
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| V1 | Repo review line by line: COORDINATION.md, README.md, EXECUTIVE_SUMMARY.md, REPO_REVIEW.md, index.html, every `data/ea99006a/*.json`, all site scripts and workflows; confirm each published table row links to an official source and nothing is inferred | done | all (review only; no data values changed) |
+| V2 | Full local check suite | done — all green | none |
+| V3 | Brief-feature coverage: landing page + category subpages; date filter; global search box on all tables; single-entry/freezeout-confirmed toggle; one page per venue (Venetian/Wynn/others); trip-cost calculator entries × buy-ins + nights × true hotel cost (Incomplete without a dated quote); dated rate log; per-row last-checked dates; source-changed badges; overlap check with primary + conditional fallback; descriptive guarantee÷entry-fee ratio; bounty/flight separation; walking routes ≤30 min; morning feed; executive summary; questions; suggestions; flagged-for-review page | done — all present; remaining gaps are honest blanks/flags (F14, F32, F33, F50, F51), not missing features | pages/**, assets/app.js (regenerated output only) |
+| V4 | Rebase onto `main`, claim + verification record committed and pushed | done | COORDINATION.md |
+| V5 | PR integration branch → main (#76), merge without waiting, confirm GitHub Pages deploy via API, record PR link + merge result here | pending | COORDINATION.md |
+
+### Verification record (2026-11-19)
+
+**Constraint honored:** this sandbox cannot open TCP to casino/hotel hosts (outbound is limited to GitHub, npm and PyPI mirrors), consistent with every prior session's record. Official-source facts therefore come from the dated captures already in the repo (retrieved 2026-11-19); nothing unconfirmed was inferred or filled. Blank fields stay blank and every row links to its official source.
+
+**Build:** `python3 scripts/build_ea99006a.py` → exit 0, 25 files written (deterministic; `pages/repo-review.html` excluded from drift checks because it embeds a live tree inventory).
+
+**check_ea99006a.py:** 19 pages, 1,665 table rows, 1,665 with an official https source; 461 internal links OK; 3,992 external links OK; exit 0 — every published row carries an official source; no broken links.
+
+**check_root_site.py:** root site links, source anchors and baseline OK; exit 0.
+
+**npm test:** 22/22 pass.
+
+**node --check assets/app.js:** OK.
+
+**crosscheck_251c122f.py:** 94 merged Venetian rows; verdicts multi_flight 28 / restart 11 / single_entry_confirmed 55 (capture numbering; canonical published S1 count is 53 per the audit standard; the legacy-capture #18/#58 misclassification is F47); 37/37 sheets read; exit 0 (67 pre-existing formatting/name-text differences — logged, not value errors).
+
+**recheck_ea99006a.py --offline:** 78 official sources under monitor; 34 booking-template URLs classified as non-fetchable and never hashed; ledger OK, read-only.
+
+**scrape_251c122f.py --self-test:** structure parser + schedule parser OK.
+
+**Sources:** Venetian DSE IV schedule + all 37 structure sheets read 2026-11-19 (94 rows); WPT/Wynn schedule + structures read; Caesars Palace/Horseshoe daily flyers read; Clark County 13.38% ordinance captured. Resort fees: Venetian $55 + tax, Wynn $55 + tax (offer DK26WLV2; 48-hour cancellation — the earlier 72-hour figure is withdrawn, F55), Resorts World $55 + tax. Caesars Palace/Horseshoe/MGM/Bellagio/ARIA have no property-specific verified fee (F09/F10/F46). No dated nightly rate is published officially for 2026-12-06 to 2026-12-13 (F14); the planner reports "Incomplete" rather than a zero-cost total (F51). Cross-property walking minutes are blank with maps deep links (F15/F50). All of these are published on pages/flagged-review.html and do not block the merge.
+
+**Irregularities reviewed (no new ones introduced):** F01 (no sheet states "one entry only" — S1 is evidence-based, not a freezeout guarantee), F03/F47 (sheet 8 "subsequent buy in's"; legacy capture still misclassifies #18/#58), F05 (WPT schedule block mislabeled "Dec. 18 Wednesday"), F14/F51 (no official dated rate for the trip dates), F32 (dated stay captures are sparse and not like-for-like), F49/F50 (dual-publisher defect fixed; no official walking times between properties). Full flagged list: pages/flagged-review.html (43 flags), each with its official source link.
+
+**No manual input was used.** Every published value is captured from an official source with its retrieval date; derived figures (ratios, nightly averages, true cost per night) are labelled derived and shown only when their inputs are known.
+
+### Publication record (merge pending)
+
+PR: https://github.com/karagemop466-tech/Poker5/pull/76 (arena/98c6f29b-poker5 → main). Merge command: `gh pr merge 76 --merge` (no approval wait, per the brief). Pages: source `main` `/`, live at https://karagemop466-tech.github.io/Poker5/; deploy status to be confirmed via the GitHub Pages API after the merge and recorded below.
+
+**Merge result:** to be recorded here after `gh pr merge 76 --merge` returns (merge commit, Pages build/deploy status). Flagged irregularities remain published on pages/flagged-review.html and do not block the merge.
+
 ---
 
 ## Session 96994b83 (branch `arena/96994b83-poker5`, base `main` @ `998a32d`) — baseline re-verification, board record only
