@@ -37,7 +37,50 @@
 
 Scope discipline: no other session's folder (`docs/`, `site*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/`, `data/final/`, `data/b0cd6d45/`) is edited. No value is newly marked "verified" unless its official source was read in this session or is already a committed capture; a value no official source states stays blank and flagged. Structure-sheet verdicts are re-derived from the stored official text only — no row is promoted by inference.
 ---
+## Session bcff3a9a (branch `arena/bcff3a9a-poker5`, base `main`) — integrate idempotency review + line-by-line verification
 
+**Branch:** `arena/bcff3a9a-poker5`. **Claimed before any file edit.** Scope claimed: I1 (F47 parser repair), I2 (integrate idempotency), I3 (line-by-line site verification), I4 (PR → merge → Pages deploy → record). Open PRs #53, #55, #59, #60 belong to other sessions and are not touched.
+
+| # | Task | Status | Owner | Files in scope |
+|---|---|---|---|---|
+| I1 | Repair F47 (structure sheet 8 grants later buy-ins; legacy capture misclassified #18/#58) | **redundant — closed** | bcff3a9a | — |
+| I2 | Make `scripts/integrate_b3be876c.py` idempotent (pin static as-of dates, fix the `check_out` off-by-one, stop reverting later wording corrections) | **redundant — closed** | bcff3a9a | — |
+| I3 | Line-by-line verification of the published site against the brief | **done** | bcff3a9a | `COORDINATION.md` (record only) |
+| I4 | Open PR to `main`, merge without waiting, confirm GitHub Pages deploy, record PR link + merge result | pending | bcff3a9a | `COORDINATION.md` (record only) |
+
+### I1 — redundant, closed (not re-attempted)
+
+F47 is **already resolved on `main`** by commit `18c2c04`: a parallel session repaired it through `scripts/merge_251c122f.py` (`sheet_grants_second_entry()` + `SECOND_ENTRY_GRANT` regex over `rules_text`) and `scripts/crosscheck_251c122f.py`, setting events #18/#58 to `adds_second_entry`. This session's earlier scrape-parser/reparse approach was discarded when the branch was reset to `main`; `main` never adopted it and the defect is already covered. Do not re-attempt the scrape-parser F47 fix.
+
+### I2 — redundant, closed (main already applied a complete, superior fix)
+
+This session independently built the idempotency fix (`READ_DATE="2026-11-19"`, replace every output `TODAY` stamp, `check_out: cout.isoformat()`, reproduce committed F47 wording) and committed it as `0575474`. On rebase, `main` had advanced 20 commits and **already applied a more complete version** of exactly this fix (commits `1efddebe`, `6bc143b9`, `2b98a91f`, referenced in the script's own comments). The redundant commit was therefore dropped and the fix is not re-applied.
+
+**What `main`'s committed `scripts/integrate_b3be876c.py` already does** (verified on `origin/main` @ `cbf7574`):
+- `READ_DATE = "2026-11-19"` pins the static as-of date (21 references).
+- `spot_check` records each row's own capture date (`sheet_retrieved_at`/`retrieved_at`, fallback `READ_DATE`) rather than the run date.
+- `"check_out": cout.isoformat()` — the off-by-one is fixed; `meta.trip.check_out = 2026-12-13`, `retrieved = 2026-11-19`, `run_at = 2026-11-19` on the committed data.
+- `meta.setdefault("retrieved", READ_DATE)` and `run_at` preserved from committed data, so scheduled runs stay idempotent.
+- `flag(..., preserve=True)` with a `same()` guard: a finding whose `(detail, source, status)` already matches is a no-op, and a later session's hand-corrected wording (e.g. F47's `"open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected"`) is preserved rather than reverted.
+
+**Idempotency re-verified on `origin/main`:** two consecutive `integrate` runs produced zero data-file drift (only the known non-deterministic `pages/repo-review.html` inventory page regenerated, which is excluded from the determinism check by design).
+
+### I3 — done (line-by-line verification of the published site)
+
+Every brief requirement was independently located and confirmed in the published code/data on `origin/main` (not inferred). Confirmed in `assets/app.js`, `scripts/build_ea99006a.py` and `data/ea99006a/*`:
+- **Trip calculator:** `entries × buy-ins + nights × true hotel cost` (`initPlanner`); true nightly `(rate + fee) × (1 + tax/100)` (`initHotels`); shows "Incomplete" when no dated quote exists.
+- **Filters:** global search, date filter, venue, rule, single-entry / multi toggle, entry-kind, rankable, changed, ≤30-min walk, budget ceiling, quality floor (`initFilters` / `initDays` / `initHotels2`).
+- **Schedule:** one primary event per day + conditional fallback; overlap check uses official start time + late-registration close only (no invented finish times).
+- **Ranking:** descriptive `guarantee ÷ entry fee` ratio, gated on confirmed fee + guarantee (`ratio_text` / `rankable`); bounty/flight events labelled separately.
+- **Hotel itemization:** `rate_snapshots.json` carries checkout_total, nightly_average, resort_fee, tax_total, parking, cancellation_deadline, rate_timestamp, source, verified, caveats; rates kept as a dated log (`rates_log.json`).
+- **Rules:** structured rule fields with source excerpt + retrieval date per row; confirmed single-entry (S1) and multi-entry rows kept separate; terms-not-read rows kept labelled unverified.
+- **Monitoring / feeds:** `morning_feed.json` per-room re-read; `last_checked.json` ledger; value-level change comparison (`monitor_b3be876c.py`).
+- **Pages:** one page per venue (Venetian/Wynn/Others) with events + "Stay here" hotel tables; executive summary, suggestions, questions, repo review, flagged-for-review pages all present.
+- **Sources:** every table row carries an official https source link.
+
+**Checks on `origin/main` @ `cbf7574` (all green):** `python3 scripts/integrate_b3be876c.py` idempotent (zero drift over two runs); `python3 scripts/build_ea99006a.py` exit 0; `python3 scripts/check_ea99006a.py` OK (1697 rows, all sourced, 482 internal + 5190 external links OK); `python3 scripts/check_root_site.py` OK; `npm test` 27/27; `python3 scripts/crosscheck_251c122f.py` OK; `python3 scripts/scrape_251c122f.py --self-test` OK.
+
+**Read-only for this session:** every other session's files and open PRs (#53, #55, #59, #60). No published tournament or hotel value was changed; I1 and I2 were confirmed already-resolved on `main` and closed without re-applying.
 ## Current branch session — 2723deea (active) — line-by-line re-verification, defect repair, integration
 
 **Branch:** `arena/2723deea-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed before any file edit**, 2026-11-19. The board shows no other open claim (every entry is done or merged; open PRs #53, #55, #59, #60 belong to other sessions and are not touched).
