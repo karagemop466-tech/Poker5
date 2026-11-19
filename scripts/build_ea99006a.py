@@ -1008,33 +1008,40 @@ def build_index():
 ARCHIVE_SKIP = {"pages", "assets", "data", "scripts", "work", "tools"}
 
 
-def _tracked_top_dirs():
-    """Top-level directories that git actually tracks.
+def tracked_top_dirs():
+    """Top-level names with at least one file committed under them.
 
-    An untracked build artifact (a local test output, a stray folder) must
-    never become a page link: the same source tree would then build different
-    pages in different checkouts and every local link check would miss links
-    that break in CI. Discovery is therefore limited to tracked folders.
+    Returns None when git is unavailable (then every folder is kept, the
+    behaviour before this filter existed).
     """
+    import subprocess
     try:
-        res = subprocess.run(["git", "-C", ROOT, "ls-files"],
-                             capture_output=True, text=True, timeout=30)
-        names = set()
-        for line in res.stdout.splitlines():
-            if "/" in line:
-                names.add(line.split("/", 1)[0])
-        return names
-    except Exception:
+        out = subprocess.run(["git", "-C", ROOT, "ls-files"],
+                             capture_output=True, text=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
         return None
+    if out.returncode != 0:
+        return None
+    return {line.split("/", 1)[0] for line in out.stdout.splitlines() if "/" in line}
 
 
 def archive_entries():
-    """Auto-discover every other session's published folder so none is lost."""
-    tracked = _tracked_top_dirs()
+    """Auto-discover every other session's published folder so none is lost.
+
+    "Published" means the folder is committed to the repository: a gitignored
+    build-output folder (e.g. _site-aa83f1e1/, written by another session's
+    build script) exists only in one workspace and must not be linked from
+    the published pages, or a clean checkout would contain broken links
+    (this is exactly how the daily-scrape validation step failed in CI while
+    passing locally).
+    """
     out = []
+    tracked = tracked_top_dirs()
     for name in sorted(os.listdir(ROOT)):
         path = os.path.join(ROOT, name)
         if not os.path.isdir(path) or name.startswith(".") or name in ARCHIVE_SKIP:
+            continue
+        if tracked is not None and name not in tracked:
             continue
         if not os.path.exists(os.path.join(path, "index.html")):
             continue

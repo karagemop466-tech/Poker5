@@ -289,5 +289,32 @@
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
   "status": "open by design",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F52",
+  "area": "Irregularities",
+  "title": "Interrupted-session note about a 'Dec 4 $400 Mega Stack' ($20K vs $25K) cannot be matched to any schedule",
+  "detail": "A research session that was interrupted (workspace reset) left a note that a Dec 4 '$400 Mega Stack' structure sheet showed a $20,000 guarantee, not $25,000. No row with that name exists in the captured schedules or on the live official Venetian DSE IV page (re-checked 2026-11-19: Dec 4 shows only Event #26 $800 NLH flights 1C/1D, $500K GTD). A web search suggests the note referred to the Venetian DeepStack Extravaganza New Year's Edition '$400 NLH Monster Stack / UltimateStack Freeze Out' rows printed with a $20,000 guarantee in January. No row was added or changed; this flag records the claim for manual review.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F53",
+  "area": "Irregularities",
+  "title": "Interrupted-session Bellagio daily-flyer prices ($200 / $300 / $240 / $320 / $400, 10 AM) could not be re-verified",
+  "detail": "The interrupted session reported Bellagio daily tournament rows from a 'cash-game flyer' at $200 / $300 / $240 / $320 / $400 with a 10:00 AM start. No official Bellagio page or PDF in this repository prints those rows, and room reviews state Bellagio runs tournaments only for special events (its official PDFs cover the Friday, Saturday and Sunday specials already captured). Nothing was added; the claim is recorded here so it can be checked against the flyer the session was reading.",
+  "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F54",
+  "area": "Rates",
+  "title": "Interrupted-session dated hotel rate snapshots ($241.93 Venetian Dec 2, $277.33 Bellagio Dec 3) not re-verifiable",
+  "detail": "The interrupted session recorded two dated hotel rate observations ($241.93 Venetian for Dec 2, $277.33 Bellagio for Dec 3) with extraction notes. The booking engines are JavaScript-driven and the figures could not be re-read from an official booking page, so they were NOT added to the dated rates log - a rate enters the log only with its official source and retrieval timestamp (see F14/F51). Re-run the official booking pages for those dates and capture the itemised quote (checkout total, nightly average, resort fee, tax, parking, cancellation deadline) to add them properly.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open",
+  "last_updated": "2026-11-19"
  }
 ]

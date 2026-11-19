@@ -1,0 +1,51 @@
+{
+ "note": "Verification record for the c6087e2c research ledger and its tooling. The verification commands and their results are recorded here so the daily-scrape.yml path filter has its ledger-verification trigger file and so a human can re-run the same checks. No source value is asserted by this record.",
+ "recorded_at": "2026-11-19T08:20:00Z",
+ "verified_by": "session 8154689a",
+ "checks": [
+  {
+   "command": "python3 scripts/scrape_251c122f.py --self-test",
+   "result": "self-test OK: structure parser + schedule parser"
+  },
+  {
+   "command": "python3 scripts/crosscheck_251c122f.py",
+   "result": "cross-check OK (merged rows: 94; verdicts: multi_flight 28, restart 11, single_entry_confirmed 55; sheets read 37/37; discrepancies 67, all attributed)"
+  },
+  {
+   "command": "python3 scripts/check_root_site.py",
+   "result": "root site check: links, source anchors and baseline OK - also verified in a fresh git clone of the branch (the check had failed in CI while passing locally; see validation_fix below)"
+  },
+  {
+   "command": "python3 scripts/check_ea99006a.py",
+   "result": "OK - every table row carries an official https source; no broken links"
+  },
+  {
+   "command": "npm run check",
+   "result": "11/11 tests pass (test/research.test.mjs, including the confirmed-only toggle and the incomplete-calculator guards)"
+  },
+  {
+   "command": "node --check assets/app.js",
+   "result": "syntax OK"
+  },
+  {
+   "command": "python3 scripts/recheck_ea99006a.py --offline",
+   "result": "ledger OK"
+  },
+  {
+   "command": "node scripts/smoke_aa83f1e1.mjs",
+   "result": "Smoke render passed: publication"
+  }
+ ],
+ "live_recheck": {
+  "date": "2026-11-19",
+  "page": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "result": "every captured schedule row (dates, times, event numbers, structure-sheet links) matches the live official page; Dec 4 shows only Event #26 $800 NLH starting flights 1C/1D ($500K GTD)"
+ },
+ "validation_fix": {
+  "date": "2026-11-19",
+  "note": "The daily-scrape validate step failed in CI while passing locally because the root builder's archive block linked the gitignored build-output folder _site-aa83f1e1/ (written by scripts/build_aa83f1e1.mjs), which exists only in one workspace. scripts/build_ea99006a.py archive_entries() now lists only folders with committed files (git ls-files); check_root_site.py passes on a clean clone (verified in a fresh git clone), and daily-scrape run 44476291169 passed with the fix."
+ },
+ "labels": {
+  "note": "root-site labels from scripts/build_ea99006a.py after the S1 standard (meta.json rule_standard, session b3be876c): rows confirmed by their own read structure sheet carry 'Confirmed single-entry (standard S1)' with the sheet excerpt and retrieval date and no 'unverified' label (53 rows); rows whose terms were not read keep 'Entry terms not read - unverified' (99 rows) and stay flagged (F21); the strict-definition gap (no sheet states 'one entry only' in words) is standing flags F01 + F47 plus the S1 limitation printed on the site."
+ }
+}

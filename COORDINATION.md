@@ -2,6 +2,36 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — 8154689a (active)
+
+**Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.
+
+**Files:** `COORDINATION.md` (this entry), `scripts/build_ea99006a.py` (archive-block fix only), `data/ea99006a/flags.json` (append-only F52–F54), `data/c6087e2c/verification_251c122f.json` (the verification record the daily-scrape trigger list expects), and the generator's outputs (`index.html`, `pages/*.html`). No event, hotel, rate or source record was edited or newly marked verified.
+
+**Status:** done (2026-11-19). See the log below.
+
+### Tasks (8154689a)
+
+| # | Task | Status | Result |
+|---|------|--------|--------|
+| 1 | Read every structure sheet and remove the "unverified" label from each event that is confirmed | done | Delivered jointly with session b3be876c (see "Parallel work" below): every row confirmed by its own official structure sheet carries the unverified-free label **"Confirmed single-entry (standard S1)"** — 53 Venetian rows, each with the sheet's own excerpt and retrieval date on the row. Rows whose terms were not read keep **"Entry terms not read - unverified"** (99 rows) and stay flagged (F21). The residual gap in the strict definition — no sheet states "one entry only" in words — is published as standing flags **F01** and **F47** plus the S1 limitation printed with the standard. |
+| 2 | Re-verify rows against live official sources | done | Live Venetian DSE IV schedule page re-read 2026-11-19 (4 chunks): every captured row (dates, times, event numbers, structure-sheet links) matches. Dec 4 shows only Event #26 $800 NLH flights 1C/1D ($500K GTD). |
+| 3 | Fix the daily-scrape validate-step failure (CI failed while local checks passed) | done | Root cause: the root builder's archive block linked every working-tree folder containing an index.html, including the **gitignored build-output folder `_site-aa83f1e1/`** (written by `scripts/build_aa83f1e1.mjs`), which exists only in one workspace. Clean checkouts therefore shipped 4 broken links and `check_root_site.py` failed in CI only. `archive_entries()` now lists only folders with committed files (`git ls-files`), falling back to the old behaviour without git. The pages on main already carried the broken links; they are repaired here. Verified in a fresh `git clone`, and the daily-scrape run [44476291169](https://github.com/karagemop466-tech/Poker5/actions/runs/44476291169) passed after the fix. |
+| 4 | Record the interrupted-session irregularities as review flags | done | Flags F52 ("Dec 4 $400 Mega Stack" claim matches no schedule; likely the January Monster Stack Freeze Out $400/$20K), F53 (Bellagio daily-flyer prices $200/$300/$240/$320/$400 not re-verifiable on any official Bellagio source), F54 (rate snapshots $241.93 Venetian Dec 2 / $277.33 Bellagio Dec 3 not re-verifiable; not added to the dated rates log). Published on Flagged for review. |
+| 5 | Full check suite, PR, merge, Pages | done | see Verification + PR record below |
+
+### Log (8154689a)
+
+- **Workspace reset mid-session.** Earlier edits in this session (structure-sheet links, two dated hotel-rate snapshots, Bellagio flyer rows, a "Dec 4 $400 Mega Stack" note) were lost when the workspace re-cloned from `main`. Nothing was re-added without a re-check; unverifiable claims became flags F52–F54 instead of rows or rates.
+- **Parallel work, no work discarded.** While this session worked, sessions b33a0c35/e15c88a2 (PRs #48–#54: calculator fixes, confirmed-only toggle, one canonical Pages publisher) and session b3be876c (PR #58: the S1 rule standard, all 37 sheets re-read live, 53 rows confirmed and re-derived, value-level monitor + verification page) landed on main. Two attempted integrations of this branch's earlier page output were **dropped, not merged**: first when `git pull --rebase` conflicted on `assets/app.js`, then when the canonical publisher changed under the branch again. Every main-side change is preserved; this branch contributes only what main still lacked (Tasks 1-4). The superseded commits remain in the branch reflog and in the earlier pushes.
+- **CI validate-step defect (Task 3) diagnosed to root cause and fixed**, after reproducing it in a fresh `git clone` (where `_site-aa83f1e1/` is absent) and confirming the same tree passed in the workspace (where the ignored build output masks the broken links).
+
+**Verification (2026-11-19):** `python3 scripts/build_ea99006a.py` (19 pages incl. pages/verification.html); `npm run check` 11/11 tests (incl. the confirmed-only toggle and the incomplete-calculator guards, unchanged); `node --check assets/app.js`; `python3 scripts/check_ea99006a.py` (every table row has an official https source; no broken links); `python3 scripts/check_root_site.py` OK (also in a clean clone); `python3 scripts/crosscheck_251c122f.py` OK (94 rows, 37/37 sheets); `python3 scripts/scrape_251c122f.py --self-test` OK; `python3 scripts/recheck_ea99006a.py --offline` ledger OK; `node scripts/smoke_aa83f1e1.mjs` OK. Daily-scrape workflow run [44476291169](https://github.com/karagemop466-tech/Poker5/actions/runs/44476291169) passed (the same validate step that failed before the fix). Live re-check of the official Venetian DSE IV page matched the capture row for row.
+
+**Irregularities (on Flagged for review):** F52, F53, F54 (above). None block the merge.
+
+---
+
 ## Current branch session — 6bc143b9 (active) — final integration + feature completion
 
 **Branch:** `arena/6bc143b9-poker5` (fixed by Arena), based on `main` @ `26a3508` (PR #48 merged). This session is the **final integration session** for the root GitHub Pages site (`index.html`, `pages/**`, `assets/**`, `data/ea99006a/**`, `scripts/build_ea99006a.py`, `scripts/check_ea99006a.py`, `scripts/recheck_ea99006a.py`, `.github/workflows/{quality,daily-scrape,recheck-ea99006a}.yml`) plus this board record. All other session folders (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/`, `tools/`, other `scripts/*`) are read-only for this session.
