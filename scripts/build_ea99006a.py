@@ -25,7 +25,7 @@ DATA = os.path.join(ROOT, "data", "ea99006a")
 PAGES = os.path.join(ROOT, "pages")
 
 RULE_LABEL = {
-    "confirmed_single": "Confirmed single-entry (standard S1)",
+    "confirmed_single": "No second entry granted (S1 screen)",
     "multi": "Multi-entry (re-entry / flights / add-on)",
     "unknown": "Entry cap not stated - unverified",
     "unread": "Entry terms not read - unverified",
@@ -74,10 +74,10 @@ MONRUN = _opt(B3DATA, "monitor_summary.json", {})
 VERIF = _opt(B3DATA, "verification.json", {})
 STD = META.get("rule_standard") or {
     "id": "S1",
-    "text": ("A row is published as confirmed single-entry only when its own official structure sheet was read, "
-             "names that event number, is a one-day event with a stated registration close, and contains no "
-             "re-entry, rebuy, add-on, buy-back, subsequent-buy-in or purchased-stack provision."),
-    "limitation": ("No official source states 'one entry only' in words, so confirmation means 'the published rules "
+    "text": ("A row is published as no second entry granted (S1 screen) only when its own official structure "
+             "sheet was read, names that event number, is a one-day event with a stated registration close, and "
+             "contains no re-entry, rebuy, add-on, buy-back, subsequent-buy-in or purchased-stack provision."),
+    "limitation": ("No official source states 'one entry only' in words, so the screen means 'the published rules "
                    "grant no second entry', not 'the house promises a freezeout'."),
 }
 
@@ -466,11 +466,11 @@ FILTER_BAR = """
   <select id="fvenue" aria-label="Venue"><option value="">All venues</option>%s</select>
   <select id="fday" aria-label="Day"><option value="">Every day</option>%s</select>
   <select id="frule" aria-label="Entry rule"><option value="">Any entry rule</option>
-    <option value="confirmed_single">Confirmed single-entry (%s)</option>
+    <option value="confirmed_single">No second entry granted (%s)</option>
     <option value="multi">Multi-entry: re-entry, add-on or flights</option>
     <option value="unknown">Cap not stated</option>
     <option value="unread">Terms not read</option></select>
-  <label class="chk"><input type="checkbox" id="fse"> Confirmed single-entry / freezeout only</label>
+  <label class="chk"><input type="checkbox" id="fse"> No second entry granted (S1 screen) / freezeout only</label>
   <label class="chk"><input type="checkbox" id="fsemulti"> Hide rows with stated re-entry / flights</label>
   <label class="chk"><input type="checkbox" id="fentry"> Entry rows only (hide Day 2 / final tables)</label>
   <label class="chk"><input type="checkbox" id="frank"> Rankable only: total entry fee AND guarantee confirmed</label>
@@ -1046,7 +1046,7 @@ def marquee_html():
 def build_index():
     cards = [("pages/executive-summary.html", "Executive summary", "The short version: what is confirmed, what is not, and what to do next."),
              ("pages/tournaments.html", "All tournaments", "Every verified row from the Venetian, Wynn/WPT and Caesars, with its official source."),
-             ("pages/single-entry.html", "Single-entry", "Events confirmed against their own structure sheet under standard S1 - and the standing flags."),
+             ("pages/single-entry.html", "Single-entry", "Events screened against their own structure sheet under standard S1 - and the standing flags."),
              ("pages/tournaments-double.html", "Multi-entry", "Re-entry, add-on, multi-flight and paid-advantage events, kept separate."),
              ("pages/schedule.html", "Day schedule", "One primary event per day plus a conditional fallback, with the overlap check."),
              ("pages/hotels.html", "Hotels", "Resort fees, official booking links, dated rate log and true nightly cost."),
@@ -1079,19 +1079,21 @@ def build_index():
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),
                     (str(len(ALL_EVENTS)), "Verified schedule rows"),
-                    (str(len(CONFIRMED)), "Confirmed single-entry events (standard S1)"),
+                    (str(len(CONFIRMED)), "Rows passing the S1 no-second-entry screen"),
                     (str(len(UNREAD)), "Rows whose entry terms were not read"),
                     (str(len(MULTI)), "Rows that are re-entry / multi-flight"),
                     (str(len(FLAGS)), "Items flagged for review")):
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
     body.append("</div>")
-    body.append('<div class="badbox"><b>The single-entry headline: %d events are confirmed single-entry under '
-                'standard S1.</b> All 37 official Venetian structure sheets were read on %s. Each confirmed row\'s '
+    body.append('<div class="badbox"><b>The single-entry screen: %d Venetian rows pass the S1 '
+                'no-second-entry screen.</b> All 37 official Venetian structure sheets were read on %s. Each '
+                'listed row\'s '
                 'own sheet was read in full, names that event number, is a one-day entry row with a stated '
                 'registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in its numbered '
                 'rules - the sheet excerpt and retrieval date are on the row. The honest limit stays published: '
-                '<b>no sheet states "one entry only" in words</b>, so confirmation means <i>the published rules grant '
-                'no second entry</i>, not that the house promises a freezeout (flags '
+                '<b>no sheet states "one entry only" in words</b>, so the screen means <i>the published rules grant '
+                'no second entry</i> - it is not a house promise of a freezeout, and no written one-entry cap '
+                'exists (flags '
                 '<a href="pages/flagged-review.html">F01 and F47</a> stay open). Every WPT / Wynn event whose terms '
                 'were read permits re-entry; the %d rows whose terms were not read keep an explicit '
                 '<i>unverified</i> label.</div>' % (len(CONFIRMED), esc(RETRIEVED), len(UNREAD)))
@@ -1176,7 +1178,10 @@ def build_tournaments():
             'at Wynn, %d from other rooms. Every row links to the official page or PDF it was read from.</p>'
             % (len(ALL_EVENTS), len(VEN), len(WPT), len(OTH))]
     body.append('<div class="warnbox"><b>Reading the entry-rule column.</b> '
-                '<span class="pill pill-ok">Confirmed single-entry</span> means an official source states a one-entry limit. '
+                '<span class="pill pill-ok">No second entry granted (S1 screen)</span> means the row\'s own official '
+                'structure sheet was read in full and no numbered rule grants a re-entry, rebuy, add-on, buy-back '
+                'or purchased stack - no sheet in the series states a one-entry limit in words, so this is a '
+                'screen, not a written freezeout promise (flag F01). '
                 '<span class="pill pill-bad">Multi-entry</span> means the official text allows re-entry, an add-on, or more than one starting flight. '
                 '<span class="pill pill-warn">Entry cap not stated</span> means the official structure sheet is silent - that is not evidence of a freezeout. '
                 '<span class="pill pill-warn2">Entry terms not read</span> means this audit did not read that event\'s terms.</div>')
@@ -1190,9 +1195,9 @@ def build_tournaments():
 
 def build_single():
     body = ["<h1>Single-entry tournaments</h1>"]
-    body.append('<div class="badbox"><b>Confirmed single-entry events (standard S1): %d.</b> Every official '
+    body.append('<div class="badbox"><b>Rows passing the S1 no-second-entry screen: %d.</b> Every official '
                 'structure sheet published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. '
-                'Each confirmed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
+                'Each listed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
                 'with a stated registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in '
                 'its numbered rules - the sheet excerpt and retrieval date are on the row, and the tests are '
                 're-derivable from the stored fields (see the <a href="verification.html">Verification log</a>). '
@@ -1200,15 +1205,15 @@ def build_single():
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
     body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
-    body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
+    body.append("<h2>1. Rows passing the S1 no-second-entry screen (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
     else:
         body.append('<div class="panel"><p><b>None.</b> No structure sheet read during this session meets the '
                     'published standard. Nothing is listed here rather than listing something unverified.</p></div>')
-    body.append("<h2>2. What confirmation means here - and what it does not</h2>")
+    body.append("<h2>2. What the screen means here - and what it does not</h2>")
     body.append('<div class="panel"><p><b>No official source in this series states "one entry only" in words.</b> '
-                'Confirmation under standard S1 therefore means <i>the published rules grant no second entry</i> - '
+                'Passing the screen therefore means <i>the published rules grant no second entry</i> - '
                 'the sheet own numbered rule list contains no re-entry, re-buy, add-on, buy-back, subsequent or '
                 'additional buy-in, or purchased or alternate stack provision - not that the house promises a '
                 'freezeout. Every sheet also carries "Management reserves the right to cancel or change the '
@@ -2146,8 +2151,11 @@ def build_method():
     body.append('<div class="panel"><h2>The verification rule</h2><ul class="clean">'
                 '<li>Every value on this site was read from an official source - the casino\'s own site or its own '
                 'PDF - during this session, on %s.</li>' % esc(RETRIEVED))
-    body.append('<li>An event is labelled <span class="pill pill-ok">Confirmed single-entry</span> only when an '
-                'official source states a one-entry, no-re-entry or freezeout limit.</li>')
+    body.append('<li>An event is labelled <span class="pill pill-ok">No second entry granted (S1 screen)</span> '
+                'when its own official structure sheet was read in full and no numbered rule grants a re-entry, '
+                're-buy, add-on, buy-back, subsequent or additional buy-in, or a purchased or alternate stack. No '
+                'sheet in the series states a one-entry limit in words - flag F01 records that gap, so the label '
+                'asserts only what the sheet shows.</li>')
     body.append('<li>It is labelled <span class="pill pill-bad">Multi-entry</span> when the official text allows '
                 're-entry, an add-on, or more than one starting flight.</li>')
     body.append('<li>It is labelled <span class="pill pill-warn">Entry cap not stated</span> when the official sheet '
