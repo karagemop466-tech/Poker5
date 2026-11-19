@@ -14,6 +14,12 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Publication:** PR [#48](https://github.com/karagemop466-tech/Poker5/pull/48) merged 2026-11-19T05:49:21Z as `26a350882ef4c9f3d6518e4b5d634edcfe7235dd`. PR checks `check` and `validate` passed. GitHub Pages build/deploy [#44467785556](https://github.com/karagemop466-tech/Poker5/actions/runs/44467785556) succeeded; Pages API reports status `built` for that merge commit, and the live planner was fetched at https://karagemop466-tech.github.io/Poker5/pages/planner.html and shows the new incomplete-cost and scenario messaging.
 
+### Follow-up task: strict confirmed-single-entry filter (b33a0c35)
+
+**Scope:** `COORDINATION.md`, `scripts/build_ea99006a.py`, generated `assets/app.js` and tournament pages, `test/research.test.mjs`. The tournament-table checkbox included both `unknown` and `confirmed_single`, contrary to its confirmation wording and the requested confirmed-only toggle. Changed the filter to show only `confirmed_single`; no unknown record was promoted. **Status:** done. The label now says `Confirmed single-entry / freezeout only`; because the verified dataset currently has zero confirmed events, this filter correctly returns no rows rather than treating unknown events as confirmed.
+
+**Verification:** regenerated with `python3 scripts/build_ea99006a.py`; `npm test` (10/10), including a regression that the toggle excludes unknown and multi-entry records; `python3 scripts/check_ea99006a.py` (18 pages, 1,261 sourced rows, 417 internal / 1,271 external link references checked); `node --check assets/app.js`; `git diff --check`. No event data or source status changed.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.

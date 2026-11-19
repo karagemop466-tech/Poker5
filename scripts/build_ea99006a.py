@@ -209,7 +209,7 @@ FILTER_BAR = """
   <label>From <input type="date" id="dfrom"></label>
   <label>To <input type="date" id="dto"></label>
   <select id="fvenue" aria-label="Venue"><option value="">All venues</option>%s</select>
-  <label class="chk"><input type="checkbox" id="fse"> Single-entry / no re-entry text only</label>
+  <label class="chk"><input type="checkbox" id="fse"> Confirmed single-entry / freezeout only</label>
   <label class="chk"><input type="checkbox" id="fentry"> Entry rows only (hide Day 2 / final tables)</label>
   <button type="button" id="reset" class="btn tiny">Reset</button>
   <span class="count" id="count"></span>
@@ -366,7 +366,7 @@ function initTable(id){
       if(ok && f && d && d<f) ok=false;
       if(ok && t2 && d && d>t2) ok=false;
       if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='unknown' && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
       if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
       tr.style.display=ok?'':'none'; if(ok) shown++;
     });

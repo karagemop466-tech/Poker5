@@ -104,6 +104,16 @@ test('trip calculator keeps unknown hotel costs incomplete and labels the auto-s
   assert.match(script, /One buy-in is counted per selected event/);
 });
 
+test('confirmed single-entry toggle excludes unverified and multi-entry rows', async () => {
+  const [tournaments, script] = await Promise.all([
+    readFile(new URL('../pages/tournaments.html', import.meta.url), 'utf8'),
+    readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
+  ]);
+  assert.match(tournaments, /Confirmed single-entry \/ freezeout only/);
+  assert.match(script, /if\(ok && s && tr\.getAttribute\('data-rule'\)!=='confirmed_single'\) ok=false;/);
+  assert.doesNotMatch(script, /data-rule'\)!=='unknown'.*data-rule/);
+});
+
 test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {
   const [dashboard, ledger, published, rootHome] = await Promise.all([
     readFile(new URL('../site-src/index.html', import.meta.url), 'utf8'),

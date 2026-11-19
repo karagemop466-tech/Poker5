@@ -20,7 +20,7 @@ function initTable(id){
       if(ok && f && d && d<f) ok=false;
       if(ok && t2 && d && d>t2) ok=false;
       if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='unknown' && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
       if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
       tr.style.display=ok?'':'none'; if(ok) shown++;
     });
