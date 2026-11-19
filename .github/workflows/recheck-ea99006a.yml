@@ -70,7 +70,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain data/ea99006a data/b3be876c pages index.html assets)" ]; then
-            git add data/ea99006a data/b3be876c pages index.html assets
+            git add data/ea99006a pages index.html assets
+            git add data/b3be876c
             git commit -m "ea99006a: automated official-source re-check"
             git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"

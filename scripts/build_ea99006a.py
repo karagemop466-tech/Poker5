@@ -555,7 +555,7 @@ function initTable(id){
       if(ok && dy && d!==dy) ok=false;
       if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
       if(ok && rl && tr.getAttribute('data-rule')!==rl) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='unknown' && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
       if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
       if(ok && rk && tr.getAttribute('data-rankable')!=='1') ok=false;
       if(ok && cg && tr.getAttribute('data-changed')!=='1') ok=false;
@@ -743,21 +743,32 @@ function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
   function total(){
-    var buy=0,n=0;
+    var buy=0,entries=0,hasInvalidBuyin=false;
     qsa('input[type=checkbox][data-buyin]',box).forEach(function(c){
-      if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
-      var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
-      buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
-    var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
+      if(!c.checked) return;
+      var b=Number(c.getAttribute('data-buyin'));
+      if(!Number.isFinite(b)||b<=0){hasInvalidBuyin=true;return;}
+      buy+=b; entries++;
+    });
+    var rateField=document.getElementById('ptrue');
+    var nightsField=document.getElementById('pnights');
+    var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
+    var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
+    var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
+    var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
+    var hotelTotal=hotelComplete?hotel*nights:null;
+    var grandTotal=tripComplete?buy+hotelTotal:null;
+    if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
+      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
+      ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
+      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
+      '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
+      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
+      (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
+      (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
   }
   box.addEventListener('change',total);
-  ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
+  ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }
 
@@ -1374,14 +1385,20 @@ def build_planner():
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     body = ["<h1>Trip planner: cost of the trip</h1>"]
-    body.append('<p class="muted">Estimated trip cost = <b>entries &times; buy-ins</b> + <b>nights &times; true hotel '
-                'cost</b>. The list below is pre-loaded with the %d events in your window (%s to %s) whose official '
-                'sheet shows no re-entry, rebuy or add-on text. Tick the ones you would play.</p>'
+    body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
+                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your window (%s to %s): '
+                'the ones whose own structure sheet was read in full and grants no further entry are the playable '
+                'set, and rows whose sheet is merely silent about re-entry are still labelled as such. One listed '
+                'buy-in is counted per ticked event.</p>'
                 % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"]))))
-    body.append('<div class="panel"><h2>Your window</h2><div class="kv">'
+    body.append('<div class="panel"><h2>Proposed planning window</h2><div class="kv">'
                 '<dt>Check in / out</dt><dd>%s &rarr; %s (%d nights)</dd>'
-                '<dt>Dates you can play</dt><dd>%s</dd>'
-                '<dt>Why</dt><dd>%s</dd></div>'
+                '<dt>Dates to consider</dt><dd>%s</dd>'
+                '<dt>Selection basis</dt><dd>%s</dd></div>'
+                '<p class="warnbox">These dates are an automatically selected research scenario, not confirmed '
+                'travel dates. No trip dates, nightly budget or hotel quality floor were ever stated by a traveller; '
+                'the figures beside them are what the official sources support, and every table follows the date '
+                'filter so any other week can be reviewed.</p>'
                 '<p class="muted sm">Change the dates with the filter on any tournament table; this page lists the '
                 'window that was chosen automatically, and you can re-pick entries for any other dates there.</p></div>'
                 % (esc(TRIP["check_in"]), esc(TRIP["check_out"]), TRIP["nights"],
@@ -1398,8 +1415,10 @@ def build_planner():
                 'Venetian poker-suite rate of %s plus the $%.0f resort fee, taxed at %.2f%%. That is a published '
                 '<b>floor, not a quote</b> - the rate is conditional on six hours of live play or a $300+ tournament '
                 'entry every night before 2 a.m., and that page only publishes rates 150 days out, so December 2026 '
-                'is not on it. Record a dated quote in the log on the <a href="hotels.html">hotels page</a> and the '
-                'total becomes complete; until then flag F14 stays open. Only single-entry and cap-not-stated '
+                'is not on it. The resort-fee tax treatment is not verified for every hotel, so use the booking '
+                'checkout total, not an estimate. Record a dated quote in the log on the '
+                '<a href="hotels.html">hotels page</a> and the total becomes complete; until then flag F14 stays '
+                'open. Only single-entry and cap-not-stated '
                 'events are listed below: no official text bounds how many re-entries an event allows, so a '
                 're-entry event can never be priced.</p></div>'
                 % (TRIP["nights"], FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "not published",
