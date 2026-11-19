@@ -2,6 +2,19 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — 2b98a91f (active)
+
+**Branch:** `arena/2b98a91f-poker5` (fixed by Arena). **Scope:** reconcile repository-facing documentation with the canonical published site and current data, verify this branch's baseline checks, and record any remaining evidence/operational limitations. No tournament or hotel facts will be added or upgraded without a fresh official-source check.
+
+**Files:** `COORDINATION.md`, `README.md`, `EXECUTIVE_SUMMARY.md` only. Other generated/site/data/workflow files are out of scope.
+
+| Task | Status | Owner | Files |
+|---|---|---|---|
+| Audit documentation against current canonical build/data and update stale claims | in progress | 2b98a91f | `README.md`, `EXECUTIVE_SUMMARY.md` |
+| Run existing quality, row-source, internal-link, verdict and monitor-ledger checks; record limitations | in progress | 2b98a91f | `COORDINATION.md` |
+
+**Claim recorded before edits (2026-11-19).**
+
 ## Current branch session — 8154689a (active)
 
 **Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.
