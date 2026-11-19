@@ -914,3 +914,14 @@ Official, read through the agent's page-fetch tool because the sandbox cannot op
 
 - Conflicts on rebase over `main` (sessions a9d1e02d, 3c49aaec, ea99006a merged while this session worked): kept `main`'s `COORDINATION.md` and appended this section; kept this build's root `index.html`, `pages/*`, `assets/*` (regenerated from the capture) and restored the other sessions' non-root pages that my first rebase attempt deleted. No other session's folder was edited or removed.
 - The one mistake made and corrected in this session: a cleanup step in `scripts/build_251c122f.py` deleted `pages/method.html`, `pages/monitor.html`, `pages/routes.html` on the merge. The step was removed from the build and all three files were restored from `main`; the build no longer deletes any file it did not generate.
+
+## Session e15c88a2 (branch `arena/e15c88a2-poker5`) — calculator correctness + validator repair
+
+Claim recorded before implementation on 2026-11-19. The inherited `251c122f` root-site integration claim is more than 60 minutes old and has no commit on this branch since 2026-11-17; this is a narrow takeover of two user-visible correctness defects, not a data/research takeover. No source facts or event/hotel values will be edited.
+
+| Task | Status | Owner | Files touched |
+|---|---|---|---|
+| Prevent missing hotel-rate input from being treated as a verified $0 in the trip-cost calculator; retain the formula and make incomplete state explicit | in progress | e15c88a2 | `scripts/build_ea99006a.py`, `assets/app.js`, generated `pages/planner.html` |
+| Repair false broken-link reports caused by `data-nosrc="1"` matching as a `src` attribute; verify all links | in progress | e15c88a2 | `scripts/check_root_site.py` |
+
+**Verification plan:** rebuild the root site from its current generator, run the official row/source/link validator, the root link checker, JavaScript syntax check, and the existing tests. Source records remain unchanged; no newly verified source claims are made.
