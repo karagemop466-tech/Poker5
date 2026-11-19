@@ -2,6 +2,14 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — fe101311 (active) — Strip room morning-feed repair (Bellagio / MGM)
+
+**Branch:** `arena/fe101311-poker5` (fixed by Arena), based on `main` @ `0011ea1`. **Claimed scope (claimed before any edit):** the scheduled official-source monitor's per-room morning feed. Its Bellagio/MGM/ARIA room has had **no successful read** (`bellagio.mgmresorts.com/en/casino/poker-room.html` and `aria.mgmresorts.com/en/casino.html` timed out on the 2026-11-19 scheduled run; `morning_feed.json` shows `checked_at: ""`, 3 failed). The live official Bellagio poker page (`/en/casino/poker.html`) and the three official Bellagio tournament PDFs, and the ARIA poker page (`/en/casino/poker.html`), are readable.
+
+**Files I will touch:** `COORDINATION.md` (this entry), `scripts/recheck_ea99006a.py` only (add the readable official Bellagio/ARIA poker pages and the three Bellagio PDFs to the monitored set, and point the Bellagio room entry at the live page). The next scheduled run writes the ledger and `morning_feed.json`. No event, hotel, rate or flag data is edited by this session; data corrections found while reading are logged below as requests for the integration session.
+
+**Status:** in progress.
+
 ## Current branch session — 8154689a (active)
 
 **Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.
