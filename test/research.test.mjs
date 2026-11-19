@@ -85,19 +85,23 @@ test('Pages excludes repository-only notes and test tooling from the published r
   }
 });
 
-test('trip calculator never treats an unknown hotel quote as zero or a generic poker rate as dated', async () => {
+test('trip calculator keeps unknown hotel costs incomplete and labels the auto-selected dates as a scenario', async () => {
   const [planner, script] = await Promise.all([
     readFile(new URL('../pages/planner.html', import.meta.url), 'utf8'),
     readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
   ]);
-  assert.match(planner, /No date-specific room quote is currently recorded/);
+  assert.match(planner, /Estimated trip cost =/);
   assert.match(planner, /placeholder="no date-specific quote recorded"/);
+  assert.doesNotMatch(planner, /id="ptrue"[^>]*value="0"/);
   assert.doesNotMatch(planner, /id="nights"[^>]*value="7"/);
   assert.doesNotMatch(planner, /<option[^>]+data-rate=/);
-  assert.match(planner, /fee's own tax treatment is confirmed on the folio|whether the resort fee is included in the tax base remains unverified/i);
+  assert.match(planner, /automatically selected research scenario, not confirmed travel dates/i);
+  assert.match(planner, /not verified for every hotel/i);
   assert.match(script, /hotelComplete/);
-  assert.match(script, /: "Incomplete"/);
-  assert.match(script, /No dated room quote recorded for/);
+  assert.match(script, /hotelTotal=hotelComplete\?/);
+  assert.match(script, /grandTotal=tripComplete\?/);
+  assert.match(script, /No date-specific room quote is currently recorded/);
+  assert.match(script, /One buy-in is counted per selected event/);
 });
 
 test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {

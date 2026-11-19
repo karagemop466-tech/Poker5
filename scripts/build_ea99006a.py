@@ -471,21 +471,32 @@ function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
   function total(){
-    var buy=0,n=0;
+    var buy=0,entries=0,hasInvalidBuyin=false;
     qsa('input[type=checkbox][data-buyin]',box).forEach(function(c){
-      if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
-      var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
-      buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
-    var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
+      if(!c.checked) return;
+      var b=Number(c.getAttribute('data-buyin'));
+      if(!Number.isFinite(b)||b<=0){hasInvalidBuyin=true;return;}
+      buy+=b; entries++;
+    });
+    var rateField=document.getElementById('ptrue');
+    var nightsField=document.getElementById('pnights');
+    var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
+    var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
+    var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
+    var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
+    var hotelTotal=hotelComplete?hotel*nights:null;
+    var grandTotal=tripComplete?buy+hotelTotal:null;
+    if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
+      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
+      ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
+      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
+      '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
+      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
+      (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
+      (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
   }
   box.addEventListener('change',total);
-  ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
+  ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }
 
@@ -933,28 +944,32 @@ def build_planner():
     rows = [r for r in CANDIDATES if r.get("date") and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     body = ["<h1>Trip planner: cost of the trip</h1>"]
-    body.append('<p class="muted">Estimated trip cost = <b>entries &times; buy-ins</b> + <b>nights &times; true hotel '
-                'cost</b>. The list below is pre-loaded with the %d events in your window (%s to %s) whose official '
-                'sheet shows no re-entry, rebuy or add-on text. Tick the ones you would play.</p>'
+    body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + <b>nights &times; true hotel '
+                'cost</b>. The list below contains %d candidate events in your proposed window (%s to %s) whose official '
+                'sheets do not state re-entry, rebuy or add-on terms. Silence is not proof of a single-entry limit; '
+                'every candidate remains unverified for the single-entry filter. Tick rows only to model one listed buy-in each.</p>'
                 % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"]))))
-    body.append('<div class="panel"><h2>Your window</h2><div class="kv">'
+    body.append('<div class="panel"><h2>Proposed planning window</h2><div class="kv">'
                 '<dt>Check in / out</dt><dd>%s &rarr; %s (%d nights)</dd>'
-                '<dt>Dates you can play</dt><dd>%s</dd>'
-                '<dt>Why</dt><dd>%s</dd></div>'
-                '<p class="muted sm">Change the dates with the filter on any tournament table; this page lists the '
-                'window that was chosen automatically, and you can re-pick entries for any other dates there.</p></div>'
+                '<dt>Dates to consider</dt><dd>%s</dd>'
+                '<dt>Selection basis</dt><dd>%s</dd></div>'
+                '<p class="warnbox">These dates are an automatically selected research scenario, not confirmed travel dates. '
+                'No user trip dates, nightly budget, or hotel quality floor are present in the source records.</p>'
+                '<p class="muted sm">Use the date filters on tournament tables to review other dates. Verify dates and schedules '
+                'before booking; the proposed window does not imply that all listed events can be played in sequence.</p></div>'
                 % (esc(TRIP["check_in"]), esc(TRIP["check_out"]), TRIP["nights"],
                    esc("%s to %s" % (pretty_date(TRIP["check_in"]), pretty_date(TRIP["check_out"]))),
                    esc(TRIP["rationale"])))
     body.append('<div class="panel"><div class="calc">'
-                '<label>Re-entry multiplier<input id="mult" type="number" min="1" max="10" step="1" value="1"></label>'
-                '<label>True hotel cost / night $<input id="ptrue" type="number" min="0" step="1" value="0"></label>'
-                '<label>Nights<input id="pnights" type="number" min="0" step="1" value="%d"></label>'
+                '<label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" '
+                'placeholder="no date-specific quote recorded" value=""></label>'
+                '<label>Stay nights<input id="pnights" type="number" min="1" step="1" value="%d"></label>'
                 '</div><div class="result" id="ptotal"></div>'
-                '<p class="muted sm">Set the multiplier to 1 for a single-entry plan and to 2 or more for a '
-                're-entry plan, so you can see both totals before you commit. Take the hotel figure from the '
-                '<a href="hotels.html">hotels page</a>.</p></div>' % TRIP["nights"])
-    body.append('<div class="panel" id="picks"><h2>Entries in your window (%d)</h2>' % len(rows))
+                '<p class="muted sm">Enter the itemized, date-specific true nightly total (room rate + mandatory resort fee + tax) '
+                'from the dated <a href="hotels.html">hotel rate log</a>. Include parking if it is part of the planned stay cost. '
+                'The required resort-fee tax treatment is not verified for every hotel; use the booking checkout total, not an estimate.</p></div>'
+                % TRIP["nights"])
+    body.append('<div class="panel" id="picks"><h2>Candidate event entries in your window (%d)</h2>' % len(rows))
     body.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Play?</th><th>Date</th><th>Start</th>'
                 '<th>#</th><th>Event</th><th class="num">Buy-in</th><th>House fee</th>'
                 '<th class="num">Guarantee</th><th class="num">GTD &divide; entry</th><th>Source</th></tr></thead><tbody>')

@@ -125,21 +125,32 @@ function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
   function total(){
-    var buy=0,n=0;
+    var buy=0,entries=0,hasInvalidBuyin=false;
     qsa('input[type=checkbox][data-buyin]',box).forEach(function(c){
-      if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
-      var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
-      buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
-    var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
+      if(!c.checked) return;
+      var b=Number(c.getAttribute('data-buyin'));
+      if(!Number.isFinite(b)||b<=0){hasInvalidBuyin=true;return;}
+      buy+=b; entries++;
+    });
+    var rateField=document.getElementById('ptrue');
+    var nightsField=document.getElementById('pnights');
+    var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
+    var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
+    var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
+    var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
+    var hotelTotal=hotelComplete?hotel*nights:null;
+    var grandTotal=tripComplete?buy+hotelTotal:null;
+    if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
+      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
+      ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
+      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
+      '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
+      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
+      (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
+      (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
   }
   box.addEventListener('change',total);
-  ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
+  ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }
 

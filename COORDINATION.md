@@ -2,6 +2,16 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — b33a0c35 (active)
+
+**Branch:** `arena/b33a0c35-poker5` (fixed by Arena). **Claimed scope:** repair the generated trip-cost calculator so missing hotel quotes cannot produce a false zero-cost estimate; ensure entries × buy-ins + nights × true nightly hotel cost is shown only when required inputs are known. This is a stale-scope takeover of the prior calculator task: its owner logged completion on 2026-11-17, but the current checkout's generated planner still defaults hotel cost to $0 and its regression test fails.
+
+**Files:** `COORDINATION.md`, `scripts/build_ea99006a.py`, generated `pages/planner.html`, `assets/app.js`, `test/research.test.mjs`. No event or hotel data/source claims will be changed.
+
+**Status:** done. Rebuilt the planner with a blank date-specific hotel-cost field, no false $0 hotel/total, and an explicit `Incomplete` state until a positive dated true nightly total, positive nights, and at least one valid event buy-in are supplied. Cost is one listed buy-in per selected event plus nights × true hotel cost; removed the re-entry multiplier from the candidate-event calculator. The page calls its automatically selected dates a scenario (not user-confirmed), states that there is no nightly budget or quality floor in the records, and explicitly keeps all candidate events unverified for single-entry because silence on a sheet is not confirmation. No source-backed event or hotel facts were changed.
+
+**Verification:** `python3 scripts/build_ea99006a.py`; `npm test` (9/9); `python3 scripts/check_ea99006a.py` (18 pages, 1,261 rows all with source links, 417 internal and 1,271 external link checks, no broken internal links); `node --check assets/app.js`; Python compile check; `git diff --check`. The regression test now checks that missing hotel quote stays incomplete and that the proposed dates are visibly a scenario. No new official-source claims were introduced.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
