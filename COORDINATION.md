@@ -1301,3 +1301,16 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 - Irregularity noted, not fixed (outside claimed scope): `pages/repo-review.html` changes on every build because it inventories the working tree (file count and byte total change with every checkout). Quality workflow excludes it from the diff check; the owner should pin it to a committed file list.
 - Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
 - Status: L1 done, L2 done, session closed.
+
+---
+
+## Session 96994b83 (branch `arena/96994b83-poker5`, base `main` @ `998a32d`) — baseline re-verification, board record only
+
+Claimed 2026-11-19 before any file edit. Scope is deliberately narrow because the site, data, and checks already exist on main from earlier sessions; this session does not rebuild them.
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| V1 | in progress | 96994b83 | none (read-only verification) |
+| V2 | in progress | 96994b83 | `COORDINATION.md` (this section only) |
+
+Not claimed here (already in progress or done by other sessions, or out of this session's reach): live Strip-wide morning feed, hotel live rate lookups, walking-route times from maps, a new single-entry confirmation, and any change to rows, rates or flags. No data file is edited.
