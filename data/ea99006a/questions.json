@@ -17,7 +17,7 @@
   "id": "Q03",
   "q": "What is the true nightly hotel cost for your dates?",
   "have": "Resort fees: Venetian $55 + tax (official), Resorts World $55 per room per day (official, waived on the 'All Resort, No Fees' offer through 28 Dec 2026). Tax: 13.38% (Clark County ordinance). Dated captures added 2026-11-19 (session f7676bd0): Wynn quotes for Dec 6-13 - $688 ('Your Fall to Have It All') and $818 (Flexible Getaway) average per night, resort fee included, taxes excluded; raw December calendars for the Horseshoe and Resorts World. Caesars Palace $62.30 total ($54.95 plus $7.35 tax) and Horseshoe $56.63 total ($49.95 plus $6.68 tax) per night are now verified from their booking-page Hotel Policies.",
-  "missing": "An itemised checkout total for the actual stay at any hotel (room + fee + tax + parking): the Wynn pages show averages only, the calendars are raw daily displays with an undefined per-date meaning (F74), and the Venetian and Caesars Palace engines returned no rates at all on 2026-11-19 (F71).",
+  "missing": "An itemised checkout total for the actual stay at any hotel (room + fee + tax + parking): the Wynn pages show averages only, the calendars are raw daily displays with an undefined per-date meaning (F79), and the Venetian and Caesars Palace engines returned no rates at all on 2026-11-19 (F76).",
   "how": "Open the official booking link on the Hotels page for your dates and read the itemised checkout screen; record it in the dated log. The Wynn calculator figure can already be entered from the captured quote ($688-$818/night); the rest need a checkout total first."
  },
  {
@@ -147,17 +147,24 @@
   "how": "Ask the South Point poker room for the daily schedule and structures in text (the property's own channel for lists is the Bravo Poker app), or transcribe the eight official sheet images into a dated capture. Until then the South Point rows stay 'entry terms not read' and are excluded from the single-entry comparison. See flags F12 and F70 and suggestion S17."
  },
  {
-  "id": "Q22",
+  "q": "What are the entry terms (re-entry / re-buy / add-on caps) of the WPT events whose schedule lines still carry 'Entry terms not read - unverified', and of the eight South Point daily tournaments?",
+  "have": "Those rows are verified on schedule fields (date, start, buy-in, guarantee, chips, level length) from the official Wynn schedule sign and the South Point poker-room page, re-read 2026-11-19. 48 WPT rows now hold their event terms section's verbatim entry text (read 2026-11-19 by sessions ec3c21b8, 98087225 and 36da6d66), which shows every one of those events grants re-entry. The remaining terms exist only in sources not machine-readable here: the WPT structures document's later pages (this environment extracts text up to page 30) and the per-event sheets the schedule footnotes call 'See structure sheet' (not found published on the Wynn poker page), plus South Point's rules-sheet JPG images.",
+  "missing": "The entry terms for the remaining WPT rows and the eight South Point rows. Until they are read, those rows carry 'Entry terms not read - unverified' and cannot enter any single-entry comparison, and no label is removed on their behalf.",
+  "how": "Ask the Wynn poker room for the per-event structure sheets the schedule footnotes reference, and South Point for its rules sheets in text form; or read the full structures PDF past page 30 and the JPG rules sheets manually and record each Registration sentence with its URL and retrieval date. Treat every one of those rows as cap unknown until then.",
+  "id": "Q22"
+ },
+ {
+  "id": "Q23",
   "q": "Which entrance does each walking route use, and should the 30-minute limit be judged per direction?",
-  "have": "Google Maps walking times measured both ways on 2026-11-19 are stored per direction (e.g. Wynn to Venetian 14 min vs Venetian to Wynn 26 min; Horseshoe to Venetian 31 min vs the other way 30 min - flags F73/F74).",
+  "have": "Google Maps walking times measured both ways on 2026-11-19 are stored per direction (e.g. Wynn to Venetian 14 min vs Venetian to Wynn 26 min; Horseshoe to Venetian 31 min vs the other way 30 min - flags F78/F79).",
   "missing": "The official entrance each route targets, and a rule for which direction the 30-minute limit applies to. Both directions are shown so the reader can decide.",
   "how": "Open the route link per row and walk it once at the pace you would actually use, from the entrance you would leave by; record your own minutes in the panel on the routes page."
  },
  {
-  "id": "Q23",
+  "id": "Q24",
   "q": "What does a date in the Caesars/Horseshoe/Resorts World calendars price - the night of that date, or a stay starting it?",
   "have": "The raw December 2026 displays for each candidate hotel (stored per date in the rate log and stay captures). The Horseshoe caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'",
-  "missing": "The per-date meaning; the pages do not state it (flag F74). Until it is confirmed, the figures are not added up into a stay total and no nightly average is claimed.",
+  "missing": "The per-date meaning; the pages do not state it (flag F79). Until it is confirmed, the figures are not added up into a stay total and no nightly average is claimed.",
   "how": "Ask the hotel's reservations line in writing, or run a one-night and a multi-night query for the same date and compare what the engine displays."
  }
 ]

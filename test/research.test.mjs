@@ -181,7 +181,8 @@ test('canonical executive summary uses current S1 verdicts, complete ranking gat
     readFile(new URL('../data/ea99006a/meta.json', import.meta.url), 'utf8').then(JSON.parse),
   ]);
   assert.match(summary, /53 Venetian rows/);
-  assert.match(summary, /41 as multi-entry/);
+  assert.match(summary, /38 as multi-entry/);
+  assert.match(summary, /3 as Cap not stated/);
   assert.match(summary, /no sheet states a one-entry maximum/i);
   assert.match(summary, /Upcoming: highest descriptive guarantee-to-entry ratios, non-bounty S1 events/);
   assert.match(summary, /Upcoming bounty \/ PKO S1 events \(separate comparison\)/);

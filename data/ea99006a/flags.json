@@ -61,9 +61,11 @@
  {
   "id": "F09",
   "area": "Hotels",
-  "title": "Caesars Palace and Horseshoe resort fees verified on their booking pages (was: not verified)",
-  "detail": "Resolved 2026-11-19 (session f7676bd0): the official booking-page Hotel Policies blocks publish property fees - Caesars Palace $62.30 per night ($54.95 plus $7.35 tax), Horseshoe $56.63 per night ($49.95 plus $6.68 tax) - and are stored in hotels.json with deposits ($100/day, $50/day) and 48-hour cancellation. The old resort-fee URLs still redirect to marketing pages; the corporate $45-$60 range remains the only figure published for other Caesars properties.",
-  "source": "https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
+  "title": "Caesars Palace and Horseshoe resort fees: exact figures found on the official booking pages (hotel table not yet updated)",
+  "detail": "Updated 2026-11-19 (session 45556d36): the official Caesars booking pages state the fees directly - Caesars Palace: 'Resort fees: $62.30 ($54.95 plus $7.35 tax).'; Horseshoe: 'Resort fees: $56.63 ($49.95 plus $6.68 tax).', both read on each property's official booking page. The earlier redirect-only finding is superseded. The hotel table in data/ea99006a/hotels.json still shows these fees blank; that file is owned by session 96160d8f's open PR #79, so the figures are logged here and in COORDINATION.md as a handoff instead of being written across an open pull request.  ||  Also recorded by session f7676bd0 on 2026-11-19: Resolved 2026-11-19 (session f7676bd0): the official booking-page Hotel Policies blocks publish property fees - Caesars Palace $62.30 per night ($54.95 plus $7.35 tax), Horseshoe $56.63 per night ($49.95 plus $6.68 tax) - and are stored in hotels.json with deposits ($100/day, $50/day) and 48-hour cancellation. The old resort-fee URLs still redirect to marketing pages; the corporate $45-$60 range remains the only figure published for other Caesars properties.",
+  "source": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv",
+  "status": "open: figures verified on official pages 2026-11-19; hotel table handoff pending",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F10",
@@ -86,8 +88,8 @@
  {
   "id": "F12",
   "area": "Coverage",
-  "title": "South Point publishes its schedule as images only",
-  "detail": "Times (10:10, 14:10, 18:10, 22:10) and buy-ins ($120, $300) come from the official page text. Guarantees, levels and entry rules are inside image files and were not read. South Point is also off-Strip and not walkable to it.",
+  "title": "South Point publishes its schedule and rules as images only (schedule now read; 6 of 8 rules sheets not readable)",
+  "detail": "RESOLVED AS TO SCHEDULE on 2026-11-19: the official schedule image (rev 10/26) was read and replaces the placeholder rows - 8 named daily games with times, days, buy-ins ($120/$200), stacks, level lengths and guarantees. Two rules-sheet images ($120 Daily NLH, $120 NLH Turbo Bounty) were also read and their re-entry rules recorded. The other six games' rules-sheet page 1 images could not be retrieved as images in this session, so their entry terms remain unverified and those rows stay 'entry terms not read'.",
   "source": "https://southpointcasino.com/casino/poker-room"
  },
  {
@@ -100,17 +102,17 @@
  {
   "id": "F14",
   "area": "Hotels",
-  "title": "Dated nightly rates: Wynn captured for the window; Venetian and Caesars Palace still missing",
-  "detail": "Updated 2026-11-19 (session f7676bd0): the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F72/F74). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
-  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
-  "status": "open",
+  "title": "Dated nightly rate for the trip dates: Wynn yes; Venetian and Caesars engines returned none",
+  "detail": "Updated 2026-11-19 (session 45556d36): the Wynn booking engine returned stay-matched averages for 6-13 Dec 2026 (Wynn Resort King $688/night, resort fee included, tax excluded; 9 room types listed), captured in the dated rate log; the trip planner prefills its true nightly cost from that capture (688.00 x 1.1338 = 780.05, labelled as computed, not an engine total). The Venetian booking calendar still renders '$XXX' placeholders for the same dates and the Caesars Palace/Horseshoe engines reported technical difficulties, so no other window-matched rate exists. The Venetian poker-suite '$119 / $209' floor remains the only Venetian number and is conditional, not a quote. All other rate cells stay blank on purpose.  ||  Also recorded by session f7676bd0 on 2026-11-19: the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F77/F79). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "partially resolved: Wynn window quote captured 2026-11-19",
   "last_updated": "2026-11-19"
  },
  {
   "id": "F15",
   "area": "Routes",
   "title": "Cross-property walking times are not published officially; recorded instead as dated Google Maps observations",
-  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair used to be blank; no hotel or casino publishes a walking time to a different property. RESOLVED ON 2026-11-19 with two independent Google Maps reading sets, both stored in data/ea99006a/routes.json: session 0fd59a4a measured all 30 hotel-to-venue pairs between official property names (minutes, distance and restricted-usage warnings in `minutes`/`distance`/`checked`), and session f7676bd0 measured the same pairs between the official street addresses (its values in `alt_minutes`/`alt_distance_miles`/`alt_via`, per direction, with the reverse reading where taken). The two sets differ materially on some pairs (e.g. Venetian-Wynn 13 vs 26 min one way) because the map routes different entrances and paths for name pins vs address pins - see flag F72. Both are dated observations, neither is smoothed into the other, and the routes page filters on the slower of the two readings so the 30-minute limit is judged conservatively.",
+  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair used to be blank; no hotel or casino publishes a walking time to a different property. RESOLVED ON 2026-11-19 with two independent Google Maps reading sets, both stored in data/ea99006a/routes.json: session 0fd59a4a measured all 30 hotel-to-venue pairs between official property names (minutes, distance and restricted-usage warnings in `minutes`/`distance`/`checked`), and session f7676bd0 measured the same pairs between the official street addresses (its values in `alt_minutes`/`alt_distance_miles`/`alt_via`, per direction, with the reverse reading where taken). The two sets differ materially on some pairs (e.g. Venetian-Wynn 13 vs 26 min one way) because the map routes different entrances and paths for name pins vs address pins - see flag F77. Both are dated observations, neither is smoothed into the other, and the routes page filters on the slower of the two readings so the 30-minute limit is judged conservatively.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
@@ -231,8 +233,8 @@
   "id": "F32",
   "area": "Hotels",
   "title": "Dated stay captures are sparse and not like-for-like",
-  "detail": "Updated 2026-11-19 (session f7676bd0): the dated log now holds two dated Wynn quotes, two December calendar captures (Horseshoe, Resorts World) and two logged engine attempts (Venetian, Caesars Palace) for the recommended window. They are still not like-for-like: averages vs raw daily displays vs attempts, differing rooms and rate plans, and no hotel returned an itemised checkout total.",
-  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026"
+  "detail": "Updated 2026-11-19 (session 45556d36): the log now holds dated booking-engine snapshots for Venetian and Wynn (Dec 2-9 and Dec 13-20 windows, 2 adults), a Venetian and a Wynn window-matched capture attempt for the planning window 6-13 Dec (only the Wynn one returned prices), attempt records for Resorts World, Caesars Palace and Horseshoe, and one dated poker-suite-rate observation. Only the 6-13 Dec Wynn capture matches the planning window exactly; the others differ in stay window or returned no prices, so they are still not interchangeable. Checkout totals, nightly averages, tax amounts and cancellation deadlines stay blank wherever the booking UI did not return them. No hotel ranking is drawn from mixed windows; the trip planner uses only the window-matched Wynn capture and stays Incomplete for every other hotel.  ||  Also recorded by session f7676bd0 on 2026-11-19: the dated log now holds two dated Wynn quotes, two December calendar captures (Horseshoe, Resorts World) and two logged engine attempts (Venetian, Caesars Palace) for the recommended window. They are still not like-for-like: averages vs raw daily displays vs attempts, differing rooms and rate plans, and no hotel returned an itemised checkout total.",
+  "source": "https://github.com/karagemop466-tech/Poker5/blob/main/data/ea99006a/rate_snapshots.json"
  },
  {
   "id": "F33",
@@ -473,28 +475,73 @@
   "last_updated": "2026-11-19"
  },
  {
-  "id": "F71",
+  "area": "Entry rules",
+  "title": "Venetian #39 (LIPS Ladies $800, 2Day) was published multi-entry on a Day-2 continuation sentence; corrected to Cap not stated",
+  "detail": "Structure sheet 32 was re-read live on 2026-11-19 (12 numbered rules). No rule grants a re-entry, rebuy, add-on or purchased stack, and the event has no starting flights (one Day 1, Dec 10, with Day 2 Dec 11 and a streamed final table). The earlier capture had quoted the sentence 'Day 2 will resume at 10:00 AM ...' as flight language and published the three rows (Day 1, Day 2 restart, final table) as 'Multi-entry: re-entry, add-on or flights' while their own excerpt said the opposite. The rows now read 'Cap not stated': S1 condition (4) (no flight or multi-day structure) is not met, so the event cannot join the no-second-entry set, and no text grants a second entry. Review the wording of S1 condition (4) if single-flight multi-day events should qualify.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F71"
+ },
+ {
+  "area": "Tournament data",
+  "title": "24 WPT satellite seat/prize guarantees were blank although the official schedule sign states them; filled from the sign",
+  "detail": "The Wynn WPT schedule sign prints a seats/prizes guarantee for every milestone satellite (for example '25 Seats', '50 Seats', '75 Seats', '10 Seats', '25 Prizes'). The earlier capture stored only money guarantees, leaving 24 satellite rows blank. Re-read live on 2026-11-19 and filled verbatim from the sign (data/ec3c21b8/wpt_sign_2026-11-19.tsv). The Milestone Satellite to the $25K NLH High Roller (Dec 16) has no guarantee cell on the sign and stays blank. Seat and prize counts are shown as seats, not cash, and are never divided by a buy-in in the ranking.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F72"
+ },
+ {
+  "area": "Official sources disagree",
+  "title": "Wynn sign footnote: 'The Tournament Entry for the Ladies Championship is $11,100' while its own table lists $1,100",
+  "detail": "The schedule sign's footnote reads 'The Tournament Entry for the Ladies Championship is $11,100. Ladies will receive a discounted entry.' while the same sign's table lists the Ladies NLH Championship (2 Day, Dec 13) at $1,100 with a $250,000 guarantee, and the stored row uses $1,100. The $11,100 figure appears inconsistent (an extra digit, or $1,110 with the discounted entry) and is not used anywhere. Confirm with the room before relying on either figure.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F73"
+ },
+ {
+  "id": "F74",
+  "area": "Hotels",
+  "title": "Wynn Fall-offer cancellation deadline conflicts between two official pages (72 h vs 48 h)",
+  "detail": "For the offer the booking engine shows for 6-13 Dec 2026 ('Your Fall to Have It All'), the engine states 'Cancel 72 hours prior to arrival to avoid penalty of one night's room rate and tax', while the offer's own linked terms state 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited' (with a one-night room-and-tax deposit charged at booking). Both pages were read on 2026-11-19. The discrepancy is recorded on the dated capture, not resolved: confirm the binding deadline with the hotel before booking. Distinct from F55, which corrected a stored 72-hour claim about a different offer (DK26WLV2) whose live terms say 48 hours.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/2026-seasonal-fall-offer-public",
+  "status": "open: conflicting official statements on the same offer",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F75",
+  "area": "Hotels",
+  "title": "Window-dated quote attempts on 2026-11-19: only Wynn returned stay rates",
+  "detail": "For the planning window 2026-12-06 to 2026-12-13 (7 nights, 2 adults, 1 room), read from each property's own official booking engine on 2026-11-19: Wynn returned per-room averages for the exact stay; the Venetian calendar rendered '$XXX' placeholders (JavaScript-loaded prices); the Caesars Palace and Horseshoe engines displayed 'technical difficulties' / 'Searching Rates' with no dated room list (a date-parameterised attempt redirected back to the flexible calendar); the Resorts World calendar showed December nightly figures but with two contradictory legends ('excludes daily resort fee and taxes' and 'includes $55 daily resort fee and excludes taxes'), a 'The rate is not available' message, and no stay total. Price fields for those properties stay blank on purpose - no total is computed from calendar figures. Caesars Palace and Horseshoe booking pages do state exact resort fees ($62.30 and $56.63 including their tax); see F09 for the handoff to the hotel table.",
+  "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=12/06/2026&checkout=12/13/2026&nights=7&adults=2&children=0",
+  "status": "open: window-matched quotes missing for 4 of 5 shortlist hotels",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F76",
   "area": "Hotels",
   "title": "The Caesars Palace booking calendar returned a technical error on 2026-11-19",
   "detail": "The official December 2026 rate calendar for Caesars Palace rendered 'Sorry! Our website is currently experiencing technical difficulties' and no rates, while the same engine rendered the Horseshoe calendar minutes later. No dated Caesars Palace quote is stored; retry needed.",
   "source": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
  },
  {
-  "id": "F72",
+  "id": "F77",
   "area": "Hotels",
   "title": "Google Maps walking routes are asymmetric by direction and vary by pin placement - two same-day reading sets disagree",
   "detail": "Two Google Maps reading sets dated 2026-11-19 disagree on the same pairs and both are stored: the name-pinned set (session 0fd59a4a) reads Venetian-Wynn 13 min / Wynn-Venetian 19 min while the address-pinned set (session f7676bd0) reads 26 / 14 min; Venetian-Horseshoe 16 vs 30 min. Within the address-pinned set routes are also asymmetric (Wynn to Venetian 14 min but Venetian to Wynn 26 min; Caesars Palace to Wynn 39 vs Wynn to Caesars Palace 47 min). Entrance pin placement and route choice differ per query and per direction. Every reading is stored as measured; none is smoothed or symmetrized.",
   "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2"
  },
  {
-  "id": "F73",
+  "id": "F78",
   "area": "Hotels",
   "title": "Google Maps walking routes are asymmetric by direction",
   "detail": "Measured 2026-11-19 (session f7676bd0): Wynn to Venetian 14 min (0.5 mi) but Venetian to Wynn 26 min (1.1 mi); Caesars Palace to Wynn 39 min but Wynn to Caesars Palace 47 min. Entrance pin placement and route choice differ per direction. Both directions are stored as measured; neither is smoothed or symmetrized.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
-  "id": "F74",
+  "id": "F79",
   "area": "Hotels",
   "title": "Horseshoe to Venetian straddles the 30-minute limit across readings; calendars do not define their per-date meaning",
   "detail": "The address-pinned reading (2026-11-19) measures Venetian to Horseshoe 30 min (1.3 mi, via Krueger Dr) and Horseshoe to Venetian 31 min - one minute over the limit - while the name-pinned reading the same day measures 16 min both ways. Which reading and which direction the 30-minute limit applies to changes the verdict for this hotel; every figure is published so the reader can judge the walk they would actually take. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",

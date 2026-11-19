@@ -20,7 +20,10 @@
   "source",
   "source_label",
   "verified",
-  "caveats"
+  "caveats",
+  "hotel_key",
+  "tax_included",
+  "room_type_rates"
  ],
  "entries": [
   {
@@ -175,6 +178,151 @@
    "caveats": [
     "No numeric quote is returned for 6-13 December 2026 (the booking engine prices rooms in JavaScript only). Figures left blank - never invented. This entry records the dated attempt itself.",
     "The trip-cost calculator therefore shows this stay as 'quote needed' until you read a price from the booking page."
+   ]
+  },
+  {
+   "hotel": "Wynn Las Vegas",
+   "hotel_key": "wynn",
+   "tax_included": false,
+   "room_type": "Wynn Resort King (640 sq ft)",
+   "checkin": "2026-12-06",
+   "checkout": "2026-12-13",
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "checkout_total": null,
+   "nightly_average": 688.0,
+   "room_rate_per_night": null,
+   "resort_fee_per_night": 55.0,
+   "resort_fee_total": null,
+   "tax_total": null,
+   "tax_note": "The engine labels every rate 'Includes Resort Fee, Excludes taxes'. No tax amount and no checkout total were returned, so those fields stay blank. True nightly cost used by the planner = 688.00 x 1.1338 = 780.05, computed by this site from the official average and the published Clark County lodging-tax rate; it is not a booking-engine figure.",
+   "parking": "Self-parking complimentary to registered guests; valet parking complimentary to Wynn and Encore Tower Suites registered guests (stated on the quote page and in the offer terms).",
+   "cancellation_deadline": "CONFLICTING official statements for this offer, both read 2026-11-19: the booking engine states 'Cancel 72 hours prior to arrival to avoid penalty of one night's room rate and tax'; the offer's linked terms state 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited'. Both are recorded; the conflict is flag F74. Confirm the binding deadline with the hotel before booking.",
+   "rate_timestamp": "2026-11-19",
+   "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/06/2026&checkout=12/13/2026&rooms=1&adults=2",
+   "source_label": "Wynn official booking engine, dated stay Dec 6-13 2026, read 2026-11-19",
+   "verified": true,
+   "caveats": [
+    "Captured live from the official booking engine on 2026-11-19 for the exact planning window (7 nights, 2 adults, 1 room); the page header reads '7 Night Stay: Dec. 6 - Dec. 13, 2026'. Prices move - reconfirm before any payment.",
+    "The engine returned per-room average rates for the stay, not an itemized checkout total: checkout_total and tax_total are blank on purpose.",
+    "The displayed average already includes the $55 nightly resort fee (page label 'Includes Resort Fee'; offer terms: 'The total shown for your online reservation or in your confirmation email, as applicable, includes this daily fee'). The engine did not print a room-rate/fee split, so room_rate_per_night stays blank.",
+    "Offer shown for these dates: 'Your Fall to Have It All' (book by November 24, 2026); guarantee policy: one night's room rate and tax charged at time of booking. Offer terms read the same day: https://www.wynnlasvegas.com/terms-and-conditions/2026-seasonal-fall-offer-public",
+    "The same stay's cancellation deadline is stated as 72 hours by the engine and 48 hours by the offer terms - recorded, not resolved (flag F74)."
+   ],
+   "room_type_rates": [
+    {
+     "room_type": "Wynn Resort King",
+     "nightly_average": 688.0
+    },
+    {
+     "room_type": "Encore Resort King",
+     "nightly_average": 735.0
+    },
+    {
+     "room_type": "Wynn Resort Two Queens",
+     "nightly_average": 741.0
+    },
+    {
+     "room_type": "Wynn Panoramic View King",
+     "nightly_average": 752.0
+    },
+    {
+     "room_type": "Wynn Panoramic View Two Queens",
+     "nightly_average": 752.0
+    },
+    {
+     "room_type": "Encore Panoramic View King",
+     "nightly_average": 797.0
+    },
+    {
+     "room_type": "Encore Resort Two Queens",
+     "nightly_average": 803.0
+    },
+    {
+     "room_type": "Encore Panoramic View Two Queens",
+     "nightly_average": 819.0
+    },
+    {
+     "room_type": "Wynn Panoramic Corner King",
+     "nightly_average": 1207.0
+    }
+   ]
+  },
+  {
+   "hotel": "Resorts World Las Vegas (Hilton tower)",
+   "room_type": "Hilton tower calendar observation (no stay quote returned)",
+   "checkin": "2026-12-06",
+   "checkout": "2026-12-13",
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "checkout_total": null,
+   "nightly_average": null,
+   "room_rate_per_night": null,
+   "resort_fee_per_night": 55.0,
+   "resort_fee_total": null,
+   "tax_total": null,
+   "tax_note": "Calendar legend states taxes are excluded; no tax or stay total was returned.",
+   "parking": null,
+   "cancellation_deadline": null,
+   "rate_timestamp": "2026-11-19",
+   "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=12/06/2026&checkout=12/13/2026&nights=7&adults=2&children=0",
+   "source_label": "Resorts World official booking calendar for the planning window, read 2026-11-19",
+   "verified": false,
+   "caveats": [
+    "The official calendar for December 2026 displayed nightly figures (observed: Dec 6 $354, Dec 7 $654, Dec 8 $354, Dec 9 $414, Dec 10 $414, Dec 11 no figure shown, Dec 12 $454, Dec 13 $184) alongside the message 'The rate is not available. Select an alternate rate.'",
+    "The same page prints two contradictory legends: 'Calendar pricing excludes daily resort fee and taxes.' and 'Calendar pricing includes $55 daily resort fee and excludes taxes.' Because fee inclusion is contradictory and no stay total was returned, nightly_average and checkout_total stay blank - no total is computed from calendar figures (flag F75).",
+    "The $55 resort-fee figure appears in the calendar legend and matches the property's recorded fee."
+   ]
+  },
+  {
+   "hotel": "Caesars Palace",
+   "room_type": "Flexible-dates booking engine (attempted; no dated rate returned)",
+   "checkin": "2026-12-06",
+   "checkout": "2026-12-13",
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "checkout_total": null,
+   "nightly_average": null,
+   "room_rate_per_night": null,
+   "resort_fee_per_night": 54.95,
+   "resort_fee_total": null,
+   "tax_total": null,
+   "tax_note": "The booking page states the fee as '$62.30 ($54.95 plus $7.35 tax)'; no room rate or stay total was returned.",
+   "parking": "Self-parking: surcharge applies (complimentary for Caesars Rewards Platinum tier or higher; locals first 3 hours free with NV licence). Valet: surcharge applies (same membership rule). Stated on the official booking page.",
+   "cancellation_deadline": null,
+   "rate_timestamp": "2026-11-19",
+   "source": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv",
+   "source_label": "Caesars official booking page attempted for the planning window, read 2026-11-19",
+   "verified": false,
+   "caveats": [
+    "Attempted 2026-11-19: the page displayed 'Sorry! Our website is currently experiencing technical difficulties.' with 'Searching Rates' and 'Select your dates to continue.' - no dated room list and no price for this window, so all price fields are blank (flag F75).",
+    "The same official page states the exact resort fee: 'Resort fees: $62.30 ($54.95 plus $7.35 tax). Resort fees are not assessed for Diamond and Seven Stars guests.' The hotel table still shows this fee blank (handoff logged for hotels.json, owned by PR #79; flag F09)."
+   ]
+  },
+  {
+   "hotel": "Horseshoe Las Vegas",
+   "room_type": "Flexible-dates booking engine (attempted; calendar only, no dated stay quote)",
+   "checkin": "2026-12-06",
+   "checkout": "2026-12-13",
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "checkout_total": null,
+   "nightly_average": null,
+   "room_rate_per_night": null,
+   "resort_fee_per_night": 49.95,
+   "resort_fee_total": null,
+   "tax_total": null,
+   "tax_note": "The booking page states the fee as '$56.63 ($49.95 plus $6.68 tax)'; no stay total was returned.",
+   "parking": "Self-parking: surcharge applies (complimentary for Caesars Rewards Platinum tier or higher; locals first 3 hours free with NV licence). Valet: surcharge applies (same membership rule). Stated on the official booking page.",
+   "cancellation_deadline": null,
+   "rate_timestamp": "2026-11-19",
+   "source": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=blv",
+   "source_label": "Horseshoe official booking page attempted for the planning window, read 2026-11-19",
+   "verified": false,
+   "caveats": [
+    "Attempted 2026-11-19 with explicit check-in/check-out dates: the engine redirected back to the flexible-dates calendar, showed 'Sorry! Our website is currently experiencing technical difficulties.' / 'Searching Rates', and returned no dated room list, so no stay quote exists (flag F75).",
+    "The flexible December 2026 calendar did show nightly figures (observed: Dec 6 $279, Dec 7 $229, Dec 8 $169, Dec 9 $149, Dec 10 $374, Dec 11 $499, Dec 12 $519, Dec 13 $56) under the legend 'Rates shown reflect the lowest available rate and include applicable resort fees. Pricing and availability may vary based on the length of stay.' - length-of-stay-dependent calendar figures are not a quote for this 7-night stay and are not totalled here.",
+    "The same official page states the exact resort fee: 'Resort fees: $56.63 ($49.95 plus $6.68 tax).' The hotel table still shows this fee blank (handoff logged for hotels.json, owned by PR #79; flag F09)."
    ]
   },
   {
