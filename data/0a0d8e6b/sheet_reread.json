@@ -1,0 +1,564 @@
+{
+ "session": "0a0d8e6b",
+ "retrieved": "2026-11-19",
+ "method": "Each sheet fetched from the official Venetian structure-sheet URL on 2026-11-19 and transcribed; the stored row fields are compared mechanically. Sheets not in SHEETS were not re-read in this session.",
+ "sheets_reread": [
+  1,
+  5,
+  6,
+  7,
+  11,
+  15,
+  16,
+  17,
+  18,
+  19,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  33,
+  34
+ ],
+ "sheets_not_reread": [
+  2,
+  3,
+  4,
+  8,
+  9,
+  10,
+  12,
+  13,
+  14,
+  20,
+  21,
+  32,
+  35,
+  36,
+  37
+ ],
+ "rows_compared": 53,
+ "field_mismatches": 0,
+ "mismatches": [],
+ "sheet_urls": {
+  "1": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+  "5": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
+  "6": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf",
+  "7": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
+  "11": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
+  "15": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
+  "16": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf",
+  "17": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+  "18": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
+  "19": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+  "22": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf",
+  "23": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
+  "24": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
+  "25": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+  "26": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf",
+  "27": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
+  "28": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf",
+  "29": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
+  "30": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf",
+  "31": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "33": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
+  "34": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf"
+ },
+ "sheets": {
+  "1": {
+   "title": "$200 No Limit Hold'em Bounty (1Day)",
+   "events": [
+    9,
+    11,
+    13,
+    15,
+    21,
+    22,
+    23,
+    25,
+    60,
+    61,
+    62,
+    64
+   ],
+   "start": {
+    "*": "5:10 PM"
+   },
+   "chips": 25000,
+   "level_min": 30,
+   "late_reg": "8 levels + Break (9:40 PM)",
+   "guarantee": 8000,
+   "buyin": 200,
+   "house_fee": 40,
+   "prize_pool": 160,
+   "bounty": "$50 per elimination",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "bounty"
+  },
+  "5": {
+   "title": "$300 No Limit Hold'em (1Day)",
+   "events": [
+    2,
+    12
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (~ 4:55 PM)",
+   "guarantee": 10000,
+   "buyin": 300,
+   "house_fee": 58,
+   "prize_pool": 242,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "6": {
+   "title": "$400 No Limit Hold'em (1Day)",
+   "events": [
+    10
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (~ 4:55 PM)",
+   "guarantee": 15000,
+   "buyin": 400,
+   "house_fee": 65,
+   "prize_pool": 335,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "7": {
+   "title": "$600 No Limit Hold'em (1Day)",
+   "events": [
+    14,
+    28,
+    63
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (~ 4:55 PM)",
+   "guarantee": null,
+   "gtd_by_event": {
+    "14": 30000,
+    "63": 30000,
+    "28": 40000
+   },
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "11": {
+   "title": "$600 No Limit Hold'em Bounty (1Day)",
+   "events": [
+    16,
+    30,
+    54
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (4:55 PM)",
+   "guarantee": null,
+   "gtd_by_event": {
+    "16": 30000,
+    "30": 40000,
+    "54": 50000
+   },
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": "$200 each elimination; $500 after money",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "bounty"
+  },
+  "15": {
+   "title": "$300 No Limit Hold'em Bounty (1Day)",
+   "events": [
+    29,
+    31,
+    34,
+    38,
+    42,
+    50,
+    51,
+    53,
+    55
+   ],
+   "start": {
+    "*": "5:10 PM"
+   },
+   "chips": 25000,
+   "level_min": 30,
+   "late_reg": "8 levels + Break (9:40 PM)",
+   "guarantee": 15000,
+   "buyin": 300,
+   "house_fee": 50,
+   "prize_pool": 250,
+   "bounty": "$100 per elimination",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "bounty"
+  },
+  "16": {
+   "title": "$800 No Limit Hold'em Bounty (1Day)",
+   "events": [
+    36
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (4:55 PM)",
+   "guarantee": 75000,
+   "buyin": 800,
+   "house_fee": 100,
+   "prize_pool": 700,
+   "bounty": "$200; $500 after money",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "bounty"
+  },
+  "17": {
+   "title": "$600 No Limit Hold'em Seniors (1Day), 50+ only",
+   "events": [
+    24,
+    32
+   ],
+   "start": {
+    "*": "10:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (~ 3:55 PM)",
+   "guarantee": 40000,
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "18": {
+   "title": "$200 No Limit Hold'em (1Day) RaceDay Stack",
+   "events": [
+    3,
+    4,
+    5
+   ],
+   "start": {
+    "*": "10:10 AM"
+   },
+   "chips": 30000,
+   "level_min": "20/15",
+   "late_reg": "6 levels + Break (~ 12:25 PM)",
+   "guarantee": null,
+   "buyin": 200,
+   "house_fee": 35,
+   "prize_pool": 165,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "19": {
+   "title": "$100 NLH LIPS Ladies (1Day), milestone satellite to Event #39",
+   "events": [
+    33,
+    37
+   ],
+   "start": {
+    "*": "4:10 PM"
+   },
+   "chips": 20000,
+   "level_min": 20,
+   "late_reg": "6 levels + Break (~ 6:25 PM)",
+   "guarantee": null,
+   "buyin": 100,
+   "house_fee": 20,
+   "prize_pool": 80,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "satellite",
+   "seats": "2 seats"
+  },
+  "22": {
+   "title": "$300 Pot Limit Omaha Double Board Bomb Pot (1Day)",
+   "events": [
+    20
+   ],
+   "start": {
+    "*": "12:10 PM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + break (~ 4:40 PM)",
+   "guarantee": 10000,
+   "buyin": 300,
+   "house_fee": 58,
+   "prize_pool": 242,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PLO"
+  },
+  "23": {
+   "title": "$600 Pot Limit Omaha Double Board Bomb Pot (1Day)",
+   "events": [
+    57
+   ],
+   "start": {
+    "*": "12:10 PM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + break (~ 4:40 PM)",
+   "guarantee": 25000,
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PLO"
+  },
+  "24": {
+   "title": "$260 No Limit Hold'em (1Day), milestone satellite to Event #47",
+   "events": [
+    41,
+    44
+   ],
+   "start": {
+    "*": "4:10 PM"
+   },
+   "chips": 20000,
+   "level_min": 20,
+   "late_reg": "6 levels + Break (~ 6:25 PM)",
+   "guarantee": null,
+   "buyin": 260,
+   "house_fee": 40,
+   "prize_pool": 220,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "satellite",
+   "seats": "2 seats"
+  },
+  "25": {
+   "title": "$260 No Limit Hold'em Turbo (1Day), milestone satellite to Event #47",
+   "events": [
+    45,
+    46,
+    48
+   ],
+   "start": {
+    "45": "8:10 PM",
+    "46": "9:10 AM",
+    "48": "12:10 PM"
+   },
+   "chips": 20000,
+   "level_min": 15,
+   "late_reg": "6 levels",
+   "guarantee": null,
+   "buyin": 260,
+   "house_fee": 35,
+   "prize_pool": 225,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "satellite",
+   "seats": "2 seats"
+  },
+  "26": {
+   "title": "$400 Pot Limit Omaha Bounty (1Day)",
+   "events": [
+    17
+   ],
+   "start": {
+    "*": "12:10 PM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + break (~ 4:40 PM)",
+   "guarantee": 15000,
+   "buyin": 400,
+   "house_fee": 60,
+   "prize_pool": 340,
+   "bounty": "$100 per elimination",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PLO"
+  },
+  "27": {
+   "title": "$600 Pot Limit Omaha Bounty (1Day)",
+   "events": [
+    40
+   ],
+   "start": {
+    "*": "12:10 PM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + break (~ 4:40 PM)",
+   "guarantee": 25000,
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": "$200 per elimination",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PLO"
+  },
+  "28": {
+   "title": "$600 BIG O (1Day)",
+   "events": [
+    27
+   ],
+   "start": {
+    "*": "12:10 PM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + break (~ 4:40 PM)",
+   "guarantee": 25000,
+   "buyin": 600,
+   "house_fee": 90,
+   "prize_pool": 510,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "BIG O"
+  },
+  "29": {
+   "title": "$200 No Limit Hold'em (1Day)",
+   "events": [
+    6
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 30000,
+   "level_min": 30,
+   "late_reg": "8 levels + Break (~ 3:40 PM)",
+   "guarantee": null,
+   "buyin": 200,
+   "house_fee": 40,
+   "prize_pool": 160,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "NLH"
+  },
+  "30": {
+   "title": "$200 No Limit Hold'em PKO Progressive Knock-Out Bounty (1Day)",
+   "events": [
+    8
+   ],
+   "start": {
+    "*": "5:10 PM"
+   },
+   "chips": 25000,
+   "level_min": 30,
+   "late_reg": "8 levels + Break (9:40 PM)",
+   "guarantee": 8000,
+   "buyin": 200,
+   "house_fee": 40,
+   "prize_pool": 160,
+   "bounty": "$50 start, progressive split",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PKO"
+  },
+  "31": {
+   "title": "$600 No Limit Hold'em LIPS Poker Jingle Tag Team (1Day)",
+   "events": [
+    35
+   ],
+   "start": {
+    "*": "10:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "8 levels + Break (~ 2:40 PM)",
+   "guarantee": 10000,
+   "buyin": 600,
+   "house_fee": 80,
+   "prize_pool": 510,
+   "bounty": null,
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "team",
+   "lips_flat_fee": 10,
+   "team_rule": "two-person teams rotate players every level; Female/Female or Female/Male"
+  },
+  "33": {
+   "title": "$600 No Limit Hold'em LIPS Kings and Queens Bounty (1Day)",
+   "events": [
+    43
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (4:55 PM)",
+   "guarantee": 30000,
+   "buyin": 600,
+   "house_fee": 80,
+   "prize_pool": 510,
+   "bounty": "$200 per elimination",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "bounty",
+   "lips_flat_fee": 10
+  },
+  "34": {
+   "title": "$1,100 No Limit Hold'em PKO Progressive Knock-Out Bounty (1Day)",
+   "events": [
+    52
+   ],
+   "start": {
+    "*": "11:10 AM"
+   },
+   "chips": 40000,
+   "level_min": 30,
+   "late_reg": "10 levels + Break (4:55 PM)",
+   "guarantee": 75000,
+   "buyin": 1100,
+   "house_fee": 130,
+   "prize_pool": 970,
+   "bounty": "$200 start, progressive split",
+   "entry_sentences": [],
+   "tda_reference": true,
+   "format": "PKO"
+  }
+ }
+}

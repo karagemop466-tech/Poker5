@@ -12,7 +12,7 @@ Effects on data/ea99006a/wpt.json:
   * 'unread' rows: source now points to the schedule that supports their values (the structures
     PDF the row previously cited does not contain their terms); entry_rule stays 'unread'
   * flagged schedule/structure conflicts get flag_ref
-Effects on data/ea99006a/flags.json: adds F56-F58.
+Effects on data/ea99006a/flags.json: adds F58-F60 (F56 and F57 belong to session 0a0d8e6b on main).
 Idempotent: re-running produces the same files.
 """
 import json
@@ -28,10 +28,10 @@ SCHED = "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_fil
 READ = "2026-11-19"
 
 CONFLICT_FLAG = {
-    ("2026-11-30", "13:00", "No Limit Hold'em Day 2"): "F56",
-    ("2026-12-03", "13:00", "No Limit Hold'em Day 2"): "F56",
-    ("2026-12-05", "11:00", "No Limit Hold'em Day 2"): "F56",
-    ("2026-12-21", "20:00", "NLH Turbo"): "F57",
+    ("2026-11-30", "13:00", "No Limit Hold'em Day 2"): "F58",
+    ("2026-12-03", "13:00", "No Limit Hold'em Day 2"): "F58",
+    ("2026-12-05", "11:00", "No Limit Hold'em Day 2"): "F58",
+    ("2026-12-21", "20:00", "NLH Turbo"): "F59",
 }
 
 
@@ -75,17 +75,17 @@ def main():
     dump(WPT, rows)
 
     flags = json.loads(FLAGS.read_text(encoding="utf-8"))
-    flags = [f for f in flags if f["id"] not in ("F56", "F57", "F58")]
+    flags = [f for f in flags if f["id"] not in ("F58", "F59", "F60")]
     flags += [
-        {"id": "F56", "area": "Source defect",
+        {"id": "F58", "area": "Source defect",
          "title": "WPT Day 2 dates: the official schedule and the structures PDF disagree",
          "detail": "Structures PDF: the $800 No Limit Hold'em Day 2 is Thu Dec 3 at 1 p.m. (the schedule prints Mon Nov 30 1 p.m.); the $1,600 No Limit Hold'em Day 2 is Sat Dec 5 at 11 a.m. (the schedule prints Thu Dec 3 1 p.m.). The schedule's Sat Dec 5 11 a.m. 'No Limit Hold'em Day 2' line carries $1,100 / $5,000,000, which matches neither event. Rows 2026-11-30 13:00, 2026-12-03 13:00 and 2026-12-05 11:00 keep the schedule's date and buy-in, so their date is not confirmed by the structures PDF. Ask the Wynn poker desk which date is correct before planning a Day 2.",
          "source": SCHED, "status": "new (98087225); needs review", "last_updated": READ},
-        {"id": "F57", "area": "Source defect",
+        {"id": "F59", "area": "Source defect",
          "title": "WPT NLH Turbo on Mon Dec 21: 6 p.m. in the structures PDF, 8 p.m. in the schedule",
          "detail": "The structures PDF lists the Monday Dec 21 NLH Turbo at 6 p.m.; the official schedule lists 8 p.m. The row keeps the schedule time (20:00). Confirm before relying on it.",
          "source": SCHED, "status": "new (98087225); needs review", "last_updated": READ},
-        {"id": "F58", "area": "Coverage",
+        {"id": "F60", "area": "Coverage",
          "title": "91 WPT schedule lines have no entry terms in the document the site cited for them",
          "detail": "All 136 WPT rows match the official schedule on date, start time and buy-in, and on guarantee where the schedule prints one (see data/98087225/wpt_schedule_check.json). The structures PDF (read in full on %s) contains terms for 13 events only, and 45 site rows match them (re-entry granted, so classified multi). The other 91 lines (Milestone satellites, Super Gold Million Mystery Bounty, Seniors, Ladies, High Roller, Big O, PLO 6-Max, the Dec 18 NLH and NLH Turbo variants and similar) are not in it. Their rows previously cited that PDF; they now cite the schedule, and their entry terms remain unread and unverified. The schedule says 'See structure sheet for details'; those sheets were not located." % READ,
          "source": STRUCT, "status": "new (98087225); needs review", "last_updated": READ},

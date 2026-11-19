@@ -383,7 +383,7 @@
   "rule_read_on": "2026-11-19",
   "rule_source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
   "parent_event_rule": true,
-  "flag_ref": "F56"
+  "flag_ref": "F58"
  },
  {
   "venue": "Wynn Las Vegas",
@@ -673,7 +673,7 @@
   "rule_read_on": "2026-11-19",
   "rule_source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
   "parent_event_rule": true,
-  "flag_ref": "F56"
+  "flag_ref": "F58"
  },
  {
   "venue": "Wynn Las Vegas",
@@ -866,7 +866,7 @@
   "rule_read_on": "2026-11-19",
   "rule_source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
   "parent_event_rule": true,
-  "flag_ref": "F56"
+  "flag_ref": "F58"
  },
  {
   "venue": "Wynn Las Vegas",
@@ -4271,6 +4271,6 @@
   "schedule_check": "Date, start time, buy-in and printed guarantee matched the official Wynn WPT schedule (read 2026-11-19).",
   "rule_read_on": "2026-11-19",
   "rule_source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "flag_ref": "F57"
+  "flag_ref": "F59"
  }
 ]
