@@ -1,5 +1,20 @@
 # Coordination - Poker5
 
+## Session 9eb12353 (active) — repair legacy re-entry classifier
+
+**Branch:** `arena/9eb12353-poker5` (Arena-fixed; based on `main` at `998a32d2`). The canonical `ea99006a` publisher already treats events #18 and #58 as multi-entry, but the legacy `c6087e2c` capture merge still labels them `single_entry_confirmed` because it trusts only the parser boolean `adds_a_second_entry`. This is a narrow data-quality repair; do not touch the canonical root site or unrelated active-session scopes.
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| L1 | in progress | 9eb12353 | `COORDINATION.md`, `scripts/merge_251c122f.py`, `scripts/crosscheck_251c122f.py`, `test/research.test.mjs`, and regenerated `data/c6087e2c/events_verified.json` only |
+
+**Evidence basis:** the checked-in official Venetian structure sheet 8 capture in `data/c6087e2c/structures.json` (source URL recorded in the row) contains rule 07: “All subsequent buy in's after the initial buy in will be $200.” The same event-specific evidence is documented in F47 and the canonical `ea99006a` data. I will make no new live-source or hotel/tournament-value claims; re-derive only this verdict from the existing captured rule text and preserve its capture timestamp/source.
+
+
+
+
+---
+
 ## Current branch session — 96160d8f (active) — line-by-line official-source verification + gap close
 
 **Branch:** `arena/96160d8f-poker5` (fixed by Arena), based on `main` @ `998a32d`. Scope claimed before any data edit:
