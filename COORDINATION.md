@@ -6,7 +6,7 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Branch:** `arena/2b98a91f-poker5` (fixed by Arena). **Scope:** reconcile repository-facing documentation with the canonical published site and current data, verify this branch's baseline checks, and record any remaining evidence/operational limitations. No tournament or hotel facts will be added or upgraded without a fresh official-source check.
 
-**Files:** `COORDINATION.md`, `README.md`, `EXECUTIVE_SUMMARY.md`; narrowly scoped correction to the stale entry-rule statements in `data/ea99006a/flags.json` and `data/ea99006a/questions.json`, with `scripts/build_ea99006a.py`-generated root outputs (`index.html`, `pages/*.html`) regenerated. No tournament/hotel values, source records, workflows, or other data will be changed. Other generated/site/data/workflow files are out of scope.
+**Files:** `COORDINATION.md`, `README.md`, `EXECUTIVE_SUMMARY.md`; narrowly scoped correction to stale scenario and entry-rule statements in `data/ea99006a/flags.json` (F01) and `data/ea99006a/questions.json` (Q01/Q02), with `scripts/build_ea99006a.py`-generated root outputs (`index.html`, `pages/*.html`) regenerated. No tournament/hotel values, source records, workflows, or other data will be changed. Other generated/site/data/workflow files are out of scope.
 
 | Task | Status | Owner | Files |
 |---|---|---|---|
