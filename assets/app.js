@@ -3,25 +3,52 @@
 function qsa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function norm(s){return (s||'').toLowerCase();}
 
+/* Searchable text of a row. The folded evidence block is skipped on purpose: it is full of
+   negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a row
+   merely because the sentence denying it is attached to it. The block stays readable, not searchable. */
+function searchText(tr){
+  var cached=tr.getAttribute('data-search');
+  if(cached!==null && cached!=='') return cached;
+  var t='';
+  for(var i=0;i<tr.children.length;i++){
+    var td=tr.children[i], bits=[];
+    for(var j=0;j<td.childNodes.length;j++){
+      var n=td.childNodes[j];
+      if(n.nodeType===1 && n.hasAttribute && n.hasAttribute('data-no-search')) continue;
+      bits.push(n.textContent);
+    }
+    t+=' '+bits.join(' ');
+  }
+  return t.toLowerCase();
+}
+
 function initTable(id){
   var t=document.getElementById(id); if(!t) return;
   var rows=qsa('tbody tr',t);
   var q=document.getElementById('q'), from=document.getElementById('dfrom'),
       to=document.getElementById('dto'), ven=document.getElementById('fvenue'),
       se=document.getElementById('fse'), en=document.getElementById('fentry'),
+      day=document.getElementById('fday'), rule=document.getElementById('frule'),
+      rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
-        v=ven?ven.value:'', s=se?se.checked:false, e=en?en.checked:false, shown=0;
+        v=ven?ven.value:'', s=se?se.checked:false, e=en?en.checked:false, shown=0,
+        dy=day?day.value:'', rl=rule?rule.value:'',
+        rk=rank&&rank.checked, cg=chg&&chg.checked;
     rows.forEach(function(tr){
       var d=tr.getAttribute('data-date')||'';
       var ok=true;
-      if(needle && norm(tr.getAttribute('data-search')).indexOf(needle)<0) ok=false;
+      if(needle && norm(searchText(tr)).indexOf(needle)<0) ok=false;
       if(ok && f && d && d<f) ok=false;
       if(ok && t2 && d && d>t2) ok=false;
+      if(ok && dy && d!==dy) ok=false;
       if(ok && v && tr.getAttribute('data-venue')!==v) ok=false;
-      if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+      if(ok && rl && tr.getAttribute('data-rule')!==rl) ok=false;
+      if(ok && s && tr.getAttribute('data-rule')!=='unknown' && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
       if(ok && e && tr.getAttribute('data-kind')!=='entry') ok=false;
+      if(ok && rk && tr.getAttribute('data-rankable')!=='1') ok=false;
+      if(ok && cg && tr.getAttribute('data-changed')!=='1') ok=false;
       tr.style.display=ok?'':'none'; if(ok) shown++;
     });
     if(cnt) cnt.textContent=shown+' of '+rows.length+' rows';
@@ -30,11 +57,14 @@ function initTable(id){
   if(q) q.addEventListener('input',apply);
   [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
   if(ven) ven.addEventListener('change',apply);
-  [se,en].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [se,en,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
   var rst=document.getElementById('reset');
   if(rst) rst.addEventListener('click',function(){
     if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
-    if(se)se.checked=false; if(en)en.checked=false; apply();});
+    if(day)day.value=''; if(rule)rule.value='';
+    if(se)se.checked=false; if(en)en.checked=false; if(rank)rank.checked=false; if(chg)chg.checked=false;
+    apply();});
   qsa('thead th',t).forEach(function(th,i){
     th.addEventListener('click',function(){
       var tb=t.tBodies[0], arr=qsa('tr',tb);
@@ -120,37 +150,104 @@ function initHotels(){
   });
 }
 
+/* ---- day schedule: the bar above the cards filters CARDS, not a table ---- */
+function initDays(){
+  var nav=document.getElementById('daynav'); if(!nav) return;
+  var cards=qsa('.daycard');
+  var q=document.getElementById('q'), from=document.getElementById('dfrom'), to=document.getElementById('dto'),
+      ven=document.getElementById('fvenue'), rule=document.getElementById('frule'),
+      se=document.getElementById('fse'), rank=document.getElementById('frank'),
+      chg=document.getElementById('fchanged'), win=document.getElementById('winonly');
+  var picked='';
+  function apply(){
+    var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
+        v=ven?ven.value:'', rl=rule?rule.value:'', s=se&&se.checked,
+        rk=rank&&rank.checked, cg=chg&&chg.checked, only=win&&win.checked, shown=0;
+    cards.forEach(function(c){
+      var d=c.getAttribute('data-date')||'';
+      var ok=true;
+      if(only && c.getAttribute('data-outside')) ok=false;
+      if(ok && picked && d!==picked) ok=false;
+      if(ok && f && d<f) ok=false;
+      if(ok && t2 && d>t2) ok=false;
+      var rows=0;
+      qsa('tbody tr',c).forEach(function(tr){
+        var rok=true;
+        if(needle && norm(tr.getAttribute('data-search')||'').indexOf(needle)<0) rok=false;
+        if(rok && v && tr.getAttribute('data-venue')!==v) rok=false;
+        if(rok && rl && tr.getAttribute('data-rule')!==rl) rok=false;
+        if(rok && s && tr.getAttribute('data-rule')!=='confirmed_single') rok=false;
+        if(rok && rk && tr.getAttribute('data-rankable')!=='1') rok=false;
+        if(rok && cg && tr.getAttribute('data-changed')!=='1') rok=false;
+        tr.style.display=rok?'':'none'; if(rok) rows++;
+      });
+      if(ok && (needle||v||rl||s||rk||cg) && rows===0) ok=false;
+      c.style.display=ok?'':'none'; if(ok) shown++;
+    });
+    qsa('[data-day]',nav).forEach(function(bt){
+      bt.className='btn tiny'+((bt.getAttribute('data-day')||'')===picked?' active':'');});
+    var cnt=document.getElementById('count');
+    if(cnt) cnt.textContent=shown+' of '+cards.length+' days';
+  }
+  nav.addEventListener('click',function(e){
+    var bt=e.target.closest?e.target.closest('[data-day]'):null; if(!bt) return;
+    picked=bt.getAttribute('data-day')||'';
+    var dp=document.getElementById('fday'); if(dp) dp.value=picked;
+    apply();});
+  var dp=document.getElementById('fday');
+  if(dp) dp.addEventListener('change',function(){picked=dp.value; apply();});
+  [q,from,to,ven,rule,se,rank,chg,win].forEach(function(el){
+    if(el) el.addEventListener(el.type==='search'||el.type==='text'?'input':'change',apply);});
+  apply();
+}
+
+/* ---- hotels: the brief's budget ceiling and quality floor, applied to the itemized table ---- */
+function initHotels2(){
+  var ceil=document.getElementById('bceil'), fl=document.getElementById('bfloor'),
+      tbl=document.getElementById('hitems'), sel=document.getElementById('hsearch'),
+      out=document.getElementById('bcost');
+  if(!tbl) return;
+  function apply(){
+    var c=parseFloat((ceil&&ceil.value||'').replace(/[^0-9.\-]/g,'')), f=fl?fl.value:'', w=sel?sel.value:'', n=0;
+    var all=qsa('tbody tr',tbl);
+    all.forEach(function(tr){
+      var ok=true, v=tr.getAttribute('data-ceil')||'';
+      if(w && norm(tr.children[0].textContent).indexOf(norm(w))<0) ok=false;
+      if(ok && f && tr.getAttribute('data-tier')!==f) ok=false;
+      /* a hotel with no official rate can never be proven inside a budget: when a ceiling is set it
+         is hidden, never assumed to fit */
+      if(ok && !isNaN(c)){ if(v===''){ ok=false; } else if(parseFloat(v)>c){ ok=false; } }
+      tr.style.display=ok?'':'none'; if(ok) n++;
+    });
+    if(out) out.textContent=n+' of '+all.length+' hotels match'+(isNaN(c)?'':' a ceiling of $'+c.toFixed(2))+
+      (f?' and the '+f+' quality floor':'')+'. Hotels with no official nightly rate cannot be proven '
+      'inside a ceiling, so they are hidden while one is set.';
+  }
+  [ceil,sel].forEach(function(el){if(el) el.addEventListener('input',apply);});
+  if(fl) fl.addEventListener('change',apply);
+  apply();
+}
+
 /* ---- trip planner ---- */
 function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
   function total(){
-    var buy=0,entries=0,hasInvalidBuyin=false;
+    var buy=0,n=0;
     qsa('input[type=checkbox][data-buyin]',box).forEach(function(c){
-      if(!c.checked) return;
-      var b=Number(c.getAttribute('data-buyin'));
-      if(!Number.isFinite(b)||b<=0){hasInvalidBuyin=true;return;}
-      buy+=b; entries++;
-    });
-    var rateField=document.getElementById('ptrue');
-    var nightsField=document.getElementById('pnights');
-    var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
-    var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
-    var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
-    var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
-    var hotelTotal=hotelComplete?hotel*nights:null;
-    var grandTotal=tripComplete?buy+hotelTotal:null;
-    if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
-      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
-      ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
-      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
-      '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
-      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
-      (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
-      (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
+      if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
+      var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
+      buy+=b*times; n+=times;});
+    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
+    var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
+    var h=hotel*nights, t=buy+h;
+    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
+      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
+      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
+      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
   }
   box.addEventListener('change',total);
-  ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
+  ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }
 
@@ -170,5 +267,5 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  initHotels(); initPlanner(); initSuggestions();
+  initTable('tbl'); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });
