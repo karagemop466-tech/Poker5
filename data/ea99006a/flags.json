@@ -61,9 +61,11 @@
  {
   "id": "F09",
   "area": "Hotels",
-  "title": "Caesars Palace and Horseshoe resort fees not verified",
-  "detail": "The official resort-fee URLs redirect to the hotel landing pages and do not state a fee. Fields left blank.",
-  "source": "https://www.caesars.com/caesars-palace/hotel"
+  "title": "Caesars Palace and Horseshoe resort fees: exact figures found on the official booking pages (hotel table not yet updated)",
+  "detail": "Updated 2026-11-19 (session 45556d36): the official Caesars booking pages state the fees directly - Caesars Palace: 'Resort fees: $62.30 ($54.95 plus $7.35 tax).'; Horseshoe: 'Resort fees: $56.63 ($49.95 plus $6.68 tax).', both read on each property's official booking page. The earlier redirect-only finding is superseded. The hotel table in data/ea99006a/hotels.json still shows these fees blank; that file is owned by session 96160d8f's open PR #79, so the figures are logged here and in COORDINATION.md as a handoff instead of being written across an open pull request.",
+  "source": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv",
+  "status": "open: figures verified on official pages 2026-11-19; hotel table handoff pending",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F10",
@@ -100,10 +102,10 @@
  {
   "id": "F14",
   "area": "Hotels",
-  "title": "No official page publishes a dated nightly rate for the trip dates",
-  "detail": "The only numeric room rate any Strip property publishes is the Venetian poker suite rate, '$119 and $209' starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The 2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports 'Incomplete' until a dated quote is recorded.",
+  "title": "Dated nightly rate for the trip dates: Wynn yes; Venetian and Caesars engines returned none",
+  "detail": "Updated 2026-11-19 (session 45556d36): the Wynn booking engine returned stay-matched averages for 6-13 Dec 2026 (Wynn Resort King $688/night, resort fee included, tax excluded; 9 room types listed), captured in the dated rate log; the trip planner prefills its true nightly cost from that capture (688.00 x 1.1338 = 780.05, labelled as computed, not an engine total). The Venetian booking calendar still renders '$XXX' placeholders for the same dates and the Caesars Palace/Horseshoe engines reported technical difficulties, so no other window-matched rate exists. The Venetian poker-suite '$119 / $209' floor remains the only Venetian number and is conditional, not a quote. All other rate cells stay blank on purpose.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
-  "status": "open",
+  "status": "partially resolved: Wynn window quote captured 2026-11-19",
   "last_updated": "2026-11-19"
  },
  {
@@ -231,7 +233,7 @@
   "id": "F32",
   "area": "Hotels",
   "title": "Dated stay captures are sparse and not like-for-like",
-  "detail": "Only two dated booking-engine stay snapshots (Venetian Dec 2-9 and Dec 13-20) and one dated poker-suite-rate observation exist, each with a different occupancy (2 adults vs 1 adult) and different stay windows. Checkout totals, nightly averages, tax amounts and cancellation deadlines are blank wherever the booking UI did not return them (Wynn returned no tax-inclusive total at all). No hotel ranking is published from these, and the trip planner stays Incomplete without a date-specific quote.",
+  "detail": "Updated 2026-11-19 (session 45556d36): the log now holds dated booking-engine snapshots for Venetian and Wynn (Dec 2-9 and Dec 13-20 windows, 2 adults), a Venetian and a Wynn window-matched capture attempt for the planning window 6-13 Dec (only the Wynn one returned prices), attempt records for Resorts World, Caesars Palace and Horseshoe, and one dated poker-suite-rate observation. Only the 6-13 Dec Wynn capture matches the planning window exactly; the others differ in stay window or returned no prices, so they are still not interchangeable. Checkout totals, nightly averages, tax amounts and cancellation deadlines stay blank wherever the booking UI did not return them. No hotel ranking is drawn from mixed windows; the trip planner uses only the window-matched Wynn capture and stays Incomplete for every other hotel.",
   "source": "https://github.com/karagemop466-tech/Poker5/blob/main/data/ea99006a/rate_snapshots.json"
  },
  {
@@ -498,5 +500,23 @@
   "status": "open",
   "last_updated": "2026-11-19",
   "id": "F73"
+ },
+ {
+  "id": "F74",
+  "area": "Hotels",
+  "title": "Wynn Fall-offer cancellation deadline conflicts between two official pages (72 h vs 48 h)",
+  "detail": "For the offer the booking engine shows for 6-13 Dec 2026 ('Your Fall to Have It All'), the engine states 'Cancel 72 hours prior to arrival to avoid penalty of one night's room rate and tax', while the offer's own linked terms state 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited' (with a one-night room-and-tax deposit charged at booking). Both pages were read on 2026-11-19. The discrepancy is recorded on the dated capture, not resolved: confirm the binding deadline with the hotel before booking. Distinct from F55, which corrected a stored 72-hour claim about a different offer (DK26WLV2) whose live terms say 48 hours.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/2026-seasonal-fall-offer-public",
+  "status": "open: conflicting official statements on the same offer",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F75",
+  "area": "Hotels",
+  "title": "Window-dated quote attempts on 2026-11-19: only Wynn returned stay rates",
+  "detail": "For the planning window 2026-12-06 to 2026-12-13 (7 nights, 2 adults, 1 room), read from each property's own official booking engine on 2026-11-19: Wynn returned per-room averages for the exact stay; the Venetian calendar rendered '$XXX' placeholders (JavaScript-loaded prices); the Caesars Palace and Horseshoe engines displayed 'technical difficulties' / 'Searching Rates' with no dated room list (a date-parameterised attempt redirected back to the flexible calendar); the Resorts World calendar showed December nightly figures but with two contradictory legends ('excludes daily resort fee and taxes' and 'includes $55 daily resort fee and excludes taxes'), a 'The rate is not available' message, and no stay total. Price fields for those properties stay blank on purpose - no total is computed from calendar figures. Caesars Palace and Horseshoe booking pages do state exact resort fees ($62.30 and $56.63 including their tax); see F09 for the handoff to the hotel table.",
+  "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=12/06/2026&checkout=12/13/2026&nights=7&adults=2&children=0",
+  "status": "open: window-matched quotes missing for 4 of 5 shortlist hotels",
+  "last_updated": "2026-11-19"
  }
 ]
