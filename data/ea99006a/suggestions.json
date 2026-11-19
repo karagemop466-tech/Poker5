@@ -130,5 +130,27 @@
    "Add a banner to each archive page pointing at the root site as the source of truth"
   ],
   "effect": "Reduces reader confusion when an archived page shows an older verdict count."
+ },
+ {
+  "title": "Publish one root-site generator (done here) and retire the second one",
+  "problem": "Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
+  "options": [
+   "One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
+   "Give each session its own subdirectory and never let a scheduled job write the root",
+   "Freeze the scheduled rebuilds entirely and rebuild only by hand"
+  ],
+  "effect": "The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.",
+  "id": "S13"
+ },
+ {
+  "title": "Keep value-level monitoring, drop hash-level alarmism",
+  "problem": "Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
+  "options": [
+   "Compare extracted official sentences per value (implemented)",
+   "Keep page hashes but label them informational (kept)",
+   "Diff rendered text with a normalisation pass before hashing (future)"
+  ],
+  "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
+  "id": "S14"
  }
 ]

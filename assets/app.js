@@ -5,6 +5,25 @@
 function qsa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function norm(s){return (s||'').toLowerCase();}
 
+function searchText(tr){
+  /* Searchable text of a row. Folded evidence blocks are skipped on purpose: they are full of
+     negated excerpts ("no re-entry sentence appears"), so searching 're-entry' must not match a
+     row merely because the sentence denying it is attached to it. */
+  var cached=tr.getAttribute('data-search');
+  if(cached!==null && cached!=='') return cached;
+  var t='';
+  for(var i=0;i<tr.children.length;i++){
+    var td=tr.children[i], bits=[];
+    for(var j=0;j<td.childNodes.length;j++){
+      var n=td.childNodes[j];
+      if(n.nodeType===1 && n.hasAttribute && n.hasAttribute('data-no-search')) continue;
+      bits.push(n.textContent);
+    }
+    t+=' '+bits.join(' ');
+  }
+  return t.toLowerCase();
+}
+
 var poker5Bound=false;
 function initFilters(){
   if(poker5Bound) return; poker5Bound=true;
@@ -13,6 +32,8 @@ function initFilters(){
       se=document.getElementById('fse'), mu=document.getElementById('fsemulti'),
       en=document.getElementById('fentry'), walk=document.getElementById('walkfilter'),
       budget=document.getElementById('pbudget'), quality=document.getElementById('pquality'),
+      day=document.getElementById('fday'), rule=document.getElementById('frule'),
+      rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
   var tables=qsa('table.data');
   var TIER_RANK={"Deluxe":1,"Luxury":2};
@@ -23,6 +44,8 @@ function initFilters(){
         w=walk?walk.checked:false,
         b=budget&&budget.value!==''?parseFloat(budget.value):null,
         pmin=quality?parseInt(quality.value||'0',10):0,
+        dy=day?day.value:'', rl=rule?rule.value:'',
+        rk=rank&&rank.checked, cg=chg&&chg.checked,
         shown=0,total=0;
     tables.forEach(function(t){
       qsa('tbody tr',t).forEach(function(tr){
@@ -33,15 +56,19 @@ function initFilters(){
         var ok=true;
         if(needle){
           var txt=tr.getAttribute('data-search');
-          txt=norm(txt!==null&&txt!==undefined?txt:tr.textContent);
+          txt=norm(txt!==null&&txt!==undefined?txt:searchText(tr));
           if(txt.indexOf(needle)<0) ok=false;
         }
         if(ok&&f&&d&&d<f) ok=false;
         if(ok&&t2&&d&&d>t2) ok=false;
+        if(ok&&dy&&d&&d!==dy) ok=false;
         if(ok&&v&&tr.getAttribute('data-venue')!==v) ok=false;
+        if(ok&&rl&&rule&&rule!==rl) ok=false;
         if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
         if(ok&&m2&&rule==='multi') ok=false;
         if(ok&&e&&kind&&kind!=='entry') ok=false;
+        if(ok&&rk&&tr.getAttribute('data-rankable')!=='1') ok=false;
+        if(ok&&cg&&tr.getAttribute('data-changed')!=='1') ok=false;
         if(ok&&w){
           /* Hide only pairs that are known to exceed 30 minutes. Rows with no
              verified minutes stay visible and stay marked unverified. */
@@ -62,14 +89,16 @@ function initFilters(){
     if(empty) empty.hidden=!(shown===0&&total>0);
   }
   if(q) q.addEventListener('input',apply);
-  [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [from,to,day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
   if(ven) ven.addEventListener('change',apply);
-  [se,mu,en,walk].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [se,mu,en,walk,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
   [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
   var rst=document.getElementById('reset');
   if(rst) rst.addEventListener('click',function(){
     if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
+    if(day)day.value=''; if(rule)rule.value='';
     if(se)se.checked=false; if(mu)mu.checked=false; if(en)en.checked=false;
+    if(rank)rank.checked=false; if(chg)chg.checked=false;
     if(walk)walk.checked=false; if(budget)budget.value=''; if(quality)quality.value='';
     apply();});
   /* click-to-sort per table */
@@ -162,6 +191,84 @@ function initHotels(){
   });
 }
 
+/* ---- day schedule: the bar above the cards filters CARDS, not a table ---- */
+function initDays(){
+  var nav=document.getElementById('daynav'); if(!nav) return;
+  var cards=qsa('.daycard');
+  var q=document.getElementById('q'), from=document.getElementById('dfrom'), to=document.getElementById('dto'),
+      ven=document.getElementById('fvenue'), rule=document.getElementById('frule'),
+      se=document.getElementById('fse'), rank=document.getElementById('frank'),
+      chg=document.getElementById('fchanged'), win=document.getElementById('winonly');
+  var picked='';
+  function apply(){
+    var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
+        v=ven?ven.value:'', rl=rule?rule.value:'', s=se&&se.checked,
+        rk=rank&&rank.checked, cg=chg&&chg.checked, only=win&&win.checked, shown=0;
+    cards.forEach(function(c){
+      var d=c.getAttribute('data-date')||'';
+      var ok=true;
+      if(only && c.getAttribute('data-outside')) ok=false;
+      if(ok && picked && d!==picked) ok=false;
+      if(ok && f && d<f) ok=false;
+      if(ok && t2 && d>t2) ok=false;
+      var rows=0;
+      qsa('tbody tr',c).forEach(function(tr){
+        var rok=true;
+        if(needle && norm(tr.getAttribute('data-search')||'').indexOf(needle)<0) rok=false;
+        if(rok && v && tr.getAttribute('data-venue')!==v) rok=false;
+        if(rok && rl && tr.getAttribute('data-rule')!==rl) rok=false;
+        if(rok && s && tr.getAttribute('data-rule')!=='confirmed_single') rok=false;
+        if(rok && rk && tr.getAttribute('data-rankable')!=='1') rok=false;
+        if(rok && cg && tr.getAttribute('data-changed')!=='1') rok=false;
+        tr.style.display=rok?'':'none'; if(rok) rows++;
+      });
+      if(ok && (needle||v||rl||s||rk||cg) && rows===0) ok=false;
+      c.style.display=ok?'':'none'; if(ok) shown++;
+    });
+    qsa('[data-day]',nav).forEach(function(bt){
+      bt.className='btn tiny'+((bt.getAttribute('data-day')||'')===picked?' active':'');});
+    var cnt=document.getElementById('count');
+    if(cnt) cnt.textContent=shown+' of '+cards.length+' days';
+  }
+  nav.addEventListener('click',function(e){
+    var bt=e.target.closest?e.target.closest('[data-day]'):null; if(!bt) return;
+    picked=bt.getAttribute('data-day')||'';
+    var dp=document.getElementById('fday'); if(dp) dp.value=picked;
+    apply();});
+  var dp=document.getElementById('fday');
+  if(dp) dp.addEventListener('change',function(){picked=dp.value; apply();});
+  [q,from,to,ven,rule,se,rank,chg,win].forEach(function(el){
+    if(el) el.addEventListener(el.type==='search'||el.type==='text'?'input':'change',apply);});
+  apply();
+}
+
+/* ---- hotels: the brief's budget ceiling and quality floor, applied to the itemized table ---- */
+function initHotels2(){
+  var ceil=document.getElementById('bceil'), fl=document.getElementById('bfloor'),
+      tbl=document.getElementById('hitems'), sel=document.getElementById('hsearch'),
+      out=document.getElementById('bcost');
+  if(!tbl) return;
+  function apply(){
+    var c=parseFloat((ceil&&ceil.value||'').replace(/[^0-9.\-]/g,'')), f=fl?fl.value:'', w=sel?sel.value:'', n=0;
+    var all=qsa('tbody tr',tbl);
+    all.forEach(function(tr){
+      var ok=true, v=tr.getAttribute('data-ceil')||'';
+      if(w && norm(tr.children[0].textContent).indexOf(norm(w))<0) ok=false;
+      if(ok && f && tr.getAttribute('data-tier')!==f) ok=false;
+      /* a hotel with no official rate can never be proven inside a budget: when a ceiling is set it
+         is hidden, never assumed to fit */
+      if(ok && !isNaN(c)){ if(v===''){ ok=false; } else if(parseFloat(v)>c){ ok=false; } }
+      tr.style.display=ok?'':'none'; if(ok) n++;
+    });
+    if(out) out.textContent=n+' of '+all.length+' hotels match'+(isNaN(c)?'':' a ceiling of $'+c.toFixed(2))+
+      (f?' and the '+f+' quality floor':'')+'. Hotels with no official nightly rate cannot be proven '
+      'inside a ceiling, so they are hidden while one is set.';
+  }
+  [ceil,sel].forEach(function(el){if(el) el.addEventListener('input',apply);});
+  if(fl) fl.addEventListener('change',apply);
+  apply();
+}
+
 /* ---- trip planner ---- */
 function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
@@ -212,5 +319,5 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  initFilters(); initHotels(); initPlanner(); initSuggestions();
+  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });

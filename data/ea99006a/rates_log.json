@@ -1,0 +1,55 @@
+[
+ {
+  "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
+  "hotel_key": "venetian",
+  "observed_on": "2026-11-19",
+  "kind": "published starting rate, not a dated quote",
+  "nightly_low": 119.0,
+  "nightly_high": 209.0,
+  "currency": "USD",
+  "resort_fee_per_night": 55.0,
+  "tax_rate_pct": 13.38,
+  "true_nightly_low": 197.28,
+  "true_nightly_high": 299.32,
+  "room_type": "Luxury King Suite, single/double occupancy",
+  "occupancy": "2 adults, 1 room",
+  "condition": "During your stay, you will be required to play six hours of active live cash gameplay or buy in to a $300 or higher tournament for each night stayed ... prior to 2 a.m. the last night stayed. For any nights you fail to complete these requirements, your nightly suite rate will be adjusted to the prevailing rate.",
+  "caveats": [
+   "'start as low as $119 and $209 and can be higher' - a published floor, not a price for 6-13 December 2026.",
+   "Qualifying play is a condition of the rate, and it can only be booked by phone with code EPOKR25.",
+   "The suite-rate page states the resort fee as '$55 resort fee per night stayed' without the words 'plus tax'; the resort-fee page states '$55 plus tax per night'. The tax treatment is flagged (F45), not assumed."
+  ],
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "source_label": "official Venetian poker suite-rates page",
+  "checkout_total": null,
+  "nightly_average": null,
+  "parking": null,
+  "cancellation_deadline": null
+ },
+ {
+  "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
+  "hotel_key": "venetian",
+  "observed_on": "2026-11-16",
+  "kind": "booking-engine snapshot, 7 nights",
+  "checkin": "2026-12-02",
+  "checkout": "2026-12-09",
+  "nights": 7,
+  "checkout_total": 7054.77,
+  "nightly_average": 1007.82,
+  "resort_fee_per_night": 55.0,
+  "resort_fee_total": 385.0,
+  "tax_total": 832.52,
+  "room_type": "Newly remodeled Luxury King Suite",
+  "occupancy": "2 adults, 1 room",
+  "caveats": [
+   "Captured by an earlier session from the official booking UI on 2026-11-16; the booking engine is a JavaScript application and could not be re-read from the agent sandbox, so this stays a dated snapshot and is not presented as a current quote.",
+   "Nightly average = checkout total / nights (arithmetic on the official total), not a printed per-night rate.",
+   "Different dates (Dec 2-9) than the recommended window (Dec 6-13)."
+  ],
+  "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
+  "source_label": "Venetian official booking UI (2026-11-16 snapshot)",
+  "verified": false,
+  "cancellation_deadline": null,
+  "parking": null
+ }
+]

@@ -1,10 +1,10 @@
 [
  {
   "id": "Q01",
-  "q": "What are your exact trip dates and your nightly budget / quality floor?",
-  "have": "A default window of 6-13 December 2026 is set and every page follows it. It was chosen to sit inside both verified Strip series and to maximise the number of Venetian events with no re-entry text.",
-  "missing": "Your real dates, your nightly budget ceiling and the minimum hotel quality you will accept.",
-  "how": "Change the dates with the date filter on any table, or read the 'How the default window was chosen' block on the Trip planner page. Nothing else on the site has to be re-entered."
+  "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
+  "have": "The site now fixes this for you: 2026-12-06 to 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
+  "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
+  "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
  },
  {
   "id": "Q02",
@@ -103,5 +103,12 @@
   "have": "The monitor re-reads every official URL that backs a row (Venetian schedule + 37 sheets, Wynn/WPT PDFs, Caesars page, South Point pages, MGM pages) every morning and records per-room status on the Source monitor page.",
   "missing": "Official daily-schedule pages for rooms that publish only images (South Point) or nothing (Horseshoe, Resorts World); a guarantee that a PDF re-host does not look like a rule change.",
   "how": "Treat the per-room feed as presence-and-change detection, not as content proof; a 'changed' row means a human should re-read the source before relying on the table."
+ },
+ {
+  "q": "Can the site complete the trip cost without me entering anything?",
+  "have": "The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
+  "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
+  "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.",
+  "id": "Q16"
  }
 ]
