@@ -2,8 +2,8 @@
  {
   "id": "F01",
   "area": "Entry rules",
-  "title": "No Venetian structure sheet states a single-entry / freezeout limit",
-  "detail": "All 37 official DSE IV structure sheets were read. None contains a one-entry, no-re-entry or freezeout statement. An event is therefore never labelled 'confirmed single-entry'.",
+  "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
+  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
  },
  {
@@ -248,10 +248,10 @@
  {
   "id": "F47",
   "area": "Entry rules",
-  "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
+  "title": "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
+  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: 'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both single_entry_confirmed, and its current cross-check passes because the classifier does not recognize this wording. That capture is not the canonical published dataset; request a classifier/cross-check repair before using it as a decision source. The S1 test now reads the whole rule list, not only re-entry/rebuy/add-on keywords.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-  "status": "fixed by this session; kept visible",
+  "status": "open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected",
   "last_updated": "2026-11-19"
  },
  {

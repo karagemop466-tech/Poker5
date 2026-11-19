@@ -2,16 +2,16 @@
  {
   "id": "Q01",
   "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-  "have": "The site now fixes this for you: 2026-12-06 to 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
-  "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
-  "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
+  "have": "The dashboard uses an automatic scenario: 2026-12-06 to 2026-12-13 (7 nights), selected from the captured schedule on 2026-11-19. The date choice is not traveler-provided. The budget ceiling is based on a dated, unverified booking observation, and the Luxury quality floor is a property-tier label, not an independent quality rating.",
+  "missing": "The traveler’s preferred dates, budget ceiling, occupancy, and minimum quality standard are unknown. The automatic settings are scenario defaults only; the dated hotel quote used to derive the ceiling is not for the selected stay and is not a verified current rate.",
+  "how": "Treat the Dates and Budget controls on the Hotels/Planner pages as scenario inputs. Replace them with the actual trip window, occupancy, budget, and chosen quality floor before deciding; then obtain a date-matched official itemized hotel quote."
  },
  {
   "id": "Q02",
   "q": "Is any DSE IV event actually a freezeout?",
-  "have": "All 37 official structure sheets read; none states a one-entry limit.",
-  "missing": "An official statement of the entry cap for the events whose sheets are silent.",
-  "how": "Ask the Venetian poker cage / tournament desk to confirm the re-entry policy for a specific event number, or check the printed structure sheet posted in the room on the day. Until then the row stays 'unverified' and is never promoted to single-entry."
+  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+  "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
+  "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
  },
  {
   "id": "Q03",

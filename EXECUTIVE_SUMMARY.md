@@ -1,62 +1,56 @@
-# Executive summary — Las Vegas Strip poker trip (as of the 2026-11-17 capture)
+# Executive summary — Las Vegas Strip poker-trip research
 
-Generated from `data/c6087e2c/events_verified.json`. Every figure below is
-reproduced on the live site with its source link; the site is the authoritative
-version.
+**Evidence snapshot:** official-source records last checked/captured on **2026-11-19**. This is a snapshot, not a live booking quote. The public site is the detailed, source-linked version: <https://karagemop466-tech.github.io/Poker5/>.
 
-## The plan the evidence supports
+## What the current evidence supports
 
-A Strip poker trip between **Mon Nov 16, 2026** and **Wed Dec 23, 2026**, built on
-the **55** Venetian DeepStack Extravaganza IV rows that pass the single-entry test,
-with a second event on **11 of the 38** scheduled days, and hotel nights whose
-resort fee and tax are official while the nightly room rate is read from the
-official booking page for the chosen dates.
+The repository's automatically selected planning scenario is **check-in 2026-12-06, check-out 2026-12-13 (7 nights)**, giving seven playing dates, Dec 6–12. The selection was computed from the current Venetian schedule capture, not provided by a traveler. Its scenario inputs include 12 Venetian full-field entries with approximately **$335,000 in published guarantees**, plus 7 satellites into the $2,200 PokerAtlas Championship. These are schedule totals, not expected winnings and not a guarantee of playing all entries. The dashboard gives each day a primary event and a conditional fallback; finish times are not official, so the sequence is not represented as certain.
 
-## Verified facts
+For this Venetian series, **94 scheduled rows** were captured and **37 of 37 linked structure sheets** were read. **53 rows meet the site's S1 rule-evidence test** and 41 are classified as multi-entry. Under S1, "confirmed single-entry" means the event's own sheet was read and no rule grants a repeat entry, rebuy, add-on, or additional buy-in, with multi-flight and restart formats excluded. **None of the sheets explicitly promises a one-entry maximum.** S1 is therefore an evidence-based classification, not a freezeout guarantee from the venue; this limitation remains flagged. Bounty, multi-flight, satellite, and other advantage/repeat-entry formats are separated rather than presented as ordinary single-entry recommendations.
 
-| Fact | Value | Source |
-|---|---|---|
-| Scheduled rows read from the official Venetian page | 94 | [DSE IV schedule](https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html) |
-| Distinct structure-sheet PDFs downloaded and read | 37 of 37 | links stored per row in `structures.json` |
-| Confirmed single-entry rows | 55 | each row links its sheet |
-| Multi-flight / multi-entry rows | 28 | separate section |
-| Restart rows (Day 2 / Day 3 / final table) | 11 | shown as continuations |
-| Official source disagreements published | 3 guarantee conflicts | shown on the row and on Flagged |
-| Hotel resort fees confirmed | Venetian/Palazzo $55, Wynn/Encore $55, Bellagio $55, ARIA $55, MGM Grand $50 | each hotel's own page |
-| Room tax | 13.38% (resort hotel in the primary gaming corridor) | [Clark County ordinance](https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf) |
-| Earliest official tournament start on the Strip | 9:00 AM (Horseshoe, 6 daily events) | [Caesars official page](https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip) |
-| Venetian's earliest full-tournament start | 10:10 AM | official schedule |
+## Comparison and ranking limits
 
-## What is confirmed single-entry
+The tournament tables expose buy-in, house fee / prize-pool share, published guarantee, start time, structure details, entry-rule basis, and source links where the official material provides them. An event is not ranked as a best-value pick unless its total entry fee and guarantee are both confirmed. The published guaranteed-pool ÷ entry-fee ratio is descriptive arithmetic only—not a forecast of returns or an estimate of a player's chance to win. Bounty and flight events are labeled separately because the guarantee does not describe their full prize mechanics or repeated-entry opportunities.
 
-A row earns that label only when its **own** structure sheet was read, the sheet's
-event-number list includes that event, the format is one day, and the text contains
-no re-entry, rebuy, add-on, double-entry, alternate-stack or purchased-chip
-language. The standard is published on the site's Sources & method page so it can
-be challenged.
+A date-matched, verified hotel quote is **not available for the selected stay**. The dated rate log contains observations for other date windows/occupancies and incomplete booking-engine results; they are not comparable to one another or to Dec 6–13 for two adults. No complete trip-cost total should be treated as known until there is an itemized quote for the actual dates. The calculator intentionally remains incomplete without it.
 
-## What is deliberately blank
+## Hotel and route evidence
 
-* **Room rates** — dynamic; stored as a dated log of booking-page snapshots, never
-  as one fixed value.
-* **Off-property walking times** — no casino publishes one; only on-property routes
-  (0 minutes) pass the 30-minute filter.
-* **Finishing times** — not published; the site derives a playing-day length from
-  each sheet's late-registration level count and labels it as derived.
-* **Caesars Palace / Horseshoe resort fees** — no official page found.
-* **Bellagio, MGM Grand, ARIA tournament rows** — the official material is undated,
-  stale, or absent.
+- Venetian official resort-fee terms state **$55 plus tax per night**; see the [official resort-fee page](https://www.venetianlasvegas.com/resort/resort-fee.html). The Venetian poker-suite page advertises starting rates, but these are conditional starting figures, not a quote for the selected dates.
+- Wynn terms include a **$55 plus tax** resort fee for the cited offer terms; confirm the fee on the actual selected rate plan at the [official Wynn terms page](https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2).
+- The current tax calculation uses **13.38%** from the linked [Clark County room-tax ordinance](https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf). Confirm applicable tax and fee terms during booking.
+- Hotel rate observations preserve stay dates, occupancy, checkout total, nightly average, resort fee, tax, parking, cancellation deadline, timestamp, source, and caveats. Missing fields remain blank. Like-for-like comparison requires the same stay, occupancy, and room class.
+- Only on-property hotel-to-room routes have confirmed zero-minute walk entries. Cross-property walking times are blank/flagged; the 30-minute filter does not convert an unverified route into a verified one.
 
-## Open decisions (full list on the site's Questions page)
+## Monitoring and data-quality caveats
 
-1. Trip dates, nights and party size.
-2. A nightly cap and a hotel quality standard (no official quality score exists).
-3. Whether a named map service may be used as the walking-time source.
-4. Whether booking rates are read by hand (dated log) or linked out.
+The latest stored schedule/sheet capture is dated 2026-11-19, but the checked-in value-level monitor summary records **no live value-level run yet**. Therefore, no changed-value badge means “not recorded as re-checked,” not “verified unchanged.” The legacy `data/c6087e2c/events_verified.json` snapshot also still marks events #18 and #58 as single-entry; its keyword-based check misses sheet 8's “subsequent buy in's” rule. The canonical dashboard correctly excludes both as multi-entry; the legacy discrepancy is published on Flagged for review and has been logged for repair.
 
-## Where to look
+## Questions that still prevent a firm decision
 
-* Site: https://karagemop466-tech.github.io/Poker5/
-* Flagged for review: https://karagemop466-tech.github.io/Poker5/pages/flagged.html
-* Questions: https://karagemop466-tech.github.io/Poker5/pages/qa.html
-* Suggestions: https://karagemop466-tech.github.io/Poker5/pages/suggestions.html
+1. **Are any candidate Venetian events explicitly guaranteed to be freezeouts?** No sheet states a one-entry cap. Request a written event-number-specific policy from the tournament desk before relying on S1.
+2. **What is the trip's actual budget and quality floor?** The displayed budget/quality settings are an automatic scenario based on repository evidence, not traveler preferences or an independent hotel rating. They must not be mistaken for a user-approved constraint.
+3. **What are the true hotel totals for Dec 6–13 and the intended occupancy?** Obtain official booking checkout totals, nightly average, room charge, mandatory resort fee and tax, parking, and cancellation deadline; keep the timestamp and exact room class.
+4. **Which off-property hotels are within a 30-minute walk?** No official walking times are currently verified for cross-property pairs. Check a chosen maps service from the official hotel address to the poker-room address and retain the route/date as evidence.
+5. **Can two same-day events actually be played consecutively?** Official finish times are missing. Confirm actual elapsed duration and late-registration cutoffs with the room; until then evening entries are conditional fallbacks only.
+6. **Which rankings are defensible?** Re-check total entry fee and guarantee for each candidate, including fee splits and whether bounty pools are additional, before comparing ratios.
+
+## Suggested next steps
+
+1. Ask the Venetian tournament desk for written one-entry/no-rebuy/no-add-on terms for specific candidate event numbers; attach the dated response to the row.
+2. Choose the trip dates, occupancy, budget, and acceptable hotel tier as a planning scenario; compare only official booking quotes for the same stay and room class.
+3. Keep one event per day as the baseline. Add a second only after the earlier event's plausible duration and exit time leave a realistic start window.
+4. Record measured walking routes with the official property addresses and route timestamp; do not mark the 30-minute test passed without evidence.
+5. Reconfirm schedule, structure sheets, rate plan, fees, parking, and cancellation policy immediately before any non-refundable booking.
+
+## Official sources for manual review
+
+- [Venetian DeepStack Extravaganza IV schedule](https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html)
+- [Venetian 2026 structure sheets](https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf) — each tournament row links its own sheet.
+- [WPT World Championship 2026 schedule](https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf)
+- [WPT World Championship structure sheet](https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf)
+- [Venetian resort-fee terms](https://www.venetianlasvegas.com/resort/resort-fee.html)
+- [Wynn offer terms](https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2)
+- [Clark County room-tax ordinance](https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf)
+
+For detailed records, open the site's [questions](https://karagemop466-tech.github.io/Poker5/pages/questions.html), [suggestions](https://karagemop466-tech.github.io/Poker5/pages/suggestions.html), [hotels](https://karagemop466-tech.github.io/Poker5/pages/hotels.html), [routes](https://karagemop466-tech.github.io/Poker5/pages/routes.html), [verification log](https://karagemop466-tech.github.io/Poker5/pages/verification.html), and [flagged-for-review](https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html) pages.

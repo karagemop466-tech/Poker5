@@ -1772,80 +1772,85 @@ def build_others():
 
 
 def build_exec():
-    cand = [r for r in CANDIDATES if r["venue"] == "The Venetian Resort"]
     body = ["<h1>Executive summary</h1>"]
     body.append(SEARCH_BAR % ("Search this summary...", ""))
+    ven_confirmed = [r for r in VEN if r.get("entry_rule") == "confirmed_single"]
+    ven_multi = [r for r in VEN if r.get("entry_rule") == "multi"]
+    rankable = [r for r in VEN if r.get("kind") == "entry"
+                and r.get("entry_rule") == "confirmed_single"
+                and isinstance(r.get("buyin"), (int, float))
+                and r.get("house_fee") not in (None, "")
+                and guarantee_value(r) is not None
+                and r.get("source")
+                and r.get("date", "") > RETRIEVED]
+    regular = [r for r in rankable if not is_bounty(r)]
+    bounty = [r for r in rankable if is_bounty(r)]
+    rank_key = lambda r: -(guarantee_value(r) / float(r["buyin"]))
+    regular.sort(key=rank_key)
+    bounty.sort(key=rank_key)
+
     body.append('<div class="panel"><h2>The short version</h2><ul class="clean">')
-    for item in (
-        "Two Strip series are running and both are verified from official pages: the Venetian DeepStack "
-        "Extravaganza IV (16 November - 23 December 2026) and the WPT World Championship festival at Wynn "
-        "(27 November - 21 December 2026).",
-        "<b>%d events are confirmed single-entry under the written standard S1</b>, each from its own official "
-        "structure sheet read in full (see the Verification log). No sheet states 'one entry only' in words, so each "
-        "confirmation rests on the absence of any re-entry, rebuy or add-on grant; that limit is flag F01. "
-        "%d rows are re-entry or multi-flight, and %d rows have terms that were not read and stay unverified. Every WPT "
-        "event whose terms were read permits re-entry, and the Prime Championship allows one entry plus one re-entry "
-        "per flight." % (len(CONFIRMED), len(MULTI), len(UNREAD)),
-        "The recommended window is %s to %s (%d nights). It was chosen automatically: it sits inside both series "
-        "and carries the most no-re-entry-text entries of any 7-night window in the Venetian series."
-        % (pretty_date(TRIP["check_in"]), pretty_date(TRIP["check_out"]), TRIP["nights"]),
-        "Hotel true nightly cost = rate + resort fee + tax at %.2f%%. Three resort fees are read officially: the Venetian and Wynn at $55 plus tax (both re-read 2026-11-19), and Resorts World at $55 per room per day (waived under its \"All Resort, No Fees\" offer through 28 December 2026). No nightly rate could be read from an official source, so no rate is filled in." % TAX["rate"],
-        "No official schedule in this window lists an 8:00 AM start. The earliest verified start is 9:10 AM, and "
-        "the earliest non-satellite start is 10:10 AM.",
-        "Walking: only a poker room inside your own hotel is verifiable (0 minutes). No cross-property walking "
-        "time is published officially, so none is estimated. The routes page carries one-click walking-direction "
-        "links and a recorder for minutes you measure yourself.",
-        "Rates are kept as a dated log, not a single value: %d source-linked stay captures are on the hotels page "
-        "(checkout totals, nightly averages, resort fee, tax, parking, cancellation deadline and rate timestamp, "
-        "each only where the official UI returned it). They differ in dates and occupancy, so no cheapest-hotel "
-        "ranking is published, and the trip planner stays Incomplete until a date-specific quote is entered."
-        % len(RATE_SNAPSHOTS["entries"]),
-        "Every official URL behind a row is re-read twice daily by the scheduled monitor; a row whose source "
-        "changed carries a 'source changed' badge and its values must be re-verified before use (see the "
-        "Source monitor page).",
-        "A nightly budget ceiling and a hotel quality floor can be set on the hotels and planner pages; they "
-        "filter the shortlist and never turn an unknown rate into a cheap one.",
-        "%d items are flagged for review, each with its official source. None blocks publication." % len(FLAGS)):
+    summary_items = [
+        "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as confirmed under standard S1 and %d as multi-entry. S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi)),
+        "The recommended dates are %s to %s (%d nights; seven playing days, checkout the next day). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
+        "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
+        "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
+        "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
+        "Only on-property hotel-to-poker-room walks have verified zero-minute routes. Cross-property walking times remain blank/flagged. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
+        "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
+        "%d rows across other venues/series still have unread entry terms; they remain explicitly unverified and are not included in the single-entry comparison." % len(UNREAD),
+        "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),
+    ]
+    for item in summary_items:
         body.append("<li>%s</li>" % item)
     body.append("</ul></div>")
+
     body.append('<div class="grid">')
-    for n, l in ((str(len(ALL_EVENTS)), "verified rows"), (str(len(VEN)), "Venetian rows"),
-                 (str(len(WPT)), "Wynn / WPT rows"), (str(len(CONFIRMED)), "confirmed single-entry"),
-                 (str(len(CANDIDATES)), "no re-entry text"), (str(len(MULTI)), "re-entry / multi-flight"),
-                 (str(len(SATS)), "satellites"), (str(len(FLAGS)), "flagged for review")):
-        body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
+    for n, label in ((str(len(ALL_EVENTS)), "schedule rows"),
+                     (str(len(VEN)), "Venetian rows"),
+                     (str(len(WPT)), "Wynn / WPT rows"),
+                     (str(len(ven_confirmed)), "Venetian rows classified under S1"),
+                     (str(len(ven_multi)), "Venetian multi-entry rows"),
+                     (str(len(UNREAD)), "rows with entry terms unread"),
+                     (str(len(SATS)), "satellite rows"),
+                     (str(len(FLAGS)), "flagged for review")):
+        body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(label)))
     body.append("</div>")
-    body.append(marquee_html())
-    body.append("<h2>What to do first</h2>")
-    body.append('<ol class="clean"><li>Fix your dates and your nightly budget. The site already assumes %s to %s; '
-                'change it with the date filter.</li>'
-                '<li>Ask the Venetian poker room to confirm, in writing, the entry cap for the events you want. '
-                'Until then a one-entry plan rests on silence, not on a rule.</li>'
-                '<li>Open the official booking links on the hotels page for your dates, read the itemised total, '
-                'and record it in the dated rate log.</li>'
-                '<li>Build the day plan from the schedule page: one primary event per day plus a fallback that '
-                'starts after the first one\'s registration window closes.</li>'
-                '<li>Reconfirm schedules, rates and policies before any non-refundable payment.</li></ol>'
-                % (esc(TRIP["check_in"]), esc(TRIP["check_out"])))
-    body.append("<h2>The strongest candidates (no re-entry text, Venetian only)</h2>")
-    rows = sorted([r for r in cand if guarantee_value(r)], key=lambda r: -(guarantee_value(r) / float(r["buyin"])))[:12]
-    if rows:
-        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>#</th>'
-                    '<th>Event</th><th class="num">Buy-in</th><th class="num">Guarantee</th>'
-                    '<th class="num">GTD &divide; entry</th><th>Source</th></tr></thead><tbody>')
-        for r in rows:
-            body.append("<tr><td class=\"nowrap\">%s</td><td>%s</td><td>%s</td><td>%s</td><td class=\"num\">%s</td>"
-                        "<td class=\"num\">%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
+
+    body.append("<h2>Upcoming: highest descriptive guarantee-to-entry ratios, non-bounty S1 events</h2>")
+    if regular:
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>#</th><th>Event</th><th class="num">Total buy-in</th><th class="num">House fee</th><th class="num">Guarantee</th><th class="num">GTD &divide; buy-in</th><th>Source</th></tr></thead><tbody>')
+        for r in regular[:12]:
+            body.append("<tr><td class=\"nowrap\">%s</td><td>%s</td><td>%s</td><td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
                         % (esc(pretty_date(r["date"])), esc(pretty_time(r["start"])), esc(r["event_no"]),
-                           esc(r["name"]), money(r["buyin"]), money(r["guarantee"]), ratio_text(r),
-                           src_link(r["source"], "sheet")))
+                           esc(r["name"]), money(r["buyin"]), esc(r["house_fee"]), money(guarantee_value(r)),
+                           ratio_text(r), src_link(r["source"], "official structure sheet")))
         body.append("</tbody></table></div>")
-        body.append('<p class="muted sm">Ranked by guarantee &divide; entry fee, which is a descriptive ratio, not a '
-                    'forecast. Only events whose guarantee and buy-in are both officially confirmed are ranked. '
-                    'Bounty events are tagged because their guarantee includes the bounty pool.</p>')
+    else:
+        body.append('<p class="muted">No non-bounty rows meet the complete-data ranking gate.</p>')
+    body.append('<p class="muted sm">Sorted by published guarantee &divide; listed total buy-in. This is a descriptive ratio, not a forecast or expected return. Rankings are withheld when buy-in, house fee, or guarantee is missing. Event restrictions and S1 caveats remain on each linked row.</p>')
+
+    body.append("<h2>Upcoming bounty / PKO S1 events (separate comparison)</h2>")
+    if bounty:
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>#</th><th>Event</th><th class="num">Total buy-in</th><th class="num">House fee</th><th class="num">Guarantee</th><th class="num">GTD &divide; buy-in</th><th>Source</th></tr></thead><tbody>')
+        for r in bounty[:10]:
+            body.append("<tr><td class=\"nowrap\">%s</td><td>%s</td><td>%s</td><td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
+                        % (esc(pretty_date(r["date"])), esc(pretty_time(r["start"])), esc(r["event_no"]),
+                           esc(r["name"]), money(r["buyin"]), esc(r["house_fee"]), money(guarantee_value(r)),
+                           ratio_text(r), src_link(r["source"], "official structure sheet")))
+        body.append("</tbody></table></div>")
+        body.append('<p class="muted sm">The bounty table is separate because the guaranteed pool may include bounty amounts. This ratio does not value bounty payouts and is not a forecast.</p>')
+    else:
+        body.append('<p class="muted">No bounty/PKO rows meet the complete-data ranking gate.</p>')
+
+    body.append("<h2>What to do before deciding</h2>")
+    body.append('<ol class="clean"><li>Request written event-specific maximum-entry/no-rebuy/no-add-on terms before treating S1 as a freezeout guarantee.</li>'
+                '<li>Choose actual dates, occupancy, budget and a hotel quality floor; current controls are scenario defaults, not traveler preferences.</li>'
+                '<li>Obtain an official booking checkout total for that same stay, including room charge, mandatory resort fee, tax, parking and cancellation deadline.</li>'
+                '<li>Plan one event per day first. Add a conditional second only when actual event duration leaves a realistic exit and registration window.</li>'
+                '<li>Reconfirm schedules, structure sheets, room policies and hotel terms before non-refundable payment.</li></ol>')
     write("pages/executive-summary.html", page("Executive summary", "".join(body),
                                                "executive-summary.html", 1))
-
 
 def build_questions():
     body = ["<h1>Questions, answers and what is still missing</h1>"]
