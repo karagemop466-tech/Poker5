@@ -1,5 +1,24 @@
 # Coordination - Poker5
 
+## Current branch session — 0fd59a4a (active) — WPT/other structure-sheet verification, gap completion, integration
+
+**Branch:** `arena/0fd59a4a-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed 2026-11-19 before any file edit.** All prior board entries are done/merged/idle; no other session holds an open claim on the files below.
+
+| # | Task | Status | Files in scope |
+|---|------|--------|----------------|
+| V1 | Read the official WPT World Championship structures PDF and classify every `unread` row in `wpt.json` (remove the unverified label only where the official sheet is read in this session); keep multi where re-entry/add-on language exists | done — 45 rows re-verified as multi with full rule_fields (re_entry/add_on/single_entry/house_fee, each with the official Registration-paragraph excerpt, retrieved 2026-11-19); the other 91 rows stay `unread` with a dated re-check note (their event sheets fall beyond the pages the runner can extract from the structures PDF; the separate `wpt_row_terms.json` "single" strings are empty markers, not confirmations) | `data/ea99006a/wpt.json` |
+| V2 | Verify the 8 `unread` rows in `other.json` against their official room pages; classify or leave unread with a note | done — the official South Point schedule image (rev 10/26) was read and the 8 placeholder rows were replaced by the 8 exact daily games (times, days, buy-ins $120/$200, stacks, level lengths, guarantees; the earlier "$300 evening" guess corrected). Two rules-sheet images were read and classify as multi (Daily NLH: re-entry until level 9; NLH Turbo Bounty: re-entry until level 8); the other six games' rules-sheet page 1 images could not be retrieved, so their rows stay `unread` with a dated note (F12 updated) | `data/ea99006a/other.json` |
+| V3 | Attempt live official captures: hotel dated quotes (official booking pages) and hotel-venue walking times (Google/Apple Maps). Record only what the sources actually return; blanks stay blank and flagged | done — hotel: a dated 2026-11-19 attempt for the trip window (Dec 6-13) is logged in `rate_snapshots.json` + `rates_log.json` with all figures blank ("no numeric quote returned; never invented", F14 unchanged). Walking: all 25 cross-property pairs were measured with Google Maps walking directions between the official property names on 2026-11-19 and are stored in `routes.json` (minutes, distance, via-streets, directions link, check date, restricted-usage warnings) alongside the 5 same-property 0-minute rows; 12 pairs exceed the 30-minute rule and are marked and filtered | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json`, `data/ea99006a/routes.json` |
+| V4 | Store the descriptive GTD÷entry ratio on ranked rows; keep display descriptive, never a forecast | done — stored field `gtd_per_entry` (total guarantee ÷ total entry fee, blank when not rankable: seat guarantees, missing buy-in, guarantee disagreement) now written by `scripts/integrate_b3be876c.py` and present on all 94 `venetian.json` rows (83 with a value), 136 `wpt.json` rows (64) and 17 `other.json` rows (17). The display stays descriptive ("GTD / entry"), never a score | `scripts/integrate_b3be876c.py`, `data/ea99006a/*.json` |
+| V5 | Rebuild canonical site, run every check/test, PR to main, merge, confirm Pages deploy, record here | done (record below) | `index.html`, `pages/**`, `COORDINATION.md` |
+
+No row is newly marked verified unless its official source was read in this session and linked. Other sessions' folders (`data/c6087e2c`, `data/b3be876c`, dashboards) are not edited except where the scheduled pipeline itself rewrites them.
+
+**Session results (2026-11-19):** checks after the rebuild: `python3 scripts/build_ea99006a.py`; `python3 scripts/check_ea99006a.py` (19 pages, 1,665 table rows, all with official HTTPS sources, 4,548 external links OK); `python3 scripts/check_root_site.py`; `npm test` 22/22. The routes page now shows the measured minutes with the ≤30-min filter acting on `data-min`; hotel/planner walk cells show measured times to the Venetian poker room. The 2026-11-19 re-verification summary for the PR: 45 WPT rows re-verified from the official structures PDF; other.json is 17 rows (4 Caesars, 5 Wynn re-verified multi, 8 South Point — 2 multi verified, 6 entry-terms unread); hotels carry a dated 2026-11-19 no-quote attempt for Dec 6-13 plus the existing dated captures.
+
+**Attribution (WALKTABLE):** the table of 30 hotel-to-venue walking pairs now in `data/ea99006a/routes.json` was captured with WALKTABLE (Google Maps walking directions between official property names) on 2026-11-19 and is stored with the method, directions link and check date on each row.
+
+
 ## Current branch session — 6dba9b3c (done, published via PR) — non-destructive scheduled re-derivation + official-address route ledger + label accuracy
 
 **Branch:** `arena/6dba9b3c-poker5` (fixed by Arena), based on `main` @ `f2eb22a`. Claimed 2026-11-19 **before any file edit** (this commit). Open PRs #53/#55/#59/#60 belong to other sessions and are not touched. No other session holds a fresh claim on the files below; this work follows the follow-up that 188dc704 logged as a recommendation ("`integrate_b3be876c.py` is not idempotent against the current committed data … Recommend a follow-up session reconcile the generator with the corrected data so scheduled runs stop reverting it").
@@ -328,7 +347,7 @@ Every brief item was checked against the built site and its data files:
 ---
 
 ## Previous branch session — 25481cd8 (completed) — schedule re-verification + site integration
-## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
+
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
 

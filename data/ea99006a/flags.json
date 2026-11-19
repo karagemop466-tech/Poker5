@@ -86,8 +86,8 @@
  {
   "id": "F12",
   "area": "Coverage",
-  "title": "South Point publishes its schedule as images only",
-  "detail": "Times (10:10, 14:10, 18:10, 22:10) and buy-ins ($120, $300) come from the official page text. Guarantees, levels and entry rules are inside image files and were not read. South Point is also off-Strip and not walkable to it.",
+  "title": "South Point publishes its schedule and rules as images only (schedule now read; 6 of 8 rules sheets not readable)",
+  "detail": "RESOLVED AS TO SCHEDULE on 2026-11-19: the official schedule image (rev 10/26) was read and replaces the placeholder rows - 8 named daily games with times, days, buy-ins ($120/$200), stacks, level lengths and guarantees. Two rules-sheet images ($120 Daily NLH, $120 NLH Turbo Bounty) were also read and their re-entry rules recorded. The other six games' rules-sheet page 1 images could not be retrieved as images in this session, so their entry terms remain unverified and those rows stay 'entry terms not read'.",
   "source": "https://southpointcasino.com/casino/poker-room"
  },
  {
@@ -109,8 +109,8 @@
  {
   "id": "F15",
   "area": "Routes",
-  "title": "Cross-property walking times are not published officially",
-  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in.",
+  "title": "Cross-property walking times are not published officially; recorded instead as dated Google Maps observations",
+  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured with Google Maps walking directions between official property names; minutes, distance, via-streets and the restricted-usage warnings are stored in data/ea99006a/routes.json with the directions link and check date, and the routes page now filters on the measured minutes.",
   "source": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
  },
  {
@@ -281,7 +281,7 @@
   "id": "F50",
   "area": "Walking routes",
   "title": "No official source states a walking time between two Strip properties",
-  "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses.",
+  "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured with Google Maps walking directions between official property names; minutes, distance, via-streets and the restricted-usage warnings are stored in data/ea99006a/routes.json with the directions link and check date, and the routes page now filters on the measured minutes.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
   "status": "open",
   "last_updated": "2026-11-19"

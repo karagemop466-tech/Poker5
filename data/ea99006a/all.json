@@ -32,7 +32,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -140,7 +140,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -172,7 +173,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -280,7 +281,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "20:40"
+   "late_reg_clock": "20:40",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -312,7 +314,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -420,7 +422,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -452,7 +455,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -560,7 +563,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "20:40"
+   "late_reg_clock": "20:40",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -592,7 +596,7 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -693,7 +697,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 33.33
   },
   {
    "venue": "The Venetian Resort",
@@ -725,7 +730,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -833,7 +838,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -865,7 +871,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -960,7 +966,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "12:25"
+   "late_reg_clock": "12:25",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -992,7 +999,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1087,7 +1094,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "12:25"
+   "late_reg_clock": "12:25",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -1119,7 +1127,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1214,7 +1222,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "12:25"
+   "late_reg_clock": "12:25",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -1246,7 +1255,7 @@
    "entry_evidence": {
     "sheet_no": 29,
     "sheet_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1341,7 +1350,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -1373,7 +1383,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1481,7 +1491,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -1513,7 +1524,7 @@
    "entry_evidence": {
     "sheet_no": 30,
     "sheet_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1615,7 +1626,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -1647,7 +1659,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1755,7 +1767,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -1787,7 +1800,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1889,7 +1902,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -1921,7 +1935,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2029,7 +2043,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -2061,7 +2076,7 @@
    "entry_evidence": {
     "sheet_no": 6,
     "sheet_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2162,7 +2177,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 37.5
   },
   {
    "venue": "The Venetian Resort",
@@ -2194,7 +2210,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2296,7 +2312,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -2328,7 +2345,7 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2429,7 +2446,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 33.33
   },
   {
    "venue": "The Venetian Resort",
@@ -2461,7 +2479,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2563,7 +2581,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -2595,7 +2614,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2696,7 +2715,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -2728,7 +2748,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2830,7 +2850,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -2862,7 +2883,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -2963,7 +2984,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -2995,7 +3017,7 @@
    "entry_evidence": {
     "sheet_no": 26,
     "sheet_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -3097,7 +3119,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:40"
+   "late_reg_clock": "16:40",
+   "gtd_per_entry": 37.5
   },
   {
    "venue": "The Venetian Resort",
@@ -3129,7 +3152,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -3233,7 +3256,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 100.0
   },
   {
    "venue": "The Venetian Resort",
@@ -3265,7 +3289,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3373,7 +3397,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -3405,7 +3430,7 @@
    "entry_evidence": {
     "sheet_no": 22,
     "sheet_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -3506,7 +3531,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:40"
+   "late_reg_clock": "16:40",
+   "gtd_per_entry": 33.33
   },
   {
    "venue": "The Venetian Resort",
@@ -3538,7 +3564,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3640,7 +3666,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -3672,7 +3699,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3780,7 +3807,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -3812,7 +3840,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3914,7 +3942,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -3946,7 +3975,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4054,7 +4083,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -4086,7 +4116,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4188,7 +4218,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -4220,7 +4251,7 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -4328,7 +4359,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 17
-   }
+   },
+   "gtd_per_entry": 66.67
   },
   {
    "venue": "The Venetian Resort",
@@ -4360,7 +4392,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4468,7 +4500,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 187.5
   },
   {
    "venue": "The Venetian Resort",
@@ -4500,7 +4533,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4602,7 +4635,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -4634,7 +4668,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4742,7 +4776,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -4774,7 +4809,7 @@
    "entry_evidence": {
     "sheet_no": 28,
     "sheet_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -4875,7 +4910,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:40"
+   "late_reg_clock": "16:40",
+   "gtd_per_entry": 41.67
   },
   {
    "venue": "The Venetian Resort",
@@ -4907,7 +4943,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5015,7 +5051,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "20:40"
+   "late_reg_clock": "20:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5047,7 +5084,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5155,7 +5192,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5187,7 +5225,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5295,7 +5333,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "20:40"
+   "late_reg_clock": "20:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5327,7 +5366,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5435,7 +5474,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5467,7 +5507,7 @@
    "entry_evidence": {
     "sheet_no": 14,
     "sheet_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5575,7 +5615,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "19:25"
+   "late_reg_clock": "19:25",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5607,7 +5648,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5708,7 +5749,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 66.67
   },
   {
    "venue": "The Venetian Resort",
@@ -5740,7 +5782,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5848,7 +5890,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "15:40"
+   "late_reg_clock": "15:40",
+   "gtd_per_entry": 625.0
   },
   {
    "venue": "The Venetian Resort",
@@ -5880,7 +5923,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5982,7 +6025,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -6014,7 +6058,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6115,7 +6159,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 66.67
   },
   {
    "venue": "The Venetian Resort",
@@ -6147,7 +6192,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6249,7 +6294,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -6281,7 +6327,7 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6389,7 +6435,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 17
-   }
+   },
+   "gtd_per_entry": 66.67
   },
   {
    "venue": "The Venetian Resort",
@@ -6421,7 +6468,7 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6530,7 +6577,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 19
-   }
+   },
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -6562,7 +6610,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6664,7 +6712,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -6696,7 +6745,7 @@
    "entry_evidence": {
     "sheet_no": 31,
     "sheet_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6804,7 +6853,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 31
-   }
+   },
+   "gtd_per_entry": 16.67
   },
   {
    "venue": "The Venetian Resort",
@@ -6836,7 +6886,7 @@
    "entry_evidence": {
     "sheet_no": 16,
     "sheet_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6937,7 +6987,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 93.75
   },
   {
    "venue": "The Venetian Resort",
@@ -6969,7 +7020,7 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -7078,7 +7129,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 19
-   }
+   },
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -7110,7 +7162,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7212,7 +7264,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -7244,7 +7297,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7350,7 +7403,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -7382,7 +7436,7 @@
    "entry_evidence": {
     "sheet_no": 27,
     "sheet_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -7484,7 +7538,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:40"
+   "late_reg_clock": "16:40",
+   "gtd_per_entry": 41.67
   },
   {
    "venue": "The Venetian Resort",
@@ -7516,7 +7571,7 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -7618,7 +7673,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "18:25"
+   "late_reg_clock": "18:25",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -7650,7 +7706,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7752,7 +7808,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -7784,7 +7841,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7890,7 +7947,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -7922,7 +7980,7 @@
    "entry_evidence": {
     "sheet_no": 33,
     "sheet_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8023,7 +8081,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -8055,7 +8114,7 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8157,7 +8216,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "18:25"
+   "late_reg_clock": "18:25",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -8189,7 +8249,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8295,7 +8355,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -8327,7 +8388,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8429,7 +8490,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": ""
+   "late_reg_clock": "",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -8461,7 +8523,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8563,7 +8625,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": ""
+   "late_reg_clock": "",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -8595,7 +8658,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8703,7 +8766,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -8735,7 +8799,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8837,7 +8901,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": ""
+   "late_reg_clock": "",
+   "gtd_per_entry": null
   },
   {
    "venue": "The Venetian Resort",
@@ -8869,7 +8934,7 @@
    "entry_evidence": {
     "sheet_no": 37,
     "sheet_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8977,7 +9042,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "23:10"
+   "late_reg_clock": "23:10",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -9009,7 +9075,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9124,7 +9190,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 20
-   }
+   },
+   "gtd_per_entry": 272.73
   },
   {
    "venue": "The Venetian Resort",
@@ -9156,7 +9223,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9264,7 +9331,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -9296,7 +9364,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9398,7 +9466,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -9430,7 +9499,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9545,7 +9614,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 20
-   }
+   },
+   "gtd_per_entry": 272.73
   },
   {
    "venue": "The Venetian Resort",
@@ -9577,7 +9647,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9685,7 +9755,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -9717,7 +9788,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9819,7 +9890,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -9851,7 +9923,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9966,7 +10038,8 @@
     "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
     "retrieved": "2026-11-19",
     "sheet_no": 20
-   }
+   },
+   "gtd_per_entry": 272.73
   },
   {
    "venue": "The Venetian Resort",
@@ -9998,7 +10071,7 @@
    "entry_evidence": {
     "sheet_no": 34,
     "sheet_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10100,7 +10173,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 68.18
   },
   {
    "venue": "The Venetian Resort",
@@ -10132,7 +10206,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10234,7 +10308,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -10266,7 +10341,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -10367,7 +10442,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 83.33
   },
   {
    "venue": "The Venetian Resort",
@@ -10399,7 +10475,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10501,7 +10577,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -10533,7 +10610,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10641,7 +10718,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -10673,7 +10751,7 @@
    "entry_evidence": {
     "sheet_no": 23,
     "sheet_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -10774,7 +10852,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:40"
+   "late_reg_clock": "16:40",
+   "gtd_per_entry": 41.67
   },
   {
    "venue": "The Venetian Resort",
@@ -10806,7 +10885,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10914,7 +10993,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "23:10"
+   "late_reg_clock": "23:10",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -10946,7 +11026,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11054,7 +11134,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -11086,7 +11167,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11194,7 +11275,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "23:10"
+   "late_reg_clock": "23:10",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -11226,7 +11308,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11334,7 +11416,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -11366,7 +11449,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -11470,7 +11553,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 100.0
   },
   {
    "venue": "The Venetian Resort",
@@ -11502,7 +11586,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:37Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11610,7 +11694,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 454.55
   },
   {
    "venue": "The Venetian Resort",
@@ -11642,7 +11727,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11750,7 +11835,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -11782,7 +11868,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11884,7 +11970,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -11916,7 +12003,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12024,7 +12111,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12056,7 +12144,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12158,7 +12246,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12190,7 +12279,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12298,7 +12387,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12330,7 +12420,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12432,7 +12522,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12464,7 +12555,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12572,7 +12663,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "17:55"
+   "late_reg_clock": "17:55",
+   "gtd_per_entry": 250.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12604,7 +12696,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12705,7 +12797,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "16:55"
+   "late_reg_clock": "16:55",
+   "gtd_per_entry": 50.0
   },
   {
    "venue": "The Venetian Resort",
@@ -12737,7 +12830,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:19:50Z",
+    "sheet_retrieved": "2026-11-19T22:30:36Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12839,7 +12932,8 @@
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
    },
-   "late_reg_clock": "21:40"
+   "late_reg_clock": "21:40",
+   "gtd_per_entry": 40.0
   }
  ],
  "wpt": [
@@ -17711,8 +17805,8 @@
   {
    "id": "F12",
    "area": "Coverage",
-   "title": "South Point publishes its schedule as images only",
-   "detail": "Times (10:10, 14:10, 18:10, 22:10) and buy-ins ($120, $300) come from the official page text. Guarantees, levels and entry rules are inside image files and were not read. South Point is also off-Strip and not walkable to it.",
+   "title": "South Point publishes its schedule and rules as images only (schedule now read; 6 of 8 rules sheets not readable)",
+   "detail": "RESOLVED AS TO SCHEDULE on 2026-11-19: the official schedule image (rev 10/26) was read and replaces the placeholder rows - 8 named daily games with times, days, buy-ins ($120/$200), stacks, level lengths and guarantees. Two rules-sheet images ($120 Daily NLH, $120 NLH Turbo Bounty) were also read and their re-entry rules recorded. The other six games' rules-sheet page 1 images could not be retrieved as images in this session, so their entry terms remain unverified and those rows stay 'entry terms not read'.",
    "source": "https://southpointcasino.com/casino/poker-room"
   },
   {
@@ -17734,8 +17828,8 @@
   {
    "id": "F15",
    "area": "Routes",
-   "title": "Cross-property walking times are not published officially",
-   "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in.",
+   "title": "Cross-property walking times are not published officially; recorded instead as dated Google Maps observations",
+   "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured with Google Maps walking directions between official property names; minutes, distance, via-streets and the restricted-usage warnings are stored in data/ea99006a/routes.json with the directions link and check date, and the routes page now filters on the measured minutes.",
    "source": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
   },
   {
@@ -17906,7 +18000,7 @@
    "id": "F50",
    "area": "Walking routes",
    "title": "No official source states a walking time between two Strip properties",
-   "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses.",
+   "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured with Google Maps walking directions between official property names; minutes, distance, via-streets and the restricted-usage warnings are stored in data/ea99006a/routes.json with the directions link and check date, and the routes page now filters on the measured minutes.",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
    "status": "open",
    "last_updated": "2026-11-19"
