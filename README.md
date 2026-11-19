@@ -27,7 +27,7 @@ Data is time-sensitive. The repository's latest checked-in official-source captu
 
 ## Build and monitoring architecture
 
-There are multiple historical research snapshots in this repository. **Only the `ea99006a` builder publishes the root GitHub Pages dashboard.** The separate `c6087e2c` morning job captures the official Venetian schedule and its structure sheets in a research ledger; it is capture/validation only and must not rebuild or commit the root site.
+There are multiple historical research snapshots in this repository. **Only the `ea99006a` builder publishes the root GitHub Pages dashboard.** The separate `c6087e2c` morning job captures the official Venetian schedule and its structure sheets in a research ledger; it is capture/validation only and must not rebuild or commit the root site. The checked-in legacy `c6087e2c/events_verified.json` still misclassifies events #18 and #58 because its rule detector misses “subsequent buy in's”; the canonical dashboard excludes them correctly. This is documented as F47, and the legacy merge/checker repair is requested rather than silently rewriting another pipeline's records.
 
 ```
 Official sources

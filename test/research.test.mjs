@@ -146,3 +146,29 @@ test('dashboard and ledger link to each other, publish correctly, and integrate 
   assert.match(ledger, /id="source-hotels"/);
   assert.match(ledger, /id="source-routes"/);
 });
+
+test('canonical executive summary uses current S1 verdicts, complete ranking gates, and honest monitor status', async () => {
+  const [summary, meta] = await Promise.all([
+    readFile(new URL('../pages/executive-summary.html', import.meta.url), 'utf8'),
+    readFile(new URL('../data/ea99006a/meta.json', import.meta.url), 'utf8').then(JSON.parse),
+  ]);
+  assert.match(summary, /53 Venetian rows/);
+  assert.match(summary, /41 as multi-entry/);
+  assert.match(summary, /no sheet states a one-entry maximum/i);
+  assert.match(summary, /Upcoming: highest descriptive guarantee-to-entry ratios, non-bounty S1 events/);
+  assert.match(summary, /Upcoming bounty \/ PKO S1 events \(separate comparison\)/);
+  assert.match(summary, /buy-in, house fee and guarantee are all present/i);
+  assert.match(summary, /descriptive arithmetic only/i);
+  assert.match(summary, /no live value-level run/i);
+  assert.doesNotMatch(summary, /No event is confirmed as single-entry\./);
+  assert.doesNotMatch(summary, /Every official URL behind a row is re-read twice daily/);
+  assert.doesNotMatch(summary, /strongest candidates \(no re-entry text/);
+  const tables = summary.split(/<h2>Upcoming(?: bounty \/ PKO)?/i).slice(1);
+  const captureDate = Date.parse(`${meta.retrieved}T00:00:00Z`);
+  for (const table of tables) {
+    const nextSection = table.split('<h2>')[0];
+    for (const match of nextSection.matchAll(/<tr><td class="nowrap">([^<]+)<\/td><td>[^<]*<\/td><td>([^<]+)<\/td>/g)) {
+      assert.ok(Date.parse(match[1]) > captureDate, `past/current event #${match[2]} included in future ranking`);
+    }
+  }
+});

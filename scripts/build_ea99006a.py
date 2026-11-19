@@ -980,7 +980,7 @@ def build_index():
                     (str(len(FLAGS)), "Items flagged for review")):
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
     body.append("</div>")
-    body.append('<div class="badbox"><b>The single-entry headline: %d events are confirmed single-entry under '
+    body.append('<div class="badbox"><b>The single-entry headline: %d rows are classified single-entry under '
                 'standard S1.</b> All 37 official Venetian structure sheets were read on %s. Each confirmed row\'s '
                 'own sheet was read in full, names that event number, is a one-day entry row with a stated '
                 'registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in its numbered '
@@ -1085,7 +1085,7 @@ def build_tournaments():
 
 def build_single():
     body = ["<h1>Single-entry tournaments</h1>"]
-    body.append('<div class="badbox"><b>Confirmed single-entry events (standard S1): %d.</b> Every official '
+    body.append('<div class="badbox"><b>Rows classified as confirmed single-entry (standard S1): %d.</b> Every official '
                 'structure sheet published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. '
                 'Each confirmed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
                 'with a stated registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in '
@@ -1095,7 +1095,7 @@ def build_single():
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
     body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
-    body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
+    body.append("<h2>1. Rows classified under standard S1 (%d, including satellites)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
     else:
@@ -1702,7 +1702,8 @@ def build_exec():
                 and isinstance(r.get("buyin"), (int, float))
                 and r.get("house_fee") not in (None, "")
                 and guarantee_value(r) is not None
-                and r.get("source")]
+                and r.get("source")
+                and r.get("date", "") > RETRIEVED]
     regular = [r for r in rankable if not is_bounty(r)]
     bounty = [r for r in rankable if is_bounty(r)]
     rank_key = lambda r: -(guarantee_value(r) / float(r["buyin"]))
@@ -1713,7 +1714,7 @@ def build_exec():
     summary_items = [
         "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as confirmed under standard S1 and %d as multi-entry. S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi)),
         "The recommended dates are %s to %s (%d nights; seven playing days, checkout the next day). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
-        "The strongest-value table below includes only Venetian full-field rows whose S1 verdict, listed buy-in, house fee and guarantee are all present. Its guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
+        "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
         "Only on-property hotel-to-poker-room walks have verified zero-minute routes. Cross-property walking times remain blank/flagged. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
@@ -1737,7 +1738,7 @@ def build_exec():
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(label)))
     body.append("</div>")
 
-    body.append("<h2>Highest descriptive guarantee-to-entry ratios: non-bounty S1 events</h2>")
+    body.append("<h2>Upcoming: highest descriptive guarantee-to-entry ratios, non-bounty S1 events</h2>")
     if regular:
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>#</th><th>Event</th><th class="num">Total buy-in</th><th class="num">House fee</th><th class="num">Guarantee</th><th class="num">GTD &divide; buy-in</th><th>Source</th></tr></thead><tbody>')
         for r in regular[:12]:
@@ -1750,7 +1751,7 @@ def build_exec():
         body.append('<p class="muted">No non-bounty rows meet the complete-data ranking gate.</p>')
     body.append('<p class="muted sm">Sorted by published guarantee &divide; listed total buy-in. This is a descriptive ratio, not a forecast or expected return. Rankings are withheld when buy-in, house fee, or guarantee is missing. Event restrictions and S1 caveats remain on each linked row.</p>')
 
-    body.append("<h2>Bounty / PKO S1 events (separate comparison)</h2>")
+    body.append("<h2>Upcoming bounty / PKO S1 events (separate comparison)</h2>")
     if bounty:
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th><th>#</th><th>Event</th><th class="num">Total buy-in</th><th class="num">House fee</th><th class="num">Guarantee</th><th class="num">GTD &divide; buy-in</th><th>Source</th></tr></thead><tbody>')
         for r in bounty[:10]:
