@@ -1999,7 +1999,7 @@ def build_exec():
 
     body.append('<div class="panel"><h2>The short version</h2><ul class="clean">')
     summary_items = [
-        "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as confirmed under standard S1 and %d as multi-entry. S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi)),
+        "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as 'No second entry granted (S1 screen)', %d as multi-entry and %d as Cap not stated (event #39's two-day single-flight structure; flag F71). S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi), len(VEN) - len(ven_confirmed) - len(ven_multi)),
         "The recommended dates are %s to %s (%d nights; seven playing days, checkout the next day). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
@@ -2741,12 +2741,16 @@ def build_verification():
     body.append("<p class=\"muted sm\">A figure with no official page behind it is left blank and flagged, never "
                 "estimated. The open questions behind those blanks are on the "
                 "<a href=\"flagged-review.html\">Flagged for review</a> page.</p>")
-    # Re-read of the trip-critical official values (session d615f79e). Rendered from its own record.
-    rv_path = os.path.join(ROOT, "data", "d615f79e", "reverify.json")
-    if os.path.exists(rv_path):
+    # Re-read of the trip-critical official values. Each session renders from its own record
+    # (same schema); the heading comes from the record, falling back to the original title.
+    for _sid, _default_heading in (("d615f79e", "Re-read before payment"),
+                                   ("ec3c21b8", "Live re-read and row-by-row re-check")):
+        rv_path = os.path.join(ROOT, "data", _sid, "reverify.json")
+        if not os.path.exists(rv_path):
+            continue
         with open(rv_path, encoding="utf-8") as fh:
             rv = json.load(fh)
-        body.append("<h2>Re-read before payment (%s)</h2>" % esc(rv["retrieved"]))
+        body.append("<h2>%s (%s)</h2>" % (esc(rv.get("heading") or _default_heading), esc(rv["retrieved"])))
         body.append('<p class="muted">%s</p>' % esc(rv["scope"]))
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
                     "<th>Stored value</th><th>What the official page says</th><th>Official source</th>"

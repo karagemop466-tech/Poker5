@@ -8,8 +8,8 @@
  },
  "counts_after": {
   "confirmed_single": 53,
-  "multi": 41,
-  "unknown": 0,
+  "multi": 38,
+  "unknown": 3,
   "unread": 0
  },
  "counts_before": {
@@ -70,5 +70,5 @@
    null
   ]
  },
- "flags_total": 58
+ "flags_total": 61
 }

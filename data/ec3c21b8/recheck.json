@@ -1,0 +1,1327 @@
+{
+ "session": "ec3c21b8",
+ "checked_on": "2026-11-19",
+ "sheet_checks": [
+  {
+   "sheet": "12",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "6 levels + Break (~ 3:40 PM)",
+     "stored": "6 levels + Break (~3:40 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "start",
+     "fresh": "Day A+C+E @ 11:10 AM with Day 2 @ 12:00 PM",
+     "stored": "11:10 AM",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 4,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "17",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "10 levels + Break (~ 3:55 PM)",
+     "stored": "10 levels + Break (~3:55 PM)",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 2,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "19",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "gtd",
+     "fresh": "2 Seats",
+     "stored": "2 seats",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 2,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "20",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "9 levels + Break (~ 4:55 PM)",
+     "stored": "9 levels + Break (~4:55 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "start",
+     "fresh": "Day A+B @ 10:10 AM with Day 2 @ 10:00 AM",
+     "stored": "10:10 AM",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 3,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "21",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "9 levels + Break (~ 4:55 PM)",
+     "stored": "9 levels + Break (~4:55 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "start",
+     "fresh": "Day 1A @ 10:10 AM w/ Day 2 @ 1:00 PM @ Day 3 @ 11:00 AM",
+     "stored": "10:10 AM",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 3,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "27",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "8 levels + break (~ 4:40 PM)",
+     "stored": "8 levels + break (~4:40 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "gtd",
+     "fresh": "25,000 (prize pool + total bounties)",
+     "stored": "25,000",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 1,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "31",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "8 levels + Break (~ 2:40 PM)",
+     "stored": "8 levels + Break (~2:40 PM)",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 1,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "32",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "9 levels + Break (~ 4:55 PM)",
+     "stored": "9 levels + Break (~4:55 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "start",
+     "fresh": "Day 1 Dec 10 @ 10:10 AM with Day 2 Dec 11 @ 10:00 AM",
+     "stored": "Day 1 Dec 10 10:10 AM",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 3,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "33",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "gtd",
+     "fresh": "30,000 (prize pool + total bounties)",
+     "stored": "30,000",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 1,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  },
+  {
+   "sheet": "37",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf",
+   "meta_diffs": [],
+   "formatting_notes": [
+    {
+     "field": "late",
+     "fresh": "9 levels + Break (~ 11:10 PM)",
+     "stored": "9 levels + Break (~11:10 PM)",
+     "note": "formatting/annotation only"
+    },
+    {
+     "field": "start",
+     "fresh": "Day 1B @ 6:10 PM w/ Day 2 @ 1:00 PM @ Day 3 @ 11:00 AM",
+     "stored": "6:10 PM",
+     "note": "formatting/annotation only"
+    }
+   ],
+   "rows_on_sheet": 1,
+   "row_value_diffs": [],
+   "verdict_consistent": true
+  }
+ ],
+ "sign_rows": [
+  {
+   "date": "2026-11-27",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "12:00",
+   "name": "TORSE",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "13:00",
+   "name": "PLO",
+   "sign_buyin": "$400",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1C",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "12:00",
+   "name": "Mixed Triple Draw (A-5, 2-7, BadugI)",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1D",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-29",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1E",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-29",
+   "start": "18:00",
+   "name": "No Limit Hold'em Day 1F",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$400,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "12:00",
+   "name": "Limit Omaha 8",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "13:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "differs (documented official-source conflict, flag F58)",
+   "diffs": {
+    "buyin": {
+     "sign": "$800",
+     "row": 600
+    },
+    "guarantee": {
+     "sign": "$1,000,000",
+     "row": 400000
+    }
+   }
+  },
+  {
+   "date": "2026-11-30",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1C",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "12:00",
+   "name": "Limit Omaha 8/5/stud 8",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "13:00",
+   "name": "PLO",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1D",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-02",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1E",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-02",
+   "start": "18:00",
+   "name": "No Limit Hold'em Day 1F",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-03",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-03",
+   "start": "13:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "differs (documented official-source conflict, flag F58)",
+   "diffs": {
+    "buyin": {
+     "sign": "$1,600",
+     "row": 800
+    }
+   }
+  },
+  {
+   "date": "2026-12-03",
+   "start": "19:00",
+   "name": "Double Play Milestone Satellite1 (2 X $1,100 Ticket)*",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Prizes",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "12:00",
+   "name": "HORSE",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "13:00",
+   "name": "No Limit Hold'em Final Table",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "19:00",
+   "name": "Double Play Milestone Satellite (2 X $1,100 Ticket)*",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Prizes",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-05",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$5,000,000",
+   "result": "differs (documented official-source conflict, flag F58)",
+   "diffs": {
+    "buyin": {
+     "sign": "$1,100",
+     "row": 1600
+    },
+    "guarantee": {
+     "sign": "$5,000,000",
+     "row": 1000000
+    }
+   }
+  },
+  {
+   "date": "2026-12-05",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1A",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$5,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-05",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1B",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$5,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "11:00",
+   "name": "PLO Mystery Bounty Day 1A",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "12:00",
+   "name": "Milestone Satellite to $1,100 Prime Championship**",
+   "sign_buyin": "$200",
+   "sign_guarantee": "50 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "18:00",
+   "name": "PLO Mystery Bounty Day 1B",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "19:00",
+   "name": "Double Play Milestone Satellite (2 X $1,100 Ticket)*",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Prizes",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1C",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$5,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "11:00",
+   "name": "HORSE (2 Day)",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "12:00",
+   "name": "PLO Mystery Bounty Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "13:00",
+   "name": "PLO $500 Bounty",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "19:00",
+   "name": "Milestone Satellite Package to Prime and World Championship**",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "25 Prizes",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-08",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1D",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$5,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-08",
+   "start": "19:00",
+   "name": "Milestone Satellite to $10,400 World Championship**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-08",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "11:00",
+   "name": "No Limit Hold'em (2 Day)",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "13:00",
+   "name": "PLO $1,000 Bounty",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$250,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "13:00",
+   "name": "Limit Omaha 8",
+   "sign_buyin": "$800",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "14:00",
+   "name": "Milestone Satellite to $10,400 World Championship**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "19:00",
+   "name": "Milestone Satellite to $10,400 World Championship**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-10",
+   "start": "10:00",
+   "name": "Super Gold Million Mystery Bounty Day 1A",
+   "sign_buyin": "$400",
+   "sign_guarantee": "$3,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-10",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 3",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-10",
+   "start": "18:00",
+   "name": "Super Gold Million Mystery Bounty Day 1B",
+   "sign_buyin": "$400",
+   "sign_guarantee": "$3,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-11",
+   "start": "10:00",
+   "name": "Super Gold Million Mystery Bounty Day 1C",
+   "sign_buyin": "$400",
+   "sign_guarantee": "$3,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-11",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 4",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-11",
+   "start": "18:00",
+   "name": "Super Gold Million Mystery Bounty Day 1D",
+   "sign_buyin": "$400",
+   "sign_guarantee": "$3,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "10:00",
+   "name": "No Limit Hold'em",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "13:00",
+   "name": "PLO",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$250,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "14:00",
+   "name": "WPT Prime Championship Final Table",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "14:00",
+   "name": "Super Gold Million Mystery Bounty Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "14:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1A/8**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "75 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "16:00",
+   "name": "Milestone Satellite to $10,400 Ladies NLH Championship**",
+   "sign_buyin": "$200",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "19:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1A/8**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "11:00",
+   "name": "WPT World Championship Day 1A $1,000,000 Added***",
+   "sign_buyin": "$10,400",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "11:00",
+   "name": "Ladies NIH Championship (2 Day)",
+   "sign_buyin": "$1,100****",
+   "sign_guarantee": "$250,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "11:00",
+   "name": "TORSE (2 Day)",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "12:00",
+   "name": "PLO Day 1A",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "12:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1B**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "13:00",
+   "name": "Super Gold Million Mystery Bounty Day 3",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "18:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1B/C**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "11:00",
+   "name": "WPT World Championship Day 1B $1,000,000 Added***",
+   "sign_buyin": "$10,400",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$800",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "12:00",
+   "name": "PLO Day 1B",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "12:00",
+   "name": "Mixed Triple Draw (A-5, 2-7, Badugi) (2 Day)",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "12:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1C**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "14:00",
+   "name": "Super Gold Million Mystery Bounty Final Table",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "18:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1C**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "19:00",
+   "name": "PLO Turbo",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "21:00",
+   "name": "NIH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "11:00",
+   "name": "WPT World Championship Day 1C $1,000,000 Added***",
+   "sign_buyin": "$10,400",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "11:00",
+   "name": "Milestone Satellite to $10,400 World Championship 1C/Day 2**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "12:00",
+   "name": "PLO Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "12:00",
+   "name": "Big O",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "13:00",
+   "name": "PLO Progressive Bounty (PKO)",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$250,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "18:00",
+   "name": "Milestone Satellite to $10,400 World Championship Day 2**",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-15",
+   "start": "19:00",
+   "name": "NIH $500 Bounty Turbo",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "12:00",
+   "name": "WPT World Championship Day 2 (Registration open until the start of Day 2)",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "12:00",
+   "name": "PLO Double Board Bomb Pot",
+   "sign_buyin": "$800",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "13:00",
+   "name": "PLO 6-Max",
+   "sign_buyin": "$10,500*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "13:00",
+   "name": "HORSE",
+   "sign_buyin": "$800",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "18:00",
+   "name": "Milestone Satellite to $25K NIH High Roller",
+   "sign_buyin": "$3,000*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "18:00",
+   "name": "Milestone Satellite to $3,000 NLH**",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-16",
+   "start": "19:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "11:00",
+   "name": "Seniors NLH Championship (3 Day)",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "11:00",
+   "name": "Wynn Mixed Championship (2 Day)",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "12:00",
+   "name": "WPT World Championship Day 3",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "12:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "12:00",
+   "name": "No Limit Hold'em Day 1A",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$2,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "13:00",
+   "name": "NLH High Roller (2 Day)",
+   "sign_buyin": "$25,800*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "14:00",
+   "name": "Milestone Satellite to $3,000 NLH**",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-17",
+   "start": "19:00",
+   "name": "Milestone Satellite to $3,000 NLH**",
+   "sign_buyin": "$400",
+   "sign_guarantee": "25 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "10:00",
+   "name": "Milestone Satellite to $3,000 NLH**",
+   "sign_buyin": "$400",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "12:00",
+   "name": "WPT World Championship Day 4",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "12:00",
+   "name": "No Limit Hold'em Day 1B",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$2,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "12:00",
+   "name": "Limit Omaha 8 Championship (2 Day)",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "12:00",
+   "name": "No Limit Hold'em",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "13:00",
+   "name": "NLH 6-Max",
+   "sign_buyin": "$10,500*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "14:00",
+   "name": "Milestone Satellite to $5,000 Seniors High Roller**",
+   "sign_buyin": "$600",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-18",
+   "start": "18:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "11:00",
+   "name": "Seniors High Roller (3 Day)",
+   "sign_buyin": "$5,000",
+   "sign_guarantee": "$250,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "11:00",
+   "name": "NLH Mystery Bounty Day 1A",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "12:00",
+   "name": "WPT World Championship Day 5",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "12:00",
+   "name": "No Limit Hold'em Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "12:00",
+   "name": "Milestone Satellite to $1,600 Mystery Bounty**",
+   "sign_buyin": "$300",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "13:00",
+   "name": "PLO",
+   "sign_buyin": "$10,500*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "13:00",
+   "name": "NLH 6-Max",
+   "sign_buyin": "$3,000",
+   "sign_guarantee": "$500,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "13:00",
+   "name": "TORSE Championship (2 Day)",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "17:00",
+   "name": "Milestone Satellite to $1,600 Mystery Bounty**",
+   "sign_buyin": "$300",
+   "sign_guarantee": "10 Seats",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "18:00",
+   "name": "NLH 6-Max Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-19",
+   "start": "19:00",
+   "name": "NLH Mystery Bounty Day 1B",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "11:00",
+   "name": "NLH Mystery Bounty Day 1C",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "12:00",
+   "name": "No Limit Hold'em Final Table",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "12:00",
+   "name": "No Limit Hold'em",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "13:00",
+   "name": "NLH 8-Max",
+   "sign_buyin": "$10,500*****",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "13:00",
+   "name": "Mixed Triple Draw (A-5, 2-7, Badugi)",
+   "sign_buyin": "$600",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "14:00",
+   "name": "WPT World Championship Final Table",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "18:00",
+   "name": "5-Card PLO Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "19:00",
+   "name": "NLH Mystery Bounty Day 1D",
+   "sign_buyin": "$1,600",
+   "sign_guarantee": "$1,000,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-21",
+   "start": "12:00",
+   "name": "No Limit Hold'em",
+   "sign_buyin": "$1,100",
+   "sign_guarantee": "$100,000",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-21",
+   "start": "13:00",
+   "name": "NLH Mystery Bounty Day 2",
+   "sign_buyin": "",
+   "sign_guarantee": "",
+   "result": "match"
+  },
+  {
+   "date": "2026-12-21",
+   "start": "20:00",
+   "name": "NLH Turbo",
+   "sign_buyin": "$600",
+   "sign_guarantee": "$50,000",
+   "result": "match"
+  }
+ ],
+ "sign_summary": {
+  "sign_rows": 136,
+  "stored_rows": 136,
+  "matched": 133,
+  "differs": 0,
+  "documented_conflicts": 3,
+  "sign_only": 0,
+  "row_only": 0
+ }
+}

@@ -185,5 +185,17 @@
    "Leave them blank and flagged (current behaviour: honest, but it under-counts the playable field for a trip whose goal is to enter as many events as possible)"
   ],
   "effect": "Every room the trip could use becomes comparable on the same fields as the Venetian rows (buy-in, fee, guarantee, stack, levels, late-reg close, entry rules) instead of a table of blanks."
+ },
+ {
+  "title": "Close the remaining unverified rows: human-readable entry-terms capture",
+  "problem": "The rows that still carry an unverified label do so only because their official entry terms are not machine-readable in the build environment: the WPT structures PDF truncates at page 30 of extracted text, the per-event sheets its footnotes reference were not found published online, and South Point publishes its rules as JPG images.",
+  "options": [
+   "A human reads the remaining WPT event terms and South Point rules sheets and pastes each entry sentence into data/ with its URL and retrieval date (fastest, no code)",
+   "Ask each room in writing for the entry cap per event (also resolves the F01 standard question)",
+   "Add OCR to the capture pipeline for the South Point JPG rules sheets",
+   "Leave the rows unverified and keep them out of every plan (current state, honest but incomplete)"
+  ],
+  "effect": "Each closed row loses its unverified label and joins either the no-second-entry set or the multi-entry section, with the official sentence stored on the row.",
+  "id": "S18"
  }
 ]

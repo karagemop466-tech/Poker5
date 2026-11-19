@@ -471,5 +471,32 @@
   "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
   "status": "open: needs the printed schedule or rules in text form, or an answer from the room",
   "last_updated": "2026-11-19"
+ },
+ {
+  "area": "Entry rules",
+  "title": "Venetian #39 (LIPS Ladies $800, 2Day) was published multi-entry on a Day-2 continuation sentence; corrected to Cap not stated",
+  "detail": "Structure sheet 32 was re-read live on 2026-11-19 (12 numbered rules). No rule grants a re-entry, rebuy, add-on or purchased stack, and the event has no starting flights (one Day 1, Dec 10, with Day 2 Dec 11 and a streamed final table). The earlier capture had quoted the sentence 'Day 2 will resume at 10:00 AM ...' as flight language and published the three rows (Day 1, Day 2 restart, final table) as 'Multi-entry: re-entry, add-on or flights' while their own excerpt said the opposite. The rows now read 'Cap not stated': S1 condition (4) (no flight or multi-day structure) is not met, so the event cannot join the no-second-entry set, and no text grants a second entry. Review the wording of S1 condition (4) if single-flight multi-day events should qualify.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F71"
+ },
+ {
+  "area": "Tournament data",
+  "title": "24 WPT satellite seat/prize guarantees were blank although the official schedule sign states them; filled from the sign",
+  "detail": "The Wynn WPT schedule sign prints a seats/prizes guarantee for every milestone satellite (for example '25 Seats', '50 Seats', '75 Seats', '10 Seats', '25 Prizes'). The earlier capture stored only money guarantees, leaving 24 satellite rows blank. Re-read live on 2026-11-19 and filled verbatim from the sign (data/ec3c21b8/wpt_sign_2026-11-19.tsv). The Milestone Satellite to the $25K NLH High Roller (Dec 16) has no guarantee cell on the sign and stays blank. Seat and prize counts are shown as seats, not cash, and are never divided by a buy-in in the ranking.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F72"
+ },
+ {
+  "area": "Official sources disagree",
+  "title": "Wynn sign footnote: 'The Tournament Entry for the Ladies Championship is $11,100' while its own table lists $1,100",
+  "detail": "The schedule sign's footnote reads 'The Tournament Entry for the Ladies Championship is $11,100. Ladies will receive a discounted entry.' while the same sign's table lists the Ladies NLH Championship (2 Day, Dec 13) at $1,100 with a $250,000 guarantee, and the stored row uses $1,100. The $11,100 figure appears inconsistent (an extra digit, or $1,110 with the discounted entry) and is not used anywhere. Confirm with the room before relying on either figure.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id": "F73"
  }
 ]

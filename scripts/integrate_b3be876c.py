@@ -196,9 +196,11 @@ def entry_language(rules_text: str) -> list[str]:
 
 def flight_language(rules_text: str) -> list[str]:
     # only rule sentences that speak of bagging chips or another flight count;
-    # the blind table's "Day 2" note is handled by the sheet's own parsed fields
+    # a bare "Day 2" continuation sentence is NOT flight language (a single-flight
+    # multi-day event has no flights - session ec3c21b8, flag F71); the blind
+    # table's "Day 2" note is handled by the sheet's own parsed fields
     return [clip(s) for s in sentences(rules_text)
-            if re.search(r"bags? chips|subsequent flight|starting flight|day\s*2", s, re.I)]
+            if re.search(r"bags? chips|subsequent flight|starting flight", s, re.I)]
 
 
 def rule_count(rules_text: str) -> int:
@@ -380,7 +382,10 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
     multi             an official source grants further entries / flights, or the
                       row is a Day-2 restart or final table.
     unknown           the sheet was read but does not let the test be run (no
-                      registration close, or the event is not named on it).
+                      registration close, or the event is not named on it), or
+                      the event is a multi-day structure that grants no second
+                      entry and has no flights (S1 condition 4 excludes it from
+                      the no-second-entry set; Cap not stated - ec3c21b8, F71).
     unread            no official sheet was read for this row.
     """
     ev = {"sheet_no": None, "sheet_sha256": "", "sheet_retrieved": "", "rules_read": 0,
@@ -408,12 +413,23 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
         return ("multi",
                 "official sheet %s rule text grants further entries: %s"
                 % (ev["sheet_no"], ev["grant_sentences"][0][:180]), ev)
-    if kind in ("restart", "final_table") or ev["flight_sentences"]:
+    if kind in ("restart", "final", "final_table") and not ev["grant_sentences"] \
+            and not ev["flight_sentences"]:
+        return ("unknown",
+                "continuation row (Day 2 / final table) of a single-flight event whose "
+                "sheet grants no second entry; entry terms carry over from the Day 1 row "
+                "- Cap not stated (session ec3c21b8, flag F71)", ev)
+    if kind in ("restart", "final", "final_table") or ev["flight_sentences"]:
         why = "the row is a Day 2 / final-table continuation" if kind != "entry" else \
               "flight language on the sheet: " + ev["flight_sentences"][0][:150]
         return "multi", why, ev
     if sheet.get("multi_day_format"):
-        return "multi", "the sheet describes a multi-day format", ev
+        return ("unknown",
+                "no re-entry, rebuy or add-on sentence appears anywhere in the sheet's "
+                "rules and the event has no starting flights, but the sheet documents a "
+                "multi-day structure, so S1 condition (4) - no flight or multi-day "
+                "structure - is not met and the row is published as Cap not stated "
+                "(session ec3c21b8, flag F71)", ev)
     if sheet.get("http_status") != 200:
         return "unread", "the official sheet could not be retrieved", ev
     if not ev["covers_event"]:
@@ -890,13 +906,16 @@ def main() -> int:
         cap_date = ((vrow or {}).get("sheet_retrieved_at")
                     or (vrow or {}).get("retrieved_at")
                     or READ_DATE)[:10]
+        # Set the fresh verdict first so the spot check compares the row's final
+        # published label (a stale label here made a verdict transition dirty the
+        # row for one run - session ec3c21b8).
+        row["entry_rule"] = verdict
         row["spot_check"] = spot_check_row(row, sheet, cap_date)
         for _k, _v in (row["spot_check"].get("fields") or {}).items():
             if _k == "guarantee" and not _v.get("ok"):
                 row["guarantee_note"] = _v.get("excerpt") or "the two official captures state different guarantees"
             if _k == "start" and not _v.get("ok"):
                 row["start_note"] = _v.get("note") or "the two official captures state different start times"
-        row["entry_rule"] = verdict
         row["entry_basis"] = basis
         # Descriptive ranking field required by the brief: total guarantee divided by total
         # entry fee (buy-in incl. house fee). A ratio, never a score: stored on the row so
@@ -924,8 +943,10 @@ def main() -> int:
             # copied onto every event cannot attribute the wrong clock to a row.
             "registration_close_clock": sheet.get("late_registration_clock") or "",
             "event_named_on_sheet": ev["covers_event"],
-            "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no "
-                        "re-entry/rebuy/add-on/purchased-stack provision",
+            "standard": ("S1 (2026-11-19): sheet read + event named + one day + registration close "
+                         "stated + no re-entry/rebuy/add-on/purchased-stack provision"
+                         if verdict == "confirmed_single"
+                         else "S1 not satisfied (2026-11-19): " + basis),
         }
         # structured rule fields, each with its own official excerpt and retrieval date
         rf = (vrow or {}).get("rule_fields") or {}
