@@ -26,10 +26,17 @@
   "Wynn resort fee moved from unverified to verified ($55 + tax) from an official Wynn terms page whose offer window covers the planned stay; parking, cancellation, incidentals and occupancy now carry the same source and read date.",
   "Caesars Palace: resort fee published only as a $45-$60 corporate range; left unverified for the property, with the official sentence and its read date.",
   "Horseshoe Las Vegas: resort fee published only as a $45-$60 corporate range; left unverified for the property, with the official sentence and its read date.",
-  "Venetian: resort fee re-read on 2026-11-19 (the date of the official read recorded beside the excerpt, not the date this script ran); the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay."
+  "Venetian: resort fee re-read on 2026-11-19 (the date of the official read recorded beside the excerpt, not the date this script ran); the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay.",
+  "Venetian: per-day parking figures captured from the official player-parking page on 2026-11-19.",
+  "Bellagio: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-19.",
+  "ARIA Resort & Casino: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-19.",
+  "MGM Grand: mandatory resort fee $50.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-19."
  ],
  "preserved_curation": [
-  "Q01.have (kept the committed wording)"
+  "Q01.have (kept the committed wording)",
+  "flags.F47.detail (kept the committed wording)",
+  "flags.F47.status (kept the committed wording)",
+  "flags.F47.title (kept the committed wording)"
  ],
  "sources_read_on": "2026-11-19",
  "rate_log_entries": 2,
@@ -50,10 +57,18 @@
    "2026-11-19",
    "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
   ],
+  "mgm_terms_2026_11_19": [
+   "2026-11-19",
+   null
+  ],
+  "venetian_parking_2026_11_19": [
+   "2026-11-19",
+   "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html"
+  ],
   "sheet_live_spot_checks": [
    null,
    null
   ]
  },
- "flags_total": 56
+ "flags_total": 58
 }

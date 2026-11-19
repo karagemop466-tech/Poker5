@@ -182,3 +182,15 @@ test('every restricted row publishes the sheet sentence that closes the field', 
     assert.match(r.restriction.retrieved, /^\d{4}-\d{2}-\d{2}$/, `no retrieval date on #${r.event_no}`);
   }
 });
+
+test('every entry-rule pill uses a CSS class, never a visible label, in its class slot', async () => {
+  const files = ['pages/tournaments.html', 'pages/single-entry.html', 'pages/tournaments-double.html', 'pages/schedule.html'];
+  for (const f of files) {
+    const t = await page(f);
+    const classes = [...t.matchAll(/class="pill pill-([^"]*)"/g)].map((m) => m[1]);
+    assert.ok(classes.length > 0, `no pills on ${f}`);
+    for (const c of classes) {
+      assert.ok(/^[a-z0-9]+$/.test(c), `malformed pill class on ${f}: "${c}"`);
+    }
+  }
+});

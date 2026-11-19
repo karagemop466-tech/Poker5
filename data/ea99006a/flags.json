@@ -68,16 +68,20 @@
  {
   "id": "F10",
   "area": "Coverage",
-  "title": "MGM Resorts rooms (Bellagio, MGM Grand, ARIA) not verified",
-  "detail": "The official poker-room URLs and the MGM resort-fee URL return 'page not found'. No rows were invented for these rooms.",
-  "source": "https://bellagio.mgmresorts.com/en/casino/poker-room.html"
+  "title": "MGM Resorts rooms (Bellagio, MGM Grand, ARIA): resort fee and cancellation term now read from official pages",
+  "detail": "CLOSED AS TO FEE AND TERM on 2026-11-19. Official hotel reservation terms were read for three MGM properties: Bellagio and ARIA state 'A daily resort fee of $55.00 plus applicable tax will be applied to all reservations'; MGM Grand states '$50.00'. All three state a first-night deposit refundable up to 72 hours before arrival unless the booked offer excludes it, and the MGM parking page states $20 self-parking for registered hotel guests and $40 valet. MGM fees are property-specific, so no single MGM figure is reused. Still open: no MGM room rate for 6-13 December 2026 is published on any page read, and the MGM poker-room URLs still return no page, so MGM rooms remain absent from the tournament tables (no row was invented).",
+  "source": "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+  "status": "fee and cancellation term verified; room rate and poker schedule still missing",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F11",
   "area": "Coverage",
-  "title": "Horseshoe publishes no schedule",
-  "detail": "The official casino page says the Hall of Fame Poker Room has 20 tables and '6 exciting tournament times daily' but links no schedule or structure sheet.",
-  "source": "https://www.caesars.com/horseshoe-las-vegas/casino"
+  "title": "Horseshoe publishes no poker schedule: the casino page promises six daily tournament times but prints none",
+  "detail": "Re-read on 2026-11-19: the official Horseshoe casino page states 'The Hall of Fame Poker Room at Horseshoe Las Vegas features 20 tables ... Test your luck with 6 exciting tournament times daily', and links no schedule, buy-in, guarantee or structure sheet. The claim that tournaments run is official; the times, prices and entry rules are not published anywhere this site can read, so no Horseshoe row is created and none is guessed.",
+  "source": "https://www.caesars.com/horseshoe-las-vegas/casino",
+  "status": "open - no official schedule published",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F12",
@@ -382,38 +386,40 @@
  {
   "id": "F62",
   "area": "Coverage",
-  "title": "Not every WPT event's entry terms were read individually",
-  "detail": "Terms were read for 13 distinct events in the official structures PDF. The rest are marked 'entry terms not read' rather than being copied from a sibling event.",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "id_note": "reassigned during merge with main (id collision)"
+  "title": "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+  "detail": "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in data/8f0b323b/schedule_recheck.json.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "id_note": "reassigned during merge with main (id collision)",
+  "status": "open - cosmetic, no value affected",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F63",
   "area": "Entry rules",
-  "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
-  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-  "status": "fixed by this session; kept visible",
+  "title": "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+  "detail": "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "status": "open by design",
   "last_updated": "2026-11-19",
   "id_note": "reassigned during merge with main (id collision)"
  },
  {
   "id": "F64",
   "area": "Entry rules",
-  "title": "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
-  "detail": "The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December $600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints 'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived restriction label with its sentence and retrieval date, the label is shown on every row, the executive ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. A reader who is eligible can still play them; the label says who can.",
-  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
-  "status": "fixed by this session; label visible on the row",
+  "title": "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
+  "detail": "Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties.",
+  "source": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+  "status": "verified - figures official",
   "last_updated": "2026-11-19",
   "id_note": "reassigned during merge with main (id collision)"
  },
  {
   "id": "F65",
   "area": "Monitoring",
-  "title": "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
-  "detail": "The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the 2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
-  "status": "open",
+  "title": "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+  "detail": "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01); six of the sheets behind the trip window were not re-read in this session.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "status": "open - evidence limitation",
   "last_updated": "2026-11-19",
   "id_note": "reassigned during merge with main (id collision)"
  },
@@ -439,6 +445,26 @@
  },
  {
   "id": "F68",
+  "area": "Entry rules",
+  "title": "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+  "detail": "The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December $600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints 'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived restriction label with its sentence and retrieval date, the label is shown on every row, the executive ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. A reader who is eligible can still play them; the label says who can.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+  "status": "fixed by this session; label visible on the row",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F59 was already held by another session's finding"
+ },
+ {
+  "id": "F69",
+  "area": "Monitoring",
+  "title": "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+  "detail": "The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the 2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F60 was already held by another session's finding"
+ },
+ {
+  "id": "F70",
   "area": "Other rooms",
   "title": "South Point's page text promises a $300 daily buy-in; its own published rules sheets do not have one",
   "detail": "Read again 2026-11-19. The official South Point poker-room page states: \"We feature tournaments daily with aggressive guarantees at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300.\" The property's own Daily Tournament Schedule page carries no text at all (see F12) - eight rules-sheet images plus a schedule image - and the file names of those sheets state $120 six times and $200 twice: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg states $120; 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg states $120; 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg states $120; 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg states $120; 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg states $120; 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg states $200; 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg states $200; 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg states $120. So the $300 figure in the page text has no published sheet, and a $200 event that does have sheets is not mentioned in the page text at all. Because the schedule and the structures exist only as images, the eight South Point rows keep 'entry terms not read', and no start time is tied to a buy-in in any of them. Do not plan a South Point entry around a $300 event at a chosen hour on this evidence.",

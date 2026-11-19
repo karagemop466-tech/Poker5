@@ -536,6 +536,60 @@ LIVE = {
                       "be adjusted to the prevailing rate."),
         "booking": "book the suite by calling 866.255.8936 and mentioning code EPOKR25; a Venetian Rewards account is required",
     },
+    "mgm_terms_2026_11_19": {
+        "read": LIVE_READ,
+        "fee_excerpt": ("Bellagio and ARIA: 'A daily resort fee of $55.00 plus applicable tax will be applied to all "
+                        "reservations.' MGM Grand: 'A daily resort fee of $50.00 plus applicable tax will be applied to "
+                        "all reservations.'"),
+        "cancel_excerpt": ("'The first night's deposit is fully refundable provided a timely notice of cancellation is "
+                           "received by Room Reservations ... at least 72 hours prior to the arrival date, unless "
+                           "specifically excluded by booked offer.'"),
+        "parking_excerpt": ("MGM parking page: 'Registered Hotel Guest $20' self-parking; valet parking $40 daily; "
+                            "'Prices may be higher during special events.'"),
+        "parking_url": "https://www.mgmresorts.com/en/things-to-do/parking.html",
+        "hotels": [
+            dict(key="bellagio", name="Bellagio", tier="Luxury", area="Strip - centre", room="Bellagio Poker Room",
+                 fee=55.0,
+                 fee_url="https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Includes in-room wireless internet, domestic long distance and toll-free calls, Paramount+ "
+                            "with SHOWTIME On Demand, boarding-pass printing, digital newsstand and fitness-center "
+                            "access for guests 18+. Waived for MGM Rewards Gold+ on eligible reservations. Additional "
+                            "occupant charge $50 plus tax per occupant per night above two."),
+                 cancel_phone="888.987.6667",
+                 address="",
+                 booking="https://bellagio.mgmresorts.com/en/",
+                 quality=("No Bellagio poker-room page could be retrieved, so the room is listed for the room-cost "
+                          "comparison only; no Bellagio tournament row exists in this repository (F53).")),
+            dict(key="aria", name="ARIA Resort & Casino", tier="Luxury", area="Strip - centre / south",
+                 room="ARIA Poker Room", fee=55.0,
+                 fee_url="https://aria.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Check-in 3:00 pm, check-out 11:00 am. Waived for MGM Rewards Gold+ on eligible "
+                            "reservations. Additional occupant charge $50 plus tax per occupant per night above two."),
+                 cancel_phone="866.359.7757",
+                 address="",
+                 booking="https://aria.mgmresorts.com/en/",
+                 quality=("No ARIA poker-room page could be retrieved; listed for the room-cost comparison only, and "
+                          "no ARIA tournament row exists in this repository.")),
+            dict(key="mgmgrand", name="MGM Grand", tier="Luxury", area="Strip - south", room="MGM Grand Poker Room",
+                 fee=50.0,
+                 fee_url="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Note it is $50 here and $55 at Bellagio and ARIA: MGM resort fees are property-specific "
+                            "(F64). Additional occupant charge $40 plus tax per occupant per night above two."),
+                 cancel_phone="877.880.0880",
+                 address="",
+                 booking="https://mgmgrand.mgmresorts.com/en/",
+                 quality=("No MGM Grand poker-room page could be retrieved; listed for the room-cost comparison only, "
+                          "and no MGM Grand tournament row exists in this repository.")),
+        ],
+    },
+    "venetian_parking_2026_11_19": {
+        "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+        "read": LIVE_READ,
+        "excerpt": ("'The daily fee for registered hotel guests is $20/day, seven days a week. For non-hotel guests, the "
+                    "fee is $20/day Monday - Thursday, and $25/day Friday - Sunday. Valet parking is $40/day.' Players in "
+                    "the poker room who play three hours or more in tournament or cash games receive complimentary "
+                    "self-parking for the day."),
+    },
     "sheet_live_spot_checks": {
         # sheet number -> values read from the live PDF on 2026-11-19 and compared
         # with the stored capture. Every value that matched is recorded as "match".
@@ -547,8 +601,8 @@ LIVE = {
 def apply_hotels(hotels: list[dict]) -> list[str]:
     """Add the official hotel re-reads held in LIVE. Returns the notes for the report.
 
-    Committed wording wins (see preserve()): these re-reads are dated captures, and a later
-    session's correction to a hotel note must not be reverted by a scheduled run.
+    Committed wording wins (see preserve()): these re-reads are dated captures, and a later session's
+    correction to a hotel note must not be reverted by a scheduled run.
     """
     notes = []
     before = {h.get("key"): json.loads(json.dumps(h)) for h in hotels}
@@ -627,6 +681,44 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
                      "not the date this script ran); the official poker suite-rate page is the only published "
                      "numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in "
                      "the dated rate log as a starting rate and NOT as a quote for the stay." % v["read"])
+    vp = LIVE["venetian_parking_2026_11_19"]
+    if "venetian" in by_key:
+        h = by_key["venetian"]
+        h["parking"] = ("Registered hotel guest: $20/day self-parking, seven days a week; valet $40/day. Non-hotel guests "
+                        "$20/day Mon-Thu, $25/day Fri-Sun. Poker players who play three hours or more in a tournament or "
+                        "cash game get complimentary self-parking for that day, confirmed by a supervisor.")
+        h["parking_source"] = vp["url"]
+        h["parking_read"] = vp["read"]
+        notes.append("Venetian: per-day parking figures captured from the official player-parking page on %s." % vp["read"])
+    m = LIVE["mgm_terms_2026_11_19"]
+    have = {h["key"] for h in hotels}
+    for spec in m["hotels"]:
+        if spec["key"] in have:
+            rec = by_key[spec["key"]]
+        else:
+            rec = dict(key=spec["key"], on_property=True, rate_floor=None, rate_floor_source="",
+                       rate_caveat=("this property publishes no nightly rate on any official page we could read; the "
+                                    "booking link is the only way to get a dated quote"))
+            hotels.append(rec)
+        rec.update({
+            "name": spec["name"], "tier": spec["tier"], "area": spec["area"], "room": spec["room"],
+            "resort_fee": spec["fee"],
+            "resort_fee_text": "$%.2f plus applicable tax per night" % spec["fee"],
+            "resort_fee_source": spec["fee_url"], "resort_fee_read": m["read"], "resort_fee_verified": True,
+            "resort_fee_note": (m["fee_excerpt"] + " " + spec["fee_extra"] +
+                                " Read from the official hotel reservation terms on %s." % m["read"]),
+            "parking": ("Registered hotel guest: $20 self-parking; valet $40 daily. Prices may be higher during special "
+                        "events."),
+            "parking_source": m["parking_url"], "parking_read": m["read"],
+            "cancel": (m["cancel_excerpt"].split("Room Reservations ...")[0] + "Room Reservations at " + spec["cancel_phone"] +
+                       " at least 72 hours prior to the arrival date, unless specifically excluded by booked offer."),
+            "cancel_source": spec["fee_url"], "cancel_read": m["read"],
+            "cancel_note": "Standard reservation term, not a specific rate plan (F33).",
+            "address": spec["address"], "address_source": "", "booking": spec["booking"],
+            "quality_note": spec["quality"],
+        })
+        notes.append("%s: mandatory resort fee $%.2f plus tax, 72-hour standard cancellation term and self-parking rates "
+                     "read from official MGM pages on %s." % (spec["name"], spec["fee"], m["read"]))
     for h in hotels:
         # A fee read is only ever a date an official page was actually opened: the LIVE capture date
         # for the hotels this script holds an excerpt for, otherwise blank - never the run date.
@@ -882,15 +974,15 @@ def main() -> int:
             cur += dt.timedelta(days=1)
     if best:
         _, cin, cout, n, ns, g = best
-        # check_out is the day you leave, so it is check_in + nights. The line below used to write
-        # cout - 1 day while also writing nights: 7, publishing a 6-night stay (6 -> 12 Dec) beside a
-        # 7-night cost ("nights x true hotel cost") and a 7-day playing list - and the scheduled run
-        # republished that off-by-one over the corrected date on main every day. The scored playing
-        # span is [cin, cout); the stay is [cin, cout].
         nights = (cout - cin).days
         last_play = cout - dt.timedelta(days=1)
         meta["trip"] = {
             "check_in": cin.isoformat(),
+            # check_out is the day you leave, so it is check_in + nights. The line below used to write
+            # cout - 1 day while also writing nights: 7, publishing a 6-night stay beside a 7-night
+            # cost ("nights x true hotel cost") and a 7-day playing list - and the scheduled run
+            # republished that off-by-one over the corrected date on main every day. The scored
+            # playing span is [cin, cout); the stay is [cin, cout].
             "check_out": cout.isoformat(),
             "last_play_day": last_play.isoformat(),
             "nights": nights, "adults": 2, "rooms": 1,
@@ -979,8 +1071,9 @@ def main() -> int:
                 upd = {"detail": detail, "source": source, "status": status}
                 preserve(f, upd, "flags.%s" % fid, keys=("detail", "status"))
                 f.update(upd)
-                # Restamp only when the flag's own content moved: stamping "last_updated" on every
-                # run made an untouched flag look freshly reviewed and dirtied the published page.
+                # Restamp only when the flag's own content moved: stamping "last_updated" on every run
+                # made an untouched flag look freshly reviewed and dirtied flags.json, and therefore
+                # the published page, for no reason.
                 if any(before_f.get(k) != f.get(k) for k in ("detail", "source", "status")):
                     f["last_updated"] = SRC
                 return
@@ -994,9 +1087,8 @@ def main() -> int:
         for f in flags:
             if f["id"] == fid:
                 before_f = dict(f)
-                proposed = preserve(f, {"title": title, "detail": detail, "status": status},
-                                    "flags.%s" % fid, keys=("title", "detail", "status"))
-                f.update(proposed)
+                f.update(preserve(f, {"title": title, "detail": detail, "status": status},
+                                  "flags.%s" % fid, keys=("title", "detail", "status")))
                 if any(before_f.get(k) != f.get(k) for k in ("title", "detail", "source", "status")):
                     f["last_updated"] = SRC
                 return
@@ -1078,6 +1170,57 @@ def main() -> int:
          "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
          status="rate confirmed; fee taxation flagged")
 
+    # ---- 8f0b323b (2026-11-19): MGM fee terms + schedule-name suffix ----
+    flag("F10", "Hotel fees",
+         "MGM Resorts rooms (Bellagio, MGM Grand, ARIA): resort fee and cancellation term now read from official pages",
+         ("CLOSED AS TO FEE AND TERM on 2026-11-19. Official hotel reservation terms were read for three MGM properties: "
+          "Bellagio and ARIA state 'A daily resort fee of $55.00 plus applicable tax will be applied to all reservations'; "
+          "MGM Grand states '$50.00'. All three state a first-night deposit refundable up to 72 hours before arrival unless "
+          "the booked offer excludes it, and the MGM parking page states $20 self-parking for registered hotel guests and "
+          "$40 valet. MGM fees are property-specific, so no single MGM figure is reused. Still open: no MGM room rate for "
+          "6-13 December 2026 is published on any page read, and the MGM poker-room URLs still return no page, so MGM rooms "
+          "remain absent from the tournament tables (no row was invented)."),
+         "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+         status="fee and cancellation term verified; room rate and poker schedule still missing")
+    flag("F11", "Coverage",
+         "Horseshoe publishes no poker schedule: the casino page promises six daily tournament times but prints none",
+         ("Re-read on 2026-11-19: the official Horseshoe casino page states 'The Hall of Fame Poker Room at Horseshoe Las Vegas "
+          "features 20 tables ... Test your luck with 6 exciting tournament times daily', and links no schedule, buy-in, "
+          "guarantee or structure sheet. The claim that tournaments run is official; the times, prices and entry rules are not "
+          "published anywhere this site can read, so no Horseshoe row is created and none is guessed."),
+         "https://www.caesars.com/horseshoe-las-vegas/casino", status="open - no official schedule published")
+    flag("F62", "Source mismatch",
+         "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+         ("Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to "
+          "finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of "
+          "Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. "
+          "Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: "
+          "renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in "
+          "data/8f0b323b/schedule_recheck.json."),
+         "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+         status="open - cosmetic, no value affected")
+    flag("F63", "Hotel fees",
+         "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+         ("The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, "
+          "select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is "
+          "a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in "
+          "the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read."),
+         "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2", status="open by design")
+    flag("F64", "Hotel fees",
+         "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
+         ("Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus "
+          "applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at "
+          "Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties."),
+         "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html", status="verified - figures official")
+    flag("F65", "Entry rules",
+         "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+         ("The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states "
+          "single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, "
+          "not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification "
+          "page (F01); six of the sheets behind the trip window were not re-read in this session."),
+         "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+         status="open - evidence limitation")
+
     # ---- defects found by the 2026-11-19 line-by-line re-read (session 2723deea) ----
     flag("F59", "Entry rules",
          "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
@@ -1136,6 +1279,20 @@ def main() -> int:
                 return
         items.append(dict(kw, id=iid))
 
+    upsert(questions, "Q14",
+           q="What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
+           have=("Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read "
+                 "2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, "
+                 "ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). "
+                 "Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and "
+                 "Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a "
+                 "specific rate plan."),
+           missing=("The deadline that applies to the exact rate plan you book: every MGM page says 'unless specifically excluded "
+                    "by booked offer', Wynn's figure belongs to a two-night promotional offer, and Caesars/Horseshoe publish the "
+                    "headline but not the term sheet."),
+           how=("Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record "
+                "it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."))
+
     upsert(questions, "Q19",
            q=("Which published events is a general entrant actually allowed to enter, and where is that stated?"),
            have=("Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on "
@@ -1180,7 +1337,11 @@ def main() -> int:
                 "table re-scopes every row."))
     upsert(questions, "Q11",
            q="Can the site complete the trip cost without me entering anything?",
-           have="The entries side is complete and source-linked. The hotel side needs a dated nightly rate, and no official Venetian, Wynn or Caesars page publishes one for these dates; the only numeric room rate any of them publishes is the Venetian poker-suite floor. The booking engines that would produce a quote are JavaScript-driven and were not captured, so the rate log has no dated observation for 6-13 December 2026.",
+           have=("The entries side is complete and source-linked. On the hotel side the mandatory fees are now verified for the "
+                 "Venetian ($55), Wynn ($55), Resorts World ($55), Bellagio ($55), ARIA ($55) and MGM Grand ($50), all plus the "
+                 "13.38% Clark County tax, and self-parking rates are dated for the Venetian ($20/day registered guest) and the MGM "
+                 "rooms ($20/day). What is still missing is the nightly ROOM rate itself, which no official Strip page publishes "
+                 "for these dates."),
            missing="A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
            how="The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.")
     upsert(suggestions, "S15",
@@ -1272,7 +1433,7 @@ def main() -> int:
              "excerpt": LIVE["venetian_poker_rate"]["excerpt"],
              "used_for": "Dated rate log + planner's optional published-floor rate (never a default)"},
         ],
-        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": SRC,
+        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": LIVE_READ,
                      "corroboration": ("https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:"
                                        "7436500e-cac4-420a-b23a-02d3fec69900/original/as/"
                                        "room-tax-increase-transient-lodging-letter-111616.pdf"),

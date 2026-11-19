@@ -128,12 +128,44 @@ def build(routes, hotels_by_key, venues_by_key):
             r["basis"] = ("measured between the two official street addresses below; no official "
                           "source publishes a walking time between them")
         else:
-            r["basis"] = ("not measured: one endpoint publishes no street address, so the map links "
-                          "are pinned on the property names")
+            missing = [n for n, ok in ((r["hotel"], bool(r["origin_address"])),
+                                       (r["venue"], bool(r["destination_address"]))) if not ok]
+            r["basis"] = ("not measured: %s publish%s no street address in this repository, so the map links "
+                          "are pinned on the property names"
+                          % (" and ".join(missing) or "neither endpoint",
+                             "" if len(missing) == 1 else "es"))
         r["addresses_read"] = max(filter(None, [r["origin_address_read"], r["destination_address_read"],
                                                 read])) if (both or r.get("same_property")) else ""
         out.append(r)
     return out
+
+
+NO_TIME_METHOD = ("No official source states a walking time between these properties. Left blank on "
+                  "purpose - open the route link and check it yourself.")
+
+
+def universe(routes, hotels, venues):
+    """Every hotel-to-room pair, not only the ones a previous run happened to write.
+
+    The brief asks for a walking-route check per hotel-room pair, so the ledger is derived from the
+    two registers (hotels x venues) instead of being an annotation of whatever rows already exist.
+    A pair already in routes.json keeps its curated values (its measured minutes, its `verified`
+    flag, its `method` sentence); a pair that is new gets blanks and the "no official source states a
+    walking time" method, never an estimate.
+    """
+    have = {(r.get("hotel_key"), r.get("venue_key")): r for r in routes}
+    pairs = []
+    for h in hotels:
+        for v in venues:
+            prev = have.get((h.get("key"), v.get("key")))
+            if prev:
+                pairs.append(prev)
+            else:
+                pairs.append({"hotel": h.get("name"), "hotel_key": h.get("key"),
+                              "venue": v.get("name"), "venue_key": v.get("key"),
+                              "same_property": None, "minutes": None, "verified": False,
+                              "method": NO_TIME_METHOD})
+    return pairs
 
 
 def main() -> int:
@@ -143,7 +175,7 @@ def main() -> int:
     venues = load("venues.json")
     hotels_by_key = {h.get("key"): h for h in hotels}
     venues_by_key = {v.get("key"): v for v in venues}
-    out = build(routes, hotels_by_key, venues_by_key)
+    out = build(universe(routes, hotels, venues), hotels_by_key, venues_by_key)
     text = dump("routes.json", out)
     path = os.path.join(EA, "routes.json")
     if check:
