@@ -1310,7 +1310,25 @@ Claimed 2026-11-19 before any file edit. Scope is deliberately narrow because th
 
 | Task | Status | Owner | Files in scope |
 |---|---|---|---|
-| V1 | in progress | 96994b83 | none (read-only verification) |
-| V2 | in progress | 96994b83 | `COORDINATION.md` (this section only) |
+| V1 | done | 96994b83 | none (read-only verification) |
+| V2 | done | 96994b83 | `COORDINATION.md` (this section only) |
 
 Not claimed here (already in progress or done by other sessions, or out of this session's reach): live Strip-wide morning feed, hotel live rate lookups, walking-route times from maps, a new single-entry confirmation, and any change to rows, rates or flags. No data file is edited.
+
+### Results — session 96994b83 (2026-11-19)
+
+**V1 — live re-read of official sources (via page-fetch tool, read 2026-11-19):**
+- [Venetian DeepStack Extravaganza IV schedule](https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html), first chunk (Nov 16–Nov 28). Spot-checked rows match `data/ea99006a/official_schedule_2026-11-19.tsv` and `data/ea99006a/venetian.json`: Event 1A/1B 11:10 AM / 5:10 PM ($300, $75K GTD); Event 6 11:10 AM ($200 1Day); Event 7 1A 11:10 AM ($400, $75K GTD, 1B on 11-24, Day 2 Restart 11-25 at 11:00 AM); Event 16 11:10 AM ($600 Bounty $30K GTD). This is a spot-check of the first chunk, not a full 94-row re-diff (the full diff is R1 from session 25481cd8).
+- [Structure sheet 2](https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf) (Event 7, $400 NLH 1A/1B, $75K GTD): fee text "$70 of the $400 Buy-In is withheld for house fees"; prize pool "$330 of every $400"; rule 8 "Any player who bags chips for Day 2 may not play a subsequent flight." The sheet has **no** written one-entry, freezeout, re-entry, rebuy or add-on statement. The committed classification of `multi` for these rows matches the sheet.
+
+**V2 — checks on `main` @ `998a32d` (this branch, no data change):**
+- `python3 scripts/build_ea99006a.py`: exit 0, output tree clean afterwards (deterministic).
+- `python3 scripts/check_ea99006a.py`: OK; 1,665 table rows, all with official https sources; 461 internal and 3,992 external links resolved.
+- `python3 scripts/check_root_site.py`: OK.
+- `node --check assets/app.js`: OK. `npm test`: passed.
+
+**Irregularity for review (not changed here; logged on Flagged for review as F01/F47 already):**
+- The 53 rows labelled "Confirmed single-entry (standard S1)" in `data/ea99006a/venetian.json` are classified by the absence of re-entry/rebuy/add-on wording, not by written maximum-entry wording. The user's brief asks for written rules. F01 discloses this. However, the 6bc143b9 log entry (C7) says "0 confirmed single-entry; silence is not confirmation". That contradicts the 53 rows in the data. The data owner should reconcile the log wording with the S1 label, or relabel the rows. This session did not change either.
+- Not re-verified here: hotel rates, resort fees and tax, Wynn/other rooms, walking times, the morning feed, and the other 36 structure sheets. Those remain as previously recorded.
+
+**Publication:** board-only change; no site, data or build output changed, so no Pages rebuild is expected to change content.
