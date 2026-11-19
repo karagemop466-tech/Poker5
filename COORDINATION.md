@@ -1,5 +1,21 @@
 # Coordination - Poker5
 
+## Current branch session — ec3c21b8 (active) — live closure of unread entry terms + final integration
+
+**Branch:** `arena/ec3c21b8-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed 2026-11-19 before any data edit.** No other session holds an open claim on the files below (every board entry is done, merged, or >60 min idle).
+
+**Scope:** close the rows still labelled "Entry terms not read - unverified" where their own official structure source can be read live in this session, re-read the trip-window Venetian structure sheets that session d615f79e marked "read before payment", refresh `last_checked` on every row whose official source this session re-read, and run the final integration (build, checks, PR -> main, merge, Pages deploy, record).
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| E1 | Live-read the official WPT World Championship structures + schedule PDFs and classify every `unread` WPT row against its own event text (entry rule, excerpt, retrieval date); remove the "unverified" label only where the official text supports a verdict | in progress | `data/ea99006a/wpt.json`, `data/ec3c21b8/` (new session record) |
+| E2 | Live-read the official South Point / other-venue sources behind the remaining `unread` rows and classify likewise | in progress | `data/ea99006a/other.json`, `data/ec3c21b8/` |
+| E3 | Re-read the 10 trip-window Venetian structure sheets not re-read by d615f79e (12, 17, 19, 20, 21, 27, 31, 32, 33, 37) and diff buy-in, guarantee, chips, level length, late-reg close and entry rules against `venetian.json`; refresh `last_checked` | in progress | `data/ea99006a/venetian.json` (last_checked / corrections only), `data/ec3c21b8/` |
+| E4 | Re-fetch the Clark County 13.38% transient-lodging ordinance and the resort-fee pages; log match / mismatch | in progress | `data/ec3c21b8/`, `data/ea99006a/flags.json` (append only, if a mismatch is found) |
+| E5 | Rebuild the root site, run every check, PR to main, merge, confirm Pages deploy, record here | in progress | generated `index.html`, `pages/**`, `COORDINATION.md` |
+
+Rules held: no row is newly marked confirmed unless its own official source was read live in this session and the excerpt + retrieval date are stored on the row; no value is inferred; mismatches become flags on the Flagged for review page, never silent edits. Other sessions' folders, `data/c6087e2c/`, and the scheduled workflows are read-only. The WPT/other rows carry no Venetian structure sheet, so a `confirmed_single` verdict there will only be published if the official text itself grants no second entry AND the rule standard is extended in writing to cover non-Venetian rows; otherwise the row keeps its unverified label and the excerpt is recorded.
+
 ## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
