@@ -47,7 +47,10 @@ Every brief item was checked against the built site and its data files:
 - The `recheck-ea99006a` scheduled run 44614839198 failed at "Rebuild the canonical site" (V2 above). Fixed in this session; the next scheduled run will confirm. No data was lost: the failed run's commit step was skipped, so main still carries the last good site.
 - `integrate_b3be876c.py` is not idempotent against the current committed data (it reverts the 2b98a91f corrections to `meta.json` check-out date, Q01/Q11, S10/S11 and F47 wording, and re-stamps sheet retrieval times). It is therefore NOT run by this session; the committed data stands. Recommend a follow-up session reconcile the generator with the corrected data so scheduled runs stop reverting it. Logged here, not silently rewritten.
 
-**Publication record (188dc704):** PR + merge + Pages deploy recorded below after the merge.
+**Publication record (188dc704):**
+- PR [#74](https://github.com/karagemop466-tech/Poker5/pull/74) — "Fix scheduled-monitor schema mismatch that broke the recheck publisher + full requirements verification" — merged 2026-11-19 (merge commit `a32f096` on main). PR checks `check` and `validate` passed; the same two workflows passed again on main after the merge.
+- Pages: the first deploy run (44623288745) was superseded/cancelled by a newer push from a parallel session (PR #75, merged minutes later); the deploy for the combined main (`f2eb22a`, which includes this session's merge) succeeded — run [44623383700](https://github.com/karagemop466-tech/Poker5/actions/runs/44623383700), Pages build status `built`. Live at https://karagemop466-tech.github.io/Poker5/ .
+- This record was completed in a follow-up commit on the same branch after the merge, per the brief's requirement to record the PR link and merge result here.
 
 ---
 
