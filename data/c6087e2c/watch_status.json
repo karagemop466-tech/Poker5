@@ -1,14 +1,14 @@
 {
- "last_run": "2026-11-19T22:20:40Z",
+ "last_run": "2026-11-19T22:31:28Z",
  "note": "HTTP status + content hash + verbatim 'resort fee' sentences for each watched official page. No value is parsed or asserted by the scraper; the excerpts exist so a human can read the current wording and so a hash change can be spotted.",
  "pages": {
   "venetian_resort_fee": {
    "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
    "name": "venetian_resort_fee",
    "http_status": 200,
-   "sha256": "ae2a564426521c2bc65dd6c0e3ca4e4cd93f2a3e1766b9c0cb80a54104c3ce80",
-   "retrieved_at": "2026-11-19T22:19:53Z",
-   "bytes": 227568,
+   "sha256": "901d2c3d06fd4dbe8e10f6a90d15690f0fe509fc58018880d1a050ed3bf25a13",
+   "retrieved_at": "2026-11-19T22:30:40Z",
+   "bytes": 227569,
    "resort_fee_excerpts": [
     "unities Group Dining Exhibiting Meet Our Team FAQs MOBILE CHECK-IN VENETIAN REWARDS - SIGN IN #bw-ph { display: none; } Resort Fee Home Resort Resort Fee Resort Fee Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in."
    ]
@@ -17,9 +17,9 @@
    "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
    "name": "venetian_suite_rates",
    "http_status": 200,
-   "sha256": "889ec6473ee0969d4de5bc58d249599d68754973181cea4bb4b12a4d03326dbc",
-   "retrieved_at": "2026-11-19T22:19:53Z",
-   "bytes": 232209,
+   "sha256": "bd12034e31222ad7d70e36e14bc73c3736840a2473785e04154c7d2ac6505efa",
+   "retrieved_at": "2026-11-19T22:30:40Z",
+   "bytes": 232210,
    "resort_fee_excerpts": [
     "There is a $55 resort fee per night stayed."
    ]
@@ -29,15 +29,15 @@
    "name": "venetian_hotel_policies",
    "http_status": 404,
    "sha256": "",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 0
   },
   "wynn_resort_fee_terms": {
    "url": "https://www.wynnlasvegas.com/terms-and-conditions/849338",
    "name": "wynn_resort_fee_terms",
    "http_status": 200,
-   "sha256": "9378803db88c938627e4b4836fcaf5be51b1cd5aba7605cfdefd730b3505b326",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "sha256": "61ecf007bc271e084577ac65f6edf9543623bbe56a876f0daf242ceb11cce91b",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 355770,
    "resort_fee_excerpts": [
     "RESORT FEE: Reservations booked prior to January 15, 2025, will be charged a daily resort fee of $50 plus tax; reservations booked on or after January 15, 2025, will be charged a daily resort fee of $55 plus tax.",
@@ -49,18 +49,18 @@
    "url": "https://www.wynnlasvegas.com/casino/poker",
    "name": "wynn_poker",
    "http_status": 200,
-   "sha256": "a14c479e7131db1ce55a4ea14addda34b8af52840d5e971e11ad6b43c96ea29f",
-   "retrieved_at": "2026-11-19T22:19:53Z",
-   "bytes": 461507,
+   "sha256": "fc12bdaa4d312588e35de44e8e1f13bafc61233fa150aea984df67a0966f5ae2",
+   "retrieved_at": "2026-11-19T22:30:40Z",
+   "bytes": 461392,
    "resort_fee_excerpts": []
   },
   "caesars_poker_tournaments": {
    "url": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
    "name": "caesars_poker_tournaments",
    "http_status": 200,
-   "sha256": "0f5e306e771abceea5c73e77618c756ba2032e590f927c2ecba037abf3739527",
-   "retrieved_at": "2026-11-19T22:19:53Z",
-   "bytes": 923,
+   "sha256": "a17cdfe6ee459a7712fe3bfb83ca40e273b85e65428d3808c009c574e26024c4",
+   "retrieved_at": "2026-11-19T22:30:40Z",
+   "bytes": 919,
    "resort_fee_excerpts": []
   },
   "bellagio_poker": {
@@ -68,7 +68,7 @@
    "name": "bellagio_poker",
    "http_status": "error",
    "sha256": "",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 0
   },
   "mgm_grand_poker": {
@@ -76,7 +76,7 @@
    "name": "mgm_grand_poker",
    "http_status": "error",
    "sha256": "",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 0
   },
   "aria_poker": {
@@ -84,15 +84,15 @@
    "name": "aria_poker",
    "http_status": "error",
    "sha256": "",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 0
   },
   "wpt_world_championship": {
    "url": "https://www.worldpokertour.com/event/main-tour-wpt-world-championship-at-wynn-las-vegas-season-2026",
    "name": "wpt_world_championship",
    "http_status": 200,
-   "sha256": "a4829eede1e062937940a9f6c14e6a600133615332b531fe64b33ee09d867577",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "sha256": "709d5b61c434e991de9dd4518afe32ebfdec17b26ce400b41b7a93a9ebf89ca8",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 248324,
    "resort_fee_excerpts": []
   },
@@ -101,7 +101,7 @@
    "name": "clark_county_room_tax",
    "http_status": 200,
    "sha256": "e49d537db3e9b382654be21b34f5f16ef4ce52f4355d8964be8325f1f53497e4",
-   "retrieved_at": "2026-11-19T22:19:53Z",
+   "retrieved_at": "2026-11-19T22:30:40Z",
    "bytes": 109133,
    "resort_fee_excerpts": []
   }
