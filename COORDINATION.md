@@ -191,6 +191,47 @@ Every brief item was checked against the built site and its data files:
 
 ## Previous branch session — 25481cd8 (completed) — schedule re-verification + site integration
 
+## Current branch session — 22f06ff9 (active) — live official-source re-verification + integration
+
+**Branch:** `arena/22f06ff9-poker5` (fixed by Arena), based on `main` @ `998a32d2`. **Claimed 2026-11-19 before any file edit.** No other session holds an open claim on these files; every other board entry is done, merged, or idle, so the 60-minute takeover rule does not apply to anything here.
+
+**Role:** a genuine **live re-verification** of the official sources behind the published site, plus integration of the result. The brief's features (date filter, global search, single-entry/freezeout-confirmed toggle, dated rate log, true-cost calculator, per-row last-checked and changed-value badges, per-venue pages, walking-route filter, morning feed and value-level monitor, structured rule fields, schedule overlap check, executive summary, suggestions, questions, flagged-for-review) are already present and generated on `main`. This session does **not** change event, hotel, rate or source data. It re-reads the official sources live via the page-fetch tool, compares every value with the stored record, and publishes the result on the Verification log page. Nothing is marked verified that this session did not read on 2026-11-19.
+
+**Files (claimed scope):** `COORDINATION.md` (this entry), `data/22f06ff9/reverify.json` (new — this session's record), `scripts/build_ea99006a.py` (render the record on `pages/verification.html` only), and the generated `pages/verification.html`. No event, hotel, rate or source record is edited or newly marked verified.
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| V1 | Claim scope; record the claim before editing | done | `COORDINATION.md` |
+| V2 | Live re-read the official Venetian DeepStack Extravaganza IV schedule (all four fetch chunks) and compare every row against the stored capture | done | `data/22f06ff9/reverify.json` |
+| V3 | Live re-read the trip-critical official pages (Venetian resort fee, Venetian poker-suite rates, Venetian structure sheet 10, Wynn WPT schedule, Wynn offer terms) and compare with the stored values | done | `data/22f06ff9/reverify.json` |
+| V4 | Publish the re-check as a new section on the Verification log page; rebuild and validate | done | `scripts/build_ea99006a.py`, `pages/verification.html` |
+| V5 | Full validation, PR → main, merge, confirm Pages deploy, record the result here | in progress | `COORDINATION.md` |
+
+### Sources read this session (live via the fetch tool, 2026-11-19)
+
+- Venetian DeepStack Extravaganza IV schedule — <https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html> (all four chunks; 94 rows).
+- Venetian resort fee — <https://www.venetianlasvegas.com/resort/resort-fee.html> ($55 plus tax per night).
+- Venetian poker-suite rates — <https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html> ($119/$209 as low as; $55 resort fee; six hours cash play or a $300+ buy-in per night; code EPOKR25).
+- Venetian structure sheet 10 (Event #1, $300 NLH Day A+C) — <https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf>.
+- Wynn WPT World Championship schedule — <https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf>.
+- Wynn offer terms — <https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2> ($55 resort fee; self-parking for two; 48-hour cancellation).
+
+### Verification performed (22f06ff9)
+
+- **Venetian schedule, line by line:** the live page was read in all four chunks and transcribed row by row (date, printed start time, event number, event name, structure-sheet number). All **94/94** rows match the stored transcription `data/ea99006a/official_schedule_2026-11-19.tsv` exactly, including the event numbers that repeat across flights (#1 for 1A-1D, #7 for 1A-1C, #19 for 1A-1C, #26 for 1A-1F, #39, #47, #49, #56, #59) and the restart/final-table rows. Festival window still reads 16 Nov - 23 Dec 2026. **0 changes.**
+- **Venetian resort fee:** live page reads "a daily Resort Fee of $55 plus tax per night" — matches the stored $55 + tax. **0 changes.**
+- **Venetian poker-suite rate:** live page reads "rates will start as low as $119 and $209 and can be higher", "$55 resort fee per night", the six-hours/$300+ play condition and code EPOKR25 — matches the stored floor + caveat. **0 changes.**
+- **Venetian structure sheet 10:** read live as text. Event 01, 30,000 chips, 40-minute levels, late registration "6 levels + Break (~3:40 PM)", guarantee $75,000; rule 3 flight language, rule 7 "$60 of the $300 Buy-In ... prize pool consists of $240 of every $300", rule 8 "Any player who bags chips for Day 2 may not play a subsequent flight". The stored `rule_fields`, `rule_excerpt` and `entry_evidence` match. **0 changes.**
+- **Wynn WPT schedule:** read live as text. The Nov 27 - Dec 21+ rows (Day 1A-1F flights, $600/$800/$1,100/$1,600 buy-ins, guarantees, chips, levels, satellites, $10,400 World Championship Day 1A on Dec 13) match the stored `data/ea99006a/wpt.json`. **0 changes.**
+- **Wynn offer terms:** live page reads "$55 plus tax" resort fee, self-parking for two, and "cancellations must be received at least 48 hours prior to arrival" — matches the 48-hour correction made by session d615f79e. **0 changes.**
+- Only structure sheet 10 was re-read live this session; the other 36 sheets are carried forward from the dated 2026-11-19 capture and the scheduled monitor, each with its own retrieval date and excerpt on the row. The Clark County 13.38% tax ordinance was not re-fetched; the stored link and "confirm the current schedule" note stand. Both limitations are printed on the Verification log page, not hidden.
+
+### Irregularities (22f06ff9)
+
+- **None blocking.** No stored value differed from its live official source, so no row was re-labelled, no "source changed" badge was added, and no value was promoted to verified.
+- **Not re-read this session (carried forward, stated on the page):** the other 36 Venetian structure sheets and the Clark County tax ordinance. The value-level monitor summary still records `run: null` because the scheduled monitor runs on a GitHub runner with casino-host egress, not from this sandbox; this session's fetch-tool reads are recorded separately and honestly, and the absence of a changed-value badge still means "not recorded as re-checked by the monitor", not "verified unchanged".
+- `pages/repo-review.html` regenerates with a changing file count on every build (it inventories the working tree). Following the established convention it was reverted rather than committed; the quality workflow excludes it from the drift check. **Request to its owner:** pin it to a committed file list so it stops drifting.
+
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
 
 | # | Task | Status | Files touched |
