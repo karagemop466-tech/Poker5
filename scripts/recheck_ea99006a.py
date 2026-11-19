@@ -38,6 +38,18 @@ def load(name, default):
         return json.load(fh)
 
 
+MORNING_FEED_EXTRA = [
+    ("https://bellagio.mgmresorts.com/en/casino/poker.html", "Bellagio poker room page (official, live)"),
+    ("https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf",
+     "Bellagio Friday NLH $600 official PDF"),
+    ("https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf",
+     "Bellagio Saturday NLH official PDF"),
+    ("https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf",
+     "Bellagio Sunday $400 H.O.R.S.E. official PDF"),
+    ("https://aria.mgmresorts.com/en/casino/poker.html", "ARIA poker room page (official, live)"),
+]
+
+
 def collect_urls():
     """Every official URL that backs a row, plus the hotel / tax / venue pages."""
     urls = {}
@@ -45,6 +57,12 @@ def collect_urls():
     def add(u, label):
         if u and u.startswith("https://"):
             urls.setdefault(u, label)
+
+    # Session fe101311: official Strip-room pages that the morning feed must read every day.
+    # Bellagio's poker-room.html timed out on the scheduled run, so the live poker page and
+    # its three official tournament PDFs (readable at claim time) are monitored as well.
+    for u, label in MORNING_FEED_EXTRA:
+        add(u, label)
 
     for name in ("venetian.json", "wpt.json", "other.json"):
         for r in load(name, []):
@@ -85,8 +103,8 @@ ROOM_GROUPS = [
                 or "wptmedia" in u) and "{" not in u),
     ("Caesars Palace / Horseshoe", "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
      lambda u: "caesars.com" in u and "{" not in u),
-    ("Bellagio / MGM Grand / ARIA", "https://bellagio.mgmresorts.com/en/casino/poker-room.html",
-     lambda u: "mgmresorts.com" in u),
+    ("Bellagio / MGM Grand / ARIA", "https://bellagio.mgmresorts.com/en/casino/poker.html",
+     lambda u: "mgmresorts.com" in u or "mgm-bellagio-poker" in u),
     ("South Point", "https://southpointcasino.com/casino/poker-room",
      lambda u: "southpointcasino.com" in u),
     ("Resorts World", "https://www.rwlasvegas.com/gaming/poker-room/",
