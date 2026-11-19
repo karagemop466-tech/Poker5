@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = ["index.html",
          "pages/executive-summary.html", "pages/tournaments.html", "pages/single-entry.html",
          "pages/tournaments-double.html", "pages/schedule.html", "pages/hotels.html",
-         "pages/routes.html", "pages/planner.html", "pages/venues/venetian.html",
+         "pages/routes.html", "pages/planner.html", "pages/verification.html", "pages/venues/venetian.html",
          "pages/venues/wynn.html", "pages/venues/others.html", "pages/questions.html",
          "pages/suggestions.html", "pages/flagged-review.html", "pages/monitor.html", "pages/repo-review.html",
          "pages/method.html"]
@@ -31,6 +31,9 @@ ALLOWED_HOSTS = [
     "www.rwlasvegas.com", "rwlasvegas.com", "reservations.rwlasvegas.com",
     "clarkcountynv.gov", "www.clarkcountynv.gov",
     "www.google.com",
+    # the repository and the published site itself: a flag or a status note may point at
+    # the Pages page or the Actions run it is about. Never used as a data source.
+    "github.com", "karagemop466-tech.github.io",
     # official property pages referenced as "no official schedule found"
     "bellagio.mgmresorts.com", "mgmgrand.mgmresorts.com", "aria.mgmresorts.com",
 ]

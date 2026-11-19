@@ -35,6 +35,31 @@ jobs:
       - name: Re-fetch every official source
         run: python3 scripts/recheck_ea99006a.py
 
+      - name: Value-level re-check of every published number (session b3be876c)
+        # The hash job above answers "did the page change?". This answers "did the sentence behind a
+        # published value change?" - the only question that should mark a tournament row. It writes
+        # the dated log, the value-change list and any new rate observation.
+        run: |
+          python3 scripts/monitor_b3be876c.py || echo "monitor: some sources unreachable (see the run log)"
+          cat data/b3be876c/monitor_summary.json 2>/dev/null || echo "no summary written"
+
+      - name: Upload the value-level change report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: value-changes-${{ github.run_id }}
+          path: |
+            data/b3be876c/value_changes.json
+            data/b3be876c/monitor_summary.json
+            data/ea99006a/rates_log.json
+          if-no-files-found: warn
+
+      - name: Re-derive the verdicts from the stored official text
+        # Rebuilds the published verdicts, rule fields, flags, questions and trip window from the
+        # capture on disk, so a new morning capture moves the tables and nothing else does.
+        run: |
+          python3 scripts/integrate_b3be876c.py || echo "integration reported a problem; the published data stays as it was"
+
       - name: Rebuild the canonical site
         run: |
           python3 scripts/build_ea99006a.py
@@ -44,8 +69,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -n "$(git status --porcelain data/ea99006a pages index.html assets)" ]; then
+          if [ -n "$(git status --porcelain data/ea99006a data/b3be876c pages index.html assets)" ]; then
             git add data/ea99006a pages index.html assets
+            git add data/b3be876c
             git commit -m "ea99006a: automated official-source re-check"
             git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"

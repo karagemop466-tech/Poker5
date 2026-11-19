@@ -51,9 +51,11 @@
  {
   "id": "F08",
   "area": "Hotels",
-  "title": "Wynn resort fee not verified",
-  "detail": "wynnlasvegas.com/resort-fee and wynnlasvegas.com/hotel/resort-fee.html both return 'this page has checked out'. The Wynn resort-fee field is left blank.",
-  "source": "https://www.wynnlasvegas.com/casino/poker"
+  "title": "Wynn / Encore resort fee: now stated by an official page, but it is a rate-plan term",
+  "detail": "RESOLVED AS TO FIGURE on 2026-11-19: the official Wynn special-offer terms whose window covers the planned stay state \"A daily resort fee of $55 plus tax ...\" and include complimentary self-parking for up to two vehicles. It is still not a property-wide published rate: confirm the fee on the rate plan you book.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "status": "resolved - figure official, applicability at booking",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F09",
@@ -93,9 +95,11 @@
  {
   "id": "F14",
   "area": "Hotels",
-  "title": "No dated nightly room rate was captured",
-  "detail": "Official booking engines are JavaScript applications; no date-specific rate could be read from an official source during this session. Every rate field is blank. Enter the rate you see on the official booking link and the site stores it as a dated log entry.",
-  "source": "https://www.venetianlasvegas.com/resort/resort-fee.html"
+  "title": "No official page publishes a dated nightly rate for the trip dates",
+  "detail": "The only numeric room rate any Strip property publishes is the Venetian poker suite rate, '$119 and $209' starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The 2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports 'Incomplete' until a dated quote is recorded.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F15",
@@ -135,9 +139,11 @@
  {
   "id": "F20",
   "area": "Tax",
-  "title": "13.38% verified against the Clark County ordinance, but the schedule may have changed",
-  "detail": "The rate comes from the Clark County transient lodging ordinance (Senate Bill 1, effective 1 March 2017) table row 'Resort hotel within primary gaming corridor ... 13.38%'. Confirm the current schedule before relying on it.",
-  "source": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"
+  "title": "Room-tax rate confirmed as 13.38% for resort hotels in the primary gaming corridor",
+  "detail": "Re-checked on 2026-11-19 against two Clark County sources: the Senate Bill 1 ordinance table ('Resort hotel within primary gaming corridor ... 13.38%') and the Department of Business License notice adopting the increase ('Transient Lodging Establishments located within the Primary Gaming Corridor will impose a combined transient lodging tax rate of 13.38 percent'). Whether the county tax applies on top of the resort fee is a hotel-by-hotel practice question, so the calculator states the assumption on screen.",
+  "source": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
+  "status": "rate confirmed; fee taxation flagged",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F21",
@@ -187,5 +193,59 @@
   "title": "Venetian poker room is in The Palazzo, not The Venetian tower",
   "detail": "The official poker-room page states the room is at The Palazzo on level 2 of Grand Canal Shoppes, reached from The Venetian lobby via the Waterfall Atrium escalator. Allow indoor walking time if you stay in the Venetian tower, and note the room is a long inside walk from the Strip entrance.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker.html"
+ },
+ {
+  "id": "F46",
+  "area": "Hotel fees",
+  "title": "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",
+  "detail": "Read from the official Caesars Entertainment disclaimer on 2026-11-19: 'Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort fees are waived for Diamond and Seven Stars.' A range cannot be compared like-for-like against a fixed $55 fee, so both hotels stay without a single fee value and the exact figure must be read at booking.",
+  "source": "https://www.caesars.com/corporate/disclaimer",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F47",
+  "area": "Entry rules",
+  "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
+  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+  "status": "fixed by this session; kept visible",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F48",
+  "area": "Change monitoring",
+  "title": "Whole-page hashing marked 48 of 96 official sources 'changed' on the first nightly run",
+  "detail": "The monitor hashed every page as delivered. Casino pages carry per-request tokens and timestamps, so a 2-byte difference was recorded as a source change for half the ledger, and 'mark rows whose source changed' would have lit up rows whose values never moved. The monitor now compares extracted VALUES (scripts/monitor_b3be876c.py): the resort-fee sentence, the guarantee line, the registration-close line and the schedule row text. A row is marked only when one of those sentences changes; the raw page hash is kept as an informational column.",
+  "source": "https://karagemop466-tech.github.io/Poker5/pages/monitor.html",
+  "status": "fixed by this session",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F49",
+  "area": "Site build",
+  "title": "Two scheduled jobs both wrote the root site and overwrote each other",
+  "detail": "daily-scrape.yml committed the output of scripts/build_c6087e2c.py to index.html and pages/, while recheck-ea99006a.yml committed the output of scripts/build_ea99006a.py to the same paths. Their headline counts disagree (0 vs 55 confirmed single-entry), so main alternated between two published sites; HEAD fd8edf2 was an automated re-check that overwrote the root site merged six minutes earlier in PR #47. Both jobs now produce the site through one generator and one integration step, and quality.yml fails if the committed root site is not the canonical build's output.",
+  "source": "https://github.com/karagemop466-tech/Poker5/actions",
+  "status": "fixed by this session",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F50",
+  "area": "Walking routes",
+  "title": "No official source states a walking time between two Strip properties",
+  "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F51",
+  "area": "Trip cost",
+  "title": "The true-cost figure the planner needs cannot be completed from official data alone",
+  "detail": "Cost of the trip = entries x buy-ins + nights x true nightly hotel cost. The first term is complete for every confirmed single-entry row (buy-in and house fee both come from the sheet). The second term needs a dated nightly rate, which no official page publishes for the trip dates (see F14), so the planner shows 'Incomplete' rather than a total with a zero-cost hotel.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open by design",
+  "last_updated": "2026-11-19"
  }
 ]
