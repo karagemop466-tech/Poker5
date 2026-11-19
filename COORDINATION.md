@@ -1,3 +1,19 @@
+## Current branch session — 0a0d8e6b (active) — structure-sheet entry-rule re-read (single-entry claim check)
+
+**Branch:** `arena/0a0d8e6b-poker5`, based on `main` @ `f2eb22a`. **Claimed 2026-11-19 before any analysis.** No other session holds a claim on this scope; open PRs #76–#79 belong to other sessions and are not touched.
+
+**Scope (files I will touch):**
+
+| Task | Status | Owner | Files |
+|---|---|---|---|
+| S1 | in progress | 0a0d8e6b | `data/0a0d8e6b/` (new: sheet re-read record + script), `COORDINATION.md` (this section only) |
+
+**S1 — live re-read of all 37 linked Venetian DSE IV structure sheets** (the `structure_N.pdf` set linked from the official schedule page). For each sheet: record the sheet text sentences that mention entries, re-entry, rebuy, add-on, buy-ins, flights, and bag-ins; compare with the stored `entry_rule` classification for the rows that cite that sheet. Output: `data/0a0d8e6b/sheet_reread.json`. Data files under `data/ea99006a/` are not edited in this step; any change required is logged below as a request and handled in the integration step.
+
+**Why:** the stored "confirmed single-entry (standard S1)" label (53 rows) is defined as sheet read + no re-entry/rebuy/add-on provision. It is not a written maximum-entry statement. The brief requires written single-entry rules before a row can be called confirmed, so each sheet's text is checked directly.
+
+---
+
 # Coordination - Poker5
 
 ## Current branch session — 188dc704 (active) — scheduled-monitor repair + full requirements verification
