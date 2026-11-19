@@ -1,0 +1,86 @@
+{
+ "entries": [
+  {
+   "cancellation_deadline": null,
+   "caveats": [
+    "Captured 2026-11-16 by an earlier session; this session could not re-read the booking engine (it is JavaScript-driven) on 2026-11-17, so the figure is a dated snapshot, not a current quote.",
+    "Nightly average = checkout total / nights (derived), not a printed per-night rate.",
+    "The booking UI also warned about maximum occupancy for suite types."
+   ],
+   "checkin": "2026-12-02",
+   "checkout": "2026-12-09",
+   "checkout_total": 7054.77,
+   "hotel": "The Venetian Resort",
+   "nightly_average": 1007.82,
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "parking": null,
+   "rate_timestamp": "2026-11-16",
+   "resort_fee_per_night": 55.0,
+   "resort_fee_total": 385.0,
+   "room_rate_per_night": null,
+   "room_type": "Newly remodeled Luxury King Suite",
+   "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
+   "source_label": "Venetian official booking UI, captured by session cd5ab298",
+   "tax_total": 832.52,
+   "verified": false,
+   "hotel_key": "venetian"
+  },
+  {
+   "cancellation_deadline": "72 hours before arrival (per the Wynn terms page read 2026-11-17)",
+   "caveats": [
+    "The engine returned a rounded $711 average per night with the resort fee included and tax excluded; no checkout total was returned, so the total is left blank rather than computed.",
+    "The 2026-11-16 note claiming 'self-parking included in the resort fee' is NOT supported by the Wynn terms page read on 2026-11-17, so parking is blank and flagged."
+   ],
+   "checkin": "2026-12-02",
+   "checkout": "2026-12-09",
+   "checkout_total": null,
+   "hotel": "Wynn Las Vegas",
+   "nightly_average": 711.0,
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "parking": null,
+   "rate_timestamp": "2026-11-16",
+   "resort_fee_per_night": null,
+   "resort_fee_total": null,
+   "room_rate_per_night": null,
+   "room_type": "Wynn Resort King (direct booking)",
+   "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338",
+   "source_label": "Wynn official booking result recorded by session cd5ab298; cancellation policy from the Wynn terms page re-read 2026-11-17",
+   "tax_total": null,
+   "verified": false,
+   "hotel_key": "wynn"
+  },
+  {
+   "cancellation_deadline": null,
+   "caveats": [
+    "Official page states rates 'start as low as $119 and $209 and can be higher', are only quoted out to a maximum of 150 days from the current date, and require qualifying poker play each night (6 hours of cash play or a $300+ tournament buy-in) before 2 a.m. on the last night; otherwise the rate reverts to the prevailing rate.",
+    "$55 resort fee per night stayed is stated on the same page.",
+    "Venetian Rewards earns $2 per hour played, redeemable in part toward tournament buy-ins (same page) - a cost offset, not a rate."
+   ],
+   "checkin": "any date in the poker series",
+   "checkout": "n/a",
+   "checkout_total": null,
+   "hotel": "The Venetian Resort",
+   "nightly_average": null,
+   "nights": null,
+   "occupancy": "1-2 adults, Luxury King Suite",
+   "parking": null,
+   "rate_timestamp": "2026-11-17",
+   "resort_fee_per_night": 55,
+   "resort_fee_total": null,
+   "room_rate_per_night": null,
+   "room_type": "Poker suite rate",
+   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "source_label": "Venetian official poker suite-rate page read 2026-11-17",
+   "tax_total": null,
+   "verified": true,
+   "hotel_key": "venetian"
+  }
+ ],
+ "note": "Dated log of hotel rate observations. Rates are dynamic; each entry is a snapshot with its retrieval timestamp and source. A later entry supersedes an earlier one only for the same hotel + stay dates + occupancy. Values that were not returned by the official booking UI are blank and flagged. This is not a live quote; reconfirm on the official booking page before paying. | this session added the official poker-suite rate floor as a dated scenario line, never as the trip's confirmed cost",
+ "tax_note": "13.38% combined transient lodging tax for a resort hotel inside the Primary Gaming Corridor (12.5% county/state + 0.88% stadium district), from the Clark County ordinance cited below. Venetian and Wynn both state the resort fee is 'plus tax'; whether the fee is inside the tax base is confirmed only on the itemised folio (F45). Tax source: https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf",
+ "tax_rate_pct": 13.38,
+ "tax_retrieved": "2026-11-17",
+ "tax_source": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"
+}

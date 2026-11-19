@@ -1,0 +1,421 @@
+[
+ {
+  "id": "F01",
+  "area": "Entry rules",
+  "title": "No Venetian structure sheet states a single-entry / freezeout limit",
+  "detail": "All 37 official DSE IV structure sheets were read. None contains a one-entry, no-re-entry or freezeout statement. An event is therefore never labelled 'confirmed single-entry'.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F02",
+  "area": "Entry rules",
+  "title": "Venetian multi-flight events allow more than one entry",
+  "detail": "Events 01, 07, 19, 26, 47, 49, 56 and 59 have multiple starting flights, and each sheet carries the rule 'Any player who bags chips for Day 2 may not play a subsequent flight', which only restricts a player who has bagged. They are listed as multi-entry, not single-entry.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F03",
+  "area": "Entry rules",
+  "title": "Events #18 and #58 reference 'subsequent buy in's'",
+  "detail": "Structure sheet 8 (PokerAtlas Valuetown Bounty) states 'All subsequent buy in's after the initial buy in will be $200', which shows more than one buy-in per player is possible.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F04",
+  "area": "Entry rules",
+  "title": "Every WPT / Wynn event whose terms were read permits re-entry",
+  "detail": "Unlimited re-entry (until level 9 or level 10) on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8 and NLH Turbo events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per flight.",
+  "sources": [
+   "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F05",
+  "area": "Source defect",
+  "title": "WPT schedule PDF date error: a block is labelled 'Dec. 18 Wednesday'",
+  "detail": "The block sits between Tuesday 15 December and Thursday 17 December and is headed 'Dec. 18 Wednesday'. 18 December 2026 is a Friday; the Wednesday of that week is 16 December. Those rows are dated 2026-12-16 here.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F06",
+  "area": "Source defect",
+  "title": "WPT continuation rows repeat the parent buy-in and guarantee",
+  "detail": "The row 'Dec. 5 Saturday 11 a.m. No Limit Hold'em Day 2' shows $1,100 and $5,000,000, which are the Prime Championship's values, not a separate entry price. Continuation rows are marked as such and excluded from entry counts.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F07",
+  "area": "Coverage",
+  "title": "Wynn daily tournaments: suspension policy does not name the WPT series",
+  "detail": "The official page says 'the Daily Tournament schedule will be suspended during each Wynn Signature, Wynn Millions, and Classic tournament series'. It does not say whether the WPT World Championship (27 Nov - 21 Dec 2026) suspends them.",
+  "sources": [
+   "https://www.wynnlasvegas.com/casino/poker"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F08",
+  "area": "Hotels",
+  "title": "Wynn resort fee not verified",
+  "detail": "wynnlasvegas.com/resort-fee and wynnlasvegas.com/hotel/resort-fee.html both return 'this page has checked out'. The Wynn resort-fee field is left blank.",
+  "sources": [
+   "https://www.wynnlasvegas.com/casino/poker"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F09",
+  "area": "Hotels",
+  "title": "Caesars Palace and Horseshoe resort fees not verified",
+  "detail": "The official resort-fee URLs redirect to the hotel landing pages and do not state a fee. Fields left blank.",
+  "sources": [
+   "https://www.caesars.com/caesars-palace/hotel"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F10",
+  "area": "Coverage",
+  "title": "MGM Resorts rooms (Bellagio, MGM Grand, ARIA) not verified",
+  "detail": "The official poker-room URLs and the MGM resort-fee URL return 'page not found'. No rows were invented for these rooms.",
+  "sources": [
+   "https://bellagio.mgmresorts.com/en/casino/poker-room.html"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F11",
+  "area": "Coverage",
+  "title": "Horseshoe publishes no schedule",
+  "detail": "The official casino page says the Hall of Fame Poker Room has 20 tables and '6 exciting tournament times daily' but links no schedule or structure sheet.",
+  "sources": [
+   "https://www.caesars.com/horseshoe-las-vegas/casino"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F12",
+  "area": "Coverage",
+  "title": "South Point publishes its schedule as images only",
+  "detail": "Times (10:10, 14:10, 18:10, 22:10) and buy-ins ($120, $300) come from the official page text. Guarantees, levels and entry rules are inside image files and were not read. South Point is also off-Strip and not walkable to it.",
+  "sources": [
+   "https://southpointcasino.com/casino/poker-room"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F13",
+  "area": "Coverage",
+  "title": "Resorts World tournament schedule not retrieved",
+  "detail": "The official site has a poker-room section under Gaming, but no schedule or structure sheet was retrieved.",
+  "sources": [
+   "https://www.rwlasvegas.com/gaming/poker-room/"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F14",
+  "area": "Hotels",
+  "title": "No dated nightly room rate was captured",
+  "detail": "Official booking engines are JavaScript applications; no date-specific rate could be read from an official source during this session. Every rate field is blank. Enter the rate you see on the official booking link and the site stores it as a dated log entry.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/resort-fee.html"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F15",
+  "area": "Routes",
+  "title": "Cross-property walking times are not published officially",
+  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in.",
+  "sources": [
+   "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F16",
+  "area": "Data",
+  "title": "Some events have no guarantee on the official sheet",
+  "detail": "Event #06 and the RaceDay Stack events #03, #04 and #05 state no guarantee on the structure sheet. The guarantee field is left blank rather than copied from the schedule text or inferred.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F17",
+  "area": "Data",
+  "title": "Per-flight differences inside one event number",
+  "detail": "Event #01 has two sheets (Day A+C, 40-minute levels, registration closes ~3:40 PM; Day B+D, 30-minute levels, closes ~8:40 PM). Event #26 has three sheets (A+C+E 40 min; B+D 30 min; Day F Turbo 20 min). Rows point at their own sheet.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F18",
+  "area": "Resolved",
+  "title": "Event #40 was truncated in an earlier session's capture",
+  "detail": "The official page row reads '$600 Pot Limit Omaha Bounty $25K GTD (1Day)' with structure sheet 27, which confirms event 40, $600 buy-in and a $25,000 guarantee. Resolved; no longer flagged as unknown.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F19",
+  "area": "Disagreement",
+  "title": "Earlier root pages claimed 31 confirmed single-entry events",
+  "detail": "The 37-sheet audit behind this build found zero explicit single-entry statements, so the root pages were rebuilt. Earlier sessions' dashboards are preserved under their own folders and are not edited.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F20",
+  "area": "Tax",
+  "title": "13.38% verified against the Clark County ordinance, but the schedule may have changed",
+  "detail": "The rate comes from the Clark County transient lodging ordinance (Senate Bill 1, effective 1 March 2017) table row 'Resort hotel within primary gaming corridor ... 13.38%'. Confirm the current schedule before relying on it.",
+  "sources": [
+   "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F21",
+  "area": "Coverage",
+  "title": "Not every WPT event's entry terms were read individually",
+  "detail": "Terms were read for 13 distinct events in the official structures PDF. The rest are marked 'entry terms not read' rather than being copied from a sibling event.",
+  "sources": [
+   "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F22",
+  "area": "Coverage",
+  "title": "Caesars Palace daily flyer does not state which days it runs",
+  "detail": "The official flyer gives four start times and buy-ins but no days of the week. Rows are shown as 'Daily' and flagged.",
+  "sources": [
+   "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F23",
+  "area": "Coverage",
+  "title": "Wynn daily tournaments: all four structures are re-entry, rebuy or add-on",
+  "detail": "The official Wynn daily structures PDF states a re-entry fee for the $200 Monday-Thursday, $200 Saturday, $200 Sunday and $160 nightly events, plus unlimited $200 rebuys and a $100 add-on on the $240 Friday event. No Wynn daily tournament is a freezeout. All five are listed on the multi-entry page.",
+  "sources": [
+   "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F24",
+  "area": "Coverage",
+  "title": "Wynn dailies may not run during the WPT World Championship",
+  "detail": "The official page says dailies are suspended during Wynn Signature, Wynn Millions and Classic series. It does not say whether the WPT World Championship (27 Nov - 21 Dec 2026) suspends them. The structures PDF only says 'may be suspended during Seniors Events, Classic Events, or other Tournament Series'.",
+  "sources": [
+   "https://www.wynnlasvegas.com/casino/poker"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F25",
+  "area": "Source defect",
+  "title": "The Venetian series page still labels the WPT Fall Festival as the current series",
+  "detail": "On 17 November 2026 the official page shows 'Current Series: WPT Fall Festival October 28 - November 15, 2026' while listing DeepStack Extravaganza IV (16 Nov - 23 Dec 2026) as the next series. The DSE IV rows are used because they are the current window; the label on the official page lags.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament.html"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F26",
+  "area": "Coverage",
+  "title": "Horseshoe and Resorts World publish no poker schedule at all",
+  "detail": "Horseshoe's official casino page says the Hall of Fame Poker Room has 20 tables and '6 exciting tournament times daily' but links no schedule. A guessed Caesars content-dam URL for a Horseshoe flyer returned an empty document. Resorts World's site has a poker-room section under Gaming with no schedule. No rows invented.",
+  "sources": [
+   "https://www.caesars.com/horseshoe-las-vegas/casino"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F27",
+  "area": "Routes",
+  "title": "Venetian poker room is in The Palazzo, not The Venetian tower",
+  "detail": "The official poker-room page states the room is at The Palazzo on level 2 of Grand Canal Shoppes, reached from The Venetian lobby via the Waterfall Atrium escalator. Allow indoor walking time if you stay in the Venetian tower, and note the room is a long inside walk from the Strip entrance.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker.html"
+  ],
+  "owner": "ea99006a",
+  "state": "open"
+ },
+ {
+  "id": "F28",
+  "area": "Venetian capture",
+  "title": "Wynn's $55 resort-fee sentence sits on an offer terms page whose offer window ended June 30, 2025. The fee figure is official but its current applicability must be confirmed at booking",
+  "detail": "$55 plus tax, labelled partly verified  |  value shown on the page: Partly verified  |  status: The Wynn booking page for your dates shows the resort fee in the price breakdown.",
+  "sources": [
+   "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+  ],
+  "owner": "251c122f",
+  "state": "open"
+ },
+ {
+  "id": "F29",
+  "area": "Venetian capture",
+  "title": "Caesars Palace daily event includes a $50 add-on for 15,000 extra chips (official Caesars page). The add-on and the 20-minute levels are stated; the per-event house fee is not",
+  "detail": "Listed in the 'Advantage' section, not the single-entry table  |  value shown on the page: Verified (add-on exists)  |  status: Nothing to clear for the classification; the fee split is asked as Q16.",
+  "sources": [
+   "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+  ],
+  "owner": "251c122f",
+  "state": "open"
+ },
+ {
+  "id": "F30",
+  "area": "Venetian capture",
+  "title": "Horseshoe Las Vegas runs six daily NLH events (9 AM, 11 AM, 2 PM, 5 PM, 8 PM, 11 PM) but the official page does not state the buy-ins, guarantees or entry rules",
+  "detail": "Times shown; buy-in blank  |  value shown on the page: Partly verified  |  status: The Horseshoe poker room publishes a schedule with buy-ins, or you call the room.",
+  "sources": [
+   "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+  ],
+  "owner": "251c122f",
+  "state": "open"
+ },
+ {
+  "id": "F31",
+  "area": "Venetian capture",
+  "title": "Caesars Palace / Horseshoe buy-ins, guarantees and fee splits are not stated on the official Caesars page for Horseshoe; Caesars Palace states $100 buy-in, $1,000 guarantee, 20,000 chips, 20-minute levels and a $50 add-on",
+  "detail": "Caesars Palace values shown with the official page; Horseshoe blanks  |  value shown on the page: Partly verified  |  status: Ask the rooms for their current structures.",
+  "sources": [
+   "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip"
+  ],
+  "owner": "251c122f",
+  "state": "open"
+ },
+ {
+  "id": "B01",
+  "area": "Cross-session disagreement",
+  "state": "resolved by disclosure",
+  "title": "Two earlier sessions published different single-entry counts for the same 94 Venetian rows (0 vs 55)",
+  "detail": "Session 251c122f called 55 rows 'confirmed single-entry' because the sheet was read, covered the event number and contained no re-entry language. Session ea99006a called 56 rows 'entry cap not stated' because silence on a sheet is not a rule. This build keeps both facts: 53 rows are labelled 'sheet read - no re-entry / add-on language' (the unverified badge is removed, the caveat stays), and 0 rows carry an explicit one-entry statement. The count difference is a definitional choice, not a data error, and both numbers are printed on the Single-entry page.",
+  "sources": [
+   "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B02",
+  "area": "Publishing pipeline",
+  "state": "fixed by this session",
+  "title": "Two scheduled jobs rewrote the same published site from two different datasets",
+  "detail": ".github/workflows/daily-scrape.yml committed `index.html` and `pages/` generated by scripts/build_c6087e2c.py while .github/workflows/recheck-ea99006a.yml committed the same files generated by scripts/build_ea99006a.py. Each run replaced the other, so the live site alternated between a 0-single-entry page and a 55-single-entry page. This session made scripts/build_bdcaf0bf.py the only writer of the root site and reduced both jobs to refreshing their own data folders.",
+  "sources": [
+   "https://github.com/karagemop466-tech/Poker5/actions"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B03",
+  "area": "Caesars Palace resort fee",
+  "state": "open",
+  "title": "The official Caesars statement is a range ($45-$60), not a fee",
+  "detail": "Re-read on 2026-11-19: caesars.com/corporate/disclaimer says 'Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort fees are waived for Diamond and Seven Stars.' A range cannot be multiplied by nights, so the hotel row shows the range and leaves the true nightly cost blank. Secondary caches still show '$45-$50'; the official page is the source of record here.",
+  "sources": [
+   "https://www.caesars.com/corporate/disclaimer"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B04",
+  "area": "Wynn resort fee",
+  "state": "open",
+  "title": "Wynn's $55 fee is stated on an offer page whose stay window closed 2025-06-30",
+  "detail": "Re-read on 2026-11-19: the terms page publishes 'reservations booked on or after January 15, 2025, will be charged a daily resort fee of $55 plus tax', but the same document belongs to an offer valid only through 2025-06-30. The figure is official; its applicability to a December 2026 stay is not proven. The fee is therefore published with a caveat and the true nightly cost still needs the folio total to confirm that the fee itself is taxed.",
+  "sources": [
+   "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B05",
+  "area": "Hotel quality floor",
+  "state": "open",
+  "title": "No official source states a quality rating, so the quality floor cannot be applied automatically",
+  "detail": "The brief ranks hotel quality above distance, but no casino or hotel page publishes a comparable quality score. Rows carry the official star/award claim only where the property itself makes one; otherwise quality is blank and the ranking uses walk time, fee and parking only. AAA ratings and review scores were deliberately not copied in, because they are not official sources.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/resort-fee.html"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B06",
+  "area": "Dated room rates",
+  "state": "open",
+  "title": "The only official numbers for a Venetian room are a 'starting at' poker-suite floor",
+  "detail": "The official poker-suite page (re-read 2026-11-19) publishes rates 'as low as $119 and $209' for a Luxury King Suite conditional on 6 h of cash play or a $300+ tournament buy-in per night, with rates only quoted out to 150 days. That is a published rate floor, not a quote for the planned dates, so the trip calculator uses it only in an explicitly labelled scenario line and refuses to call the trip complete until a dated checkout quote is logged.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
+  ],
+  "owner": "bdcaf0bf"
+ },
+ {
+  "id": "B07",
+  "area": "Row-level classification",
+  "state": "open",
+  "title": "14 Venetian rows classify differently under this build's rule than under an earlier session's",
+  "detail": "Each disagreement is listed with both verdicts in data/bdcaf0bf/conflicts.json. A row moved to 'continuation' or 'multi-entry' when its own schedule line names a restart, a starting flight or a multi-day format, even if the sheet text for that event number contained no re-entry wording.",
+  "sources": [
+   "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+  ],
+  "owner": "bdcaf0bf"
+ }
+]

@@ -1,0 +1,139 @@
+{
+ "generated": "2026-11-19",
+ "generator": "scripts/integrate_bdcaf0bf.py",
+ "session": "bdcaf0bf",
+ "inputs": {
+  "venetian_capture_rows": 94,
+  "capture_retrieved": "2026-11-18T21:34:11Z",
+  "sheets_read": 37,
+  "ea_rows": {
+   "venetian": 94,
+   "wpt": 136,
+   "other": 17
+  },
+  "this_session_facts": 12
+ },
+ "counts": {
+  "rows": 247,
+  "by_status": {
+   "multi_entry_paid": 75,
+   "no_reentry_language": 53,
+   "continuation": 35,
+   "not_read": 84
+  },
+  "rankable": 41,
+  "with_guarantee": 156,
+  "with_buyin": 226,
+  "bounty_rows": 53,
+  "conflicts": 14,
+  "sources": 101,
+  "flags": 38,
+  "source_values_newly_published": 0,
+  "with_end_estimate": 89,
+  "paid_advantage_rows": 2,
+  "satellite_rows": 32,
+  "special_format_rows": 8,
+  "arithmetic_notes": 9
+ },
+ "standard": {
+  "ladder": {
+   "explicit_one_entry": "One-entry rule stated on the official sheet",
+   "no_reentry_language": "Sheet read - no re-entry / add-on language",
+   "multi_entry_paid": "Paid re-entry, add-on or extra flight",
+   "continuation": "Continuation row (restart / final table)",
+   "not_read": "Entry terms not published - unverified"
+  },
+  "single_entry_rule": "A row is only called single-entry when an official source states a one-entry limit. Rows whose official sheet was read, covers that event number, is one day and contains no re-entry, rebuy, add-on or purchased-stack language are labelled 'sheet read - no re-entry / add-on language': the unverified badge is removed, and the caveat that silence is not a rule stays printed on the row.",
+  "ranking_rule": "Ranking uses only rows where BOTH the total entry fee and the guarantee are published by an official source; the ratio shown is guaranteed pool divided by the buy-in, which describes the posted value of one entry, not a prediction of expected return. Bounty and multi-flight events are listed in their own sections and are never ranked against a freezeout.",
+  "tax_rule": "true nightly cost = (room rate + mandatory resort fee) x (1 + 13.38%) per the Clark County ordinance; the resort fee itself is taxed because 'rent' includes separately stated facility and access fees."
+ },
+ "trip": {
+  "check_in": "2026-12-06",
+  "check_out": "2026-12-13",
+  "nights": 7,
+  "adults": 2,
+  "rooms": 1,
+  "rationale": "Chosen by scripts/integrate_bdcaf0bf.py from the merged official rows, not entered by a person: of every 7-night window inside the two verified Strip series this one carries the most days on which a morning event that passes the single-entry standard can be booked (8 primaries) and the most days with a second event you could add if you bust early (7 fallbacks). The dates are a planning scenario - confirm them on the official schedule before any non-refundable booking.",
+  "previous_window_from_session_ea99006a": {
+   "check_in": "2026-12-06",
+   "check_out": "2026-12-13",
+   "nights": 7
+  },
+  "recomputed_on": "2026-11-19",
+  "all_windows_top5": [
+   {
+    "check_in": "2026-12-06",
+    "check_out": "2026-12-13",
+    "nights": 7,
+    "days_with_events": 8,
+    "primaries": 8,
+    "fallbacks": 7,
+    "score": 23
+   },
+   {
+    "check_in": "2026-11-25",
+    "check_out": "2026-12-02",
+    "nights": 7,
+    "days_with_events": 8,
+    "primaries": 8,
+    "fallbacks": 6,
+    "score": 22
+   },
+   {
+    "check_in": "2026-12-07",
+    "check_out": "2026-12-14",
+    "nights": 7,
+    "days_with_events": 8,
+    "primaries": 8,
+    "fallbacks": 6,
+    "score": 22
+   },
+   {
+    "check_in": "2026-12-08",
+    "check_out": "2026-12-15",
+    "nights": 7,
+    "days_with_events": 8,
+    "primaries": 8,
+    "fallbacks": 6,
+    "score": 22
+   },
+   {
+    "check_in": "2026-12-09",
+    "check_out": "2026-12-16",
+    "nights": 7,
+    "days_with_events": 8,
+    "primaries": 8,
+    "fallbacks": 6,
+    "score": 22
+   }
+  ]
+ },
+ "budget": {
+  "nightly_room_ceiling_usd": 250.0,
+  "kind": "stated assumption, not a source claim",
+  "basis": "The brief asks for a nightly budget and quality floor, but the repository contains no budget instruction from the traveller and no official source publishes one, so this build fixes one explicit number that every page filters by: a true nightly cost ceiling of $250 per room. It is derived from official figures: the published Venetian poker-suite rate floor ($119) plus its official $55 resort fee, taxed at 13.38%, is $197 - inside the ceiling; the second published suite tier ($209 + $55) x 1.1338 = $299 - outside it. Nothing about the sources changes when the ceiling is edited; the planner recomputes from the same rows.",
+  "quality_floor": null,
+  "quality_floor_note": "No quality floor is applied, because no official page publishes a comparable hotel quality rating and copying star ratings or review scores would break the official-source rule. Hotels are ordered by true nightly cost, mandatory-fee transparency, parking and verified walk time instead, and every row keeps its own source link."
+ },
+ "verification": {
+  "schedule_rows_re_read_this_session": 94,
+  "schedule_rows_changed": 0,
+  "sheets_spot_checked_this_session": [
+   18
+  ],
+  "facts_re_read_this_session": [
+   "V1",
+   "V2",
+   "V3",
+   "V4",
+   "V5",
+   "V6",
+   "V7",
+   "V8",
+   "V9",
+   "V10",
+   "V11",
+   "V12"
+  ]
+ }
+}

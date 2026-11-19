@@ -1,14 +1,19 @@
-name: Daily official-source scrape (root site)
+name: Daily official-source scrape (Venetian capture)
 
-# Every morning this job reads the official pages and PDFs behind the root
-# planner, records exactly what they say (with the excerpt and the retrieval
-# timestamp), rebuilds the site from that data and pushes the result. The
-# agent sandbox that authors this repo cannot open a connection to casino
+# Every morning this job reads the official pages and PDFs, records exactly what
+# they say (with the excerpt and the retrieval timestamp) and pushes the capture.
+# The agent sandbox that authors this repo cannot open a connection to casino
 # hosts, so the reading happens here, on a runner with normal internet access.
 #
-# A changed source never silently changes a displayed value: the scraper writes
-# new excerpts and hashes, the build regenerates the pages from the data, and
-# any field that disappeared from a source becomes blank + flagged.
+# CHANGED 2026-11-19 by session bdcaf0bf: this job no longer rebuilds the
+# published site. Two generators writing index.html/pages from different datasets
+# made the live answers alternate between runs (flag B02); the root site is now
+# generated only by scripts/build_bdcaf0bf.py, which reads this folder.
+#
+# A changed source never silently changes a displayed value: this job writes the
+# new excerpts and hashes, and the canonical build that reads them turns any field
+# that disappeared from a source into a blank plus a flag
+# (scripts/integrate_bdcaf0bf.py -> scripts/build_bdcaf0bf.py).
 
 on:
   schedule:
@@ -56,8 +61,9 @@ jobs:
       - name: Merge the live capture into the verified dataset
         run: python3 scripts/merge_251c122f.py
 
-      - name: Rebuild the site from the data
-        run: python3 scripts/build_c6087e2c.py
+      # The site is built by .github/workflows/integrate-bdcaf0bf.yml, which merges
+      # this capture with the other sessions' data before writing index.html and pages/.
+      # scripts/build_c6087e2c.py is still available for the session's own folder output.
 
       - name: Upload the capture for review (always)
         if: always()
@@ -76,7 +82,7 @@ jobs:
         run: |
           git config user.name  "poker5-source-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/c6087e2c/ index.html pages/
+          git add data/c6087e2c/
           if git diff --cached --quiet; then
             echo "no change in the capture or the site"
             exit 0
@@ -91,7 +97,6 @@ jobs:
 
       - name: Validate links, source anchors and cross-checks
         run: |
-          python3 scripts/check_root_site.py
           python3 scripts/crosscheck_251c122f.py
 
       - name: Print the capture summary

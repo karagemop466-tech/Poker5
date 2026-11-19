@@ -1,0 +1,317 @@
+[
+ {
+  "check_in": "2026-12-06",
+  "check_out": "2026-12-13",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 7,
+  "score": 23
+ },
+ {
+  "check_in": "2026-11-25",
+  "check_out": "2026-12-02",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 6,
+  "score": 22
+ },
+ {
+  "check_in": "2026-12-07",
+  "check_out": "2026-12-14",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 6,
+  "score": 22
+ },
+ {
+  "check_in": "2026-12-08",
+  "check_out": "2026-12-15",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 6,
+  "score": 22
+ },
+ {
+  "check_in": "2026-12-09",
+  "check_out": "2026-12-16",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 6,
+  "score": 22
+ },
+ {
+  "check_in": "2026-11-22",
+  "check_out": "2026-11-29",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 5,
+  "score": 21
+ },
+ {
+  "check_in": "2026-11-23",
+  "check_out": "2026-11-30",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 5,
+  "score": 21
+ },
+ {
+  "check_in": "2026-11-24",
+  "check_out": "2026-12-01",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 5,
+  "score": 21
+ },
+ {
+  "check_in": "2026-11-26",
+  "check_out": "2026-12-03",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 5,
+  "score": 21
+ },
+ {
+  "check_in": "2026-12-05",
+  "check_out": "2026-12-12",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 7,
+  "fallbacks": 7,
+  "score": 21
+ },
+ {
+  "check_in": "2026-12-10",
+  "check_out": "2026-12-17",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 5,
+  "score": 21
+ },
+ {
+  "check_in": "2026-11-21",
+  "check_out": "2026-11-28",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 4,
+  "score": 20
+ },
+ {
+  "check_in": "2026-11-20",
+  "check_out": "2026-11-27",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 3,
+  "score": 19
+ },
+ {
+  "check_in": "2026-11-19",
+  "check_out": "2026-11-26",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 8,
+  "fallbacks": 2,
+  "score": 18
+ },
+ {
+  "check_in": "2026-11-27",
+  "check_out": "2026-12-04",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 7,
+  "fallbacks": 4,
+  "score": 18
+ },
+ {
+  "check_in": "2026-12-04",
+  "check_out": "2026-12-11",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 6,
+  "score": 18
+ },
+ {
+  "check_in": "2026-12-11",
+  "check_out": "2026-12-18",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 7,
+  "fallbacks": 4,
+  "score": 18
+ },
+ {
+  "check_in": "2026-12-02",
+  "check_out": "2026-12-09",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 5,
+  "score": 17
+ },
+ {
+  "check_in": "2026-12-03",
+  "check_out": "2026-12-10",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 5,
+  "score": 17
+ },
+ {
+  "check_in": "2026-12-01",
+  "check_out": "2026-12-08",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 4,
+  "score": 16
+ },
+ {
+  "check_in": "2026-11-28",
+  "check_out": "2026-12-05",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 3,
+  "score": 15
+ },
+ {
+  "check_in": "2026-11-29",
+  "check_out": "2026-12-06",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 3,
+  "score": 15
+ },
+ {
+  "check_in": "2026-11-30",
+  "check_out": "2026-12-07",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 3,
+  "score": 15
+ },
+ {
+  "check_in": "2026-12-12",
+  "check_out": "2026-12-19",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 3,
+  "score": 15
+ },
+ {
+  "check_in": "2026-12-13",
+  "check_out": "2026-12-20",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 2,
+  "score": 14
+ },
+ {
+  "check_in": "2026-12-14",
+  "check_out": "2026-12-21",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 2,
+  "score": 14
+ },
+ {
+  "check_in": "2026-12-15",
+  "check_out": "2026-12-22",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 2,
+  "score": 14
+ },
+ {
+  "check_in": "2026-12-16",
+  "check_out": "2026-12-23",
+  "nights": 7,
+  "days_with_events": 8,
+  "primaries": 6,
+  "fallbacks": 2,
+  "score": 14
+ },
+ {
+  "check_in": "2026-12-17",
+  "check_out": "2026-12-24",
+  "nights": 7,
+  "days_with_events": 7,
+  "primaries": 5,
+  "fallbacks": 1,
+  "score": 11
+ },
+ {
+  "check_in": "2026-12-18",
+  "check_out": "2026-12-25",
+  "nights": 7,
+  "days_with_events": 6,
+  "primaries": 4,
+  "fallbacks": 1,
+  "score": 9
+ },
+ {
+  "check_in": "2026-12-19",
+  "check_out": "2026-12-26",
+  "nights": 7,
+  "days_with_events": 5,
+  "primaries": 4,
+  "fallbacks": 1,
+  "score": 9
+ },
+ {
+  "check_in": "2026-12-20",
+  "check_out": "2026-12-27",
+  "nights": 7,
+  "days_with_events": 4,
+  "primaries": 4,
+  "fallbacks": 1,
+  "score": 9
+ },
+ {
+  "check_in": "2026-12-21",
+  "check_out": "2026-12-28",
+  "nights": 7,
+  "days_with_events": 3,
+  "primaries": 3,
+  "fallbacks": 1,
+  "score": 7
+ },
+ {
+  "check_in": "2026-12-22",
+  "check_out": "2026-12-29",
+  "nights": 7,
+  "days_with_events": 2,
+  "primaries": 2,
+  "fallbacks": 1,
+  "score": 5
+ },
+ {
+  "check_in": "2026-12-23",
+  "check_out": "2026-12-30",
+  "nights": 7,
+  "days_with_events": 1,
+  "primaries": 1,
+  "fallbacks": 1,
+  "score": 3
+ }
+]

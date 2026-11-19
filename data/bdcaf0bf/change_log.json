@@ -1,0 +1,434 @@
+[
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin={IN}&checkout={OUT}&nights=7&adults=2&children=0",
+  "label": "official booking",
+  "old_sha256": "4e4c4f46a8bc6e3e4d587575a818239226b8af540444ed7070a8304a2561a502",
+  "new_sha256": "49fd8a70036243b378e2419e9e81d31ad94ee80e206dbdd15963eeb167ac38d1",
+  "old_bytes": 102148,
+  "new_bytes": 102217
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://southpointcasino.com/casino/poker-room",
+  "label": "official poker room page",
+  "old_sha256": "5ca67d944090af0d519e92fee86cabcc56c8830a845bf40d994a6ab8cea3054f",
+  "new_sha256": "e3f63c8753f9bc489912353b6adfb6ad222d7e1ff12016c22f57ec69cc87df94",
+  "old_bytes": 93416,
+  "new_bytes": 93455
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "label": "schedule source",
+  "old_sha256": "8586673f27f6b5a89ac54fedafc1be34e57eb945221b87e28f84ab98ad72b256",
+  "new_sha256": "beddaa53ece0d7055e47c141be7d40bd9d8a3cdca3cad8bc7d54e24275465717",
+  "old_bytes": 117347,
+  "new_bytes": 117303
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=blv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]",
+  "label": "official booking",
+  "old_sha256": "6639a2284f06bae979da6a6bfae91a92ebd1e2ee76c93162c0d798d2087390d5",
+  "new_sha256": "88d45073d0ce1e71babd0c1a63c373416f18fbde1d4160ce2103d8654c332bf8",
+  "old_bytes": 6382,
+  "new_bytes": 6382
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]",
+  "label": "official booking",
+  "old_sha256": "8407f564fa71b09db06309a35bb94ef3be207cc2c01da51d7cba32e4e910cd69",
+  "new_sha256": "6061b3317db75fb975e1f070ef016e525e16c93f9881e275fccc2fcd057947ce",
+  "old_bytes": 6383,
+  "new_bytes": 6383
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.caesars.com/caesars-palace/casino",
+  "label": "venue page",
+  "old_sha256": "5765bc20ec039e55e80fb7c7dae453650fb155171fe5ca4e2d6c9ff4d6781778",
+  "new_sha256": "6b72b594195ea9cb5a280941346dc2e7228a71198d7b5ef6a9686ffdb2881fb8",
+  "old_bytes": 99255,
+  "new_bytes": 99254
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.caesars.com/caesars-palace/hotel",
+  "label": "cancellation source",
+  "old_sha256": "0748b9ee3fa0d8806b7e3dcca2d4e3ae27373ae48c04b27a8618e59cc53fb5ff",
+  "new_sha256": "936b6b2f59f19b47830d0abb0536a5598a68967fe1b9b424ab451d3654046aff",
+  "old_bytes": 107947,
+  "new_bytes": 107947
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.caesars.com/horseshoe-las-vegas/casino",
+  "label": "venue page",
+  "old_sha256": "3faab38a4f79ad2320fd4fe7a2a12385394195a97d8218402d8046e40cb72c94",
+  "new_sha256": "19e2ec6c74165314da175ba350e11c9803905c40c78d9fa0617a630ee68005d2",
+  "old_bytes": 92473,
+  "new_bytes": 92472
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "e5003e1764c0f07524e9b5d48690871c90452d530d278e721e83cdae46a7c973",
+  "new_sha256": "be26a568b41122e1fab92f3dd2841a56906bd486e5f0892eed72f70b222e1d3c",
+  "old_bytes": 224381,
+  "new_bytes": 224102
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "900ecdcd213f1b918c3b10fa8eb1b913111080eaaa4344c585f21a9a10129473",
+  "new_sha256": "4f16c1e4c4f3b5910e36977312c08c5763020c9c96ed3bc49b6bf01c81da77f2",
+  "old_bytes": 223095,
+  "new_bytes": 225924
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "24d214230f5b0698cd6b73199f6f40c2a0d6ac576c9cc2cda6a5718d5337e33d",
+  "new_sha256": "76e6a8512742b157eea684525cac23bbccebf3dae249d735dc42a1d55b4df0b9",
+  "old_bytes": 226133,
+  "new_bytes": 222855
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "c051e20832cac873db7288b2e735fefe88f4af67c15833c89ea166857eabc5a8",
+  "new_sha256": "5bf30a42ede78d415deb20c2a379f93b110ea2b9d1b869c94128d19a339afbec",
+  "old_bytes": 224102,
+  "new_bytes": 223750
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "0244754b1a883afcdc95ee8a545034f153043b96ee5e801b41849cb89a937260",
+  "new_sha256": "7c391efff83b951a0367b50eea2933f604d7b7be95b8864dab42307ff7463f23",
+  "old_bytes": 223608,
+  "new_bytes": 223326
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "afdae8d7b86396888777d6c46b537a5d6625f1ed4a279e423539b952c528ef02",
+  "new_sha256": "1534d614966ae34bf52e8e15eec375fc5899c63803de2b286f71460c265883bf",
+  "old_bytes": 224836,
+  "new_bytes": 224166
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "c735accdea360bbf45cbce0d5733db5be21f4f68fc8c891e95e471a3ab893330",
+  "new_sha256": "7fe208e230f5b93a53c0d9a71b0c4371cff3fae5a7fb65cd8bfdfe2208f7b490",
+  "old_bytes": 225902,
+  "new_bytes": 224211
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "b944dd6c7875220b2c66850b9c3ec426221f791de461c816992c7ebb4d8b1524",
+  "new_sha256": "fe664a7017181f8eb3ea6e3568dc5bd1304463b6ced5d8365646218c05deb1a4",
+  "old_bytes": 223715,
+  "new_bytes": 224043
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "4f527e668aace2e5aa467c9fec9e55207037580b88e3fe5b81b87795b82d9ae6",
+  "new_sha256": "e399ce5bad02e04c1816e27a468b14fd34d146f297830ab57e0e9e373b7c9b1a",
+  "old_bytes": 224082,
+  "new_bytes": 224602
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "21366e62b68d68aeb443aa519fc002fa4eff872468cc2ccc5e9c4c662b7980a5",
+  "new_sha256": "5d8de95370f9daa31cbe419488664b21aa71eb724e336af763c5dab0edfbdb8a",
+  "old_bytes": 224720,
+  "new_bytes": 223631
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "f6f5fe54ebb8a2a6c980444b572c096bcf4aaa5ff5614d3d163e209cd6f6b07d",
+  "new_sha256": "9389bf85b3cc393ca4906372983408b21bfc3c7551cb71e59623c6ab74fc7a71",
+  "old_bytes": 223985,
+  "new_bytes": 223218
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "1657046762193ba7f096cacb73e21bbe0714097f32bee9f9bdabd87681de4db2",
+  "new_sha256": "785cfea43c2d252e0e4753f3559209b7dda8f5d9c2dd5197dbfe3d228b9745ac",
+  "old_bytes": 224589,
+  "new_bytes": 224529
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "81502a286ac42118620734276b9b2fb332025e5671a5b544bcbcc0a1822c70af",
+  "new_sha256": "75be9c89f313f3bc49e049a9527e539fe02a68b955fe6265b8b05506f83bf4ff",
+  "old_bytes": 223579,
+  "new_bytes": 224654
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "7381ad6046d3de00f26bbd1c58448ecd9c460473f6f8974d5ab767cd9e886611",
+  "new_sha256": "32a15872ca72178109479f6321f791518bc2d2833ba26efe9e7052077e81a7b0",
+  "old_bytes": 224341,
+  "new_bytes": 224128
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "c2eadc75877fbc383a935f8a04dbbc695f4668dadab6dcef329160181c2cebcb",
+  "new_sha256": "e3b97b1cd2c0e5729c1c2dcacde2ed27e5c9e633ad8f484f68e6e19a424e85ad",
+  "old_bytes": 223246,
+  "new_bytes": 226045
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "326c35cbcc9d3a9217ce6453ea2632c5a7c33f860ce9f44a43222833a8cc8b38",
+  "new_sha256": "c1b852efa6fb56e4e5b1e22980d6a410c92a99c3d06546b6b17aa092328b5e34",
+  "old_bytes": 225097,
+  "new_bytes": 225384
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "29f8a2e4cf9d31db00c6c2ff3b76be67da42eb938b26ed06d06bf355a8cc6740",
+  "new_sha256": "03ea896ee81af6e1354be00820b2412f8a0ef9a25350299abe2ea9ecde5a1bc5",
+  "old_bytes": 223354,
+  "new_bytes": 223856
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "f1bb08ee41e87e1d431d2c95e929b02ce343d57f6a2170b6f513b36a0e7c9a55",
+  "new_sha256": "3273101a6d796c8c8daf0e3da1a2ab2e34d957f1c65fe6bd93bd678dfa9b82af",
+  "old_bytes": 223770,
+  "new_bytes": 223233
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "c6e01d1a67b2923287b729d01ae2abe6f65922783dff763d6bda94db9e76b45e",
+  "new_sha256": "99f7efb3ee56dff98a8d9926967a5433e3d1b0189e94ddd52257e154f09ec121",
+  "old_bytes": 224677,
+  "new_bytes": 224461
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "4c2ba70c7a7f4eac5452decf50a7e99417d1ec2157e286cc846b1690db7720c6",
+  "new_sha256": "63c134948f99893b99d7afb9050c924ae17653489b67fc5937656a6b5e28c896",
+  "old_bytes": 224012,
+  "new_bytes": 225970
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "1048d1f73aa960064b71687b40d1c172206279a34e4eb3918c4d86d7757ea642",
+  "new_sha256": "7d0700c10f58af7472ba9f505116dd589bb37b8fd118a96d0172f4cafdab2674",
+  "old_bytes": 224537,
+  "new_bytes": 223128
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "80f4d0aa4355161ba1fce113349e066f5bcc6e1e61769874987400f8dadee8b6",
+  "new_sha256": "a0790dff21a5373e0c79d46df99a99cf466a27123e60becc8bd3649191ffcc62",
+  "old_bytes": 227358,
+  "new_bytes": 225538
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "69b89153d32c4ca4cf1866302c6f77908616083849eab0bbf75b1e290d113ee0",
+  "new_sha256": "4029aaefbbbb38cacded0da333bf92cc80ab17ad382989542d630931fc513285",
+  "old_bytes": 222921,
+  "new_bytes": 223789
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "33ef6d3667213499761e102896be18d1b2d6402faeab49ef9e7b2634615e8d11",
+  "new_sha256": "58fac5c71ad4dce97aec016eedcd0fb66992f77f5389d359f3ec24527ee3da51",
+  "old_bytes": 224187,
+  "new_bytes": 223933
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking",
+  "label": "flag source",
+  "old_sha256": "0086a7a9a92a6f03f164f1db6b230972cf12c78019470ad99f58eced5b2f6dca",
+  "new_sha256": "f8ef521c2fa495b3266c6996b1b39637cc7617425b2f19d785e8838d40afe19c",
+  "old_bytes": 223817,
+  "new_bytes": 223572
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "2184647c1752e1e1e141199938e2ff43018aed83d5f8191d2aa0e5ef52f810a1",
+  "new_sha256": "c798f8a48fa6f7e8ca90f5fc975c53709224a73679d9a664f6f9f396b40529e0",
+  "old_bytes": 223303,
+  "new_bytes": 223512
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "34abc78b7c24b82b3d3b51808cc6e0050fe39ba7237e1ffb115e593e0603d4d6",
+  "new_sha256": "cc36a5445f8652259bc1c5e0ccd51ec4c6b83b38530eb3f8695cbacf052d4ff5",
+  "old_bytes": 223632,
+  "new_bytes": 224202
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "027c0696f12dc33c8a440d3fbaecb82810031e875f8e734530a06411b2d6a9fd",
+  "new_sha256": "c7df4626317478a37dc6b56a847bf03dfdea44f4d83138dac5759e55bbcd1438",
+  "old_bytes": 223489,
+  "new_bytes": 223700
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "85b6f2ee4915cf51c9cc353d5bfaf1b06b3dc1086d72b57b33c01599c13c69fb",
+  "new_sha256": "30254713b9b6810a8bcb0bb956a05de485016114ce0fb428af57c01c9671bcc3",
+  "old_bytes": 224212,
+  "new_bytes": 224525
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "22639b6b2cc53665fbb3bcf4aea7dc3a8349a567cd03be5fa6caac81d4562657",
+  "new_sha256": "dbfb4f81dbf7c5aa577c42f7ba3f49deb6bc16c4cf43d035e9127c1ffb6f4215",
+  "old_bytes": 224935,
+  "new_bytes": 224116
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "label": "walking route",
+  "old_sha256": "0cbb29e8294d2fd10c75fcb15b2606eab68fc2b8fe5d3e831497e14419ee2741",
+  "new_sha256": "a2d6a4a0a99e173c1c04c3cb95f267cfd26cf0a4391aabf5aabc9d8c960cf25d",
+  "old_bytes": 225438,
+  "new_bytes": 226862
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.rwlasvegas.com/gaming/poker-room/",
+  "label": "venue page",
+  "old_sha256": "8561e28d9c5aaf9342ac80bac54721b14f7fd6abb1ff9ce5754c95c0a010d651",
+  "new_sha256": "7e96da2589389d2cdf4902601e6bdda6cb2539d4404efa094c60a2c7701f1d4d",
+  "old_bytes": 116135,
+  "new_bytes": 116279
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date={IN}&children[]=0&departure_date={OUT}&view=calendar",
+  "label": "official booking",
+  "old_sha256": "1aa043044b4067da27efec0448492055aa49c701211fa5ea0c35429be8ffbcfa",
+  "new_sha256": "a77274c3d7cfd3c3112b0d512544eacdc19964933365fa4a82143586d0a799e1",
+  "old_bytes": 142775,
+  "new_bytes": 142777
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker.html",
+  "label": "venue page",
+  "old_sha256": "982efca036e46e15ce1df6ff3eaa42d05ca1e8382c1ce9f9e23f64c3b74c0b43",
+  "new_sha256": "2593adcadb5a66881b9ec8ace8dd3f88b1d77f6c48c39d79e8e1321badf0cb59",
+  "old_bytes": 255853,
+  "new_bytes": 255855
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament.html",
+  "label": "flag source",
+  "old_sha256": "89352485334da2affb95378b3000ce0cce50aeda767f538287e8ff56fac566a1",
+  "new_sha256": "dab7d314bfd641847a753f1579afce77a45025a507dda05b4d484d4579672ebe",
+  "old_bytes": 247942,
+  "new_bytes": 248109
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "label": "schedule source",
+  "old_sha256": "27844e9c5b70d4a7db5ca964dd164e4f303bcab6422b3071561454f014fb54e4",
+  "new_sha256": "cc3147e4fe99c48c0d1e4230f06a08c4cfbe64187ef29fc56b01e9fa1c2e44a4",
+  "old_bytes": 269915,
+  "new_bytes": 269917
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "label": "parking source",
+  "old_sha256": "ec038930377521e0559ee86ed31c37a63e346eec804a9659f4e9d8a773cfa136",
+  "new_sha256": "d7f592f3db93507f3e401f90e0db9788a6347ff85417c76a264dca90cf0b7eaa",
+  "old_bytes": 226116,
+  "new_bytes": 226118
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+  "label": "resort fee page",
+  "old_sha256": "b6077be10176ba5999e35c285b99c0fd92f4c702459ffee84eab78334ee1c996",
+  "new_sha256": "dc9d3029d4135334f038c2649c04612a761502084dd40797841b82af45072a43",
+  "old_bytes": 227567,
+  "new_bytes": 227569
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.wynnlasvegas.com/",
+  "label": "official booking",
+  "old_sha256": "679b48a1ae47a41f5fefb6a2c94a5ed395662965237b6b435be9ee78b9db9c8e",
+  "new_sha256": "107fb05743c5674c532b35f8f490a78a9ecddfe1121c622cd937822ab15b2221",
+  "old_bytes": 787959,
+  "new_bytes": 788293
+ },
+ {
+  "changed_at": "2026-11-19T00:51:24Z",
+  "url": "https://www.wynnlasvegas.com/casino/poker",
+  "label": "venue page",
+  "old_sha256": "4de396b3fc9bd791d30ff1b2fa28dc265fd7d9f794757f72421874a3dc37c6fc",
+  "new_sha256": "f90008259ae3c8c3827c7a87344eb329b2aeceffa9645c7be183578d5f013b26",
+  "old_bytes": 460550,
+  "new_bytes": 460550
+ }
+]

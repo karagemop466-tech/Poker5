@@ -1,0 +1,141 @@
+{
+ "note": "Facts re-read by session bdcaf0bf on 2026-11-19 (UTC) directly from the official page or PDF named in each record. Read through the agent's page-fetch tool because this sandbox cannot open a TCP connection to casino hosts (curl -> SSL_ERROR_SYSCALL); the daily GitHub Actions job re-reads the same URLs from a runner. Quotes are verbatim. Nothing here is inferred; a value that the official page did not state is recorded as absent and flagged.",
+ "retrieved_by": "bdcaf0bf",
+ "retrieved_at": "2026-11-19T06:20:00Z",
+ "facts": [
+  {
+   "id": "V1",
+   "topic": "Venetian DSE IV schedule - full row-by-row re-read",
+   "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+   "retrieved_at": "2026-11-19T06:05:00Z",
+   "quote": "DeepStack Extravaganza IV - November 16 - December 23, 2026 - More than $3.6 Million in guaranteed tournament prize pools",
+   "establishes": "The official schedule table was read end to end (first row Monday, November 16, 2026 11:10 AM event #1 $300 No Limit Hold'em 1A $75K GTD; last row Wednesday, December 23, 2026 5:10 PM event #64 $200 No Limit Hold'em Bounty $8K GTD (1Day)). 94 rows, each with a structure-sheet link. Compared row by row against the committed capture of 2026-11-18T21:34:11Z: same 94 dates, times, event numbers and sheet numbers. No row changed.",
+   "result": "unchanged",
+   "rows_compared": 94,
+   "rows_changed": 0
+  },
+  {
+   "id": "V2",
+   "topic": "Venetian structure sheet 18 (events #3, #4, #5) - entry rules",
+   "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
+   "retrieved_at": "2026-11-19T06:07:00Z",
+   "quote": "Event Number: 03, 04, and 05 | Start Time: 10:10 AM | Starting Chips: 30,000 | Level Duration: 20/15 minutes. | Late Registration: 6 levels + Break (~ 12:25 PM) | 6. $35 of the $200 Buy-In is withheld for house fees (Rake + Staff). The prize pool consists of $165 of every $200 Buy In. | 7. This event pays 12.5% of the field",
+   "establishes": "Every field on the row matches the committed capture: buy-in $200, house fee $35, $165 to the prize pool, 30,000 starting chips, 20/15-minute levels, late registration after 6 levels + break (about 12:25 PM). The sheet states NO maximum-entry number, NO re-entry, rebuy, add-on or purchased-stack permission and NO one-entry/freezeout statement. It also states no guarantee, so the guarantee for events #3-#5 stays blank.",
+   "result": "matches capture",
+   "no_single_entry_statement": true,
+   "no_reentry_language": true
+  },
+  {
+   "id": "V3",
+   "topic": "Venetian resort fee",
+   "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+   "retrieved_at": "2026-11-19T06:09:00Z",
+   "quote": "Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in.",
+   "establishes": "Mandatory resort fee for The Venetian / The Palazzo = $55 per night plus tax, payable at check-in. Inclusions listed: Canyon Ranch spa + fitness access for two, in-suite internet, boarding-pass printing, unlimited local and toll-free calls, PressReader.",
+   "result": "unchanged",
+   "value": 55.0,
+   "unit": "USD per room per night, plus tax"
+  },
+  {
+   "id": "V4",
+   "topic": "Venetian poker suite rates (official rate tied to poker play)",
+   "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "retrieved_at": "2026-11-19T06:11:00Z",
+   "quote": "These rates will start as low as $119 and $209 and can be higher. Future rates are only provided out to a maximum of 150 days from the current date. Rates are subject to qualifying poker play and availability based on hotel occupancy. ... There is a $55 resort fee per night stayed. ... During your stay, you will be required to play six hours of active live cash gameplay or buy in to a $300 or higher tournament for each night stayed. ... For any nights you fail to complete these requirements, your nightly suite rate will be adjusted to the prevailing rate.",
+   "establishes": "The only room rate an official Venetian page states in numbers: a published poker-suite rate starting at $119 (and $209) per night for a Luxury King Suite at single/double occupancy, with a $55 nightly resort fee, conditional on six hours of cash play or one $300+ tournament buy-in per night stayed, qualifying play completed before 2 a.m. on the last night. This is a published 'starting at' floor, not a dated quote for a specific stay, so it is kept as a rate-floor scenario in the dated log and never as the trip's confirmed hotel cost.",
+   "result": "unchanged (page title reads '2026 Special Suite Rates')",
+   "value_from": 119.0,
+   "value_from_alt": 209.0,
+   "caveat": "not a dated availability quote; qualifying play required; unmet nights revert to the prevailing rate"
+  },
+  {
+   "id": "V5",
+   "topic": "Venetian poker room location and size",
+   "url": "https://www.venetianlasvegas.com/resort/casino/poker.html",
+   "retrieved_at": "2026-11-19T06:12:00Z",
+   "quote": "LOCATION - The Palazzo, level 2, Grand Canal Shoppes ... HOURS - Open 24 Hours ... Our Poker Room is located at The Palazzo on level 2 of Grand Canal Shoppes. The Poker Room features 50 tables spread across 14,000 square feet of space, making it the largest room on the Las Vegas Strip.",
+   "establishes": "The Venetian poker room is inside The Palazzo on level 2 of the Grand Canal Shoppes - not in the Venetian tower. Walking time from a Venetian/Palazzo room is an in-building walk between connected towers (0 outdoor minutes, one covered route); the official page publishes directions in text, not minutes. The Strip-address walking times for other hotels are not published by any official source.",
+   "result": "unchanged"
+  },
+  {
+   "id": "V6",
+   "topic": "Venetian parking (self-parking rates and poker-player waiver)",
+   "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+   "retrieved_at": "2026-11-19T06:13:00Z",
+   "quote": "The daily fee for registered hotel guests is $20/day, seven days a week. For non-hotel guests, the fee is $20/day Monday - Thursday, and $25/day Friday - Sunday. Valet parking is $40/day. ... Players in the poker room who play three hours or more in tournament or cash games will receive complimentary self-parking for the day. Players must visit a supervisor at the end of their session to confirm qualifications.",
+   "establishes": "Parking is a real, published cost line for the trip: $20 per day self-parking for a registered hotel guest, $25 on Friday-Sunday for a non-guest, $40 valet; and a tournament player who plays three hours or more gets that day's self-parking free (supervisor confirmation required). A day's tournament entry almost always exceeds three hours, so a player who parks each day and plays 3 h+ pays $0 parking at this property.",
+   "result": "new in this dataset (previous sessions recorded only the 3-hour waiver sentence)",
+   "value_hotel_guest_self": 20.0,
+   "value_non_guest_weekend": 25.0,
+   "value_valet": 40.0,
+   "free_for_play_hours": 3
+  },
+  {
+   "id": "V7",
+   "topic": "Wynn / Encore mandatory resort fee",
+   "url": "https://www.wynnlasvegas.com/terms-and-conditions/849338",
+   "retrieved_at": "2026-11-19T06:14:00Z",
+   "quote": "RESORT FEE: Reservations booked prior to January 15, 2025, will be charged a daily resort fee of $50 plus tax; reservations booked on or after January 15, 2025, will be charged a daily resort fee of $55 plus tax.",
+   "establishes": "Wynn states a $55 plus tax daily resort fee for reservations booked on or after 2025-01-15. The sentence sits on an offer's terms page whose stay window closed 2025-06-30, so the figure is an official statement of the fee but its applicability to a December 2026 stay must be confirmed at booking. Recorded as fee $55 with an explicit applicability caveat, which is why the Wynn fee is no longer blank.",
+   "result": "value now published with a caveat (was blank / unverified)",
+   "value": 55.0,
+   "caveat": "found on an offer terms page whose stay window ended 2025-06-30"
+  },
+  {
+   "id": "V8",
+   "topic": "Wynn deposit and cancellation deadline",
+   "url": "https://www.wynnlasvegas.com/terms-and-conditions/849338",
+   "retrieved_at": "2026-11-19T06:14:00Z",
+   "quote": "A deposit of one (1) night of room and tax will be charged at the time of booking and cancellations must be received at least 72 hours prior to arrival date or deposit will be forfeited. ... A valid credit card authorized to cover room and resort fees and tax, plus $150 a night for incidentals must be presented upon check-in.",
+   "establishes": "Cancellation deadline for this official Wynn terms page: 72 hours before arrival, otherwise the one-night room + tax deposit is forfeited; $150 per night incidentals authorised at check-in. Itemised total at checkout therefore = room + resort fee + tax + any incidental charges.",
+   "result": "new in this dataset"
+  },
+  {
+   "id": "V9",
+   "topic": "Wynn festival window, daily slate and its suspension",
+   "url": "https://www.wynnlasvegas.com/casino/poker",
+   "retrieved_at": "2026-11-19T06:15:00Z",
+   "quote": "WPT WORLD CHAMPIONSHIP - November 27-December 21 ... New for 2026, the Super Gold Million brings a $400 buy-in featuring a $3,000,000 guarantee! ... Our popular slate of daily tournaments runs twice a day during non-event timeframes, offering a total of $200,000 in guaranteed prize pools weekly. Tournaments include the $40,000 guaranteed NLH Rebuy on Friday and a $10,000 guaranteed event every evening at 6 p.m. ... *Please note that the Daily Tournament schedule will be suspended during each Wynn Signature, Wynn Millions, and Classic tournament series.",
+   "establishes": "The WPT World Championship window (27 Nov - 21 Dec 2026) is confirmed on the official page, and the Wynn daily slate is suspended during the series - so a December trip cannot count on the Wynn 6 PM nightly. The Friday daily is named 'NLH Rebuy', which is an official rebuy statement and disqualifies it under the single-entry standard. A new 2026 event, the Super Gold Million ($400 buy-in, $3,000,000 guaranteed), is published on the official page.",
+   "result": "unchanged except the Super Gold Million line, which is newly recorded",
+   "new_event": {
+    "name": "Super Gold Million",
+    "buyin": 400,
+    "guarantee": 3000000,
+    "venue": "Wynn Las Vegas",
+    "source": "https://www.wynnlasvegas.com/casino/poker"
+   }
+  },
+  {
+   "id": "V10",
+   "topic": "Caesars Palace / Horseshoe daily tournament structure",
+   "url": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
+   "retrieved_at": "2026-11-19T06:16:00Z",
+   "quote": "At Caesars Palace, the daily schedule runs like clockwork. You will find four No-Limit Hold'em tournaments each day at 10 a.m., 2 p.m., 6 p.m. and 9 p.m. Every event carries a $100 buy-in, starts you with 20,000 chips, and features a $1,000 guaranteed prize pool. Blinds increase every 20 minutes to keep the pace lively, and a $50 add-on at the first break",
+   "establishes": "Four Caesars Palace starts per day, $100 buy-in, 20,000 chips, $1,000 guaranteed, 20-minute levels and an optional $50 add-on at the first break. The add-on is a paid way to continue, so these events are disqualified from the single-entry list. The page is an official Caesars editorial page dated July 17, 2026; it publishes no event numbers and no per-day calendar, so these rows carry no date.",
+   "result": "unchanged",
+   "disqualifier": "add-on"
+  },
+  {
+   "id": "V11",
+   "topic": "Caesars Palace resort fee (official corporate disclaimer)",
+   "url": "https://www.caesars.com/corporate/disclaimer",
+   "retrieved_at": "2026-11-19T06:17:00Z",
+   "quote": "Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort fees are waived for Diamond and Seven Stars.",
+   "establishes": "The official Caesars statement is a RANGE ($45-$60 per night plus tax), not a single fee, and it is waived for Diamond and Seven Stars members. A range cannot be multiplied into a stay total, so the site publishes the range and leaves the 'true nightly cost' for Caesars blank with a flag instead of picking a number. Note the range is wider than the $45-$50 wording some secondary caches still show.",
+   "result": "range confirmed live; no single value publishable",
+   "range_low": 45.0,
+   "range_high": 60.0
+  },
+  {
+   "id": "V12",
+   "topic": "Clark County transient lodging tax and what is taxed",
+   "url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf",
+   "retrieved_at": "2026-11-19T06:18:00Z",
+   "quote": "Resort hotel within primary gaming corridor | 12.5% | 0.88% | 13.38% ... (17) 'Rent' (a) Means the amount charged for a sleeping room/space ... including the following, regardless of whether separately stated: (i) Charges that would normally be part of an all inclusive room rate, such as, but not limited to, payment processing fees, check-in fees, accommodation fees, facility fees, access fees, charges for additional guests, late check-out fees, and utility surcharges",
+   "establishes": "13.38% is the combined transient lodging tax for a resort hotel inside the primary gaming corridor (12.5% + 0.88%), and the ordinance's definition of 'rent' includes separately stated accommodation, facility and access fees - which is why this site taxes the room rate AND the mandatory resort fee. The document is the ordinance as published for the Board hearing; the rate schedule was effective 2017-03-01 and the page warns rates may be changed by the jurisdictions, so the multiplier is stated with that caveat.",
+   "result": "unchanged",
+   "rate_percent": 13.38
+  }
+ ]
+}

@@ -28,7 +28,11 @@ jobs:
         run: node scripts/build_aa83f1e1.mjs
       - name: Parser self-test for the official-source scraper (no network)
         run: python3 scripts/scrape_251c122f.py --self-test
-      - name: Regenerate the root Pages site from the official capture
-        run: python3 scripts/build_251c122f.py
+      - name: Rebuild the canonical dataset and the published site, then check both
+        run: |
+          python3 scripts/integrate_bdcaf0bf.py
+          python3 scripts/build_bdcaf0bf.py
+          python3 scripts/check_bdcaf0bf.py
+          python3 scripts/check_root_site.py
       - name: Cross-check every verdict, source link and internal link
         run: python3 scripts/crosscheck_251c122f.py

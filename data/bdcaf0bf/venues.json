@@ -1,0 +1,83 @@
+[
+ {
+  "key": "venetian",
+  "name": "The Venetian Resort",
+  "room": "Venetian Poker Room (The Palazzo, level 2, Grand Canal Shoppes)",
+  "area": "Strip - north / centre",
+  "status": "open_official",
+  "status_note": "Official poker-room page: 'Our Poker Room is located at The Palazzo on level 2 of Grand Canal Shoppes. The Poker Room features 50 tables spread across 14,000 square feet of space, making it the largest room on the Las Vegas Strip', open 24 hours. Official series page: DeepStack Extravaganza IV, 16 November - 23 December 2026, 'More than $3.6 Million in guaranteed tournament prize pools'.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker.html"
+ },
+ {
+  "key": "wynn",
+  "name": "Wynn Las Vegas",
+  "room": "Wynn Las Vegas Poker Room (in Encore)",
+  "area": "Strip - north",
+  "status": "open_official",
+  "status_note": "Official Wynn poker page lists the WPT World Championship, 27 November - 21 December 2026. The official WPT terms state registration is in the 'Wynn Las Vegas Poker Room, located in Encore at Wynn Las Vegas'.",
+  "source": "https://www.wynnlasvegas.com/casino/poker"
+ },
+ {
+  "key": "caesars",
+  "name": "Caesars Palace",
+  "room": "Caesars Palace Poker Room",
+  "area": "Strip - centre",
+  "status": "open_official",
+  "status_note": "Official casino page: 'The Poker Room at Caesars Palace is open 24/7 with both live-action cash games and daily tournaments.'",
+  "source": "https://www.caesars.com/caesars-palace/casino"
+ },
+ {
+  "key": "horseshoe",
+  "name": "Horseshoe Las Vegas",
+  "room": "Hall of Fame Poker Room",
+  "area": "Strip - centre",
+  "status": "open_official_no_schedule",
+  "status_note": "Official page: 20 tables and '6 exciting tournament times daily'. No schedule or structure is published.",
+  "source": "https://www.caesars.com/horseshoe-las-vegas/casino"
+ },
+ {
+  "key": "resortsworld",
+  "name": "Resorts World Las Vegas",
+  "room": "Resorts World Poker Room",
+  "area": "Strip - north",
+  "status": "open_official_no_schedule",
+  "status_note": "The official site has a poker-room section under Gaming. No tournament schedule or structure was retrieved.",
+  "source": "https://www.rwlasvegas.com/gaming/poker-room/"
+ },
+ {
+  "key": "southpoint",
+  "name": "South Point Hotel & Casino",
+  "room": "South Point Poker Room",
+  "area": "Las Vegas Blvd South (off-Strip)",
+  "status": "open_official_partial",
+  "status_note": "Official room page states four daily tournaments and $120/$300 buy-ins; the detailed schedule is published as images only.",
+  "source": "https://southpointcasino.com/casino/poker-room"
+ },
+ {
+  "key": "bellagio",
+  "name": "Bellagio",
+  "room": "Bellagio Poker Room",
+  "area": "Strip - centre",
+  "status": "unverified",
+  "status_note": "The official poker-room URL returned 'page not found' during this session. Not verified.",
+  "source": "https://bellagio.mgmresorts.com/en/casino/poker-room.html"
+ },
+ {
+  "key": "mgmgrand",
+  "name": "MGM Grand",
+  "room": "MGM Grand Poker Room",
+  "area": "Strip - south / centre",
+  "status": "unverified",
+  "status_note": "No official poker-room page was retrieved during this session. Not verified.",
+  "source": "https://mgmgrand.mgmresorts.com/en/casino.html"
+ },
+ {
+  "key": "aria",
+  "name": "ARIA",
+  "room": "ARIA Poker Room",
+  "area": "Strip - centre",
+  "status": "unverified",
+  "status_note": "No official poker-room page was retrieved during this session. Not verified.",
+  "source": "https://aria.mgmresorts.com/en/casino.html"
+ }
+]

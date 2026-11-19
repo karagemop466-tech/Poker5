@@ -1,0 +1,103 @@
+name: integrate-bdcaf0bf
+
+# The canonical publication loop for the root Poker5 Pages site.
+#
+#   re-check every official URL -> merge the three verified captures into
+#   data/bdcaf0bf/ -> build index.html + pages/** -> check the result -> commit.
+#
+# Only this workflow writes the published site. The older per-session jobs keep
+# refreshing their own data folders, but their root-site write steps were
+# removed (see pages/repo-review.html, finding 1, and flag B02): two builders
+# regenerating the same files from different datasets made the published answers
+# alternate between runs.
+#
+# 12:50 UTC is ~04:50 in Las Vegas, so the pages are refreshed before the day's
+# structures are posted and before the first tournament of the day starts.
+
+on:
+  schedule:
+    - cron: "50 12 * * *"
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/integrate_bdcaf0bf.py"
+      - "scripts/build_bdcaf0bf.py"
+      - "scripts/check_bdcaf0bf.py"
+      - "scripts/recheck_bdcaf0bf.py"
+      - "data/bdcaf0bf/facts_20261119.json"
+      - ".github/workflows/integrate-bdcaf0bf.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: integrate-bdcaf0bf
+  cancel-in-progress: false
+
+jobs:
+  integrate-build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the PDF reader used by the capture
+        run: python3 -m pip install --quiet pypdf==5.1.0
+
+      # data/c6087e2c/ and data/ea99006a/ are refreshed and committed by their own
+      # sessions' workflows; this job reads them and never writes them.
+
+      - name: Re-read every official URL in the ledger
+        run: python3 scripts/recheck_bdcaf0bf.py
+
+      - name: Merge the two captures into the canonical dataset
+        run: python3 scripts/integrate_bdcaf0bf.py
+
+      - name: Build the published site from the merged dataset
+        run: python3 scripts/build_bdcaf0bf.py
+
+      - name: Verify grades, sources, links, plan and hotel arithmetic
+        run: |
+          python3 scripts/check_bdcaf0bf.py
+          python3 scripts/check_root_site.py
+
+      - name: DOM smoke test - search, date filter, single-entry toggle, sorting, rate log, calculator
+        # continue-on-error: a registry outage must not stop the site from being published,
+        # but a red step here means an interaction on the live pages is broken.
+        continue-on-error: true
+        run: |
+          npm install --no-save --silent jsdom
+          node work/bdcaf0bf/smoke_dom.mjs
+
+      - name: Commit the refreshed data and the rebuilt site
+        run: |
+          git config user.name  "poker5-integration-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/bdcaf0bf index.html pages assets/bdcaf0bf.css assets/bdcaf0bf.js
+          if git diff --cached --quiet; then
+            echo "nothing changed: the published site already matches the sources"
+            exit 0
+          fi
+          git commit -m "integrate(bdcaf0bf): refresh the published site from official sources $(date -u +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && break
+            echo "rebase attempt $attempt failed; retrying"
+            sleep 5
+          done
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Upload the merged dataset for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-bdcaf0bf-${{ github.run_id }}
+          path: |
+            data/bdcaf0bf
+          if-no-files-found: warn

@@ -1,0 +1,1644 @@
+[
+ {
+  "date": "2026-11-19",
+  "weekday": "Thursday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261119-07"
+    ],
+    "primary": "V-20261119-07",
+    "primary_reason": "no event on this date has both a published buy-in and a published guarantee, so nothing can be ranked; this is the morning event whose sheet carries no re-entry language, guarantee left blank",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-20",
+  "weekday": "Friday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261120-08"
+    ],
+    "primary": "V-20261120-08",
+    "primary_reason": "no event on this date has both a published buy-in and a published guarantee, so nothing can be ranked; this is the morning event whose sheet carries no re-entry language, guarantee left blank",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-21",
+  "weekday": "Saturday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261121-09"
+    ],
+    "primary": "V-20261121-09",
+    "primary_reason": "no event on this date has both a published buy-in and a published guarantee, so nothing can be ranked; this is the morning event whose sheet carries no re-entry language, guarantee left blank",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-22",
+  "weekday": "Sunday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261122-10"
+    ],
+    "primary": "V-20261122-10",
+    "primary_reason": "no event on this date has both a published buy-in and a published guarantee, so nothing can be ranked; this is the morning event whose sheet carries no re-entry language, guarantee left blank",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-23",
+  "weekday": "Monday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261123-11",
+     "V-20261123-12"
+    ],
+    "primary": "V-20261123-12",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261123-11",
+      "a_name": "$400 No Limit Hold'em 1A $75K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261123-12",
+      "b_name": "$200 No Limit Hold'em $8K GTD (1Day) Progressive Knock-Out Bounty (PKO)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-24",
+  "weekday": "Tuesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261124-13",
+     "V-20261124-14"
+    ],
+    "primary": "V-20261124-14",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261124-13",
+      "a_name": "$400 No Limit Hold'em 1B $75K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261124-14",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-25",
+  "weekday": "Wednesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261125-16",
+     "V-20261125-17"
+    ],
+    "primary": "V-20261125-16",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261125-17",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-26",
+  "weekday": "Thursday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261126-18",
+     "V-20261126-19"
+    ],
+    "primary": "V-20261126-18",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261126-19",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-11-27",
+  "weekday": "Friday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261127-20",
+     "V-20261127-21"
+    ],
+    "primary": "V-20261127-20",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261127-21",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-001",
+     "WYNN-002",
+     "WYNN-003",
+     "WYNN-004"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-11-28",
+  "weekday": "Saturday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261128-22",
+     "V-20261128-23",
+     "V-20261128-24"
+    ],
+    "primary": "V-20261128-22",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261128-23",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 16:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-005",
+     "WYNN-006",
+     "WYNN-007"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-11-29",
+  "weekday": "Sunday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261129-25",
+     "V-20261129-26",
+     "V-20261129-27"
+    ],
+    "primary": "V-20261129-26",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261129-27",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261129-25",
+      "a_name": "$400 No Limit Hold'em 1A $75K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261129-27",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-008",
+     "WYNN-009"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-11-30",
+  "weekday": "Monday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261130-28",
+     "V-20261130-29"
+    ],
+    "primary": "V-20261130-29",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261130-28",
+      "a_name": "$400 No Limit Hold'em 1B $75K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261130-29",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-010",
+     "WYNN-011",
+     "WYNN-013"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-01",
+  "weekday": "Tuesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261201-30",
+     "V-20261201-31"
+    ],
+    "primary": "V-20261201-31",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261201-30",
+      "a_name": "$400 No Limit Hold'em 1C $75K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261201-31",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-014",
+     "WYNN-015",
+     "WYNN-016",
+     "WYNN-017"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-02",
+  "weekday": "Wednesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261202-32",
+     "V-20261202-34"
+    ],
+    "primary": "V-20261202-32",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261202-34",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-018",
+     "WYNN-019"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-03",
+  "weekday": "Thursday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261203-35",
+     "V-20261203-36",
+     "V-20261203-37"
+    ],
+    "primary": "V-20261203-36",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261203-35",
+      "a_name": "$800 No Limit Hold'em 1A $500K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261203-37",
+      "b_name": "$800 No Limit Hold'em 1B $500K GTD",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-020",
+     "WYNN-022"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-04",
+  "weekday": "Friday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261204-38",
+     "V-20261204-39"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261204-38",
+      "a_name": "$800 No Limit Hold'em 1C $500K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261204-39",
+      "b_name": "$800 No Limit Hold'em 1D $500K GTD",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-023",
+     "WYNN-024",
+     "WYNN-026"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-05",
+  "weekday": "Saturday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261205-40",
+     "V-20261205-41"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261205-40",
+      "a_name": "$800 No Limit Hold'em 1E $500K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261205-41",
+      "b_name": "$800 No Limit Hold'em 1F (Turbo) $500K GTD",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-028",
+     "WYNN-029"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-06",
+  "weekday": "Sunday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261206-42",
+     "V-20261206-44"
+    ],
+    "primary": "V-20261206-42",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261206-44",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-030",
+     "WYNN-031",
+     "WYNN-032",
+     "WYNN-033",
+     "WYNN-034",
+     "WYNN-035"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-07",
+  "weekday": "Monday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261207-45",
+     "V-20261207-46"
+    ],
+    "primary": "V-20261207-45",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261207-46",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-036",
+     "WYNN-037",
+     "WYNN-039",
+     "WYNN-040",
+     "WYNN-041"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-08",
+  "weekday": "Tuesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261208-47",
+     "V-20261208-48",
+     "V-20261208-49"
+    ],
+    "primary": "V-20261208-47",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261208-48",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 18:25, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261208-48",
+      "a_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) Awards Direct Entry to Event # 39",
+      "a_end": "02:15 (+1 day)",
+      "b": "V-20261208-49",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-042",
+     "WYNN-043",
+     "WYNN-044"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-09",
+  "weekday": "Wednesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261209-50",
+     "V-20261209-51",
+     "V-20261209-52",
+     "V-20261209-53"
+    ],
+    "primary": "V-20261209-51",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261209-50",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 14:40, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261209-50",
+      "a_name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) Tag Teams Consist of Female/Female or Female/Male",
+      "a_end": "00:55 (+1 day)",
+      "b": "V-20261209-51",
+      "b_name": "$800 No Limit Hold'em Bounty $75K GTD (1Day) $200 bounties to start & $500 bounties in the money",
+      "b_start": "11:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261209-50",
+      "a_name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) Tag Teams Consist of Female/Female or Female/Male",
+      "a_end": "00:55 (+1 day)",
+      "b": "V-20261209-52",
+      "b_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) Awards Direct Entry to Event # 39",
+      "b_start": "16:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261209-50",
+      "a_name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) Tag Teams Consist of Female/Female or Female/Male",
+      "a_end": "00:55 (+1 day)",
+      "b": "V-20261209-53",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261209-52",
+      "a_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) Awards Direct Entry to Event # 39",
+      "a_end": "02:15 (+1 day)",
+      "b": "V-20261209-53",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 4
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-045",
+     "WYNN-047",
+     "WYNN-048",
+     "WYNN-049",
+     "WYNN-050",
+     "WYNN-051"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-10",
+  "weekday": "Thursday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261210-54",
+     "V-20261210-55",
+     "V-20261210-56",
+     "V-20261210-57"
+    ],
+    "primary": "V-20261210-55",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261210-56",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 18:25, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261210-54",
+      "a_name": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) Women in Poker - Main Event",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261210-56",
+      "b_name": "$260 NLH Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "b_start": "16:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261210-54",
+      "a_name": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) Women in Poker - Main Event",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261210-57",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261210-56",
+      "a_name": "$260 NLH Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "a_end": "02:15 (+1 day)",
+      "b": "V-20261210-57",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 3
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "10:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-052",
+     "WYNN-054"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-11",
+  "weekday": "Friday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261211-59",
+     "V-20261211-60",
+     "V-20261211-62"
+    ],
+    "primary": "V-20261211-59",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261211-60",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 18:25, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261211-60",
+      "a_name": "$260 NLH Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "a_end": "02:15 (+1 day)",
+      "b": "V-20261211-62",
+      "b_name": "$260 NLH Turbo Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "b_start": "20:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "10:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-055",
+     "WYNN-057"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-12",
+  "weekday": "Saturday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "09:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261212-63",
+     "V-20261212-64",
+     "V-20261212-65",
+     "V-20261212-66"
+    ],
+    "primary": "V-20261212-63",
+    "primary_reason": "no event on this date has both a published buy-in and a published guarantee, so nothing can be ranked; this is the morning event whose sheet carries no re-entry language, guarantee left blank",
+    "fallback": "V-20261212-65",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 12:10, when this event's published late-registration window closes",
+    "overlaps": [
+     {
+      "a": "V-20261212-64",
+      "a_name": "$2,200 No Limit Hold'em 1A $1 Mill GTD PokerAtlas Championship Title Event",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261212-65",
+      "b_name": "$260 NLH Turbo Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "b_start": "12:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261212-64",
+      "a_name": "$2,200 No Limit Hold'em 1A $1 Mill GTD PokerAtlas Championship Title Event",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261212-66",
+      "b_name": "$2,200 No Limit Hold'em 1B $1 Mill GTD PokerAtlas Championship Title Event",
+      "b_start": "18:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     },
+     {
+      "a": "V-20261212-65",
+      "a_name": "$260 NLH Turbo Milestone Satellite (1Day) Awards Direct Entry to Event # 47",
+      "a_end": "19:55",
+      "b": "V-20261212-66",
+      "b_name": "$2,200 No Limit Hold'em 1B $1 Mill GTD PokerAtlas Championship Title Event",
+      "b_start": "18:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 3
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "10:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-058",
+     "WYNN-059",
+     "WYNN-062",
+     "WYNN-063",
+     "WYNN-064",
+     "WYNN-065"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-13",
+  "weekday": "Sunday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261213-67",
+     "V-20261213-69"
+    ],
+    "primary": "V-20261213-69",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261213-67",
+      "a_name": "$1,100 No Limit Hold'em Seniors 1A $300K GTD Must be 50+ years of age to participate",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261213-69",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-066",
+     "WYNN-067",
+     "WYNN-068",
+     "WYNN-069",
+     "WYNN-070",
+     "WYNN-071",
+     "WYNN-073"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-14",
+  "weekday": "Monday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261214-70",
+     "V-20261214-72"
+    ],
+    "primary": "V-20261214-72",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261214-70",
+      "a_name": "$1,100 No Limit Hold'em Seniors 1B $300K GTD Must be 50+ years of age to participate",
+      "a_end": "06:15 (+1 day)",
+      "b": "V-20261214-72",
+      "b_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-074",
+     "WYNN-075",
+     "WYNN-076",
+     "WYNN-077",
+     "WYNN-078",
+     "WYNN-080",
+     "WYNN-081",
+     "WYNN-082"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-15",
+  "weekday": "Tuesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261215-74",
+     "V-20261215-75"
+    ],
+    "primary": "V-20261215-74",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261215-75",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-083",
+     "WYNN-087",
+     "WYNN-088",
+     "WYNN-090"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-16",
+  "weekday": "Wednesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261216-76",
+     "V-20261216-77"
+    ],
+    "primary": "V-20261216-76",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261216-77",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-091",
+     "WYNN-093",
+     "WYNN-094",
+     "WYNN-095",
+     "WYNN-096",
+     "WYNN-097",
+     "WYNN-098"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-17",
+  "weekday": "Thursday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261217-78",
+     "V-20261217-79",
+     "V-20261217-80"
+    ],
+    "primary": "V-20261217-79",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261217-78",
+      "a_name": "$1,100 No Limit Hold'em 1A $500K GTD $40 Rake Discount for Entries Before 10:10 a.m.",
+      "a_end": "06:55 (+1 day)",
+      "b": "V-20261217-80",
+      "b_name": "$1,100 No Limit Hold'em 1B $500K GTD $40 Rake Discount for Entries Before 6:10 p.m.",
+      "b_start": "18:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-099",
+     "WYNN-100",
+     "WYNN-103",
+     "WYNN-104",
+     "WYNN-105",
+     "WYNN-106"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-18",
+  "weekday": "Friday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261218-81",
+     "V-20261218-82"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261218-81",
+      "a_name": "$1,100 No Limit Hold'em 1C $500K GTD",
+      "a_end": "06:55 (+1 day)",
+      "b": "V-20261218-82",
+      "b_name": "$1,100 No Limit Hold'em 1D $500K GTD",
+      "b_start": "18:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "10:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-107",
+     "WYNN-109",
+     "WYNN-110",
+     "WYNN-111",
+     "WYNN-112",
+     "WYNN-113",
+     "WYNN-114"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-19",
+  "weekday": "Saturday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "10:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261219-83",
+     "V-20261219-84"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261219-83",
+      "a_name": "$1,100 No Limit Hold'em 1E $500K GTD",
+      "a_end": "06:55 (+1 day)",
+      "b": "V-20261219-84",
+      "b_name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-115",
+     "WYNN-116",
+     "WYNN-119",
+     "WYNN-120",
+     "WYNN-121",
+     "WYNN-122",
+     "WYNN-123",
+     "WYNN-124",
+     "WYNN-125"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-20",
+  "weekday": "Sunday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261220-86",
+     "V-20261220-87"
+    ],
+    "primary": "V-20261220-87",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261220-86",
+      "a_name": "$600 No Limit Hold'em 1A $150K GTD $20 Rake Discount for Entries Before 11:10 a.m.",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261220-87",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "11:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-126",
+     "WYNN-128",
+     "WYNN-129",
+     "WYNN-130",
+     "WYNN-132",
+     "WYNN-133"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-21",
+  "weekday": "Monday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261221-88",
+     "V-20261221-89"
+    ],
+    "primary": "V-20261221-89",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261221-88",
+      "a_name": "$600 No Limit Hold'em 1B $150K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261221-89",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   },
+   {
+    "venue_key": "wynn",
+    "venue": "Wynn Las Vegas",
+    "earliest_start": "12:00",
+    "starts_at_8am": false,
+    "events": [
+     "WYNN-134",
+     "WYNN-136"
+    ],
+    "primary": null,
+    "primary_reason": "no event on this date is eligible under the single-entry standard",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": true,
+  "cross_venue_warning": "this date has playable events at 2 different properties; the walk or ride between them is not timed by any official source, so the day plan never books two properties back-to-back"
+ },
+ {
+  "date": "2026-12-22",
+  "weekday": "Tuesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261222-90",
+     "V-20261222-91"
+    ],
+    "primary": "V-20261222-91",
+    "primary_reason": "rankable but starts after the morning slot, so it is shown as the day's event with a late start",
+    "fallback": null,
+    "fallback_kind": "",
+    "fallback_condition": "no second event on this date can be added to this plan",
+    "overlaps": [
+     {
+      "a": "V-20261222-90",
+      "a_name": "$600 No Limit Hold'em 1C $150K GTD",
+      "a_end": "07:55 (+1 day)",
+      "b": "V-20261222-91",
+      "b_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+      "b_start": "17:10",
+      "reason": "the later event starts before the earlier one can finish on its published structure"
+     }
+    ],
+    "overlap_count": 1
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ },
+ {
+  "date": "2026-12-23",
+  "weekday": "Wednesday",
+  "venues": [
+   {
+    "venue_key": "venetian",
+    "venue": "The Venetian Resort",
+    "earliest_start": "11:10",
+    "starts_at_8am": false,
+    "events": [
+     "V-20261223-93",
+     "V-20261223-94"
+    ],
+    "primary": "V-20261223-93",
+    "primary_reason": "the day's best published guarantee-per-entry among events that start in the morning, have no paid re-entry language and can still finish overnight",
+    "fallback": "V-20261223-94",
+    "fallback_kind": "conditional",
+    "fallback_condition": "conditional: only playable if you have already busted out of the primary event before 21:40, when this event's published late-registration window closes",
+    "overlaps": [],
+    "overlap_count": 0
+   }
+  ],
+  "multi_venue": false,
+  "cross_venue_warning": ""
+ }
+]
