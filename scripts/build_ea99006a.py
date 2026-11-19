@@ -866,6 +866,9 @@ function initSuggestions(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
+  /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
+  try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
+    if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
   initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
 });
 """
@@ -970,6 +973,18 @@ def build_index():
              ("pages/method.html", "Method &amp; sources", "How every value was read, and the complete source ledger.")]
     body = []
     body.append("<h1>Las Vegas Strip poker trip planner</h1>")
+    body.append('<form class="filters" action="pages/tournaments.html" method="get" id="landsearch" role="search">'
+             '<input id="landq" name="q" class="search" type="search" placeholder="Search events, venues, dates, rule text, hotels..." aria-label="Search the site">'
+             '<select id="landpage" aria-label="Search in" onchange="this.form.action=this.value">'
+             '<option value="pages/tournaments.html">All tournaments</option>'
+             '<option value="pages/single-entry.html">Single-entry</option>'
+             '<option value="pages/tournaments-double.html">Multi-entry / advantage</option>'
+             '<option value="pages/schedule.html">Day schedule</option>'
+             '<option value="pages/hotels.html">Hotels</option>'
+             '<option value="pages/verification.html">Verification log</option>'
+             '<option value="pages/flagged-review.html">Flagged for review</option>'
+             '</select><button type="submit">Search</button></form>')
+    body.append('<p class="muted sm">Search runs inside the chosen table page (every table on that page is filtered). Pick the page with the drop-down.</p>')
     body.append('<p class="muted">Source-verified &middot; retrieved %s &middot; Venetian DeepStack Extravaganza IV and the WPT World Championship at Wynn</p>' % esc(RETRIEVED))
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),
@@ -2225,6 +2240,18 @@ def build_verification():
                 + "<dt>structure sheets read</dt><dd><b>" + str(len(META.get("sheets") or [])) + "</b></dd>"
                 + "<dt>URLs under daily monitor</dt><dd><b>" + str(len(LEDGER)) + "</b></dd>"
                 + "<dt>value-level changes open</dt><dd><b>" + str(len(VALCH)) + "</b></dd></div></div>")
+    # 25481cd8: full schedule re-read against the official page, row by row (scripts/recheck_schedule_25481cd8.py)
+    _sr = _opt(DATA, "schedule_recheck.json", {})
+    if _sr:
+        _bad = [r for r in (_sr.get("rows") or []) if r.get("result") != "match"]
+        body.append("<div class=\"panel\"><h2>Venetian schedule re-check, " + esc(_sr.get("checked_on", "")) + "</h2>"
+                    "<p>Every row of the official DeepStack Extravaganza IV schedule page was read again and compared field by field "
+                    "(date, start time, event number, name, buy-in, guarantee, structure-sheet number) with the stored row. "
+                    "Source: <a href=\"" + esc(_sr.get("official_source", "")) + "\" rel=\"noopener\">official Venetian schedule page</a>. "
+                    "Method and per-row result: <code>data/ea99006a/schedule_recheck.json</code>.</p>"
+                    "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
+                    "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
+                    "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])

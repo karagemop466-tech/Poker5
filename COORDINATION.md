@@ -1,5 +1,17 @@
 # Coordination - Poker5
 
+## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
+
+**Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| R1 | Re-read every official Venetian DeepStack Extravaganza IV schedule page (4 chunks, 2026-11-19) and diff all rows (date, start, event no., name, buy-in, guarantee, structure-sheet number) against `data/ea99006a/venetian.json` by script | done — 94/94 rows match, 0 mismatches | `data/ea99006a/official_schedule_2026-11-19.tsv` (new), `data/ea99006a/schedule_recheck.json` (new), `scripts/recheck_schedule_25481cd8.py` (new) |
+| R2 | Rebuild the root site, run every existing check, PR to main, merge, confirm Pages deploy, record here | done (record below) | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+
+Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared.
+
+
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
 ## Current branch session — d615f79e (active) — gap audit against the brief + live re-verification
@@ -36,6 +48,60 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 **Irregularities (for Flagged for review):** F55 (Wynn cancellation, corrected). The Q14/F33 text is updated to match. No other irregularity was found in the 28 window rows or the six sheets re-read.
 
 
+### Sources (session 25481cd8; all read 2026-11-19)
+
+- Official Venetian DeepStack Extravaganza IV schedule (4 chunks): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- Structure sheets are linked from that page (`dse_nov_2026-structure_N.pdf`); only the sheet numbers were compared in this session. Sheet text was not re-read here; it remains as captured by earlier sessions (see the Verification log).
+
+### Verification performed (25481cd8)
+
+- Transcribed all 94 official rows to `data/ea99006a/official_schedule_2026-11-19.tsv`, then `scripts/recheck_schedule_25481cd8.py` diffed them against `data/ea99006a/venetian.json` on date, start time, event number, name, buy-in, guarantee and structure-sheet number. Result: 94 compared, 0 mismatches (`data/ea99006a/schedule_recheck.json`). Two first-pass mismatches were transcription errors (a missing " - " before the PKO descriptor on events 8 and 52); the TSV was corrected to the page text and the rows were not changed.
+- The result is shown on `pages/verification.html`.
+- Checks run: `python3 scripts/build_ea99006a.py`, `python3 scripts/check_ea99006a.py` (every row has an official https source; no broken links), `python3 scripts/check_root_site.py`, `npm test` (20/20).
+
+### Irregularities (25481cd8)
+
+- The official page prints "No LImit" (capital I) in the names of events 2, 5 and 12. Cosmetic only; the stored names use the correct spelling.
+- Structure sheets are shared across events (for example `structure_10` covers 1A, 1C and the Day 2 restart). The sheet's own text decides the rule for each event; this session did not re-read sheet text.
+- Not verified in this session: single-entry status of any row (unchanged from earlier sessions), hotel rates, resort fees, walking times, Wynn/other-venue schedules.
+
+**Publication record (25481cd8):**
+- PR [#66](https://github.com/karagemop466-tech/Poker5/pull/66) — "25481cd8: official Venetian schedule re-verified row by row (94/94) + verification panel" — merged 2026-11-19 as merge commit `fa26b6a` (checks `check` and `validate` passed on head `f74426c`; merged after rebasing onto main once, which conflicted only on this board and was resolved by keeping both sides).
+- Pages build and deployment run [44602370006](https://github.com/karagemop466-tech/Poker5/actions/runs/44602370006) succeeded. Live check: https://karagemop466-tech.github.io/Poker5/pages/verification.html shows "Venetian schedule re-check, 2026-11-19 — rows compared 94, matching 94, mismatches 0".
+- Not done in this session (no official source was reachable from this sandbox for these, or they need work beyond a verifiable slice): hotel live rate lookups, Maps walking times, per-event single-entry re-reads of the 37 structure sheets, the morning-scrape automation changes, and the free-form suggestions/questions refresh.
+
+
+## Current branch session — fe101311 (active) — Strip room morning-feed repair (Bellagio / MGM)
+
+**Branch:** `arena/fe101311-poker5` (fixed by Arena), based on `main` @ `0011ea1`. **Claimed scope (claimed before any edit):** the scheduled official-source monitor's per-room morning feed. Its Bellagio/MGM/ARIA room has had **no successful read** (`bellagio.mgmresorts.com/en/casino/poker-room.html` and `aria.mgmresorts.com/en/casino.html` timed out on the 2026-11-19 scheduled run; `morning_feed.json` shows `checked_at: ""`, 3 failed). The live official Bellagio poker page (`/en/casino/poker.html`) and the three official Bellagio tournament PDFs, and the ARIA poker page (`/en/casino/poker.html`), are readable.
+
+**Files I will touch:** `COORDINATION.md` (this entry), `scripts/recheck_ea99006a.py` only (add the readable official Bellagio/ARIA poker pages and the three Bellagio PDFs to the monitored set, and point the Bellagio room entry at the live page). The next scheduled run writes the ledger and `morning_feed.json`. No event, hotel, rate or flag data is edited by this session; data corrections found while reading are logged below as requests for the integration session.
+
+**Publication:** PR [#65](https://github.com/karagemop466-tech/Poker5/pull/65) merged to `main` 2026-11-19 as `c7cd87432ed263c29a595e922dcc880533823ec8` (checks `check` and `validate` passed on the head). Pages build/deploy run [44602171266](https://github.com/karagemop466-tech/Poker5/actions/runs/44602171266) succeeded for that merge commit.
+
+**Status:** done (2026-11-19). Code change only; the next scheduled `recheck-ea99006a` run records the new sources in the ledger and rewrites `morning_feed.json`.
+
+**What changed:** `scripts/recheck_ea99006a.py` — `MORNING_FEED_EXTRA` (5 official URLs: Bellagio live poker page, the three Bellagio tournament PDFs, ARIA live poker page) are added to the monitored set; the Bellagio/MGM/ARIA room's feed source is the live Bellagio poker page; the room group also counts the Bellagio PDFs (hosted on contentstack, not mgmresorts.com). The timed-out `bellagio.mgmresorts.com/en/casino/poker-room.html` URL stays in the ledger as an `error` (not hidden). Simulated feed check: Bellagio/MGM/ARIA room = 8 sources, 7 ok, 1 failed (the old URL), no fabricated timestamp.
+
+**Official sources read this session (fetch tool, 2026-11-19):**
+- https://bellagio.mgmresorts.com/en/casino/poker.html — live poker page; lists the Friday $600 NLH, Saturday $1,000 NLH and Sunday $400 H.O.R.S.E. PDFs.
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt9cf95b0e60ec253e/6af491a3a9851d75c40be840/mgm-bellagio-poker-fridays-$600-nlh.pdf — Friday $600 NLH: 11:00 a.m.; $510 prize pool / $50 house fee / $40 optional gratuity; "Players may buy-in and re-enter through the end of level 8".
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt6d47974bf5a7d9b6/6af491a391a6e8e4230c9e07/mgm-bellagio-poker-saturdays-$1000-nlh.pdf — Saturday NLH: 11:00 a.m.; heading "$1100 BUY-IN"; registration open until level 10; flights 1A–1D; Day 2 "9/13/26" at 12 pm.
+- https://assets.contentstack.io/v3/assets/bltc6ce635bc4868eb2/blt07fcf1244a6da661/6af491a339e2b4f6b76a86ad/mgm-bellagio-poker-sundays-$400-horse.pdf — Sunday $400 H.O.R.S.E.: 11:00 a.m.; $340 prize / $35 house / $25 gratuity; "may buy-in and re-enter through the end of level 8"; 26 levels, 30-min levels.
+- https://aria.mgmresorts.com/en/casino/poker.html — live ARIA poker page (exclusive room rates for qualifying players; directs to the poker room for daily-tournament status; no schedule listed).
+- https://aria.mgmresorts.com/en/casino.html — readable on this session's re-read (the scheduled run had timed out).
+
+**Verification:** `python3 -m py_compile scripts/recheck_ea99006a.py`; `python3 scripts/recheck_ea99006a.py --offline` (78 official sources under monitor, ledger OK, read-only); simulated `write_morning_feed` on an in-memory ledger (no write to data); `npm test` 20/20; `python3 scripts/check_root_site.py` OK. No data file was edited.
+
+**Irregularities (for Flagged for review; none block):**
+- **I-fe1 — Saturday Bellagio PDF is internally inconsistent.** Heading "NLH $1100 BUY-IN", file name and page link say $1,000, the General Rules allocate a $600 buy-in ($510 + $50 + $40), and "Final Day 2 (9/13/26)" is a Sunday already in the past (today is Thu 2026-11-19). Treat the Saturday buy-in as unresolved; it is not single-entry confirmed by its text either (flights, registration to level 10).
+- **I-fe2 — stale notice on the live Bellagio poker page:** "Tournament play will resume on Saturday, July 26" — 26 July 2025 was a Saturday, so the notice is past.
+- **I-fe3 — the Bellagio poker-room.html URL the feed used to monitor timed out** on the scheduled run (ledger status `error`, `checked_at` empty). Replaced in the feed by the live poker page; the old URL stays visible as an error.
+
+**Requests for the integration session (data files owned by the shared build; not edited here):**
+- R1 — `data/c6087e2c/other_events.json`, Bellagio Sunday H.O.R.S.E.: the PDF now read states re-entry through level 8 and a 11:00 a.m. start; the row still says `reentry: Unverified` and `schedule: time not captured`. Update from the PDF (re-entry = multi-entry, so keep it in the re-entry/double buy-in section, not the single-entry list).
+- R2 — Bellagio flagged row F53 ($200/$300/$240/$320/$400 flyer prices "not re-verifiable") — the official PDFs above now give $600 (Fri), $1,000/$1,100 (Sat) and $400 (Sun); reconcile F53 against them.
+- R3 — Friday PDF re-entry (already recorded as "Re-entry through Level 8") is correct; keep it in the re-entry section.
 ## Current branch session — 8154689a (active)
 
 **Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.
@@ -1165,3 +1231,41 @@ Merge decisions taken while reconciling this branch with main (all logged here a
 Verification before merge: `npm test` 20/20 (9 research + 11 acceptance/root-site), `check_ea99006a.py` OK (every table row carries an official https source), `check_root_site.py` OK, `recheck_ea99006a.py --offline` OK, `crosscheck_251c122f.py` OK, planner trio + scraper self-test OK, build deterministic (drift check clean except the intentionally-excluded repo-review inventory). CI on the PR head: Quality checks SUCCESS, Validate Dec 2-9 poker dashboard SUCCESS, Daily official-source capture SUCCESS.
 
 Publication: **PR #56 merged to main on 2026-11-19 07:22 UTC** (merge commit `73812bb1`). GitHub Pages ("pages build and deployment" run 44479203850) completed **success**; the live site at https://karagemop466-tech.github.io/Poker5/ was re-fetched after deployment and verified: the S1 headline and verdicts (53 confirmed under standard S1, 99 rows explicitly unverified, 42 flags live), the trip window (check-in 2026-12-06, check-out 2026-12-13, 7 nights), the search boxes and all 16 navigation pages render as generated. One caveat kept visible rather than smoothed over: the home-page rationale sentence still carries b3be876c's window wording "2026-12-06 to 2026-12-12 (7 nights, 7 full playing days)", which reads as the last playing day (the 12th) with checkout on the 13th; the authoritative dates are the key-value dates and `meta.json`. The earlier merge note above ("check_out corrected to 2026-12-13") describes the arithmetic fix that PR #61's later re-derivation then adopted - main now carries 2026-12-13 everywhere the date is authoritative.
+
+---
+
+## Session 1dd08538 (branch `arena/1dd08538-poker5`) — landing-page search, audit of remaining gaps
+
+Claimed 2026-11-19 from `main` @ `0011ea1` (no other active claim on the board for these files; PRs #53, #55 and #59/#60 are open but do not touch the landing page).
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| L1 | in progress | 1dd08538 | `scripts/build_ea99006a.py` (`build_index()` only), `index.html`, `assets/app.js` (query-string `?q=` hand-off only) |
+| L2 | in progress | 1dd08538 | `COORDINATION.md` (this section) |
+
+Not claimed here (out of scope, logged as requests below): per-field retrieval dates and an explicit `single_entry` field in `rule_fields` (owned by the `data/c6087e2c` merge step); a stored GTD÷entry ratio field; finish-time and overlap fields; live hotel rate capture. No data file is edited by this session.
+
+### Result — session 1dd08538 (landing-page search + gap audit)
+
+**Changed (L1):** `index.html` now has a search form (`#landsearch`) above the cards: the term plus a drop-down of table pages (All tournaments, Single-entry, Multi-entry, Day schedule, Hotels, Verification log, Flagged for review). Submitting opens that page with `?q=<term>`; `assets/app.js` pre-fills the page's existing search box and runs its filter, so the term is applied to every table on that page. `scripts/build_ea99006a.py` `build_index()` generates the form; the page's own filters are unchanged.
+
+**Verification:** `build_ea99006a.py` rebuilt (exit 0); `check_ea99006a.py` OK (every table row carries an official https source; no broken links); `check_root_site.py` OK; `crosscheck_251c122f.py` OK (67 discrepancies, unchanged); `node --check assets/app.js` OK; `npm test` run. `pages/repo-review.html` regenerates with a changing file count on every build and is outside this session's scope; it was reverted rather than committed.
+
+**Gap audit against the brief (not fixed here; logged for the data owner and integration session):**
+1. Per-field retrieval date: `rule_fields` in `data/c6087e2c/events_verified.json` stores `value`/`excerpt`/`source` per field, but the retrieval date is only at row level (`sheet_retrieved_at`). Fix belongs in `scripts/merge_251c122f.py` (data owner).
+2. Explicit `single_entry` rule field: the verdict is derived, not stored as its own field with excerpt and date.
+3. Stored GTD÷entry ratio: displayed on pages as a descriptive ratio but not present in the data.
+4. Finish-time and overlap fields: only the derived `one_day_minutes` (labelled "planning duration, not a scheduled finish time") exists; overlap check cannot be fully verified until finish times are sourced.
+5. Hotel true cost: most hotels still "Not computed" (Venetian floor only); needs dated itemized quotes.
+6. Walking times: no off-property pair has a measured time; blank by design.
+
+**Status:** L1 done, L2 done (this entry). Branch `arena/1dd08538-poker5`; PR and merge to be recorded below.
+
+### Publication record — session 1dd08538
+
+- PR: https://github.com/karagemop466-tech/Poker5/pull/64 ("Landing-page search across site tables + session 1dd08538 gap audit"), merged to `main` with a merge commit (`4dc4ac4`) on 2026-11-19 with no approval wait; GitHub reports state MERGED.
+- Pages: GitHub Pages API reports the latest build `built` for commit `32634018` (`main`, PR #68), which contains `4dc4ac4` (verified as an ancestor). Pages source `main` `/`. The sandbox cannot reach `github.io` directly, so the live page content was checked via the repository tree (`assets/app.js` on `main` contains the `?q=` hand-off; the landing form is generated by `scripts/build_ea99006a.py`).
+- Checks before merge: `build_ea99006a.py` deterministic (second build byte-identical), `check_ea99006a.py` OK, `check_root_site.py` OK, `crosscheck_251c122f.py` OK (67 discrepancies, unchanged), `npm test` 20/20, `node --check assets/app.js` OK.
+- Irregularity noted, not fixed (outside claimed scope): `pages/repo-review.html` changes on every build because it inventories the working tree (file count and byte total change with every checkout). Quality workflow excludes it from the diff check; the owner should pin it to a committed file list.
+- Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
+- Status: L1 done, L2 done, session closed.
