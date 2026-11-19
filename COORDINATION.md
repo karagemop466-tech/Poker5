@@ -2,6 +2,27 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — f7c2d5fa (active)
+
+**Branch:** `arena/f7c2d5fa-poker5` (fixed by Arena, branched from `fd8edf2` of `main`). **Role:** final integration and verification. No other session holds an active claim on this branch, so this session takes the shared root-site scope (the one published site) and the shared documentation scope. No other session's data folder or preserved session folder is edited.
+
+**Claimed scope (shared outputs, integration only):**
+- `COORDINATION.md` — this claim and the final integration log only.
+- `scripts/build_ea99006a.py` — the canonical generator of the root site (fix the missing `assets/app.js` include so the search box, date filter, single-entry toggle, trip calculator, hotel true-cost calculator and walk filter actually run).
+- `.github/workflows/daily-scrape.yml`, `.github/workflows/quality.yml` — repoint the scheduled/PR builds at the canonical generator + validator so automation never overwrites the published root site with a stale competing build.
+- `README.md`, `EXECUTIVE_SUMMARY.md` — reconcile the documentation to the canonical published site (generator, row counts, single-entry standard).
+- Regenerated shared outputs only: `index.html`, `pages/**`, `assets/app.js`, `assets/css/style.css` (all produced deterministically by `scripts/build_ea99006a.py`).
+
+**Read-only for this session:** every `data/**` snapshot, every `dashboard-*/`, `docs/`, `site*/`, `planner-*/`, `data-*/` folder, and every other `scripts/build_*` / `scripts/check_*` / `scripts/recheck_*` script. Irregularities in those are logged, not edited.
+
+**Status at claim:** integration in progress. Findings so far are recorded in the Log below and will be closed out when the task is done.
+
+**Log (session f7c2d5fa):**
+- Verified `scripts/build_ea99006a.py` is the true canonical generator: running it reproduces the committed `index.html` byte-for-byte and every generated `pages/**` file except the tree-dependent `pages/repo-review.html`.
+- Found the root cause of the dead interactive controls: the `page()` template in `scripts/build_ea99006a.py` never emits a `<script src="...assets/app.js">`, while the data pages call `initTable('tbl')` / rely on `initHotels`/`initPlanner`/`initSuggestions` from that file. The search box, date filter, single-entry toggle, trip cost calculator, hotel true-cost calculator, dated rate log and the 30-minute walk filter were therefore non-functional on the live site. Fix applied in `scripts/build_ea99006a.py`.
+- Found a latent deployment risk: `.github/workflows/daily-scrape.yml` and `.github/workflows/quality.yml` invoke the competing `scripts/build_c6087e2c.py` / `scripts/build_251c122f.py` generators, which write a different `index.html` and a different navigation. The next scheduled/PR run would overwrite the published root site. Repointed to the canonical generator + validator.
+- Documentation reconciliation (`README.md`, `EXECUTIVE_SUMMARY.md`) in progress.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
