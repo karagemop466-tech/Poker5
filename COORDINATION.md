@@ -1,5 +1,20 @@
 # Coordination - Poker5
 
+## Current branch session — 0fd59a4a (active) — WPT/other structure-sheet verification, gap completion, integration
+
+**Branch:** `arena/0fd59a4a-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed 2026-11-19 before any file edit.** All prior board entries are done/merged/idle; no other session holds an open claim on the files below.
+
+| # | Task | Status | Files in scope |
+|---|------|--------|----------------|
+| V1 | Read the official WPT World Championship structures PDF and classify every `unread` row in `wpt.json` (remove the unverified label only where the official sheet is read in this session); keep multi where re-entry/add-on language exists | claimed | `data/ea99006a/wpt.json`, `scripts/data_ea99006a.py` (verdict text only) |
+| V2 | Verify the 8 `unread` rows in `other.json` against their official room pages; classify or leave unread with a note | claimed | `data/ea99006a/other.json` |
+| V3 | Attempt live official captures: hotel dated quotes (official booking pages) and hotel-venue walking times (Google/Apple Maps). Record only what the sources actually return; blanks stay blank and flagged | claimed | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json`, `data/ea99006a/routes.json` |
+| V4 | Store the descriptive GTD÷entry ratio on ranked rows; keep display descriptive, never a forecast | claimed | `scripts/integrate_b3be876c.py` (derive), `data/ea99006a/*.json` |
+| V5 | Rebuild canonical site, run every check/test, PR to main, merge, confirm Pages deploy, record here | claimed | `index.html`, `pages/**`, `COORDINATION.md` |
+
+No row is newly marked verified unless its official source was read in this session and linked. Other sessions' folders (`data/c6087e2c`, `data/b3be876c`, dashboards) are not edited except where the scheduled pipeline itself rewrites them.
+
+
 ## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
