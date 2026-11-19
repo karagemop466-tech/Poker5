@@ -35,6 +35,7 @@ Run:  python3 scripts/wpt_terms_36da6d66.py [--report]
 """
 import json
 import os
+import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -315,6 +316,18 @@ FLIGHT_KEYS = {
 }
 
 
+def _chips(sentence):
+    """'Players will start with 40,000 in tournament chips.' -> 40000 (the printed figure, not a new one)."""
+    m = re.search(r"start with ([\d,]+) in tournament chips", sentence or "")
+    return int(m.group(1).replace(",", "")) if m else ""
+
+
+def _level_minutes(sentence):
+    """First '<N> minutes per level' in the length-of-play sentence -> N (int)."""
+    m = re.search(r"(\d+) minutes? per level", sentence or "")
+    return int(m.group(1)) if m else ""
+
+
 def fee_parts(sentence):
     """'$600 Buy-in = $510 (Tournament Prize Pool) + $65 (...) + $25 (...)' -> dict."""
     import re
@@ -352,8 +365,8 @@ def rule_fields_for(sec):
         "house_fee": field(house, sec["fee"]) if house is not None else field("", ""),
         "guarantee": field(sec.get("_row_guarantee"), sec["guarantee"]) if sec["guarantee"] else field("", ""),
         "late_registration": field(sec["close"], sec["grant"][:600]) if sec["close"] else field("", ""),
-        "starting_chips": field(sec["stack"], sec["stack"]) if sec["stack"] else field("", ""),
-        "level_minutes": field(sec["levels"], sec["levels"]) if sec["levels"] else field("", ""),
+        "starting_chips": field(_chips(sec["stack"]), sec["stack"]) if sec["stack"] else field("", ""),
+        "level_minutes": field(_level_minutes(sec["levels"]), sec["levels"]) if sec["levels"] else field("", ""),
     }
 
 
@@ -399,6 +412,8 @@ def main():
             if sec["close"]:
                 row["late_reg"] = sec["close"]
             row["terms_source"] = STRUCT
+            row["source"] = STRUCT
+            row["source_label"] = "official structures PDF (event terms)"
             row["terms_read"] = TODAY
             row.pop("terms_unread_reason", None)
             counts["read"] += 1
@@ -418,6 +433,8 @@ def main():
                                   "a player who has already advanced" %
                                   (sec["title"], ",".join(str(p) for p in sec["pages"])))
             row["terms_source"] = STRUCT
+            row["source"] = STRUCT
+            row["source_label"] = "official structures PDF (parent event terms)"
             row["terms_read"] = TODAY
             row.pop("terms_unread_reason", None)
             counts["continuation_of_read_event"] += 1

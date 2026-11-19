@@ -21,8 +21,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -68,13 +68,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -106,8 +106,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -153,13 +153,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -191,8 +191,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -238,13 +238,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -276,8 +276,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -323,13 +323,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -361,8 +361,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -408,13 +408,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -446,8 +446,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -493,13 +493,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -531,8 +531,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -578,13 +578,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -616,8 +616,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -663,13 +663,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -701,8 +701,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -748,13 +748,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -786,8 +786,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -833,13 +833,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -871,8 +871,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -918,13 +918,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -956,8 +956,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1005,13 +1005,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1043,8 +1043,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1090,13 +1090,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1128,8 +1128,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1175,13 +1175,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1213,8 +1213,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1260,13 +1260,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1298,8 +1298,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1345,13 +1345,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1383,8 +1383,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1430,13 +1430,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1468,8 +1468,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1515,13 +1515,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1553,8 +1553,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1600,13 +1600,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1638,8 +1638,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1685,13 +1685,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1794,8 +1794,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1841,13 +1841,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1879,8 +1879,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 4:30 p.m.).",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -1926,13 +1926,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -1964,8 +1964,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2012,13 +2012,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2084,8 +2084,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "Continuation row; the PDF repeats the parent event's $1,100 buy-in and $5,000,000 guarantee on it.",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2133,13 +2133,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2171,8 +2171,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2218,13 +2218,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2256,8 +2256,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2303,13 +2303,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2341,8 +2341,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2388,13 +2388,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2426,8 +2426,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2473,13 +2473,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2545,8 +2545,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2592,13 +2592,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2664,8 +2664,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2711,13 +2711,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2749,8 +2749,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2796,13 +2796,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -2868,8 +2868,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -2916,13 +2916,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3022,8 +3022,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3069,13 +3069,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3107,8 +3107,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3154,13 +3154,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3226,8 +3226,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3273,13 +3273,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3345,8 +3345,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3393,13 +3393,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3567,8 +3567,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3614,13 +3614,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3686,8 +3686,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3734,13 +3734,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -3840,8 +3840,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -3888,13 +3888,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -4028,8 +4028,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -4076,13 +4076,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -4250,8 +4250,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -4297,13 +4297,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -4437,8 +4437,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
-  "source_label": "official WPT schedule (entry terms not in the structures PDF)",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -4483,13 +4483,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -4691,8 +4691,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
-  "source_label": "official WPT schedule (entry terms not in the structures PDF)",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -4737,13 +4737,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 30,
     "excerpt": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -4979,8 +4979,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -5026,13 +5026,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -6560,8 +6560,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
   "notes": "",
-  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
-  "source_label": "official WPT schedule (entry terms not in the structures PDF)",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (parent event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -6606,13 +6606,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 40,000 in tournament chips.",
+    "value": 40000,
     "excerpt": "Players will start with 40,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+    "value": 40,
     "excerpt": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -6712,8 +6712,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -6759,13 +6759,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 35,000 in tournament chips.",
+    "value": 35000,
     "excerpt": "Players will start with 35,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "30 minutes per level until a winner is declared.",
+    "value": 30,
     "excerpt": "30 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
@@ -6967,8 +6967,8 @@
   "entry_rule": "multi",
   "rule_excerpt": "Unlimited re-entry will be available until the start of level 9.",
   "notes": "",
-  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
-  "source_label": "official structures PDF",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "source_label": "official structures PDF (event terms)",
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
@@ -7015,13 +7015,13 @@
     "retrieved": "2026-11-19"
    },
    "starting_chips": {
-    "value": "Players will start with 30,000 in tournament chips.",
+    "value": 30000,
     "excerpt": "Players will start with 30,000 in tournament chips.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
    },
    "level_minutes": {
-    "value": "20 minutes per level until a winner is declared.",
+    "value": 20,
     "excerpt": "20 minutes per level until a winner is declared.",
     "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
     "retrieved": "2026-11-19"
