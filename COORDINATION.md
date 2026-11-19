@@ -1739,3 +1739,33 @@ Scope rule for W1: a row moves from `unread` to a classified state only when the
 - **GitHub Pages:** `pages-build-deployment` run 44627302506 `completed / success`; the Pages API reports `status: built`, source `main` `/`, latest build commit `b16f8ba`. Verified from the repository (the sandbox cannot reach `github.io`): `pages/reverify.html` is on `main`, the nav includes "Re-verification log", `scripts/verify_8f0b323b.py` and `scripts/recheck_8f0b323b.py` are on `main`, and `data/ea99006a/hotels.json` on `main` has 8 hotels including Bellagio, ARIA and MGM Grand.
 - **Checks run on the merged tree before merging:** `npm test` 26/26, `build_ea99006a.py` (deterministic), `check_ea99006a.py` (1,683 rows, all with an official https source, 5,189 external + 480 internal links resolve), `check_root_site.py`, `recheck_8f0b323b.py` (94/94), `recheck_ea99006a.py --offline`, `crosscheck_251c122f.py`, `verify_98087225_wpt.py` (136/136), `node --check assets/app.js`, `git diff --check`.
 - **Still open after this session (published on the Flagged for review page, not blocking):** F62 (name suffixes), F63 (Wynn 2-night offer is not a 7-night rate), F64 (MGM fees are property-specific), F65 (schedule page states no entry rule); F10 partly closed (fee/term verified, room rate and MGM poker schedule still missing); no dated room rate for 6-13 December 2026 anywhere official, so the trip planner still reports the hotel term Incomplete; no official cross-property walking time, so the ≤30-minute filter still cannot act off-property; the value-level monitor's `run` is still null, so the absence of a change badge is still not evidence of an unchanged source.
+
+---
+
+## Session 1efddebe (branch `arena/1efddebe-poker5`, base `main` @ `b16f8ba`) — honest S1 relabel (7e10ba42 option a) + scheduled-run data-revert repair
+
+Claimed 2026-11-19 before any file edit (first claim pushed from base `b16775c`; the branch was rebased repeatedly as PRs #83, #88, #93, #94 landed, with every conflict resolved keep-both and the canonical output regenerated from the merged data — including one recovery: a partially-resolved regeneration commit was skipped and the whole data/site tree was rebuilt from the merged scripts on a clean `origin/main` base).
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| T1 | Implement 7e10ba42's recommended option (a): relabel the S1 verdict "Confirmed single-entry (standard S1)" → "No second entry granted (S1 screen)" across builder, tests and generated pages, and fix the two published sentences that claimed the label means "an official source states a one-entry limit" (it does not — F01) | done | `scripts/build_ea99006a.py`, `test/research.test.mjs`, `test/root_site.test.mjs`, `index.html` + `pages/**` (generated) |
+| T2 | 188dc704's follow-up: reconcile `scripts/integrate_b3be876c.py` with the corrected committed data so the scheduled re-check stops reverting it | done | `scripts/integrate_b3be876c.py`, `data/ea99006a/*.json` (regenerated), `data/b3be876c/*` (regenerated) |
+| T3 | Full check suite, idempotency proof, PR to main, merge, confirm Pages deploy, record here | done (publication below) | `COORDINATION.md` |
+
+### What T2 found and fixed (evidence from the merged tree)
+
+1. **Trip-window regression live on main.** PR #88's integrate run had re-derived `meta.trip.check_out` as 2026-12-12 from the script's `(cout - 1 day)` arithmetic, reverting 2b98a91f's correction. Root cause: `out = cin + 7 days` is the morning of checkout, so `check_out` IS `cout`; the script subtracted a day, giving 7 playing days but only 6 hotel nights. Fixed in the script and re-derived: **check-in 2026-12-06, check-out 2026-12-13, 7 nights**; the landing-page rationale now matches the field.
+2. **S10/S11 clobbered by the 6bc143b9 renumbering collision.** b3be876c's original templates still targeted ids that 6bc143b9 had re-assigned (Q11→Q16, S10/S11→S13/S14); PR #88's run therefore rewrote S10/S11 back to the pre-renumbering text (duplicating S13/S14 and deleting 6bc143b9's like-for-like-ranking and walking-minute suggestions). Fix: Q01/Q11 stay dynamic templates (2723deea's wording, re-derived from `meta.trip`, no preserve — they always match the corrected fields); S10/S11 and F47 upserts are now **insert-if-missing**, and the corrected S10/S11 content (from the pre-#88 tree) is restored once in the data.
+3. **False daily re-stamps.** `LIVE[*]["read"]`, `verification.run.date`, spot-check `retrieved` fields, `meta.retrieved` and `integration.run_at` were stamped with the *run* date on every scheduled run, claiming fresh official reads that never happened and dirtying the data daily. All are now pinned to the real 2026-11-19 read/capture date or preserved from the committed data; `flag()`/`upsert()` writes that would not change anything are no-ops (no `last_updated` churn).
+4. **Wynn resort-fee note reverted.** integrate's short template was overwriting 96160d8f's completed note (full blackout list + special deposit windows). `apply_hotels` now preserves an existing note and reports the skipped template instead of applying it silently.
+5. **Merges preserved other sessions' work.** 2723deea's eligibility-restriction fields (8 rows), late-reg clock fields, Q19/Q20, S15/S16, title-identity flag writer and reserved ids, 8f0b323b's Q14 (cancellation deadlines), 36da6d66's WPT number typing, and 2723deea's `entry_pill()` pill-class fix (PR #94) are all kept; the relabel coexists with all of them.
+
+### Verification (all run 2026-11-19 on the merged tree)
+
+- `python3 scripts/integrate_b3be876c.py` run **twice consecutively → byte-identical data (md5)**; `python3 scripts/build_ea99006a.py` twice → identical output except the known self-inventory `pages/repo-review.html` (reverted, not committed).
+- `python3 scripts/check_ea99006a.py` OK — every table row carries an official https source, no broken links; `check_root_site.py` OK; `crosscheck_251c122f.py` OK (67 known text discrepancies unchanged); `recheck_ea99006a.py --offline` OK; `npm test` 27/27 (includes PR #94's malformed-pill-class regression test, now passing with the relabelled rows); `node --check assets/app.js` OK; `git diff --check` clean.
+- Post-rename page spot-check: the tournaments-page legend and method page now say the pill means the sheet grants no second entry and explicitly that **no sheet states a one-entry limit in words**; the old "an official source states a one-entry limit" sentence is gone; no page carries the stale 2026-12-12 checkout.
+
+### Publication record (session 1efddebe)
+
+- Pending: PR link, merge result and Pages deploy to be recorded in a follow-up commit after the merge, per the board rules.
