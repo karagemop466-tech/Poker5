@@ -921,7 +921,7 @@ Claim recorded before implementation on 2026-11-19. The inherited `251c122f` roo
 
 | Task | Status | Owner | Files touched |
 |---|---|---|---|
-| Prevent missing hotel-rate input from being treated as a verified $0 in the trip-cost calculator; retain the formula and make incomplete state explicit | in progress | e15c88a2 | `scripts/build_ea99006a.py`, `assets/app.js`, generated `pages/planner.html` |
-| Repair false broken-link reports caused by `data-nosrc="1"` matching as a `src` attribute; verify all links | in progress | e15c88a2 | `scripts/check_root_site.py` |
+| Prevent missing hotel-rate input from being treated as a verified $0 in the trip-cost calculator; retain the formula and make incomplete state explicit | done | e15c88a2 | `scripts/build_ea99006a.py`, `assets/app.js`, generated `pages/planner.html`, `test/research.test.mjs` |
+| Repair false broken-link reports caused by `data-nosrc="1"` matching as a `src` attribute; verify all links | done | e15c88a2 | `scripts/check_root_site.py` |
 
-**Verification plan:** rebuild the root site from its current generator, run the official row/source/link validator, the root link checker, JavaScript syntax check, and the existing tests. Source records remain unchanged; no newly verified source claims are made.
+**Verification:** regenerated the published root site with `python3 scripts/build_ea99006a.py`; `npm test` (9/9); `node --check assets/app.js`; `python3 scripts/check_root_site.py` (pass); `python3 scripts/check_ea99006a.py` (18 pages, 1,261 sourced rows, 417 internal links, 1,271 external links, all pass); `python3 scripts/recheck_ea99006a.py --offline` (96 official URLs in the ledger, 0 missing); `git diff --check` (pass). The first local test run exposed an assertion still tied to a prior planner layout; updated the test to assert the current published calculator contract. Source records and values were not changed, so no factual values were newly verified or promoted. No new official-source URLs were required for these code-only corrections.

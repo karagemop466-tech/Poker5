@@ -32,7 +32,8 @@ def check_links():
         with open(f, encoding="utf-8") as fh:
             txt = fh.read()
         base = os.path.dirname(f)
-        for m in re.finditer(r'(?:href|src)="([^"#]+)"', txt):
+        # Match actual href/src attributes, not data-nosrc or data-src attributes.
+        for m in re.finditer(r'(?<![\w-])(?:href|src)="([^"#]+)"', txt):
             href = m.group(1)
             if href.startswith(("http", "mailto", "tel", "//", "data:")):
                 continue
@@ -64,6 +65,22 @@ def check_source_anchors():
                     os.path.relpath(f, ROOT)))
 
 
+def check_trip_calculator():
+    """A missing date-specific hotel quote must never be presented as $0."""
+    planner = os.path.join(ROOT, "pages", "planner.html")
+    app = os.path.join(ROOT, "assets", "app.js")
+    with open(planner, encoding="utf-8") as fh:
+        html = fh.read()
+    with open(app, encoding="utf-8") as fh:
+        js = fh.read()
+    if re.search(r'<input[^>]*id="ptrue"[^>]*value="0"', html):
+        errors.append("planner treats an unknown hotel cost as a default $0")
+    if 'id="ptrue"' not in html or "placeholder=\"enter a dated, itemized hotel cost\"" not in html:
+        errors.append("planner does not clearly request a dated hotel cost")
+    if "A blank hotel cost is unknown, not $0." not in js or "Incomplete" not in js:
+        errors.append("planner JavaScript does not preserve an explicit incomplete state")
+
+
 def check_baseline():
     p = os.path.join(ROOT, "data", "c6087e2c", "last_checked.json")
     if not os.path.exists(p):
@@ -78,6 +95,7 @@ def check_baseline():
 def main():
     check_links()
     check_source_anchors()
+    check_trip_calculator()
     check_baseline()
     if errors:
         print("ROOT SITE CHECK ERRORS:")
