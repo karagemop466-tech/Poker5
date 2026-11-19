@@ -953,7 +953,7 @@ def marquee_html():
 def build_index():
     cards = [("pages/executive-summary.html", "Executive summary", "The short version: what is confirmed, what is not, and what to do next."),
              ("pages/tournaments.html", "All tournaments", "Every verified row from the Venetian, Wynn/WPT and Caesars, with its official source."),
-             ("pages/single-entry.html", "Single-entry", "Events with no re-entry, rebuy or add-on text - and why none is confirmed."),
+             ("pages/single-entry.html", "Single-entry", "Events confirmed against their own structure sheet under standard S1 - and the standing flags."),
              ("pages/tournaments-double.html", "Multi-entry", "Re-entry, add-on, multi-flight and paid-advantage events, kept separate."),
              ("pages/schedule.html", "Day schedule", "One primary event per day plus a conditional fallback, with the overlap check."),
              ("pages/hotels.html", "Hotels", "Resort fees, official booking links, dated rate log and true nightly cost."),
@@ -974,19 +974,22 @@ def build_index():
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),
                     (str(len(ALL_EVENTS)), "Verified schedule rows"),
-                    (str(len(CONFIRMED)), "Confirmed single-entry events"),
-                    (str(len(CANDIDATES)), "Rows with no re-entry text"),
+                    (str(len(CONFIRMED)), "Confirmed single-entry events (standard S1)"),
+                    (str(len(UNREAD)), "Rows whose entry terms were not read"),
                     (str(len(MULTI)), "Rows that are re-entry / multi-flight"),
                     (str(len(FLAGS)), "Items flagged for review")):
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
     body.append("</div>")
-    body.append('<div class="badbox"><b>The single-entry headline: zero events are confirmed as one-entry.</b> '
-                'All 37 official Venetian structure sheets were read on %s. None contains a one-entry, no-re-entry or '
-                'freezeout statement, and every WPT / Wynn event whose terms were read permits re-entry. '
-                'An event is therefore never labelled "single-entry" on this site. The '
-                '<a href="pages/single-entry.html">Single-entry</a> page lists the %d events whose sheet shows no '
-                're-entry, rebuy or add-on text - they are the closest thing available, and they stay labelled '
-                '<i>entry cap not stated</i>.</div>' % (esc(RETRIEVED), len(CANDIDATES)))
+    body.append('<div class="badbox"><b>The single-entry headline: %d events are confirmed single-entry under '
+                'standard S1.</b> All 37 official Venetian structure sheets were read on %s. Each confirmed row\'s '
+                'own sheet was read in full, names that event number, is a one-day entry row with a stated '
+                'registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in its numbered '
+                'rules - the sheet excerpt and retrieval date are on the row. The honest limit stays published: '
+                '<b>no sheet states "one entry only" in words</b>, so confirmation means <i>the published rules grant '
+                'no second entry</i>, not that the house promises a freezeout (flags '
+                '<a href="pages/flagged-review.html">F01 and F47</a> stay open). Every WPT / Wynn event whose terms '
+                'were read permits re-entry; the %d rows whose terms were not read keep an explicit '
+                '<i>unverified</i> label.</div>' % (len(CONFIRMED), esc(RETRIEVED), len(UNREAD)))
     body.append('<div class="panel"><h2>Recommended window (chosen for you, changeable everywhere)</h2>'
                 '<div class="kv"><dt>Check in</dt><dd>%s</dd><dt>Check out</dt><dd>%s</dd>'
                 '<dt>Nights</dt><dd>%d</dd><dt>Why this window</dt><dd>%s</dd></div></div>'
@@ -997,7 +1000,7 @@ def build_index():
         body.append('<a class="card" href="%s"><h3>%s</h3><p>%s</p></a>' % (href, label, esc(blurb)))
     body.append("</div>")
     body.append('<div class="panel"><h2>What this site will not do</h2><ul class="clean">'
-                '<li>It will not call an event single-entry unless an official source says so.</li>'
+                '<li>It will not call an event single-entry unless its own structure sheet was read in full and its published rules grant no second entry (standard S1) - and it never hides that no sheet states "one entry only" in words.</li>'
                 '<li>It will not fill in a guarantee, a rate or a walking time that no official source states.</li>'
                 '<li>It will not rank events until the total entry fee and the guarantee are both confirmed.</li>'
                 '</ul></div>')
@@ -1082,31 +1085,37 @@ def build_tournaments():
 
 def build_single():
     body = ["<h1>Single-entry tournaments</h1>"]
-    body.append('<div class="badbox"><b>Confirmed single-entry events: %d.</b> Every official structure sheet '
-                'published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. Not one states a '
-                'one-entry, no-re-entry or freezeout limit. Every WPT World Championship event whose terms were '
-                'read states the opposite - "unlimited re-entry", or "one entry and one re-entry per starting flight" '
-                'for the Prime Championship. Rather than relabel silence as confirmation, this page separates the two '
-                'things the brief asks for: events that are confirmed, and events that simply show no paid-advantage '
-                'text.</div>' % (len(CONFIRMED), esc(RETRIEVED)))
-    body.append("<h2>1. Confirmed single-entry (freezeout)</h2>")
+    body.append('<div class="badbox"><b>Confirmed single-entry events (standard S1): %d.</b> Every official '
+                'structure sheet published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. '
+                'Each confirmed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
+                'with a stated registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in '
+                'its numbered rules - the sheet excerpt and retrieval date are on the row, and the tests are '
+                're-derivable from the stored fields (see the <a href="verification.html">Verification log</a>). '
+                'Every WPT World Championship event whose terms were read permits re-entry - "unlimited re-entry", '
+                'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
+                % (len(CONFIRMED), esc(RETRIEVED)))
+    body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
     else:
-        body.append('<div class="panel"><p><b>None.</b> No official source read during this session states a '
-                    'one-entry limit for any event in the window. Nothing is listed here rather than listing '
-                    'something unverified.</p></div>')
-    body.append("<h2>2. No re-entry, rebuy or add-on text on the official sheet (%d rows)</h2>" % len(CANDIDATES))
-    body.append('<p class="muted">These are the closest candidates for a single-entry plan. The official structure '
-                'sheet for each one was read and contains no re-entry, rebuy, add-on or paid-chip language. '
-                '<b>Silence is not a one-entry promise</b>, so each row keeps the label "entry cap not stated". '
-                'Before you rely on one, ask the poker room to confirm the entry cap in writing.</p>')
-    body.append(FILTER_BAR % FILTER_ARGS)
-    body.append(table_shell(CANDIDATES, EVENT_HEAD))
-    body.append("<h2>3. Events excluded from a single-entry plan</h2>")
-    body.append('<p class="muted">These rows fail the test for a stated reason: multiple starting flights, an '
-                'explicit re-entry or add-on rule, a satellite that pays seats instead of cash, or an age/entry '
-                'restriction. They are listed on the <a href="tournaments-double.html">Multi-entry page</a>.</p>')
+        body.append('<div class="panel"><p><b>None.</b> No structure sheet read during this session meets the '
+                    'published standard. Nothing is listed here rather than listing something unverified.</p></div>')
+    body.append("<h2>2. What confirmation means here - and what it does not</h2>")
+    body.append('<div class="panel"><p><b>No official source in this series states "one entry only" in words.</b> '
+                'Confirmation under standard S1 therefore means <i>the published rules grant no second entry</i> - '
+                'the sheet own numbered rule list contains no re-entry, re-buy, add-on, buy-back, subsequent or '
+                'additional buy-in, or purchased or alternate stack provision - not that the house promises a '
+                'freezeout. Every sheet also carries "Management reserves the right to cancel or change the '
+                'tournament". Flags <a href="flagged-review.html">F01</a> and <a href="flagged-review.html">F47</a> '
+                'stay open for exactly that gap. Before you rely on a row, ask the poker room to confirm the entry '
+                'cap in writing.</p></div>')
+    body.append("<h2>3. Rows this page does not cover</h2>")
+    body.append('<p class="muted">%d rows fail the test for a stated reason - multiple starting flights, an explicit '
+                're-entry or add-on rule, a satellite that pays seats instead of cash, or an age/entry restriction. '
+                'They are listed on the <a href="tournaments-double.html">Multi-entry page</a>. Another %d rows are '
+                'outside the Venetian series and their entry terms were not read individually; they keep an explicit '
+                '<i>unverified</i> label on the <a href="tournaments.html">All tournaments</a> page and are not '
+                'presented as open single-entry events.</p>' % (len(MULTI), len(UNREAD)))
     body.append(archive_block(1))
     write("pages/single-entry.html", page("Single-entry tournaments", "".join(body), "single-entry.html", 1,
                                           TABLE_JS_INIT))
