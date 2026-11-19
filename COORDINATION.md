@@ -2,6 +2,24 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — 6bc143b9 (active) — final integration + feature completion
+
+**Branch:** `arena/6bc143b9-poker5` (fixed by Arena), based on `main` @ `26a3508` (PR #48 merged). This session is the **final integration session** for the root GitHub Pages site (`index.html`, `pages/**`, `assets/**`, `data/ea99006a/**`, `scripts/build_ea99006a.py`, `scripts/check_ea99006a.py`, `scripts/recheck_ea99006a.py`, `.github/workflows/{quality,daily-scrape,recheck-ea99006a}.yml`) plus this board record. All other session folders (`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/`, `tools/`, other `scripts/*`) are read-only for this session.
+
+**Claimed tasks (claimed before any file edit, this commit):**
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| C1 | Pipeline integrity: one canonical root-site builder (`build_ea99006a.py`); stop the daily scrape workflow from overwriting the root site with a different generator; make CI regenerate + diff-check the committed root site | in progress | `.github/workflows/quality.yml`, `.github/workflows/daily-scrape.yml` |
+| C2 | Global search box across **all** table pages + date selector + single-entry/freezeout-confirmed toggle + ≤30-min walk filter (fixed) | in progress | `assets/app.js`, `scripts/build_ea99006a.py` |
+| C3 | Hotel stay capture: checkout total, nightly average, resort fee + tax, parking, cancellation deadline, rate timestamp as a **dated rate log** (captured official quotes only; blank + flagged otherwise); true cost/night = rate + resort fee + 13.38% tax calculator kept | in progress | `data/ea99006a/rate_snapshots.json` (new), `scripts/build_ea99006a.py`, `pages/hotels.html` |
+| C4 | Trip planner: fixed trip dates (scenario), nightly budget ceiling + quality floor controls; incomplete-without-quote semantics preserved (PR #48) | in progress | `scripts/build_ea99006a.py`, `assets/app.js`, `pages/planner.html` |
+| C5 | Per-row "last checked" + "source changed" badges from the scheduled re-check change log | in progress | `scripts/build_ea99006a.py`, `data/ea99006a/change_log.json` (read) |
+| C6 | Morning live-data feed: each Strip room's official schedule source re-read daily, grouped per room, shown on the monitor page | in progress | `scripts/recheck_ea99006a.py`, `data/ea99006a/morning_feed.json` (new), `pages/monitor.html` |
+| C7 | Structure-sheet verdicts kept at the written-rule standard (0 confirmed single-entry; silence is not confirmation — verified again this session: zero positive freezeout/no-re-entry text in all 37 captured sheets); multi-entry/spend-advantage kept separate | done (no data change needed) | — |
+| C8 | Executive summary, suggestions board, questions/missing-info register refreshed; stale contradictory root pages (`qa.html`, `flagged.html`, `multientry.html`, `sources.html` from the retired 251c122f build) replaced with redirect stubs | in progress | `data/ea99006a/{questions,suggestions}.json`, `scripts/build_ea99006a.py`, those 4 pages |
+| C9 | Full verification (build determinism, check_ea99006a.py, npm test, node --check, offline monitor), PR → main, merge, Pages deploy confirmed, recorded here | pending | COORDINATION.md |
+
 ## Current branch session — b33a0c35 (active)
 
 **Branch:** `arena/b33a0c35-poker5` (fixed by Arena). **Claimed scope:** repair the generated trip-cost calculator so missing hotel quotes cannot produce a false zero-cost estimate; ensure entries × buy-ins + nights × true nightly hotel cost is shown only when required inputs are known. This is a stale-scope takeover of the prior calculator task: its owner logged completion on 2026-11-17, but the current checkout's generated planner still defaults hotel cost to $0 and its regression test fails.
