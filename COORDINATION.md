@@ -1352,3 +1352,24 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 - Irregularity noted, not fixed (outside claimed scope): `pages/repo-review.html` changes on every build because it inventories the working tree (file count and byte total change with every checkout). Quality workflow excludes it from the diff check; the owner should pin it to a committed file list.
 - Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
 - Status: L1 done, L2 done, session closed.
+
+---
+
+## Session 0fd4c550 (branch `arena/0fd4c550-poker5`) — pipeline hardening, official hotel-terms completion, requirements traceability
+
+**Claimed 2026-11-19 (before any file edit) from `main` @ `a32f096` (PR #74 merged).** Session id `0fd4c550` is fixed by Arena in the branch name, so the `session-<id>/<task>` naming in the brief cannot be used.
+
+**Board state checked before claiming:** every other board section is `done`/closed. Four PRs are still OPEN from sessions that last pushed at 2026-11-19 06:0x UTC (>60 min idle, no commits since): #53 (f91b3121), #55 (f7c2d5fa), #59 (bdcaf0bf), #60 (b3be876c). Per the handoff rule ("a claim more than 60 minutes old with no commits may be taken over, with the handoff noted"), this session takes over the *triage* of those branches: it diffs each against `main`, merges anything `main` still lacks, and records the disposition of the rest here. Nothing is discarded; each branch's own commits and PR remain on GitHub.
+
+**Files in scope (no other session is active, so these scopes do not overlap with a live claim):**
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| K1 | Make the scheduled publisher idempotent: PR #74 recorded that `scripts/integrate_b3be876c.py` re-derives `data/ea99006a/*.json` on every `recheck-ea99006a` run and is **not** idempotent against the corrected committed records (it reverts session 2b98a91f's F01/F47/Q01/Q02 and executive-summary corrections). Reconcile the generator with the published corrections and add a CI/test guard so a scheduled run can never silently un-fix the site. | in progress | `scripts/integrate_b3be876c.py`, `test/research.test.mjs`, `scripts/check_ea99006a.py`, `.github/workflows/quality.yml` |
+| K2 | Complete the hotel stay fields the brief demands from **official** pages only: cancellation deadline, incidental deposit, extra-guest charge, property address and parking for The Venetian (blank today), plus a re-read of every resort-fee and parking page in `data/ea99006a/hotels.json`. Values with no official statement stay blank + flagged. | in progress | `data/ea99006a/hotels.json`, `scripts/integrate_b3be876c.py` (its `apply_hotels` inputs), `pages/hotels.html`, `pages/venues/*.html` (generated) |
+| K3 | Dated rate log: add any official dated observation this session actually reads (offer pages with stated deposit/cancel windows), keeping the "log, not a single value" rule; leave dynamic nightly rates blank + F14. | in progress | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json` |
+| K4 | Store the descriptive GTD ÷ entry-fee ratio as a data field (the brief asks for the ratio; it is displayed but not stored) and keep it labelled descriptive, not a forecast. | in progress | `scripts/build_ea99006a.py`, `data/ea99006a/venetian.json` (derived field), `pages/tournaments.html` |
+| K5 | Requirements traceability: publish a line-by-line table mapping every requirement in the brief to the page/control that implements it, its evidence, and its status (done / partially done because the official source does not publish it / not possible). | in progress | `scripts/build_ea99006a.py`, `pages/verification.html`, `index.html` (nav), `EXECUTIVE_SUMMARY.md` |
+| K6 | Open-PR triage/handoff (#53, #55, #59, #60) + full check suite, PR → main, merge, Pages deploy confirmed, recorded here. | in progress | `COORDINATION.md` |
+
+**Out of scope:** `docs/`, `site*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/` (capture ledger owned by the 251c122f pipeline; a repair request is logged instead), other sessions' `scripts/build_*`.
