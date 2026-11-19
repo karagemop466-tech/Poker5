@@ -152,5 +152,38 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "id": "S15",
+  "title": "Nightly calendar capture for the hotels whose booking engines render server-side",
+  "problem": "The Horseshoe and Resorts World calendars returned full December price maps in one read, while the Venetian and Caesars Palace engines returned nothing. One nightly scheduled capture of the two working engines would turn the rate log into a real price history.",
+  "options": [
+   "Extend the monitor's hotel group to the two booking-engine URLs and store the per-date map",
+   "Snapshot only the seven trip nights to keep the diff small",
+   "Leave manual: rates are a log the reader appends"
+  ],
+  "effect": "Price history and change badges for hotel rates, like the ones event rows already have. In review - not implemented."
+ },
+ {
+  "id": "S16",
+  "title": "Show both directions of every walk and let the filter use the direction that matters",
+  "problem": "Walking routes are asymmetric (Wynn to Venetian 14 min vs Venetian to Wynn 26 min). The table shows one direction per row; a reader deciding on the walk home after midnight sees the reverse row only if they look for it.",
+  "options": [
+   "Add a 'reverse' column with the measured minutes",
+   "Judge the 30-minute filter on the slower of the two directions",
+   "Keep per-direction rows as now and sort pairs together"
+  ],
+  "effect": "Safer late-night planning. In review - not implemented."
+ },
+ {
+  "id": "S17",
+  "title": "Store the GTD to entry-fee ratio as a data field",
+  "problem": "The ratio is computed at render time (schedule tables, planner) but is not a stored field, so it cannot be sorted or exported from the data files alone.",
+  "options": [
+   "Compute and store ratio fields when the data files are written",
+   "Add a small export script that derives the field on demand",
+   "Keep it render-only"
+  ],
+  "effect": "Makes the ranking reproducible outside the site build. In review - not implemented."
  }
 ]

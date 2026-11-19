@@ -60,9 +60,9 @@
  {
   "id": "F09",
   "area": "Hotels",
-  "title": "Caesars Palace and Horseshoe resort fees not verified",
-  "detail": "The official resort-fee URLs redirect to the hotel landing pages and do not state a fee. Fields left blank.",
-  "source": "https://www.caesars.com/caesars-palace/hotel"
+  "title": "Caesars Palace and Horseshoe resort fees verified on their booking pages (was: not verified)",
+  "detail": "Resolved 2026-11-19: the official booking-page Hotel Policies blocks publish property fees - Caesars Palace $62.30 per night ($54.95 plus $7.35 tax), Horseshoe $56.63 per night ($49.95 plus $6.68 tax) - and are stored in hotels.json with deposits ($100/day, $50/day) and 48-hour cancellation. The old resort-fee URLs still redirect to marketing pages; the corporate $45-$60 range remains the only figure published for other Caesars properties.",
+  "source": "https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
  },
  {
   "id": "F10",
@@ -95,9 +95,9 @@
  {
   "id": "F14",
   "area": "Hotels",
-  "title": "No official page publishes a dated nightly rate for the trip dates",
-  "detail": "The only numeric room rate any Strip property publishes is the Venetian poker suite rate, '$119 and $209' starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The 2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports 'Incomplete' until a dated quote is recorded.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "title": "Dated nightly rates: Wynn captured for the window; Venetian and Caesars Palace still missing",
+  "detail": "Updated 2026-11-19: the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F57/F59). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
+  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "open",
   "last_updated": "2026-11-19"
  },
@@ -105,8 +105,8 @@
   "id": "F15",
   "area": "Routes",
   "title": "Cross-property walking times are not published officially",
-  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in.",
-  "source": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
+  "detail": "Updated 2026-11-19: still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F58/F59 on asymmetry). The on-property Venetian route remains zero minutes.",
+  "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
   "id": "F16",
@@ -226,21 +226,21 @@
   "id": "F32",
   "area": "Hotels",
   "title": "Dated stay captures are sparse and not like-for-like",
-  "detail": "Only two dated booking-engine stay snapshots (Venetian Dec 2-9 and Dec 13-20) and one dated poker-suite-rate observation exist, each with a different occupancy (2 adults vs 1 adult) and different stay windows. Checkout totals, nightly averages, tax amounts and cancellation deadlines are blank wherever the booking UI did not return them (Wynn returned no tax-inclusive total at all). No hotel ranking is published from these, and the trip planner stays Incomplete without a date-specific quote.",
-  "source": "https://github.com/karagemop466-tech/Poker5/blob/main/data/ea99006a/rate_snapshots.json"
+  "detail": "Updated 2026-11-19: the dated log now holds two dated Wynn quotes, two December calendar captures (Horseshoe, Resorts World) and two logged engine attempts (Venetian, Caesars Palace) for the recommended window. They are still not like-for-like: averages vs raw daily displays vs attempts, differing rooms and rate plans, and no hotel returned an itemised checkout total.",
+  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026"
  },
  {
   "id": "F33",
   "area": "Hotels",
   "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
-  "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (48 hours before arrival for offer DK26WLV2 bookings, re-read 2026-11-19; the earlier 72-hour figure is withdrawn, see F55). Blank elsewhere and flagged.",
-  "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+  "detail": "Updated 2026-11-19: parking and cancellation terms are now captured for all five candidate hotels. Dollar parking fees are published only by the Venetian ($20/$25/$40 per day, poker validation 3+ hours). Caesars Palace and Horseshoe publish policy text (surcharge; free for Platinum+ and guests; locals 3 hours) without amounts; Resorts World comps self-parking for locals and Elite+ members; Wynn comps registered guests.",
+  "source": "https://www.venetianlasvegas.com/content/venetian/us/en/legal/hotel-terms-and-conditions.html"
  },
  {
   "id": "F46",
   "area": "Hotel fees",
   "title": "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",
-  "detail": "Read from the official Caesars Entertainment disclaimer on 2026-11-19: 'Room reservations are subject to a daily resort fee between $45-$60 plus applicable tax. Resort fees are waived for Diamond and Seven Stars.' A range cannot be compared like-for-like against a fixed $55 fee, so both hotels stay without a single fee value and the exact figure must be read at booking.",
+  "detail": "Resolved 2026-11-19 for the two candidate properties: booking-page Hotel Policies give exact fees (Caesars Palace $54.95 plus $7.35 tax; Horseshoe $49.95 plus $6.68 tax). The corporate disclaimer still publishes only the $45-$60 range for other Caesars properties.",
   "source": "https://www.caesars.com/corporate/disclaimer",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -275,18 +275,18 @@
  {
   "id": "F50",
   "area": "Walking routes",
-  "title": "No official source states a walking time between two Strip properties",
-  "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "title": "No hotel page publishes a walking time between two properties (routes now measured on Google Maps)",
+  "detail": "Still true - and worked around on 2026-11-19 by measuring every pair on Google Maps walking directions between official street addresses. Values are routing estimates retrieved on one date, not hotel-published facts, and include only the sidewalk route to the property entrance, not in-property time.",
+  "source": "https://www.google.com/maps/dir/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/data=!4m2!4m1!3e2",
   "status": "open",
   "last_updated": "2026-11-19"
  },
  {
   "id": "F51",
   "area": "Trip cost",
-  "title": "The true-cost figure the planner needs cannot be completed from official data alone",
-  "detail": "Cost of the trip = entries x buy-ins + nights x true nightly hotel cost. The first term is complete for every confirmed single-entry row (buy-in and house fee both come from the sheet). The second term needs a dated nightly rate, which no official page publishes for the trip dates (see F14), so the planner shows 'Incomplete' rather than a total with a zero-cost hotel.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "title": "The true-cost figure can now be completed for the Wynn stay, not for the others",
+  "detail": "Updated 2026-11-19: a dated official Wynn quote for Dec 6-13 exists ($688-$818 average per night, fee included, taxes excluded), so the planner's hotel side can be completed for a Wynn stay by typing that figure into the calculator. For the Venetian, Caesars Palace, Horseshoe and Resorts World no itemised checkout total for the window was returned, so the calculator stays incomplete for those until one is captured.",
+  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "open by design",
   "last_updated": "2026-11-19"
  },
@@ -325,5 +325,33 @@
   "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
   "status": "corrected by d615f79e; needs review",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F56",
+  "area": "Hotels",
+  "title": "The Caesars Palace booking calendar returned a technical error on 2026-11-19",
+  "detail": "The official December 2026 rate calendar for Caesars Palace rendered 'Sorry! Our website is currently experiencing technical difficulties' and no rates, while the same engine rendered the Horseshoe calendar minutes later. No dated Caesars Palace quote is stored; retry needed.",
+  "source": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
+ },
+ {
+  "id": "F57",
+  "area": "Hotels",
+  "title": "Resorts World calendar shows conflicting resort-fee captions",
+  "detail": "One page displays both 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. Both captions are stored verbatim; the displayed calendar figures are kept as raw displays and no fee-inclusive interpretation is claimed.",
+  "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2"
+ },
+ {
+  "id": "F58",
+  "area": "Hotels",
+  "title": "Google Maps walking routes are asymmetric by direction",
+  "detail": "Measured 2026-11-19: Wynn to Venetian 14 min (0.5 mi) but Venetian to Wynn 26 min (1.1 mi); Caesars Palace to Wynn 39 min but Wynn to Caesars Palace 47 min. Entrance pin placement and route choice differ per direction. Both directions are stored as measured; neither is smoothed or symmetrized.",
+  "source": "https://www.google.com/maps/dir/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/data=!4m2!4m1!3e2"
+ },
+ {
+  "id": "F59",
+  "area": "Hotels",
+  "title": "Horseshoe to Venetian measures 31 minutes - over the 30-minute limit - in one direction",
+  "detail": "Venetian to Horseshoe measured exactly 30 min (1.3 mi, via Krueger Dr) while Horseshoe to Venetian measured 31 min (1.3 mi) on 2026-11-19. Which direction the 30-minute limit applies to changes the verdict for this hotel; both figures are published so the reader can decide. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",
+  "source": "https://www.google.com/maps/dir/3645+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  }
 ]
