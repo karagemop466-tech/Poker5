@@ -1,5 +1,51 @@
 # Coordination - Poker5
 
+## Current branch session — 96160d8f (active) — line-by-line official-source verification + gap close
+
+**Branch:** `arena/96160d8f-poker5` (fixed by Arena), based on `main` @ `998a32d`. Scope claimed before any data edit:
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| V1 | Re-read official sources live (2026-11-19): Venetian DSE IV schedule (4 chunks), structure sheets 5/7/8/15/21, WPT schedule PDF (2 chunks) + structures PDF (chunks 0–3), Venetian resort-fee / suite-rates / poker-room pages, Wynn DK26WLV2 terms + poker page + ai-information, Caesars disclaimer + daily flyer, Resorts World no-fees offer + privacy policy, South Point poker-room page, Clark County tax ordinance (4 chunks), Venetian privacy notice (address). Diff every checked value against `data/ea99006a/` and record matches/mismatches | done — all checked values match; 3 verifiable gaps fixed (V2–V4), rest flagged, none filled by inference | this section |
+| V2 | Add official addresses for Venetian / Wynn / Resorts World (were blank) with source + read date | done | `data/ea99006a/hotels.json`, regenerated `index.html` + `pages/**` |
+| V3 | Complete Wynn DK26WLV2 note (full blackout list + special deposit windows) from live re-read; fee figure unchanged | done | `data/ea99006a/hotels.json`, regenerated site |
+| V4 | Make South Point time/buy-in pairing caveat explicit on all 8 rows (page lists 4 times + 2 buy-ins; pairing unconfirmed, detail is images only) | done | `data/ea99006a/other.json`, regenerated site |
+| V5 | Rebuild site, run all checks, PR to main, merge, confirm Pages deploy, record here | in progress | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+
+Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared. No tournament/hotel value is changed without a live official read in this session.
+
+### Verification results (2026-11-19, session 96160d8f)
+
+**Matched live (no change needed):**
+- Venetian DSE IV schedule: header "November 16 – December 23, 2026 / More than $3.6 Million" + all spot-checked rows (Nov 16 #1 11:10/5:10, Nov 18 #2, Nov 28 #18, Dec 6 #28/#29, Dec 12 #47, Dec 23 #63/#64, sheet numbers) match `venetian.json`. Source: https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- Sheet 5 (Events 02/12, $300, 11:10 AM, 40,000 chips, 30 min, late reg 10 levels + Break ~4:55 PM, GTD $10,000, $58/$242 split, 10 rules, no re-entry language) matches S1 row for #2. Source: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf
+- Sheet 7 (Events 14/28/63, $600, 11:10 AM, 40,000, 30 min, late reg 10 levels + Break ~4:55 PM, GTD $30K for #14/#63 and $40K for #28, $90/$510 split) matches Dec 6 #28 $600 $40K GTD. Per-event guarantees on one sheet explain why `rule_fields.guarantee` is blank for all 94 rows (a single sheet value cannot be assigned to every event it covers). Source: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf
+- Sheet 8 (Events 18/58, $200, 5:10 PM, 25,000, 30 min, late reg 8 levels + Break 9:40 PM, GTD $20,000, $40/$160 split, rule 07 "All subsequent buy in's after the initial buy in will be $200") confirms canonical `multi` for #18/#58 and F47 legacy bug. Source: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf
+- Sheet 15 (Events 29/31/34/38/42/50/51/53/55, $300 Bounty, 5:10 PM, 25,000, 30 min, late reg 8 levels + Break 9:40 PM, GTD $15,000, $50/$250 split, $100 bounties) matches Dec 6 #29. Source: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf
+- Sheet 21 (Event 47, $2,200, 40,000, 40 min, late reg 9 levels + Break ~4:55 PM, GTD $1,000,000, $225/$1,975 split, rule 08 flight ban) matches Dec 12 #47 $2,200 $1M GTD multi. Source: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf
+- WPT schedule PDF: Nov 27 $600 $400K, Dec 5 Prime $1,100 $5M, Dec 6 Prime Day 1B, Dec 13–21 World Championship block all match `wpt.json`. The "Dec. 18 Wednesday" mislabel persists live; stored dates correctly use Dec 16 (Wednesday) with explanatory note (F05). Source: https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
+- WPT structures PDF: $600 NLH "Unlimited re-entry for each starting flight...", TORSE/PLO/Mixed Triple Draw/Limit Omaha 8 "Unlimited re-entry...", $800 NLH same flight language — all match stored `rule_excerpt` values. General Terms: registration in "Wynn Las Vegas Poker Room, located in Encore at Wynn Las Vegas". Source: https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf
+- Venetian resort fee "$55 plus tax per night" (https://www.venetianlasvegas.com/resort/resort-fee.html); poker room "The Palazzo, level 2, Grand Canal Shoppes", 50 tables/14,000 sq ft, open 24 hours, complimentary self-parking for 3+ hours play (https://www.venetianlasvegas.com/resort/casino/poker.html); suite rates "$119 and $209", 150 days, 6 hours or $300+ tournament per night before 2 a.m., phone 866.255.8936 code EPOKR25, "$55 resort fee per night stayed" without "plus tax" (F45 stands) (https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html).
+- Wynn DK26WLV2: "$55 plus tax", 48-hour cancellation, $50 extra-guest surcharge, $150/night incidentals (https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2). Wynn poker page: WPT Nov 27–Dec 21, Super Gold Million $400 $3M, daily tournaments suspended during Signature/Millions/Classic (WPT not named — F07 stands) (https://www.wynnlasvegas.com/casino/poker).
+- Caesars disclaimer: "daily resort fee between $45-$60 plus applicable tax... waived for Diamond and Seven Stars" + "$50 no-show fee unless cancelled by 6pm" (https://www.caesars.com/corporate/disclaimer). Caesars daily flyer: 10AM $100 / 2PM $160 / 6PM $100 / 9PM $160, $50 add-on 15,000 chips first break only, closes start of level 7, re-enter within first break, $70/$30 and $115/$45 splits (https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf).
+- Resorts World: "$55 per room... waived", 48-hour cancellation, $150/night incidentals, travel through Dec 28 2026, self-parking complimentary for NV residents + Genting tiers (https://www.rwlasvegas.com/offers/all-resort-no-fees/).
+- South Point: "tournaments daily ... at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300" (https://southpointcasino.com/casino/poker-room). Page does not state both buy-ins run at every time — see V4.
+- Clark County ordinance: "Resort hotel within primary gaming corridor ... 13.38%" effective March 1, 2017 (https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf).
+- Addresses (new, V2): Venetian "3355 Las Vegas Boulevard South, Las Vegas, Nevada 89109" (https://www.venetianlasvegas.com/legal/privacy-notice.html); Wynn "3131 Las Vegas Blvd. S., Las Vegas, NV 89109" (https://www.wynnlasvegas.com/ai-information); Resorts World "3000 South Las Vegas Boulevard, Las Vegas, Nevada 89109" (https://www.rwlasvegas.com/privacy-policy/). All read 2026-11-19.
+
+**Irregularities / gaps flagged, not filled (no official value exists):**
+- Cross-property walking minutes remain blank (0 of 25 off-property pairs verified). No official source publishes hotel-to-room walking times; maps links are provided for the reader to check. The ≤30-min filter only applies where evidence exists (F15/F50 stand).
+- No date-matched itemized hotel quote for Dec 6–13 exists; `rates_log.json` holds 2 Venetian observations for other windows. Trip total correctly stays Incomplete (F14/F51 stand). True-cost formula (rate + fee, taxed at 13.38%) is implemented in the hotels/planner calculators; it cannot be completed without a dated rate.
+- No official finish times exist; overlap uses official start + late-registration close + user-entered assumed duration (schedule page `seqCheck`). No finish time is stored or presented as verified (Q17 stands).
+- GTD ÷ entry ratio is derived at build time from verified guarantee + buy-in (`ratio_text`), displayed as descriptive only, never stored as a forecast. Bounty/PKO rows are tagged separately; ranking requires both fee and guarantee (`rankable`).
+- `monitor_summary.json` still records `run: null` (no live value-level run). The sandbox cannot fetch casino hosts via `urllib` (outbound allow-list is github/npm/pypi only); live reads in this session used the page-fetch tool, not the monitor script. Offline ledger check passes; absence of a changed-value badge still means "not yet re-checked", never "verified unchanged" (F48 stands).
+- Legacy `data/c6087e2c/events_verified.json` still misclassifies #18/#58 (F47). Canonical data is correct; legacy parser fix remains with that pipeline's owner (handoff already logged by session 2b98a91f).
+- `rule_fields.start_time` blank for 39 Venetian rows and `rule_fields.guarantee` blank for all 94: sheets that cover multiple events state per-event guarantees (e.g. sheet 7: $30K vs $40K) or omit start times (schedule page carries them). Blank is correct; top-level `guarantee`/`start` + `source` carry the verified values.
+
+---
+
+---
+
 ## Session 7e10ba42 (branch `arena/7e10ba42-poker5`, base `main` @ `f2eb22a`) — verification pass + rule-standard irregularity
 
 Claimed 2026-11-19 before any edit. Board-only change; no data, builder, or page is edited.
