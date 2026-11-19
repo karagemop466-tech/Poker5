@@ -1,7 +1,7 @@
 {
-  "last_run": "2026-11-18T14:46:06Z",
+  "last_run": "2026-11-19T14:52:37Z",
   "note": "Presence check of every event name in data/c6087e2c/venetian_dse_2026.psv against the official DeepStack Extravaganza IV page. 'present' means the exact event name is on the page today; it does not re-verify prices, which need the structure sheet. Buy-in and guarantee columns below are our capture, not a fresh parse.",
-  "retrieved": "2026-11-18",
+  "retrieved": "2026-11-19",
   "rows": [
     {
       "buy_in_usd": "300",
