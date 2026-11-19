@@ -481,7 +481,7 @@ LIVE = {
 }
 
 
-def apply_hotels(hotels: list[dict]) -> list[str]:
+def apply_hotels(hotels: list[dict], ledger: dict | None = None) -> list[str]:
     """Add today's official hotel re-reads. Returns the notes for the report."""
     notes = []
     by_key = {h["key"]: h for h in hotels}
@@ -594,6 +594,19 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
                      "parking pages, and are now on the hotel row and in the dated log. The nightly room rate for "
                      "the trip window is still not published anywhere official, so F14 stays open."
                      % o["read"])
+    # A stay term quoted without a date is a claim a reader cannot age. Where this session did not
+    # re-read the page itself, the date of the last monitor fetch of that exact URL is used and said
+    # so in words; a URL that the monitor does not track gets no date and the page shows that.
+    for h in hotels:
+        for base in ("resort_fee", "parking", "cancel", "checkin_checkout"):
+            src, field = h.get(base + "_source"), base + "_read"
+            if not src or h.get(field):
+                continue
+            rec = (ledger or {}).get(src) or {}
+            if rec.get("last_checked"):
+                h[field] = rec["last_checked"][:10]
+                h[field + "_basis"] = ("date of the last scheduled monitor fetch of this URL, not a manual "
+                                       "re-read of the sentence")
     for h in hotels:
         h.setdefault("resort_fee_read", h.get("resort_fee_source") and TODAY or "")
         # A hotel with no published rate gets an explicit None: the page shows it blank and flagged,
@@ -1074,6 +1087,17 @@ def main() -> int:
           "pretending an earlier one exists.") % TODAY,
          "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
          status="open: only the room can confirm an unlisted early turbo")
+    flag("F59", "Hotel evidence",
+         "Three hotels published a stay term with no read date at all",
+         ("Found while writing the regression tests for the stay-capture fields: Caesars Palace and Horseshoe "
+          "carried a cancellation term, and Resorts World a parking and a cancellation term, each with a source URL "
+          "but no date, so a reader could not tell how old the claim was or whether anything still checks it. Those "
+          "URLs are tracked by the scheduled monitor, so the date of the last monitor fetch is now recorded and "
+          "labelled in words as a fetch date rather than a manual re-read; a term whose URL the monitor does not "
+          "track shows 'no read date recorded' instead of a silent blank. Nothing was back-dated, and no term was "
+          "removed on the strength of a date this session did not actually observe."),
+         "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+         status="fixed by session 0fd4c550")
     flag("F58", "Schedule verification",
          "The recommended window was re-read from the live official page and matches row for row",
          ("On %s the 28 schedule rows for 6-13 December 2026 were read again from the official page and compared "
@@ -1311,7 +1335,7 @@ def main() -> int:
         "moved_out_of_single_entry": moved_out_rows,
         "spot_check_mismatches": sum(1 for r in ven if r.get("spot_check", {}).get("mismatches")),
         "guarantee_disagreements": guarantee_notes,
-        "hotel_notes": apply_hotels(hotels),
+        "hotel_notes": apply_hotels(hotels, ledger),
         "rate_log_entries": 2,
         "live_reads": {k: (v.get("read"), v.get("url")) for k, v in LIVE.items() if isinstance(v, dict)},
         "flags_total": len(flags),

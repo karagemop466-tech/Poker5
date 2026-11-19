@@ -103,7 +103,9 @@
   "resort_fee_verified": false,
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "cancel_read": "2026-11-19",
+  "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
  },
  {
   "key": "horseshoe",
@@ -128,7 +130,9 @@
   "resort_fee_verified": false,
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "cancel_read": "2026-11-19",
+  "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
  },
  {
   "key": "resortsworld",
@@ -152,6 +156,10 @@
   "resort_fee_read": "2026-11-19",
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "parking_read": "2026-11-19",
+  "parking_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence",
+  "cancel_read": "2026-11-19",
+  "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
  }
 ]

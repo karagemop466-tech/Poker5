@@ -1513,7 +1513,7 @@ def build_hotels():
         park = h.get("parking_self_per_night")
         mand = (fee_taxed + park) if (fee_taxed and park) else None
 
-        def term(text, src, read, extra=""):
+        def term(text, src, read, extra="", basis=""):
             if not text:
                 return '<span class="blank">no official page states this</span>'
             bits = [esc(text)]
@@ -1522,19 +1522,24 @@ def build_hotels():
             if src:
                 bits.append(src_link(src, "official page"))
             if read:
-                bits.append('<span class="muted sm">read %s</span>' % esc(read))
+                bits.append('<span class="muted sm">read %s%s</span>'
+                            % (esc(read), " (" + esc(basis) + ")" if basis else ""))
+            else:
+                bits.append('<span class="muted sm">no read date recorded for this URL</span>')
             return "<br>".join(bits)
 
         cells = [
-            term(h.get("resort_fee_text"), h.get("resort_fee_source"), h.get("resort_fee_read")),
+            term(h.get("resort_fee_text"), h.get("resort_fee_source"), h.get("resort_fee_read"),
+                 basis=h.get("resort_fee_read_basis") or ""),
             ("$%.2f <span class=\"muted sm\">derived: $%.0f + %.2f%%</span>" % (fee_taxed, fee, TAX["rate"]))
             if fee_taxed else '<span class="blank">not computed - no verified fee</span>',
             term(("self-parking for registered guests" if park else None) or h.get("parking"),
                  h.get("parking_source"), h.get("parking_read"),
                  ("$%.0f/day; valet $%.0f/day" % (park, h["parking_valet_per_night"]))
-                 if park and h.get("parking_valet_per_night") else ""),
+                 if park and h.get("parking_valet_per_night") else "",
+                 basis=h.get("parking_read_basis") or ""),
             term(h.get("cancel_deadline_display") or h.get("cancel"), h.get("cancel_source"),
-                 h.get("cancel_read")),
+                 h.get("cancel_read"), basis=h.get("cancel_read_basis") or ""),
             term(h.get("deposit") or h.get("incidentals"), h.get("extra_terms_source") or h.get("deposit_source"),
                  h.get("extra_terms_read") or h.get("cancel_read"),
                  ("Incidentals: " + h["incidentals"]) if h.get("incidentals") else ""),
@@ -1884,11 +1889,11 @@ def build_planner():
                    ("null" if not _cap else "%.2f" % _cap["nightly_average"]),
                    "1" if _cap else "0",
                    esc("%s to %s, %s nights" % (_cap["checkin"], _cap["checkout"], _cap["nights"])) if _cap else "",
+                   "1" if (_cap and _cap.get("checkin") == TRIP["check_in"]
+                           and _cap.get("checkout") == TRIP["check_out"]) else "0",
                    esc("%s to %s, $%s/night average" % (_cap["checkin"], _cap["checkout"],
                                                          format(_cap["nightly_average"], ",.2f"))) if _cap
                    else "no dated capture",
-                   "1" if (_cap and _cap.get("checkin") == TRIP["check_in"]
-                           and _cap.get("checkout") == TRIP["check_out"]) else "0",
                    FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "rate not published", _fee, TAX["rate"],
                    ("%.2f" % _cap["nightly_average"]) if _cap else "",
                    " readonly" if _cap else "",

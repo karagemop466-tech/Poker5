@@ -17098,7 +17098,9 @@
    "resort_fee_verified": false,
    "rate_floor": null,
    "rate_floor_source": "",
-   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+   "cancel_read": "2026-11-19",
+   "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
   },
   {
    "key": "horseshoe",
@@ -17123,7 +17125,9 @@
    "resort_fee_verified": false,
    "rate_floor": null,
    "rate_floor_source": "",
-   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+   "cancel_read": "2026-11-19",
+   "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
   },
   {
    "key": "resortsworld",
@@ -17147,7 +17151,11 @@
    "resort_fee_read": "2026-11-19",
    "rate_floor": null,
    "rate_floor_source": "",
-   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+   "parking_read": "2026-11-19",
+   "parking_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence",
+   "cancel_read": "2026-11-19",
+   "cancel_read_basis": "date of the last scheduled monitor fetch of this URL, not a manual re-read of the sentence"
   }
  ],
  "routes": [
@@ -17837,6 +17845,15 @@
    "detail": "On 2026-11-19 the 28 schedule rows for 6-13 December 2026 were read again from the official page and compared field by field (date, start, event number, event text, buy-in, guarantee, structure-sheet number) with the published record by scripts/verify_window_0fd4c550.py: 28 of 28 matched, 0 value disagreements. The transcription is kept at data/ea99006a/window_live_2026-11-19_0fd4c550.tsv so the comparison can be re-run by hand, and quality.yml runs the comparison on every build.",
    "source": "https://karagemop466-tech.github.io/Poker5/pages/verification.html",
    "status": "verified this session; re-checked on every build",
+   "last_updated": "2026-11-19"
+  },
+  {
+   "id": "F59",
+   "area": "Hotel evidence",
+   "title": "Three hotels published a stay term with no read date at all",
+   "detail": "Found while writing the regression tests for the stay-capture fields: Caesars Palace and Horseshoe carried a cancellation term, and Resorts World a parking and a cancellation term, each with a source URL but no date, so a reader could not tell how old the claim was or whether anything still checks it. Those URLs are tracked by the scheduled monitor, so the date of the last monitor fetch is now recorded and labelled in words as a fetch date rather than a manual re-read; a term whose URL the monitor does not track shows 'no read date recorded' instead of a silent blank. Nothing was back-dated, and no term was removed on the strength of a date this session did not actually observe.",
+   "source": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+   "status": "fixed by session 0fd4c550",
    "last_updated": "2026-11-19"
   }
  ],

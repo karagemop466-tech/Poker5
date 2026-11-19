@@ -354,5 +354,14 @@
   "source": "https://karagemop466-tech.github.io/Poker5/pages/verification.html",
   "status": "verified this session; re-checked on every build",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F59",
+  "area": "Hotel evidence",
+  "title": "Three hotels published a stay term with no read date at all",
+  "detail": "Found while writing the regression tests for the stay-capture fields: Caesars Palace and Horseshoe carried a cancellation term, and Resorts World a parking and a cancellation term, each with a source URL but no date, so a reader could not tell how old the claim was or whether anything still checks it. Those URLs are tracked by the scheduled monitor, so the date of the last monitor fetch is now recorded and labelled in words as a fetch date rather than a manual re-read; a term whose URL the monitor does not track shows 'no read date recorded' instead of a silent blank. Nothing was back-dated, and no term was removed on the strength of a date this session did not actually observe.",
+  "source": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+  "status": "fixed by session 0fd4c550",
+  "last_updated": "2026-11-19"
  }
 ]
