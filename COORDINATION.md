@@ -194,7 +194,25 @@ Every brief item was checked against the built site and its data files:
 
 ---
 
-## Previous branch session — 25481cd8 (completed) — schedule re-verification + site integration
+## Current branch session — 36da6d66 (active) — WPT/Wynn entry-term verification, unverified-label audit, integration
+
+**Branch:** `arena/36da6d66-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claim written before any edit** (2026-11-19 ~21:58 UTC). No other board entry holds an open claim that overlaps these files: every other entry that overlaps these files is done or merged; the four open PRs (#53, #55, #59, #60) predate `main` @ `998a32d` and are not touched here. `main` moved to `40b5a40` (PRs #74–#82) while this claim was being written; the claim was rebased onto it and the earlier sessions' board sections were kept verbatim — the one conflict, in this file, was resolved by keeping both sides.
+
+**Why this scope, and what it is not.** Before claiming, the brief was diffed line by line against `main` @ `998a32d` (notes in "Audit before claiming" below). Nearly every asked-for feature is already generated. The one large, real evidence gap reachable from this sandbox is that **91 of 136 WPT/Wynn rows still carry the "Entry terms not read - unverified" label**, and the label's supporting flag (`F21`) says terms were read for **13** events. F04 asserts "every WPT/Wynn event whose terms were read permits re-entry" — that claim can only be audited by reading the whole official structures PDF. That is the work below: no new features, no rewritten numbers, only official-source reads plus the labels/flags they justify.
+
+| # | Task | Status | Owner | Files in scope |
+|---|------|--------|-------|----------------|
+| W1 | Read the official WPT World Championship **Structures + T&Cs PDF** (all 8 chunks) and the WPT **Schedule PDF** (both chunks); record, per event, the official registration/re-entry sentence, the entry-fee split (prize pool / tournament fee / staff charge), stack, level length and registration close | done — 17 event sheets read, 0 new single-entry grants found | 36da6d66 | `data/ea99006a/wpt.json` (rule verdicts + rule fields only), `data/ea99006a/wpt_terms_2026-11-19.json` (new evidence log) |
+| W2 | Remove the "unverified"/"terms not read" label **only** from rows whose own official event terms were read in this session; keep it on every row whose terms are still unread (satellites, Day-2 restarts, and events whose sheet is not in the PDF) | done | 36da6d66 | `data/ea99006a/wpt.json`, `scripts/data_ea99006a.py` (source rows), `scripts/build_ea99006a.py` (page text that hard-codes "13") |
+| W3 | Re-read every Venetian structure sheet every "confirmed single-entry" verdict rests on — impossible to do 37 PDFs in this turn, so instead re-read the **schedule page** in full (4 chunks) and diff all 94 rows field by field against `data/ea99006a/venetian.json` | done — 94/94 identical | 36da6d66 | `data/ea99006a/official_schedule_2026-11-19.tsv` re-diff (no rewrite needed), note below |
+| W4 | Correct the two flags whose text this session's reads proved stale (`F21`, `F04`), add the new defect found (WPT schedule PDF prints the 16 Dec block under a "Dec. 18 Wednesday" heading **and** reprints 18 Dec correctly — one of the two blocks is misdated and the PDF cannot say which) | done | 36da6d66 | `data/ea99006a/flags.json` |
+| W5 | Rebuild the root site, run every check, PR to `main`, merge, confirm the Pages deploy, record the result here | in progress | 36da6d66 | `index.html`, `pages/**` (generator output), `COORDINATION.md` |
+
+**Not in this scope** (owned elsewhere / not reachable): `data/c6087e2c/**` (the capture ledger, still F47 — its owner's repair), every `dashboard-*/`, `site-*/`, `docs/`, `planner-*/` archive folder, and any hotel rate number. No date-specific hotel quote can be produced from this sandbox: the Venetian booking engine returns `$XXX` placeholders to a non-JavaScript fetch (re-checked today at the 6–13 Dec URL) and Wynn's booking flow is not fetchable at all. That keeps `F14`, `F32`, `F51` and `Q03` open rather than filled in.
+
+**After the claim, before finishing:** this session does **not** mark any row verified that it did not read. Rows whose terms remain unread stay labelled. See the session result section at the end of this file for the sources, the verification performed and the irregularities found.
+
+## Previous branch session — 25481cd8 (done) — schedule re-verification + site integration
 
 ## Current branch session — 22f06ff9 (active) — live official-source re-verification + integration
 
