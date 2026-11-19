@@ -11,8 +11,8 @@
   "resort_fee_source": "https://www.venetianlasvegas.com/resort/resort-fee.html",
   "resort_fee_note": "Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in. The Resort Fee includes: Access for two to the fitness facility within the Canyon Ranch spa + fitness; In-suite internet access (WiFi or Ethernet); Boarding pass printing; Unlimited local and toll-free calls; Access to thousands of top newspapers and magazines using PressReader app.  ||  Re-read on 2026-11-19.",
   "booking": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date={IN}&children[]=0&departure_date={OUT}&view=calendar",
-  "address": "",
-  "address_source": "",
+  "address": "3355 Las Vegas Boulevard South, Las Vegas, Nevada 89109",
+  "address_source": "https://www.venetianlasvegas.com/legal/privacy-notice.html",
   "parking": "Complimentary self-parking for non-registered hotel guests who play for three hours or more in tournaments or cash games (official player-parking page). The poker room has direct access to The Palazzo self-parking garage.",
   "parking_source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
   "cancel": "",
@@ -30,7 +30,8 @@
   "rate_floor_room": "Luxury King Suite in The Venetian or The Palazzo, single/double occupancy - the page names two starting figures, $119 and $209, without mapping them to the two towers",
   "rate_floor_source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
   "rate_floor_read": "2026-11-19",
-  "rate_caveat": "Published starting rate, not a quote: the official page says rates \"start as low as $119 and $209 and can be higher\"; it is conditional on six hours of live play or a $300+ tournament entry every night, and rates are only published 150 days out, so December 2026 is not yet on it. Booked by phone on a Venetian Rewards account."
+  "rate_caveat": "Published starting rate, not a quote: the official page says rates \"start as low as $119 and $209 and can be higher\"; it is conditional on six hours of live play or a $300+ tournament entry every night, and rates are only published 150 days out, so December 2026 is not yet on it. Booked by phone on a Venetian Rewards account.",
+  "address_read": "2026-11-19"
  },
  {
   "key": "wynn",
@@ -42,7 +43,7 @@
   "resort_fee": 55.0,
   "resort_fee_text": "$55 plus tax per night",
   "resort_fee_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
-  "resort_fee_note": "Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each room night, which entitles you to receive complimentary self-parking for up to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, refreshed daily; unlimited local, domestic long distance (including HI and AK) and toll free calls; access for up to two persons to our fitness center; and a digital newsstand of magazines and newspapers.  ||  Applicability: offer text: 'only available on select dates from October 2, 2026 through March 31, 2027'; blackout dates listed include November 17-21, 2026 and December 31, 2026 The same fee sentence also appears on https://www.wynnlasvegas.com/terms-and-conditions/850070 (an offer whose stay had to end 2025-09-30, used here only to corroborate the figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide published rate, so confirm it on your own rate plan.",
+  "resort_fee_note": "Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each room night, which entitles you to receive complimentary self-parking for up to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, refreshed daily; unlimited local, domestic long distance (including HI and AK) and toll free calls; access for up to two persons to our fitness center; and a digital newsstand of magazines and newspapers.  ||  Applicability (re-read 2026-11-19): offer available only on select dates from October 2, 2026 through March 31, 2027, stay must complete on or before March 31, 2027; blackout dates include October 17-19, 2026, November 17-21, 2026, December 31, 2026 and January 24-25, 2027. Special deposit/cancellation windows on the same page: stays including November 15-21, 2026 require full deposit of all room nights and tax with a three-week cancellation policy; stays including December 29-31, 2026 require full deposit with a 30-day cancellation policy; stays including January 4-6, 2027 require full deposit with a two-week cancellation policy. The Dec 6-13, 2026 planning window falls outside those windows, so the standard 48-hour rule applies there. The same fee sentence also appears on https://www.wynnlasvegas.com/terms-and-conditions/850070 (an offer whose stay had to end 2025-09-30, used here only to corroborate the figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide published rate, so confirm it on your own rate plan.",
   "booking": "https://www.wynnlasvegas.com/",
   "parking": "Complimentary self-parking for up to two vehicles is included in the $55 resort fee; separate Wynn terms add 'Complimentary self-parking is extended to Wynn Poker Room guests'.",
   "parking_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
@@ -58,7 +59,10 @@
   "extra_terms_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "address": "3131 Las Vegas Blvd. S., Las Vegas, NV 89109",
+  "address_source": "https://www.wynnlasvegas.com/ai-information",
+  "address_read": "2026-11-19"
  },
  {
   "key": "caesars",
@@ -122,8 +126,8 @@
   "resort_fee_source": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
   "resort_fee_note": "Official offer terms: 'The daily resort fee of $55 per room, will be waived for each night of your stay when booked under this offer. Standard room rate taxes still apply and are not waived. An additional incidental deposit of $150 per room will be required at check-in for each night of your stay.' Offer valid for travel through 28 December 2026; blackout dates may apply.",
   "booking": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin={IN}&checkout={OUT}&nights=7&adults=2&children=0",
-  "address": "",
-  "address_source": "",
+  "address": "3000 South Las Vegas Boulevard, Las Vegas, Nevada 89109",
+  "address_source": "https://www.rwlasvegas.com/privacy-policy/",
   "parking": "Self-parking is complimentary for Nevada residents with NV plates and for Genting Rewards Elite, Prime, Monarch and Imperial tiers (official offer terms).",
   "parking_source": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
   "cancel": "Reservations must be cancelled at least 48 hours before check-in for a refund of the deposit.",
@@ -132,6 +136,7 @@
   "resort_fee_read": "2026-11-19",
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "address_read": "2026-11-19"
  }
 ]
