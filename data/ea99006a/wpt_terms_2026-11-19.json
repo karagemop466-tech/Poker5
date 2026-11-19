@@ -1,0 +1,817 @@
+{
+ "note": "Verbatim transcription of every event terms-and-conditions section in the official WPT World Championship structures PDF, read on 2026-11-19, plus the verdict it forces. This log exists so the label on each row can be re-derived from the official sentence without re-reading a 40-page PDF. No value here is inferred: a row whose section is absent keeps `unread`.",
+ "read_on": "2026-11-19",
+ "sources": {
+  "structures": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "terms": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "schedule": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "poker_page": "https://www.wynnlasvegas.com/casino/poker"
+ },
+ "sections": {
+  "$600 NLH $400K": {
+   "title": "$600 No Limit Hold'em $400,000 Guarantee",
+   "buyin": 600,
+   "pages": [
+    1,
+    2
+   ],
+   "dates": "Day 1A Fri Nov 27 11 a.m.; 1B Fri Nov 27 5 p.m.; 1C Sat Nov 28 11 a.m.; 1D Sat Nov 28 5 p.m.; 1E Sun Nov 29 11 a.m.; 1F Sun Nov 29 6 p.m.; Day 2 Mon Nov 30 1 p.m.",
+   "grant": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 40,000 in tournament chips.",
+   "levels": "Day 1A-E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+   "guarantee": "$400,000 Guarantee (event title)."
+  },
+  "$600 TORSE": {
+   "title": "$600 TORSE",
+   "buyin": 600,
+   "pages": [
+    2
+   ],
+   "dates": "Fri Nov 27 12 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 35,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$400 PLO": {
+   "title": "$400 PLO",
+   "buyin": 400,
+   "pages": [
+    2
+   ],
+   "dates": "Fri Nov 27 1 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
+   "close": "until the start of level 9 (approximately 5:30 p.m.)",
+   "fee": "Entry Fee: $400 Buy-in = $337 (Tournament Prize Pool) + $45 (Tournament Fee) + $18 (Poker Staff Service Charge)",
+   "stack": "Players will start with 30,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$600 Mixed Triple Draw": {
+   "title": "$600 Mixed Triple Draw (A-5, 2-7, Badugi)",
+   "buyin": 600,
+   "pages": [
+    2,
+    3
+   ],
+   "dates": "Sat Nov 28 12 p.m.; Sun Dec 20 1 p.m.",
+   "grant": "Unlimited re-entry will be available until the start of level 9.",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 35,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$800 NLH $1M": {
+   "title": "$800 No Limit Hold'em $1,000,000 Guarantee",
+   "buyin": 800,
+   "pages": [
+    3
+   ],
+   "dates": "Day 1A Mon Nov 30 11 a.m.; 1B Mon Nov 30 5 p.m.; 1C Tue Dec 1 11 a.m.; 1D Tue Dec 1 5 p.m.; 1E Wed Dec 2 11 a.m.; 1F Wed Dec 2 6 p.m.; Day 2 Thu Dec 3 1 p.m.; Final Table Fri Dec 4 1 p.m.",
+   "grant": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $800 Buy-in = $695 (Tournament Prize Pool) + $72 (Tournament Fee) + $33 (Poker Staff Service Charge)",
+   "stack": "Players will start with 40,000 in tournament chips.",
+   "levels": "Day 1A-1E: 30 minutes per level until 12.5% or less of the field remains. Day 1F: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until nine (9) players remain. Day 3: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+   "guarantee": "$1,000,000 Guarantee (event title)."
+  },
+  "$600 Limit Omaha 8": {
+   "title": "$600 Limit Omaha 8",
+   "buyin": 600,
+   "pages": [
+    3
+   ],
+   "dates": "Mon Nov 30 12 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 35,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$600 Limit Omaha 8/Stud 8": {
+   "title": "$600 Limit Omaha 8/Stud 8",
+   "buyin": 600,
+   "pages": [
+    4
+   ],
+   "dates": "Tue Dec 1 12 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 35,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$1,100 PLO": {
+   "title": "$1,100 PLO",
+   "buyin": 1100,
+   "pages": [
+    4
+   ],
+   "dates": "Tue Dec 1 1 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
+   "close": "until the start of level 9 (approximately 5:30 p.m.)",
+   "fee": "Entry Fee: $1,100 Buy-in = $975 (Tournament Prize Pool) + $85 (Tournament Fee) + $45 (Poker Staff Service Charge)",
+   "stack": "Players will start with 30,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "$1,600 NLH $1M": {
+   "title": "$1,600 No Limit Hold'em $1,000,000 Guarantee",
+   "buyin": 1600,
+   "pages": [
+    4,
+    5
+   ],
+   "dates": "Day 1A Thu Dec 3 11 a.m.; Day 1B Fri Dec 4 11 a.m.; Day 2 Sat Dec 5 11 a.m.",
+   "grant": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "close": "until the start of level 10",
+   "fee": "Entry Fee: $1,600 Buy-in = $1,430 (Tournament Prize Pool) + $120 (Tournament Fee) + $50 (Poker Staff Service Charge)",
+   "stack": "Players will start with 40,000 in tournament chips.",
+   "levels": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+   "guarantee": "$1,000,000 Guarantee (event title)."
+  },
+  "$600 HORSE": {
+   "title": "$600 HORSE",
+   "buyin": 600,
+   "pages": [
+    5
+   ],
+   "dates": "Fri Dec 4 12 p.m. (single day)",
+   "grant": "Unlimited re-entry will be available until the start of level 9 (approximately 4:30 p.m.).",
+   "close": "until the start of level 9 (approximately 4:30 p.m.)",
+   "fee": "Entry Fee: $600 Buy-in = $510 (Tournament Prize Pool) + $65 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 35,000 in tournament chips.",
+   "levels": "30 minutes per level until a winner is declared.",
+   "guarantee": ""
+  },
+  "WPT Prime Championship": {
+   "title": "$1,100 WPT Prime Championship $5,000,000 Guarantee",
+   "buyin": 1100,
+   "pages": [
+    5,
+    6
+   ],
+   "dates": "Day 1A Sat Dec 5 11 a.m.; 1B Sun Dec 6 11 a.m.; 1C Mon Dec 7 11 a.m.; 1D Tue Dec 8 11 a.m.; Day 2 Wed Dec 9 12 p.m.; Day 3 Thu Dec 10 12 p.m.; Day 4 Fri Dec 11 12 p.m.; Final Table Sat Dec 12 2 p.m.",
+   "grant": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "close": "until the start of level 10 (approximately 6:45 p.m.)",
+   "fee": "Entry Fee: $1,100 Buy-in = $970 (Tournament Prize Pool) + $90 (Tournament Fee) + $40 (Poker Staff Service Charge)",
+   "stack": "Players will start with 40,000 in tournament chips.",
+   "levels": "Day 1: 40 minutes per level until 12.5% or less of the field remains. Day 2: Ten (10) levels of 60 minutes each. Day 3: Ten (10) levels of 60 minutes each. Day 4: 60 minutes per level until the final six (6) players remain. Day 5: 60 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+   "guarantee": "$5,000,000 Guarantee (event title)."
+  },
+  "$600 NLH Turbo": {
+   "title": "$600 NLH Turbo $50,000 Guarantee",
+   "buyin": 600,
+   "pages": [
+    6
+   ],
+   "dates": "Sat Dec 5 9 p.m.; Sun Dec 6 9 p.m.; Mon Dec 7 9 p.m.; Tue Dec 8 9 p.m.; Wed Dec 9 9 p.m.; Sat Dec 12 9 p.m.; Mon Dec 14 9 p.m.; Mon Dec 21 6 p.m.",
+   "grant": "Unlimited re-entry will be available until the start of level 9.",
+   "close": "until the start of level 9",
+   "fee": "Entry Fee: $600 Buy-in = $515 (Tournament Prize Pool) + $60 (Tournament Fee) + $25 (Poker Staff Service Charge)",
+   "stack": "Players will start with 30,000 in tournament chips.",
+   "levels": "20 minutes per level until a winner is declared.",
+   "guarantee": "$50,000 Guarantee (event title)."
+  },
+  "$1,600 PLO Mystery Bounty": {
+   "title": "$1,600 PLO Mystery Bounty $500,000 Guarantee",
+   "buyin": 1600,
+   "pages": [
+    6,
+    7
+   ],
+   "dates": "Day 1A Sun Dec 6 11 a.m.; Day 1B Sun Dec 6 6 p.m.; Day 2 Mon Dec 7 12 p.m.",
+   "grant": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "close": "until the start of level 10",
+   "fee": "Entry Fee: $1,600 Buy-in = $930 (Tournament Prize Pool) + $500 (Mystery Bounty Prize Pool) + $120 (Tournament Fee) + $50 (Poker Staff Service Charge)",
+   "stack": "Players will start with 40,000 in tournament chips.",
+   "levels": "Day 1A: 40 minutes per level until 12.5% or less of the field remains. Day 1B: 20 minutes per level until 12.5% or less of the field remains. Day 2: 40 minutes per level until two (2) players remain, 30 minutes per level thereafter.",
+   "guarantee": "$500,000 Guarantee (event title; includes the Mystery Bounty prize pool - see the Mystery Bounty Rules section)."
+  },
+  "#GENERAL": {
+   "title": "WPT World Championship General Terms and Conditions",
+   "buyin": null,
+   "pages": [
+    0
+   ],
+   "dates": "November 27 - December 21, 2026",
+   "grant": "Registration for each Event will open four (4) hours prior to the scheduled start of play. Players will register in the Wynn Las Vegas Poker Room, located in Encore at Wynn Las Vegas.",
+   "close": "registration opens four (4) hours prior to the scheduled start of play",
+   "fee": "The Tournament entry fee (the \"Entry Fee\") must be paid with cash or Wynn Las Vegas live casino chips; no other forms of payment will be accepted.",
+   "stack": "",
+   "levels": "",
+   "guarantee": ""
+  }
+ },
+ "rows": [
+  {
+   "date": "2026-11-27",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "12:00",
+   "name": "TORSE",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    2
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "13:00",
+   "name": "PLO",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    2
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-27",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1C",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "12:00",
+   "name": "Mixed Triple Draw (A-5, 2-7, Badugi)",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    2,
+    3
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-28",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1D",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-29",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1E",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-29",
+   "start": "18:00",
+   "name": "No Limit Hold'em Day 1F",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "12:00",
+   "name": "Limit Omaha 8",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "13:00",
+   "name": "No Limit Hold'em Day 2",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $800 No Limit Hold'em $1,000,000 Guarantee"
+  },
+  {
+   "date": "2026-11-30",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1C",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "12:00",
+   "name": "Limit Omaha 8 / Stud 8",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "13:00",
+   "name": "PLO",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 5:30 p.m.).",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-01",
+   "start": "17:00",
+   "name": "No Limit Hold'em Day 1D",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-02",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1E",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-02",
+   "start": "18:00",
+   "name": "No Limit Hold'em Day 1F",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-03",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4,
+    5
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4,
+    5
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "12:00",
+   "name": "HORSE",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9 (approximately 4:30 p.m.).",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-04",
+   "start": "13:00",
+   "name": "No Limit Hold'em Final Table",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4,
+    5
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,600 No Limit Hold'em $1,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-05",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 2",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,100 WPT Prime Championship $5,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-05",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-05",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "11:00",
+   "name": "PLO Mystery Bounty Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6,
+    7
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "18:00",
+   "name": "PLO Mystery Bounty Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6,
+    7
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-06",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1C",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "12:00",
+   "name": "PLO Mystery Bounty Day 2",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6,
+    7
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,600 PLO Mystery Bounty $500,000 Guarantee"
+  },
+  {
+   "date": "2026-12-07",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-08",
+   "start": "11:00",
+   "name": "WPT Prime Championship Day 1D",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-08",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 2",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,100 WPT Prime Championship $5,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-10",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 3",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,100 WPT Prime Championship $5,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-11",
+   "start": "12:00",
+   "name": "WPT Prime Championship Day 4",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,100 WPT Prime Championship $5,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "14:00",
+   "name": "WPT Prime Championship Final Table",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    5,
+    6
+   ],
+   "excerpt": "One (1) Entry and One (1) re-entry for each starting flight will be available until the start of level 10 (approximately 6:45 p.m.). A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,100 WPT Prime Championship $5,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-12",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1A",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "11:00",
+   "name": "No Limit Hold'em Day 1B",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    3
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 9. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-14",
+   "start": "21:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "12:00",
+   "name": "No Limit Hold'em Final Table",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    4,
+    5
+   ],
+   "excerpt": "Unlimited re-entry for each starting flight will be available until the start of level 10. A player who advances to Day 2 is prohibited from entering a subsequent starting flight. A player that has advanced to Day 2 who enters a starting flight in error will be disqualified from the subsequent flight and will not be entitled to a refund of their Tournament re-entry fee. The player will be permitted to play Day 2 with their Tournament chip stack from the original starting flight.",
+   "read": "2026-11-19",
+   "note": "continuation day of $1,600 No Limit Hold'em $1,000,000 Guarantee"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "13:00",
+   "name": "Mixed Triple Draw (A-5, 2-7, Badugi)",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    2,
+    3
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  },
+  {
+   "date": "2026-12-21",
+   "start": "20:00",
+   "name": "NLH Turbo",
+   "verdict": "multi",
+   "source": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+   "pages": [
+    6
+   ],
+   "excerpt": "Unlimited re-entry will be available until the start of level 9.",
+   "read": "2026-11-19"
+  }
+ ],
+ "counts": {
+  "read": 38,
+  "still_unread": 89,
+  "continuation_of_read_event": 9
+ }
+}

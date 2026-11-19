@@ -24,7 +24,7 @@
   "id": "F04",
   "area": "Entry rules",
   "title": "Every WPT / Wynn event whose terms were read permits re-entry",
-  "detail": "Unlimited re-entry (until level 9 or level 10) on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8 and NLH Turbo events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per flight.",
+  "detail": "Re-checked 2026-11-19 against all 14 event sections in the official structures PDF: unlimited re-entry on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8, Limit Omaha 8/Stud 8, $600 NLH Turbo and $1,600 PLO Mystery Bounty events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per starting flight. The Wynn daily structures PDF likewise states a re-entry fee on its $200 events, and 'Re-entry is NOT allowed' only on the $240 Friday NLH Rebuy & Add-on, which sells extra chips by rebuy ($200 for 25,000 chips while at 15,000 or less) and one $100 add-on instead. No WPT/Wynn event of any kind meets standard S1.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -148,8 +148,8 @@
  {
   "id": "F21",
   "area": "Coverage",
-  "title": "Not every WPT event's entry terms were read individually",
-  "detail": "Terms were read for 13 distinct events in the official structures PDF. The rest are marked 'entry terms not read' rather than being copied from a sibling event.",
+  "title": "Some WPT festival events still have no terms section in the official structures PDF",
+  "detail": "Every event terms-and-conditions section printed in the official WPT World Championship structures PDF was read on 2026-11-19 (14 sections: $600 NLH, TORSE, $400 PLO, Mixed Triple Draw, $800 NLH, Limit Omaha 8, Limit Omaha 8/Stud 8, $1,100 PLO, $1,600 NLH, HORSE, WPT Prime Championship, $600 NLH Turbo, $1,600 PLO Mystery Bounty, plus the General Terms). Every one of them grants re-entry, so none can pass S1. 47 rows are covered by those sections (38 flights/entries plus 9 continuation days). The 89 rows below are not: milestone satellites, the Seniors, Ladies, High Roller, Big O, 6-Max, 8-Max and Turbo events and the $3,000 and $10,400 championships have no section in that PDF at all, and three names ('No Limit Hold'em Day 1A', 'No Limit Hold'em Day 1B', 'No Limit Hold'em') are used by more than one event with different buy-ins, so no section can be matched to a row without guessing. Those rows keep the unread label. See F60 for the same finding stated from the schedule side.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -370,5 +370,12 @@
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
   "status": "new (98087225); needs review",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F61",
+  "area": "Source defect",
+  "title": "WPT schedule PDF prints two different weeks under a 'Dec. 18' heading",
+  "detail": "The official schedule PDF's 16 December block is headed 'Dec. 18 Wednesday' (18 December 2026 is a Friday; Wednesday is the 16th), and the block that follows it is headed 'Dec. 18 Friday' with a different set of events and start times. One of the two blocks must be misdated, and the PDF alone cannot say which: the first block's weekday disagrees with its printed date, the second block's agrees. Rows are stored under 16 December with the discrepancy printed on the row (F05 is the older, narrower note). Treat both days as provisional until Wynn publishes a corrected schedule.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
  }
 ]
