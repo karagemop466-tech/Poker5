@@ -2,6 +2,29 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — bdcaf0bf (active) — FINAL INTEGRATION
+
+**Branch:** `arena/bdcaf0bf-poker5` (fixed by Arena). **Role:** final integration session for the brief delivered in this thread (single-entry policy, true hotel cost, trip cost calculator, schedule/overlap/walk checks, venue pages, search, date filter, dated rate log, structured rule fields, per-row last-checked, scheduled official-source re-check with change marking, executive summary, questions, suggestions, flagged-for-review, GitHub Pages publish).
+
+**Claimed scope (written before any file was edited; other sessions must not edit these):**
+
+| Scope | Files |
+|---|---|
+| Canonical merged dataset | `data/bdcaf0bf/**` (events, hotels, routes, venues, rates log, sources ledger, last-checked, change log, flags, questions, suggestions, meta) |
+| Canonical generators (owned here) | `scripts/integrate_bdcaf0bf.py`, `scripts/build_bdcaf0bf.py`, `scripts/check_bdcaf0bf.py`, `scripts/recheck_bdcaf0bf.py` |
+| Published root site (GitHub Pages `main` `/`) | `index.html`, `pages/**` (all 20+ pages become generated output of the canonical builder), `assets/css/style.css`, `assets/app.js` |
+| Root-site automation | `.github/workflows/integrate-bdcaf0bf.yml` (new daily job) and the root-site write steps of `.github/workflows/daily-scrape.yml`, `.github/workflows/recheck-ea99006a.yml`, `.github/workflows/quality.yml` |
+| Repo docs | `README.md`, `EXECUTIVE_SUMMARY.md`, `REPO_REVIEW.md`, this section of `COORDINATION.md` |
+| Scratch notes | `work/bdcaf0bf/**` |
+
+**Why the workflow edits are in scope:** the repo had two scheduled jobs that both rewrote the *same* root-site files from *different* generators (`daily-scrape.yml` -> `scripts/build_c6087e2c.py`; `recheck-ea99006a.yml` -> `scripts/build_ea99006a.py`). Each successful run committed a different version of `index.html`/`pages/**`, so the published site alternated between two datasets and two contradictory single-entry verdicts (0 vs 55). Every integration PR's output was therefore silently overwritten within hours. This session stops the alternation: the monitors keep refreshing their own `data/*` captures, but only `scripts/build_bdcaf0bf.py` writes the root site. No other session's data folder, dashboard folder or script is edited or deleted.
+
+**Read-only here:** `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`, `data/c6087e2c/`, `data/ea99006a/`, `data/final/`, and every other session's `scripts/*` and `pages/*` copies inside their own folders.
+
+**Tasks (status at claim):** all unclaimed -> in progress. K1 re-verify every official Venetian schedule row line-by-line against the live official page; K2 re-derive the single-entry verdict from the stored structure-sheet text (own keyword pass, both prior standards reconciled); K3 re-verify hotel fee/parking/cancellation/tax sources; K4 merged dataset + canonical builder with all brief features; K5 checks (every row sourced, links resolve, deterministic build); K6 PR -> merge -> confirm Pages deploy; K7 record sources/verification/irregularities here.
+
+**Live verification already performed by this session (2026-11-19, via the agent page-fetch tool; the sandbox cannot open TCP to casino hosts):** all 94 rows of the official Venetian DSE IV schedule re-read and matched to the committed capture (dates, times, event numbers, sheet links) - no row changed; sheet 18 re-read (buy-in split $35/$165, events 3-5, no re-entry language); Venetian resort-fee page ($55 + tax); Venetian poker-suite rates page ($119/$209 floor, $55 resort fee, 6 h cash play or a $300+ tournament per night, qualifying play before 2 a.m. on the last night); Venetian poker-room page (room is in The Palazzo, level 2, Grand Canal Shoppes; 50 tables; open 24 h); Venetian self-parking page ($20/day for registered guests, $25 Fri-Sun for non-guests, $40 valet, free self-parking for 3 h+ poker play); Wynn poker page (WPT Nov 27-Dec 21, Super Gold Million $400/$3M GTD, daily slate $200K weekly GTD incl. a $40K NLH *Rebuy* Friday, suspended during series); Wynn offer terms (resort fee $55 + tax for bookings on/after 2025-01-15; one-night deposit; cancellation 72 h before arrival); Caesars official poker page (four daily NLH at 10/2/6/9 a.m.-p.m., $100 buy-in, 20,000 chips, $1,000 GTD, 20-min levels, **$50 add-on**); Caesars corporate Hotel Disclaimer (resort fee stated as a **range $45-$60** plus tax, waived for Diamond/Seven Stars); Clark County ordinance PDF (resort hotel inside the primary gaming corridor = 12.5% + 0.88% = **13.38%**; "rent" includes separately stated facility/access fees, so the resort fee is taxed).
+
 ## Current branch session — b33a0c35 (active)
 
 **Branch:** `arena/b33a0c35-poker5` (fixed by Arena). **Claimed scope:** repair the generated trip-cost calculator so missing hotel quotes cannot produce a false zero-cost estimate; ensure entries × buy-ins + nights × true nightly hotel cost is shown only when required inputs are known. This is a stale-scope takeover of the prior calculator task: its owner logged completion on 2026-11-17, but the current checkout's generated planner still defaults hotel cost to $0 and its regression test fails.
