@@ -154,15 +154,37 @@
   "id": "S14"
  },
  {
-  "id": "S15",
-  "title": "Close the remaining unverified rows: human-readable event terms capture",
-  "problem": "99 rows (91 WPT, 8 South Point) keep an unverified label only because their official entry terms are not machine-readable in the build environment: the WPT structures PDF truncates at 30 pages of extracted text, and South Point publishes its rules as JPG images.",
+  "title": "Filter the tables by whether an event is actually open to you",
+  "problem": "Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are 50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this session they were ranked as ordinary picks and could become a day's primary event.",
   "options": [
-   "A human reads the WPT structures PDF past page 30 and pastes each Registration section into data/ with its URL and retrieval date (fastest, no code)",
-   "The scheduled capture workflow on GitHub Actions downloads the PDFs and extracts all pages there (it has normal egress; add a per-event text extract to data/c6087e2c/)",
-   "Add OCR to the capture pipeline for the South Point JPG rules sheets",
-   "Ask each room for a written one-entry cap per event (also resolves F01)"
+   "Keep the per-row 'entry restricted' label only (implemented)",
+   "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+   "Let the reader tick which field types they qualify for and filter on that"
   ],
-  "effect": "Each closed row loses its unverified label and joins either the confirmed single-entry set or the multi-entry section, with the official sentence stored on the row."
+  "effect": "The label is implemented and the ranking plus the day schedule already exclude restricted rows. A reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age and gender are the reader's own facts, not the site's to assume), so it is left as an option.",
+  "id": "S15"
+ },
+ {
+  "title": "Have the monitor record its first-read baseline explicitly",
+  "problem": "The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57).",
+  "options": [
+   "Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+   "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+   "Drop the page-hash ledger and publish only value-level changes"
+  ],
+  "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
+  "id": "S16"
+ },
+ {
+  "title": "Close the remaining unverified rows: human-readable entry-terms capture",
+  "problem": "The rows that still carry an unverified label do so only because their official entry terms are not machine-readable in the build environment: the WPT structures PDF truncates at page 30 of extracted text, the per-event sheets its footnotes reference were not found published online, and South Point publishes its rules as JPG images.",
+  "options": [
+   "A human reads the remaining WPT event terms and South Point rules sheets and pastes each entry sentence into data/ with its URL and retrieval date (fastest, no code)",
+   "Ask each room in writing for the entry cap per event (also resolves the F01 standard question)",
+   "Add OCR to the capture pipeline for the South Point JPG rules sheets",
+   "Leave the rows unverified and keep them out of every plan (current state, honest but incomplete)"
+  ],
+  "effect": "Each closed row loses its unverified label and joins either the no-second-entry set or the multi-entry section, with the official sentence stored on the row.",
+  "id": "S17"
  }
 ]

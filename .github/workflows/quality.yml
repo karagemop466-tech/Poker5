@@ -38,6 +38,8 @@ jobs:
         run: node scripts/build_aa83f1e1.mjs
       - name: Parser self-test for the official-source scraper (no network)
         run: python3 scripts/scrape_251c122f.py --self-test
+      - name: Re-diff the stored schedule against the committed live transcription (session 8f0b323b)
+        run: python3 scripts/recheck_8f0b323b.py
       - name: Regenerate the root Pages site from the official data (canonical builder)
         run: python3 scripts/build_ea99006a.py
       - name: Validate rows, source links and internal links

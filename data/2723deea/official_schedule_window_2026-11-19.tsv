@@ -1,0 +1,29 @@
+# Fresh independent read of the official Venetian DeepStack Extravaganza IV schedule page
+# https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+# read 2026-11-19 (this session, session 2723deea), chunks 0-3, rows for 2026-12-06 .. 2026-12-12 transcribed by hand
+# cols: date<TAB>time<TAB>event_no<TAB>name<TAB>structure_sheet_no
+2026-12-06	11:10 AM	28	$600 No Limit Hold'em $40K GTD (1Day)	7
+2026-12-06	12:00 PM	26	$800 No Limit Hold'em Day 2 Restart	12
+2026-12-06	5:10 PM	29	$300 No Limit Hold'em Bounty $15K GTD (1Day)	15
+2026-12-07	11:10 AM	30	$600 No Limit Hold'em Bounty $40K GTD (1Day) - $200 bounties to start & $500 bounties in the money	11
+2026-12-07	5:10 PM	31	$300 No Limit Hold'em Bounty $15K GTD (1Day)	15
+2026-12-08	10:10 AM	32	$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate	17
+2026-12-08	4:10 PM	33	$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39	19
+2026-12-08	5:10 PM	34	$300 No Limit Hold'em Bounty $15K GTD (1Day)	15
+2026-12-09	10:10 AM	35	$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male	31
+2026-12-09	11:10 AM	36	$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money	16
+2026-12-09	4:10 PM	37	$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39	19
+2026-12-09	5:10 PM	38	$300 No Limit Hold'em Bounty $15K GTD (1Day)	15
+2026-12-10	10:10 AM	39	$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event	32
+2026-12-10	12:10 PM	40	$600 Pot Limit Omaha Bounty $25K GTD (1Day)	27
+2026-12-10	4:10 PM	41	$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47	24
+2026-12-10	5:10 PM	42	$300 No Limit Hold'em Bounty $15K GTD (1Day)	15
+2026-12-11	10:00 AM	39	$800 No Limit Hold'em LIPS Ladies Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)	32
+2026-12-11	11:10 AM	43	$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players	33
+2026-12-11	4:10 PM	44	$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47	24
+2026-12-11	7:00 PM	39	$800 No Limit Hold'em LIPS Ladies Final Table - Streamed Final Table (PokerGO)	32
+2026-12-11	8:10 PM	45	$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47	25
+2026-12-12	9:10 AM	46	$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47	25
+2026-12-12	10:10 AM	47	$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event	21
+2026-12-12	12:10 PM	48	$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47	25
+2026-12-12	6:10 PM	47	$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event	37

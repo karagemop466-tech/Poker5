@@ -37,6 +37,8 @@ ALLOWED_HOSTS = [
     "github.com", "karagemop466-tech.github.io",
     # official property pages referenced as "no official schedule found"
     "bellagio.mgmresorts.com", "mgmgrand.mgmresorts.com", "aria.mgmresorts.com",
+    # MGM Resorts parking / reservation-terms pages, read 2026-11-19 in session 8f0b323b
+    "www.mgmresorts.com", "mgmresorts.com",
     # repository-internal findings (repo review, pipeline fixes) cite the repo itself
     "github.com", "www.github.com",
 ]
