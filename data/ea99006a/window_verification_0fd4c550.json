@@ -1,0 +1,1321 @@
+{
+ "read_at": "2026-11-19",
+ "reader": "session 0fd4c550 (Arena agent), through the page-fetch tool",
+ "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+ "window": "the planner's recommended stay: 2026-12-06 to 2026-12-13 (playing days 6-12 December)",
+ "rows_on_page": 28,
+ "rows_matched": 28,
+ "rows_differing": 0,
+ "fields_checked": [
+  "date",
+  "start time",
+  "event number",
+  "event name",
+  "buy-in",
+  "guarantee",
+  "structure sheet"
+ ],
+ "note": "Every row on the live page inside the recommended window was compared with the published record on each field the page states. A row whose buy-in or guarantee the page formats differently is reported as differing; no value is edited by this script.",
+ "rows": [
+  {
+   "live": {
+    "date": "2026-12-06",
+    "start": "11:10",
+    "event_no": "28",
+    "name": "$600 No Limit Hold'em $40K GTD (1Day)",
+    "sheet": "7",
+    "guarantee": "$40K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "11:10",
+     "published": "11:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 no limit hold em $40k gtd 1day",
+     "published": "$600 no limit hold em $40k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "40000.0",
+     "published": "40000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "7",
+     "published": "7",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-06",
+    "start": "12:00",
+    "event_no": "26",
+    "name": "$800 No Limit Hold'em Day 2 Restart",
+    "sheet": "12",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "12:00",
+     "published": "12:00",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$800 no limit hold em day 2 restart",
+     "published": "$800 no limit hold em day 2 restart",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "800.0",
+     "published": "800.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "500000.0",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "12",
+     "published": "12",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-06",
+    "start": "17:10",
+    "event_no": "29",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-07",
+    "start": "11:10",
+    "event_no": "30",
+    "name": "$600 No Limit Hold'em Bounty $40K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+    "sheet": "11",
+    "guarantee": "$40K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "11:10",
+     "published": "11:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 no limit hold em bounty $40k gtd 1day $200 bounties to start $500 bounties in the money",
+     "published": "$600 no limit hold em bounty $40k gtd 1day $200 bounties to start $500 bounties in the money",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "40000.0",
+     "published": "40000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "11",
+     "published": "11",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-07",
+    "start": "17:10",
+    "event_no": "31",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-08",
+    "start": "10:10",
+    "event_no": "32",
+    "name": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+    "sheet": "17",
+    "guarantee": "$40K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:10",
+     "published": "10:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 no limit hold em seniors $40k gtd 1day must be 50 years of age to participate",
+     "published": "$600 no limit hold em seniors $40k gtd 1day must be 50 years of age to participate",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "40000.0",
+     "published": "40000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "17",
+     "published": "17",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-08",
+    "start": "16:10",
+    "event_no": "33",
+    "name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+    "sheet": "19",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "16:10",
+     "published": "16:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$100 nlh lips ladies milestone satellite 1day awards direct entry to event 39",
+     "published": "$100 nlh lips ladies milestone satellite 1day awards direct entry to event 39",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "100.0",
+     "published": "100.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "19",
+     "published": "19",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-08",
+    "start": "17:10",
+    "event_no": "34",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-09",
+    "start": "10:10",
+    "event_no": "35",
+    "name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male",
+    "sheet": "31",
+    "guarantee": "$10K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:10",
+     "published": "10:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 nlh lips poker jingle tag team $10k gtd 1day tag teams consist of female female or female male",
+     "published": "$600 nlh lips poker jingle tag team $10k gtd 1day",
+     "match": true,
+     "note": "wording differs (reported, not a value error)"
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "10000.0",
+     "published": "10000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "31",
+     "published": "31",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-09",
+    "start": "11:10",
+    "event_no": "36",
+    "name": "$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+    "sheet": "16",
+    "guarantee": "$75K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "11:10",
+     "published": "11:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$800 no limit hold em bounty $75k gtd 1day $200 bounties to start $500 bounties in the money",
+     "published": "$800 no limit hold em bounty $75k gtd 1day $200 bounties to start $500 bounties in the money",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "800.0",
+     "published": "800.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "75000.0",
+     "published": "75000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "16",
+     "published": "16",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-09",
+    "start": "16:10",
+    "event_no": "37",
+    "name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+    "sheet": "19",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "16:10",
+     "published": "16:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$100 nlh lips ladies milestone satellite 1day awards direct entry to event 39",
+     "published": "$100 nlh lips ladies milestone satellite 1day awards direct entry to event 39",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "100.0",
+     "published": "100.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "19",
+     "published": "19",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-09",
+    "start": "17:10",
+    "event_no": "38",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-10",
+    "start": "10:10",
+    "event_no": "39",
+    "name": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event",
+    "sheet": "32",
+    "guarantee": "$40K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:10",
+     "published": "10:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$800 no limit hold em lips ladies $40k gtd 2day women in poker main event",
+     "published": "$800 no limit hold em lips ladies $40k gtd 2day women in poker main event",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "800.0",
+     "published": "800.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "40000.0",
+     "published": "40000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "32",
+     "published": "32",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-10",
+    "start": "12:10",
+    "event_no": "40",
+    "name": "$600 Pot Limit Omaha Bounty $25K GTD (1Day)",
+    "sheet": "27",
+    "guarantee": "$25K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "12:10",
+     "published": "12:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 pot limit omaha bounty $25k gtd 1day",
+     "published": "$600 pot limit omaha bounty $25k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "25000.0",
+     "published": "25000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "27",
+     "published": "27",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-10",
+    "start": "16:10",
+    "event_no": "41",
+    "name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+    "sheet": "24",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "16:10",
+     "published": "16:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$260 nlh milestone satellite 1day awards direct entry to event 47",
+     "published": "$260 nlh milestone satellite 1day awards direct entry to event 47",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "260.0",
+     "published": "260.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "24",
+     "published": "24",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-10",
+    "start": "17:10",
+    "event_no": "42",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-11",
+    "start": "10:00",
+    "event_no": "39",
+    "name": "$800 No Limit Hold'em LIPS Ladies Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+    "sheet": "32",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:00",
+     "published": "10:00",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$800 no limit hold em lips ladies day 2 restart play down to final 7 streamed final table pokergo",
+     "published": "$800 no limit hold em lips ladies day 2 restart play down to final 7 streamed final table pokergo",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "800.0",
+     "published": "800.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "40000.0",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "32",
+     "published": "32",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-11",
+    "start": "11:10",
+    "event_no": "43",
+    "name": "$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players",
+    "sheet": "33",
+    "guarantee": "$30K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "11:10",
+     "published": "11:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$600 no limit hold em lips $30k gtd 1day kings and queens bounty open to all players",
+     "published": "$600 no limit hold em lips $30k gtd 1day kings and queens bounty open to all players",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "600.0",
+     "published": "600.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "30000.0",
+     "published": "30000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "33",
+     "published": "33",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-11",
+    "start": "16:10",
+    "event_no": "44",
+    "name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+    "sheet": "24",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "16:10",
+     "published": "16:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$260 nlh milestone satellite 1day awards direct entry to event 47",
+     "published": "$260 nlh milestone satellite 1day awards direct entry to event 47",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "260.0",
+     "published": "260.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "24",
+     "published": "24",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-11",
+    "start": "19:00",
+    "event_no": "39",
+    "name": "$800 No Limit Hold'em LIPS Ladies Final Table - Streamed Final Table (PokerGO)",
+    "sheet": "32",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "19:00",
+     "published": "19:00",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$800 no limit hold em lips ladies final table streamed final table pokergo",
+     "published": "$800 no limit hold em lips ladies final table streamed final table pokergo",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "800.0",
+     "published": "800.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "40000.0",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "32",
+     "published": "32",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-11",
+    "start": "20:10",
+    "event_no": "45",
+    "name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+    "sheet": "25",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "20:10",
+     "published": "20:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "published": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "260.0",
+     "published": "260.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "25",
+     "published": "25",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-12",
+    "start": "09:10",
+    "event_no": "46",
+    "name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+    "sheet": "25",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "09:10",
+     "published": "09:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "published": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "260.0",
+     "published": "260.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "25",
+     "published": "25",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-12",
+    "start": "10:10",
+    "event_no": "47",
+    "name": "$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event",
+    "sheet": "21",
+    "guarantee": "$1 Mill GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:10",
+     "published": "10:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$2 200 no limit hold em 1a $1 mill gtd pokeratlas championship title event",
+     "published": "$2 200 no limit hold em 1a $1 mill gtd pokeratlas championship title event",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "2200.0",
+     "published": "2200.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "1000000.0",
+     "published": "1000000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "21",
+     "published": "21",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-12",
+    "start": "12:10",
+    "event_no": "48",
+    "name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+    "sheet": "25",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "12:10",
+     "published": "12:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "published": "$260 nlh turbo milestone satellite 1day awards direct entry to event 47",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "260.0",
+     "published": "260.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "25",
+     "published": "25",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-12",
+    "start": "18:10",
+    "event_no": "47",
+    "name": "$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event",
+    "sheet": "37",
+    "guarantee": "$1 Mill GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "18:10",
+     "published": "18:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$2 200 no limit hold em 1b $1 mill gtd pokeratlas championship title event",
+     "published": "$2 200 no limit hold em 1b $1 mill gtd pokeratlas championship title event",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "2200.0",
+     "published": "2200.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "1000000.0",
+     "published": "1000000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "37",
+     "published": "37",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-13",
+    "start": "10:10",
+    "event_no": "49",
+    "name": "$1,100 No Limit Hold'em Seniors 1A $300K GTD - Must be 50+ years of age to participate",
+    "sheet": "20",
+    "guarantee": "$300K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "10:10",
+     "published": "10:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$1 100 no limit hold em seniors 1a $300k gtd must be 50 years of age to participate",
+     "published": "$1 100 no limit hold em seniors 1a $300k gtd must be 50 years of age to participate",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "1100.0",
+     "published": "1100.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "300000.0",
+     "published": "300000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "20",
+     "published": "20",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-13",
+    "start": "13:00",
+    "event_no": "47",
+    "name": "$2,200 NLH PokerAtlas Championship Title Event Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+    "sheet": "21",
+    "guarantee": ""
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "13:00",
+     "published": "13:00",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$2 200 nlh pokeratlas championship title event day 2 restart play down to final 7 streamed final table pokergo",
+     "published": "$2 200 nlh pokeratlas championship title event day 2 restart play down to final 7 streamed final table pokergo",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "2200.0",
+     "published": "2200.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "",
+     "published": "1000000.0",
+     "match": true,
+     "note": "not stated in one of the two records - not compared"
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "21",
+     "published": "21",
+     "match": true
+    }
+   ],
+   "entry_rule": "multi",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf"
+  },
+  {
+   "live": {
+    "date": "2026-12-13",
+    "start": "17:10",
+    "event_no": "50",
+    "name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+    "sheet": "15",
+    "guarantee": "$15K GTD"
+   },
+   "status": "match",
+   "fields": [
+    {
+     "field": "start time",
+     "official_page": "17:10",
+     "published": "17:10",
+     "match": true
+    },
+    {
+     "field": "event name",
+     "official_page": "$300 no limit hold em bounty $15k gtd 1day",
+     "published": "$300 no limit hold em bounty $15k gtd 1day",
+     "match": true
+    },
+    {
+     "field": "buy-in",
+     "official_page": "300.0",
+     "published": "300.0",
+     "match": true
+    },
+    {
+     "field": "guarantee",
+     "official_page": "15000.0",
+     "published": "15000.0",
+     "match": true
+    },
+    {
+     "field": "structure sheet",
+     "official_page": "15",
+     "published": "15",
+     "match": true
+    }
+   ],
+   "entry_rule": "confirmed_single",
+   "last_checked": "2026-11-19",
+   "row_source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf"
+  }
+ ]
+}

@@ -152,5 +152,27 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "title": "Settle the 8 a.m. requirement before the hotel is booked",
+  "problem": "The brief's day is meant to start at 8 a.m.; no captured Strip schedule publishes an enterable start before 09:10, and the recommended window's first two days start at 11:00 (F57). That changes what a hotel is for: a 9:10 start needs a different lobby than an 8:00 start.",
+  "options": [
+   "Accept the published starts and plan from them (what the site does now)",
+   "Ask the Venetian room by phone whether an unlisted early turbo exists, and record the answer with the date and the name that gave it",
+   "Move the window to a series whose schedule carries earlier flights and let the site re-rank"
+  ],
+  "effect": "One of the three has to be picked before the non-refundable hotel payment: the site will not invent an 8 a.m. event to make the plan look complete.",
+  "id": "S15"
+ },
+ {
+  "title": "Decide where parking and the incidental hold belong in 'true cost per night'",
+  "problem": "The Venetian now publishes $20/night guest self-parking and a $150/night incidental hold. Parking is a real cost of driving, but it is waived for the day with 3+ hours of play, and the incidental hold is not a cost at all - it is a card hold that is released.",
+  "options": [
+   "Keep them as separate lines next to the nightly rate, as now (chosen: nothing is folded into an average that would make two hotels look comparable when they are not)",
+   "Fold parking into the true nightly cost and mark the row 'assuming you drive'",
+   "Drop parking from the site and let the reader add it"
+  ],
+  "effect": "The planner already adds parking when the box is ticked and states the source; the choice is whether the headline 'true cost per night' should include it. Whichever is picked, the incidental hold stays out of the cost and in the terms column.",
+  "id": "S16"
  }
 ]

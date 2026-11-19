@@ -1064,6 +1064,25 @@ def main() -> int:
           "a guest parking rate on the pages we could read.")
          % TODAY,
          LIVE["venetian_parking"]["url"], status="partially resolved; per-stay checkout totals still open")
+    flag("F57", "Schedule fit",
+         "No Strip room's published schedule offers an 8 a.m. start",
+         ("The brief asks for a day that plays from 8 a.m. onward. Counted from every captured row on %s: the "
+          "earliest enterable start anywhere in the three schedules is 09:10 (a Venetian satellite), and inside "
+          "the recommended window the earliest is 11:00 on 6 December and 09:10 on 12 December. Restart and "
+          "final-table rows are excluded because they cannot be entered. So the 8 a.m. goal cannot be met from "
+          "the published schedules, and the day plan starts at each day's earliest published start instead of "
+          "pretending an earlier one exists.") % TODAY,
+         "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+         status="open: only the room can confirm an unlisted early turbo")
+    flag("F58", "Schedule verification",
+         "The recommended window was re-read from the live official page and matches row for row",
+         ("On %s the 28 schedule rows for 6-13 December 2026 were read again from the official page and compared "
+          "field by field (date, start, event number, event text, buy-in, guarantee, structure-sheet number) with "
+          "the published record by scripts/verify_window_0fd4c550.py: 28 of 28 matched, 0 value disagreements. The "
+          "transcription is kept at data/ea99006a/window_live_2026-11-19_0fd4c550.tsv so the comparison can be "
+          "re-run by hand, and quality.yml runs the comparison on every build.") % TODAY,
+         "https://karagemop466-tech.github.io/Poker5/pages/verification.html",
+         status="verified this session; re-checked on every build")
     flag("F56", "Site build",
          "The scheduled re-check re-derived the published records from the generator and silently reverted corrections",
          ("recheck-ea99006a.yml runs scripts/integrate_b3be876c.py on every scheduled run, and that script writes "
@@ -1146,6 +1165,18 @@ def main() -> int:
            how=("The nightly monitor re-reads the official suite-rate page and the booking links each morning and "
                 "records any published change in the dated rate log; the calculator shows the fee side and stays "
                 "'Incomplete' on the room-rate side until a dated quote exists. Nothing is asked of you."))
+    upsert(questions, "Q18",
+           q="Is an 8 a.m. start possible on these dates, and what does the day actually look like?",
+           have=("Answered from the published starts, not from a preference: no enterable event in any captured "
+                 "Strip schedule starts before 09:10, and inside 6-12 December the earliest published start is "
+                 "11:00 on the first two days and 09:10 on 12 December. Restart and final-table rows are excluded "
+                 "because they cannot be entered. The day plan therefore starts at each day's earliest published "
+                 "start (see the 8 a.m. panel on the Day schedule page)."),
+           missing=("Whether a room runs an early daily turbo that its public schedule does not list, and whether "
+                    "the room's own 8 a.m. cash game (which is not a tournament) belongs in the plan."),
+           how=("Ask the Venetian poker room directly whether any 6:00-9:00 a.m. tournament runs on 6-12 December "
+                "2026; if none does, the plan is already the maximum: one full-field start plus an evening "
+                "fallback where the registration windows allow it (F57)."))
     upsert(suggestions, "S13",
            title="Publish one root-site generator (done here) and retire the second one",
            problem="Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
@@ -1153,6 +1184,29 @@ def main() -> int:
                     "Give each session its own subdirectory and never let a scheduled job write the root",
                     "Freeze the scheduled rebuilds entirely and rebuild only by hand"],
            effect="The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.")
+    upsert(suggestions, "S15",
+           title="Settle the 8 a.m. requirement before the hotel is booked",
+           problem=("The brief's day is meant to start at 8 a.m.; no captured Strip schedule publishes an enterable "
+                    "start before 09:10, and the recommended window's first two days start at 11:00 (F57). That "
+                    "changes what a hotel is for: a 9:10 start needs a different lobby than an 8:00 start."),
+           options=["Accept the published starts and plan from them (what the site does now)",
+                    "Ask the Venetian room by phone whether an unlisted early turbo exists, and record the answer "
+                    "with the date and the name that gave it",
+                    "Move the window to a series whose schedule carries earlier flights and let the site re-rank"],
+           effect=("One of the three has to be picked before the non-refundable hotel payment: the site will not "
+                   "invent an 8 a.m. event to make the plan look complete."))
+    upsert(suggestions, "S16",
+           title="Decide where parking and the incidental hold belong in 'true cost per night'",
+           problem=("The Venetian now publishes $20/night guest self-parking and a $150/night incidental hold. "
+                    "Parking is a real cost of driving, but it is waived for the day with 3+ hours of play, and the "
+                    "incidental hold is not a cost at all - it is a card hold that is released."),
+           options=["Keep them as separate lines next to the nightly rate, as now (chosen: nothing is folded into "
+                    "an average that would make two hotels look comparable when they are not)",
+                    "Fold parking into the true nightly cost and mark the row 'assuming you drive'",
+                    "Drop parking from the site and let the reader add it"],
+           effect=("The planner already adds parking when the box is ticked and states the source; the choice is "
+                   "whether the headline 'true cost per night' should include it. Whichever is picked, the "
+                   "incidental hold stays out of the cost and in the terms column."))
     upsert(suggestions, "S14",
            title="Keep value-level monitoring, drop hash-level alarmism",
            problem="Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",

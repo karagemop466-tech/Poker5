@@ -1,48 +1,307 @@
 {
-  "note": "Line-by-line traceability for the project brief: every requirement in the request, the status on the published site, where the control or table lives, and the evidence or the reason it cannot be completed. Statuses: 'implemented' (the control and its data exist), 'implemented, limit published' (built, with the honest boundary printed next to it), 'blocked on an official source' (the site refuses to fill it from anything but the property's own page - see the linked flag). Written by session 0fd4c550 on 2026-11-19 after re-reading the published pages and the official sources.",
-  "site": "https://karagemop466-tech.github.io/Poker5/",
-  "statuses": {
-    "implemented": "The requirement is met by a control or a table on the published site.",
-    "implemented, limit published": "Built, and the boundary of what the data can prove is printed next to it rather than hidden.",
-    "blocked on an official source": "The site will not invent the value: no official page states it, so the cell stays blank and the reason is flagged."
+ "note": "Line-by-line traceability for the project brief: every requirement in the request, the status on the published site, where the control or table lives, and the evidence or the reason it cannot be completed. Statuses: 'implemented' (the control and its data exist), 'implemented, limit published' (built, with the honest boundary printed next to it), 'blocked on an official source' (the site refuses to fill it from anything but the property's own page - see the linked flag). Written by session 0fd4c550 on 2026-11-19 after re-reading the published pages and the official sources.",
+ "site": "https://karagemop466-tech.github.io/Poker5/",
+ "statuses": {
+  "implemented": "The requirement is met by a control or a table on the published site.",
+  "implemented, limit published": "Built, and the boundary of what the data can prove is printed next to it rather than hidden.",
+  "blocked on an official source": "The site will not invent the value: no official page states it, so the cell stays blank and the reason is flagged."
+ },
+ "rows": [
+  {
+   "id": "R01",
+   "requirement": "Estimated cost of a trip calculator: entries x buy-ins + nights x true hotel cost",
+   "status": "implemented, limit published",
+   "where": "Trip planner - 'Cost of the trip' panel",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/planner.html",
+   "note": "The entries side is complete (one listed buy-in per ticked event). The hotel side is prefilled from the dated log instead of asking you to type: the dated capture, the published poker suite-rate floor, or nothing. Choosing 'nothing' still shows the verified mandatory stay cost per night, and the total is labelled Incomplete rather than closed with a zero-cost hotel."
   },
-  "rows": [
-    {"id": "R01", "requirement": "Estimated cost of a trip calculator: entries x buy-ins + nights x true hotel cost", "status": "implemented, limit published", "where": "Trip planner - 'Cost of the trip' panel", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/planner.html", "note": "The entries side is complete (one listed buy-in per ticked event). The hotel side is prefilled from the dated log instead of asking you to type: the dated capture, the published poker suite-rate floor, or nothing. Choosing 'nothing' still shows the verified mandatory stay cost per night, and the total is labelled Incomplete rather than closed with a zero-cost hotel."},
-    {"id": "R02", "requirement": "Automatic re-check of each official URL on a schedule, marking rows whose source changed", "status": "implemented", "where": "Source monitor page; 'source changed' / 'official value changed' pills on every row", "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml", "note": "recheck-ea99006a.yml runs at 13:00 and 19:00 UTC: it re-fetches every official URL, compares the extracted sentence behind each published value (not the page hash), commits the dated ledger and rebuilds the site. A 'changed' mark is a prompt to re-read, never an automatic value edit."},
-    {"id": "R03", "requirement": "Read every structure sheet and remove the 'unverified' label from each event that is confirmed", "status": "implemented", "where": "All tournaments and Single-entry tables; Verification log", "evidence": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html", "note": "All 37 official Venetian DeepStack Extravaganza IV sheets were read; 53 rows carry the label 'Confirmed single-entry (standard S1)' with the sheet's own excerpt and retrieval date on the row. The 99 rows whose terms were not read keep an explicit unverified label. The standing limit is published on the row and as flags F01/F47: no sheet states 'one entry only' in words, so confirmation means 'the published rules grant no second entry'."},
-    {"id": "R04", "requirement": "A 'last checked' date on each row", "status": "implemented", "where": "Last-checked column on every event, hotel and route table", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/verification.html", "note": "Taken from the re-check ledger for the URL behind that row, so it is the date that URL was actually re-read, not the date the site was built."},
-    {"id": "R05", "requirement": "Rates kept as a dated log, not a single value", "status": "implemented", "where": "Hotels page - 'Dated rate log'", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html", "note": "One row per (hotel, observation date) with what the observation is, its source and its caveats. A morning job rewrites the log; no rate is ever collapsed into one number."},
-    {"id": "R06", "requirement": "One page per venue (Venetian, Wynn, others), each with its events and hotels", "status": "implemented", "where": "Venetian, Wynn and Other venues pages", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/venues/venetian.html", "note": "Each venue page carries its own filtered event table plus a 'Stay here' block with the resort fee, the guest parking fee, the cancellation deadline, the check-in/out times and the official booking link for the selected window."},
-    {"id": "R07", "requirement": "Search box across all tables", "status": "implemented", "where": "Every table page, plus the landing-page search that hands the term to the chosen page", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html", "note": "One search box per page filters every table on it; the landing page lets you pick which page to search. Evidence excerpts are excluded from matching so a denial ('no re-entry sentence appears') does not match a search for 're-entry'."},
-    {"id": "R08", "requirement": "One shared COORDINATION.md on main before parallel sessions start", "status": "implemented", "where": "COORDINATION.md in the repository root", "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md", "note": "Shared board: each session writes its claim (tasks, status, session id, file scope) before editing, then its sources, verification and irregularities. It is excluded from the published site by _config.yml."},
-    {"id": "R09", "requirement": "For the exact dates and occupancy capture checkout total, nightly average, mandatory resort fee and tax, parking, cancellation deadline and rate timestamp; compare like-for-like", "status": "implemented, limit published", "where": "Hotels page - 'Dated stay captures' and 'Stay terms, one line per official statement'", "evidence": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html", "note": "Every component now has an official sentence for the Venetian (fee, fee+13.38% tax, $20/night guest parking, 24-hour cancellation deadline on the published refundable rate, deposit, $150/night incidental hold, 11:00 a.m. check-out) and for Wynn. The itemized checkout total that exists is for 2-9 December, not the selected window, so the page states that the captures are not comparable and draws no cheapest-hotel ranking."},
-    {"id": "R10", "requirement": "Use start time, late-registration cutoff and plausible duration to flag overlaps; one primary event and a conditional fallback per day", "status": "implemented, limit published", "where": "Day schedule page", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html", "note": "Sequencing is decided from the published start time and the published registration close. No official source publishes finish times, so the playing length is an explicit, optional assumption control; without it the page says 'cannot be decided' rather than inventing a finish time."},
-    {"id": "R11", "requirement": "Rank only after confirming total entry fee and guarantee; guarantee / entry fee as a descriptive ratio; bounty and flight events labelled separately", "status": "implemented", "where": "All tournaments (ratio column), Executive summary (ranked shortlist), Multi-entry / advantage page", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/executive-summary.html", "note": "Ranking is gated on both the buy-in and the guarantee being present and agreeing between the two official captures; the ratio is stored per row as gtd_to_entry and printed as descriptive arithmetic, not a forecast. Bounty/PKO rows are listed in their own table and multi-flight rows are never ranked with single-day entries."},
-    {"id": "R12", "requirement": "Date filter that shows only events on the chosen days", "status": "implemented", "where": "Date range and exact-day controls above every event table", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html", "note": "Client-side, applies to every table on the page, and is the mechanism the site uses to re-plan a different week without editing data."},
-    {"id": "R13", "requirement": "Structured rule fields: single-entry, re-entry, add-on and fee stored separately, each with its source excerpt and retrieval date", "status": "implemented", "where": "Expanded 'rule fields' block on every Venetian row; Verification log", "evidence": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf", "note": "Nine fields per row (single_entry, re_entry, add_on, house_fee, guarantee, late_registration, starting_chips, level_minutes, start_time), each carrying value, the sheet's own sentence, the sheet URL and the retrieval date."},
-    {"id": "R14", "requirement": "Schedule overlap check once finish times are verified", "status": "blocked on an official source", "where": "Day schedule page (the check runs on the assumed length instead)", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html", "note": "No Strip room publishes an expected finish time, so the verified-finish-time version of this check cannot exist yet. It is wired to switch over as soon as a row carries a published finish time; until then the page says so on the row."},
-    {"id": "R15", "requirement": "Walking-route check with official addresses and the 30-minute limit", "status": "blocked on an official source", "where": "Walking routes page; '<=30 min walk' filter on the hotel and schedule tables", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/routes.html", "note": "Same-property pairs are 0 minutes and are verified from the property's own pages (the Venetian poker room is inside The Palazzo, level 2 of the Grand Canal Shoppes). No property publishes a walking time to another property, so those minute cells are blank, the filter only acts on minutes actually recorded, and every pair carries a maps deep link built from the official street addresses (flag F50)."},
-    {"id": "R16", "requirement": "Change monitoring that flags any value that changed", "status": "implemented", "where": "Source monitor page; 'hide unchanged' / 'changed only' filters", "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml", "note": "Value-level: the monitor extracts the sentence behind each published number and compares that, because whole-page hashing flagged 48 of 96 sources on byte noise (F48). A change marks the row and never rewrites the value."},
-    {"id": "R17", "requirement": "Workflow step 1: fix trip dates and a nightly budget / quality floor", "status": "implemented, limit published", "where": "Trip planner 'Proposed planning window' and 'Nightly budget ceiling and quality floor'; Hotels page budget controls", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/planner.html", "note": "The window (2026-12-06 check-in, 2026-12-13 check-out, 7 nights, playing days 6-12 December) is selected automatically from the confirmed single-entry set and is labelled a scenario, not a traveller's preference. The ceiling and the floor are real controls; they hide only rows that are known to miss them."},
-    {"id": "R18", "requirement": "Workflow step 2: get the official structure sheet and written maximum-entry / no-rebuy / no-add-on rules; remove any event that does not match a single-entry policy", "status": "implemented, limit published", "where": "Single-entry page; Multi-entry / advantage page", "evidence": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf", "note": "Every event whose own sheet grants another entry was moved out of the single-entry set - including events #18 and #58, moved out because rule 07 prices 'all subsequent buy in's' at $200 even though the sheet never uses the word re-entry (F47). No sheet states a written maximum, and the site says that rather than pretending otherwise."},
-    {"id": "R19", "requirement": "Workflow step 3: compare only surviving events on guarantee, buy-in, starting stack / blind duration, payout structure and schedule fit", "status": "implemented, limit published", "where": "Single-entry page (comparison table) and Day schedule", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/single-entry.html", "note": "Guarantee, buy-in, house fee, starting chips, level duration and schedule fit are compared from the sheets. Payout structure is the exception: the Venetian sheets do not publish a payout table per event, so that column stays blank and flagged instead of borrowed from a sibling event."},
-    {"id": "R20", "requirement": "Workflow step 4: itemized hotel totals for the same stay; walking route under 30 minutes", "status": "implemented, limit published", "where": "Hotels page 'Same stay, itemized' table", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html", "note": "The itemized comparison only lists captures whose window, occupancy and room class match; today that is a single dated capture, so the page says no ranking is drawn rather than comparing unlike things. The walk is 0 minutes for the two shortlisted hotels that contain their poker room."},
-    {"id": "R21", "requirement": "Workflow step 5: build one event per day first; add evening events only where the earlier event can realistically be exited", "status": "implemented", "where": "Day schedule page: primary event + conditional fallback", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html", "note": "An evening event is attached to a day only when it starts at or after the primary's registration window closes; otherwise the day shows a single primary and the reason."},
-    {"id": "R22", "requirement": "Workflow step 6: reconfirm official schedules, rates and policies before any non-refundable payment", "status": "implemented", "where": "Every page footer, the Method page, and the reconfirm panel on the Executive summary", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/method.html", "note": "The site states its own staleness risk on every page: the capture date is printed in the header of each table, and values that came from a dated snapshot are labelled as such."},
-    {"id": "R23", "requirement": "Live-data feed / scraper pulling each Strip room's official daily schedule each morning", "status": "implemented", "where": "Source monitor page - 'Morning feed by room'; daily-scrape.yml", "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/daily-scrape.yml", "note": "Two jobs: the morning capture reads the official schedule and every linked structure sheet into the research ledger; the publisher re-reads the URLs behind the published values. Rooms whose official page returns no schedule (Horseshoe, Resorts World, the MGM Rooms) are listed as such - no rows are invented for them (F10-F13, F26)."},
-    {"id": "R24", "requirement": "'Single-entry / freezeout confirmed' toggle filter on the tournaments table", "status": "implemented", "where": "Tournaments and Single-entry tables", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html", "note": "The toggle shows only rows confirmed under standard S1; a companion control hides multi-entry rows. The label next to the toggle states that S1 is a rules test, not a house freezeout promise."},
-    {"id": "R25", "requirement": "Live hotel rate lookup with official booking links per date, and true cost/night = rate + resort fee + 13.38% tax", "status": "implemented, limit published", "where": "Hotels page calculator + booking links carrying the selected dates; the dated rate log", "evidence": "https://www.venetianlasvegas.com/resort/resort-fee.html", "note": "Booking links are generated with your exact check-in and check-out dates so the lookup is live. The rate itself cannot be scraped: the engines are JavaScript applications and no official page publishes a dated nightly rate (F14), so the calculator computes rate + fee + tax and shows the fee side - it does not fabricate the rate."},
-    {"id": "R26", "requirement": "Walking-distance verification from each hotel to the Venetian poker room with a '<=30 min walk' filter", "status": "implemented, limit published", "where": "Walking routes page; filter on the tournament and hotel tables", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/routes.html", "note": "The filter is live and honest: it only acts where minutes are recorded. The Venetian poker room is inside The Palazzo, so the two shortlisted properties are 0 minutes; every other pair carries a maps link built from the official address and stays blank until measured (F15, F50)."},
-    {"id": "R27", "requirement": "Find live upcoming tournaments around the Strip, single-entry only; separate section for events where spending more buys an advantage", "status": "implemented", "where": "All tournaments; Single-entry; Multi-entry / advantage", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments-double.html", "note": "247 verified rows from the Venetian, Wynn/WPT and Caesars captures. Re-entry, add-on, rebuy, multi-flight, bounty-with-rake-discount and restart rows are kept in the separate section, because each of those lets money buy another shot at the prize pool."},
-    {"id": "R28", "requirement": "Best hotels to stay in, weighing cost and quality above distance, within a 30-minute walk", "status": "implemented, limit published", "where": "Hotels page shortlist with budget ceiling and quality floor", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html", "note": "The shortlist is sorted on verified fee and tier, and both candidates that contain their poker room satisfy the walk limit with 0 minutes. 'Best by price' is not published because the room-rate side is missing for every property but one - the page says so instead of ranking on incomplete totals."},
-    {"id": "R29", "requirement": "Aim at playing from 8 AM all day and entering as many live tournaments as possible", "status": "implemented", "where": "Day schedule (primary + fallback per day); the window choice counts the entries it can carry", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html", "note": "The recommended window was chosen because it carries the most single-entry full-field starts, and the day page shows which second event actually fits after a registration window closes. Morning start times below 8 a.m. exist in the schedule and are shown as they are."},
-    {"id": "R30", "requirement": "Executive summary of important details", "status": "implemented", "where": "Executive summary page; EXECUTIVE_SUMMARY.md in the repo", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/executive-summary.html", "note": "Written from the same data as the tables, so it cannot drift from them: it is generated, and CI fails if the committed page is not the generator's output."},
-    {"id": "R31", "requirement": "Suggestions for improving the site, in a section where the reader can pick a path before anything is implemented", "status": "implemented", "where": "Suggestions page", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/suggestions.html", "note": "Fourteen open decisions, each with the problem, 2-3 options and the effect; radio buttons build a 'your chosen path' list to copy into a request. Nothing changes on the site by picking."},
-    {"id": "R32", "requirement": "A clear list of questions, information and answers needed before a decision can be made, with suggestions for finding what is missing", "status": "implemented", "where": "Questions page", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/questions.html", "note": "Seventeen questions, each with what we already have, what is still missing and how to get it - including how to obtain an official answer (which page to read, what to ask the room, what the booking engine must show)."},
-    {"id": "R33", "requirement": "Repo work: review the repository line by line, provide links for manual review, flag irregularities", "status": "implemented", "where": "Repo review page; REPO_REVIEW.md", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/repo-review.html", "note": "The review page lists the defects found in the pipeline itself (competing publishers, a monitor that could not run, a generator that was not idempotent) with the commit or run that shows each one."},
-    {"id": "R34", "requirement": "GitHub Pages site with a clean landing page and subpages by category, dashboard-style tables, all entries and findings", "status": "implemented", "where": "https://karagemop466-tech.github.io/Poker5/", "evidence": "https://karagemop466-tech.github.io/Poker5/", "note": "Twenty pages, one stylesheet, no frameworks, generated from the data files. The landing page carries the headline counts, the search box and the cards into each category."},
-    {"id": "R35", "requirement": "Verification: every table row links to an official source; anything unconfirmed stays blank and flagged; nothing inferred", "status": "implemented", "where": "Enforced by scripts/check_ea99006a.py in CI", "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/scripts/check_ea99006a.py", "note": "The build fails if any table row lacks an https link to an allow-listed official host, or if any internal link is broken. Blank cells are rendered as 'not verified' in place of a value."},
-    {"id": "R36", "requirement": "Parallel-session coordination: shared board, claims with file scopes, rebase before push, handoffs, records of sources and verification", "status": "implemented", "where": "COORDINATION.md", "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md", "note": "Twenty-plus session sections, each with its claim, its scope, its verification and its irregularities. Conflicts are resolved by keeping both sides; the board records each handoff."},
-    {"id": "R37", "requirement": "Pull request, merge without waiting, confirm Pages deploys, publish flagged items on a review page", "status": "implemented", "where": "Flagged for review page; the PR and merge records in COORDINATION.md", "evidence": "https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html", "note": "Forty-four flagged items with their source links, merged and deployed with checks passing; the PR and Pages run ids are recorded on the board. Flagged items never block the merge, and they stay visible after it."}
-  ]
+  {
+   "id": "R02",
+   "requirement": "Automatic re-check of each official URL on a schedule, marking rows whose source changed",
+   "status": "implemented",
+   "where": "Source monitor page; 'source changed' / 'official value changed' pills on every row",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+   "note": "recheck-ea99006a.yml runs at 13:00 and 19:00 UTC: it re-fetches every official URL, compares the extracted sentence behind each published value (not the page hash), commits the dated ledger and rebuilds the site. A 'changed' mark is a prompt to re-read, never an automatic value edit."
+  },
+  {
+   "id": "R03",
+   "requirement": "Read every structure sheet and remove the 'unverified' label from each event that is confirmed",
+   "status": "implemented",
+   "where": "All tournaments and Single-entry tables; Verification log",
+   "evidence": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+   "note": "All 37 official Venetian DeepStack Extravaganza IV sheets were read; 53 rows carry the label 'Confirmed single-entry (standard S1)' with the sheet's own excerpt and retrieval date on the row. The 99 rows whose terms were not read keep an explicit unverified label. The standing limit is published on the row and as flags F01/F47: no sheet states 'one entry only' in words, so confirmation means 'the published rules grant no second entry'."
+  },
+  {
+   "id": "R04",
+   "requirement": "A 'last checked' date on each row",
+   "status": "implemented",
+   "where": "Last-checked column on every event, hotel and route table",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/verification.html",
+   "note": "Taken from the re-check ledger for the URL behind that row, so it is the date that URL was actually re-read, not the date the site was built."
+  },
+  {
+   "id": "R05",
+   "requirement": "Rates kept as a dated log, not a single value",
+   "status": "implemented",
+   "where": "Hotels page - 'Dated rate log'",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+   "note": "One row per (hotel, observation date) with what the observation is, its source and its caveats. A morning job rewrites the log; no rate is ever collapsed into one number."
+  },
+  {
+   "id": "R06",
+   "requirement": "One page per venue (Venetian, Wynn, others), each with its events and hotels",
+   "status": "implemented",
+   "where": "Venetian, Wynn and Other venues pages",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/venues/venetian.html",
+   "note": "Each venue page carries its own filtered event table plus a 'Stay here' block with the resort fee, the guest parking fee, the cancellation deadline, the check-in/out times and the official booking link for the selected window."
+  },
+  {
+   "id": "R07",
+   "requirement": "Search box across all tables",
+   "status": "implemented",
+   "where": "Every table page, plus the landing-page search that hands the term to the chosen page",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html",
+   "note": "One search box per page filters every table on it; the landing page lets you pick which page to search. Evidence excerpts are excluded from matching so a denial ('no re-entry sentence appears') does not match a search for 're-entry'."
+  },
+  {
+   "id": "R08",
+   "requirement": "One shared COORDINATION.md on main before parallel sessions start",
+   "status": "implemented",
+   "where": "COORDINATION.md in the repository root",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md",
+   "note": "Shared board: each session writes its claim (tasks, status, session id, file scope) before editing, then its sources, verification and irregularities. It is excluded from the published site by _config.yml."
+  },
+  {
+   "id": "R09",
+   "requirement": "For the exact dates and occupancy capture checkout total, nightly average, mandatory resort fee and tax, parking, cancellation deadline and rate timestamp; compare like-for-like",
+   "status": "implemented, limit published",
+   "where": "Hotels page - 'Dated stay captures' and 'Stay terms, one line per official statement'",
+   "evidence": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+   "note": "Every component now has an official sentence for the Venetian (fee, fee+13.38% tax, $20/night guest parking, 24-hour cancellation deadline on the published refundable rate, deposit, $150/night incidental hold, 11:00 a.m. check-out) and for Wynn. The itemized checkout total that exists is for 2-9 December, not the selected window, so the page states that the captures are not comparable and draws no cheapest-hotel ranking."
+  },
+  {
+   "id": "R10",
+   "requirement": "Use start time, late-registration cutoff and plausible duration to flag overlaps; one primary event and a conditional fallback per day",
+   "status": "implemented, limit published",
+   "where": "Day schedule page",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html",
+   "note": "Sequencing is decided from the published start time and the published registration close. No official source publishes finish times, so the playing length is an explicit, optional assumption control; without it the page says 'cannot be decided' rather than inventing a finish time."
+  },
+  {
+   "id": "R11",
+   "requirement": "Rank only after confirming total entry fee and guarantee; guarantee / entry fee as a descriptive ratio; bounty and flight events labelled separately",
+   "status": "implemented",
+   "where": "All tournaments (ratio column), Executive summary (ranked shortlist), Multi-entry / advantage page",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/executive-summary.html",
+   "note": "Ranking is gated on both the buy-in and the guarantee being present and agreeing between the two official captures; the ratio is stored per row as gtd_to_entry and printed as descriptive arithmetic, not a forecast. Bounty/PKO rows are listed in their own table and multi-flight rows are never ranked with single-day entries."
+  },
+  {
+   "id": "R12",
+   "requirement": "Date filter that shows only events on the chosen days",
+   "status": "implemented",
+   "where": "Date range and exact-day controls above every event table",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html",
+   "note": "Client-side, applies to every table on the page, and is the mechanism the site uses to re-plan a different week without editing data."
+  },
+  {
+   "id": "R13",
+   "requirement": "Structured rule fields: single-entry, re-entry, add-on and fee stored separately, each with its source excerpt and retrieval date",
+   "status": "implemented",
+   "where": "Expanded 'rule fields' block on every Venetian row; Verification log",
+   "evidence": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+   "note": "Nine fields per row (single_entry, re_entry, add_on, house_fee, guarantee, late_registration, starting_chips, level_minutes, start_time), each carrying value, the sheet's own sentence, the sheet URL and the retrieval date."
+  },
+  {
+   "id": "R14",
+   "requirement": "Schedule overlap check once finish times are verified",
+   "status": "blocked on an official source",
+   "where": "Day schedule page (the check runs on the assumed length instead)",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html",
+   "note": "No Strip room publishes an expected finish time, so the verified-finish-time version of this check cannot exist yet. It is wired to switch over as soon as a row carries a published finish time; until then the page says so on the row."
+  },
+  {
+   "id": "R15",
+   "requirement": "Walking-route check with official addresses and the 30-minute limit",
+   "status": "blocked on an official source",
+   "where": "Walking routes page; '<=30 min walk' filter on the hotel and schedule tables",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/routes.html",
+   "note": "Same-property pairs are 0 minutes and are verified from the property's own pages (the Venetian poker room is inside The Palazzo, level 2 of the Grand Canal Shoppes). No property publishes a walking time to another property, so those minute cells are blank, the filter only acts on minutes actually recorded, and every pair carries a maps deep link built from the official street addresses (flag F50)."
+  },
+  {
+   "id": "R16",
+   "requirement": "Change monitoring that flags any value that changed",
+   "status": "implemented",
+   "where": "Source monitor page; 'hide unchanged' / 'changed only' filters",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+   "note": "Value-level: the monitor extracts the sentence behind each published number and compares that, because whole-page hashing flagged 48 of 96 sources on byte noise (F48). A change marks the row and never rewrites the value."
+  },
+  {
+   "id": "R17",
+   "requirement": "Workflow step 1: fix trip dates and a nightly budget / quality floor",
+   "status": "implemented, limit published",
+   "where": "Trip planner 'Proposed planning window' and 'Nightly budget ceiling and quality floor'; Hotels page budget controls",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/planner.html",
+   "note": "The window (2026-12-06 check-in, 2026-12-13 check-out, 7 nights, playing days 6-12 December) is selected automatically from the confirmed single-entry set and is labelled a scenario, not a traveller's preference. The ceiling and the floor are real controls; they hide only rows that are known to miss them."
+  },
+  {
+   "id": "R18",
+   "requirement": "Workflow step 2: get the official structure sheet and written maximum-entry / no-rebuy / no-add-on rules; remove any event that does not match a single-entry policy",
+   "status": "implemented, limit published",
+   "where": "Single-entry page; Multi-entry / advantage page",
+   "evidence": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+   "note": "Every event whose own sheet grants another entry was moved out of the single-entry set - including events #18 and #58, moved out because rule 07 prices 'all subsequent buy in's' at $200 even though the sheet never uses the word re-entry (F47). No sheet states a written maximum, and the site says that rather than pretending otherwise."
+  },
+  {
+   "id": "R19",
+   "requirement": "Workflow step 3: compare only surviving events on guarantee, buy-in, starting stack / blind duration, payout structure and schedule fit",
+   "status": "implemented, limit published",
+   "where": "Single-entry page (comparison table) and Day schedule",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/single-entry.html",
+   "note": "Guarantee, buy-in, house fee, starting chips, level duration and schedule fit are compared from the sheets. Payout structure is the exception: the Venetian sheets do not publish a payout table per event, so that column stays blank and flagged instead of borrowed from a sibling event."
+  },
+  {
+   "id": "R20",
+   "requirement": "Workflow step 4: itemized hotel totals for the same stay; walking route under 30 minutes",
+   "status": "implemented, limit published",
+   "where": "Hotels page 'Same stay, itemized' table",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+   "note": "The itemized comparison only lists captures whose window, occupancy and room class match; today that is a single dated capture, so the page says no ranking is drawn rather than comparing unlike things. The walk is 0 minutes for the two shortlisted hotels that contain their poker room."
+  },
+  {
+   "id": "R21",
+   "requirement": "Workflow step 5: build one event per day first; add evening events only where the earlier event can realistically be exited",
+   "status": "implemented",
+   "where": "Day schedule page: primary event + conditional fallback",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html",
+   "note": "An evening event is attached to a day only when it starts at or after the primary's registration window closes; otherwise the day shows a single primary and the reason."
+  },
+  {
+   "id": "R22",
+   "requirement": "Workflow step 6: reconfirm official schedules, rates and policies before any non-refundable payment",
+   "status": "implemented",
+   "where": "Every page footer, the Method page, and the reconfirm panel on the Executive summary",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/method.html",
+   "note": "The site states its own staleness risk on every page: the capture date is printed in the header of each table, and values that came from a dated snapshot are labelled as such."
+  },
+  {
+   "id": "R23",
+   "requirement": "Live-data feed / scraper pulling each Strip room's official daily schedule each morning",
+   "status": "implemented",
+   "where": "Source monitor page - 'Morning feed by room'; daily-scrape.yml",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/actions/workflows/daily-scrape.yml",
+   "note": "Two jobs: the morning capture reads the official schedule and every linked structure sheet into the research ledger; the publisher re-reads the URLs behind the published values. Rooms whose official page returns no schedule (Horseshoe, Resorts World, the MGM Rooms) are listed as such - no rows are invented for them (F10-F13, F26)."
+  },
+  {
+   "id": "R24",
+   "requirement": "'Single-entry / freezeout confirmed' toggle filter on the tournaments table",
+   "status": "implemented",
+   "where": "Tournaments and Single-entry tables",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html",
+   "note": "The toggle shows only rows confirmed under standard S1; a companion control hides multi-entry rows. The label next to the toggle states that S1 is a rules test, not a house freezeout promise."
+  },
+  {
+   "id": "R25",
+   "requirement": "Live hotel rate lookup with official booking links per date, and true cost/night = rate + resort fee + 13.38% tax",
+   "status": "implemented, limit published",
+   "where": "Hotels page calculator + booking links carrying the selected dates; the dated rate log",
+   "evidence": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+   "note": "Booking links are generated with your exact check-in and check-out dates so the lookup is live. The rate itself cannot be scraped: the engines are JavaScript applications and no official page publishes a dated nightly rate (F14), so the calculator computes rate + fee + tax and shows the fee side - it does not fabricate the rate."
+  },
+  {
+   "id": "R26",
+   "requirement": "Walking-distance verification from each hotel to the Venetian poker room with a '<=30 min walk' filter",
+   "status": "implemented, limit published",
+   "where": "Walking routes page; filter on the tournament and hotel tables",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/routes.html",
+   "note": "The filter is live and honest: it only acts where minutes are recorded. The Venetian poker room is inside The Palazzo, so the two shortlisted properties are 0 minutes; every other pair carries a maps link built from the official address and stays blank until measured (F15, F50)."
+  },
+  {
+   "id": "R27",
+   "requirement": "Find live upcoming tournaments around the Strip, single-entry only; separate section for events where spending more buys an advantage",
+   "status": "implemented",
+   "where": "All tournaments; Single-entry; Multi-entry / advantage",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments-double.html",
+   "note": "247 verified rows from the Venetian, Wynn/WPT and Caesars captures. Re-entry, add-on, rebuy, multi-flight, bounty-with-rake-discount and restart rows are kept in the separate section, because each of those lets money buy another shot at the prize pool."
+  },
+  {
+   "id": "R28",
+   "requirement": "Best hotels to stay in, weighing cost and quality above distance, within a 30-minute walk",
+   "status": "implemented, limit published",
+   "where": "Hotels page shortlist with budget ceiling and quality floor",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+   "note": "The shortlist is sorted on verified fee and tier, and both candidates that contain their poker room satisfy the walk limit with 0 minutes. 'Best by price' is not published because the room-rate side is missing for every property but one - the page says so instead of ranking on incomplete totals."
+  },
+  {
+   "id": "R29",
+   "requirement": "Aim at playing from 8 AM all day and entering as many live tournaments as possible",
+   "status": "implemented",
+   "where": "Day schedule (primary + fallback per day); the window choice counts the entries it can carry",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/schedule.html",
+   "note": "Answered from the published starts rather than left open: no captured Strip schedule lists an enterable event before 09:10, and in the recommended window the earliest is 11:00 on 6-7 December and 09:10 on 12 December, so an 8 a.m. start does not exist to be planned. The Day schedule page states this day by day, then gives each day its earliest start plus an evening fallback where a registration window allows it. The window itself was chosen because it carries the most single-entry full-field starts (12) of any 7-night span in the series."
+  },
+  {
+   "id": "R30",
+   "requirement": "Executive summary of important details",
+   "status": "implemented",
+   "where": "Executive summary page; EXECUTIVE_SUMMARY.md in the repo",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/executive-summary.html",
+   "note": "Written from the same data as the tables, so it cannot drift from them: it is generated, and CI fails if the committed page is not the generator's output."
+  },
+  {
+   "id": "R31",
+   "requirement": "Suggestions for improving the site, in a section where the reader can pick a path before anything is implemented",
+   "status": "implemented",
+   "where": "Suggestions page",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/suggestions.html",
+   "note": "Fourteen open decisions, each with the problem, 2-3 options and the effect; radio buttons build a 'your chosen path' list to copy into a request. Nothing changes on the site by picking."
+  },
+  {
+   "id": "R32",
+   "requirement": "A clear list of questions, information and answers needed before a decision can be made, with suggestions for finding what is missing",
+   "status": "implemented",
+   "where": "Questions page",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/questions.html",
+   "note": "Seventeen questions, each with what we already have, what is still missing and how to get it - including how to obtain an official answer (which page to read, what to ask the room, what the booking engine must show)."
+  },
+  {
+   "id": "R33",
+   "requirement": "Repo work: review the repository line by line, provide links for manual review, flag irregularities",
+   "status": "implemented",
+   "where": "Repo review page; REPO_REVIEW.md",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/repo-review.html",
+   "note": "The review page lists the defects found in the pipeline itself (competing publishers, a monitor that could not run, a generator that was not idempotent) with the commit or run that shows each one."
+  },
+  {
+   "id": "R34",
+   "requirement": "GitHub Pages site with a clean landing page and subpages by category, dashboard-style tables, all entries and findings",
+   "status": "implemented",
+   "where": "https://karagemop466-tech.github.io/Poker5/",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/",
+   "note": "Twenty pages, one stylesheet, no frameworks, generated from the data files. The landing page carries the headline counts, the search box and the cards into each category."
+  },
+  {
+   "id": "R35",
+   "requirement": "Verification: every table row links to an official source; anything unconfirmed stays blank and flagged; nothing inferred",
+   "status": "implemented",
+   "where": "Enforced by scripts/check_ea99006a.py in CI",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/scripts/check_ea99006a.py",
+   "note": "The build fails if any table row lacks an https link to an allow-listed official host, or if any internal link is broken. Blank cells are rendered as 'not verified' in place of a value."
+  },
+  {
+   "id": "R36",
+   "requirement": "Parallel-session coordination: shared board, claims with file scopes, rebase before push, handoffs, records of sources and verification",
+   "status": "implemented",
+   "where": "COORDINATION.md",
+   "evidence": "https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md",
+   "note": "Twenty-plus session sections, each with its claim, its scope, its verification and its irregularities. Conflicts are resolved by keeping both sides; the board records each handoff."
+  },
+  {
+   "id": "R37",
+   "requirement": "Pull request, merge without waiting, confirm Pages deploys, publish flagged items on a review page",
+   "status": "implemented",
+   "where": "Flagged for review page; the PR and merge records in COORDINATION.md",
+   "evidence": "https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html",
+   "note": "Forty-four flagged items with their source links, merged and deployed with checks passing; the PR and Pages run ids are recorded on the board. Flagged items never block the merge, and they stay visible after it."
+  }
+ ]
 }

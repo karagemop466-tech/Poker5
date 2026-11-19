@@ -1271,6 +1271,52 @@ def build_schedule():
                 'official start time to its official late-registration close time, both printed on its structure '
                 'sheet. Where a sheet states no close time, the start time alone is used. No finish time is '
                 'estimated - no official source publishes one.</p>')
+    # The brief's goal is a day that starts at 8 a.m. Whether that is possible is a fact about the
+    # published schedules, not a preference, so the page answers it from the rows instead of leaving
+    # the reader to scan 247 of them. Restart and final-table rows are excluded: you cannot enter one.
+    _first_day = TRIP.get("first_playing_day") or TRIP["check_in"]
+    _last_day = TRIP.get("last_playing_day") or TRIP["check_out"]
+    _win_days = {}
+    _all_starts = []
+    for r in ALL_EVENTS:
+        st = r.get("start")
+        if not st or r["kind"] in ("restart", "final"):
+            continue
+        _all_starts.append(st)
+        if r.get("date") and _first_day <= r["date"] <= _last_day:
+            if r["date"] not in _win_days or st < _win_days[r["date"]][0]:
+                _win_days[r["date"]] = (st, r)
+    _all_starts.sort()
+    _earliest_all = _all_starts[0] if _all_starts else ""
+    _earliest_win = min(v[0] for v in _win_days.values()) if _win_days else ""
+    body.append('<div class="panel"><h2>Can a day start at 8 a.m.? Answered from the published starts</h2>'
+                '<p>Across every captured Strip schedule, no enterable event starts before <b>%s</b>. Inside your '
+                'window the earliest published start is <b>%s</b>. An 8 a.m. first event is therefore not '
+                'something these schedules offer on these dates, so the plan below starts each day at that '
+                'day\'s earliest published start and treats the later events as the second session. This is a '
+                'limit of what the rooms publish, not of the plan (flag F57).</p>'
+                '<div class="tablewrap"><table class="data"><thead><tr><th>Playing day</th>'
+                '<th class="num">Earliest published start</th><th>That event</th>'
+                '<th>What is left for the rest of the day</th><th>Official source</th></tr></thead><tbody>'
+                % (esc(pretty_time(_earliest_all)) or "not stated", esc(pretty_time(_earliest_win)) or "not stated"))
+    for d in sorted(_win_days):
+        st, r = _win_days[d]
+        later = sum(1 for x in ALL_EVENTS if x.get("date") == d and x.get("start") and x["start"] > st
+                    and x["kind"] not in ("restart", "final"))
+        body.append('<tr><td class="nowrap">%s</td><td class="num"><b>%s</b></td><td class="sm"><b>%s</b> #%s'
+                    '</td><td class="sm">%s</td><td>%s</td></tr>'
+                    % (esc(pretty_date(d)), esc(pretty_time(st)), esc(r.get("venue") or ""),
+                       esc(r.get("event_no") or ""),
+                       ("%d further enterable start(s) that day; the table below shows which ones fit after the "
+                        "first event's registration window closes" % later) if later
+                       else "nothing else is scheduled that day",
+                       src_link(r.get("schedule_source") or r.get("source") or "", "official schedule page")))
+    body.append('</tbody></table></div><p class="muted sm">Counted from the start time of every captured row '
+                '(Venetian DeepStack Extravaganza IV, the WPT World Championship at Wynn and the Caesars daily '
+                'flyer). If a 6:00 or 8:00 a.m. start is a requirement rather than a preference, the only honest '
+                'next step is to ask the room whether it runs an early daily turbo its public schedule does not '
+                'list - the site will not assume one exists.</p></div>')
+
     by_date = {}
     for r in ALL_EVENTS:
         if r["kind"] in ("restart", "final"):
@@ -2496,6 +2542,42 @@ def build_verification():
                     "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
                     "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
                     "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
+    # 0fd4c550: the recommended window re-read row by row from the live schedule page, with the
+    # field-by-field result kept next to the row it came from.
+    _wv = _opt(DATA, "window_verification_0fd4c550.json", {})
+    if _wv.get("rows"):
+        _wbad = [r for r in _wv["rows"] if r.get("status") != "match"]
+        body.append("<div class=\"panel\"><h2>Recommended window, re-read from the live page on "
+                    + esc(_wv.get("read_at", "")) + "</h2>"
+                    "<p>" + esc(_wv.get("note", "")) + "</p>"
+                    "<div class=\"kv\"><dt>window</dt><dd>" + esc(_wv.get("window", "")) + "</dd>"
+                    "<dt>rows on the official page</dt><dd><b>" + str(_wv.get("rows_on_page", 0)) + "</b></dd>"
+                    "<dt>rows matching the published record</dt><dd><b>" + str(_wv.get("rows_matched", 0)) + "</b></dd>"
+                    "<dt>value disagreements</dt><dd><b>" + str(len(_wbad)) + "</b></dd>"
+                    "<dt>fields compared</dt><dd>" + esc(", ".join(_wv.get("fields_checked") or [])) + "</dd>"
+                    "<dt>read by</dt><dd>" + esc(_wv.get("reader", "")) + "</dd>"
+                    "<dt>method</dt><dd><code>scripts/verify_window_0fd4c550.py</code> against "
+                    "<code>data/ea99006a/window_live_2026-11-19_0fd4c550.tsv</code></dd></div>")
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Date</th><th>Start</th>'
+                    '<th>#</th><th>Event, as the official page words it</th><th class="num">Sheet</th>'
+                    '<th>Fields compared</th><th>Verdict</th><th>Published entry-rule label</th>'
+                    '<th>Official source</th></tr></thead><tbody>')
+        for r in _wv["rows"]:
+            l = r["live"]
+            det = "; ".join("%s %s" % (f["field"], "ok" if f["match"] else ("review: " + f.get("note", "")))
+                            for f in r.get("fields") or [])
+            body.append("<tr><td class=\"nowrap\">%s</td><td>%s</td><td>%s</td><td>%s</td>"
+                        "<td class=\"num\">%s</td><td class=\"sm\">%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(l["date"]), esc(l["start"]), esc(l["event_no"]), esc(l["name"]),
+                           esc(l["sheet"]), esc(det),
+                           '<span class="pill pill-ok">identical</span>' if r["status"] == "match"
+                           else '<span class="pill pill-bad">differs</span>',
+                           esc(r.get("entry_rule") or "not a Venetian row"),
+                           src_link(_wv.get("url") or "", "schedule page")))
+        body.append("</tbody></table></div>")
+        body.append('<p class="muted sm">A "review" note means the page and the record word the same event '
+                    'differently; the figures behind it still matched. Value disagreements would be published here '
+                    'as <i>differs</i> and opened as a flag rather than edited into the table.</p></div>')
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])

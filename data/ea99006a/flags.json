@@ -336,5 +336,23 @@
   "source": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
   "status": "fixed by session 0fd4c550; guarded by quality.yml",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F57",
+  "area": "Schedule fit",
+  "title": "No Strip room's published schedule offers an 8 a.m. start",
+  "detail": "The brief asks for a day that plays from 8 a.m. onward. Counted from every captured row on 2026-11-19: the earliest enterable start anywhere in the three schedules is 09:10 (a Venetian satellite), and inside the recommended window the earliest is 11:00 on 6 December and 09:10 on 12 December. Restart and final-table rows are excluded because they cannot be entered. So the 8 a.m. goal cannot be met from the published schedules, and the day plan starts at each day's earliest published start instead of pretending an earlier one exists.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "status": "open: only the room can confirm an unlisted early turbo",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F58",
+  "area": "Schedule verification",
+  "title": "The recommended window was re-read from the live official page and matches row for row",
+  "detail": "On 2026-11-19 the 28 schedule rows for 6-13 December 2026 were read again from the official page and compared field by field (date, start, event number, event text, buy-in, guarantee, structure-sheet number) with the published record by scripts/verify_window_0fd4c550.py: 28 of 28 matched, 0 value disagreements. The transcription is kept at data/ea99006a/window_live_2026-11-19_0fd4c550.tsv so the comparison can be re-run by hand, and quality.yml runs the comparison on every build.",
+  "source": "https://karagemop466-tech.github.io/Poker5/pages/verification.html",
+  "status": "verified this session; re-checked on every build",
+  "last_updated": "2026-11-19"
  }
 ]

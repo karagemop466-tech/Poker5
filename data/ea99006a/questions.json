@@ -117,5 +117,12 @@
   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
+ },
+ {
+  "q": "Is an 8 a.m. start possible on these dates, and what does the day actually look like?",
+  "have": "Answered from the published starts, not from a preference: no enterable event in any captured Strip schedule starts before 09:10, and inside 6-12 December the earliest published start is 11:00 on the first two days and 09:10 on 12 December. Restart and final-table rows are excluded because they cannot be entered. The day plan therefore starts at each day's earliest published start (see the 8 a.m. panel on the Day schedule page).",
+  "missing": "Whether a room runs an early daily turbo that its public schedule does not list, and whether the room's own 8 a.m. cash game (which is not a tournament) belongs in the plan.",
+  "how": "Ask the Venetian poker room directly whether any 6:00-9:00 a.m. tournament runs on 6-12 December 2026; if none does, the plan is already the maximum: one full-field start plus an evening fallback where the registration windows allow it (F57).",
+  "id": "Q18"
  }
 ]
