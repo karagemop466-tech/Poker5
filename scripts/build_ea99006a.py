@@ -119,6 +119,12 @@ for _c in CHANGE_LOG:
 VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
+# The trip window has two ends with two different jobs. TRIP["check_out"] is the hotel
+# check-out date (check_in + nights), which is what a booking link and a nights-times-rate
+# calculation need. Event lists run to the last *playing* day, which is the day before
+# check-out; listing events up to check-out would advertise a day the window was never scored
+# on. Older captures have no last_play_day, so the checkout date stays the fallback.
+PLAY_END = TRIP.get("last_play_day") or TRIP["check_out"]
 
 # The only nightly room rate any Strip property publishes on an official page (a starting floor, not a quote).
 VEN_POKER = {
@@ -1266,8 +1272,8 @@ def build_schedule():
               for d in all_days]
     body.append('<div class="daynav" id="daynav">%s</div>' % "".join(chips))
     body.append('<label class="chk" style="margin:6px 0"><input type="checkbox" id="winonly"> '
-                'Only my %d nights (%s to %s, checkout day included for the day event)</label>'
-                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+                'Only my %d nights (%s to %s; the playing days run to %s, the day before check-out)</label>'
+                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"]), esc(PLAY_END)))
     # Optional what-if: the user's own playing-length estimate. Blank by default; no source supplies it,
     # so it is never shown as an official value and never written into the data.
     body.append('<div class="panel" id="seqbox"><label><b>Assumed playing length</b> (hours, optional) '
@@ -1287,7 +1293,7 @@ def build_schedule():
     seqjson = json.dumps(seq, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     out = []
     for d, evs, prim, fb, conflicts in rows_by_date:
-        inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
+        inwin = TRIP["check_in"] <= d <= PLAY_END
         hay = "%s %s %s" % (pretty_date(d), weekday(d),
                             " ".join("%s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]]) for r in evs))
         out.append('<div class="panel daycard%s" data-date="%s" data-daysel="1"%s '
@@ -1630,17 +1636,19 @@ def build_planner():
     # confirmed single-entry or explicitly multi-entry. The planner lists what can actually be played -
     # the confirmed rows first, the not-stated ones still labelled as such.
     rows = [r for r in ALL_EVENTS if r["kind"] == "entry" and r.get("date")
-            and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]
+            and TRIP["check_in"] <= r["date"] <= PLAY_END
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     body = ["<h1>Trip planner: cost of the trip</h1>"]
     body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
-                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your window (%s to %s): '
+                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your playing window '
+                '(%s to %s; you check out %s): '
                 'the ones whose own structure sheet was read in full and grants no further entry are the playable '
                 'set, and rows whose sheet is merely silent about re-entry are still labelled as such. One listed '
                 'buy-in is counted per ticked event.</p>'
-                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"]))))
+                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(PLAY_END)),
+                   esc(pretty_date(TRIP["check_out"]))))
     body.append('<div class="panel"><h2>Proposed planning window</h2><div class="kv">'
                 '<dt>Check in / out</dt><dd>%s &rarr; %s (%d nights)</dd>'
                 '<dt>Dates to consider</dt><dd>%s</dd>'
@@ -1799,7 +1807,9 @@ def build_exec():
     body.append('<div class="panel"><h2>The short version</h2><ul class="clean">')
     summary_items = [
         "The official Venetian schedule capture contains %d rows; all %d linked structure sheets were read. The canonical dashboard classifies %d Venetian rows as confirmed under standard S1 and %d as multi-entry. S1 is a rules-based screen, not an explicit freezeout promise: no sheet states a one-entry maximum. See the per-row evidence and the open limitation on the Verification and Flagged for review pages." % (len(VEN), len(META.get("sheets", {})), len(ven_confirmed), len(ven_multi)),
-        "The recommended dates are %s to %s (%d nights; seven playing days, checkout the next day). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
+        "The recommended stay is %s to %s (%d nights; the %d playing days run %s to %s, checking out the morning "
+        "after the last one). This is an automatically selected research scenario, not traveler-provided dates or budget preferences. Its basis is %d Venetian full-field entries with about %s in published guarantees plus %d satellites; these totals are not winnings forecasts and do not mean every event can be played." % (esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"])), TRIP["nights"], TRIP["nights"], esc(pretty_date(TRIP["check_in"])), esc(pretty_date(PLAY_END)),
+        TRIP.get("entries_in_window", 0), money(TRIP.get("guarantee_sum_in_window")), TRIP.get("satellites_in_window", 0)),
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",

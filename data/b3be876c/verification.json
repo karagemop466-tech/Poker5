@@ -2,7 +2,8 @@
  "run": {
   "session": "b3be876c",
   "date": "2026-11-19",
-  "how": "Values re-read on this date with the agent's page-fetch tool; the same URLs are re-read nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the extracted sentences rather than the page hash.",
+  "sources_read": "2026-11-19",
+  "how": "The official sources behind these values were last read on 2026-11-19 (the date recorded in the capture and the source ledger, not the date of this run, which is the day above). The same URLs are re-read nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the extracted sentences rather than the page hash.",
   "sandbox_note": "The authoring sandbox cannot open a TCP connection to casino hosts, so the live reads below were made through the agent's page-fetch tool and the scheduled network reads run on GitHub Actions runners."
  },
  "schedule_page": {

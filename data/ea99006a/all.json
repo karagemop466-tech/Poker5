@@ -32,7 +32,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -170,7 +170,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -308,7 +308,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -446,7 +446,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -584,7 +584,7 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -715,7 +715,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -853,7 +853,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -978,7 +978,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1103,7 +1103,7 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1228,7 +1228,7 @@
    "entry_evidence": {
     "sheet_no": 29,
     "sheet_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1353,7 +1353,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1491,7 +1491,7 @@
    "entry_evidence": {
     "sheet_no": 30,
     "sheet_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1623,7 +1623,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1761,7 +1761,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1893,7 +1893,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2031,7 +2031,7 @@
    "entry_evidence": {
     "sheet_no": 6,
     "sheet_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2162,7 +2162,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2294,7 +2294,7 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2425,7 +2425,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2557,7 +2557,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2688,7 +2688,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -2820,7 +2820,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -2951,7 +2951,7 @@
    "entry_evidence": {
     "sheet_no": 26,
     "sheet_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -3083,7 +3083,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -3217,7 +3217,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3355,7 +3355,7 @@
    "entry_evidence": {
     "sheet_no": 22,
     "sheet_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -3486,7 +3486,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3618,7 +3618,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3756,7 +3756,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3888,7 +3888,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4026,7 +4026,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4158,7 +4158,7 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -4289,7 +4289,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4427,7 +4427,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4559,7 +4559,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4697,7 +4697,7 @@
    "entry_evidence": {
     "sheet_no": 28,
     "sheet_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -4828,7 +4828,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4966,7 +4966,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5104,7 +5104,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5242,7 +5242,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5380,7 +5380,7 @@
    "entry_evidence": {
     "sheet_no": 14,
     "sheet_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5518,7 +5518,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5649,7 +5649,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5787,7 +5787,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5919,7 +5919,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6050,7 +6050,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6182,7 +6182,7 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6313,7 +6313,7 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6445,7 +6445,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6577,7 +6577,7 @@
    "entry_evidence": {
     "sheet_no": 31,
     "sheet_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 11,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -6708,7 +6708,7 @@
    "entry_evidence": {
     "sheet_no": 16,
     "sheet_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6839,7 +6839,7 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -6971,7 +6971,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7103,7 +7103,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7239,7 +7239,7 @@
    "entry_evidence": {
     "sheet_no": 27,
     "sheet_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -7371,7 +7371,7 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -7503,7 +7503,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7635,7 +7635,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7771,7 +7771,7 @@
    "entry_evidence": {
     "sheet_no": 33,
     "sheet_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -7902,7 +7902,7 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8034,7 +8034,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8170,7 +8170,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8302,7 +8302,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8434,7 +8434,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8572,7 +8572,7 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8704,7 +8704,7 @@
    "entry_evidence": {
     "sheet_no": 37,
     "sheet_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8842,7 +8842,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8980,7 +8980,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9118,7 +9118,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9250,7 +9250,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9388,7 +9388,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9526,7 +9526,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9658,7 +9658,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9796,7 +9796,7 @@
    "entry_evidence": {
     "sheet_no": 34,
     "sheet_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9928,7 +9928,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10060,7 +10060,7 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -10191,7 +10191,7 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10323,7 +10323,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10461,7 +10461,7 @@
    "entry_evidence": {
     "sheet_no": 23,
     "sheet_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
@@ -10592,7 +10592,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10730,7 +10730,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10868,7 +10868,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11006,7 +11006,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11144,7 +11144,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -11278,7 +11278,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T06:36:58Z",
+    "sheet_retrieved": "2026-11-19T21:45:25Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11416,7 +11416,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11554,7 +11554,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11686,7 +11686,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11824,7 +11824,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11956,7 +11956,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12094,7 +12094,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12226,7 +12226,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12364,7 +12364,7 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12495,7 +12495,7 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T06:36:57Z",
+    "sheet_retrieved": "2026-11-19T21:45:24Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -16829,8 +16829,8 @@
    "resort_fee_source": "https://www.venetianlasvegas.com/resort/resort-fee.html",
    "resort_fee_note": "Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in. The Resort Fee includes: Access for two to the fitness facility within the Canyon Ranch spa + fitness; In-suite internet access (WiFi or Ethernet); Boarding pass printing; Unlimited local and toll-free calls; Access to thousands of top newspapers and magazines using PressReader app.  ||  Re-read on 2026-11-19.",
    "booking": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date={IN}&children[]=0&departure_date={OUT}&view=calendar",
-   "address": "",
-   "address_source": "",
+   "address": "3355 Las Vegas Boulevard South, Las Vegas, Nevada 89109",
+   "address_source": "https://www.venetianlasvegas.com/legal/privacy-notice.html",
    "parking": "Complimentary self-parking for non-registered hotel guests who play for three hours or more in tournaments or cash games (official player-parking page). The poker room has direct access to The Palazzo self-parking garage.",
    "parking_source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
    "cancel": "",
@@ -16848,7 +16848,8 @@
    "rate_floor_room": "Luxury King Suite in The Venetian or The Palazzo, single/double occupancy - the page names two starting figures, $119 and $209, without mapping them to the two towers",
    "rate_floor_source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
    "rate_floor_read": "2026-11-19",
-   "rate_caveat": "Published starting rate, not a quote: the official page says rates \"start as low as $119 and $209 and can be higher\"; it is conditional on six hours of live play or a $300+ tournament entry every night, and rates are only published 150 days out, so December 2026 is not yet on it. Booked by phone on a Venetian Rewards account."
+   "rate_caveat": "Published starting rate, not a quote: the official page says rates \"start as low as $119 and $209 and can be higher\"; it is conditional on six hours of live play or a $300+ tournament entry every night, and rates are only published 150 days out, so December 2026 is not yet on it. Booked by phone on a Venetian Rewards account.",
+   "address_read": "2026-11-19"
   },
   {
    "key": "wynn",
@@ -16860,7 +16861,7 @@
    "resort_fee": 55.0,
    "resort_fee_text": "$55 plus tax per night",
    "resort_fee_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
-   "resort_fee_note": "Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each room night, which entitles you to receive complimentary self-parking for up to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, refreshed daily; unlimited local, domestic long distance (including HI and AK) and toll free calls; access for up to two persons to our fitness center; and a digital newsstand of magazines and newspapers.  ||  Applicability: offer text: 'only available on select dates from October 2, 2026 through March 31, 2027'; blackout dates listed include November 17-21, 2026 and December 31, 2026 The same fee sentence also appears on https://www.wynnlasvegas.com/terms-and-conditions/850070 (an offer whose stay had to end 2025-09-30, used here only to corroborate the figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide published rate, so confirm it on your own rate plan.",
+   "resort_fee_note": "Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each room night, which entitles you to receive complimentary self-parking for up to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, refreshed daily; unlimited local, domestic long distance (including HI and AK) and toll free calls; access for up to two persons to our fitness center; and a digital newsstand of magazines and newspapers.  ||  Applicability (re-read 2026-11-19): offer available only on select dates from October 2, 2026 through March 31, 2027, stay must complete on or before March 31, 2027; blackout dates include October 17-19, 2026, November 17-21, 2026, December 31, 2026 and January 24-25, 2027. Special deposit/cancellation windows on the same page: stays including November 15-21, 2026 require full deposit of all room nights and tax with a three-week cancellation policy; stays including December 29-31, 2026 require full deposit with a 30-day cancellation policy; stays including January 4-6, 2027 require full deposit with a two-week cancellation policy. The Dec 6-13, 2026 planning window falls outside those windows, so the standard 48-hour rule applies there. The same fee sentence also appears on https://www.wynnlasvegas.com/terms-and-conditions/850070 (an offer whose stay had to end 2025-09-30, used here only to corroborate the figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide published rate, so confirm it on your own rate plan.",
    "booking": "https://www.wynnlasvegas.com/",
    "parking": "Complimentary self-parking for up to two vehicles is included in the $55 resort fee; separate Wynn terms add 'Complimentary self-parking is extended to Wynn Poker Room guests'.",
    "parking_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
@@ -16876,7 +16877,10 @@
    "extra_terms_source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
    "rate_floor": null,
    "rate_floor_source": "",
-   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+   "address": "3131 Las Vegas Blvd. S., Las Vegas, NV 89109",
+   "address_source": "https://www.wynnlasvegas.com/ai-information",
+   "address_read": "2026-11-19"
   },
   {
    "key": "caesars",
@@ -16940,8 +16944,8 @@
    "resort_fee_source": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
    "resort_fee_note": "Official offer terms: 'The daily resort fee of $55 per room, will be waived for each night of your stay when booked under this offer. Standard room rate taxes still apply and are not waived. An additional incidental deposit of $150 per room will be required at check-in for each night of your stay.' Offer valid for travel through 28 December 2026; blackout dates may apply.",
    "booking": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin={IN}&checkout={OUT}&nights=7&adults=2&children=0",
-   "address": "",
-   "address_source": "",
+   "address": "3000 South Las Vegas Boulevard, Las Vegas, Nevada 89109",
+   "address_source": "https://www.rwlasvegas.com/privacy-policy/",
    "parking": "Self-parking is complimentary for Nevada residents with NV plates and for Genting Rewards Elite, Prime, Monarch and Imperial tiers (official offer terms).",
    "parking_source": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
    "cancel": "Reservations must be cancelled at least 48 hours before check-in for a refund of the deposit.",
@@ -16950,7 +16954,8 @@
    "resort_fee_read": "2026-11-19",
    "rate_floor": null,
    "rate_floor_source": "",
-   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+   "address_read": "2026-11-19"
   }
  ],
  "routes": [
@@ -17289,8 +17294,8 @@
   {
    "id": "F01",
    "area": "Entry rules",
-   "title": "No Venetian structure sheet states a single-entry / freezeout limit",
-   "detail": "All 37 official DSE IV structure sheets were read. None contains a one-entry, no-re-entry or freezeout statement. An event is therefore never labelled 'confirmed single-entry'.",
+   "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
+   "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page.",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
   },
   {
@@ -17482,6 +17487,48 @@
    "source": "https://www.venetianlasvegas.com/resort/casino/poker.html"
   },
   {
+   "id": "F28",
+   "area": "Repository",
+   "title": "Three generators fought over the one published root site",
+   "detail": "Until 2026-11-19 the repo contained three root-site builders (build_c6087e2c.py, build_251c122f.py, build_ea99006a.py) and three workflows that each rebuilt the root pages with a different one. CI regenerated the site with none of the published output, so the live pages could silently change generator between automated runs. Resolved 2026-11-19: scripts/build_ea99006a.py is the only root-site generator; the morning capture workflow commits capture data only; Quality checks regenerates the site and fails on drift.",
+   "source": "https://github.com/karagemop466-tech/Poker5/tree/main/.github/workflows"
+  },
+  {
+   "id": "F29",
+   "area": "Repository",
+   "title": "Stale root pages from a retired generator contradicted the entry standard",
+   "detail": "pages/qa.html, pages/flagged.html, pages/multientry.html and pages/sources.html were left behind by the retired 251c122f build and described a different single-entry verdict count than the published site. They were not linked from the published navigation. Resolved 2026-11-19: each is now a redirect stub to its canonical page.",
+   "source": "https://github.com/karagemop466-tech/Poker5/tree/main/pages"
+  },
+  {
+   "id": "F30",
+   "area": "Monitoring",
+   "title": "Monitor ledger tracked unfetchable booking-template URLs as sources",
+   "detail": "Official booking links that contain {IN}/{OUT} date placeholders were hashed by the source monitor and produced noise 'changed' events. Resolved 2026-11-19: template URLs are labelled as templates, excluded from hashing, and no row's 'source changed' badge can be caused by them.",
+   "source": "https://github.com/karagemop466-tech/Poker5/tree/main/data/ea99006a"
+  },
+  {
+   "id": "F31",
+   "area": "Monitoring",
+   "title": "Root-site link checker misread data-nosrc attributes as src links",
+   "detail": "scripts/check_root_site.py matched the 'src' inside 'data-nosrc=\"1\"' and reported broken links '1'. Fixed 2026-11-19 with a word-boundary match.",
+   "source": "https://github.com/karagemop466-tech/Poker5/blob/main/scripts/check_root_site.py"
+  },
+  {
+   "id": "F32",
+   "area": "Hotels",
+   "title": "Dated stay captures are sparse and not like-for-like",
+   "detail": "Only two dated booking-engine stay snapshots (Venetian Dec 2-9 and Dec 13-20) and one dated poker-suite-rate observation exist, each with a different occupancy (2 adults vs 1 adult) and different stay windows. Checkout totals, nightly averages, tax amounts and cancellation deadlines are blank wherever the booking UI did not return them (Wynn returned no tax-inclusive total at all). No hotel ranking is published from these, and the trip planner stays Incomplete without a date-specific quote.",
+   "source": "https://github.com/karagemop466-tech/Poker5/blob/main/data/ea99006a/rate_snapshots.json"
+  },
+  {
+   "id": "F33",
+   "area": "Hotels",
+   "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
+   "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (48 hours before arrival for offer DK26WLV2 bookings, re-read 2026-11-19; the earlier 72-hour figure is withdrawn, see F55). Blank elsewhere and flagged.",
+   "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+  },
+  {
    "id": "F46",
    "area": "Hotel fees",
    "title": "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",
@@ -17493,10 +17540,10 @@
   {
    "id": "F47",
    "area": "Entry rules",
-   "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-   "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
+   "title": "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
+   "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: 'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both single_entry_confirmed, and its current cross-check passes because the classifier does not recognize this wording. That capture is not the canonical published dataset; request a classifier/cross-check repair before using it as a decision source. The S1 test now reads the whole rule list, not only re-entry/rebuy/add-on keywords.",
    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "status": "fixed by this session; kept visible",
+   "status": "open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected",
    "last_updated": "2026-11-19"
   },
   {
@@ -17534,22 +17581,58 @@
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
    "status": "open by design",
    "last_updated": "2026-11-19"
+  },
+  {
+   "id": "F52",
+   "area": "Irregularities",
+   "title": "Interrupted-session note about a 'Dec 4 $400 Mega Stack' ($20K vs $25K) cannot be matched to any schedule",
+   "detail": "A research session that was interrupted (workspace reset) left a note that a Dec 4 '$400 Mega Stack' structure sheet showed a $20,000 guarantee, not $25,000. No row with that name exists in the captured schedules or on the live official Venetian DSE IV page (re-checked 2026-11-19: Dec 4 shows only Event #26 $800 NLH flights 1C/1D, $500K GTD). A web search suggests the note referred to the Venetian DeepStack Extravaganza New Year's Edition '$400 NLH Monster Stack / UltimateStack Freeze Out' rows printed with a $20,000 guarantee in January. No row was added or changed; this flag records the claim for manual review.",
+   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+   "status": "open",
+   "last_updated": "2026-11-19"
+  },
+  {
+   "id": "F53",
+   "area": "Irregularities",
+   "title": "Interrupted-session Bellagio daily-flyer prices ($200 / $300 / $240 / $320 / $400, 10 AM) could not be re-verified",
+   "detail": "The interrupted session reported Bellagio daily tournament rows from a 'cash-game flyer' at $200 / $300 / $240 / $320 / $400 with a 10:00 AM start. No official Bellagio page or PDF in this repository prints those rows, and room reviews state Bellagio runs tournaments only for special events (its official PDFs cover the Friday, Saturday and Sunday specials already captured). Nothing was added; the claim is recorded here so it can be checked against the flyer the session was reading.",
+   "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+   "status": "open",
+   "last_updated": "2026-11-19"
+  },
+  {
+   "id": "F54",
+   "area": "Rates",
+   "title": "Interrupted-session dated hotel rate snapshots ($241.93 Venetian Dec 2, $277.33 Bellagio Dec 3) not re-verifiable",
+   "detail": "The interrupted session recorded two dated hotel rate observations ($241.93 Venetian for Dec 2, $277.33 Bellagio for Dec 3) with extraction notes. The booking engines are JavaScript-driven and the figures could not be re-read from an official booking page, so they were NOT added to the dated rates log - a rate enters the log only with its official source and retrieval timestamp (see F14/F51). Re-run the official booking pages for those dates and capture the itemised quote (checkout total, nightly average, resort fee, tax, parking, cancellation deadline) to add them properly.",
+   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "status": "open",
+   "last_updated": "2026-11-19"
+  },
+  {
+   "id": "F55",
+   "area": "Hotels",
+   "title": "Wynn cancellation deadline: 72 hours was not reproducible; the live offer terms say 48 hours",
+   "detail": "Several records (rate snapshots, Q14, F33) stated a Wynn cancellation deadline of '72 hours before arrival, per the Wynn terms page read 2026-11-17'. No stored capture contains that text, so it cannot be reproduced. The Wynn terms page re-read on 2026-11-19 (offer DK26WLV2) says 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited', and its longer full-deposit and cancellation policy applies only to stays on 15-21 Nov, 29-31 Dec 2026 and 4-6 Jan 2027, not to 6-13 Dec. The 72-hour figure is therefore withdrawn and the record now carries 48 hours, labelled as the offer's terms. The standard (non-offer) rate policy was not read, so the planned rate's deadline is still unconfirmed. Re-read the booking-engine rate rules at quote time before any payment.",
+   "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+   "status": "corrected by d615f79e; needs review",
+   "last_updated": "2026-11-19"
   }
  ],
  "questions": [
   {
    "id": "Q01",
    "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-   "have": "The site now fixes this for you: 2026-12-06 to 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
-   "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
-   "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
+   "have": "The dashboard uses an automatic scenario: 2026-12-06 to 2026-12-13 (7 nights), selected from the captured schedule on 2026-11-19. The date choice is not traveler-provided. The budget ceiling is based on a dated, unverified booking observation, and the Luxury quality floor is a property-tier label, not an independent quality rating.",
+   "missing": "The traveler’s preferred dates, budget ceiling, occupancy, and minimum quality standard are unknown. The automatic settings are scenario defaults only; the dated hotel quote used to derive the ceiling is not for the selected stay and is not a verified current rate.",
+   "how": "Treat the Dates and Budget controls on the Hotels/Planner pages as scenario inputs. Replace them with the actual trip window, occupancy, budget, and chosen quality floor before deciding; then obtain a date-matched official itemized hotel quote."
   },
   {
    "id": "Q02",
    "q": "Is any DSE IV event actually a freezeout?",
-   "have": "All 37 official structure sheets read; none states a one-entry limit.",
-   "missing": "An official statement of the entry cap for the events whose sheets are silent.",
-   "how": "Ask the Venetian poker cage / tournament desk to confirm the re-entry policy for a specific event number, or check the printed structure sheet posted in the room on the day. Until then the row stays 'unverified' and is never promoted to single-entry."
+   "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+   "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
+   "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
   },
   {
    "id": "Q03",
@@ -17608,11 +17691,53 @@
    "how": "The ratio column (guarantee / entry fee) is labelled descriptive, not a forecast, and bounty and flight events are labelled separately. Compare only within a format."
   },
   {
+   "id": "Q11",
+   "q": "What will parking add to the stay, and is the poker-room validation usable for the planned schedule?",
+   "have": "Venetian: complimentary self-parking for players with 3+ hours of tournament or cash play (official player-parking page). Wynn: complimentary self-parking for registered guests and poker-room guests; non-guest and valet prices published.",
+   "missing": "Whether the planned nights qualify for validation each day, event-day parking rates, and Caesars/MGM parking terms for the candidate hotels.",
+   "how": "Ask the poker room at registration; read each hotel's official parking page before booking."
+  },
+  {
+   "id": "Q12",
+   "q": "Is the mandatory resort fee inside the taxed base on the final folio?",
+   "have": "The Clark County ordinance defines 'rent' to include mandatory charges; both Venetian and Wynn state the fee is 'plus tax'. The site's calculator therefore taxes rate + fee and says so.",
+   "missing": "An itemised checkout folio that shows exactly what was taxed at which rate for the booked rate plan.",
+   "how": "Compare the booking page's estimated total with the checkout folio on one stay; record both in the dated rate log."
+  },
+  {
+   "id": "Q13",
+   "q": "Do Caesars Palace and Horseshoe publish their daily tournament buy-ins, guarantees and entry rules anywhere official?",
+   "have": "The official Caesars page lists four Caesars Palace starts and six Horseshoe starts; the Caesars Palace daily flyer does not state entry rules.",
+   "missing": "Published buy-ins/guarantees for the Horseshoe dailies and a written entry rule for the Caesars dailies.",
+   "how": "Ask the Caesars Palace and Horseshoe poker rooms for the current daily structure sheet; store it with a retrieval date."
+  },
+  {
+   "id": "Q14",
+   "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
+   "have": "Wynn offer terms DK26WLV2, re-read 2026-11-19: cancellations must be received at least 48 hours before arrival for that offer's bookings. The earlier 72-hour figure (2026-11-17) is withdrawn: it could not be reproduced from any stored capture (F55). The standard-rate policy was not read.",
+   "missing": "Cancellation deadlines and deposit/refund terms for the Venetian booking rate, and for any Caesars or MGM rate.",
+   "how": "Read the rate rules shown on each official booking page at quote time and record them in the dated rate log."
+  },
+  {
+   "id": "Q15",
+   "q": "Will the morning re-check see a schedule change in every Strip room, or only where a page exists?",
+   "have": "The monitor re-reads every official URL that backs a row (Venetian schedule + 37 sheets, Wynn/WPT PDFs, Caesars page, South Point pages, MGM pages) every morning and records per-room status on the Source monitor page.",
+   "missing": "Official daily-schedule pages for rooms that publish only images (South Point) or nothing (Horseshoe, Resorts World); a guarantee that a PDF re-host does not look like a rule change.",
+   "how": "Treat the per-room feed as presence-and-change detection, not as content proof; a 'changed' row means a human should re-read the source before relying on the table."
+  },
+  {
    "q": "Can the site complete the trip cost without me entering anything?",
    "have": "The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
    "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
    "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.",
-   "id": "Q11"
+   "id": "Q16"
+  },
+  {
+   "id": "Q17",
+   "q": "How long will you play each event, and therefore which two events can actually be played in sequence on the same day?",
+   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
+   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
+   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
   }
  ],
  "suggestions": [
@@ -17705,6 +17830,50 @@
    "effect": "Refundable rates are the cheapest insurance; Caesars and Horseshoe advertise free 48-hour cancellation and Resorts World requires 48 hours' notice for a deposit refund."
   },
   {
+   "id": "S09",
+   "title": "Capture dated stay quotes automatically in the morning job",
+   "problem": "The dated rate log currently holds hand-captured booking-engine snapshots; the trip planner stays Incomplete without a quote for the chosen dates and occupancy.",
+   "options": [
+    "Extend the morning job to open each official booking link with fixed dates/occupancy and store whatever total the page shows (may fail: booking engines are JavaScript apps)",
+    "Keep captures manual but require a screenshot/link + timestamp before any booking decision",
+    "Subscribe to official rate-alert emails and log them as dated entries"
+   ],
+   "effect": "A fresh dated quote per hotel per morning would make true nightly cost comparable like-for-like and let the planner complete honestly."
+  },
+  {
+   "id": "S10",
+   "title": "Adopt a like-for-like comparison policy before any hotel ranking",
+   "problem": "Existing captures differ in stay window and occupancy (2 adults Dec 2-9 vs 1 adult Dec 13-20), so 'cheapest hotel' cannot be derived from them.",
+   "options": [
+    "Rank nothing until two hotels share dates, occupancy and room class",
+    "Rank with an explicit comparability grade per row",
+    "Rank on nightly average and mark differing occupancy"
+   ],
+   "effect": "Prevents a false ranking; the flagged page already refuses to name a cheapest hotel."
+  },
+  {
+   "id": "S11",
+   "title": "Decide how walking minutes get verified",
+   "problem": "No official source publishes walking times between properties; the brief wants a 30-minute walking filter.",
+   "options": [
+    "Keep minutes blank + provide one-click walking-direction links (current)",
+    "Record user-measured minutes via the routes page recorder (already available, browser-only)",
+    "Add a maps-distance service to the morning job and label its output as third-party estimates"
+   ],
+   "effect": "The 30-minute filter can only be honest about measured or officially stated minutes."
+  },
+  {
+   "id": "S12",
+   "title": "Decide the fate of the 13 archived session dashboards",
+   "problem": "Earlier session folders are published alongside the root site and disagree with it on some numbers.",
+   "options": [
+    "Keep linked as read-only archives (current)",
+    "Move archives out of the published tree into git history only",
+    "Add a banner to each archive page pointing at the root site as the source of truth"
+   ],
+   "effect": "Reduces reader confusion when an archived page shows an older verdict count."
+  },
+  {
    "title": "Publish one root-site generator (done here) and retire the second one",
    "problem": "Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
    "options": [
@@ -17713,7 +17882,7 @@
     "Freeze the scheduled rebuilds entirely and rebuild only by hand"
    ],
    "effect": "The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.",
-   "id": "S10"
+   "id": "S13"
   },
   {
    "title": "Keep value-level monitoring, drop hash-level alarmism",
@@ -17724,7 +17893,7 @@
     "Diff rendered text with a normalisation pass before hashing (future)"
    ],
    "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
-   "id": "S11"
+   "id": "S14"
   }
  ],
  "tax": {
@@ -17734,11 +17903,12 @@
  },
  "trip": {
   "check_in": "2026-12-06",
-  "check_out": "2026-12-12",
+  "check_out": "2026-12-13",
+  "last_play_day": "2026-12-12",
   "nights": 7,
   "adults": 2,
   "rooms": 1,
-  "rationale": "Chosen automatically on 2026-11-19 from the corrected single-entry set: 2026-12-06 to 2026-12-12 (7 nights, 7 full playing days) carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
+  "rationale": "Chosen automatically on 2026-11-19 from the corrected single-entry set: check in 2026-12-06, check out 2026-12-13 = 7 nights, with 7 full playing days (2026-12-06 to 2026-12-12). It carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
   "chosen_by": "scripts/integrate_b3be876c.py",
   "budget_ceiling": {
    "per_night": 1007.82,
