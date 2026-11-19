@@ -16,7 +16,9 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 ### Follow-up task: strict confirmed-single-entry filter (b33a0c35)
 
-**Scope:** `COORDINATION.md`, `scripts/build_ea99006a.py`, generated `assets/app.js` and tournament pages, `test/research.test.mjs`. The tournament-table checkbox currently includes both `unknown` and `confirmed_single`, contrary to its confirmation wording and the requested confirmed-only toggle. Change it to show only `confirmed_single`; do not promote any unknown record. **Status:** in progress.
+**Scope:** `COORDINATION.md`, `scripts/build_ea99006a.py`, generated `assets/app.js` and tournament pages, `test/research.test.mjs`. The tournament-table checkbox included both `unknown` and `confirmed_single`, contrary to its confirmation wording and the requested confirmed-only toggle. Changed the filter to show only `confirmed_single`; no unknown record was promoted. **Status:** done. The label now says `Confirmed single-entry / freezeout only`; because the verified dataset currently has zero confirmed events, this filter correctly returns no rows rather than treating unknown events as confirmed.
+
+**Verification:** regenerated with `python3 scripts/build_ea99006a.py`; `npm test` (10/10), including a regression that the toggle excludes unknown and multi-entry records; `python3 scripts/check_ea99006a.py` (18 pages, 1,261 sourced rows, 417 internal / 1,271 external link references checked); `node --check assets/app.js`; `git diff --check`. No event data or source status changed.
 
 ## Current branch session — 5d8999d6 (active)
 
