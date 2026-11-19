@@ -797,6 +797,21 @@ def build_rate_log() -> list[dict]:
          "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
          "source_label": "Venetian official booking UI (2026-11-16 snapshot)",
          "verified": False, "cancellation_deadline": None, "parking": None},
+        {"hotel": "The Venetian Resort (Venetian / Palazzo towers)", "hotel_key": "venetian",
+         "observed_on": "2026-11-19", "kind": "booking-engine attempt for the trip window - no numeric quote returned",
+         "checkin": "2026-12-06", "checkout": "2026-12-13", "nights": 7,
+         "checkout_total": None, "nightly_average": None,
+         "resort_fee_per_night": 55.0, "resort_fee_total": 385.0, "tax_total": None,
+         "room_type": None, "occupancy": "2 adults, 1 room",
+         "caveats": ["Tried on 2026-11-19 with the official booking UI for 6-13 December 2026 (2 adults). The "
+                     "booking engine prices rooms in JavaScript only; no numeric quote appears in the page a "
+                     "non-browser reader receives. No price is invented here - the figures stay blank and the "
+                     "trip cost calculator waits for your own booking-page read.",
+                     "Resort fee shown is the published $55 per night (official resort-fee page), not a quoted "
+                     "stay total."],
+         "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-06&children[]=0&departure_date=2026-12-13&view=calendar",
+         "source_label": "Venetian official booking UI (2026-11-19 attempt)",
+         "verified": False, "cancellation_deadline": None, "parking": None},
     ]
 
 
@@ -891,14 +906,31 @@ def main() -> int:
         cap_date = ((vrow or {}).get("sheet_retrieved_at")
                     or (vrow or {}).get("retrieved_at")
                     or READ_DATE)[:10]
+        # Set the fresh verdict first so the spot check compares the row's final
+        # published label (a stale label here made a verdict transition dirty the
+        # row for one run - session ec3c21b8).
+        row["entry_rule"] = verdict
         row["spot_check"] = spot_check_row(row, sheet, cap_date)
         for _k, _v in (row["spot_check"].get("fields") or {}).items():
             if _k == "guarantee" and not _v.get("ok"):
                 row["guarantee_note"] = _v.get("excerpt") or "the two official captures state different guarantees"
             if _k == "start" and not _v.get("ok"):
                 row["start_note"] = _v.get("note") or "the two official captures state different start times"
-        row["entry_rule"] = verdict
         row["entry_basis"] = basis
+        # Descriptive ranking field required by the brief: total guarantee divided by total
+        # entry fee (buy-in incl. house fee). A ratio, never a score: stored on the row so
+        # comparisons never need re-deriving, blank when the row is not rankable (seat
+        # guarantees, missing buy-in, or the two official captures disagree on the guarantee).
+        row.pop("gtd_per_entry", None)
+        try:
+            gval = gtd_number(row.get("guarantee"))
+        except Exception:
+            gval = None
+        if (gval and row.get("buyin") and not row.get("guarantee_note")
+                and not GUAR_SEATS.search(str(row.get("guarantee") or ""))):
+            row["gtd_per_entry"] = round(gval / float(row["buyin"]), 2)
+        else:
+            row["gtd_per_entry"] = None
         row["entry_evidence"] = {
             "sheet_no": ev["sheet_no"], "sheet_sha256": ev["sheet_sha256"],
             "sheet_retrieved": ev["sheet_retrieved"], "rules_read": ev["rules_read"],

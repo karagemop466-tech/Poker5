@@ -26,7 +26,8 @@
   "schedule_source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 10.0
  },
  {
   "venue": "Caesars Palace",
@@ -55,7 +56,8 @@
   "schedule_source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 6.25
  },
  {
   "venue": "Caesars Palace",
@@ -84,7 +86,8 @@
   "schedule_source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 10.0
  },
  {
   "venue": "Caesars Palace",
@@ -113,7 +116,8 @@
   "schedule_source": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 6.25
  },
  {
   "venue": "Wynn Las Vegas",
@@ -142,7 +146,8 @@
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 50.0
  },
  {
   "venue": "Wynn Las Vegas",
@@ -171,7 +176,8 @@
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 166.67
  },
  {
   "venue": "Wynn Las Vegas",
@@ -200,7 +206,8 @@
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 125.0
  },
  {
   "venue": "Wynn Las Vegas",
@@ -229,7 +236,8 @@
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 125.0
  },
  {
   "venue": "Wynn Las Vegas",
@@ -258,7 +266,8 @@
   "schedule_source": "https://cdn.wynnresorts.com/image/upload/v1752011166/visitwynn_pdfs_files/Poker/Daily%20Tournaments/poker-daily-tournament-poster.pdf",
   "retrieved": "2026-11-17",
   "last_checked": "2026-11-19",
-  "source_changed_at": ""
+  "source_changed_at": "",
+  "gtd_per_entry": 62.5
  },
  {
   "venue": "South Point",
@@ -267,283 +276,234 @@
   "start": "10:10",
   "day": "Daily",
   "event_no": "",
-  "name": "Daily tournament ($120 buy-in)",
+  "name": "Daily NLH",
   "flight": "",
   "kind": "entry",
   "buyin": 120,
   "house_fee": "",
   "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
+  "guarantee": 10000,
+  "chips": "20,000",
+  "levels": "20 min",
   "late_reg": "",
   "sheet_start": "10:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "multi",
+  "rule_excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 9.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Guarantee $10,000 Sun-Thu and $15,000 Fri-Sat. Re-entry unlimited until the start of level 9; no add-on provision in the rules read. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+  "source_label": "official rules sheet image (Oct 2026 revision)",
   "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
+  "retrieved": "2026-11-19",
   "last_checked": "2026-11-19",
   "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+  "rule_fields": {
+   "re_entry": {
+    "value": "unlimited re-entry until the start of level 9 (no numeric cap stated)",
+    "excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 9.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "add_on": {
+    "value": "none - the rules grant no add-on or purchased stack",
+    "excerpt": "The rules read on 2026-11-19 (rules 1-11 and the blind structure) contain no add-on provision.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "single_entry": {
+    "value": "not single-entry - the official rules grant re-entry",
+    "excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 9.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "house_fee": {
+    "value": "$96 to the prize pool, $12 house fee, $11 to the staff, $1 to promo",
+    "excerpt": "The entry fee is $120. $96 to the prize pool, $12 house fee, $11 to the staff, and $1 to promo.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+    "retrieved": "2026-11-19"
    }
-  ]
+  },
+  "gtd_per_entry": 83.33
  },
  {
   "venue": "South Point",
   "room": "South Point Poker Room",
   "date": "",
   "start": "14:10",
-  "day": "Daily",
+  "day": "Mon, Thu, Sat, Sun",
   "event_no": "",
-  "name": "Daily tournament ($120 buy-in)",
+  "name": "Chip Chop Survivor",
   "flight": "",
   "kind": "entry",
   "buyin": 120,
   "house_fee": "",
   "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
+  "guarantee": 2000,
+  "chips": "20,000",
+  "levels": "15 min",
   "late_reg": "",
   "sheet_start": "14:10",
-  "sheet_title": "",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
   "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
   "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
+  "retrieved": "2026-11-19",
   "last_checked": "2026-11-19",
   "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
+  "gtd_per_entry": 16.67
+ },
+ {
+  "venue": "South Point",
+  "room": "South Point Poker Room",
+  "date": "",
+  "start": "14:10",
+  "day": "Tue",
+  "event_no": "",
+  "name": "Omaha 8 or Better",
+  "flight": "",
+  "kind": "entry",
+  "buyin": 120,
+  "house_fee": "",
+  "to_prize_pool": "",
+  "guarantee": 3000,
+  "chips": "15,000",
+  "levels": "20 min",
+  "late_reg": "",
+  "sheet_start": "14:10",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "unread",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
+  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "retrieved": "2026-11-19",
+  "last_checked": "2026-11-19",
+  "source_changed_at": "2026-11-19T00:51:24Z",
+  "gtd_per_entry": 25.0
+ },
+ {
+  "venue": "South Point",
+  "room": "South Point Poker Room",
+  "date": "",
+  "start": "14:10",
+  "day": "Wed, Fri",
+  "event_no": "",
+  "name": "Crazy Pineapple Turbo",
+  "flight": "",
+  "kind": "entry",
+  "buyin": 120,
+  "house_fee": "",
+  "to_prize_pool": "",
+  "guarantee": 2000,
+  "chips": "20,000",
+  "levels": "15 min",
+  "late_reg": "",
+  "sheet_start": "14:10",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "unread",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
+  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "retrieved": "2026-11-19",
+  "last_checked": "2026-11-19",
+  "source_changed_at": "2026-11-19T00:51:24Z",
+  "gtd_per_entry": 16.67
  },
  {
   "venue": "South Point",
   "room": "South Point Poker Room",
   "date": "",
   "start": "18:10",
-  "day": "Daily",
+  "day": "Mon, Tue, Thu, Sat",
   "event_no": "",
-  "name": "Daily tournament ($120 buy-in)",
+  "name": "NLH Turbo Mega Stack",
   "flight": "",
   "kind": "entry",
   "buyin": 120,
   "house_fee": "",
   "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
+  "guarantee": 5000,
+  "chips": "40,000",
+  "levels": "15 min",
   "late_reg": "",
   "sheet_start": "18:10",
-  "sheet_title": "",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
   "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
   "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
+  "retrieved": "2026-11-19",
   "last_checked": "2026-11-19",
   "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
+  "gtd_per_entry": 41.67
+ },
+ {
+  "venue": "South Point",
+  "room": "South Point Poker Room",
+  "date": "",
+  "start": "18:10",
+  "day": "Fri, Sun",
+  "event_no": "",
+  "name": "NLH Bounty ($50)",
+  "flight": "",
+  "kind": "entry",
+  "buyin": 200,
+  "house_fee": "",
+  "to_prize_pool": "",
+  "guarantee": 10000,
+  "chips": "30,000",
+  "levels": "25 min",
+  "late_reg": "",
+  "sheet_start": "18:10",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "unread",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. $50 bounty per elimination. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
+  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "retrieved": "2026-11-19",
+  "last_checked": "2026-11-19",
+  "source_changed_at": "2026-11-19T00:51:24Z",
+  "gtd_per_entry": 50.0
+ },
+ {
+  "venue": "South Point",
+  "room": "South Point Poker Room",
+  "date": "",
+  "start": "18:10",
+  "day": "Wed, Sat",
+  "event_no": "",
+  "name": "NLH Deep Stack",
+  "flight": "",
+  "kind": "entry",
+  "buyin": 200,
+  "house_fee": "",
+  "to_prize_pool": "",
+  "guarantee": 10000,
+  "chips": "30,000",
+  "levels": "25 min",
+  "late_reg": "",
+  "sheet_start": "18:10",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "unread",
+  "rule_excerpt": "Entry terms live in a two-page official rules-sheet image; page 1 (rules 1-12, including the re-entry rule) could not be retrieved as an image in this session, so entry terms stay unverified.",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "source_label": "official daily tournament schedule page (image)",
+  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "retrieved": "2026-11-19",
+  "last_checked": "2026-11-19",
+  "source_changed_at": "2026-11-19T00:51:24Z",
+  "gtd_per_entry": 50.0
  },
  {
   "venue": "South Point",
@@ -552,472 +512,53 @@
   "start": "22:10",
   "day": "Daily",
   "event_no": "",
-  "name": "Daily tournament ($120 buy-in)",
+  "name": "NLH Turbo Bounty ($25)",
   "flight": "",
   "kind": "entry",
   "buyin": 120,
   "house_fee": "",
   "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
+  "guarantee": 1500,
+  "chips": "20,000",
+  "levels": "15 min",
   "late_reg": "",
   "sheet_start": "22:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
+  "sheet_title": "South Point daily tournament schedule (rev 10/26)",
+  "entry_rule": "multi",
+  "rule_excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 8. (No surrender allowed)",
+  "notes": "Rev 10/26 official schedule image read 2026-11-19 (times, buy-ins, stacks, level lengths, guarantees, days). Corrects the earlier room-page placeholder rows, which guessed '$300' evening buy-ins - the official schedule shows $120 and $200. $25 bounty per elimination. Re-entry unlimited until the start of level 8 (no surrender); no add-on provision in the rules read. Off-Strip (Las Vegas Blvd South); flagged as not walkable from the Strip.",
+  "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+  "source_label": "official rules sheet image (Oct 2026 revision)",
   "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
+  "retrieved": "2026-11-19",
   "last_checked": "2026-11-19",
   "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+  "rule_fields": {
+   "re_entry": {
+    "value": "unlimited re-entry until the start of level 8 (no numeric cap stated)",
+    "excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 8. (No surrender allowed)",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "add_on": {
+    "value": "none - the rules grant no add-on or purchased stack",
+    "excerpt": "The rules read on 2026-11-19 (rules 1-12 and the blind structure) contain no add-on provision.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "single_entry": {
+    "value": "not single-entry - the official rules grant re-entry",
+    "excerpt": "A player losing all of their chips may re-enter the tournament for an additional $120. They will receive 20,000 in tournament chips. Players may re-enter until the start of level 8. (No surrender allowed)",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+    "retrieved": "2026-11-19"
    },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
+   "house_fee": {
+    "value": "$71 to the prize pool, $25 to the bounty, $12 house fee, $11 to the staff, $1 to promo",
+    "excerpt": "The entry fee is $120. $71 to the prize pool, $25 to the bounty, $12 House fee, $11 to the staff, $1 to promo.",
+    "source": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+    "retrieved": "2026-11-19"
    }
-  ]
- },
- {
-  "venue": "South Point",
-  "room": "South Point Poker Room",
-  "date": "",
-  "start": "10:10",
-  "day": "Daily",
-  "event_no": "",
-  "name": "Daily tournament ($300 buy-in)",
-  "flight": "",
-  "kind": "entry",
-  "buyin": 300,
-  "house_fee": "",
-  "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
-  "late_reg": "",
-  "sheet_start": "10:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
-  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
-  "last_checked": "2026-11-19",
-  "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
- },
- {
-  "venue": "South Point",
-  "room": "South Point Poker Room",
-  "date": "",
-  "start": "14:10",
-  "day": "Daily",
-  "event_no": "",
-  "name": "Daily tournament ($300 buy-in)",
-  "flight": "",
-  "kind": "entry",
-  "buyin": 300,
-  "house_fee": "",
-  "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
-  "late_reg": "",
-  "sheet_start": "14:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
-  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
-  "last_checked": "2026-11-19",
-  "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
- },
- {
-  "venue": "South Point",
-  "room": "South Point Poker Room",
-  "date": "",
-  "start": "18:10",
-  "day": "Daily",
-  "event_no": "",
-  "name": "Daily tournament ($300 buy-in)",
-  "flight": "",
-  "kind": "entry",
-  "buyin": 300,
-  "house_fee": "",
-  "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
-  "late_reg": "",
-  "sheet_start": "18:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
-  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
-  "last_checked": "2026-11-19",
-  "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
- },
- {
-  "venue": "South Point",
-  "room": "South Point Poker Room",
-  "date": "",
-  "start": "22:10",
-  "day": "Daily",
-  "event_no": "",
-  "name": "Daily tournament ($300 buy-in)",
-  "flight": "",
-  "kind": "entry",
-  "buyin": 300,
-  "house_fee": "",
-  "to_prize_pool": "",
-  "guarantee": null,
-  "chips": "",
-  "levels": "",
-  "late_reg": "",
-  "sheet_start": "22:10",
-  "sheet_title": "",
-  "entry_rule": "unread",
-  "rule_excerpt": "The official room page states tournaments daily at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300. The detailed schedule and structure are published only as images, so guarantees, levels and entry rules were not read.  ||  Re-read 2026-11-19: the property's own Daily Tournament Schedule page publishes eight rules-sheet images whose official file names state $120 six times and $200 twice, and no $300 sheet - the schedule and the structures are images only, so no rule text can be read from them and no start time can be tied to a buy-in.",
-  "notes": "Off-Strip (Las Vegas Blvd South). Not within walking distance of the Strip; flagged. The official page lists four start times and two buy-ins but does not state that both buy-ins run at every time; the detailed schedule is published as images only, so the time/buy-in pairing in these rows is unconfirmed. The published sheet file names (read 2026-11-19) are: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg (states $120); 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg (states $120); 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg (states $120); 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg (states $120); 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg (states $120); 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg (states $200); 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg (states $200); 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg (states $120). See flags F12 and F70.",
-  "source": "https://southpointcasino.com/casino/poker-room",
-  "source_label": "official poker room page",
-  "schedule_source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
-  "retrieved": "2026-11-17",
-  "last_checked": "2026-11-19",
-  "source_changed_at": "2026-11-19T00:51:24Z",
-  "structure_sheets": [
-   {
-    "file": "01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "No Limit Hold'em Chip Chop",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Omaha 8 or Better",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "Crazy Pineapple Turbo",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Mega Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "No Limit Hold'em Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$200",
-    "stated_game": "Deep Stack",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   },
-   {
-    "file": "08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "stated_buyin": "$120",
-    "stated_game": "NLH Turbo Bounty",
-    "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
-    "read": "2026-11-19",
-    "note": "official file name only; the image text was not read, so no rule value is taken from it"
-   }
-  ]
+  },
+  "gtd_per_entry": 12.5
  }
 ]
