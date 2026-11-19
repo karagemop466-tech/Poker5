@@ -1,19 +1,10 @@
-name: Daily official-source scrape (root site)
+name: Daily official-source capture (research ledger)
 
-# Every morning this job reads the official pages and PDFs behind the root
-# planner and records exactly what they say (with the excerpt and the
-# retrieval timestamp) into data/c6087e2c/. The agent sandbox that authors
-# this repo cannot open a connection to casino hosts, so the reading happens
-# here, on a runner with normal internet access.
-#
-# This job is capture-only: it never rebuilds the published root site. The
-# root site has exactly one generator (scripts/build_ea99006a.py, run by the
-# recheck-ea99006a workflow and validated by Quality checks), so the morning
-# capture cannot silently overwrite pages with a different builder's output.
-#
-# A changed source never silently changes a displayed value: the scraper writes
-# new excerpts and hashes, and any field that disappeared from a source becomes
-# blank + flagged in the capture for review.
+# The morning scraper reads the official schedules and structure PDFs into the
+# c6087e2c research ledger and uploads a capture artifact. The canonical Pages
+# site is rebuilt by recheck-ea99006a.yml from data/ea99006a. This capture job
+# must not regenerate or commit index.html/pages/assets: doing so would publish
+# a competing dataset and undo the canonical site's filters and layout.
 
 on:
   schedule:
@@ -23,8 +14,9 @@ on:
     branches: ["arena/**", "main"]
     paths:
       - "scripts/scrape_251c122f.py"
-      - "scripts/build_c6087e2c.py"
-      - "scripts/check_root_site.py"
+      - "scripts/merge_251c122f.py"
+      - "scripts/crosscheck_251c122f.py"
+      - "scripts/summary_251c122f.py"
       - ".github/workflows/daily-scrape.yml"
       - "data/c6087e2c/verification_251c122f.json"
 
@@ -32,11 +24,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: daily-scrape-root
+  group: daily-official-capture
   cancel-in-progress: false
 
 jobs:
-  scrape-build-verify:
+  scrape-verify:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the branch this run belongs to
@@ -58,7 +50,7 @@ jobs:
       - name: Read every official schedule row and structure sheet
         run: python3 scripts/scrape_251c122f.py
 
-      - name: Merge the live capture into the verified dataset
+      - name: Merge the live capture into the verified research ledger
         run: python3 scripts/merge_251c122f.py
 
       - name: Upload the capture for review (always)
@@ -74,13 +66,13 @@ jobs:
             data/c6087e2c/events_verified.json
           if-no-files-found: warn
 
-      - name: Commit the refreshed capture (scheduled and branch runs)
+      - name: Commit the refreshed research capture only
         run: |
           git config user.name  "poker5-source-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/c6087e2c/
           if git diff --cached --quiet; then
-            echo "no change in the capture"
+            echo "no change in the research capture"
             exit 0
           fi
           git commit -m "scrape(251c122f): daily official-source capture $(date -u +%F)"
@@ -91,8 +83,10 @@ jobs:
           done
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
-      - name: Validate the capture's rule fields and verdicts
-        run: python3 scripts/crosscheck_251c122f.py
+      - name: Validate the source capture and canonical site links
+        run: |
+          python3 scripts/crosscheck_251c122f.py
+          python3 scripts/check_root_site.py
 
       - name: Print the capture summary
         if: always()

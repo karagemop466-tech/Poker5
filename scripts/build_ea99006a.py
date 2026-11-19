@@ -236,8 +236,8 @@ FILTER_BAR = """
   <label>From <input type="date" id="dfrom"></label>
   <label>To <input type="date" id="dto"></label>
   <select id="fvenue" aria-label="Venue"><option value="">All venues</option>%s</select>
-  <label class="chk"><input type="checkbox" id="fseonly"> Confirmed single-entry only</label>
-  <label class="chk"><input type="checkbox" id="fse"> Hide rows with stated re-entry / flights</label>
+  <label class="chk"><input type="checkbox" id="fse"> Confirmed single-entry / freezeout only</label>
+  <label class="chk"><input type="checkbox" id="fsemulti"> Hide rows with stated re-entry / flights</label>
   <label class="chk"><input type="checkbox" id="fentry"> Entry rows only (hide Day 2 / final tables)</label>
   <button type="button" id="reset" class="btn tiny">Reset</button>
   <span class="count" id="count"></span>
@@ -393,7 +393,7 @@ function initFilters(){
   if(poker5Bound) return; poker5Bound=true;
   var q=document.getElementById('q'), from=document.getElementById('dfrom'),
       to=document.getElementById('dto'), ven=document.getElementById('fvenue'),
-      seonly=document.getElementById('fseonly'), se=document.getElementById('fse'),
+      se=document.getElementById('fse'), mu=document.getElementById('fsemulti'),
       en=document.getElementById('fentry'), walk=document.getElementById('walkfilter'),
       budget=document.getElementById('pbudget'), quality=document.getElementById('pquality'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
@@ -401,8 +401,8 @@ function initFilters(){
   var TIER_RANK={"Deluxe":1,"Luxury":2};
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
-        v=ven?ven.value:'', so=seonly?seonly.checked:false,
-        s=se?se.checked:false, e=en?en.checked:false,
+        v=ven?ven.value:'', s=se?se.checked:false,
+        m2=mu?mu.checked:false, e=en?en.checked:false,
         w=walk?walk.checked:false,
         b=budget&&budget.value!==''?parseFloat(budget.value):null,
         pmin=quality?parseInt(quality.value||'0',10):0,
@@ -422,8 +422,8 @@ function initFilters(){
         if(ok&&f&&d&&d<f) ok=false;
         if(ok&&t2&&d&&d>t2) ok=false;
         if(ok&&v&&tr.getAttribute('data-venue')!==v) ok=false;
-        if(ok&&so&&rule!=='confirmed_single') ok=false;
-        if(ok&&s&&rule==='multi') ok=false;
+        if(ok && s && tr.getAttribute('data-rule')!=='confirmed_single') ok=false;
+        if(ok&&m2&&rule==='multi') ok=false;
         if(ok&&e&&kind&&kind!=='entry') ok=false;
         if(ok&&w){
           /* Hide only pairs that are known to exceed 30 minutes. Rows with no
@@ -447,12 +447,12 @@ function initFilters(){
   if(q) q.addEventListener('input',apply);
   [from,to].forEach(function(el){if(el) el.addEventListener('change',apply);});
   if(ven) ven.addEventListener('change',apply);
-  [seonly,se,en,walk].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  [se,mu,en,walk].forEach(function(el){if(el) el.addEventListener('change',apply);});
   [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
   var rst=document.getElementById('reset');
   if(rst) rst.addEventListener('click',function(){
     if(q)q.value=''; if(from)from.value=''; if(to)to.value=''; if(ven)ven.value='';
-    if(seonly)seonly.checked=false; if(se)se.checked=false; if(en)en.checked=false;
+    if(se)se.checked=false; if(mu)mu.checked=false; if(en)en.checked=false;
     if(walk)walk.checked=false; if(budget)budget.value=''; if(quality)quality.value='';
     apply();});
   /* click-to-sort per table */

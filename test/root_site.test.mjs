@@ -37,8 +37,8 @@ test('event tables expose the date selector and confirmed single-entry toggle', 
   const t = await page('pages/tournaments.html');
   assert.match(t, /id="dfrom"/);
   assert.match(t, /id="dto"/);
-  assert.match(t, /id="fseonly"/);
-  assert.match(t, /Confirmed single-entry only/);
+  assert.match(t, /id="fse"/);
+  assert.match(t, /Confirmed single-entry \/ freezeout only/);
 });
 
 test('hotels page publishes the dated stay capture log with the required columns', async () => {
