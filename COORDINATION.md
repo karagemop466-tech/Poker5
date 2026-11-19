@@ -1417,3 +1417,184 @@ above; the rest is its publication record. Nothing else in that PR was missing f
   (`pages/flagged.html`, `multientry.html`, `qa.html`, `sources.html`) are also still there.
 - Live URL: https://karagemop466-tech.github.io/Poker5/ - `pages/verification.html` is reachable
   from the nav on every page.
+
+
+---
+
+## Recovered board record from PR #53 (session f91b3121) - landed by session 0fd4c550, 2026-11-19
+
+That PR's code was **not** merged (see the disposition note in the PR and in the integration section
+below: `main` already carries a stronger form of its fixes, and its second publisher conflicts with the
+F49 resolution). Its coordination record is preserved verbatim here so the session's claim, sources and
+findings stay on the shared board. Its branch and every commit remain on GitHub at
+`arena/f91b3121-poker5`.
+
+## Session f91b3121 — calculator consistency and regression verification
+
+**Branch:** `arena/f91b3121-poker5` (fixed by Arena; branched from `fd8edf2`). This session is working only this branch; no parallel branch/worktree is created because Arena fixes the session branch.
+
+**Claimed scope:** align the published trip-cost calculator with the conservative dated-rate policy already documented in the repo, make the root-site generator the consistent source for the published output, and repair/add focused regression checks. No new tournament or hotel facts will be promoted without an official source.
+
+**Files:** `COORDINATION.md`, `README.md`, `scripts/merge_251c122f.py`, `scripts/crosscheck_251c122f.py`, `scripts/build_251c122f.py`, `data/c6087e2c/events_verified.json`, `data/c6087e2c/flags_251c122f.json`, `pages/planner.html`, `assets/app.js`, `test/research.test.mjs`, `.github/workflows/daily-scrape.yml` (and deterministic generated root outputs from the canonical builder). The older `build_c6087e2c.py` remains untouched because it classifies the same capture differently.
+
+**Status:** implementation and local verification done (2026-11-19); PR/deployment record pending. Fixed the calculator's zero-filled incomplete totals and removed its hard-coded seven-night stay. Corrected the evidence policy: silence in the structure sheet is not proof of single-entry, no-rebuy or no-add-on. The capture now has 0 confirmed single-entry events, 55 one-day rows with entry policy unstated (F35), 28 multi-flight rows and 11 restarts. Only explicit official one-entry + no-rebuy + no-add-on wording can qualify. The daily scraper now rebuilds with the same canonical generator used by the quality workflow, avoiding the old generator's contradictory classification.
+
+### Sources and verification (session f91b3121)
+
+- Official Venetian DSE IV schedule (latest automated capture retrieved 2026-11-19): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- All 37 official structure PDFs are linked per event row; the latest Actions capture is in `data/c6087e2c/structures.json` and the event-specific rule fields in `data/c6087e2c/events_verified.json` (capture timestamp 2026-11-19T06:00:59Z). Example structure PDF: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf
+- GitHub Actions run [#44468914812](https://github.com/karagemop466-tech/Poker5/actions/runs/44468914812) re-read the official schedule and structure sheets, rebuilt the site, and passed row-source and cross-check validation. The sandbox did not make the live casino fetch; the Actions runner did.
+- The calculator retains the official tax source and its unresolved tax-base caveat; it will not output a completed lodging or grand total without a dated room quote, stay length and fee.
+
+**Verification performed:**
+
+- `npm run check` — pass; 11 Node tests, including checks that unverified entry rules cannot be promoted, the confirmed-entry filter excludes them, and missing hotel quotes do not yield a numeric trip total.
+- `node --check planner-aa83f1e1/assets/app.js`, `node scripts/smoke_aa83f1e1.mjs`, `node scripts/build_aa83f1e1.mjs` — pass (kept separate planner outputs unchanged).
+- `python3 scripts/scrape_251c122f.py --self-test` — pass.
+- `python3 scripts/merge_251c122f.py` — 94 rows; 0 strict confirmed, 55 entry-limit-unverified, 28 multi-flight, 11 restart; 37/37 sheets readable in the stored capture.
+- `python3 scripts/build_251c122f.py` — 17 generated pages; root site rebuild passes source and internal-link checks.
+- `python3 scripts/crosscheck_251c122f.py`, `python3 scripts/check_root_site.py`, `git diff --check` — pass. Every searchable table row with a Source column has a source link.
+- `node serve.mjs 4173` — root site preview running on port 4173.
+
+**Remaining review items (intentionally not filled by inference):** no official written single-entry/no-rebuy/no-add-on policies for the 55 candidate events; no date-specific hotel stay, occupancy, cancellation window or room totals; no agreed nightly budget/quality floor; no sourced off-property walking durations; current Wynn fee applicability and room-tax base remain flagged. The site publishes the questions and source links under “Flagged for review” and “Questions to resolve.”
+
+
+---
+
+## Recovered board record from PR #55 (session f7c2d5fa) - landed by session 0fd4c550, 2026-11-19
+
+That PR's code was **not** merged (see the disposition note in the PR and in the integration section
+below: `main` already carries a stronger form of its fixes, and its second publisher conflicts with the
+F49 resolution). Its coordination record is preserved verbatim here so the session's claim, sources and
+findings stay on the shared board. Its branch and every commit remain on GitHub at
+`arena/f7c2d5fa-poker5`.
+
+## Current branch session — f7c2d5fa (active)
+
+**Branch:** `arena/f7c2d5fa-poker5` (fixed by Arena, branched from `fd8edf2` of `main`). **Role:** final integration and verification. No other session holds an active claim on this branch, so this session takes the shared root-site scope (the one published site) and the shared documentation scope. No other session's data folder or preserved session folder is edited.
+
+**Claimed scope (shared outputs, integration only):**
+- `COORDINATION.md` — this claim and the final integration log only.
+- `scripts/build_ea99006a.py` — the canonical generator of the root site (fix the missing `assets/app.js` include so the search box, date filter, single-entry toggle, trip calculator, hotel true-cost calculator and walk filter actually run).
+- `.github/workflows/daily-scrape.yml`, `.github/workflows/quality.yml` — repoint the scheduled/PR builds at the canonical generator + validator so automation never overwrites the published root site with a stale competing build.
+- `README.md`, `EXECUTIVE_SUMMARY.md` — reconcile the documentation to the canonical published site (generator, row counts, single-entry standard).
+- Regenerated shared outputs only: `index.html`, `pages/**`, `assets/app.js`, `assets/css/style.css` (all produced deterministically by `scripts/build_ea99006a.py`).
+
+**Read-only for this session:** every `data/**` snapshot, every `dashboard-*/`, `docs/`, `site*/`, `planner-*/`, `data-*/` folder, and every other `scripts/build_*` / `scripts/check_*` / `scripts/recheck_*` script. Irregularities in those are logged, not edited.
+
+**Status at claim:** integration in progress. Findings so far are recorded in the Log below and will be closed out when the task is done.
+
+**Log (session f7c2d5fa):**
+- Verified `scripts/build_ea99006a.py` is the true canonical generator: running it reproduces the committed `index.html` byte-for-byte and every generated `pages/**` file except the tree-dependent `pages/repo-review.html`.
+- Found the root cause of the dead interactive controls: the `page()` template in `scripts/build_ea99006a.py` never emits a `<script src="...assets/app.js">`, while the data pages call `initTable('tbl')` / rely on `initHotels`/`initPlanner`/`initSuggestions` from that file. The search box, date filter, single-entry toggle, trip cost calculator, hotel true-cost calculator, dated rate log and the 30-minute walk filter were therefore non-functional on the live site. Fix applied in `scripts/build_ea99006a.py`.
+- Found a latent deployment risk: `.github/workflows/daily-scrape.yml` and `.github/workflows/quality.yml` invoke the competing `scripts/build_c6087e2c.py` / `scripts/build_251c122f.py` generators, which write a different `index.html` and a different navigation. The next scheduled/PR run would overwrite the published root site. Repointed to the canonical generator + validator.
+- Documentation reconciliation (`README.md`, `EXECUTIVE_SUMMARY.md`) in progress.
+
+
+---
+
+## Recovered board record from PR #59 (session bdcaf0bf) - landed by session 0fd4c550, 2026-11-19
+
+That PR's code was **not** merged (see the disposition note in the PR and in the integration section
+below: `main` already carries a stronger form of its fixes, and its second publisher conflicts with the
+F49 resolution). Its coordination record is preserved verbatim here so the session's claim, sources and
+findings stay on the shared board. Its branch and every commit remain on GitHub at
+`arena/bdcaf0bf-poker5`.
+
+## Current branch session — bdcaf0bf (active) — FINAL INTEGRATION
+
+**Branch:** `arena/bdcaf0bf-poker5` (fixed by Arena). **Role:** final integration session for the brief delivered in this thread (single-entry policy, true hotel cost, trip cost calculator, schedule/overlap/walk checks, venue pages, search, date filter, dated rate log, structured rule fields, per-row last-checked, scheduled official-source re-check with change marking, executive summary, questions, suggestions, flagged-for-review, GitHub Pages publish).
+
+**Claimed scope (written before any file was edited; other sessions must not edit these):**
+
+| Scope | Files |
+|---|---|
+| Canonical merged dataset | `data/bdcaf0bf/**` (events, hotels, routes, venues, rates log, sources ledger, last-checked, change log, flags, questions, suggestions, meta) |
+| Canonical generators (owned here) | `scripts/integrate_bdcaf0bf.py`, `scripts/build_bdcaf0bf.py`, `scripts/check_bdcaf0bf.py`, `scripts/recheck_bdcaf0bf.py` |
+| Published root site (GitHub Pages `main` `/`) | `index.html`, `pages/**` (all 20+ pages become generated output of the canonical builder), `assets/css/style.css`, `assets/app.js` |
+| Root-site automation | `.github/workflows/integrate-bdcaf0bf.yml` (new daily job) and the root-site write steps of `.github/workflows/daily-scrape.yml`, `.github/workflows/recheck-ea99006a.yml`, `.github/workflows/quality.yml` |
+| Repo docs | `README.md`, `EXECUTIVE_SUMMARY.md`, `REPO_REVIEW.md`, this section of `COORDINATION.md` |
+| Scratch notes | `work/bdcaf0bf/**` |
+
+**Why the workflow edits are in scope:** the repo had two scheduled jobs that both rewrote the *same* root-site files from *different* generators (`daily-scrape.yml` -> `scripts/build_c6087e2c.py`; `recheck-ea99006a.yml` -> `scripts/build_ea99006a.py`). Each successful run committed a different version of `index.html`/`pages/**`, so the published site alternated between two datasets and two contradictory single-entry verdicts (0 vs 55). Every integration PR's output was therefore silently overwritten within hours. This session stops the alternation: the monitors keep refreshing their own `data/*` captures, but only `scripts/build_bdcaf0bf.py` writes the root site. No other session's data folder, dashboard folder or script is edited or deleted.
+
+**Read-only here:** `docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `tools/`, `data/c6087e2c/`, `data/ea99006a/`, `data/final/`, and every other session's `scripts/*` and `pages/*` copies inside their own folders.
+
+**Tasks (status at claim):** all unclaimed -> in progress. K1 re-verify every official Venetian schedule row line-by-line against the live official page; K2 re-derive the single-entry verdict from the stored structure-sheet text (own keyword pass, both prior standards reconciled); K3 re-verify hotel fee/parking/cancellation/tax sources; K4 merged dataset + canonical builder with all brief features; K5 checks (every row sourced, links resolve, deterministic build); K6 PR -> merge -> confirm Pages deploy; K7 record sources/verification/irregularities here.
+
+**Live verification already performed by this session (2026-11-19, via the agent page-fetch tool; the sandbox cannot open TCP to casino hosts):** all 94 rows of the official Venetian DSE IV schedule re-read and matched to the committed capture (dates, times, event numbers, sheet links) - no row changed; sheet 18 re-read (buy-in split $35/$165, events 3-5, no re-entry language); Venetian resort-fee page ($55 + tax); Venetian poker-suite rates page ($119/$209 floor, $55 resort fee, 6 h cash play or a $300+ tournament per night, qualifying play before 2 a.m. on the last night); Venetian poker-room page (room is in The Palazzo, level 2, Grand Canal Shoppes; 50 tables; open 24 h); Venetian self-parking page ($20/day for registered guests, $25 Fri-Sun for non-guests, $40 valet, free self-parking for 3 h+ poker play); Wynn poker page (WPT Nov 27-Dec 21, Super Gold Million $400/$3M GTD, daily slate $200K weekly GTD incl. a $40K NLH *Rebuy* Friday, suspended during series); Wynn offer terms (resort fee $55 + tax for bookings on/after 2025-01-15; one-night deposit; cancellation 72 h before arrival); Caesars official poker page (four daily NLH at 10/2/6/9 a.m.-p.m., $100 buy-in, 20,000 chips, $1,000 GTD, 20-min levels, **$50 add-on**); Caesars corporate Hotel Disclaimer (resort fee stated as a **range $45-$60** plus tax, waived for Diamond/Seven Stars); Clark County ordinance PDF (resort hotel inside the primary gaming corridor = 12.5% + 0.88% = **13.38%**; "rent" includes separately stated facility/access fees, so the resort fee is taxed).
+
+
+---
+
+## Session bdcaf0bf — final integration: DONE (2026-11-19)
+
+**Task:** merge the parallel captures line by line, re-verify every value against an
+official source, publish the root GitHub Pages site from that merged dataset, and
+stop the scheduled jobs from overwriting each other's output.
+
+**Status:** done. Merged dataset, canonical builder, checker, monitor and the daily
+publication job are all in `e239997` on `arena/bdcaf0bf-poker5`.
+
+**Files written (all inside the scope claimed at the top of this board):**
+`data/bdcaf0bf/**` (events, hotels, venues, plan, windows, flags, conflicts, sources,
+last_checked, change_log, questions, suggestions, rates_log, facts, meta),
+`scripts/integrate_bdcaf0bf.py`, `scripts/build_bdcaf0bf.py`,
+`scripts/check_bdcaf0bf.py`, `scripts/recheck_bdcaf0bf.py`,
+`work/bdcaf0bf/smoke_dom.mjs`, root `index.html`, `pages/**` (all 22 pages generated
+by the canonical builder), `assets/bdcaf0bf.css`, `assets/bdcaf0bf.js`,
+`.github/workflows/integrate-bdcaf0bf.yml`, the root-site write steps of
+`daily-scrape.yml` / `recheck-ea99006a.yml` / `quality.yml`, and
+`README.md` / `EXECUTIVE_SUMMARY.md` / `REPO_REVIEW.md`.
+`assets/app.js` and `assets/css/style.css` were **left untouched** on purpose: the
+node test suite and an archived page set read them, so the canonical site ships its
+own asset pair instead of replacing theirs.
+
+**What the merged data says (as of the 2026-11-19 re-read):** 247 rows over 101
+official URLs; 0 rows with an official one-entry statement; 53 rows whose own
+structure sheet was read and shows no re-entry, rebuy, add-on or purchased-chip
+language; 75 rows excluded for published paid advantage; 35 continuation rows; 84
+rows with no published terms; 41 rankable rows; 14 rows the two earlier sessions
+classified differently (both verdicts plus both excerpts are published in
+`data/bdcaf0bf/conflicts.json`); 38 review items; 35 scheduled venue-days with one
+primary each and 16 with a second event; 5 hotels with fee/tax/parking/cancellation
+confirmed and no dated room rate anywhere.
+
+**Sources and verification:** every row links the official page or PDF it was read
+from; this session re-read 12 official targets on 2026-11-19 and stored the verbatim
+quote, what it establishes and the result (`data/bdcaf0bf/facts_20261119.json`),
+including the Clark County ordinance that both sets the 13.38% corridor rate and puts
+a separately stated facility fee inside the taxable definition of "rent".
+`scripts/check_bdcaf0bf.py` re-derives each entry grade from the raw sheet text with
+its own keyword pass (it does not trust the dataset's label), recomputes every ratio,
+true nightly cost, duration and walk rule, and parses the site JavaScript. Live
+checks: `npm test` 9/9; `check_root_site.py` green; `crosscheck_251c122f.py` green;
+`check_ea99006a.py` now reports 5988/5988 table rows carrying an official https
+source (its host allow-list still rejects `worldpokertour.com`, the WPT's own site,
+which this build treats as official - the disagreement is recorded, not worked
+around); `node work/bdcaf0bf/smoke_dom.mjs` passes 13 DOM checks against the real
+generated pages; two consecutive builds produce no diff.
+
+**Irregularities found while integrating (each is also on the Flagged for review
+page with its URL):** the 0-vs-55 conflict was a definitional choice, not better data
+(B01); two generators overwriting the published root site (B02, now fixed); Caesars
+publishes only a $45-$60 fee range so no per-property number exists (B03/F09); the
+Wynn $55 + deposit + 72-hour terms come from an offer whose stay window closed
+2025-06-30 (F28); nine sheets print a late-registration clock that contradicts their
+own level arithmetic (printed clock kept, arithmetic flagged); two PokerAtlas
+Valuetown rows an earlier session confirmed as single-entry actually sell subsequent
+buy-ins at a member price (now excluded, quoted); no official source publishes an
+8:00 AM start anywhere on the Strip in this window, nor any cross-property walking
+time; the Venetian `/resort/about/contact-us.html` path 404s.
+
+**Requests to other sessions:** the three root dashboards in `docs/`, `site/`,
+`dashboard-*` and `planner-*` still describe this brief with their own numbers; they
+are preserved and linked from the landing page, and consolidating or deleting them
+remains an owner decision. Sessions that own `scripts/build_251c122f.py`,
+`scripts/build_ea99006a.py` or `scripts/build_c6087e2c.py` should not re-add a root
+`index.html`/`pages/**` write step to any workflow: `integrate-bdcaf0bf.yml` owns
+that output now, and `check_bdcaf0bf.py` fails the build if another generator
+resumes committing it.
+
+**Publication:** PR [#59](https://github.com/karagemop466-tech/Poker5/pull/59) -
+merge result and Pages deployment confirmation are appended in the next entry.
