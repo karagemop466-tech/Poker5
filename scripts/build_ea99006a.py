@@ -2411,6 +2411,25 @@ def build_verification():
                            src_link(c["official_url"], "official page")))
         body.append("</tbody></table></div>")
         body.append('<p class="muted sm">%s</p>' % esc(rv["not_changed"]))
+    # Live re-read by session 22f06ff9 (fetch_page on the official URLs, 2026-11-19).
+    rv2_path = os.path.join(ROOT, "data", "22f06ff9", "reverify.json")
+    if os.path.exists(rv2_path):
+        with open(rv2_path, encoding="utf-8") as fh:
+            rv2 = json.load(fh)
+        body.append("<h2>Live re-read of the official sources (%s)</h2>" % esc(rv2["retrieved"]))
+        body.append('<p class="muted">%s</p>' % esc(rv2["scope"]))
+        body.append('<p class="muted sm">Read by: %s. %s</p>' % (esc(rv2["read_method"]), esc(rv2["not_changed"])))
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
+                    "<th>Stored value</th><th>What the official source says</th><th>Official source</th>"
+                    "</tr></thead><tbody>")
+        for c in rv2["checks"]:
+            res = c.get("result", "")
+            pill = {"match": "pill pill-ok", "mismatch": "pill pill-bad",
+                    "mismatch - corrected": "pill pill-warn"}.get(res, "pill pill-warn")
+            body.append("<tr><td>%s</td><td><span class=\"%s\">%s</span></td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(c["item"]), pill, esc(res), esc(c["stored"]), esc(c["detail"]),
+                           src_link(c["official_url"], "official page")))
+        body.append("</tbody></table></div>")
     write("pages/verification.html", page("Verification log", "".join(body), "verification.html", 1))
 
 
