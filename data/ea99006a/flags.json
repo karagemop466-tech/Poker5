@@ -233,7 +233,7 @@
   "id": "F33",
   "area": "Hotels",
   "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
-  "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (72 hours before arrival, per the Wynn terms page). Blank elsewhere and flagged.",
+  "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (48 hours before arrival for offer DK26WLV2 bookings, re-read 2026-11-19; the earlier 72-hour figure is withdrawn, see F55). Blank elsewhere and flagged.",
   "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338"
  },
  {
@@ -315,6 +315,15 @@
   "detail": "The interrupted session recorded two dated hotel rate observations ($241.93 Venetian for Dec 2, $277.33 Bellagio for Dec 3) with extraction notes. The booking engines are JavaScript-driven and the figures could not be re-read from an official booking page, so they were NOT added to the dated rates log - a rate enters the log only with its official source and retrieval timestamp (see F14/F51). Re-run the official booking pages for those dates and capture the itemised quote (checkout total, nightly average, resort fee, tax, parking, cancellation deadline) to add them properly.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
   "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F55",
+  "area": "Hotels",
+  "title": "Wynn cancellation deadline: 72 hours was not reproducible; the live offer terms say 48 hours",
+  "detail": "Several records (rate snapshots, Q14, F33) stated a Wynn cancellation deadline of '72 hours before arrival, per the Wynn terms page read 2026-11-17'. No stored capture contains that text, so it cannot be reproduced. The Wynn terms page re-read on 2026-11-19 (offer DK26WLV2) says 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited', and its longer full-deposit and cancellation policy applies only to stays on 15-21 Nov, 29-31 Dec 2026 and 4-6 Jan 2027, not to 6-13 Dec. The 72-hour figure is therefore withdrawn and the record now carries 48 hours, labelled as the offer's terms. The standard (non-offer) rate policy was not read, so the planned rate's deadline is still unconfirmed. Re-read the booking-engine rate rules at quote time before any payment.",
+  "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "status": "corrected by d615f79e; needs review",
   "last_updated": "2026-11-19"
  }
 ]

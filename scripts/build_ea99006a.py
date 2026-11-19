@@ -1159,6 +1159,51 @@ def build_multi():
                                                 "tournaments-double.html", 1, TABLE_JS_INIT))
 
 
+SEQ_JS = r"""<script>
+/*SEQ-BEGIN*/
+function seqCheck(evs, D) {
+  var cannot = [], unknown = 0, ok = 0;
+  for (var i = 0; i < evs.length; i++) {
+    for (var j = i + 1; j < evs.length; j++) {
+      var a = evs[i], b = evs[j];
+      // a then b is possible iff b's late-registration close is not before a's earliest finish (a.s + D).
+      var ab = (b.l === null) ? null : (b.l >= a.s + D);
+      var ba = (a.l === null) ? null : (a.l >= b.s + D);
+      if (ab === true || ba === true) { ok++; }
+      else if (ab === null || ba === null) { unknown++; }
+      else { cannot.push([a, b]); }
+    }
+  }
+  return { cannot: cannot, unknown: unknown, ok: ok };
+}
+/*SEQ-END*/
+function seqRender() {
+  var box = document.getElementById('seqh');
+  var data = JSON.parse(document.getElementById('seqdata').textContent);
+  var raw = parseFloat(box.value);
+  var valid = raw >= 0.5 && raw <= 12;
+  document.querySelectorAll('.seqout').forEach(function (dd) {
+    var day = data[dd.getAttribute('data-seqday')];
+    dd.textContent = '';
+    var msg = function (t) { var s = document.createElement('div'); s.textContent = t; dd.appendChild(s); };
+    if (!day) { msg('No listed events.'); return; }
+    if (box.value === '') { msg('Enter an assumed playing length above (0.5 to 12 hours) to test sequencing.'); return; }
+    if (!valid) { msg('Enter a length between 0.5 and 12 hours.'); return; }
+    var D = raw * 60, evs = day.ev, p = evs[day.p], fb = [];
+    evs.forEach(function (e, k) { if (k !== day.p && e.l !== null && e.l >= p.s + D) fb.push(e.lab); });
+    msg('After the primary (' + raw + ' h): ' + (fb.length ? 'can be entered after it: ' + fb.join('; ') : 'no listed event can be entered after it.'));
+    var r = seqCheck(evs, D);
+    msg('Cannot be played in sequence: ' + (r.cannot.length ? r.cannot.map(function (q) { return q[0].lab + ' + ' + q[1].lab; }).join('; ') : 'none'));
+    msg('Cannot be decided (a late-registration close is not stated): ' + r.unknown + ' pair(s).');
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var box = document.getElementById('seqh');
+  if (box) { box.addEventListener('input', seqRender); seqRender(); }
+});
+</script>"""
+
+
 def build_schedule():
     body = ["<h1>Day schedule and overlap check</h1>"]
     body.append('<p class="muted">For each date, one <b>primary</b> event and, where one fits, a <b>conditional '
@@ -1216,6 +1261,23 @@ def build_schedule():
     body.append('<label class="chk" style="margin:6px 0"><input type="checkbox" id="winonly"> '
                 'Only my %d nights (%s to %s, checkout day included for the day event)</label>'
                 % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+    # Optional what-if: the user's own playing-length estimate. Blank by default; no source supplies it,
+    # so it is never shown as an official value and never written into the data.
+    body.append('<div class="panel" id="seqbox"><label><b>Assumed playing length</b> (hours, optional) '
+                '<input type="number" id="seqh" min="0.5" max="12" step="0.5" placeholder="blank" '
+                'style="width:6em"></label> <span class="muted sm">Your own estimate. No official source publishes '
+                'a finishing time, so nothing on this page supplies one. With a length entered, each day also shows '
+                'which events cannot be played in sequence. Leave it blank to see only the start-time and '
+                'late-registration checks.</span></div>')
+    seq = {}
+    for d, evs, prim, _fb, _c in rows_by_date:
+        seq[d] = {
+            "p": next(i for i, r in enumerate(evs) if r is prim),
+            "ev": [{"lab": "%s %s%s" % (pretty_time(r["start"]), ("#%s " % r["event_no"]) if r.get("event_no") else "",
+                                        "%s, %s" % (r["venue"], r["name"])),
+                    "s": minutes(r["start"]), "l": late_reg_close(r)[0]} for r in evs],
+        }
+    seqjson = json.dumps(seq, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     out = []
     for d, evs, prim, fb, conflicts in rows_by_date:
         inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
@@ -1243,6 +1305,8 @@ def build_schedule():
                 for c in conflicts))
         else:
             out.append("<dt>Cannot be combined</dt><dd><span class=\"blank\">none</span></dd>")
+        out.append('<dt>At your assumed playing length</dt><dd class="seqout" data-seqday="%s">'
+                   '<span class="muted">Enter a length above to test sequencing.</span></dd>' % esc(d))
         out.append("</div>")
         out.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Start</th><th>Venue</th>'
                    "<th>#</th><th>Event</th><th class=\"num\">Buy-in</th><th>Entry rule</th>"
@@ -1269,13 +1333,13 @@ def build_schedule():
                    'is therefore built on start times and registration windows, which are published.</p>')
         out.append("</div>")
     body.append("".join(out))
+    body.append('<script type="application/json" id="seqdata">%s</script>' % seqjson)
     body.append('<div class="warnbox"><b>Earliest verified start: 9:10 AM</b> (Venetian Event #46, a satellite on '
                 '12 December). The earliest verified non-satellite start is 10:10 AM. No official schedule in this '
                 'window lists an 8:00 AM start, so a "play from 8 AM" day is not supported by the sources.</div>')
     write("pages/schedule.html", page("Day schedule and overlap check", "".join(body), "schedule.html", 1,
                                       TABLE_JS_INIT + "<script>document.addEventListener('DOMContentLoaded',"
-                                      "function(){initDays();});</script>")
-            )
+                                      "function(){initDays();});</script>" + SEQ_JS))
 
 
 def build_hotels():
@@ -1716,18 +1780,16 @@ def build_exec():
         "Two Strip series are running and both are verified from official pages: the Venetian DeepStack "
         "Extravaganza IV (16 November - 23 December 2026) and the WPT World Championship festival at Wynn "
         "(27 November - 21 December 2026).",
-        "<b>No event is confirmed as single-entry.</b> All 37 official Venetian structure sheets were read; "
-        "none states a one-entry, no-re-entry or freezeout limit. Every WPT event whose terms were read permits "
-        "re-entry, and the Prime Championship allows one entry plus one re-entry per flight.",
-        "%d rows show no re-entry, rebuy or add-on text on their official sheet. They are the only sensible basis "
-        "for a one-entry plan, and they stay labelled unverified until a room confirms the cap in writing." % len(CANDIDATES),
+        "<b>%d events are confirmed single-entry under the written standard S1</b>, each from its own official "
+        "structure sheet read in full (see the Verification log). No sheet states 'one entry only' in words, so each "
+        "confirmation rests on the absence of any re-entry, rebuy or add-on grant; that limit is flag F01. "
+        "%d rows are re-entry or multi-flight, and %d rows have terms that were not read and stay unverified. Every WPT "
+        "event whose terms were read permits re-entry, and the Prime Championship allows one entry plus one re-entry "
+        "per flight." % (len(CONFIRMED), len(MULTI), len(UNREAD)),
         "The recommended window is %s to %s (%d nights). It was chosen automatically: it sits inside both series "
         "and carries the most no-re-entry-text entries of any 7-night window in the Venetian series."
         % (pretty_date(TRIP["check_in"]), pretty_date(TRIP["check_out"]), TRIP["nights"]),
-        "Hotel true nightly cost = rate + resort fee + tax at %.2f%%. Only two resort fees could be verified "
-        "officially: the Venetian at $55 plus tax, and Resorts World at $55 per room per day (waived on the "
-        "\"All Resort, No Fees\" offer through 28 December 2026). No nightly rate could be read from an official "
-        "source, so no rate is filled in." % TAX["rate"],
+        "Hotel true nightly cost = rate + resort fee + tax at %.2f%%. Three resort fees are read officially: the Venetian and Wynn at $55 plus tax (both re-read 2026-11-19), and Resorts World at $55 per room per day (waived under its \"All Resort, No Fees\" offer through 28 December 2026). No nightly rate could be read from an official source, so no rate is filled in." % TAX["rate"],
         "No official schedule in this window lists an 8:00 AM start. The earliest verified start is 9:10 AM, and "
         "the earliest non-satellite start is 10:10 AM.",
         "Walking: only a poker room inside your own hotel is verifiable (0 minutes). No cross-property walking "
@@ -2315,6 +2377,22 @@ def build_verification():
     body.append("<p class=\"muted sm\">A figure with no official page behind it is left blank and flagged, never "
                 "estimated. The open questions behind those blanks are on the "
                 "<a href=\"flagged-review.html\">Flagged for review</a> page.</p>")
+    # Re-read of the trip-critical official values (session d615f79e). Rendered from its own record.
+    rv_path = os.path.join(ROOT, "data", "d615f79e", "reverify.json")
+    if os.path.exists(rv_path):
+        with open(rv_path, encoding="utf-8") as fh:
+            rv = json.load(fh)
+        body.append("<h2>Re-read before payment (%s)</h2>" % esc(rv["retrieved"]))
+        body.append('<p class="muted">%s</p>' % esc(rv["scope"]))
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
+                    "<th>Stored value</th><th>What the official page says</th><th>Official source</th>"
+                    "</tr></thead><tbody>")
+        for c in rv["checks"]:
+            body.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(c["item"]), esc(c["result"]), esc(c["stored"]), esc(c["detail"]),
+                           src_link(c["official_url"], "official page")))
+        body.append("</tbody></table></div>")
+        body.append('<p class="muted sm">%s</p>' % esc(rv["not_changed"]))
     write("pages/verification.html", page("Verification log", "".join(body), "verification.html", 1))
 
 

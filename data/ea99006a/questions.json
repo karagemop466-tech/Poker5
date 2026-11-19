@@ -93,7 +93,7 @@
  {
   "id": "Q14",
   "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
-  "have": "Wynn terms page: 72 hours before arrival (read 2026-11-17).",
+  "have": "Wynn offer terms DK26WLV2, re-read 2026-11-19: cancellations must be received at least 48 hours before arrival for that offer's bookings. The earlier 72-hour figure (2026-11-17) is withdrawn: it could not be reproduced from any stored capture (F55). The standard-rate policy was not read.",
   "missing": "Cancellation deadlines and deposit/refund terms for the Venetian booking rate, and for any Caesars or MGM rate.",
   "how": "Read the rate rules shown on each official booking page at quote time and record them in the dated rate log."
  },
@@ -110,5 +110,12 @@
   "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
   "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.",
   "id": "Q16"
+ },
+ {
+  "id": "Q17",
+  "q": "How long will you play each event, and therefore which two events can actually be played in sequence on the same day?",
+  "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
+  "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
+  "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
  }
 ]

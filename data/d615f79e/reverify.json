@@ -1,0 +1,69 @@
+{
+ "session": "d615f79e",
+ "scope": "Live re-read of the official sources behind the recommended trip window (6-13 Dec 2026) on 2026-11-19, before any non-refundable payment. Each value is compared with the stored record; nothing is marked verified that was not read on this date.",
+ "read_method": "fetch_page on the official URL (platform reader, full text). Structure sheets are PDFs read as text; byte-level hashes are checked by the scheduled monitor, not here.",
+ "retrieved": "2026-11-19",
+ "checks": [
+  {
+   "item": "Venetian DSE IV schedule: every row dated 6-13 Dec 2026 (date, start time, event number, event name, buy-in)",
+   "official_url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+   "stored": "data/ea99006a/venetian.json, 28 rows with date 2026-12-06 to 2026-12-13",
+   "result": "match",
+   "detail": "All 28 rows match the live schedule on date, start time (12-hour clock converted), event number and buy-in. Restart and final-table rows for #26, #39, #47 and #49 included."
+  },
+  {
+   "item": "Venetian resort fee",
+   "official_url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+   "stored": "$55 plus tax per night",
+   "result": "match",
+   "detail": "Page reads 'Rates include a daily Resort Fee of $55 plus tax per night'."
+  },
+  {
+   "item": "Venetian poker suite rate (floor) and its play condition",
+   "official_url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "stored": "$119 / $209 'as low as'; six hours of live cash play or a $300+ buy-in each night; $55 resort fee per night",
+   "result": "match",
+   "detail": "Page: 'rates will start as low as $119 and $209 and can be higher'; 'subject to qualifying poker play and availability'; six hours or a $300+ tournament buy-in per night, else the prevailing rate applies. The stored record keeps the condition in rate_caveat. It remains a floor, not a quote for 6-13 Dec."
+  },
+  {
+   "item": "Wynn resort fee and parking",
+   "official_url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+   "stored": "$55 plus tax; complimentary self-parking for up to two vehicles",
+   "result": "match",
+   "detail": "Page reads 'A daily resort fee of $55 plus tax'; self-parking for up to two vehicles included."
+  },
+  {
+   "item": "Wynn cancellation deadline",
+   "official_url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+   "stored": "72 hours before arrival (rate_snapshots, Q14, F33 as of 2026-11-17)",
+   "result": "mismatch - corrected",
+   "detail": "Page reads 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited' for this offer. The 72-hour figure appears in no stored capture. Corrected to 48 hours (offer terms) and logged as F55."
+  },
+  {
+   "item": "Venetian structure sheets behind the 6-13 Dec single-entry labels (sheets read live today)",
+   "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
+   "stored": "Sheet 7 (#28), 11 (#30), 15 (#29, 31, 34, 38, 42, 50, 51, 53, 55), 16 (#36), 24 (#41, 44), 25 (#45, 46, 48) carry no re-entry, rebuy or add-on grant",
+   "result": "match",
+   "detail": "Sheets re-read: 7, 11, 15, 16, 24 and 25 (each linked from the row's official source). Fields checked on each sheet: buy-in, guarantee, event numbers, start time, late-registration close and level length, read against the stored row. No sheet grants a re-entry, rebuy or add-on. Checked matches: #28 (~4:55 PM close), #29 (9:40 PM), #30 ($40,000, 4:55 PM), #36 ($75,000, 4:55 PM), #41 and #44 (~6:25 PM), #45, #46 and #48 (6 levels, 15-minute levels)."
+  },
+  {
+   "item": "Venetian structure sheets not re-read today",
+   "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/",
+   "stored": "Single-entry sheets behind 6-13 Dec rows: 17, 19, 27, 31, 33. Multi-entry sheets in the same window: 12, 20, 21, 32, 37.",
+   "result": "not re-read this session",
+   "detail": "Not re-read in this session. The single-entry sheets are carried forward from the 2026-11-19 read by an earlier session (data/b3be876c/verification.json) and the scheduled monitor. Read them before payment."
+  },
+  {
+   "item": "Clark County transient-lodging tax 13.38%",
+   "official_url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf",
+   "stored": "13.38% (primary gaming corridor)",
+   "result": "not re-read this session",
+   "detail": "Not re-fetched in this session. The stored record keeps the ordinance link and the 'confirm the current schedule' note."
+  }
+ ],
+ "changes_made": [
+  "Wynn cancellation deadline corrected from 72 hours to 48 hours (offer terms) in data/ea99006a/rate_snapshots.json (2 entries), questions.json Q14 and flags.json F33; new flag F55.",
+  "Schedule page: optional assumed playing-length check added (data/ea99006a rows unchanged; the input is never written to data)."
+ ],
+ "not_changed": "No event, buy-in, guarantee, start time, entry-rule verdict or rate value was changed by this re-read. Every stored value that was re-read matched."
+}
