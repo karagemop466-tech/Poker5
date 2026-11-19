@@ -10,7 +10,7 @@
 | V2 | Add official addresses for Venetian / Wynn / Resorts World (were blank) with source + read date | done | `data/ea99006a/hotels.json`, regenerated `index.html` + `pages/**` |
 | V3 | Complete Wynn DK26WLV2 note (full blackout list + special deposit windows) from live re-read; fee figure unchanged | done | `data/ea99006a/hotels.json`, regenerated site |
 | V4 | Make South Point time/buy-in pairing caveat explicit on all 8 rows (page lists 4 times + 2 buy-ins; pairing unconfirmed, detail is images only) | done | `data/ea99006a/other.json`, regenerated site |
-| V5 | Rebuild site, run all checks, PR to main, merge, confirm Pages deploy, record here | in progress | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+| V5 | Rebuild site, run all checks, PR to main, merge, confirm Pages deploy, record here | done (record below) | `index.html`, `pages/**` (generator output only), COORDINATION.md |
 
 Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared. No tournament/hotel value is changed without a live official read in this session.
 
@@ -41,6 +41,8 @@ Other sessions' folders are not edited. No row is newly marked verified unless t
 - `monitor_summary.json` still records `run: null` (no live value-level run). The sandbox cannot fetch casino hosts via `urllib` (outbound allow-list is github/npm/pypi only); live reads in this session used the page-fetch tool, not the monitor script. Offline ledger check passes; absence of a changed-value badge still means "not yet re-checked", never "verified unchanged" (F48 stands).
 - Legacy `data/c6087e2c/events_verified.json` still misclassifies #18/#58 (F47). Canonical data is correct; legacy parser fix remains with that pipeline's owner (handoff already logged by session 2b98a91f).
 - `rule_fields.start_time` blank for 39 Venetian rows and `rule_fields.guarantee` blank for all 94: sheets that cover multiple events state per-event guarantees (e.g. sheet 7: $30K vs $40K) or omit start times (schedule page carries them). Blank is correct; top-level `guarantee`/`start` + `source` carry the verified values.
+
+**Publication record (96160d8f):** PR [#79](https://github.com/karagemop466-tech/Poker5/pull/79) ("Line-by-line official verification + hotel addresses") merged to `main` as merge commit `058bb1e` on 2026-11-19T21:57:16Z. Required checks `check` and `validate` passed on the PR head; GitHub Pages build for `058bb1e` reports `built` (2026-11-19T21:57:53Z, run 44623882517 success). Rebased twice onto advancing `main` (PRs #77/#80/#81 landed mid-session); COORDINATION.md conflicts resolved by keeping both sessions' sections, no work discarded. Flagged irregularities (walking minutes, hotel quote, finish times, monitor run=null, legacy F47) remain on the Flagged for review page and do not block the merge.
 
 ---
 
