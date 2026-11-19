@@ -1174,3 +1174,19 @@ Claimed 2026-11-19 from `main` @ `0011ea1` (no other active claim on the board f
 | L2 | in progress | 1dd08538 | `COORDINATION.md` (this section) |
 
 Not claimed here (out of scope, logged as requests below): per-field retrieval dates and an explicit `single_entry` field in `rule_fields` (owned by the `data/c6087e2c` merge step); a stored GTD÷entry ratio field; finish-time and overlap fields; live hotel rate capture. No data file is edited by this session.
+
+### Result — session 1dd08538 (landing-page search + gap audit)
+
+**Changed (L1):** `index.html` now has a search form (`#landsearch`) above the cards: the term plus a drop-down of table pages (All tournaments, Single-entry, Multi-entry, Day schedule, Hotels, Verification log, Flagged for review). Submitting opens that page with `?q=<term>`; `assets/app.js` pre-fills the page's existing search box and runs its filter, so the term is applied to every table on that page. `scripts/build_ea99006a.py` `build_index()` generates the form; the page's own filters are unchanged.
+
+**Verification:** `build_ea99006a.py` rebuilt (exit 0); `check_ea99006a.py` OK (every table row carries an official https source; no broken links); `check_root_site.py` OK; `crosscheck_251c122f.py` OK (67 discrepancies, unchanged); `node --check assets/app.js` OK; `npm test` run. `pages/repo-review.html` regenerates with a changing file count on every build and is outside this session's scope; it was reverted rather than committed.
+
+**Gap audit against the brief (not fixed here; logged for the data owner and integration session):**
+1. Per-field retrieval date: `rule_fields` in `data/c6087e2c/events_verified.json` stores `value`/`excerpt`/`source` per field, but the retrieval date is only at row level (`sheet_retrieved_at`). Fix belongs in `scripts/merge_251c122f.py` (data owner).
+2. Explicit `single_entry` rule field: the verdict is derived, not stored as its own field with excerpt and date.
+3. Stored GTD÷entry ratio: displayed on pages as a descriptive ratio but not present in the data.
+4. Finish-time and overlap fields: only the derived `one_day_minutes` (labelled "planning duration, not a scheduled finish time") exists; overlap check cannot be fully verified until finish times are sourced.
+5. Hotel true cost: most hotels still "Not computed" (Venetian floor only); needs dated itemized quotes.
+6. Walking times: no off-property pair has a measured time; blank by design.
+
+**Status:** L1 done, L2 done (this entry). Branch `arena/1dd08538-poker5`; PR and merge to be recorded below.
