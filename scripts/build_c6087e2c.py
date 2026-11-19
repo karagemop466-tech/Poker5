@@ -1559,8 +1559,8 @@ def page_planner():
   </div>
   <div class="calc-total">
     <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
-    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">$0</strong></div>
-    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">$0</strong></div>
+    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">Incomplete</strong></div>
+    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">Incomplete</strong></div>
     <div><span>Nights that qualify for the poker rate</span><strong id="sum-qual">0</strong></div>
   </div>
   <table class="tbl"><thead><tr><th>Reference totals (not quotes)</th><th>Arithmetic</th>

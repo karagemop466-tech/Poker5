@@ -114,6 +114,18 @@ test('confirmed single-entry toggle excludes unverified and multi-entry rows', a
   assert.doesNotMatch(script, /data-rule'\)!=='unknown'.*data-rule/);
 });
 
+test('only the canonical source monitor rebuilds and commits the root site', async () => {
+  const [capture, publisher] = await Promise.all([
+    readFile(new URL('../.github/workflows/daily-scrape.yml', import.meta.url), 'utf8'),
+    readFile(new URL('../.github/workflows/recheck-ea99006a.yml', import.meta.url), 'utf8'),
+  ]);
+  assert.ok(capture.includes('Commit the refreshed research capture only'));
+  assert.ok(!capture.includes('python3 scripts/build_c6087e2c.py'));
+  assert.ok(!capture.includes('git add data/c6087e2c/ index.html pages/'));
+  assert.ok(publisher.includes('python3 scripts/build_ea99006a.py'));
+  assert.ok(publisher.includes('git add data/ea99006a pages index.html assets'));
+});
+
 test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {
   const [dashboard, ledger, published, rootHome] = await Promise.all([
     readFile(new URL('../site-src/index.html', import.meta.url), 'utf8'),

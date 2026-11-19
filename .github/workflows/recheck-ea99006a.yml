@@ -1,8 +1,8 @@
 name: recheck-ea99006a
 
-# Session ea99006a - re-fetch every official source that backs a table row,
-# hash it, and record what changed. 13:00 UTC == 6:00 AM Las Vegas, so the
-# change log is fresh before the day's tournaments start.
+# The canonical root-site publisher. Re-fetch official pages, record changes in
+# the source ledger, rebuild the root dashboard from that ledger, and publish
+# the refreshed generated site. The daily c6087e2c workflow is capture-only.
 
 on:
   schedule:
@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -33,19 +35,20 @@ jobs:
       - name: Re-fetch every official source
         run: python3 scripts/recheck_ea99006a.py
 
-      - name: Rebuild the site
+      - name: Rebuild the canonical site
         run: |
           python3 scripts/build_ea99006a.py
           python3 scripts/check_ea99006a.py
 
-      - name: Commit any change to the ledger or the site
+      - name: Commit refreshed source ledger and root site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain data/ea99006a pages index.html assets)" ]; then
             git add data/ea99006a pages index.html assets
             git commit -m "ea99006a: automated official-source re-check"
-            git push
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           else
             echo "no changes"
           fi

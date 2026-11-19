@@ -32,7 +32,8 @@ def check_links():
         with open(f, encoding="utf-8") as fh:
             txt = fh.read()
         base = os.path.dirname(f)
-        for m in re.finditer(r'(?:href|src)="([^"#]+)"', txt):
+        # Match actual href/src attributes, not data-nosrc or data-src attributes.
+        for m in re.finditer(r'(?<![\w-])(?:href|src)="([^"#]+)"', txt):
             href = m.group(1)
             if href.startswith(("http", "mailto", "tel", "//", "data:")):
                 continue
@@ -62,6 +63,7 @@ def check_source_anchors():
                     continue
                 errors.append("{}: table row without a source link".format(
                     os.path.relpath(f, ROOT)))
+
 
 
 def check_baseline():

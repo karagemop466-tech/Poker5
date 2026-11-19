@@ -914,3 +914,17 @@ Official, read through the agent's page-fetch tool because the sandbox cannot op
 
 - Conflicts on rebase over `main` (sessions a9d1e02d, 3c49aaec, ea99006a merged while this session worked): kept `main`'s `COORDINATION.md` and appended this section; kept this build's root `index.html`, `pages/*`, `assets/*` (regenerated from the capture) and restored the other sessions' non-root pages that my first rebase attempt deleted. No other session's folder was edited or removed.
 - The one mistake made and corrected in this session: a cleanup step in `scripts/build_251c122f.py` deleted `pages/method.html`, `pages/monitor.html`, `pages/routes.html` on the merge. The step was removed from the build and all three files were restored from `main`; the build no longer deletes any file it did not generate.
+
+## Session e15c88a2 (branch `arena/e15c88a2-poker5`) — calculator correctness + validator repair
+
+Claim recorded before implementation on 2026-11-19. The inherited structure-audit integration claim was stale (>60 minutes without commits), so this session took a narrow integration/correctness scope and checked for newer work before changing shared files. No event or hotel facts were newly added.
+
+| Task | Status | Owner | Files touched |
+|---|---|---|---|
+| Keep the estimated-trip-cost calculation incomplete when the required date-specific hotel quote is absent | done | e15c88a2 | `scripts/build_ea99006a.py`, `scripts/build_c6087e2c.py`, `assets/app.js`, generated planner pages, `test/research.test.mjs` |
+| Repair false broken-link reports caused by `data-nosrc="1"` matching as a `src` attribute | done | e15c88a2 | `scripts/check_root_site.py` |
+| Establish one canonical root-site publisher while retaining the daily structure capture as a separate research ledger | done | e15c88a2 | `.github/workflows/daily-scrape.yml`, `.github/workflows/recheck-ea99006a.yml`, `test/research.test.mjs` |
+
+**Verification:** rebuilt the canonical root with `python3 scripts/build_ea99006a.py`; `npm test` (11/11); `npm run check` (build + tests); `node --check assets/app.js`; `python3 scripts/check_ea99006a.py` (18 pages, 1,261 rows with official sources, 417 internal and 1,271 external links); `python3 scripts/check_root_site.py`; `python3 scripts/crosscheck_251c122f.py` (94 live schedule rows aligned with the merged capture, 37/37 structure sheets); `python3 scripts/scrape_251c122f.py --self-test`; `python3 scripts/recheck_ea99006a.py --offline` (96 URLs in archived ledger, none missing); and `git diff --check` all passed. Workflow regression coverage confirms the c6087e2c morning job only stores/rechecks its capture, while the ea99006a monitor alone rebuilds and commits the public root. The original calculator code already mishandled blank quotes in an earlier root generation; main advanced during this session with a stricter calculator implementation, which was preserved during rebase. The c6087e2c data capture pushed by its scheduled job was retained. Source records/values were not edited by this session; no new factual values were marked verified.
+
+**Integration note:** while rebasing, main advanced through PRs #50–#52. Conflicts were resolved in favor of those newer main changes (notably the confirmed-only filter); the refreshed c6087e2c capture files were kept. The first PR check failed against a transient checker assertion bound to the alternate generator; after identifying the competing generators, the workflows were separated and the canonical build/tests passed. No other session's source data was discarded.
