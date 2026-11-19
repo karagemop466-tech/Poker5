@@ -47,6 +47,38 @@ def esc(s):
     return html.escape("" if s is None else str(s), quote=True)
 
 
+# The one ordering behind every quality floor on the site. The client reads the same list through
+# P5_TIER_ORDER in assets/app.js, and the assertion below is what keeps the two in step, so a floor can
+# never hide a hotel that meets it.
+TIER_ORDER = ["Budget", "Mid-scale", "Upscale", "Upper upscale", "Deluxe", "Luxury"]
+assert (TIER_ORDER.index("Upscale"), TIER_ORDER.index("Deluxe"), TIER_ORDER.index("Luxury")) == (2, 4, 5)
+
+
+def tier_rank(name):
+    """Index of a published tier in TIER_ORDER, or None when the tier is unverified or unknown."""
+    if not name:
+        return None
+    key = str(name).strip().lower()
+    for i, t in enumerate(TIER_ORDER):
+        if t.lower() == key:
+            return i
+    return None
+
+
+def tier_attrs(h):
+    """data-tier as the published name plus its rank, so both hotel filter bars compare a number."""
+    r = tier_rank(h.get("tier"))
+    return ' data-tier="%s" data-tier-rank="%s"' % (esc(h.get("tier") or ""), "" if r is None else r)
+
+
+def quality_floor_select(floor_id="pquality"):
+    """The page-wide floor select, with option values that are ranks in TIER_ORDER."""
+    return ('<label>Quality floor<select id="%s"><option value="">Any</option>'
+            '<option value="%d">Deluxe or better</option>'
+            '<option value="%d">Luxury only</option></select></label>'
+            % (floor_id, TIER_ORDER.index("Deluxe"), TIER_ORDER.index("Luxury")))
+
+
 def load(name):
     with open(os.path.join(DATA, name)) as fh:
         return json.load(fh)
@@ -589,6 +621,23 @@ function searchText(tr){
   return t.toLowerCase();
 }
 
+/* One ordering for every quality floor on the site, shared with the builder through P5_TIER_ORDER so a
+   select's value and a row's rank cannot drift apart. It used to be {"Deluxe":1,"Luxury":2} looked up on
+   a NAME by the itemized panel and on a NUMBER by the page-wide bar, so "Luxury only" hid the Luxury rows
+   in the shortlist (their attribute read "2", not a key in that map) while leaving unranked rows visible,
+   and "Luxury or Upscale" in the panel hid the Luxury hotels outright because it compared the tier for
+   equality. A row whose tier is not verified is never hidden by a floor - the same rule the 30-minute walk
+   filter uses for a row with no verified walking time. */
+var P5_TIER_ORDER=["Budget","Mid-scale","Upscale","Upper upscale","Deluxe","Luxury"];
+function tierRank(tr){
+  var v=tr.getAttribute('data-tier-rank');
+  if(v!==null&&v!==''&&!isNaN(parseInt(v,10))) return parseInt(v,10);
+  var n=tr.getAttribute('data-tier');
+  if(n===null||n==='') return null;
+  for(var i=0;i<P5_TIER_ORDER.length;i++){ if(P5_TIER_ORDER[i].toLowerCase()===String(n).toLowerCase()) return i; }
+  return null;
+}
+
 var poker5Bound=false;
 function initFilters(){
   if(poker5Bound) return; poker5Bound=true;
@@ -601,7 +650,6 @@ function initFilters(){
       rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
   var tables=qsa('table.data');
-  var TIER_RANK={"Deluxe":1,"Luxury":2};
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
         v=ven?ven.value:'', s=se?se.checked:false,
@@ -613,6 +661,7 @@ function initFilters(){
         rk=rank&&rank.checked, cg=chg&&chg.checked,
         shown=0,total=0;
     tables.forEach(function(t){
+      if(t.hasAttribute('data-owned')) return;   /* owned by its own bar, which reads these too */
       qsa('tbody tr',t).forEach(function(tr){
         total++;
         var d=tr.getAttribute('data-date')||'';
@@ -640,9 +689,7 @@ function initFilters(){
           var m=tr.getAttribute('data-min');
           if(m!==null&&m!==''&&!isNaN(parseFloat(m))&&parseFloat(m)>30) ok=false;
         }
-        if(ok&&pmin&&tr.getAttribute('data-tier')!==null){
-          if((TIER_RANK[tr.getAttribute('data-tier')]||0)<pmin) ok=false;
-        }
+        if(ok&&pmin){ var tk=tierRank(tr); if(tk!==null&&tk<pmin) ok=false; }
         if(ok&&b!==null&&tr.getAttribute('data-cost')!==null&&tr.getAttribute('data-cost')!==''){
           var c=parseFloat(tr.getAttribute('data-cost'));
           if(!isNaN(c)&&c>b) ok=false;
@@ -654,7 +701,10 @@ function initFilters(){
     if(empty) empty.hidden=!(shown===0&&total>0);
   }
   if(q) q.addEventListener('input',apply);
-  [from,to,day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  /* date and select controls fire 'change' when a value is picked and 'input' while one is typed: a
+     reader who types a date instead of picking it used to see the table stay unfiltered until they
+     clicked elsewhere, so both events are bound. */
+  [from,to,day,rule].forEach(function(el){if(el){el.addEventListener('change',apply);el.addEventListener('input',apply);}});
   if(ven) ven.addEventListener('change',apply);
   [se,mu,en,walk,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
   [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
@@ -813,24 +863,46 @@ function initHotels2(){
       tbl=document.getElementById('hitems'), sel=document.getElementById('hsearch'),
       out=document.getElementById('bcost');
   if(!tbl) return;
+  /* This table has its own bar (ceiling, floor, hotel) and the page's shared bar above it (search,
+     ceiling, floor). Both wrote style.display to the same rows, so whichever ran last undid the other:
+     typing in the search box silently revealed the rows the ceiling had hidden, because the shared
+     filter found no data-cost on them and set every row visible. Now one function owns these rows and
+     reads BOTH bars - the stricter ceiling wins, the higher floor wins, and the shared search box
+     filters this table like every other table on the page. */
+  var gq=document.getElementById('q'), gb=document.getElementById('pbudget'),
+      gf=document.getElementById('pquality');
+  function num(el){ if(!el) return NaN;
+    var v=parseFloat(String(el.value||'').replace(/[^0-9.\-]/g,'')); return isNaN(v)?NaN:v; }
+  function floorLabel(){
+    var el=(fl&&fl.value!=='')?fl:gf;
+    if(!el||el.selectedIndex<0||!el.options[el.selectedIndex]) return '';
+    return el.options[el.selectedIndex].text;
+  }
   function apply(){
-    var c=parseFloat((ceil&&ceil.value||'').replace(/[^0-9.\-]/g,'')), f=fl?fl.value:'', w=sel?sel.value:'', n=0;
+    var cs=[num(ceil),num(gb)].filter(function(x){return !isNaN(x);});
+    var c=cs.length?Math.min.apply(null,cs):NaN, fs=[];
+    if(fl&&fl.value!=='') fs.push(parseInt(fl.value,10));
+    if(gf&&gf.value!=='') fs.push(parseInt(gf.value,10));
+    var fmin=fs.length?Math.max.apply(null,fs):-1, w=sel?sel.value:'', n=0;
+    var needle=gq?norm(gq.value):'';
     var all=qsa('tbody tr',tbl);
     all.forEach(function(tr){
       var ok=true, v=tr.getAttribute('data-ceil')||'';
       if(w && norm(tr.children[0].textContent).indexOf(norm(w))<0) ok=false;
-      if(ok && f && tr.getAttribute('data-tier')!==f) ok=false;
+      if(ok && needle && norm(tr.textContent).indexOf(needle)<0) ok=false;
+      if(ok && fmin>=0){ var tk=tierRank(tr); if(tk!==null&&tk<fmin) ok=false; }
       /* a hotel with no official rate can never be proven inside a budget: when a ceiling is set it
          is hidden, never assumed to fit */
       if(ok && !isNaN(c)){ if(v===''){ ok=false; } else if(parseFloat(v)>c){ ok=false; } }
       tr.style.display=ok?'':'none'; if(ok) n++;
     });
     if(out) out.textContent=n+' of '+all.length+' hotels match'+(isNaN(c)?'':' a ceiling of $'+c.toFixed(2))+
-      (f?' and the '+f+' quality floor':'')+'. Hotels with no official nightly rate cannot be proven '
-      'inside a ceiling, so they are hidden while one is set.';
+      (fmin>=0?' against the quality floor "'+floorLabel()+'"':'')+'. Hotels with no official nightly '+
+      'rate cannot be proven inside a ceiling, so they are hidden while one is set. The bar at the top '+
+      'of the page sets the same two limits, and the stricter of the two always wins.';
   }
-  [ceil,sel].forEach(function(el){if(el) el.addEventListener('input',apply);});
-  if(fl) fl.addEventListener('change',apply);
+  [ceil,sel,gq,gb].forEach(function(el){if(el) el.addEventListener('input',apply);});
+  [fl,gf].forEach(function(el){if(el) el.addEventListener('change',apply);});
   apply();
 }
 
@@ -1457,16 +1529,30 @@ def build_hotels():
                 'in the dated log at the bottom of this page.</p>')
     body.append(SEARCH_BAR % ("Search hotels, fees, parking, addresses...",
                               '<label>Nightly budget ceiling $<input type="number" id="pbudget" min="0" step="10" placeholder="any"></label>'
-                              '<label>Quality floor<select id="pquality"><option value="">Any</option>'
-                              '<option value="1">Deluxe or better</option><option value="2">Luxury only</option></select></label>'))
-    body.append('<p class="muted sm">The budget and quality filters only hide rows that are <i>known</i> to miss '
-                'your ceiling or floor. Rows without a dated quote are never hidden by the budget filter - a '
-                'missing rate is not a cheap rate.</p>')
+                              + quality_floor_select()))
+    body.append('<p class="muted sm">The budget ceiling and quality floor hide only rows that are <i>known</i> '
+                'to miss them: a row with no verified nightly rate is never treated as cheap, and a row with no '
+                'verified tier is never treated as below a floor. Both bars on this page - this one and the one '
+                'inside the itemized panel - set the same two limits, and the stricter of the two always wins, so '
+                'one bar cannot undo the other.</p>')
+    # The tax rate is a county figure, but a hotel that states the same percentage on its own terms page is
+    # worth showing: it is the number the guest will actually see at checkout.
+    _tax_hotels = []
+    for h in HOTELS:
+        if not h.get("tax_statement"):
+            continue
+        _tax_hotels.append('%s: &quot;%s&quot; %s%s' % (
+            esc(h["name"]), esc(h["tax_statement"]),
+            src_link(h.get("tax_statement_source") or h.get("extra_terms_source") or "", "official page"),
+            (' <span class="muted sm">read %s</span>' % esc(h["tax_statement_read"]))
+            if h.get("tax_statement_read") else ""))
+    _tax_extra = ('<dt>Stated by the property as well</dt><dd>%s</dd>' % "<br>".join(_tax_hotels)) if _tax_hotels else ""
     body.append('<div class="panel"><h2>Room tax</h2><div class="kv">'
                 '<dt>Rate</dt><dd><b>%.2f%%</b> combined transient lodging tax</dd>'
                 '<dt>Applies to</dt><dd>Resort hotels inside the primary gaming corridor (every hotel below)</dd>'
-                "<dt>Source</dt><dd>%s</dd><dt>Note</dt><dd>%s</dd></div></div>"
-                % (TAX["rate"], src_link(TAX["source"], "Clark County ordinance (PDF)"), esc(TAX["note"])))
+                '<dt>Source</dt><dd>%s</dd>%s<dt>Note</dt><dd>%s</dd></div></div>'
+                % (TAX["rate"], src_link(TAX["source"], "Clark County ordinance (PDF)"), _tax_extra,
+                   esc(TAX["note"])))
     body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Tier</th><th>Area</th>'
                 '<th>Poker room</th><th>Walk</th><th class="num">Resort fee / night</th><th>Address (official)</th>'
                 '<th>Parking</th><th>Player room rate</th><th>Cancellation</th><th>Official booking</th>'
@@ -1474,11 +1560,10 @@ def build_hotels():
     for h in HOTELS:
         fee = ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>'
         booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
-        tier_rank = {"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), "")
-        body.append("<tr data-tier=\"%s\"><td><b>%s</b><br><span class=\"muted sm\">%s</span></td><td>%s</td><td>%s</td>"
-                    "<td>%s</td><td>%s</td><td class=\"num\">%s<br><span class=\"muted sm\">%s</span></td>"
-                    "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-                    % (tier_rank, esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
+        body.append('<tr' + tier_attrs(h) + '><td><b>%s</b><br><span class="muted sm">%s</span></td><td>%s</td><td>%s</td>'
+                    '<td>%s</td><td>%s</td><td class="num">%s<br><span class="muted sm">%s</span></td>'
+                    '<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                    % (esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
                        '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
                        else '<span class="blank">not verified</span>',
                        fee, esc(h["resort_fee_text"]),
@@ -1503,7 +1588,8 @@ def build_hotels():
     body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th>'
                 '<th class="num">Resort fee / night</th><th class="num">Fee + 13.38% tax</th>'
                 '<th class="num">Parking / night</th><th>Cancellation deadline</th>'
-                '<th>Deposit and incidentals</th><th>Check-in / check-out</th>'
+                '<th>Deposit and incidentals</th><th>Extra guests, early departure, what the fee covers</th>'
+                '<th>Check-in / check-out</th>'
                 '<th class="num">Mandatory non-room cost / night</th><th>Rate timestamp</th>'
                 '</tr></thead><tbody>')
     _tr = TAX["rate"] / 100.0
@@ -1543,6 +1629,17 @@ def build_hotels():
             term(h.get("deposit") or h.get("incidentals"), h.get("extra_terms_source") or h.get("deposit_source"),
                  h.get("extra_terms_read") or h.get("cancel_read"),
                  ("Incidentals: " + h["incidentals"]) if h.get("incidentals") else ""),
+            "<br>".join(x for x in (
+                term(h.get("extra_guest"), h.get("extra_terms_source"), h.get("extra_terms_read"))
+                if h.get("extra_guest") else "",
+                ('<span class="muted sm">higher suites: %s</span>' % esc(h["incidentals_tiers"]))
+                if h.get("incidentals_tiers") else "",
+                term("Leaving before the scheduled departure date: " + h["early_checkout"],
+                     h.get("extra_terms_source"), h.get("extra_terms_read"))
+                if h.get("early_checkout") else "",
+                ('<span class="muted sm">the fee covers: %s</span>' % esc(h["fee_includes"]))
+                if h.get("fee_includes") else "",
+            ) if x) or '<span class="blank">no official page states this</span>',
             term(h.get("checkin_checkout"), h.get("checkin_checkout_source"), h.get("cancel_read")),
             ("$%.2f <span class=\"muted sm\">derived: taxed fee + parking</span>" % mand) if mand
             else '<span class="blank">not computed</span>',
@@ -1550,8 +1647,8 @@ def build_hotels():
             if (h.get("resort_fee_read") or h.get("extra_terms_read"))
             else '<span class="blank">no dated official read</span>',
         ]
-        body.append('<tr data-tier="%s"><td><b>%s</b><br><span class="muted sm">%s</span></td>%s</tr>'
-                    % ({"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), ""), esc(h["name"]),
+        body.append('<tr' + tier_attrs(h) + '><td><b>%s</b><br><span class="muted sm">%s</span></td>%s</tr>'
+                    % (esc(h["name"]),
                        esc(h.get("quality_note") or ""), "".join("<td>%s</td>" % c for c in cells)))
     body.append("</tbody></table></div>")
     body.append('<p class="muted sm">The Venetian row is complete except for the room rate itself: the $55 resort '
@@ -1601,25 +1698,35 @@ def build_hotels():
     _ceil = (TRIP.get("budget_ceiling") or {}).get("per_night")
     _floor = (TRIP.get("budget_floor") or {}).get("tier")
     # the tiers at or above the published quality floor, per the ordering recorded in meta.json
-    _order = META.get("tier_order") or ["Budget", "Mid-scale", "Upscale", "Upper Upscale", "Luxury"]
-    _at = _order.index(_floor) if _floor in _order else 0
-    QUALITY_OK = set(_order[_at:]) if _floor else set(_order)
+    _floor_sel = tier_rank(_floor) if _floor else -1
+
+    def quality_pill(h):
+        """Whether a hotel meets the trip's published quality floor, from the same ranking the selects
+        use. A hotel whose tier no official source states is never called below a floor it cannot
+        meet - it is called unverified, which is the truth."""
+        r = tier_rank(h.get("tier"))
+        if r is None:
+            return '<span class="pill pill-warn">tier not verified</span>'
+        return ('<span class="pill pill-ok">meets it</span>' if r >= _floor_sel
+                else '<span class="pill pill-warn">below the quality floor</span>')
     body.append("<h2>Same stay, itemized</h2>")
     body.append('<p class="muted sm">The brief sets a nightly budget as a ceiling and a quality floor, so both are '
                 'live inputs here. Only the hotels with an official rate can be proven inside the budget; the rest '
                 'are shown as "cannot compute", never as within budget.</p>')
-    body.append('<div class="panel"><div class="calc">'
-                '<label>Nightly budget ceiling $<input id="bceil" type="number" min="0" step="1" value="%s"></label>'
-                '<label>Quality floor<select id="bfloor"><option value="">any tier</option>'
-                '<option value="Luxury"%s>Luxury only</option>'
-                '<option value="Upscale"%s>Luxury or Upscale</option></select></label>'
-                '<label>Hotel<select id="hsearch"><option value="">all hotels</option>%s</select></label>'
-                '<span class="muted sm" id="bcost"></span></div>' % (
+    body.append(('<div class="panel"><div class="calc">'
+                 '<label>Nightly budget ceiling $<input id="bceil" type="number" min="0" step="1" value="%s"></label>'
+                 '<label>Quality floor<select id="bfloor"><option value="">any tier</option>'
+                 '<option value="%d"%s>Luxury only</option>'
+                 '<option value="%d"%s>Upscale or better</option></select></label>'
+                 '<label>Hotel<select id="hsearch"><option value="">all hotels</option>%s</select></label>'
+                 '<span class="muted sm" id="bcost"></span></div>') % (
                     ("%.2f" % _ceil) if _ceil else "",
-                    " selected" if (TRIP.get("budget_floor") or {}).get("tier") == "Luxury" else "",
-                    " selected" if (TRIP.get("budget_floor") or {}).get("tier") == "Upscale" else "",
+                    TIER_ORDER.index("Luxury"),
+                    (" selected" if _floor_sel == TIER_ORDER.index("Luxury") else ""),
+                    TIER_ORDER.index("Upscale"),
+                    (" selected" if _floor_sel == TIER_ORDER.index("Upscale") else ""),
                     "".join('<option value="%s">%s</option>' % (esc(h["name"]), esc(h["name"])) for h in HOTELS)))
-    body.append('<div class="tablewrap"><table class="data" id="hitems"><thead><tr><th>Hotel</th><th>Tier</th>'
+    body.append('<div class="tablewrap"><table class="data" id="hitems" data-owned="hotels"><thead><tr><th>Hotel</th><th>Tier</th>'
                 '<th>Poker room</th><th class="num">Room rate</th><th class="num">+ Resort fee</th>'
                 '<th class="num">+ Tax %.2f%%</th><th class="num">True per night</th>'
                 '<th class="num">%d nights</th><th>Budget ceiling</th><th>Quality floor</th>'
@@ -1647,8 +1754,7 @@ def build_hotels():
             cells.append('<td>%s</td>' % ('<span class="pill pill-bad">over</span>' if _ceil and taxable * (1 + _fee) > _ceil
                                           else '<span class="pill pill-ok">within</span>' if _ceil
                                           else '<span class="muted sm">no ceiling set</span>'))
-            cells.append("<td>%s</td>" % ('<span class="pill pill-ok">meets it</span>' if h["tier"] in QUALITY_OK
-                          else '<span class="pill pill-warn">below the quality floor</span>'))
+            cells.append("<td>%s</td>" % quality_pill(h))
             link = src_link(h.get("rate_floor_source"), "official rate page")
             note = esc((h.get("rate_caveat") or "")[:300])
         else:
@@ -1656,16 +1762,15 @@ def build_hotels():
             cells.append('<td class="blank">no rate</td>')
             cells.append('<td class="blank">not published</td>')
             cells.append('<td><span class="pill pill-warn">cannot compute</span></td>')
-            cells.append("<td>%s</td>" % ('<span class="pill pill-ok">meets it</span>' if h["tier"] in QUALITY_OK
-                          else '<span class="pill pill-warn">below the quality floor</span>'))
+            cells.append("<td>%s</td>" % quality_pill(h))
             link = src_link(h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"]),
                             "get a dated quote here")
             note = esc((h.get("rate_caveat") or "no official nightly rate published")[:300])
         cells.append('<td class="sm">%s<br><span class="muted sm">%s</span></td>'
                      % (esc(h["resort_fee_text"] or "no official fee page")[:200], note))
         cells.append("<td>%s</td>" % link)
-        body.append('<tr data-tier="%s" data-ceil="%s">%s</tr>' % (
-            esc(h["tier"]), "%.2f" % ((rate + fee) * (1 + _fee)) if rate else "", "".join(cells)))
+        body.append('<tr' + tier_attrs(h) + ' data-ceil="%s">%s</tr>' % (
+            "%.2f" % ((rate + fee) * (1 + _fee)) if rate else "", "".join(cells)))
     body.append("</tbody></table></div>")
     body.append('<div class="panel"><h2>Dated rate log</h2>'
                 '<p class="muted sm">A rate is never one number, so this page keeps a dated log. Each row below is '
@@ -1829,8 +1934,7 @@ def build_planner():
     body.append('<div class="panel"><h2>Nightly budget ceiling and quality floor</h2>'
                 '<div class="calc">'
                 '<label>Nightly budget ceiling $<input id="pbudget" type="number" min="0" step="10" placeholder="any"></label>'
-                '<label>Quality floor<select id="pquality"><option value="">Any</option>'
-                '<option value="1">Deluxe or better</option><option value="2">Luxury only</option></select></label>'
+                + quality_floor_select() +
                 '</div>'
                 '<p class="muted sm">These two controls are the nightly budget ceiling and hotel quality floor. '
                 'They filter the hotel shortlist below; they never invent a rate. A hotel without a dated quote '
@@ -1841,10 +1945,9 @@ def build_planner():
                 '<th>Official booking</th></tr></thead><tbody>')
     for h in HOTELS:
         booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
-        tier_rank = {"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), "")
-        body.append("<tr data-tier=\"%s\"><td><b>%s</b></td><td>%s</td><td class=\"num\">%s</td>"
+        body.append('<tr' + tier_attrs(h) + '><td><b>%s</b></td><td>%s</td><td class="num">%s</td>'
                     "<td>%s</td><td>%s</td><td>%s</td></tr>"
-                    % (tier_rank, esc(h["name"]), esc(h["tier"]),
+                    % (esc(h["name"]), esc(h["tier"]),
                        ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>',
                        '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
                        else '<span class="blank">not verified</span>',
@@ -1959,15 +2062,29 @@ def build_venue(key, filename, title, extra):
                     'transient-lodging tax on top, plus the published guest parking fee.</p>')
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Walk</th>'
                     '<th class="num">Resort fee</th><th class="num">Parking / night</th>'
-                    '<th>Cancellation</th><th>Check-in / check-out</th>'
+                    '<th>Cancellation</th><th>Other charges the property states</th><th>Check-in / check-out</th>'
                     '<th class="num">Mandatory non-room cost / night</th><th>Booking</th></tr></thead><tbody>')
         _tr = TAX["rate"] / 100.0
         for h in hotels:
             booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
             fee, park = h.get("resort_fee"), h.get("parking_self_per_night")
             mand = (fee * (1 + _tr) + park) if (fee and park) else None
+            # Charges that are not the room rate but change what a stay costs, or what leaving early
+            # costs. Quoted, never summarised into one number.
+            _other = "<br>".join(x for x in (
+                esc(h["incidentals"]) if h.get("incidentals") else "",
+                esc(h["incidentals_tiers"]) if h.get("incidentals_tiers") else "",
+                esc(h["extra_guest"]) if h.get("extra_guest") else "",
+                esc(h["early_checkout"]) if h.get("early_checkout") else "",
+            ) if x) or '<span class="blank">no official page states this</span>'
+            _other_read = h.get("extra_terms_read") or h.get("cancel_read") or ""
+            if h.get("incidentals"):
+                _other += ('<br>%s %s' % (src_link(h.get("extra_terms_source") or "", "official terms page"),
+                                          ('<span class="muted sm">read %s</span>' % esc(_other_read))
+                                          if _other_read else "")) if h.get("extra_terms_source") else \
+                          ('<br><span class="muted sm">read %s</span>' % esc(_other_read))
             body.append("<tr><td>%s</td><td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td>"
-                        "<td>%s</td><td>%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
+                        "<td>%s</td><td>%s</td><td>%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
                         % (esc(h["name"]),
                            '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"] else '<span class="blank">not verified</span>',
                            ("$%.0f<br><span class=\"muted sm\">%s</span>" % (fee, esc(h.get("resort_fee_text") or "")))
@@ -1977,6 +2094,7 @@ def build_venue(key, filename, title, extra):
                            else ("see hotels page" if h.get("parking") else '<span class="blank">not verified</span>'),
                            esc(h.get("cancel_deadline_display") or h.get("cancel") or "")
                            or '<span class="blank">not verified</span>',
+                           _other,
                            esc(h.get("checkin_checkout") or "")
                            + ("<br><span class=\"muted sm\">read %s</span>" % esc(h.get("cancel_read")))
                            if h.get("checkin_checkout") else '<span class="blank">not verified</span>',
@@ -2255,6 +2373,15 @@ def build_method():
                 'application, so no rate can be read from an official source without a browser. The hotels page '
                 'gives you the dated booking link and a calculator; you paste the rate you see and it is stored as '
                 'a dated log entry.</li>'
+                '<li><b>The mandatory parts of a stay are published, even where the rate is not.</b> The $150 '
+                'nightly incidental card hold and the $50 per-night extra-guest charge reached this site first as a '
+                'search-result snippet, which is not an official read and should never have been leaned on. The '
+                'hotel terms page has since been retrieved in full and both sentences are confirmed verbatim '
+                '(<a href="flagged-review.html">F62</a>). The same read added four statements the site now '
+                'publishes: incidental deposits of $500 for a Penthouse and $2,500 for a Presidential suite; that '
+                'starting rates exclude the 13.38%% Clark County room tax and assume double occupancy; that '
+                'checking out before the scheduled departure date costs an additional $100 plus tax, which matters '
+                'the moment a final table ends a trip a day early; and exactly what the $55 resort fee covers.</li>'
                 '<li><b>No value is ever inferred.</b> Where an official source is silent the cell is empty and the '
                 'item is on the <a href="flagged-review.html">Flagged for review</a> page.</li></ul></div>'
                 % len(load("last_checked.json")))

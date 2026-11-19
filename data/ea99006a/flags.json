@@ -363,5 +363,32 @@
   "source": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
   "status": "fixed by session 0fd4c550",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F60",
+  "area": "Published site",
+  "title": "Two hotel filters disagreed with their own labels, and two bars fought over one table",
+  "detail": "Found on 2026-11-19 by running the published assets/app.js against the published pages in jsdom (scripts/dom_smoke_0fd4c550.mjs), not by reading the code. Three defects, all now fixed at the generator rather than in the built output: (1) the quality floor was stored as a tier NAME in one hotel table and as a NUMBER in another, and the shared bar looked the value up in a name-keyed map, so choosing 'Luxury only' hid the Luxury rows in the shortlist while leaving the unranked ones visible; (2) the itemized panel's own floor compared tiers for equality, so 'Luxury or Upscale' hid the Luxury hotels and was relabelled 'Upscale or better' to say what it means now that a floor is a rank; (3) the shared bar and the itemized panel both wrote style.display to the same rows, so typing in the search box silently revealed the hotels a ceiling had hidden - one function owns those rows now and the stricter of the two ceilings wins. A row with no verified tier is never hidden by a floor, the same rule the 30-minute walk filter already used for a row with no verified walking time. Also: the date inputs listened only for 'change', so typing a date filtered nothing until the reader clicked elsewhere.",
+  "source": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+  "status": "fixed by session 0fd4c550; covered by the DOM smoke test and quality CI",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F61",
+  "area": "Scheduled publisher",
+  "title": "The morning generator hid its own failures behind '|| echo'",
+  "detail": "recheck-ea99006a.yml ran scripts/integrate_b3be876c.py with '|| echo integration reported a problem; the published data stays as it was'. The generator writes data/ file by file, so a failure halfway left some records rewritten and the rebuild step publishing that half-written tree, while the log claimed otherwise and the job reported success. The step now restores the committed records and stops before any commit, and the idempotency guard in quality.yml (F56) catches the subtler case where the generator succeeds but disagrees with what is published.",
+  "source": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+  "status": "fixed by session 0fd4c550",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F62",
+  "area": "Hotel evidence",
+  "title": "The two Venetian terms that had been quoted from a search snippet are now read from the page itself",
+  "detail": "The $150-a-night incidental card hold and the $50-per-night extra-guest charge were published from a search-result snippet, which is not an official read and the site should not have leaned on it. On 2026-11-19 the official hotel terms page was retrieved in full (2 chunks) and both sentences were confirmed verbatim, so the caveat is withdrawn and the terms now carry the page and the read date like every other stay term. The same read added four statements that were not published before: incidental deposits of $500 for a Penthouse and $2,500 for a Presidential suite; that daily rates exclude the Clark County Room Tax of 13.38% and assume double occupancy; that checking out before the scheduled departure date costs an additional $100 plus tax, which matters if a short hand makes the last day of a stay pointless; and what the $55 resort fee covers, stated by the hotel rather than by the fee page alone.",
+  "source": "https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html",
+  "status": "verified against the official page by session 0fd4c550",
+  "last_updated": "2026-11-19"
  }
 ]

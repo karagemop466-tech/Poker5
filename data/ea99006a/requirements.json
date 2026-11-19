@@ -61,7 +61,7 @@
    "status": "implemented",
    "where": "Every table page, plus the landing-page search that hands the term to the chosen page",
    "evidence": "https://karagemop466-tech.github.io/Poker5/pages/tournaments.html",
-   "note": "One search box per page filters every table on it; the landing page lets you pick which page to search. Evidence excerpts are excluded from matching so a denial ('no re-entry sentence appears') does not match a search for 're-entry'."
+   "note": "One search box per page filters every table on it; the landing page lets you pick which page to search. Evidence excerpts are excluded from matching so a denial ('no re-entry sentence appears') does not match a search for 're-entry'. The itemized hotel table is filtered by this same search box as well as by the controls inside its own panel: the two bars used to write the rows' visibility separately, so typing a search term silently revealed the hotels a ceiling had hidden. One function owns those rows now."
   },
   {
    "id": "R08",
@@ -229,7 +229,7 @@
    "status": "implemented, limit published",
    "where": "Hotels page shortlist with budget ceiling and quality floor",
    "evidence": "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
-   "note": "The shortlist is sorted on verified fee and tier, and both candidates that contain their poker room satisfy the walk limit with 0 minutes. 'Best by price' is not published because the room-rate side is missing for every property but one - the page says so instead of ranking on incomplete totals."
+   "note": "The shortlist is sorted on verified fee and tier, and both candidates that contain their poker room satisfy the walk limit with 0 minutes. 'Best by price' is not published because the room-rate side is missing for every property but one - the page says so instead of ranking on incomplete totals. Both bars on the page set the same two limits and the stricter of the two always wins, so neither can undo the other. A hotel whose tier no official source states is never hidden by a quality floor and is labelled 'tier not verified' instead. Every control above is checked in a real DOM (jsdom) harness, scripts/dom_smoke_0fd4c550.mjs, which quality CI and the publisher run before anything is committed."
   },
   {
    "id": "R29",

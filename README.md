@@ -56,8 +56,12 @@ python3 scripts/check_root_site.py
 python3 scripts/crosscheck_251c122f.py
 python3 scripts/recheck_ea99006a.py --offline
 python3 scripts/check_idempotency_0fd4c550.py
+python3 scripts/verify_window_0fd4c550.py
 python3 scripts/scrape_251c122f.py --self-test
+node scripts/dom_smoke_0fd4c550.mjs      # needs: npm install --no-save jsdom
 ```
+
+`scripts/verify_window_0fd4c550.py` compares the published rows for the recommended window with the official schedule transcription in `data/ea99006a/window_live_2026-11-19_0fd4c550.tsv`, field by field; it reports and never writes data. `scripts/dom_smoke_0fd4c550.mjs` runs the published `assets/app.js` inside jsdom against the generated pages and asserts that the search box, date selector, single-entry toggle, hotel ceiling and trip calculator actually change what a reader sees - it exits 0 with a notice when jsdom is not installed, so it can never break a build on a missing dev dependency.
 
 The live scrape runs in GitHub Actions, not from the sandbox. `--offline` checks only the saved monitoring ledger and performs no network request.
 

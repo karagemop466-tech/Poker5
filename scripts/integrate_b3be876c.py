@@ -442,6 +442,19 @@ LIVE = {
                         "charging privileges for non-Signature Suites."),
         "extra_guest": ("For reservations with more than 2 guests per suite, a charge of $50 is added to the "
                         "daily rate for each additional guest 13 years of age or older."),
+        "incidentals_tiers": ("Signature Suite incidental deposits require a minimum of $500 for Penthouse suites "
+                              "or $2,500 for Presidential suites per stay."),
+        "room_tax_line": ("Daily rates do not include the applicable Clark County Room Tax of 13.38%. Starting "
+                          "rates are based on double occupancy."),
+        "early_checkout": ("Check-out prior to your scheduled departure date will result in an additional charge of "
+                           "$100 plus tax."),
+        "fee_includes": ("Access for two to the fitness facility within the Canyon Ranch spa + fitness; In-suite "
+                         "internet access (WiFi or Ethernet); Boarding pass printing; Unlimited local and toll-free "
+                         "calls; Access to thousands of top newspapers and magazines using PressReader app while "
+                         "connected as guest to Venetian or Palazzo WiFi. If you have questions about the Resort "
+                         "Fee, please inquire with the Front Desk Agent upon check-in."),
+        "resort_fee_line": ("The Venetian Resort has a standard Las Vegas Resort Fee of $55 plus applicable tax per "
+                            "night, payable upon check-in."),
         "no_show": ("If you do not check-in nor notify us of your delayed arrival within the specified check-in "
                     "time, your entire reservation will be canceled and your deposit for the first night's stay "
                     "will not be refunded."),
@@ -555,7 +568,14 @@ def apply_hotels(hotels: list[dict], ledger: dict | None = None) -> list[str]:
         h["checkin_checkout"] = t["checkin_checkout"]
         h["checkin_checkout_source"] = t["url"]
         h["incidentals"] = t["incidentals"]
+        h["incidentals_tiers"] = t["incidentals_tiers"]
         h["extra_guest"] = t["extra_guest"]
+        h["early_checkout"] = t["early_checkout"]
+        h["fee_includes"] = t["fee_includes"]
+        h["resort_fee_line"] = t["resort_fee_line"]
+        h["tax_statement"] = t["room_tax_line"]
+        h["tax_statement_source"] = t["url"]
+        h["tax_statement_read"] = t["read"]
         h["age_policy"] = t["age"]
         h["extra_terms_source"] = t["url"]
         h["extra_terms_read"] = t["read"]
@@ -688,6 +708,14 @@ def build_rate_log() -> list[dict]:
              "mandatory non-room cost of a Venetian stay is $%.2f a night ($%.2f over 7 nights). The room rate "
              "itself is still unpublished for these dates, so no true nightly total exists."
              % (round(55 * 1.1338, 2), round(55 * 1.1338 + 20, 2), round((55 * 1.1338 + 20) * 7, 2)),
+             "Shortening the stay is not free, and the hotel states the price: 'Check-out prior to your scheduled "
+             "departure date will result in an additional charge of $100 plus tax.' So a trip cut short by an "
+             "early elimination still owes that day's charge on top of the nightly figures (official hotel terms, "
+             "read %s)." % TODAY,
+             "The occupancy the published rates assume is also stated: 'Starting rates are based on double "
+             "occupancy', and 'For reservations with more than 2 guests per suite, a charge of $50 is added to the "
+             "daily rate for each additional guest 13 years of age or older' - a third guest changes the nightly "
+             "arithmetic by $50 plus tax, not by a one-off fee.",
              "The room-tax rate is Clark County's published combined rate for a resort hotel inside the primary "
              "gaming corridor; whether a booking engine applies it to the resort fee is shown by the checkout "
              "total, not by this row.",
@@ -1087,6 +1115,47 @@ def main() -> int:
           "pretending an earlier one exists.") % TODAY,
          "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
          status="open: only the room can confirm an unlisted early turbo")
+    flag("F60", "Published site",
+         "Two hotel filters disagreed with their own labels, and two bars fought over one table",
+         ("Found on %s by running the published assets/app.js against the published pages in jsdom "
+          "(scripts/dom_smoke_0fd4c550.mjs), not by reading the code. Three defects, all now fixed at "
+          "the generator rather than in the built output: (1) the quality floor was stored as a tier NAME "
+          "in one hotel table and as a NUMBER in another, and the shared bar looked the value up in a "
+          "name-keyed map, so choosing 'Luxury only' hid the Luxury rows in the shortlist while leaving the "
+          "unranked ones visible; (2) the itemized panel's own floor compared tiers for equality, so "
+          "'Luxury or Upscale' hid the Luxury hotels and was relabelled 'Upscale or better' to say what it "
+          "means now that a floor is a rank; (3) the shared bar and the itemized panel both wrote "
+          "style.display to the same rows, so typing in the search box silently revealed the hotels a "
+          "ceiling had hidden - one function owns those rows now and the stricter of the two ceilings "
+          "wins. A row with no verified tier is never hidden by a floor, the same rule the 30-minute walk "
+          "filter already used for a row with no verified walking time. Also: the date inputs listened only "
+          "for 'change', so typing a date filtered nothing until the reader clicked elsewhere.") % TODAY,
+         "https://karagemop466-tech.github.io/Poker5/pages/hotels.html",
+         status="fixed by session 0fd4c550; covered by the DOM smoke test and quality CI")
+    flag("F62", "Hotel evidence",
+         "The two Venetian terms that had been quoted from a search snippet are now read from the page itself",
+         ("The $150-a-night incidental card hold and the $50-per-night extra-guest charge were published from a "
+          "search-result snippet, which is not an official read and the site should not have leaned on it. On %s "
+          "the official hotel terms page was retrieved in full (2 chunks) and both sentences were confirmed "
+          "verbatim, so the caveat is withdrawn and the terms now carry the page and the read date like every other "
+          "stay term. The same read added four statements that were not published before: incidental deposits of "
+          "$500 for a Penthouse and $2,500 for a Presidential suite; that daily rates exclude the Clark County "
+          "Room Tax of 13.38%% and assume double occupancy; that checking out before the scheduled departure date "
+          "costs an additional $100 plus tax, which matters if a short hand makes the last day of a stay pointless; "
+          "and what the $55 resort fee covers, stated by the hotel rather than by the fee page alone.") % TODAY,
+         LIVE["venetian_hotel_terms"]["url"],
+         status="verified against the official page by session 0fd4c550")
+    flag("F61", "Scheduled publisher",
+         "The morning generator hid its own failures behind '|| echo'",
+         ("recheck-ea99006a.yml ran scripts/integrate_b3be876c.py with '|| echo integration reported a "
+          "problem; the published data stays as it was'. The generator writes data/ file by file, so a "
+          "failure halfway left some records rewritten and the rebuild step publishing that half-written "
+          "tree, while the log claimed otherwise and the job reported success. The step now restores the "
+          "committed records and stops before any commit, and the idempotency guard in quality.yml "
+          "(F56) catches the subtler case where the generator succeeds but disagrees with what is "
+          "published."),
+         "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+         status="fixed by session 0fd4c550")
     flag("F59", "Hotel evidence",
          "Three hotels published a stay term with no read date at all",
          ("Found while writing the regression tests for the stay-capture fields: Caesars Palace and Horseshoe "
@@ -1208,6 +1277,30 @@ def main() -> int:
                     "Give each session its own subdirectory and never let a scheduled job write the root",
                     "Freeze the scheduled rebuilds entirely and rebuild only by hand"],
            effect="The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.")
+    upsert(suggestions, "S17",
+           title="Keep the DOM smoke test as a publish gate, not an ad-hoc check",
+           problem=("scripts/dom_smoke_0fd4c550.mjs found three real defects in hours because it runs the "
+                    "published JavaScript against the published pages, and it is now a step in recheck-ea99006a "
+                    "that runs before the commit. It is optional in `npm test` because jsdom has to be installed "
+                    "for it, so today a contributor running only the unit tests does not see it."),
+           options=["Leave it as a pre-publish gate that skips when jsdom is missing (current state)",
+                    "Add jsdom to devDependencies so `npm test` always runs it",
+                    "Port the assertions to the existing unit tests and delete the DOM harness"],
+           effect=("Option 2 costs an npm install in CI and catches interaction bugs on pull requests instead of "
+                   "at publish time; option 3 loses the property that makes it useful, which is testing the "
+                   "JavaScript that actually ships."))
+    upsert(suggestions, "S18",
+           title="Re-read the recommended window live, on a schedule, instead of by hand",
+           problem=("scripts/verify_window_0fd4c550.py compares the published rows with a transcription that this "
+                    "session read off the official page on %s. CI re-runs that comparison every morning, which "
+                    "proves internal consistency - but it cannot notice the room changing the schedule, because "
+                    "the left-hand side is a file rather than a fetch.") % TODAY,
+           options=["Keep the dated manual read, which is what the site claims today",
+                    "Teach the morning scraper to parse the schedule page itself and diff against the published "
+                    "rows, so a start-time change becomes a flagged row without a human",
+                    "Point the comparison at the daily capture that already exists in data/251c122f"],
+           effect=("Option 2 or 3 would make the 6-13 December recommendation self-monitoring. Option 1 is honest "
+                   "but ages: the read is stamped 2026-11-19 and the site says so."))
     upsert(suggestions, "S15",
            title="Settle the 8 a.m. requirement before the hotel is booked",
            problem=("The brief's day is meant to start at 8 a.m.; no captured Strip schedule publishes an enterable "

@@ -50,7 +50,14 @@
   "parking_note": "Property-wide published fee for registered hotel guests, not a per-stay charge read from a quote: it is not included in the resort fee and the official page says rates are \"subject to change at the discretion of The Venetian Resort\" and that event parking rates may be in effect.",
   "offer_bullets": "Free cancellations; Fully refundable; Flexible 24-hour cancellation policy; No nightly minimum stay; Always the best rates, guaranteed; Available at The Venetian and The Palazzo",
   "offer_booking": "https://www.venetianlasvegas.com/book?offer_code=MVFDLDPV",
-  "offer_phone": "866.659.9643, mention code EAFDLDP"
+  "offer_phone": "866.659.9643, mention code EAFDLDP",
+  "incidentals_tiers": "Signature Suite incidental deposits require a minimum of $500 for Penthouse suites or $2,500 for Presidential suites per stay.",
+  "early_checkout": "Check-out prior to your scheduled departure date will result in an additional charge of $100 plus tax.",
+  "fee_includes": "Access for two to the fitness facility within the Canyon Ranch spa + fitness; In-suite internet access (WiFi or Ethernet); Boarding pass printing; Unlimited local and toll-free calls; Access to thousands of top newspapers and magazines using PressReader app while connected as guest to Venetian or Palazzo WiFi. If you have questions about the Resort Fee, please inquire with the Front Desk Agent upon check-in.",
+  "resort_fee_line": "The Venetian Resort has a standard Las Vegas Resort Fee of $55 plus applicable tax per night, payable upon check-in.",
+  "tax_statement": "Daily rates do not include the applicable Clark County Room Tax of 13.38%. Starting rates are based on double occupancy.",
+  "tax_statement_source": "https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html",
+  "tax_statement_read": "2026-11-19"
  },
  {
   "key": "wynn",

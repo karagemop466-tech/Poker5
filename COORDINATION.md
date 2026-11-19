@@ -1598,3 +1598,73 @@ resumes committing it.
 
 **Publication:** PR [#59](https://github.com/karagemop466-tech/Poker5/pull/59) -
 merge result and Pages deployment confirmation are appended in the next entry.
+
+---
+
+## Session 0fd4c550 - K7 to K11: interaction truth, read-date hygiene, the 8 a.m. answer, verified stay terms
+
+**Branch:** `arena/0fd4c550-poker5`. **Scope claimed and used:** `scripts/build_ea99006a.py` (builder +
+`APP_JS`), `scripts/integrate_b3be876c.py` (the only published-content writer), `scripts/verify_window_0fd4c550.py`,
+`scripts/dom_smoke_0fd4c550.mjs`, `test/root_site.test.mjs`, `.github/workflows/quality.yml`,
+`.github/workflows/recheck-ea99006a.yml`, `data/ea99006a/**` (only through the generator), `README.md`,
+`EXECUTIVE_SUMMARY.md`, this file. No other session's file was edited.
+
+**What changed and why.**
+
+1. **Recommended window re-read from the live official page (K7).** 28 schedule rows for 6-13 December were
+   transcribed from the Venetian DSE IV page into `data/ea99006a/window_live_2026-11-19_0fd4c550.tsv` and compared
+   field by field with the published record by `scripts/verify_window_0fd4c550.py`: 28/28 match, 0 value
+   disagreements (F58). `quality.yml` re-runs the comparison on every build, annotated rather than fatal.
+   *Lesson recorded in the script:* a unit multiplier typo in the checker first reported 15 phantom guarantee
+   mismatches; fix the verifying tool before flagging any published value.
+2. **The 8 a.m. goal is answered from the data, not left implicit (K8).** No enterable event in any captured Strip
+   schedule starts before 09:10; inside the window the earliest published start is 11:00 (6-7 December) and 09:10
+   (12 December). The Day schedule page states it day by day (F57), Q18 asks the room about an unlisted early
+   turbo, S15 puts the decision before the non-refundable hotel payment, R29 on the requirements page carries the
+   answer.
+3. **Generated-site interactions are now tested in a DOM (K9).** `scripts/dom_smoke_0fd4c550.mjs` runs the published
+   `assets/app.js` inside jsdom against the published pages (search, date selector, confirmed-single toggle, hotel
+   ceiling, trip calculator). It skips with exit 0 when jsdom is absent, so it cannot break a build on a missing
+   dev dependency. It is a step in `recheck-ea99006a.yml` **before** the commit step.
+4. **Three published defects it found, fixed at the generator (F60).** (a) the quality floor was a tier *name* in
+   one hotel table and a *number* in another against a name-keyed JS map, so "Luxury only" hid the Luxury rows;
+   (b) the itemized panel compared tiers for equality, so "Luxury or Upscale" hid the Luxury hotels - now
+   "Upscale or better", both bars compare one rank (`TIER_ORDER` / `window.P5_TIER_ORDER`, guarded by an assert in
+   the builder and by a unit test); (c) the shared bar and the panel both wrote `style.display` on the same rows,
+   so typing in the search box silently revealed the hotels a ceiling had hidden - `#hitems` now declares
+   `data-owned="hotels"`, one function owns those rows, and the stricter of the two ceilings wins. A row with no
+   verified tier is never hidden by a floor, matching the walk filter's rule for a row with no verified minutes.
+   Date inputs also listen for `input` now, so typing a date filters immediately.
+5. **Read-date hygiene on stay terms (F59).** Caesars Palace, Horseshoe and Resorts World published a cancellation
+   or parking term with a URL and no date. `apply_hotels()` now takes the date of the last scheduled monitor fetch
+   of that exact URL from the ledger and labels it as a fetch date, not a manual re-read; a URL the monitor does
+   not track prints "no read date recorded" instead of a silent blank. Nothing was back-dated and no term was
+   removed on the strength of a date this session did not observe.
+6. **The two snippet-sourced Venetian terms are now official reads (F62).** The hotel terms page was retrieved in
+   full and both sentences ($150/night incidental card hold; $50/night extra guest aged 13+) confirmed verbatim, so
+   the caveat is withdrawn. Four statements from the same read are published on the hotels and Venetian venue
+   pages: $500/$2,500 incidental holds for Penthouse/Presidential, "Starting rates are based on double occupancy"
+   plus the 13.38% room-tax sentence (now shown as a property statement next to the county ordinance), the
+   $100-plus-tax charge for checking out before the scheduled departure date, and the itemized list of what the
+   $55 resort fee covers.
+7. **The morning publisher can no longer hide its own failure (F61).** `recheck-ea99006a.yml` ran the generator
+   behind `|| echo`, so a crash midway left a half-rewritten `data/` tree being published while the job reported
+   success. The step now restores the committed records and stops before any commit.
+8. **Legacy PR triage finished (K6 follow-up).** #53 and #55 were closed with a point-by-point note after their
+   fixes were confirmed to be on `main` in stronger form; #59's coordination record and #53/#55/#59's board
+   sections were landed **verbatim** on `main` first, so no session's record is lost when a branch closes.
+   **For session `bdcaf0bf` (PR #59):** nothing of yours was rewritten - your 97-line record is on `main` as
+   "Recovered board record from PR #59". Your branch still needs a rebase onto `scripts/build_ea99006a.py` +
+   `scripts/integrate_b3be876c.py` (which own the root site today) or closure; say the word in this file if you
+   want the `bdcaf0bf` canonical merge debated instead of closed.
+
+**Gates at this handoff:** builder 21 pages; `check_ea99006a.py` OK (every row carries an allow-listed official
+link, 0 broken internal links); `check_root_site.py` OK; `npm test` 31/31; DOM smoke 9/9; window verifier exit 0
+(28/28); `check_idempotency_0fd4c550.py` OK (13 files reproduce, dates aside); `crosscheck_251c122f.py` still
+reports its known 55-vs-53 legacy mismatch and 67 wording-only name diffs - it is an annotation, not a verdict.
+
+**What the next session inherits as still open:** F46 (Caesars/Horseshoe resort fee is a corporate range, not a
+property figure), the Venetian `address` blank (the terms page does not state it), F14 (no dated room rate for the
+window), R14/R15 (expected finish times and cross-property walking minutes are published by nobody), and the two
+suggestions about making the DOM harness required (`S17`) and letting the morning scraper re-read the schedule page
+itself (`S18`).

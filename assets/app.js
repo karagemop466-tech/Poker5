@@ -24,6 +24,23 @@ function searchText(tr){
   return t.toLowerCase();
 }
 
+/* One ordering for every quality floor on the site, shared with the builder through P5_TIER_ORDER so a
+   select's value and a row's rank cannot drift apart. It used to be {"Deluxe":1,"Luxury":2} looked up on
+   a NAME by the itemized panel and on a NUMBER by the page-wide bar, so "Luxury only" hid the Luxury rows
+   in the shortlist (their attribute read "2", not a key in that map) while leaving unranked rows visible,
+   and "Luxury or Upscale" in the panel hid the Luxury hotels outright because it compared the tier for
+   equality. A row whose tier is not verified is never hidden by a floor - the same rule the 30-minute walk
+   filter uses for a row with no verified walking time. */
+var P5_TIER_ORDER=["Budget","Mid-scale","Upscale","Upper upscale","Deluxe","Luxury"];
+function tierRank(tr){
+  var v=tr.getAttribute('data-tier-rank');
+  if(v!==null&&v!==''&&!isNaN(parseInt(v,10))) return parseInt(v,10);
+  var n=tr.getAttribute('data-tier');
+  if(n===null||n==='') return null;
+  for(var i=0;i<P5_TIER_ORDER.length;i++){ if(P5_TIER_ORDER[i].toLowerCase()===String(n).toLowerCase()) return i; }
+  return null;
+}
+
 var poker5Bound=false;
 function initFilters(){
   if(poker5Bound) return; poker5Bound=true;
@@ -36,7 +53,6 @@ function initFilters(){
       rank=document.getElementById('frank'), chg=document.getElementById('fchanged'),
       cnt=document.getElementById('count'), empty=document.getElementById('empty');
   var tables=qsa('table.data');
-  var TIER_RANK={"Deluxe":1,"Luxury":2};
   function apply(){
     var needle=norm(q?q.value:''), f=from?from.value:'', t2=to?to.value:'',
         v=ven?ven.value:'', s=se?se.checked:false,
@@ -48,6 +64,7 @@ function initFilters(){
         rk=rank&&rank.checked, cg=chg&&chg.checked,
         shown=0,total=0;
     tables.forEach(function(t){
+      if(t.hasAttribute('data-owned')) return;   /* owned by its own bar, which reads these too */
       qsa('tbody tr',t).forEach(function(tr){
         total++;
         var d=tr.getAttribute('data-date')||'';
@@ -75,9 +92,7 @@ function initFilters(){
           var m=tr.getAttribute('data-min');
           if(m!==null&&m!==''&&!isNaN(parseFloat(m))&&parseFloat(m)>30) ok=false;
         }
-        if(ok&&pmin&&tr.getAttribute('data-tier')!==null){
-          if((TIER_RANK[tr.getAttribute('data-tier')]||0)<pmin) ok=false;
-        }
+        if(ok&&pmin){ var tk=tierRank(tr); if(tk!==null&&tk<pmin) ok=false; }
         if(ok&&b!==null&&tr.getAttribute('data-cost')!==null&&tr.getAttribute('data-cost')!==''){
           var c=parseFloat(tr.getAttribute('data-cost'));
           if(!isNaN(c)&&c>b) ok=false;
@@ -89,7 +104,10 @@ function initFilters(){
     if(empty) empty.hidden=!(shown===0&&total>0);
   }
   if(q) q.addEventListener('input',apply);
-  [from,to,day,rule].forEach(function(el){if(el) el.addEventListener('change',apply);});
+  /* date and select controls fire 'change' when a value is picked and 'input' while one is typed: a
+     reader who types a date instead of picking it used to see the table stay unfiltered until they
+     clicked elsewhere, so both events are bound. */
+  [from,to,day,rule].forEach(function(el){if(el){el.addEventListener('change',apply);el.addEventListener('input',apply);}});
   if(ven) ven.addEventListener('change',apply);
   [se,mu,en,walk,rank,chg].forEach(function(el){if(el) el.addEventListener('change',apply);});
   [budget,quality].forEach(function(el){if(el){el.addEventListener('input',apply);el.addEventListener('change',apply);}});
@@ -248,24 +266,46 @@ function initHotels2(){
       tbl=document.getElementById('hitems'), sel=document.getElementById('hsearch'),
       out=document.getElementById('bcost');
   if(!tbl) return;
+  /* This table has its own bar (ceiling, floor, hotel) and the page's shared bar above it (search,
+     ceiling, floor). Both wrote style.display to the same rows, so whichever ran last undid the other:
+     typing in the search box silently revealed the rows the ceiling had hidden, because the shared
+     filter found no data-cost on them and set every row visible. Now one function owns these rows and
+     reads BOTH bars - the stricter ceiling wins, the higher floor wins, and the shared search box
+     filters this table like every other table on the page. */
+  var gq=document.getElementById('q'), gb=document.getElementById('pbudget'),
+      gf=document.getElementById('pquality');
+  function num(el){ if(!el) return NaN;
+    var v=parseFloat(String(el.value||'').replace(/[^0-9.\-]/g,'')); return isNaN(v)?NaN:v; }
+  function floorLabel(){
+    var el=(fl&&fl.value!=='')?fl:gf;
+    if(!el||el.selectedIndex<0||!el.options[el.selectedIndex]) return '';
+    return el.options[el.selectedIndex].text;
+  }
   function apply(){
-    var c=parseFloat((ceil&&ceil.value||'').replace(/[^0-9.\-]/g,'')), f=fl?fl.value:'', w=sel?sel.value:'', n=0;
+    var cs=[num(ceil),num(gb)].filter(function(x){return !isNaN(x);});
+    var c=cs.length?Math.min.apply(null,cs):NaN, fs=[];
+    if(fl&&fl.value!=='') fs.push(parseInt(fl.value,10));
+    if(gf&&gf.value!=='') fs.push(parseInt(gf.value,10));
+    var fmin=fs.length?Math.max.apply(null,fs):-1, w=sel?sel.value:'', n=0;
+    var needle=gq?norm(gq.value):'';
     var all=qsa('tbody tr',tbl);
     all.forEach(function(tr){
       var ok=true, v=tr.getAttribute('data-ceil')||'';
       if(w && norm(tr.children[0].textContent).indexOf(norm(w))<0) ok=false;
-      if(ok && f && tr.getAttribute('data-tier')!==f) ok=false;
+      if(ok && needle && norm(tr.textContent).indexOf(needle)<0) ok=false;
+      if(ok && fmin>=0){ var tk=tierRank(tr); if(tk!==null&&tk<fmin) ok=false; }
       /* a hotel with no official rate can never be proven inside a budget: when a ceiling is set it
          is hidden, never assumed to fit */
       if(ok && !isNaN(c)){ if(v===''){ ok=false; } else if(parseFloat(v)>c){ ok=false; } }
       tr.style.display=ok?'':'none'; if(ok) n++;
     });
     if(out) out.textContent=n+' of '+all.length+' hotels match'+(isNaN(c)?'':' a ceiling of $'+c.toFixed(2))+
-      (f?' and the '+f+' quality floor':'')+'. Hotels with no official nightly rate cannot be proven '
-      'inside a ceiling, so they are hidden while one is set.';
+      (fmin>=0?' against the quality floor "'+floorLabel()+'"':'')+'. Hotels with no official nightly '+
+      'rate cannot be proven inside a ceiling, so they are hidden while one is set. The bar at the top '+
+      'of the page sets the same two limits, and the stricter of the two always wins.';
   }
-  [ceil,sel].forEach(function(el){if(el) el.addEventListener('input',apply);});
-  if(fl) fl.addEventListener('change',apply);
+  [ceil,sel,gq,gb].forEach(function(el){if(el) el.addEventListener('input',apply);});
+  [fl,gf].forEach(function(el){if(el) el.addEventListener('change',apply);});
   apply();
 }
 

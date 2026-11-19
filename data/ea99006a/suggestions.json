@@ -174,5 +174,27 @@
   ],
   "effect": "The planner already adds parking when the box is ticked and states the source; the choice is whether the headline 'true cost per night' should include it. Whichever is picked, the incidental hold stays out of the cost and in the terms column.",
   "id": "S16"
+ },
+ {
+  "title": "Keep the DOM smoke test as a publish gate, not an ad-hoc check",
+  "problem": "scripts/dom_smoke_0fd4c550.mjs found three real defects in hours because it runs the published JavaScript against the published pages, and it is now a step in recheck-ea99006a that runs before the commit. It is optional in `npm test` because jsdom has to be installed for it, so today a contributor running only the unit tests does not see it.",
+  "options": [
+   "Leave it as a pre-publish gate that skips when jsdom is missing (current state)",
+   "Add jsdom to devDependencies so `npm test` always runs it",
+   "Port the assertions to the existing unit tests and delete the DOM harness"
+  ],
+  "effect": "Option 2 costs an npm install in CI and catches interaction bugs on pull requests instead of at publish time; option 3 loses the property that makes it useful, which is testing the JavaScript that actually ships.",
+  "id": "S17"
+ },
+ {
+  "title": "Re-read the recommended window live, on a schedule, instead of by hand",
+  "problem": "scripts/verify_window_0fd4c550.py compares the published rows with a transcription that this session read off the official page on 2026-11-19. CI re-runs that comparison every morning, which proves internal consistency - but it cannot notice the room changing the schedule, because the left-hand side is a file rather than a fetch.",
+  "options": [
+   "Keep the dated manual read, which is what the site claims today",
+   "Teach the morning scraper to parse the schedule page itself and diff against the published rows, so a start-time change becomes a flagged row without a human",
+   "Point the comparison at the daily capture that already exists in data/251c122f"
+  ],
+  "effect": "Option 2 or 3 would make the 6-13 December recommendation self-monitoring. Option 1 is honest but ages: the read is stamped 2026-11-19 and the site says so.",
+  "id": "S18"
  }
 ]

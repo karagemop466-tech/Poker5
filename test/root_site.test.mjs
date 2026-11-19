@@ -232,3 +232,28 @@ test('the 8 a.m. question is answered from the published starts, not left to the
   assert.ok(flags.some((f) => f.id === 'F57' && /8 a\.m\./.test(f.detail)), 'F57 records the limit');
   assert.ok(flags.some((f) => f.id === 'F58' && /28 of 28 matched/.test(f.detail)), 'F58 records the re-read');
 });
+
+test('both hotel filter bars read one tier ranking, and the selects match it', async () => {
+  // The quality floor was once stored as a name in one table and a number in another, so "Luxury only"
+  // hid the Luxury rows. The generator now writes one rank everywhere, and the selects offer those
+  // same numbers; if the two drift, a floor silently hides hotels that meet it.
+  const html = await page('pages/hotels.html');
+  const ranks = [...html.matchAll(/data-tier="([^"]*)" data-tier-rank="([^"]*)"/g)];
+  assert.ok(ranks.length >= 10, 'every hotel row must carry its rank beside its name');
+  const order = ['Budget', 'Mid-scale', 'Upscale', 'Upper upscale', 'Deluxe', 'Luxury'];
+  for (const [, name, rank] of ranks) {
+    if (rank === '') continue;
+    const want = order.findIndex((t) => t.toLowerCase() === name.toLowerCase());
+    assert.equal(want, Number(rank), `rank for "${name}"`);
+  }
+  const opts = [...html.matchAll(/<option value="(\d+)">([^<]+)<\/option>/g)].map((m) => [Number(m[1]), m[2]]);
+  assert.ok(opts.some(([v, l]) => l === 'Luxury only' && v === order.indexOf('Luxury')), 'Luxury-only floor value');
+  assert.ok(opts.some(([v, l]) => l === 'Deluxe or better' && v === order.indexOf('Deluxe')), 'Deluxe floor value');
+  // one owner per table: the itemized table declares it, so the page-wide bar cannot reset it
+  assert.match(html, /<table class="data" id="hitems" data-owned="hotels">/);
+  const script = await page('assets/app.js');
+  assert.match(script, /t\.hasAttribute\('data-owned'\)/);
+  assert.match(script, /var cs=\[num\(ceil\),num\(gb\)\][\s\S]{0,80}Math\.min/, 'the stricter ceiling wins');
+  // a row with no verified tier must never be hidden by a floor, like a row with no verified walk time
+  assert.match(script, /if\(tk!==null&&tk<pmin\) ok=false;/);
+});

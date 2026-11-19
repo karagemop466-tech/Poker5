@@ -57,13 +57,42 @@ jobs:
       - name: Re-derive the verdicts from the stored official text
         # Rebuilds the published verdicts, rule fields, flags, questions and trip window from the
         # capture on disk, so a new morning capture moves the tables and nothing else does.
+        #
+        # This used to end in `|| echo`, which reported success on a half-written tree: the generator
+        # writes data/ file by file, so a failure midway left the rebuild step publishing modified
+        # records while the log said the published data "stays as it was". A failing generator now
+        # restores the committed records and stops the job, so the worst a bad morning can do is
+        # leave yesterday's site standing.
         run: |
-          python3 scripts/integrate_b3be876c.py || echo "integration reported a problem; the published data stays as it was"
+          if ! python3 scripts/integrate_b3be876c.py; then
+            echo "::error::scripts/integrate_b3be876c.py failed; restoring the committed records and stopping before any commit"
+            git checkout -- data pages index.html assets
+            exit 1
+          fi
+
+      - name: Re-verify the recommended window against the recorded official read
+        # Internal consistency, not a live fetch: the transcription in
+        # data/ea99006a/window_live_2026-11-19_0fd4c550.tsv is the dated official read, and this
+        # proves the published rows still say what that read said. The comparison is annotated rather
+        # than fatal, because a legitimate capture update may land in the data before anyone re-reads
+        # the page by hand - and the site says so instead of hiding it.
+        run: |
+          python3 scripts/verify_window_0fd4c550.py --json --out data/ea99006a/window_verification_0fd4c550.json \
+            || echo "::warning::the recommended window no longer matches the recorded official read - see pages/verification.html"
 
       - name: Rebuild the canonical site
         run: |
           python3 scripts/build_ea99006a.py
           python3 scripts/check_ea99006a.py
+
+      - name: DOM smoke test of the published interactions
+        # Runs the real assets/app.js against the real generated pages, so a control that no longer
+        # changes what a reader sees fails the publish rather than being found by hand. jsdom is
+        # installed ad hoc; if that install cannot run, the script exits 0 with a notice instead of
+        # blocking a site that has already passed the data checks above.
+        run: |
+          npm install --no-save --silent jsdom || echo "::notice::jsdom unavailable; the DOM smoke test will skip"
+          node scripts/dom_smoke_0fd4c550.mjs
 
       - name: Commit refreshed source ledger and root site
         run: |
