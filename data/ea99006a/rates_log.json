@@ -51,5 +51,30 @@
   "verified": false,
   "cancellation_deadline": null,
   "parking": null
+ },
+ {
+  "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
+  "hotel_key": "venetian",
+  "observed_on": "2026-11-19",
+  "kind": "booking-engine attempt for the trip window - no numeric quote returned",
+  "checkin": "2026-12-06",
+  "checkout": "2026-12-13",
+  "nights": 7,
+  "checkout_total": null,
+  "nightly_average": null,
+  "resort_fee_per_night": 55.0,
+  "resort_fee_total": 385.0,
+  "tax_total": null,
+  "room_type": null,
+  "occupancy": "2 adults, 1 room",
+  "caveats": [
+   "Tried on 2026-11-19 with the official booking UI for 6-13 December 2026 (2 adults). The booking engine prices rooms in JavaScript only; no numeric quote appears in the page a non-browser reader receives. No price is invented here - the figures stay blank and the trip cost calculator waits for your own booking-page read.",
+   "Resort fee shown is the published $55 per night (official resort-fee page), not a quoted stay total."
+  ],
+  "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-06&children[]=0&departure_date=2026-12-13&view=calendar",
+  "source_label": "Venetian official booking UI (2026-11-19 attempt)",
+  "verified": false,
+  "cancellation_deadline": null,
+  "parking": null
  }
 ]

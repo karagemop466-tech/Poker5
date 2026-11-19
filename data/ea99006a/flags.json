@@ -81,8 +81,8 @@
  {
   "id": "F12",
   "area": "Coverage",
-  "title": "South Point publishes its schedule as images only",
-  "detail": "Times (10:10, 14:10, 18:10, 22:10) and buy-ins ($120, $300) come from the official page text. Guarantees, levels and entry rules are inside image files and were not read. South Point is also off-Strip and not walkable to it.",
+  "title": "South Point publishes its schedule and rules as images only (schedule now read; 6 of 8 rules sheets not readable)",
+  "detail": "RESOLVED AS TO SCHEDULE on 2026-11-19: the official schedule image (rev 10/26) was read and replaces the placeholder rows - 8 named daily games with times, days, buy-ins ($120/$200), stacks, level lengths and guarantees. Two rules-sheet images ($120 Daily NLH, $120 NLH Turbo Bounty) were also read and their re-entry rules recorded. The other six games' rules-sheet page 1 images could not be retrieved as images in this session, so their entry terms remain unverified and those rows stay 'entry terms not read'.",
   "source": "https://southpointcasino.com/casino/poker-room"
  },
  {
@@ -104,8 +104,8 @@
  {
   "id": "F15",
   "area": "Routes",
-  "title": "Cross-property walking times are not published officially",
-  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in.",
+  "title": "Cross-property walking times are not published officially; recorded instead as dated Google Maps observations",
+  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair is blank and carries a route link so you can check it yourself. No walking time is estimated or filled in. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured with Google Maps walking directions between official property names; minutes, distance, via-streets and the restricted-usage warnings are stored in data/ea99006a/routes.json with the directions link and check date, and the routes page now filters on the measured minutes.",
   "source": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
  },
  {
@@ -248,10 +248,10 @@
  {
   "id": "F47",
   "area": "Entry rules",
-  "title": "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
-  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: 'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both single_entry_confirmed, and its current cross-check passes because the classifier does not recognize this wording. That capture is not the canonical published dataset; request a classifier/cross-check repair before using it as a decision source. The S1 test now reads the whole rule list, not only re-entry/rebuy/add-on keywords.",
+  "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
+  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-  "status": "open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected",
+  "status": "fixed by this session; kept visible",
   "last_updated": "2026-11-19"
  },
  {
