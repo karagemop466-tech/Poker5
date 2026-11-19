@@ -7,8 +7,11 @@
   "same_property": true,
   "minutes": 0,
   "verified": true,
-  "method": "On the same property: the poker room is inside the hotel. Verified from the official pages linked on each row.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
+  "method": "On the same property: the poker room is inside the hotel. Re-verified against the official venue pages linked on each row on 2026-11-19.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0",
+  "via": "same building"
  },
  {
   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
@@ -16,10 +19,13 @@
   "venue": "Wynn Las Vegas",
   "venue_key": "wynn",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Wynn%20Las%20Vegas&travelmode=walking"
+  "minutes": 13,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 13 min, 0.6 mile via Wynn Main Gate Dr.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.6 mile",
+  "via": "Wynn Main Gate Dr"
  },
  {
   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
@@ -27,10 +33,13 @@
   "venue": "Caesars Palace Las Vegas",
   "venue_key": "caesars",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
+  "minutes": 16,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 16 min, 0.7 mile via Las Vegas Blvd S.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.7 mile",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
@@ -38,10 +47,13 @@
   "venue": "Horseshoe Las Vegas",
   "venue_key": "horseshoe",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
+  "minutes": 16,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 16 min, 0.7 mile via Krueger Dr. Alternate walking route via Linq Ln is also 16 min.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.7 mile",
+  "via": "Krueger Dr"
  },
  {
   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
@@ -49,10 +61,13 @@
   "venue": "Resorts World Las Vegas",
   "venue_key": "resortsworld",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
+  "minutes": 22,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 22 min, 1.0 mile via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.0 mile",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
@@ -60,10 +75,13 @@
   "venue": "South Point Hotel Casino and Spa Las Vegas",
   "venue_key": "southpoint",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
+  "minutes": 197,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 197 min, 8.8 miles via Frank Sinatra Dr and Las Vegas Blvd S. Shown by Google Maps as 3 hr 17 min - far beyond any walking limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "8.8 miles",
+  "via": "Frank Sinatra Dr and Las Vegas Blvd S"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -71,10 +89,13 @@
   "venue": "The Venetian Resort Las Vegas",
   "venue_key": "venetian",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
+  "minutes": 19,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 19 min, 0.9 mile via Las Vegas Blvd S. Origin resolved by Google Maps to Encore (the tower that houses the Wynn poker room) and destination to The Venetian.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.9 mile",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -84,8 +105,11 @@
   "same_property": true,
   "minutes": 0,
   "verified": true,
-  "method": "On the same property: the poker room is inside the hotel. Verified from the official pages linked on each row.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Wynn%20Las%20Vegas&travelmode=walking"
+  "method": "On the same property: the poker room is inside the hotel. Re-verified against the official venue pages linked on each row on 2026-11-19.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0",
+  "via": "same building"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -93,10 +117,13 @@
   "venue": "Caesars Palace Las Vegas",
   "venue_key": "caesars",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
+  "minutes": 31,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 31 min, 1.3 miles via Las Vegas Blvd S. Exceeds the 30-minute limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.3 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -104,10 +131,13 @@
   "venue": "Horseshoe Las Vegas",
   "venue_key": "horseshoe",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
+  "minutes": 35,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 35 min, 1.5 miles via Las Vegas Blvd S. Exceeds the 30-minute limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.5 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -115,10 +145,13 @@
   "venue": "Resorts World Las Vegas",
   "venue_key": "resortsworld",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
+  "minutes": 14,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 14 min, 0.6 mile via Genting Blvd. Google Maps warns this route has restricted usage or private roads.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.6 mile",
+  "via": "Genting Blvd"
  },
  {
   "hotel": "Wynn Las Vegas / Encore",
@@ -126,10 +159,13 @@
   "venue": "South Point Hotel Casino and Spa Las Vegas",
   "venue_key": "southpoint",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
+  "minutes": 198,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 198 min, 8.7 miles via Las Vegas Blvd S. Shown by Google Maps as 3 hr 18 min - far beyond any walking limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "8.7 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Caesars Palace",
@@ -137,10 +173,13 @@
   "venue": "The Venetian Resort Las Vegas",
   "venue_key": "venetian",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
+  "minutes": 12,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 12 min, 0.6 mile via Las Vegas Blvd S.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.6 mile",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Caesars Palace",
@@ -148,10 +187,13 @@
   "venue": "Wynn Las Vegas",
   "venue_key": "wynn",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Wynn%20Las%20Vegas&travelmode=walking"
+  "minutes": 23,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 23 min, 1.0 mile via Las Vegas Blvd S.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.0 mile",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Caesars Palace",
@@ -161,8 +203,11 @@
   "same_property": true,
   "minutes": 0,
   "verified": true,
-  "method": "On the same property: the poker room is inside the hotel. Verified from the official pages linked on each row.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
+  "method": "On the same property: the poker room is inside the hotel. Re-verified against the official venue pages linked on each row on 2026-11-19.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0",
+  "via": "same building"
  },
  {
   "hotel": "Caesars Palace",
@@ -170,10 +215,13 @@
   "venue": "Horseshoe Las Vegas",
   "venue_key": "horseshoe",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
+  "minutes": 10,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 10 min, 0.4 mile via Las Vegas Blvd Overpass.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.4 mile",
+  "via": "Las Vegas Blvd Overpass"
  },
  {
   "hotel": "Caesars Palace",
@@ -181,10 +229,13 @@
   "venue": "Resorts World Las Vegas",
   "venue_key": "resortsworld",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
+  "minutes": 36,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 36 min, 1.7 miles via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. Exceeds the 30-minute limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.7 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Caesars Palace",
@@ -192,10 +243,13 @@
   "venue": "South Point Hotel Casino and Spa Las Vegas",
   "venue_key": "southpoint",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
+  "minutes": 172,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 172 min, 7.5 miles via Las Vegas Blvd S. Shown by Google Maps as 2 hr 52 min - far beyond any walking limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "7.5 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -203,10 +257,13 @@
   "venue": "The Venetian Resort Las Vegas",
   "venue_key": "venetian",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
+  "minutes": 16,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 16 min, 0.7 mile via Linq Ln. Alternate walking route via Krueger Dr is also 16 min.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.7 mile",
+  "via": "Linq Ln"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -214,10 +271,13 @@
   "venue": "Wynn Las Vegas",
   "venue_key": "wynn",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking"
+  "minutes": 31,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 31 min, 1.4 miles via Linq Ln. Exceeds the 30-minute limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.4 miles",
+  "via": "Linq Ln"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -225,10 +285,13 @@
   "venue": "Caesars Palace Las Vegas",
   "venue_key": "caesars",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
+  "minutes": 10,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 10 min, 0.4 mile via Las Vegas Blvd Overpass.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.4 mile",
+  "via": "Las Vegas Blvd Overpass"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -238,8 +301,11 @@
   "same_property": true,
   "minutes": 0,
   "verified": true,
-  "method": "On the same property: the poker room is inside the hotel. Verified from the official pages linked on each row.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
+  "method": "On the same property: the poker room is inside the hotel. Re-verified against the official venue pages linked on each row on 2026-11-19.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0",
+  "via": "same building"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -247,10 +313,13 @@
   "venue": "Resorts World Las Vegas",
   "venue_key": "resortsworld",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
+  "minutes": 42,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 42 min, 1.9 miles via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. Exceeds the 30-minute limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.9 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Horseshoe Las Vegas",
@@ -258,10 +327,13 @@
   "venue": "South Point Hotel Casino and Spa Las Vegas",
   "venue_key": "southpoint",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
+  "minutes": 167,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 167 min, 7.3 miles via Las Vegas Blvd S. Shown by Google Maps as 2 hr 47 min - far beyond any walking limit.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "7.3 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -269,10 +341,13 @@
   "venue": "The Venetian Resort Las Vegas",
   "venue_key": "venetian",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
+  "minutes": 28,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 28 min, 1.2 miles via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. The stored multi-tower hotel name does not resolve in Google Maps, so the route was measured from the property name 'Resorts World Las Vegas'.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.2 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -280,10 +355,13 @@
   "venue": "Wynn Las Vegas",
   "venue_key": "wynn",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Wynn%20Las%20Vegas&travelmode=walking"
+  "minutes": 18,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 18 min, 0.8 mile via Genting Blvd and Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. The stored multi-tower hotel name does not resolve in Google Maps, so the route was measured from the property name 'Resorts World Las Vegas'.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0.8 mile",
+  "via": "Genting Blvd and Las Vegas Blvd S"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -291,10 +369,13 @@
   "venue": "Caesars Palace Las Vegas",
   "venue_key": "caesars",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
+  "minutes": 39,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 39 min, 1.7 miles via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. Exceeds the 30-minute limit. The stored multi-tower hotel name does not resolve in Google Maps, so the route was measured from 'Resorts World Las Vegas'.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.7 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -302,10 +383,13 @@
   "venue": "Horseshoe Las Vegas",
   "venue_key": "horseshoe",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
+  "minutes": 43,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 43 min, 1.9 miles via Las Vegas Blvd S. Google Maps warns this route has restricted usage or private roads. Exceeds the 30-minute limit. The stored multi-tower hotel name does not resolve in Google Maps, so the route was measured from 'Resorts World Las Vegas'.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "1.9 miles",
+  "via": "Las Vegas Blvd S"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -315,8 +399,11 @@
   "same_property": true,
   "minutes": 0,
   "verified": true,
-  "method": "On the same property: the poker room is inside the hotel. Verified from the official pages linked on each row.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
+  "method": "On the same property: the poker room is inside the hotel. Re-verified against the official venue pages linked on each row on 2026-11-19.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "0",
+  "via": "same building"
  },
  {
   "hotel": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
@@ -324,9 +411,12 @@
   "venue": "South Point Hotel Casino and Spa Las Vegas",
   "venue_key": "southpoint",
   "same_property": false,
-  "minutes": null,
-  "verified": false,
-  "method": "No official source states a walking time between these properties. Left blank on purpose - open the route link and check it yourself.",
-  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
+  "minutes": 205,
+  "verified": true,
+  "method": "Google Maps walking directions (origin and destination are the official property names) read 2026-11-19: 205 min, 9.0 miles via Las Vegas Blvd S. Shown by Google Maps as 3 hr 25 min - far beyond any walking limit. Google Maps warns this route has restricted usage or private roads. The stored multi-tower hotel name does not resolve in Google Maps, so the route was measured from 'Resorts World Las Vegas'.",
+  "maps": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking",
+  "checked": "2026-11-19",
+  "distance": "9.0 miles",
+  "via": "Las Vegas Blvd S"
  }
 ]

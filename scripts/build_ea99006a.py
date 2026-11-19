@@ -85,6 +85,25 @@ OTH = load("other.json")
 VENUES = load("venues.json")
 HOTELS = load("hotels.json")
 ROUTES = load("routes.json")
+ROUTE_INDEX = {(r["hotel_key"], r["venue_key"]): r for r in ROUTES}
+
+
+def walk_cell(hkey, vkey="venetian"):
+    """Walking-time cell from the dated Google Maps observations in routes.json."""
+    r = ROUTE_INDEX.get((hkey, vkey))
+    if r is None:
+        return '<span class="blank">not verified</span>'
+    if r.get("same_property"):
+        return '<span class="pill pill-ok">0 min, same property</span>'
+    m = r.get("minutes")
+    if m is None:
+        return '<span class="blank">not verified</span>'
+    ok = "pill-ok" if m <= 30 else "pill-bad"
+    return ('<span class="pill %s">%d min</span> <span class="muted sm">to the Venetian poker room &middot; '
+            'Google Maps %s &middot; %s</span>'
+            % (ok, m, esc(r.get("checked") or ""), esc(r.get("distance") or "")))
+
+
 FLAGS = load("flags.json")
 QUESTIONS = load("questions.json")
 SUGGESTIONS = load("suggestions.json")
@@ -1373,8 +1392,10 @@ def build_hotels():
                     "<td>%s</td><td>%s</td><td class=\"num\">%s<br><span class=\"muted sm\">%s</span></td>"
                     "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
                     % (tier_rank, esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
-                       '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
-                       else '<span class="blank">not verified</span>',
+                       (('<span class="pill pill-ok">0 min, same property</span>'
+                         '<br><span class="muted sm">this hotel hosts %s</span>' % esc(h["room"]))
+                        + ('<br>%s' % walk_cell(h["key"], "venetian") if h["key"] != "venetian" else ""))
+                       if h["on_property"] else walk_cell(h["key"], "venetian"),
                        fee, esc(h["resort_fee_text"]),
                        (esc(h["address"]) + ("<br>" + src_link(h["address_source"], "source") if h["address_source"] else "")) if h.get("address") else '<span class="blank">not verified</span>',
                        (esc(h["parking"]) + ("<br>" + src_link(h["parking_source"], "source") if h["parking_source"] else "")) if h["parking"] else '<span class="blank">not verified</span>',
@@ -1460,7 +1481,13 @@ def build_hotels():
         cells.append("<td>%s</td>" % esc(h["tier"]))
         cells.append('<td>%s<br><span class="muted sm">%s</span></td>' % (
             esc(h.get("room") or ""),
-            "0 min, same building" if h["on_property"] else "walking time not verified"))
+            ("0 min, same building" if h["on_property"]
+             else (("%d min to the Venetian poker room (Google Maps, %s)"
+                    % (ROUTE_INDEX[(h["key"], "venetian")]["minutes"],
+                       ROUTE_INDEX[(h["key"], "venetian")].get("checked") or "date not recorded"))
+                   if (h["key"], "venetian") in ROUTE_INDEX
+                      and ROUTE_INDEX[(h["key"], "venetian")].get("minutes") is not None
+                   else "walking time not verified"))))
         if rate:
             taxable = rate + fee
             taxed = taxable * _fee
@@ -1580,34 +1607,47 @@ def build_hotels():
 
 def build_routes():
     body = ["<h1>Walking routes: hotel to poker room</h1>"]
-    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Only one walking distance is '
-                'published officially anywhere: a poker room that sits inside the hotel you are staying in, which is '
-                'zero minutes. No hotel or casino publishes a walking time to a <i>different</i> property, so those '
-                'cells are left blank rather than estimated. Use the route link to check one yourself, then record '
-                'the minutes below - the 30-minute filter works on what you record.</p>')
+    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Every hotel&ndash;venue pair below '
+                'was measured with <b>Google Maps walking directions</b> between the official property names and '
+                're-read on <b>2026-11-19</b>: the minutes, distance and via-streets are what Google Maps returned '
+                'that day, and each row links the exact directions so you can re-check. These are dated '
+                'observations, not guarantees - entrances, walkways and closures change. A poker room inside your '
+                'own hotel is zero minutes. Pairs over 30 minutes are marked in red and hidden by the filter; '
+                'Google Maps also warns where a route uses restricted-usage or private roads (noted per row).</p>')
     body.append(SEARCH_BAR % ("Search hotels, rooms, routes...", ""))
     body.append('<div class="panel"><label class="chk"><input type="checkbox" id="walkfilter"> '
-                'Hide pairs known to exceed the 30-minute limit (rows without verified minutes stay, marked unverified)</label>'
+                'Hide pairs known to exceed the 30-minute limit (rows without a measured time stay, marked unverified)</label>'
                 '<div class="calc" style="margin-top:10px">'
                 '<label>Pair<select id="walkpair">%s</select></label>'
                 '<label>Minutes you measured<input id="walkmins" type="number" step="1" min="0"></label>'
                 '<button class="btn" id="walkrecord" type="button">Record</button></div>'
-                '<p class="muted sm">Recorded values are stored in this browser only and are shown as measured by you, '
-                'not as an official value.</p></div>'
+                '<p class="muted sm">Your own measurements are stored in this browser only and are shown as '
+                'measured by you, next to the dated Google Maps observation.</p></div>'
                 % "".join('<option value="%s">%s &rarr; %s</option>' % (esc(r["hotel_key"] + "|" + r["venue_key"]),
                                                                         esc(r["hotel"]), esc(r["venue"]))
                           for r in ROUTES if not r["same_property"]))
     body.append('<div class="tablewrap"><table class="data" id="routetable"><thead><tr><th>Hotel</th><th>Poker room</th>'
                 '<th>Same property</th><th>Walking time</th><th>Method</th><th>Check it yourself</th></tr></thead><tbody>')
     for r in ROUTES:
+        if r["same_property"]:
+            mins_cell = '<span class="pill pill-ok">0 min</span>'
+            dmin = "0"
+        elif r.get("minutes") is not None:
+            ok = "pill-ok" if r["minutes"] <= 30 else "pill-bad"
+            mins_cell = ('<span class="pill %s">%s min</span> <span class="muted sm">%s via %s &middot; checked %s</span>'
+                         % (ok, r["minutes"], esc(r.get("distance") or ""), esc(r.get("via") or ""),
+                            esc(r.get("checked") or "")))
+            dmin = str(r["minutes"])
+        else:
+            mins_cell = '<span class="blank">not verified</span>'
+            dmin = ""
         body.append("<tr data-pair=\"%s\" data-min=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
                     "<td class=\"sm\">%s</td><td>%s</td></tr>"
                     % (esc(r["hotel_key"] + "|" + r["venue_key"]),
-                       "0" if r["same_property"] else "",
+                       dmin,
                        esc(r["hotel"]), esc(r["venue"]),
                        "Yes" if r["same_property"] else "No",
-                       '<span class="pill pill-ok">0 min</span>' if r["same_property"]
-                       else '<span class="blank">not verified</span>',
+                       mins_cell,
                        esc(r["method"]),
                        src_link(r["maps"], "walking directions")))
     body.append("</tbody></table></div>")
@@ -1667,8 +1707,7 @@ def build_planner():
                     "<td>%s</td><td>%s</td><td>%s</td></tr>"
                     % (tier_rank, esc(h["name"]), esc(h["tier"]),
                        ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>',
-                       '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
-                       else '<span class="blank">not verified</span>',
+                       (walk_cell(h["key"], "venetian")),
                        '<span class="blank">quote needed</span>',
                        src_link(booking, "open official booking (%s to %s)" % (TRIP["check_in"], TRIP["check_out"]))))
     body.append("</tbody></table></div></div>")
@@ -1796,7 +1835,7 @@ def build_exec():
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
-        "Only on-property hotel-to-poker-room walks have verified zero-minute routes. Cross-property walking times remain blank/flagged. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
+        "Walking times for all 30 hotel-to-venue pairs are dated Google Maps observations read on 2026-11-19 (distance and via-streets recorded per row, with Google's restricted-usage warnings kept); pairs over the 30-minute limit are marked and filtered. A room in the venue's own hotel remains 0 minutes. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
         "%d rows across other venues/series still have unread entry terms; they remain explicitly unverified and are not included in the single-entry comparison." % len(UNREAD),
         "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),
