@@ -927,14 +927,14 @@ Official, read through the agent's page-fetch tool because the sandbox cannot op
 
 ### Sources and verification (session f91b3121)
 
-- Official Venetian DSE IV schedule (capture retrieved 2026-11-18): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
-- All 37 official structure PDFs are linked per event row; the reviewed rules text is stored in `data/c6087e2c/structures.json` and the event-specific rule fields in `data/c6087e2c/events_verified.json`. Example structure PDF: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf
-- Source display and row-level retrieval dates are generated from the dated official captures. This session did not claim a fresh live casino fetch from the restricted sandbox. Scheduled GitHub Actions continues the live daily fetch.
+- Official Venetian DSE IV schedule (latest automated capture retrieved 2026-11-19): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- All 37 official structure PDFs are linked per event row; the latest Actions capture is in `data/c6087e2c/structures.json` and the event-specific rule fields in `data/c6087e2c/events_verified.json` (capture timestamp 2026-11-19T06:00:59Z). Example structure PDF: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf
+- GitHub Actions run [#44468914812](https://github.com/karagemop466-tech/Poker5/actions/runs/44468914812) re-read the official schedule and structure sheets, rebuilt the site, and passed row-source and cross-check validation. The sandbox did not make the live casino fetch; the Actions runner did.
 - The calculator retains the official tax source and its unresolved tax-base caveat; it will not output a completed lodging or grand total without a dated room quote, stay length and fee.
 
 **Verification performed:**
 
-- `npm run check` — pass; 10 Node tests, including new checks that unverified entry rules cannot be promoted and missing hotel quotes do not yield a numeric trip total.
+- `npm run check` — pass; 11 Node tests, including checks that unverified entry rules cannot be promoted, the confirmed-entry filter excludes them, and missing hotel quotes do not yield a numeric trip total.
 - `node --check planner-aa83f1e1/assets/app.js`, `node scripts/smoke_aa83f1e1.mjs`, `node scripts/build_aa83f1e1.mjs` — pass (kept separate planner outputs unchanged).
 - `python3 scripts/scrape_251c122f.py --self-test` — pass.
 - `python3 scripts/merge_251c122f.py` — 94 rows; 0 strict confirmed, 55 entry-limit-unverified, 28 multi-flight, 11 restart; 37/37 sheets readable in the stored capture.
