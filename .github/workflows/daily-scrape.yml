@@ -83,10 +83,11 @@ jobs:
           done
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
-      - name: Validate the source capture and canonical site links
-        run: |
-          python3 scripts/crosscheck_251c122f.py
-          python3 scripts/check_root_site.py
+      - name: Cross-check the source capture (verdicts, sheets, dates)
+        run: python3 scripts/crosscheck_251c122f.py
+
+      - name: Check canonical site links and source anchors
+        run: python3 scripts/check_root_site.py
 
       - name: Print the capture summary
         if: always()
