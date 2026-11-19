@@ -1,0 +1,1132 @@
+{
+ "session": "8f0b323b",
+ "checked_on": "2026-11-19",
+ "official_source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+ "method": "Schedule page re-read live on 2026-11-19 (platform page reader, 4 chunks, full text) and transcribed to schedule_live_2026-11-19.tsv; this script diffs that transcription against data/ea99006a/venetian.json row by row on date, start time, event number, name, structure-sheet number, buy-in and guarantee.",
+ "fields_compared": [
+  "date",
+  "start",
+  "event_no",
+  "name",
+  "sheet",
+  "buyin",
+  "guarantee"
+ ],
+ "fields_not_compared": [
+  "chips / levels / late_reg / house_fee: these live on the structure sheets, not on the schedule page",
+  "restart rows: no buy-in or guarantee is published for a Day 2 restart"
+ ],
+ "rows_compared": 94,
+ "mismatches": 0,
+ "name_suffix_notices": 36,
+ "name_suffix_note": "The official page prints a promotional suffix after the structure-sheet title on these rows (for example 'Race to finish before the Race', 'POKERATLAS PRO MEMBER $20 RAKE DISCOUNT', 'Must be 50+ years of age to participate'). The stored rows keep the sheet title as the name and record the suffix in notes. This is informational: no date, start time, event number, buy-in, guarantee or sheet number differs.",
+ "problems": [],
+ "rows": [
+  {
+   "index": 0,
+   "notices": [],
+   "date": "2026-11-16",
+   "start": "11:10 AM",
+   "event_no": "1",
+   "live_name": "$300 No Limit Hold'em 1A $75K GTD",
+   "stored_name": "$300 No Limit Hold'em 1A $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 1,
+   "notices": [],
+   "date": "2026-11-16",
+   "start": "5:10 PM",
+   "event_no": "1",
+   "live_name": "$300 No Limit Hold'em 1B $75K GTD",
+   "stored_name": "$300 No Limit Hold'em 1B $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 2,
+   "notices": [],
+   "date": "2026-11-17",
+   "start": "11:10 AM",
+   "event_no": "1",
+   "live_name": "$300 No Limit Hold'em 1C $75K GTD",
+   "stored_name": "$300 No Limit Hold'em 1C $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 3,
+   "notices": [],
+   "date": "2026-11-17",
+   "start": "5:10 PM",
+   "event_no": "1",
+   "live_name": "$300 No Limit Hold'em 1D $75K GTD",
+   "stored_name": "$300 No Limit Hold'em 1D $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 4,
+   "notices": [],
+   "date": "2026-11-18",
+   "start": "11:10 AM",
+   "event_no": "2",
+   "live_name": "$300 No LImit Hold'em $10K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em $10K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 5,
+   "notices": [],
+   "date": "2026-11-18",
+   "start": "12:00 PM",
+   "event_no": "1",
+   "live_name": "$300 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$300 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 6,
+   "notices": [
+    "Race to finish before the Race"
+   ],
+   "date": "2026-11-19",
+   "start": "10:10 AM",
+   "event_no": "3",
+   "live_name": "$200 NLH RaceDay Stack (1Day) - Race to finish before the Race",
+   "stored_name": "$200 NLH RaceDay Stack (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 7,
+   "notices": [
+    "Race to finish before the Race"
+   ],
+   "date": "2026-11-20",
+   "start": "10:10 AM",
+   "event_no": "4",
+   "live_name": "$200 NLH RaceDay Stack (1Day) - Race to finish before the Race",
+   "stored_name": "$200 NLH RaceDay Stack (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 8,
+   "notices": [
+    "Race to finish before the Race"
+   ],
+   "date": "2026-11-21",
+   "start": "10:10 AM",
+   "event_no": "5",
+   "live_name": "$200 NLH RaceDay Stack (1Day) - Race to finish before the Race",
+   "stored_name": "$200 NLH RaceDay Stack (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 9,
+   "notices": [],
+   "date": "2026-11-22",
+   "start": "11:10 AM",
+   "event_no": "6",
+   "live_name": "$200 No LImit Hold'em (1Day)",
+   "stored_name": "$200 No Limit Hold'em (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 10,
+   "notices": [],
+   "date": "2026-11-23",
+   "start": "11:10 AM",
+   "event_no": "7",
+   "live_name": "$400 No Limit Hold'em 1A $75K GTD",
+   "stored_name": "$400 No Limit Hold'em 1A $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 11,
+   "notices": [
+    "Progressive Knock-Out Bounty (PKO)"
+   ],
+   "date": "2026-11-23",
+   "start": "5:10 PM",
+   "event_no": "8",
+   "live_name": "$200 No Limit Hold'em $8K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+   "stored_name": "$200 No Limit Hold'em $8K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 12,
+   "notices": [],
+   "date": "2026-11-24",
+   "start": "11:10 AM",
+   "event_no": "7",
+   "live_name": "$400 No Limit Hold'em 1B $75K GTD",
+   "stored_name": "$400 No Limit Hold'em 1B $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 13,
+   "notices": [],
+   "date": "2026-11-24",
+   "start": "5:10 PM",
+   "event_no": "9",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 14,
+   "notices": [],
+   "date": "2026-11-25",
+   "start": "11:00 AM",
+   "event_no": "7",
+   "live_name": "$400 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$400 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 15,
+   "notices": [],
+   "date": "2026-11-25",
+   "start": "11:10 AM",
+   "event_no": "10",
+   "live_name": "$400 No LImit Hold'em $15K GTD (1Day)",
+   "stored_name": "$400 No Limit Hold'em $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 16,
+   "notices": [],
+   "date": "2026-11-25",
+   "start": "5:10 PM",
+   "event_no": "11",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 17,
+   "notices": [],
+   "date": "2026-11-26",
+   "start": "11:10 AM",
+   "event_no": "12",
+   "live_name": "$300 No LImit Hold'em $10K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em $10K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 18,
+   "notices": [],
+   "date": "2026-11-26",
+   "start": "5:10 PM",
+   "event_no": "13",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 19,
+   "notices": [],
+   "date": "2026-11-27",
+   "start": "11:10 AM",
+   "event_no": "14",
+   "live_name": "$600 No Limit Hold'em $30K GTD (1Day)",
+   "stored_name": "$600 No Limit Hold'em $30K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 20,
+   "notices": [],
+   "date": "2026-11-27",
+   "start": "5:10 PM",
+   "event_no": "15",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 21,
+   "notices": [
+    "$200 bounties to start & $500 bounties in the money"
+   ],
+   "date": "2026-11-28",
+   "start": "11:10 AM",
+   "event_no": "16",
+   "live_name": "$600 No Limit Hold'em Bounty $30K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "stored_name": "$600 No Limit Hold'em Bounty $30K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 22,
+   "notices": [],
+   "date": "2026-11-28",
+   "start": "12:10 PM",
+   "event_no": "17",
+   "live_name": "$400 Pot Limit Omaha Bounty $15K GTD (1Day)",
+   "stored_name": "$400 Pot Limit Omaha Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 23,
+   "notices": [
+    "POKERATLAS PRO MEMBER $20 RAKE DISCOUNT"
+   ],
+   "date": "2026-11-28",
+   "start": "5:10 PM",
+   "event_no": "18",
+   "live_name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+   "stored_name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 24,
+   "notices": [],
+   "date": "2026-11-29",
+   "start": "11:10 AM",
+   "event_no": "19",
+   "live_name": "$400 No Limit Hold'em 1A $75K GTD",
+   "stored_name": "$400 No Limit Hold'em 1A $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 25,
+   "notices": [
+    "Double Board Bomb Pot"
+   ],
+   "date": "2026-11-29",
+   "start": "12:10 PM",
+   "event_no": "20",
+   "live_name": "$300 Pot Limit Omaha $10K GTD (1Day) - Double Board Bomb Pot",
+   "stored_name": "$300 Pot Limit Omaha $10K GTD (1Day) - Double Board Bomb Pot",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 26,
+   "notices": [],
+   "date": "2026-11-29",
+   "start": "5:10 PM",
+   "event_no": "21",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 27,
+   "notices": [],
+   "date": "2026-11-30",
+   "start": "11:10 AM",
+   "event_no": "19",
+   "live_name": "$400 No Limit Hold'em 1B $75K GTD",
+   "stored_name": "$400 No Limit Hold'em 1B $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 28,
+   "notices": [],
+   "date": "2026-11-30",
+   "start": "5:10 PM",
+   "event_no": "22",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 29,
+   "notices": [],
+   "date": "2026-12-01",
+   "start": "11:10 AM",
+   "event_no": "19",
+   "live_name": "$400 No Limit Hold'em 1C $75K GTD",
+   "stored_name": "$400 No Limit Hold'em 1C $75K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 30,
+   "notices": [],
+   "date": "2026-12-01",
+   "start": "5:10 PM",
+   "event_no": "23",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 31,
+   "notices": [
+    "Must be 50+ years of age to participate"
+   ],
+   "date": "2026-12-02",
+   "start": "10:10 AM",
+   "event_no": "24",
+   "live_name": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+   "stored_name": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 32,
+   "notices": [],
+   "date": "2026-12-02",
+   "start": "11:00 AM",
+   "event_no": "19",
+   "live_name": "$400 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$400 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 33,
+   "notices": [],
+   "date": "2026-12-02",
+   "start": "5:10 PM",
+   "event_no": "25",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 34,
+   "notices": [],
+   "date": "2026-12-03",
+   "start": "11:10 AM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1A $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1A $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 35,
+   "notices": [],
+   "date": "2026-12-03",
+   "start": "12:10 PM",
+   "event_no": "27",
+   "live_name": "$600 BIG O $25K GTD (1Day)",
+   "stored_name": "$600 BIG O $25K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 36,
+   "notices": [],
+   "date": "2026-12-03",
+   "start": "5:10 PM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1B $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1B $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 37,
+   "notices": [],
+   "date": "2026-12-04",
+   "start": "11:10 AM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1C $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1C $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 38,
+   "notices": [],
+   "date": "2026-12-04",
+   "start": "5:10 PM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1D $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1D $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 39,
+   "notices": [],
+   "date": "2026-12-05",
+   "start": "11:10 AM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1E $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1E $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 40,
+   "notices": [],
+   "date": "2026-12-05",
+   "start": "5:10 PM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em 1F (Turbo) $500K GTD",
+   "stored_name": "$800 No Limit Hold'em 1F (Turbo) $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 41,
+   "notices": [],
+   "date": "2026-12-06",
+   "start": "11:10 AM",
+   "event_no": "28",
+   "live_name": "$600 No Limit Hold'em $40K GTD (1Day)",
+   "stored_name": "$600 No Limit Hold'em $40K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 42,
+   "notices": [],
+   "date": "2026-12-06",
+   "start": "12:00 PM",
+   "event_no": "26",
+   "live_name": "$800 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$800 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 43,
+   "notices": [],
+   "date": "2026-12-06",
+   "start": "5:10 PM",
+   "event_no": "29",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 44,
+   "notices": [
+    "$200 bounties to start & $500 bounties in the money"
+   ],
+   "date": "2026-12-07",
+   "start": "11:10 AM",
+   "event_no": "30",
+   "live_name": "$600 No Limit Hold'em Bounty $40K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "stored_name": "$600 No Limit Hold'em Bounty $40K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 45,
+   "notices": [],
+   "date": "2026-12-07",
+   "start": "5:10 PM",
+   "event_no": "31",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 46,
+   "notices": [
+    "Must be 50+ years of age to participate"
+   ],
+   "date": "2026-12-08",
+   "start": "10:10 AM",
+   "event_no": "32",
+   "live_name": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+   "stored_name": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 47,
+   "notices": [
+    "Awards Direct Entry to Event # 39"
+   ],
+   "date": "2026-12-08",
+   "start": "4:10 PM",
+   "event_no": "33",
+   "live_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+   "stored_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 48,
+   "notices": [],
+   "date": "2026-12-08",
+   "start": "5:10 PM",
+   "event_no": "34",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 49,
+   "notices": [
+    "Tag Teams Consist of Female/Female or Female/Male"
+   ],
+   "date": "2026-12-09",
+   "start": "10:10 AM",
+   "event_no": "35",
+   "live_name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male",
+   "stored_name": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 50,
+   "notices": [
+    "$200 bounties to start & $500 bounties in the money"
+   ],
+   "date": "2026-12-09",
+   "start": "11:10 AM",
+   "event_no": "36",
+   "live_name": "$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "stored_name": "$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 51,
+   "notices": [
+    "Awards Direct Entry to Event # 39"
+   ],
+   "date": "2026-12-09",
+   "start": "4:10 PM",
+   "event_no": "37",
+   "live_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+   "stored_name": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 52,
+   "notices": [],
+   "date": "2026-12-09",
+   "start": "5:10 PM",
+   "event_no": "38",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 53,
+   "notices": [
+    "Women in Poker - Main Event"
+   ],
+   "date": "2026-12-10",
+   "start": "10:10 AM",
+   "event_no": "39",
+   "live_name": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event",
+   "stored_name": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 54,
+   "notices": [],
+   "date": "2026-12-10",
+   "start": "12:10 PM",
+   "event_no": "40",
+   "live_name": "$600 Pot Limit Omaha Bounty $25K GTD (1Day)",
+   "stored_name": "$600 Pot Limit Omaha Bounty $25K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 55,
+   "notices": [
+    "Awards Direct Entry to Event # 47"
+   ],
+   "date": "2026-12-10",
+   "start": "4:10 PM",
+   "event_no": "41",
+   "live_name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "stored_name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 56,
+   "notices": [],
+   "date": "2026-12-10",
+   "start": "5:10 PM",
+   "event_no": "42",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 57,
+   "notices": [
+    "Play Down to Final 7 - Streamed Final Table (PokerGO)"
+   ],
+   "date": "2026-12-11",
+   "start": "10:00 AM",
+   "event_no": "39",
+   "live_name": "$800 No Limit Hold'em LIPS Ladies Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+   "stored_name": "$800 No Limit Hold'em LIPS Ladies Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 58,
+   "notices": [
+    "KINGS and QUEENS Bounty - Open to all players"
+   ],
+   "date": "2026-12-11",
+   "start": "11:10 AM",
+   "event_no": "43",
+   "live_name": "$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players",
+   "stored_name": "$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 59,
+   "notices": [
+    "Awards Direct Entry to Event # 47"
+   ],
+   "date": "2026-12-11",
+   "start": "4:10 PM",
+   "event_no": "44",
+   "live_name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "stored_name": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 60,
+   "notices": [
+    "Streamed Final Table (PokerGO)"
+   ],
+   "date": "2026-12-11",
+   "start": "7:00 PM",
+   "event_no": "39",
+   "live_name": "$800 No Limit Hold'em LIPS Ladies Final Table - Streamed Final Table (PokerGO)",
+   "stored_name": "$800 No Limit Hold'em LIPS Ladies Final Table - Streamed Final Table (PokerGO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 61,
+   "notices": [
+    "Awards Direct Entry to Event # 47"
+   ],
+   "date": "2026-12-11",
+   "start": "8:10 PM",
+   "event_no": "45",
+   "live_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "stored_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 62,
+   "notices": [
+    "Awards Direct Entry to Event # 47"
+   ],
+   "date": "2026-12-12",
+   "start": "9:10 AM",
+   "event_no": "46",
+   "live_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "stored_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 63,
+   "notices": [
+    "PokerAtlas Championship Title Event"
+   ],
+   "date": "2026-12-12",
+   "start": "10:10 AM",
+   "event_no": "47",
+   "live_name": "$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event",
+   "stored_name": "$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 64,
+   "notices": [
+    "Awards Direct Entry to Event # 47"
+   ],
+   "date": "2026-12-12",
+   "start": "12:10 PM",
+   "event_no": "48",
+   "live_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "stored_name": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 65,
+   "notices": [
+    "PokerAtlas Championship Title Event"
+   ],
+   "date": "2026-12-12",
+   "start": "6:10 PM",
+   "event_no": "47",
+   "live_name": "$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event",
+   "stored_name": "$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 66,
+   "notices": [
+    "Must be 50+ years of age to participate"
+   ],
+   "date": "2026-12-13",
+   "start": "10:10 AM",
+   "event_no": "49",
+   "live_name": "$1,100 No Limit Hold'em Seniors 1A $300K GTD - Must be 50+ years of age to participate",
+   "stored_name": "$1,100 No Limit Hold'em Seniors 1A $300K GTD - Must be 50+ years of age to participate",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 67,
+   "notices": [
+    "Play Down to Final 7 - Streamed Final Table (PokerGO)"
+   ],
+   "date": "2026-12-13",
+   "start": "1:00 PM",
+   "event_no": "47",
+   "live_name": "$2,200 NLH PokerAtlas Championship Title Event Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+   "stored_name": "$2,200 NLH PokerAtlas Championship Title Event Day 2 Restart - Play Down to Final 7 - Streamed Final Table (PokerGO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 68,
+   "notices": [],
+   "date": "2026-12-13",
+   "start": "5:10 PM",
+   "event_no": "50",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 69,
+   "notices": [
+    "Must be 50+ years of age to participate"
+   ],
+   "date": "2026-12-14",
+   "start": "10:10 AM",
+   "event_no": "49",
+   "live_name": "$1,100 No Limit Hold'em Seniors 1B $300K GTD - Must be 50+ years of age to participate",
+   "stored_name": "$1,100 No Limit Hold'em Seniors 1B $300K GTD - Must be 50+ years of age to participate",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 70,
+   "notices": [
+    "Streamed Final Table (PokerGO)"
+   ],
+   "date": "2026-12-14",
+   "start": "11:00 AM",
+   "event_no": "47",
+   "live_name": "$2,200 NLH PokerAtlas Championship Title Event Day 3 Restart - Streamed Final Table (PokerGO)",
+   "stored_name": "$2,200 NLH PokerAtlas Championship Title Event Day 3 Restart - Streamed Final Table (PokerGO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 71,
+   "notices": [],
+   "date": "2026-12-14",
+   "start": "5:10 PM",
+   "event_no": "51",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 72,
+   "notices": [],
+   "date": "2026-12-15",
+   "start": "10:00 AM",
+   "event_no": "49",
+   "live_name": "$1,100 No Limit Hold'em Seniors Day 2 Restart",
+   "stored_name": "$1,100 No Limit Hold'em Seniors Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 73,
+   "notices": [
+    "Progressive Knock-Out Bounty (PKO)"
+   ],
+   "date": "2026-12-15",
+   "start": "11:10 AM",
+   "event_no": "52",
+   "live_name": "$1,100 No Limit Hold'em $75K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+   "stored_name": "$1,100 No Limit Hold'em $75K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 74,
+   "notices": [],
+   "date": "2026-12-15",
+   "start": "5:10 PM",
+   "event_no": "53",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 75,
+   "notices": [
+    "$200 bounties to start & $500 bounties in the money"
+   ],
+   "date": "2026-12-16",
+   "start": "11:10 AM",
+   "event_no": "54",
+   "live_name": "$600 No Limit Hold'em Bounty $50K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "stored_name": "$600 No Limit Hold'em Bounty $50K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 76,
+   "notices": [],
+   "date": "2026-12-16",
+   "start": "5:10 PM",
+   "event_no": "55",
+   "live_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "stored_name": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 77,
+   "notices": [
+    "$40 Rake Discount for Entries Before 10:10 a.m."
+   ],
+   "date": "2026-12-17",
+   "start": "10:10 AM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em 1A $500K GTD - $40 Rake Discount for Entries Before 10:10 a.m.",
+   "stored_name": "$1,100 No Limit Hold'em 1A $500K GTD - $40 Rake Discount for Entries Before 10:10 a.m.",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 78,
+   "notices": [
+    "Double Board Bomb Pot"
+   ],
+   "date": "2026-12-17",
+   "start": "12:10 PM",
+   "event_no": "57",
+   "live_name": "$600 Pot Limit Omaha $25K GTD (1Day) - Double Board Bomb Pot",
+   "stored_name": "$600 Pot Limit Omaha $25K GTD (1Day) - Double Board Bomb Pot",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 79,
+   "notices": [
+    "$40 Rake Discount for Entries Before 6:10 p.m."
+   ],
+   "date": "2026-12-17",
+   "start": "6:10 PM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em 1B $500K GTD - $40 Rake Discount for Entries Before 6:10 p.m.",
+   "stored_name": "$1,100 No Limit Hold'em 1B $500K GTD - $40 Rake Discount for Entries Before 6:10 p.m.",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 80,
+   "notices": [],
+   "date": "2026-12-18",
+   "start": "10:10 AM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em 1C $500K GTD",
+   "stored_name": "$1,100 No Limit Hold'em 1C $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 81,
+   "notices": [],
+   "date": "2026-12-18",
+   "start": "6:10 PM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em 1D $500K GTD",
+   "stored_name": "$1,100 No Limit Hold'em 1D $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 82,
+   "notices": [],
+   "date": "2026-12-19",
+   "start": "10:10 AM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em 1E $500K GTD",
+   "stored_name": "$1,100 No Limit Hold'em 1E $500K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 83,
+   "notices": [
+    "POKERATLAS PRO MEMBER $20 RAKE DISCOUNT"
+   ],
+   "date": "2026-12-19",
+   "start": "5:10 PM",
+   "event_no": "58",
+   "live_name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+   "stored_name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 84,
+   "notices": [],
+   "date": "2026-12-20",
+   "start": "11:00 AM",
+   "event_no": "56",
+   "live_name": "$1,100 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$1,100 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 85,
+   "notices": [
+    "$20 Rake Discount for Entries Before 11:10 a.m."
+   ],
+   "date": "2026-12-20",
+   "start": "11:10 AM",
+   "event_no": "59",
+   "live_name": "$600 No Limit Hold'em 1A $150K GTD - $20 Rake Discount for Entries Before 11:10 a.m.",
+   "stored_name": "$600 No Limit Hold'em 1A $150K GTD - $20 Rake Discount for Entries Before 11:10 a.m.",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 86,
+   "notices": [],
+   "date": "2026-12-20",
+   "start": "5:10 PM",
+   "event_no": "60",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 87,
+   "notices": [],
+   "date": "2026-12-21",
+   "start": "11:10 AM",
+   "event_no": "59",
+   "live_name": "$600 No Limit Hold'em 1B $150K GTD",
+   "stored_name": "$600 No Limit Hold'em 1B $150K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 88,
+   "notices": [],
+   "date": "2026-12-21",
+   "start": "5:10 PM",
+   "event_no": "61",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 89,
+   "notices": [],
+   "date": "2026-12-22",
+   "start": "11:10 AM",
+   "event_no": "59",
+   "live_name": "$600 No Limit Hold'em 1C $150K GTD",
+   "stored_name": "$600 No Limit Hold'em 1C $150K GTD",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 90,
+   "notices": [],
+   "date": "2026-12-22",
+   "start": "5:10 PM",
+   "event_no": "62",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 91,
+   "notices": [],
+   "date": "2026-12-23",
+   "start": "11:00 AM",
+   "event_no": "59",
+   "live_name": "$600 No Limit Hold'em Day 2 Restart",
+   "stored_name": "$600 No Limit Hold'em Day 2 Restart",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 92,
+   "notices": [],
+   "date": "2026-12-23",
+   "start": "11:10 AM",
+   "event_no": "63",
+   "live_name": "$600 No Limit Hold'em $30K GTD (1Day)",
+   "stored_name": "$600 No Limit Hold'em $30K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  },
+  {
+   "index": 93,
+   "notices": [],
+   "date": "2026-12-23",
+   "start": "5:10 PM",
+   "event_no": "64",
+   "live_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "stored_name": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+   "result": "match",
+   "diffs": {}
+  }
+ ]
+}
