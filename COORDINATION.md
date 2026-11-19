@@ -1,5 +1,34 @@
 # Coordination - Poker5
 
+## Session 7e10ba42 (branch `arena/7e10ba42-poker5`, base `main` @ `f2eb22a`) — verification pass + rule-standard irregularity
+
+Claimed 2026-11-19 before any edit. Board-only change; no data, builder, or page is edited.
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| V1 | done | 7e10ba42 | none (read-only checks) |
+| V2 | done | 7e10ba42 | `COORDINATION.md` (this section only) |
+
+### Checks run (2026-11-19, on `main` @ `f2eb22a`)
+
+- `python3 scripts/build_ea99006a.py` exit 0; `python3 scripts/check_ea99006a.py` OK (1,665 rows with official https sources; 3,992 external links resolved); `python3 scripts/check_root_site.py` OK; `npm test` passed. Build drift: only `pages/repo-review.html` changes on every build (known; reverted, not committed).
+- `gh run list`: last `main` pushes (Quality checks, Validate Dec 2–9 poker dashboard) SUCCESS; `pages build and deployment` SUCCESS; GitHub Pages status `built` at https://karagemop466-tech.github.io/Poker5/.
+
+### Official-source spot check
+
+- Venetian structure sheet 1 (Events 09, 11, 13, 15, 21, 22, 23, 25, 60, 61, 62, 64; $200 NLH Bounty 1Day): https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf (read 2026-11-19). Start 5:10 PM; late registration "8 levels + Break (9:40 PM)"; fee "$40 of the $200 Buy-In is withheld for house fees"; guarantee $8,000. The 12 numbered rules grant no re-entry, rebuy, or add-on, and none states "one entry only". The stored row values match the sheet.
+
+### Irregularity (not changed here; needs a decision)
+
+- **Rule standard conflicts with the brief.** The brief asks for official written maximum-entry / no-rebuy / no-add-on rules before an event is confirmed. The site's S1 standard (`data/ea99006a/meta.json` `rule_standard`) confirms a row when no sheet rule *grants* a second entry. No Venetian sheet states a one-entry limit in words (already flagged as F01). The 53 rows labelled "Confirmed single-entry (standard S1)" therefore rest on the absence of re-entry wording. Each row's `rule_excerpt` reads "No re-entry, rebuy or add-on text appears on the sheet.", which is an absence statement rather than a quotation. Under the brief's literal standard, the confirmed count is 0 and the single-entry toggle should show "not confirmed" for every Venetian row.
+- Options for the data owner: (a) keep S1 and rename the label to "No second entry granted (S1 screen)" across the builder, tests, and pages (13 files, plus `assets/app.js` and `test/`); (b) keep the label and add a visible "written one-entry rule: none found" line to each row; (c) ask the Venetian poker room in writing whether these events are single-entry, then mark the rows from the reply. Recommended: (a) now and (c) before any nonrefundable payment.
+
+### Status
+
+V1 done, V2 done. Session closed. Publication: PR and merge recorded below.
+
+---
+
 ## Current branch session — 188dc704 (active) — scheduled-monitor repair + full requirements verification
 
 **Branch:** `arena/188dc704-poker5` (fixed by Arena), based on `main` @ `998a32d`. Scope claimed before any edit:
