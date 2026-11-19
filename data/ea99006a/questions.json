@@ -2,9 +2,9 @@
  {
   "id": "Q01",
   "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-  "have": "The dashboard uses an automatic scenario: 2026-12-06 to 2026-12-13 (7 nights), selected from the captured schedule on 2026-11-19. The date choice is not traveler-provided. The budget ceiling is based on a dated, unverified booking observation, and the Luxury quality floor is a property-tier label, not an independent quality rating.",
-  "missing": "The traveler’s preferred dates, budget ceiling, occupancy, and minimum quality standard are unknown. The automatic settings are scenario defaults only; the dated hotel quote used to derive the ceiling is not for the selected stay and is not a verified current rate.",
-  "how": "Treat the Dates and Budget controls on the Hotels/Planner pages as scenario inputs. Replace them with the actual trip window, occupancy, budget, and chosen quality floor before deciding; then obtain a date-matched official itemized hotel quote."
+  "have": "The site now fixes this for you: 2026-12-06 to 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
+  "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
+  "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
  },
  {
   "id": "Q02",
@@ -71,10 +71,10 @@
  },
  {
   "id": "Q11",
-  "q": "What will parking add to the stay, and is the poker-room validation usable for the planned schedule?",
-  "have": "Venetian: complimentary self-parking for players with 3+ hours of tournament or cash play (official player-parking page). Wynn: complimentary self-parking for registered guests and poker-room guests; non-guest and valet prices published.",
-  "missing": "Whether the planned nights qualify for validation each day, event-day parking rates, and Caesars/MGM parking terms for the candidate hotels.",
-  "how": "Ask the poker room at registration; read each hotel's official parking page before booking."
+  "q": "Can the site complete the trip cost without me entering anything?",
+  "have": "The entries side is complete and source-linked. On the hotel side the mandatory fees are now verified for the Venetian ($55), Wynn ($55), Resorts World ($55), Bellagio ($55), ARIA ($55) and MGM Grand ($50), all plus the 13.38% Clark County tax, and self-parking rates are dated for the Venetian ($20/day registered guest) and the MGM rooms ($20/day). What is still missing is the nightly ROOM rate itself, which no official Strip page publishes for these dates.",
+  "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
+  "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you."
  },
  {
   "id": "Q12",
@@ -93,9 +93,9 @@
  {
   "id": "Q14",
   "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
-  "have": "Wynn offer terms DK26WLV2, re-read 2026-11-19: cancellations must be received at least 48 hours before arrival for that offer's bookings. The earlier 72-hour figure (2026-11-17) is withdrawn: it could not be reproduced from any stored capture (F55). The standard-rate policy was not read.",
-  "missing": "Cancellation deadlines and deposit/refund terms for the Venetian booking rate, and for any Caesars or MGM rate.",
-  "how": "Read the rate rules shown on each official booking page at quote time and record them in the dated rate log."
+  "have": "Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read 2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a specific rate plan.",
+  "missing": "The deadline that applies to the exact rate plan you book: every MGM page says 'unless specifically excluded by booked offer', Wynn's figure belongs to a two-night promotional offer, and Caesars/Horseshoe publish the headline but not the term sheet.",
+  "how": "Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."
  },
  {
   "id": "Q15",

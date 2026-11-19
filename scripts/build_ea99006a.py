@@ -19,6 +19,8 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if os.path.dirname(os.path.abspath(__file__)) not in sys.path:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "ea99006a")
 PAGES = os.path.join(ROOT, "pages")
 
@@ -454,6 +456,7 @@ NAV = [
     ("pages/routes.html", "Walking routes"),
     ("pages/planner.html", "Trip planner"),
     ("pages/verification.html", "Verification"),
+    ("pages/reverify.html", "Re-verification log"),
     ("pages/venues/venetian.html", "Venetian"),
     ("pages/venues/wynn.html", "Wynn"),
     ("pages/venues/others.html", "Other venues"),
@@ -1382,7 +1385,8 @@ def build_hotels():
                     % (tier_rank, esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
                        '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"]
                        else '<span class="blank">not verified</span>',
-                       fee, esc(h["resort_fee_text"]),
+                       fee + ("<br><span class=\"muted sm\">read %s</span>" % esc(h["resort_fee_read"]) if h.get("resort_fee_read") and h["resort_fee"] else ""),
+                       esc(h["resort_fee_text"]),
                        (esc(h["address"]) + ("<br>" + src_link(h["address_source"], "source") if h["address_source"] else "")) if h.get("address") else '<span class="blank">not verified</span>',
                        (esc(h["parking"]) + ("<br>" + src_link(h["parking_source"], "source") if h["parking_source"] else "")) if h["parking"] else '<span class="blank">not verified</span>',
                        (esc(h["poker_rate"]) + ("<br>" + src_link(h["poker_rate_source"], "source") if h["poker_rate_source"] else "")) if h.get("poker_rate") else '<span class="blank">not verified</span>',
@@ -1891,6 +1895,117 @@ def build_suggestions():
     write("pages/suggestions.html", page("Suggestions", "".join(body), "suggestions.html", 1))
 
 
+# --------------------------------------------------------------------- session 8f0b323b
+def build_reverify():
+    """Official re-verification: what was read live today, per value, with the page."""
+    import verify_8f0b323b as V8
+    checks = V8.CHECKS
+    verdict_cls = {"match": "pill-ok", "new": "pill-ok", "mismatch": "pill-bad", "not re-read": "pill-warn"}
+    body = ["<h1>Official re-verification, %s</h1>" % esc(V8.READ_ON)]
+    body.append("<p class=\"muted\">This page is the record of one re-verification pass, run in session "
+                "<code>%s</code> on <b>%s</b>. Each row below is one value, the official page it was read from, "
+                "the sentence (or datum) the page printed, what this site had stored, and the verdict. The point of "
+                "the page is that you can re-check any row yourself by opening its source link: a value that is not "
+                "on this page was not re-read today, and the site says so instead of implying it was.</p>"
+                % (esc(V8.SESSION), esc(V8.READ_ON)))
+    body.append("<p class=\"muted sm\"><b>Read method:</b> " + esc(V8.READ_METHOD) + "</p>")
+    counts = {}
+    for c in checks:
+        counts[c["verdict"]] = counts.get(c["verdict"], 0) + 1
+    body.append('<div class="panel"><h2>Result of this pass</h2><div class="kv">'
+                + "".join("<dt>%s</dt><dd><b>%d</b></dd>" % (esc(k), v) for k, v in sorted(counts.items()))
+                + "<dt>values looked for and not published</dt><dd><b>%d</b></dd>" % len(V8.NOT_PUBLISHED)
+                + "<dt>dated rate observations logged</dt><dd><b>%d</b></dd>" % len(V8.RATE_OBSERVATIONS)
+                + "<dt>session</dt><dd><code>" + esc(V8.SESSION) + "</code></dd></div>"
+                "<p class=\"sm\"><b>match</b> = the official page still prints the stored value. <b>new</b> = the official "
+                "page printed a value this site did not have before (it was blank). <b>mismatch</b> = the page prints something "
+                "different (none were found). <b>not re-read</b> = carried forward from an earlier dated read and explicitly not "
+                "presented as fresh evidence.</p></div>")
+    body.append(SEARCH_BAR % ("Search these re-checks (item, sentence, verdict)...", ""))
+    body.append('<h2>Values re-read against the official page</h2>')
+    body.append('<div class="tablewrap"><table id="tbl" class="data"><thead><tr><th>ID</th><th>Area</th><th>Value / item</th>'
+                '<th>What the official page printed</th><th>What the site had stored</th><th>Verdict</th>'
+                '<th>Read on</th><th>Official source</th></tr></thead><tbody>')
+    for c in checks:
+        body.append("<tr data-v=\"%s\"><td><code>%s</code></td><td>%s</td><td><b>%s</b>%s</td>"
+                    "<td><span class=\"quote\">%s</span></td><td>%s</td>"
+                    "<td><span class=\"pill %s\">%s</span></td><td class=\"nowrap\">%s</td><td>%s</td></tr>"
+                    % (esc(c["verdict"]), esc(c["id"]), esc(c["group"]), esc(c["item"]),
+                       ("<br><span class=\"muted sm\">" + esc(c["note"]) + "</span>") if c.get("note") else "",
+                       esc(c["read"]), esc(c["stored"]), verdict_cls.get(c["verdict"], "pill-warn"), esc(c["verdict"]),
+                       esc(V8.READ_ON if c["verdict"] != "not re-read" else "earlier session"),
+                       src_link(c["url"], "official page")))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">A row-level diff of the whole tournament schedule (94 rows) is on the '
+                '<a href="verification.html">Verification</a> page and in <code>data/8f0b323b/schedule_recheck.json</code>.</p>')
+
+    body.append("<h2>Looked for on the official site and not published</h2>")
+    body.append('<p class="muted">These are the blanks. Each one records where the value was looked for, so a blank on this '
+                'site is evidence rather than an omission.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>ID</th><th>What was looked for</th>'
+                '<th>What the official page said instead</th><th>Effect on the site</th><th>Pages opened</th></tr></thead><tbody>')
+    for n in V8.NOT_PUBLISHED:
+        body.append("<tr><td><code>%s</code></td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                    % (esc(n["id"]), esc(n["what"]), esc(n["result"]), esc(n["site_effect"]),
+                       "<br>".join(src_link(u, u.split("/")[-1] or u) for u in n["tried"])))
+    body.append("</tbody></table></div>")
+
+    body.append("<h2>Dated rate observations logged in this pass</h2>")
+    body.append('<p class="muted">A rate is never a single value on this site. Each observation is stored with the date it was '
+                'read and the official page it came from, and is comparable like-for-like only with another observation of the '
+                'same property, stay window, occupancy and room class. <b>No observation below is a quote for 6-13 December '
+                '2026</b>: the only nightly figure any of these pages prints is a published starting floor.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Kind of observation</th>'
+                '<th class="num">Nightly low</th><th class="num">Nightly high</th><th class="num">Resort fee / night</th>'
+                '<th class="num">Tax rate used</th><th class="num">Fee incl. tax</th><th class="num">Fee tax only</th>'
+                '<th>Room type</th><th>Condition</th><th>Parking</th><th>Cancellation</th><th>Read on</th>'
+                '<th>Official source</th></tr></thead><tbody>')
+    for o in V8.RATE_OBSERVATIONS:
+        fee = o.get("resort_fee_per_night")
+        tax = o.get("tax_rate_pct")
+        fee_tax = "$%.2f" % round(fee * tax / 100.0, 2) if fee and tax else '<span class="blank">n/a</span>'
+        fee_in = "$%.2f" % round(fee * (1 + tax / 100.0), 2) if fee and tax else '<span class="blank">n/a</span>'
+        body.append("<tr><td><b>%s</b></td><td>%s</td>"
+                    "<td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s%%</td>"
+                    "<td class=\"num\">%s</td><td class=\"num\">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
+                    "<td class=\"nowrap\">%s</td><td>%s</td></tr>"
+                    % (esc(o["hotel"]), esc(o["kind"]),
+                       money(o.get("nightly_low")) or '<span class="blank">not published</span>',
+                       money(o.get("nightly_high")) or '<span class="blank">not published</span>',
+                       money(fee) or '<span class="blank">not verified</span>',
+                       esc(str(tax)) if tax else '<span class="blank">&mdash;</span>',
+                       fee_in, fee_tax,
+                       esc(o.get("room_type") or "") or '<span class="blank">not published</span>',
+                       esc(o.get("condition") or ""), esc(o.get("parking_per_day") or "") or '<span class="blank">not verified</span>',
+                       esc(o.get("cancellation") or "") or '<span class="blank">not published for this rate plan</span>',
+                       esc(o["observed_on"]),
+                       src_link(o["source"], "official page") +
+                       ("<br>" + src_link(o["source_2"], "parking terms") if o.get("source_2") else "")))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">"Fee incl. tax" is arithmetic on the verified fee and the Clark County rate, so the '
+                'calculator does not have to guess it. It is a fee, not a nightly rate: add the property\'s own nightly rate, '
+                'which no official page publishes for the trip dates (see row <code>N01</code> above).</p>')
+
+    body.append("<h2>How this pass changes what the site claims</h2>")
+    body.append('<div class="panel"><ul class="tight">'
+                '<li><b>Three MGM rooms now have a verified mandatory fee, a standard cancellation term and parking rates</b> '
+                '(Bellagio $55, ARIA $55, MGM Grand $50, all plus applicable tax). They are listed on the Hotels page for the '
+                'room-cost comparison. They still have <b>no tournament rows</b>, because no MGM poker-room page could be read: '
+                'nothing was invented to fill that gap.</li>'
+                '<li><b>The Venetian per-day parking figure is now dated evidence</b> ($20/day for a registered hotel guest), so '
+                'the parking line of the trip estimate is no longer blank for that property. It is optional: the poker-room '
+                'three-hour rule can make it $0.</li>'
+                '<li><b>Every schedule row still matches on what and when</b> (90 of 94 exactly; 4 differ only in a promotional '
+                'name suffix, logged as F56). <b>No entry rule is confirmed by the schedule page at all</b> (F59): the '
+                'single-entry verdicts still rest on structure sheets.</li>'
+                '<li><b>Nothing closed the room-rate gap.</b> No official page prints a nightly rate for 6-13 December 2026, so '
+                'the trip planner still reports the hotel term as Incomplete rather than showing a total with a zero-cost hotel '
+                '(F14/F51).</li></ul></div>')
+
+    write("pages/reverify.html", page("Official re-verification", "".join(body), "reverify.html", 1,
+                                      extra_head=TABLE_JS_INIT))
+
+
 def build_flagged():
     body = ["<h1>Flagged for review</h1>"]
     body.append(SEARCH_BAR % ("Search flags, areas, items...", ""))
@@ -2270,6 +2385,26 @@ def build_verification():
                     "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
                     "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
                     "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
+    # 8f0b323b: independent second re-read of the same page, session-scoped files
+    _sr2 = None
+    try:
+        with open(os.path.join(ROOT, "data", "8f0b323b", "schedule_recheck.json")) as _fh:
+            _sr2 = json.load(_fh)
+    except (OSError, ValueError):
+        _sr2 = None
+    if _sr2:
+        _notices = sum(len(r.get("notices") or []) for r in (_sr2.get("rows") or []))
+        body.append('<div class="panel"><h2>Second independent schedule re-read, ' + esc(_sr2.get("checked_on", "")) + '</h2>'
+                    '<p>Session <code>8f0b323b</code> re-read the same official page again with its own transcription '
+                    '(<code>data/8f0b323b/schedule_live_2026-11-19.tsv</code>) and its own diff script '
+                    '(<code>scripts/recheck_8f0b323b.py</code>), so the check does not depend on one session&#39;s notes. '
+                    'Fields compared: date, start time, event number, name, structure-sheet number, buy-in, guarantee.</p>'
+                    '<div class="kv"><dt>rows compared</dt><dd><b>' + str(_sr2.get("rows_compared", 0)) + '</b></dd>'
+                    '<dt>rows with a value mismatch</dt><dd><b>' + str(_sr2.get("mismatches", 0)) + '</b></dd>'
+                    '<dt>promotional-suffix notices</dt><dd><b>' + str(_notices) + '</b></dd></div>'
+                    '<p class="muted sm">' + esc(_sr2.get("name_suffix_note", "")) +
+                    ' Source: <a href="' + esc(_sr2.get("official_source", "")) + '" rel="noopener">official Venetian schedule page</a>. '
+                    'The full pass, value by value, is on the <a href="reverify.html">Re-verification log</a>.</p></div>')
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])
@@ -2432,6 +2567,7 @@ def main():
     build_flagged()
     build_monitor()
     build_verification()
+    build_reverify()
     build_repo_review()
     build_method()
     build_redirects()
