@@ -914,3 +914,13 @@ Official, read through the agent's page-fetch tool because the sandbox cannot op
 
 - Conflicts on rebase over `main` (sessions a9d1e02d, 3c49aaec, ea99006a merged while this session worked): kept `main`'s `COORDINATION.md` and appended this section; kept this build's root `index.html`, `pages/*`, `assets/*` (regenerated from the capture) and restored the other sessions' non-root pages that my first rebase attempt deleted. No other session's folder was edited or removed.
 - The one mistake made and corrected in this session: a cleanup step in `scripts/build_251c122f.py` deleted `pages/method.html`, `pages/monitor.html`, `pages/routes.html` on the merge. The step was removed from the build and all three files were restored from `main`; the build no longer deletes any file it did not generate.
+
+## Session f91b3121 — calculator consistency and regression verification
+
+**Branch:** `arena/f91b3121-poker5` (fixed by Arena; branched from `fd8edf2`). This session is working only this branch; no parallel branch/worktree is created because Arena fixes the session branch.
+
+**Claimed scope:** align the published trip-cost calculator with the conservative dated-rate policy already documented in the repo, make the root-site generator the consistent source for the published output, and repair/add focused regression checks. No new tournament or hotel facts will be promoted without an official source.
+
+**Files:** `COORDINATION.md`, `scripts/build_c6087e2c.py`, `pages/planner.html`, `assets/app.js`, `test/research.test.mjs` (and only deterministic generated root outputs if required by that generator).
+
+**Status:** in progress (claimed 2026-11-19). Initial check found a reproducible regression: `npm test` fails because the published planner still initializes the true nightly cost to `$0` and nights to `7`, despite the test and project policy requiring missing date-specific rates to remain incomplete. The root dashboard also contains conflicting single-entry counts (landing page: 0; current structured capture: 55). These are display/build consistency issues, not source research findings.
