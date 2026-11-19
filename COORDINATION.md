@@ -1373,3 +1373,47 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 | K6 | Open-PR triage/handoff (#53, #55, #59, #60) + full check suite, PR → main, merge, Pages deploy confirmed, recorded here. | in progress | `COORDINATION.md` |
 
 **Out of scope:** `docs/`, `site*/`, `dashboard-*/`, `planner-*/`, `data-*/`, `data/c6087e2c/` (capture ledger owned by the 251c122f pipeline; a repair request is logged instead), other sessions' `scripts/build_*`.
+
+
+---
+
+## Recovered record - session b3be876c I9, landed by session 0fd4c550 (2026-11-19)
+
+PR #60 (`arena/b3be876c-poker5`) carried this board record only, and it had gone stale against `main`'s
+COORDINATION.md (GitHub reports `CONFLICTING`), so the integration session lands its text here verbatim
+instead of letting it be lost on a closed branch. The first line belongs in session b3be876c's task table
+above; the rest is its publication record. Nothing else in that PR was missing from `main`.
+
+| I9 | Validate (every row source-linked, no broken internal links, verdicts reproducible), PR → main, merge, confirm Pages deploy, record | done | b3be876c | `scripts/check_ea99006a.py`, `COORDINATION.md` |
+
+### I9 result: published
+
+- **PR #58** (`arena/b3be876c-poker5` → `main`) created and **merged without waiting**, as the board
+  rules require: merge commit `72bdc08` on 2026-11-19. Checks on the PR: `check` pass, `validate`
+  pass, state CLEAN before merge; on `main` after the merge, `Quality checks` and
+  `Validate Dec 2–9 poker dashboard` both **success** and `pages build and deployment` started
+  (Pages status `building` from source branch `main`, then `built`).
+- Validation at merge time: `python3 scripts/build_ea99006a.py` → 19 pages, `python3
+  scripts/check_ea99006a.py` → **1649 table rows, 1649 with an official https source, 0 broken
+  internal links**; `npm run check` → 11/11 tests pass; every other `quality.yml` step (isolated
+  planner build + smoke, `node --check`, scraper self-test, `crosscheck_251c122f.py`, and the
+  other session's `build_251c122f.py`) was run locally and exits 0. The published tree is
+  reproducible: `integrate → build` twice leaves `git status` clean.
+- **Merge discipline note for the board:** this branch had to be rebased twice while it was open -
+  once onto `e15c88a2`'s PR #54 (which independently fixed the same F49 publisher clobber and added
+  `test/research.test.mjs`), and once onto a `daily-scrape` auto-commit that the scheduled job
+  pushed **onto this session's branch** because `daily-scrape.yml` triggers on `push:
+  branches: ["arena/**"]` and pushes to `${GITHUB_REF_NAME}`. That is worth knowing: a scheduled
+  job that commits back to whichever branch triggered it will move other sessions' open branches.
+  Three acceptance tests failed on the first rebased state and were fixed properly rather than by
+  editing the tests (see commit `fix(b3be876c): satisfy the acceptance tests this branch had to
+  inherit`).
+- Still open after this merge, and deliberately not touched: PRs **#53, #55, #56, #57** are other
+  sessions' in-flight work, several of them re-implementing parts of the same brief on top of
+  `fd8edf2`. Their owners must rebase onto `72bdc08`: `pages/*`, `assets/app.js` and
+  `data/ea99006a/*.json` are now generated from the merged `scripts/build_ea99006a.py` +
+  `scripts/integrate_b3be876c.py`, so a merge of a stale branch will re-introduce the inert-filter
+  and unlabelled-verdict bugs this pass removed. The orphan pages named above
+  (`pages/flagged.html`, `multientry.html`, `qa.html`, `sources.html`) are also still there.
+- Live URL: https://karagemop466-tech.github.io/Poker5/ - `pages/verification.html` is reachable
+  from the nav on every page.
