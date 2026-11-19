@@ -38,7 +38,7 @@ test('event tables expose the date selector and confirmed single-entry toggle', 
   assert.match(t, /id="dfrom"/);
   assert.match(t, /id="dto"/);
   assert.match(t, /id="fse"/);
-  assert.match(t, /Confirmed single-entry \/ freezeout only/);
+  assert.match(t, /Only rows whose rules grant no second entry \(S1 screen\)/);
 });
 
 test('hotels page publishes the dated stay capture log with the required columns', async () => {

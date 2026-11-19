@@ -117,5 +117,12 @@
   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
+ },
+ {
+  "id": "Q18",
+  "q": "Which South Point daily tournament is the $300 buy-in, and what are its structure and entry rules?",
+  "have": "The official room page states daily tournaments at 10:10 AM, 2:10 PM, 6:10 PM and 10:10 PM with buy-ins of $120 and $300, and the official schedule page publishes eight rules-sheet images whose file names state $120 (six) and $200 (two). Parking is free and \"Room rates are available with 4 hours of cash play\" for out-of-town guests, per the same page.",
+  "missing": "The text of the schedule image (which event starts when), the text of each rules sheet (starting stack, blind levels, late-registration close, re-entry / add-on rules, guarantee) and whether a $300 event exists at all. None of it is published as text by the property.",
+  "how": "Ask the South Point poker room for the daily schedule and structure in text (the page points to the Bravo Poker app for the waitlist, which is the property's own published channel), or have a future session transcribe the eight official sheet images and record them as a dated capture. Until then the South Point rows stay 'entry terms not read' and are excluded from the single-entry comparison. See flag F56."
  }
 ]

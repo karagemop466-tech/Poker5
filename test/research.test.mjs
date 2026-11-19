@@ -109,7 +109,7 @@ test('confirmed single-entry toggle excludes unverified and multi-entry rows', a
     readFile(new URL('../pages/tournaments.html', import.meta.url), 'utf8'),
     readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
   ]);
-  assert.match(tournaments, /Confirmed single-entry \/ freezeout only/);
+  assert.match(tournaments, /Only rows whose rules grant no second entry \(S1 screen\)/);
   assert.match(script, /if\(ok && s && tr\.getAttribute\('data-rule'\)!=='confirmed_single'\) ok=false;/);
   assert.doesNotMatch(script, /data-rule'\)!=='unknown'.*data-rule/);
 });

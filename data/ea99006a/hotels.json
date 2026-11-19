@@ -87,7 +87,9 @@
   "resort_fee_verified": false,
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "address_read": "2026-11-19",
+  "address_note": "Re-read in this session on 2026-11-19 from the footer of the official Caesars Palace page, which prints \"3570 Las Vegas Blvd South, Las Vegas, NV 89109 / Las Vegas, NV89109\" and the reservations phone number."
  },
  {
   "key": "horseshoe",
@@ -112,7 +114,9 @@
   "resort_fee_verified": false,
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote"
+  "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
+  "address_read": "2026-11-19",
+  "address_note": "Re-read in this session on 2026-11-19 from the footer of the official Horseshoe Las Vegas page, which prints \"3645 Las Vegas Blvd South, Las Vegas, NV 89109 / Las Vegas, NV89109\" and the reservations phone number."
  },
  {
   "key": "resortsworld",

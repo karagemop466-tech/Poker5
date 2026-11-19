@@ -152,5 +152,16 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "id": "S15",
+  "title": "Add a dated text capture for image-only official schedules",
+  "problem": "Two of the rooms the brief covers publish their tournament detail only as images (South Point: the daily schedule and all eight rules sheets; the Horseshoe and Bellagio slugs seen in earlier sessions were flyers). Those rows can never clear 'entry terms not read' from an HTML fetch, so they sit outside the single-entry comparison forever.",
+  "options": [
+   "Fetch the named images on the morning run, run OCR into a dated capture, and publish the transcribed sentence with the image URL beside it (recommended: it keeps the value tied to an official artifact and shows what was read)",
+   "Ask each room for its schedule in text and publish the reply as the source (slowest, but it is the only way to settle Q18 and the written one-entry question in F01)",
+   "Leave them permanently blank and flagged (current behaviour; honest, but it under-counts the playable field for a trip built around 'as many tournaments as possible')"
+  ],
+  "effect": "Every room the trip could use becomes comparable on the same fields as the Venetian rows (buy-in, fee, guarantee, stack, levels, late-reg close, entry rules), instead of a table of blanks."
  }
 ]

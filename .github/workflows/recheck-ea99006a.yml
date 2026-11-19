@@ -60,6 +60,10 @@ jobs:
         run: |
           python3 scripts/integrate_b3be876c.py || echo "integration reported a problem; the published data stays as it was"
 
+      - name: Refresh the route ledger from the official addresses
+        # Only the address/label/map-link side of each pair; walking minutes stay as they are.
+        run: python3 scripts/complete_routes_6dba9b3c.py
+
       - name: Rebuild the canonical site
         run: |
           python3 scripts/build_ea99006a.py
