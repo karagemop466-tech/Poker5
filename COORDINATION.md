@@ -2,6 +2,14 @@
 
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
 
+## Current branch session — b33a0c35 (active)
+
+**Branch:** `arena/b33a0c35-poker5` (fixed by Arena). **Claimed scope:** repair the generated trip-cost calculator so missing hotel quotes cannot produce a false zero-cost estimate; ensure entries × buy-ins + nights × true nightly hotel cost is shown only when required inputs are known. This is a stale-scope takeover of the prior calculator task: its owner logged completion on 2026-11-17, but the current checkout's generated planner still defaults hotel cost to $0 and its regression test fails.
+
+**Files:** `COORDINATION.md`, `scripts/build_ea99006a.py`, generated `pages/planner.html`, `assets/app.js`, `test/research.test.mjs`. No event or hotel data/source claims will be changed.
+
+**Status:** in progress. Verification baseline: `npm test` fails test 8 (`trip calculator never treats an unknown hotel quote as zero or a generic poker rate as dated`) because the planner emits a `$0` hotel default and calculated estimate.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
