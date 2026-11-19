@@ -76,7 +76,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "49fd8a70036243b378e2419e9e81d31ad94ee80e206dbdd15963eeb167ac38d1",
-  "status": "changed",
+  "status": "template",
   "url": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin={IN}&checkout={OUT}&nights=7&adults=2&children=0"
  },
  "https://southpointcasino.com/casino/poker-room": {
@@ -120,7 +120,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "88d45073d0ce1e71babd0c1a63c373416f18fbde1d4160ce2103d8654c332bf8",
-  "status": "changed",
+  "status": "template",
   "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=blv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]"
  },
  "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]": {
@@ -131,7 +131,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "6061b3317db75fb975e1f070ef016e525e16c93f9881e275fccc2fcd057947ce",
-  "status": "changed",
+  "status": "template",
   "url": "https://www.caesars.com/book/hotel-calendar?dateSearchFormat=flexible-dates&propCode=clv&roomCount=1&roomDetails=[{%22adults%22:2,%22children%22:0}]"
  },
  "https://www.caesars.com/caesars-palace/casino": {
@@ -208,7 +208,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "be26a568b41122e1fab92f3dd2841a56906bd486e5f0892eed72f70b222e1d3c",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Horseshoe%20Las%20Vegas&travelmode=walking": {
@@ -219,7 +219,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "4f16c1e4c4f3b5910e36977312c08c5763020c9c96ed3bc49b6bf01c81da77f2",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Resorts%20World%20Las%20Vegas&travelmode=walking": {
@@ -230,7 +230,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "76e6a8512742b157eea684525cac23bbccebf3dae249d735dc42a1d55b4df0b9",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking": {
@@ -241,7 +241,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "5bf30a42ede78d415deb20c2a379f93b110ea2b9d1b869c94128d19a339afbec",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking": {
@@ -252,7 +252,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "7c391efff83b951a0367b50eea2933f604d7b7be95b8864dab42307ff7463f23",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Wynn%20Las%20Vegas&travelmode=walking": {
@@ -263,7 +263,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "1534d614966ae34bf52e8e15eec375fc5899c63803de2b286f71460c265883bf",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Caesars%20Palace&destination=Wynn%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking": {
@@ -274,7 +274,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "7fe208e230f5b93a53c0d9a71b0c4371cff3fae5a7fb65cd8bfdfe2208f7b490",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking": {
@@ -285,7 +285,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "fe664a7017181f8eb3ea6e3568dc5bd1304463b6ced5d8365646218c05deb1a4",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Resorts%20World%20Las%20Vegas&travelmode=walking": {
@@ -296,7 +296,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "e399ce5bad02e04c1816e27a468b14fd34d146f297830ab57e0e9e373b7c9b1a",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking": {
@@ -307,7 +307,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "5d8de95370f9daa31cbe419488664b21aa71eb724e336af763c5dab0edfbdb8a",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking": {
@@ -318,7 +318,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "9389bf85b3cc393ca4906372983408b21bfc3c7551cb71e59623c6ab74fc7a71",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking": {
@@ -329,7 +329,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "785cfea43c2d252e0e4753f3559209b7dda8f5d9c2dd5197dbfe3d228b9745ac",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Horseshoe%20Las%20Vegas&destination=Wynn%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking": {
@@ -340,7 +340,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "75be9c89f313f3bc49e049a9527e539fe02a68b955fe6265b8b05506f83bf4ff",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking": {
@@ -351,7 +351,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "32a15872ca72178109479f6321f791518bc2d2833ba26efe9e7052077e81a7b0",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking": {
@@ -362,7 +362,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "e3b97b1cd2c0e5729c1c2dcacde2ed27e5c9e633ad8f484f68e6e19a424e85ad",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking": {
@@ -373,7 +373,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "c1b852efa6fb56e4e5b1e22980d6a410c92a99c3d06546b6b17aa092328b5e34",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking": {
@@ -384,7 +384,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "03ea896ee81af6e1354be00820b2412f8a0ef9a25350299abe2ea9ecde5a1bc5",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Wynn%20Las%20Vegas&travelmode=walking": {
@@ -395,7 +395,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "3273101a6d796c8c8daf0e3da1a2ab2e34d957f1c65fe6bd93bd678dfa9b82af",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Resorts%20World%20Las%20Vegas%20%28Hilton%20/%20Conrad%20/%20Crockfords%29&destination=Wynn%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking": {
@@ -406,7 +406,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "99f7efb3ee56dff98a8d9926967a5433e3d1b0189e94ddd52257e154f09ec121",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking": {
@@ -417,7 +417,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "63c134948f99893b99d7afb9050c924ae17653489b67fc5937656a6b5e28c896",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking": {
@@ -428,7 +428,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "7d0700c10f58af7472ba9f505116dd589bb37b8fd118a96d0172f4cafdab2674",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking": {
@@ -439,7 +439,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "a0790dff21a5373e0c79d46df99a99cf466a27123e60becc8bd3649191ffcc62",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking": {
@@ -450,7 +450,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "4029aaefbbbb38cacded0da333bf92cc80ab17ad382989542d630931fc513285",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Wynn%20Las%20Vegas&travelmode=walking": {
@@ -461,7 +461,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "58fac5c71ad4dce97aec016eedcd0fb66992f77f5389d359f3ec24527ee3da51",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The%20Venetian%20Resort%20%28Venetian%20/%20Palazzo%20towers%29&destination=Wynn%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking": {
@@ -472,7 +472,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "f8ef521c2fa495b3266c6996b1b39637cc7617425b2f19d785e8838d40afe19c",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=The+Venetian+Resort+Las+Vegas&destination=Wynn+Las+Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking": {
@@ -483,7 +483,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "c798f8a48fa6f7e8ca90f5fc975c53709224a73679d9a664f6f9f396b40529e0",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Caesars%20Palace%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Horseshoe%20Las%20Vegas&travelmode=walking": {
@@ -494,7 +494,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "cc36a5445f8652259bc1c5e0ccd51ec4c6b83b38530eb3f8695cbacf052d4ff5",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Horseshoe%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Resorts%20World%20Las%20Vegas&travelmode=walking": {
@@ -505,7 +505,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "c7df4626317478a37dc6b56a847bf03dfdea44f4d83138dac5759e55bbcd1438",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Resorts%20World%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking": {
@@ -516,7 +516,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "30254713b9b6810a8bcb0bb956a05de485016114ce0fb428af57c01c9671bcc3",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=South%20Point%20Hotel%20Casino%20and%20Spa%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking": {
@@ -527,7 +527,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "dbfb4f81dbf7c5aa577c42f7ba3f49deb6bc16c4cf43d035e9127c1ffb6f4215",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=The%20Venetian%20Resort%20Las%20Vegas&travelmode=walking"
  },
  "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Wynn%20Las%20Vegas&travelmode=walking": {
@@ -538,7 +538,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "a2d6a4a0a99e173c1c04c3cb95f267cfd26cf0a4391aabf5aabc9d8c960cf25d",
-  "status": "changed",
+  "status": "route-link",
   "url": "https://www.google.com/maps/dir/?api=1&origin=Wynn%20Las%20Vegas%20/%20Encore&destination=Wynn%20Las%20Vegas&travelmode=walking"
  },
  "https://www.rwlasvegas.com/gaming/poker-room/": {
@@ -571,7 +571,7 @@
   "last_attempt": "2026-11-19T00:51:24Z",
   "last_checked": "2026-11-19T00:51:24Z",
   "sha256": "a77274c3d7cfd3c3112b0d512544eacdc19964933365fa4a82143586d0a799e1",
-  "status": "changed",
+  "status": "template",
   "url": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date={IN}&children[]=0&departure_date={OUT}&view=calendar"
  },
  "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf": {
