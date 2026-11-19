@@ -67,13 +67,16 @@
 
 **Checks run (2026-11-19):** `python3 data/0a0d8e6b/sheet_reread.py` (53 compared, 0 mismatches); `python3 scripts/build_ea99006a.py` (deterministic apart from the live inventory on `pages/repo-review.html`); `python3 scripts/check_ea99006a.py` OK (1,665 rows with an official https source; 0 broken links); `python3 scripts/check_root_site.py` OK.
 
-**Publication:** PR and merge record to follow in the next board-only commit.
+**Publication record (0a0d8e6b):**
+- PR [#84](https://github.com/karagemop466-tech/Poker5/pull/84) (`arena/0a0d8e6b-poker5` → `main`) merged 2026-11-19T22:00:12Z as merge commit `5d125c5`. Checks `check` and `validate` passed on head `6d6e5ff`; the PR was MERGEABLE/CLEAN at merge.
+- Pages build and deployment run [44624381421](https://github.com/karagemop466-tech/Poker5/actions/runs/44624381421) completed **success**. Live check: https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html shows the updated F01 text (the 53-of-53 re-read result). The Pages API reports `built`.
+- Branch note: the first claim push (`bfc2d24`) was rebased before the PR was opened, so the remote branch diverged. The divergence was resolved by an ours-merge that keeps this branch's tree and keeps the claim commit as an ancestor. No history was rewritten and nothing was force-pushed.
 
 ---
 
 # Coordination - Poker5
 
-## Session 9eb12353 (active) — repair legacy re-entry classifier
+## Session 9eb12353 (completed) — repair legacy re-entry classifier
 
 **Branch:** `arena/9eb12353-poker5` (Arena-fixed; based on `main` at `998a32d2`). The canonical `ea99006a` publisher already treats events #18 and #58 as multi-entry, but the legacy `c6087e2c` capture merge still labels them `single_entry_confirmed` because it trusts only the parser boolean `adds_a_second_entry`. This is a narrow data-quality repair; do not touch the canonical root site or unrelated active-session scopes.
 
@@ -86,6 +89,8 @@
 **Result and verification (2026-11-19):** `scripts/merge_251c122f.py` now checks official rules text for second-entry grants in addition to the scraper boolean, including subsequent/additional/second buy-in phrases. The shared predicate is also used by the cross-check, which now fails if a sheet grants another entry but the output verdict does not say so. Events #18 and #58 now have `adds_second_entry` / `single_entry_confirmed: false` verdicts (legacy ledger totals: 53 single-entry under its standard, 2 additional-entry, 28 multi-flight, 11 restart). Their `re_entry` field includes the exact excerpt, official PDF URL, and structure retrieval date; every structured rule field now carries the sheet retrieval date. Regression test asserts the two rows and evidence provenance. Checks: `python3 scripts/merge_251c122f.py`; `python3 scripts/crosscheck_251c122f.py` (pass; 67 pre-existing schedule-name text differences remain logged, not silently rewritten); `npm test` (23/23); Python compile; `python3 scripts/check_ea99006a.py` (1,665/1,665 table rows sourced, links pass); `python3 scripts/check_root_site.py`; `git diff --check`.
 
 **Official source for manual review:** [Venetian structure sheet 8 PDF](https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf). The checked-in capture includes its retrieval timestamp and SHA-256. The automated daily official-source capture workflow (run 44623915264, on this PR branch) subsequently re-read the official schedule and all 37 linked sheets; sheet 8 was refreshed at 2026-11-19T21:55:24Z and still contains the rule above. The capture job's merge/cross-check steps succeeded. This was an automated live refresh, not a manual PDF fetch by the agent.
+
+**Publication:** PR [#78](https://github.com/karagemop466-tech/Poker5/pull/78) merged to `main` on 2026-11-19T22:00:25Z as merge commit `0471b264e0fdd62555aa42c13ab534d2482954fd`. On that merged head, Quality checks [run 44624381887](https://github.com/karagemop466-tech/Poker5/actions/runs/44624381887) and Validate [run 44624381823](https://github.com/karagemop466-tech/Poker5/actions/runs/44624381823) succeeded. GitHub Pages build/deploy [run 44624381421](https://github.com/karagemop466-tech/Poker5/actions/runs/44624381421) succeeded; Pages API reports `built` from `main` `/` at https://karagemop466-tech.github.io/Poker5/. This PR changed the research ledger and coordination record, not canonical root-page data.
 
 
 
@@ -1603,3 +1608,40 @@ Not claimed here (already in progress or done by other sessions, or out of this 
 - Not re-verified here: hotel rates, resort fees and tax, Wynn/other rooms, walking times, the morning feed, and the other 36 structure sheets. Those remain as previously recorded.
 
 **Publication:** board-only change; no site, data or build output changed, so no Pages rebuild is expected to change content.
+
+---
+
+## Session 98087225 (branch `arena/98087225-poker5`, base `main` @ `f2eb22a`) — WPT structure-sheet reads (claim)
+
+Claimed 2026-11-19 before any data edit. No other session holds an active claim on these files (the 188dc704 and 96994b83 sections are done/merged; open PRs #53, #55, #59, #60 are older branches and do not touch the WPT rows).
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| W1 | done | 98087225 | `data/ea99006a/wpt.json` (entry_rule / rule_excerpt / retrieved fields for the 91 `unread` rows only), `data/98087225/wpt_terms_read.json` (new: per-row verbatim excerpts + source + retrieval date) |
+| W2 | done | 98087225 | `COORDINATION.md` (this section) — verification record, irregularities |
+
+Scope rule for W1: a row moves from `unread` to a classified state only when the official WPT General Terms and Conditions PDF (`WPT_World_Championship_Structures.pdf`, read 2026-11-19 in 8 chunks) or its event-specific text quotes the entry rule for that row. Silence stays `unread`. Build scripts are not edited in this claim unless a build change is strictly needed to show the new state.
+
+### Results — session 98087225 (2026-11-19)
+
+**W1 — structure-sheet read for the WPT rows.** The official WPT structures document (`WPT_World_Championship_Structures.pdf`, read in full, 8 of 8 chunks) holds terms for **13 events**. Every one grants re-entry, so none can be confirmed single-entry. The 45 `multi` rows match those events on date and day; each row now records `rule_read_on` (2026-11-19) and `rule_source`. The **91 `unread` rows stay unverified**: their terms are not in that document, and the per-event sheets the schedule refers to ("See structure sheet") were not found on the Wynn poker page or in the linked files. Their `source` now points to the official schedule, which is what their date, time, buy-in and guarantee come from. Details: `data/98087225/wpt_terms_read.json`.
+
+**W2 — schedule check and publication.** `data/98087225/wynn_wpt_schedule_official_2026-11-19.tsv` is a transcription of the official schedule (2 chunks). `scripts/verify_98087225_wpt.py --write` compared all **136** WPT rows: date, start time, buy-in and printed guarantee **136/136 match**. `scripts/apply_98087225_wpt.py` writes the results into `data/ea99006a/wpt.json` and adds flags F58-F60 to `data/ea99006a/flags.json`. Checks run: `build_ea99006a.py` (deterministic), `check_ea99006a.py` OK, `check_root_site.py` OK, `crosscheck_251c122f.py` OK, `recheck_ea99006a.py --offline` OK, `npm test` 22/22, `node --check assets/app.js` OK.
+
+**Sources (all read 2026-11-19):**
+- WPT structures PDF (S3, cited by the rows): https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf
+- WPT structures PDF (CDN, linked from the Wynn poker page; same text at start and end): https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf
+- WPT schedule PDF: https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf
+- Wynn poker page: https://www.wynnlasvegas.com/casino/poker
+
+**Irregularities (published on the Flagged for review page as F58-F60; F05 and F06 already covered the Dec 18 label and continuation rows):**
+- F58: Day 2 dates disagree between the schedule and the structures PDF ($800 NLH: Nov 30 vs Dec 3; $1,600 NLH: Dec 3 vs Dec 5). The schedule's Dec 5 11 a.m. "No Limit Hold'em Day 2" line shows $1,100 / $5,000,000, which matches neither event.
+- F59: NLH Turbo Mon Dec 21 is 6 p.m. in the PDF and 8 p.m. in the schedule.
+- F60: 91 WPT rows were citing a document that does not contain their terms.
+- Not changed, for the data owner: `scripts/data_ea99006a.py` is a manual generator that rewrites `wpt.json` from scratch. No workflow runs it, but if it is run, the fields added here are lost. The nightly `integrate_b3be876c.py` keeps them.
+
+**Still open (not claimed here; no source available to this session):** entry terms for the 91 WPT rows (need the per-event structure sheets); the Venetian single-entry standard S1 (see F01); hotel live rates and true cost (F14, F51); walking times (F50); finish times for the overlap check.
+
+**Flag renumbering:** session 0a0d8e6b merged onto `main` with F56-F57 while this branch was open, so this branch's flags are F58-F60 (F58 Day 2 dates, F59 NLH Turbo time, F60 91 rows citing a document without their terms). Nothing of 0a0d8e6b's was changed.
+
+**PR:** https://github.com/karagemop466-tech/Poker5/pull/85 (`arena/98087225-poker5` → `main`). Main advanced through PRs #76, #79 and #82 while this branch was open; the merge kept all their data and board entries, and the two generated pages that conflicted (`pages/tournaments.html`, `pages/tournaments-double.html`) were regenerated by `scripts/build_ea99006a.py` from the merged data rather than hand-merged.
