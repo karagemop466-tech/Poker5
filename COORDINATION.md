@@ -6,12 +6,12 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Branch:** `arena/2b98a91f-poker5` (fixed by Arena). **Scope:** reconcile repository-facing documentation with the canonical published site and current data, verify this branch's baseline checks, and record any remaining evidence/operational limitations. No tournament or hotel facts will be added or upgraded without a fresh official-source check.
 
-**Files:** `COORDINATION.md`, `README.md`, `EXECUTIVE_SUMMARY.md`; narrowly scoped correction to stale scenario and entry-rule statements in `data/ea99006a/flags.json` (F01) and `data/ea99006a/questions.json` (Q01/Q02), with `scripts/build_ea99006a.py`-generated root outputs (`index.html`, `pages/*.html`) regenerated. No tournament/hotel values, source records, workflows, or other data will be changed. Other generated/site/data/workflow files are out of scope.
+**Files:** `COORDINATION.md`, `README.md`, `EXECUTIVE_SUMMARY.md`; narrowly scoped correction to stale scenario and entry-rule statements in `data/ea99006a/flags.json` (F01/F47) and `data/ea99006a/questions.json` (Q01/Q02); `scripts/build_ea99006a.py` will be updated only to correct stale executive-summary claims/ranking labels and corresponding generated root outputs (`index.html`, `pages/*.html`) regenerated. No tournament/hotel values, source records, workflows, or unrelated data will be changed. Other generated/site/data/workflow files are out of scope.
 
 | Task | Status | Owner | Files |
 |---|---|---|---|
 | Audit documentation against current canonical build/data and update stale claims | in progress | 2b98a91f | `README.md`, `EXECUTIVE_SUMMARY.md` |
-| Correct F01/Q02 wording that contradicts the current S1 verdicts; regenerate canonical pages | in progress | 2b98a91f | `data/ea99006a/flags.json`, `data/ea99006a/questions.json`, `index.html`, `pages/*.html` (generated) |
+| Correct F01/F47 and Q01/Q02 wording; fix the canonical executive-summary claims and ranking scope; regenerate site | in progress | 2b98a91f | `data/ea99006a/{flags,questions}.json`, `scripts/build_ea99006a.py`, `index.html`, `pages/*.html` (generated) |
 | Run existing quality, row-source, internal-link, verdict and monitor-ledger checks; record limitations | in progress | 2b98a91f | `COORDINATION.md` |
 
 **Claim recorded before edits (2026-11-19).**

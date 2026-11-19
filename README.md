@@ -1,75 +1,66 @@
-# Poker5 — Las Vegas Strip poker trip planner
+# Poker5 — Las Vegas Strip poker-trip research dashboard
 
-**Live site:** https://karagemop466-tech.github.io/Poker5/
+**Published dashboard:** <https://karagemop466-tech.github.io/Poker5/>
 
-An independent, evidence-first planner for a Las Vegas Strip poker trip: which
-tournaments are genuinely single-entry, what each one costs, how long a playing
-day runs, which days fit two events, and what a hotel night really costs once the
-resort fee and room tax are added.
+Poker5 organizes official Las Vegas tournament schedules, structure sheets, hotel terms, dated rate observations, walking-route evidence, and open questions. It is a research aid, not a booking quote or a guarantee that an event is a freezeout.
 
-Every value on the site comes from an official source — a casino's own schedule,
-structure sheet, hotel terms page, or the Clark County room-tax ordinance — and
-every row links to it. Anything that could not be confirmed is blank and listed on
-the **Flagged for review** page. Nothing is inferred.
+## Evidence standard and current snapshot
 
-## How the site is built
+The canonical site is generated from `data/ea99006a/` by `scripts/build_ea99006a.py`. The current Venetian capture records 94 schedule rows and all 37 linked structure sheets read; 53 rows meet the site's published **S1, “confirmed single-entry (standard S1)”** test, and 41 are classified as multi-entry. S1 means the event-specific official sheet was read and no listed term grants another entry; **no Venetian sheet explicitly promises one entry only**, so the label is not a house guarantee. See the [Sources & method](https://karagemop466-tech.github.io/Poker5/pages/method.html), [Verification](https://karagemop466-tech.github.io/Poker5/pages/verification.html), and [Flagged for review](https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html) pages.
+
+Every published table row is required by the checker to link to an official source. Unknown or conflicting values remain blank or are labeled for review. Derived calculations (for example, nightly averages and schedule-fit indicators) are identified as derived; guaranteed-pool-to-entry-fee ratios are descriptive arithmetic, not a forecast. Structure-sheet evidence, retrieval dates, last-checked dates, and value-change marks are exposed on the relevant pages.
+
+Data is time-sensitive. The repository's latest checked-in official-source capture is timestamped **2026-11-19**; scheduled jobs can fail or encounter inaccessible sources. The value-level monitor ledger currently says that no live value-level run has been recorded, so the absence of a changed-value badge does **not** mean a value was re-checked and found unchanged. A successful offline ledger check validates the stored record, not that a source is unchanged today. Reconfirm event terms, hotel inventory, and cancellation policies with the official source before payment or play.
+
+## Published pages
+
+- [Executive summary](https://karagemop466-tech.github.io/Poker5/pages/executive-summary.html)
+- [Tournaments](https://karagemop466-tech.github.io/Poker5/pages/tournaments.html) — search, date, venue, entry-rule, rankability, and changed-value filters
+- [Daily schedule](https://karagemop466-tech.github.io/Poker5/pages/schedule.html) — primary event and conditional fallback; inferred finish times are not presented as verified
+- [Hotels and dated rates](https://karagemop466-tech.github.io/Poker5/pages/hotels.html) — itemized terms and dated observations; missing quote components stay blank
+- [Walking routes](https://karagemop466-tech.github.io/Poker5/pages/routes.html) — the 30-minute filter only applies where route evidence is recorded
+- [Trip planner](https://karagemop466-tech.github.io/Poker5/pages/planner.html) — does not claim a complete trip total without a date-matched, itemized hotel quote
+- [Questions / missing information](https://karagemop466-tech.github.io/Poker5/pages/questions.html)
+- [Suggestions](https://karagemop466-tech.github.io/Poker5/pages/suggestions.html)
+- [Flagged for review](https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html)
+- [Source-change monitor](https://karagemop466-tech.github.io/Poker5/pages/monitor.html)
+
+## Build and monitoring architecture
+
+There are multiple historical research snapshots in this repository. **Only the `ea99006a` builder publishes the root GitHub Pages dashboard.** The separate `c6087e2c` morning job captures the official Venetian schedule and its structure sheets in a research ledger; it is capture/validation only and must not rebuild or commit the root site.
 
 ```
-official pages / PDFs
-        │  scripts/scrape_251c122f.py      (runs daily in GitHub Actions)
-        ▼
-data/c6087e2c/schedule_live.json, structures.json, scrape_status.json, watch_status.json
-        │  scripts/merge_251c122f.py       (applies the single-entry standard)
-        ▼
-data/c6087e2c/events_verified.json
-        │  scripts/build_251c122f.py       (generates index.html + pages/)
-        ▼
-index.html, pages/**, assets/            (published by GitHub Pages from main `/`)
-        │  scripts/crosscheck_251c122f.py  (fails if a verdict cannot be reproduced)
+Official sources
+  ├─ .github/workflows/daily-scrape.yml
+  │    scripts/scrape_251c122f.py → data/c6087e2c/ capture + cross-check
+  │    (does not publish the root site)
+  └─ .github/workflows/recheck-ea99006a.yml (13:00 and 19:00 UTC daily)
+       scripts/recheck_ea99006a.py + scripts/monitor_b3be876c.py
+       → value-level monitor and dated observations
+       → scripts/integrate_b3be876c.py re-derives data/ea99006a records
+       → scripts/build_ea99006a.py → index.html and pages/**
+       → scripts/check_ea99006a.py validates rows, official links and internal links
 ```
 
-* `scripts/scrape_251c122f.py` reads the official Venetian DeepStack Extravaganza IV
-  schedule and every structure-sheet PDF it links (37 sheets), extracts the
-  late-registration cutoff, level length, starting chips, guarantee and house fee
-  with the exact excerpt each value came from, and hashes the hotel/venue pages on
-  a watch list so a change can be spotted. It has a network-free `--self-test`.
-* `scripts/merge_251c122f.py` applies one published standard: a row is
-  **confirmed single-entry** only when its own sheet was read, lists that event
-  number, is a one-day event, and contains no re-entry, rebuy, add-on,
-  double-entry, alternate-stack or purchased-chip language. Disagreements between
-  two official sources are recorded and shown, never resolved by picking one.
-* `scripts/build_251c122f.py` generates the site and refuses to publish a data row
-  without a source link or an internal link that does not resolve.
-* `scripts/crosscheck_251c122f.py` re-derives every verdict from the stored rule
-  fields and fails the build if one cannot be reproduced.
+`quality.yml` rebuilds the canonical site and checks that committed output matches the builder. The morning scrape and the canonical publisher are distinct because an earlier dual-publisher setup could overwrite the site with a different dataset.
 
-Daily job: `.github/workflows/daily-scrape.yml` (13:37 UTC). Quality gate:
-`.github/workflows/quality.yml`.
-
-## Local commands
+## Local checks
 
 ```sh
-python3 scripts/scrape_251c122f.py --self-test   # parser self-test, no network
-python3 scripts/merge_251c122f.py                # capture -> events_verified.json
-python3 scripts/build_251c122f.py                # regenerate the site
-python3 scripts/crosscheck_251c122f.py           # verify verdicts, sources, links
-node serve.mjs 4173                              # local preview on 0.0.0.0:4173
+npm run check
+node --check assets/app.js
+python3 scripts/build_ea99006a.py
+python3 scripts/check_ea99006a.py
+python3 scripts/check_root_site.py
+python3 scripts/crosscheck_251c122f.py
+python3 scripts/recheck_ea99006a.py --offline
+python3 scripts/scrape_251c122f.py --self-test
 ```
 
-The agent sandbox that authored this repository cannot open a TCP connection to
-casino hosts, so the live reading happens on GitHub Actions runners; the capture
-is committed to `data/c6087e2c/` and every excerpt in it can be checked against
-the linked PDF.
+The live scrape runs in GitHub Actions, not from the sandbox. `--offline` checks only the saved monitoring ledger and performs no network request.
 
-## Other files in the repo
+## Repository notes
 
-`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/` and
-`tools/` are output from earlier parallel sessions. They are preserved unchanged
-and are not part of the published root site. `COORDINATION.md` is the shared task
-board and records every session's scope and results.
+`docs/`, `site/`, `site-*`, `dashboard-*`, `planner-*`, and earlier data snapshots are retained research/output from prior sessions; they are not the canonical root publisher. `COORDINATION.md` is the shared task board and records scopes, verification, and unresolved issues.
 
-## Notes
-
-Independent planning tool, not affiliated with any casino, poker room or hotel.
-Values change without notice; confirm before you book or play. Must be 21+.
-If gambling is a problem, call 1-800-522-4700.
+Poker5 is independent and is not affiliated with any casino, poker room, or hotel. Gambling involves risk. Must be 21+. If gambling is a problem, call 1-800-522-4700.
