@@ -30,6 +30,11 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Irregularities (on Flagged for review):** F52, F53, F54 (above). None block the merge.
 
+**Publication record (8154689a):**
+- PR [#57](https://github.com/karagemop466-tech/Poker5/pull/57) — "repair archive-block broken links in the published pages + interrupted-session review flags (final integration)" — merged 2026-11-19 (merge commit on main; PR checks `check`, `validate` and the daily-scrape capture/validate job all passed on the head). Pages build/deploy [44477900977](https://github.com/karagemop466-tech/Poker5/actions/runs/44477900977) succeeded.
+- PR [#61](https://github.com/karagemop466-tech/Poker5/pull/61) — "headline copy agrees with the published S1 verdicts (post-merge coherence fix)" — merged 2026-11-19 (PR checks passed). Pages build/deploy [44478582277](https://github.com/karagemop466-tech/Poker5/actions/runs/44478582277) succeeded.
+- Live at https://karagemop466-tech.github.io/Poker5/ — verified after each deploy: 53 rows labelled "Confirmed single-entry (standard S1)" with per-row sheet evidence and no "unverified" label; 99 rows keep "Entry terms not read - unverified"; headline, stats and single-entry page agree; the archive block lists only the 13 committed session folders; F52–F54 appear on Flagged for review.
+
 ---
 
 ## Current branch session — 6bc143b9 (active) — final integration + feature completion
