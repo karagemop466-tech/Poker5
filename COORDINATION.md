@@ -1759,4 +1759,8 @@ Claimed 2026-11-19 before any file edit (first claim pushed from base `b16775c`;
 
 ### Publication record (session 1efddebe)
 
-- Pending: PR link, merge result and Pages deploy to be recorded in a follow-up commit after the merge, per the board rules.
+- **PR [#97](https://github.com/karagemop466-tech/Poker5/pull/97)** ("Honest S1 relabel (option a) + scheduled-run data-revert repair (session 1efddebe)") merged to `main` at **2026-11-19 22:21:25Z** as merge commit [`4d4fcf7`](https://github.com/karagemop466-tech/Poker5/commit/4d4fcf73abb67cfea021a59b9e3b3af5193751de), no approval wait.
+- Required checks on the PR head all passed: `check` (11s), `scrape-verify` (1m05s), `validate` (11s).
+- GitHub Pages: "pages build and deployment" run [44627845498](https://github.com/karagemop466-tech/Poker5/actions/runs/44627845498) completed **success** for merge commit `4d4fcf7`; Pages API latest build `status: built`, `error: null` at 22:22:00Z.
+- Live site re-fetched after deployment and verified: the landing page carries "The single-entry screen: 53 Venetian rows pass the S1 no-second-entry screen", the honest no-written-one-entry-cap sentence, the corrected window (check-in 2026-12-06, check-out 2026-12-13, 7 nights), and the tournaments page carries the relabelled toggle "No second entry granted (S1 screen) / freezeout only" with the corrected legend. Live at https://karagemop466-tech.github.io/Poker5/ .
+- Status: T1 done, T2 done, T3 done. Session closed.
