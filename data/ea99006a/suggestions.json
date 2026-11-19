@@ -86,5 +86,49 @@
    "Book a refundable rate only"
   ],
   "effect": "Refundable rates are the cheapest insurance; Caesars and Horseshoe advertise free 48-hour cancellation and Resorts World requires 48 hours' notice for a deposit refund."
+ },
+ {
+  "id": "S09",
+  "title": "Capture dated stay quotes automatically in the morning job",
+  "problem": "The dated rate log currently holds hand-captured booking-engine snapshots; the trip planner stays Incomplete without a quote for the chosen dates and occupancy.",
+  "options": [
+   "Extend the morning job to open each official booking link with fixed dates/occupancy and store whatever total the page shows (may fail: booking engines are JavaScript apps)",
+   "Keep captures manual but require a screenshot/link + timestamp before any booking decision",
+   "Subscribe to official rate-alert emails and log them as dated entries"
+  ],
+  "effect": "A fresh dated quote per hotel per morning would make true nightly cost comparable like-for-like and let the planner complete honestly."
+ },
+ {
+  "id": "S10",
+  "title": "Adopt a like-for-like comparison policy before any hotel ranking",
+  "problem": "Existing captures differ in stay window and occupancy (2 adults Dec 2-9 vs 1 adult Dec 13-20), so 'cheapest hotel' cannot be derived from them.",
+  "options": [
+   "Rank nothing until two hotels share dates, occupancy and room class",
+   "Rank with an explicit comparability grade per row",
+   "Rank on nightly average and mark differing occupancy"
+  ],
+  "effect": "Prevents a false ranking; the flagged page already refuses to name a cheapest hotel."
+ },
+ {
+  "id": "S11",
+  "title": "Decide how walking minutes get verified",
+  "problem": "No official source publishes walking times between properties; the brief wants a 30-minute walking filter.",
+  "options": [
+   "Keep minutes blank + provide one-click walking-direction links (current)",
+   "Record user-measured minutes via the routes page recorder (already available, browser-only)",
+   "Add a maps-distance service to the morning job and label its output as third-party estimates"
+  ],
+  "effect": "The 30-minute filter can only be honest about measured or officially stated minutes."
+ },
+ {
+  "id": "S12",
+  "title": "Decide the fate of the 13 archived session dashboards",
+  "problem": "Earlier session folders are published alongside the root site and disagree with it on some numbers.",
+  "options": [
+   "Keep linked as read-only archives (current)",
+   "Move archives out of the published tree into git history only",
+   "Add a banner to each archive page pointing at the root site as the source of truth"
+  ],
+  "effect": "Reduces reader confusion when an archived page shows an older verdict count."
  }
 ]

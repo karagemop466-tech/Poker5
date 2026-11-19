@@ -68,5 +68,40 @@
   "have": "Each guarantee exactly as the official sheet states it, including whether bounties are inside it.",
   "missing": "A like-for-like comparison where one room counts bounties in the guarantee and another does not.",
   "how": "The ratio column (guarantee / entry fee) is labelled descriptive, not a forecast, and bounty and flight events are labelled separately. Compare only within a format."
+ },
+ {
+  "id": "Q11",
+  "q": "What will parking add to the stay, and is the poker-room validation usable for the planned schedule?",
+  "have": "Venetian: complimentary self-parking for players with 3+ hours of tournament or cash play (official player-parking page). Wynn: complimentary self-parking for registered guests and poker-room guests; non-guest and valet prices published.",
+  "missing": "Whether the planned nights qualify for validation each day, event-day parking rates, and Caesars/MGM parking terms for the candidate hotels.",
+  "how": "Ask the poker room at registration; read each hotel's official parking page before booking."
+ },
+ {
+  "id": "Q12",
+  "q": "Is the mandatory resort fee inside the taxed base on the final folio?",
+  "have": "The Clark County ordinance defines 'rent' to include mandatory charges; both Venetian and Wynn state the fee is 'plus tax'. The site's calculator therefore taxes rate + fee and says so.",
+  "missing": "An itemised checkout folio that shows exactly what was taxed at which rate for the booked rate plan.",
+  "how": "Compare the booking page's estimated total with the checkout folio on one stay; record both in the dated rate log."
+ },
+ {
+  "id": "Q13",
+  "q": "Do Caesars Palace and Horseshoe publish their daily tournament buy-ins, guarantees and entry rules anywhere official?",
+  "have": "The official Caesars page lists four Caesars Palace starts and six Horseshoe starts; the Caesars Palace daily flyer does not state entry rules.",
+  "missing": "Published buy-ins/guarantees for the Horseshoe dailies and a written entry rule for the Caesars dailies.",
+  "how": "Ask the Caesars Palace and Horseshoe poker rooms for the current daily structure sheet; store it with a retrieval date."
+ },
+ {
+  "id": "Q14",
+  "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
+  "have": "Wynn terms page: 72 hours before arrival (read 2026-11-17).",
+  "missing": "Cancellation deadlines and deposit/refund terms for the Venetian booking rate, and for any Caesars or MGM rate.",
+  "how": "Read the rate rules shown on each official booking page at quote time and record them in the dated rate log."
+ },
+ {
+  "id": "Q15",
+  "q": "Will the morning re-check see a schedule change in every Strip room, or only where a page exists?",
+  "have": "The monitor re-reads every official URL that backs a row (Venetian schedule + 37 sheets, Wynn/WPT PDFs, Caesars page, South Point pages, MGM pages) every morning and records per-room status on the Source monitor page.",
+  "missing": "Official daily-schedule pages for rooms that publish only images (South Point) or nothing (Horseshoe, Resorts World); a guarantee that a PDF re-host does not look like a rule change.",
+  "how": "Treat the per-room feed as presence-and-change detection, not as content proof; a 'changed' row means a human should re-read the source before relying on the table."
  }
 ]
