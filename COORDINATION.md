@@ -33,7 +33,10 @@
 
 **Checks run (2026-11-19):** `python3 data/0a0d8e6b/sheet_reread.py` (53 compared, 0 mismatches); `python3 scripts/build_ea99006a.py` (deterministic apart from the live inventory on `pages/repo-review.html`); `python3 scripts/check_ea99006a.py` OK (1,665 rows with an official https source; 0 broken links); `python3 scripts/check_root_site.py` OK.
 
-**Publication:** PR and merge record to follow in the next board-only commit.
+**Publication record (0a0d8e6b):**
+- PR [#84](https://github.com/karagemop466-tech/Poker5/pull/84) (`arena/0a0d8e6b-poker5` → `main`) merged 2026-11-19T22:00:12Z as merge commit `5d125c5`. Checks `check` and `validate` passed on head `6d6e5ff`; the PR was MERGEABLE/CLEAN at merge.
+- Pages build and deployment run [44624381421](https://github.com/karagemop466-tech/Poker5/actions/runs/44624381421) completed **success**. Live check: https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html shows the updated F01 text (the 53-of-53 re-read result). The Pages API reports `built`.
+- Branch note: the first claim push (`bfc2d24`) was rebased before the PR was opened, so the remote branch diverged. The divergence was resolved by an ours-merge that keeps this branch's tree and keeps the claim commit as an ancestor. No history was rewritten and nothing was force-pushed.
 
 ---
 
