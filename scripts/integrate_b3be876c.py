@@ -798,7 +798,7 @@ def main() -> int:
     }
     meta["retrieved"] = TODAY
     meta["integration"] = {
-        "session": "b3be876c", "run_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "session": "b3be876c", "run_at": dt.datetime.now(dt.timezone.utc).date().isoformat(), "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
         "live_reads": {k: v.get("read", TODAY) for k, v in LIVE.items() if isinstance(v, dict)},
         "sheet_spot_checks": LIVE["sheet_live_spot_checks"],
         "verification_records": bool(verification),
