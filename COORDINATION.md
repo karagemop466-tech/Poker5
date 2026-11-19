@@ -1856,3 +1856,5 @@ date. Also standing: F47 misclassification note (crosscheck), and itemised check
 totals are still absent for every hotel (F14/F32 remain open for the Venetian and
 Caesars Palace quotes).
 **Integration note (this session):** `main` advanced through PR #100 while this session worked (25+ merges from parallel sessions). `git merge origin/main` resolved keeping both sides everywhere; conflicts touched `COORDINATION.md`, `data/ea99006a/{flags,hotels,meta,questions,suggestions}.json`, `scripts/build_ea99006a.py` and the generated pages. Because `main` had already assigned flag IDs F56-F59 and question IDs Q18-Q20 (and suggestions S15-S16) to other sessions, the new items of this session are renumbered F70-F73, Q21-Q22 and S17-S19; the four flag IDs in the G1-G5 record above now use those numbers. F55 was extended (not replaced) with the new evidence that reproduces the 72-hour Wynn figure from the dated booking-engine rate plans. Other sessions' records in this file are untouched.
+
+- PR: https://github.com/karagemop466-tech/Poker5/pull/106 (G1-G5 integration, this session). Merge result and Pages deploy recorded below once complete.
