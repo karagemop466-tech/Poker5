@@ -1301,3 +1301,17 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 - Irregularity noted, not fixed (outside claimed scope): `pages/repo-review.html` changes on every build because it inventories the working tree (file count and byte total change with every checkout). Quality workflow excludes it from the diff check; the owner should pin it to a committed file list.
 - Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
 - Status: L1 done, L2 done, session closed.
+
+## Session f7676bd0 (branch `arena/f7676bd0-poker5`) — live hotel-rate capture, property resort fees, Google Maps walking times, trip-cost completion
+
+Claimed 2026-11-19 from `main` @ `998a32d` before any data edit. Read-only survey of the board first: every prior claim is done/merged or >60 min idle; open PRs #53/#55/#59/#60 belong to other sessions' branches and are not touched; PR #75 (96994b83, board-only) is fresh and respected — this session only appends its own section to `COORDINATION.md` and will resolve any conflict keeping both sides. No other session holds an open claim on the files below.
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| G1 | Live re-read of trip-critical official sources (2026-11-19): Venetian resort-fee + poker suite-rate pages, Wynn offer terms + booking resort-fee block, Caesars corporate disclaimer, Resorts World "All Resort, No Fees" terms, Caesars Palace + Horseshoe booking-page Hotel Policies (property-specific resort fees found — F09/F46 gap), Wynn/Resorts World contact + location pages (addresses) | in progress | f7676bd0 | `data/ea99006a/hotels.json`, `data/ea99006a/flags.json`, `data/ea99006a/last_checked.json` |
+| G2 | Dated hotel rate captures for the recommended window 2026-12-06→2026-12-13 from official booking engines (Wynn dated rate plans; Horseshoe + Resorts World December calendars; Venetian/Caesars attempts logged), appended to the dated rate log, never overwriting snapshots | in progress | f7676bd0 | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json`, `data/f7676bd0/` (session notes) |
+| G3 | Google Maps walking-time verification for every hotel–venue pair in `routes.json` (official addresses; ≤30-minute filter data), replacing blank rows with measured times + retrieval date, keeping the "no hotel page publishes these" caveat | in progress | f7676bd0 | `data/ea99006a/routes.json` |
+| G4 | Builder: surface the new fee/rate/route data, complete the trip-cost calculator from dated quotes where available (never inventing totals), refresh executive summary/questions/flags text | in progress | f7676bd0 | `scripts/build_ea99006a.py` (+ regenerated `index.html`, `pages/**`) |
+| G5 | Validate (row-level sources, no broken links, tests), PR → main, merge, confirm Pages deploy, record | in progress | f7676bd0 | `COORDINATION.md` |
+
+Data edits begin only after this claim is pushed.
