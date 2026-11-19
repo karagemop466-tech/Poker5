@@ -40,6 +40,11 @@ jobs:
         run: python3 scripts/scrape_251c122f.py --self-test
       - name: Re-diff the stored schedule against the committed live transcription (session 8f0b323b)
         run: python3 scripts/recheck_8f0b323b.py
+      - name: Route ledger matches the official addresses recorded in the data
+        # data/ea99006a/routes.json is derived from hotels.json + venues.json by this generator;
+        # if an address is corrected and the ledger is not regenerated, the published map links
+        # would be pinned on a stale pair. --check fails on that drift instead of hiding it.
+        run: python3 scripts/complete_routes_6dba9b3c.py --check
       - name: Regenerate the root Pages site from the official data (canonical builder)
         run: python3 scripts/build_ea99006a.py
       - name: Validate rows, source links and internal links

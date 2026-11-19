@@ -29,7 +29,7 @@
   "entry_evidence": {
    "sheet_no": 10,
    "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -170,7 +170,7 @@
   "entry_evidence": {
    "sheet_no": 9,
    "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -311,7 +311,7 @@
   "entry_evidence": {
    "sheet_no": 10,
    "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -452,7 +452,7 @@
   "entry_evidence": {
    "sheet_no": 9,
    "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -593,7 +593,7 @@
   "entry_evidence": {
    "sheet_no": 5,
    "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -727,7 +727,7 @@
   "entry_evidence": {
    "sheet_no": 10,
    "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -868,7 +868,7 @@
   "entry_evidence": {
    "sheet_no": 18,
    "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -996,7 +996,7 @@
   "entry_evidence": {
    "sheet_no": 18,
    "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1124,7 +1124,7 @@
   "entry_evidence": {
    "sheet_no": 18,
    "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1252,7 +1252,7 @@
   "entry_evidence": {
    "sheet_no": 29,
    "sheet_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1380,7 +1380,7 @@
   "entry_evidence": {
    "sheet_no": 2,
    "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1521,7 +1521,7 @@
   "entry_evidence": {
    "sheet_no": 30,
    "sheet_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1656,7 +1656,7 @@
   "entry_evidence": {
    "sheet_no": 2,
    "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1797,7 +1797,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -1932,7 +1932,7 @@
   "entry_evidence": {
    "sheet_no": 2,
    "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2073,7 +2073,7 @@
   "entry_evidence": {
    "sheet_no": 6,
    "sheet_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2207,7 +2207,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2342,7 +2342,7 @@
   "entry_evidence": {
    "sheet_no": 5,
    "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2476,7 +2476,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2611,7 +2611,7 @@
   "entry_evidence": {
    "sheet_no": 7,
    "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2745,7 +2745,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -2880,7 +2880,7 @@
   "entry_evidence": {
    "sheet_no": 11,
    "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -3014,7 +3014,7 @@
   "entry_evidence": {
    "sheet_no": 26,
    "sheet_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.12.26",
    "entry_grant_sentences": [],
@@ -3149,7 +3149,7 @@
   "entry_evidence": {
    "sheet_no": 8,
    "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [
@@ -3286,7 +3286,7 @@
   "entry_evidence": {
    "sheet_no": 3,
    "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -3427,7 +3427,7 @@
   "entry_evidence": {
    "sheet_no": 22,
    "sheet_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.12.26",
    "entry_grant_sentences": [],
@@ -3561,7 +3561,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -3696,7 +3696,7 @@
   "entry_evidence": {
    "sheet_no": 3,
    "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -3837,7 +3837,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -3972,7 +3972,7 @@
   "entry_evidence": {
    "sheet_no": 3,
    "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -4113,7 +4113,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -4248,7 +4248,7 @@
   "entry_evidence": {
    "sheet_no": 17,
    "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -4389,7 +4389,7 @@
   "entry_evidence": {
    "sheet_no": 3,
    "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -4530,7 +4530,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -4665,7 +4665,7 @@
   "entry_evidence": {
    "sheet_no": 12,
    "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -4806,7 +4806,7 @@
   "entry_evidence": {
    "sheet_no": 28,
    "sheet_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.12.26",
    "entry_grant_sentences": [],
@@ -4940,7 +4940,7 @@
   "entry_evidence": {
    "sheet_no": 13,
    "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5081,7 +5081,7 @@
   "entry_evidence": {
    "sheet_no": 12,
    "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5222,7 +5222,7 @@
   "entry_evidence": {
    "sheet_no": 13,
    "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5363,7 +5363,7 @@
   "entry_evidence": {
    "sheet_no": 12,
    "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5504,7 +5504,7 @@
   "entry_evidence": {
    "sheet_no": 14,
    "sheet_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5645,7 +5645,7 @@
   "entry_evidence": {
    "sheet_no": 7,
    "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5779,7 +5779,7 @@
   "entry_evidence": {
    "sheet_no": 12,
    "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -5920,7 +5920,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -6055,7 +6055,7 @@
   "entry_evidence": {
    "sheet_no": 11,
    "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -6189,7 +6189,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -6324,7 +6324,7 @@
   "entry_evidence": {
    "sheet_no": 17,
    "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 10,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -6465,7 +6465,7 @@
   "entry_evidence": {
    "sheet_no": 19,
    "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -6607,7 +6607,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -6742,7 +6742,7 @@
   "entry_evidence": {
    "sheet_no": 31,
    "sheet_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -6883,7 +6883,7 @@
   "entry_evidence": {
    "sheet_no": 16,
    "sheet_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -7017,7 +7017,7 @@
   "entry_evidence": {
    "sheet_no": 19,
    "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -7159,7 +7159,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -7294,7 +7294,7 @@
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -7433,7 +7433,7 @@
   "entry_evidence": {
    "sheet_no": 27,
    "sheet_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.12.26",
    "entry_grant_sentences": [],
@@ -7568,7 +7568,7 @@
   "entry_evidence": {
    "sheet_no": 24,
    "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -7703,7 +7703,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -7838,7 +7838,7 @@
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -7977,7 +7977,7 @@
   "entry_evidence": {
    "sheet_no": 33,
    "sheet_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -8111,7 +8111,7 @@
   "entry_evidence": {
    "sheet_no": 24,
    "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -8246,7 +8246,7 @@
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -8385,7 +8385,7 @@
   "entry_evidence": {
    "sheet_no": 25,
    "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -8520,7 +8520,7 @@
   "entry_evidence": {
    "sheet_no": 25,
    "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -8655,7 +8655,7 @@
   "entry_evidence": {
    "sheet_no": 21,
    "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -8796,7 +8796,7 @@
   "entry_evidence": {
    "sheet_no": 25,
    "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -8931,7 +8931,7 @@
   "entry_evidence": {
    "sheet_no": 37,
    "sheet_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -9072,7 +9072,7 @@
   "entry_evidence": {
    "sheet_no": 20,
    "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -9220,7 +9220,7 @@
   "entry_evidence": {
    "sheet_no": 21,
    "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -9361,7 +9361,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -9496,7 +9496,7 @@
   "entry_evidence": {
    "sheet_no": 20,
    "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -9644,7 +9644,7 @@
   "entry_evidence": {
    "sheet_no": 21,
    "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -9785,7 +9785,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -9920,7 +9920,7 @@
   "entry_evidence": {
    "sheet_no": 20,
    "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -10068,7 +10068,7 @@
   "entry_evidence": {
    "sheet_no": 34,
    "sheet_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -10203,7 +10203,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -10338,7 +10338,7 @@
   "entry_evidence": {
    "sheet_no": 11,
    "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 11,
    "sheet_effective_date": "10.09.26",
    "entry_grant_sentences": [],
@@ -10472,7 +10472,7 @@
   "entry_evidence": {
    "sheet_no": 15,
    "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -10607,7 +10607,7 @@
   "entry_evidence": {
    "sheet_no": 35,
    "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -10748,7 +10748,7 @@
   "entry_evidence": {
    "sheet_no": 23,
    "sheet_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.12.26",
    "entry_grant_sentences": [],
@@ -10882,7 +10882,7 @@
   "entry_evidence": {
    "sheet_no": 36,
    "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11023,7 +11023,7 @@
   "entry_evidence": {
    "sheet_no": 35,
    "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11164,7 +11164,7 @@
   "entry_evidence": {
    "sheet_no": 36,
    "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11305,7 +11305,7 @@
   "entry_evidence": {
    "sheet_no": 35,
    "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11446,7 +11446,7 @@
   "entry_evidence": {
    "sheet_no": 8,
    "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [
@@ -11583,7 +11583,7 @@
   "entry_evidence": {
    "sheet_no": 35,
    "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-   "sheet_retrieved": "2026-11-19T22:06:45Z",
+   "sheet_retrieved": "2026-11-19T22:30:37Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11724,7 +11724,7 @@
   "entry_evidence": {
    "sheet_no": 4,
    "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -11865,7 +11865,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12000,7 +12000,7 @@
   "entry_evidence": {
    "sheet_no": 4,
    "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12141,7 +12141,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12276,7 +12276,7 @@
   "entry_evidence": {
    "sheet_no": 4,
    "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12417,7 +12417,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12552,7 +12552,7 @@
   "entry_evidence": {
    "sheet_no": 4,
    "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 13,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12693,7 +12693,7 @@
   "entry_evidence": {
    "sheet_no": 7,
    "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 10,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
@@ -12827,7 +12827,7 @@
   "entry_evidence": {
    "sheet_no": 1,
    "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-   "sheet_retrieved": "2026-11-19T22:06:44Z",
+   "sheet_retrieved": "2026-11-19T22:30:36Z",
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],

@@ -25,7 +25,7 @@ DATA = os.path.join(ROOT, "data", "ea99006a")
 PAGES = os.path.join(ROOT, "pages")
 
 RULE_LABEL = {
-    "confirmed_single": "Confirmed single-entry (standard S1)",
+    "confirmed_single": "No second entry granted (S1 screen)",
     "multi": "Multi-entry (re-entry / flights / add-on)",
     "unknown": "Entry cap not stated - unverified",
     "unread": "Entry terms not read - unverified",
@@ -74,10 +74,10 @@ MONRUN = _opt(B3DATA, "monitor_summary.json", {})
 VERIF = _opt(B3DATA, "verification.json", {})
 STD = META.get("rule_standard") or {
     "id": "S1",
-    "text": ("A row is published as confirmed single-entry only when its own official structure sheet was read, "
-             "names that event number, is a one-day event with a stated registration close, and contains no "
-             "re-entry, rebuy, add-on, buy-back, subsequent-buy-in or purchased-stack provision."),
-    "limitation": ("No official source states 'one entry only' in words, so confirmation means 'the published rules "
+    "text": ("A row is published as no second entry granted (S1 screen) only when its own official structure "
+             "sheet was read, names that event number, is a one-day event with a stated registration close, and "
+             "contains no re-entry, rebuy, add-on, buy-back, subsequent-buy-in or purchased-stack provision."),
+    "limitation": ("No official source states 'one entry only' in words, so the screen means 'the published rules "
                    "grant no second entry', not 'the house promises a freezeout'."),
 }
 
@@ -140,6 +140,14 @@ for _c in CHANGE_LOG:
 VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
+
+# The trip window has two ends with two different jobs. TRIP["check_out"] is the hotel
+# check-out date (check_in + nights), which is what a booking link and a nights-times-rate
+# calculation need. Event lists run to the last *playing* day, which is the day before
+# check-out; listing events up to check-out would advertise a day the window was never scored
+# on. Older captures have no last_play_day, so the checkout date stays the fallback.
+PLAY_END = TRIP.get("last_play_day") or TRIP["check_out"]
+
 
 # The only nightly room rate any Strip property publishes on an official page (a starting floor, not a quote).
 VEN_POKER = {
@@ -485,11 +493,11 @@ FILTER_BAR = """
   <select id="fvenue" aria-label="Venue"><option value="">All venues</option>%s</select>
   <select id="fday" aria-label="Day"><option value="">Every day</option>%s</select>
   <select id="frule" aria-label="Entry rule"><option value="">Any entry rule</option>
-    <option value="confirmed_single">Confirmed single-entry (%s)</option>
+    <option value="confirmed_single">No second entry granted (%s)</option>
     <option value="multi">Multi-entry: re-entry, add-on or flights</option>
     <option value="unknown">Cap not stated</option>
     <option value="unread">Terms not read</option></select>
-  <label class="chk"><input type="checkbox" id="fse"> Confirmed single-entry / freezeout only</label>
+  <label class="chk"><input type="checkbox" id="fse"> No second entry granted (S1 screen) / freezeout only</label>
   <label class="chk"><input type="checkbox" id="fsemulti"> Hide rows with stated re-entry / flights</label>
   <label class="chk"><input type="checkbox" id="fentry"> Entry rows only (hide Day 2 / final tables)</label>
   <label class="chk"><input type="checkbox" id="frank"> Rankable only: total entry fee AND guarantee confirmed</label>
@@ -1065,7 +1073,7 @@ def marquee_html():
 def build_index():
     cards = [("pages/executive-summary.html", "Executive summary", "The short version: what is confirmed, what is not, and what to do next."),
              ("pages/tournaments.html", "All tournaments", "Every verified row from the Venetian, Wynn/WPT and Caesars, with its official source."),
-             ("pages/single-entry.html", "Single-entry", "Events confirmed against their own structure sheet under standard S1 - and the standing flags."),
+             ("pages/single-entry.html", "Single-entry", "Events screened against their own structure sheet under standard S1 - and the standing flags."),
              ("pages/tournaments-double.html", "Multi-entry", "Re-entry, add-on, multi-flight and paid-advantage events, kept separate."),
              ("pages/schedule.html", "Day schedule", "One primary event per day plus a conditional fallback, with the overlap check."),
              ("pages/hotels.html", "Hotels", "Resort fees, official booking links, dated rate log and true nightly cost."),
@@ -1098,19 +1106,21 @@ def build_index():
     body.append('<div class="grid">')
     for n, l in (("37", "Venetian structure sheets read"),
                     (str(len(ALL_EVENTS)), "Verified schedule rows"),
-                    (str(len(CONFIRMED)), "Confirmed single-entry events (standard S1)"),
+                    (str(len(CONFIRMED)), "Rows passing the S1 no-second-entry screen"),
                     (str(len(UNREAD)), "Rows whose entry terms were not read"),
                     (str(len(MULTI)), "Rows that are re-entry / multi-flight"),
                     (str(len(FLAGS)), "Items flagged for review")):
         body.append('<div class="stat"><div class="num">%s</div><div class="lbl">%s</div></div>' % (n, esc(l)))
     body.append("</div>")
-    body.append('<div class="badbox"><b>The single-entry headline: %d events are confirmed single-entry under '
-                'standard S1.</b> All 37 official Venetian structure sheets were read on %s. Each confirmed row\'s '
+    body.append('<div class="badbox"><b>The single-entry screen: %d Venetian rows pass the S1 '
+                'no-second-entry screen.</b> All 37 official Venetian structure sheets were read on %s. Each '
+                'listed row\'s '
                 'own sheet was read in full, names that event number, is a one-day entry row with a stated '
                 'registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in its numbered '
                 'rules - the sheet excerpt and retrieval date are on the row. The honest limit stays published: '
-                '<b>no sheet states "one entry only" in words</b>, so confirmation means <i>the published rules grant '
-                'no second entry</i>, not that the house promises a freezeout (flags '
+                '<b>no sheet states "one entry only" in words</b>, so the screen means <i>the published rules grant '
+                'no second entry</i> - it is not a house promise of a freezeout, and no written one-entry cap '
+                'exists (flags '
                 '<a href="pages/flagged-review.html">F01 and F47</a> stay open). Every WPT / Wynn event whose terms '
                 'were read permits re-entry; the %d rows whose terms were not read keep an explicit '
                 '<i>unverified</i> label.</div>' % (len(CONFIRMED), esc(RETRIEVED), len(UNREAD)))
@@ -1195,7 +1205,10 @@ def build_tournaments():
             'at Wynn, %d from other rooms. Every row links to the official page or PDF it was read from.</p>'
             % (len(ALL_EVENTS), len(VEN), len(WPT), len(OTH))]
     body.append('<div class="warnbox"><b>Reading the entry-rule column.</b> '
-                '<span class="pill pill-ok">Confirmed single-entry</span> means an official source states a one-entry limit. '
+                '<span class="pill pill-ok">No second entry granted (S1 screen)</span> means the row\'s own official '
+                'structure sheet was read in full and no numbered rule grants a re-entry, rebuy, add-on, buy-back '
+                'or purchased stack - no sheet in the series states a one-entry limit in words, so this is a '
+                'screen, not a written freezeout promise (flag F01). '
                 '<span class="pill pill-bad">Multi-entry</span> means the official text allows re-entry, an add-on, or more than one starting flight. '
                 '<span class="pill pill-warn">Entry cap not stated</span> means the official structure sheet is silent - that is not evidence of a freezeout. '
                 '<span class="pill pill-warn2">Entry terms not read</span> means this audit did not read that event\'s terms.</div>')
@@ -1209,9 +1222,9 @@ def build_tournaments():
 
 def build_single():
     body = ["<h1>Single-entry tournaments</h1>"]
-    body.append('<div class="badbox"><b>Confirmed single-entry events (standard S1): %d.</b> Every official '
+    body.append('<div class="badbox"><b>Rows passing the S1 no-second-entry screen: %d.</b> Every official '
                 'structure sheet published for the Venetian DeepStack Extravaganza IV (all 37) was read on %s. '
-                'Each confirmed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
+                'Each listed row was verified from its own sheet read in full: the sheet names that event number, is a one-day entry row '
                 'with a stated registration close, and grants no re-entry, rebuy, add-on or purchased-stack path in '
                 'its numbered rules - the sheet excerpt and retrieval date are on the row, and the tests are '
                 're-derivable from the stored fields (see the <a href="verification.html">Verification log</a>). '
@@ -1219,15 +1232,15 @@ def build_single():
                 'or "one entry and one re-entry per starting flight" for the Prime Championship.</div>'
                 % (len(CONFIRMED), esc(RETRIEVED)))
     body.append(SEARCH_BAR % ("Search single-entry rows...", ""))
-    body.append("<h2>1. Confirmed single-entry under standard S1 (%d rows)</h2>" % len(CONFIRMED))
+    body.append("<h2>1. Rows passing the S1 no-second-entry screen (%d rows)</h2>" % len(CONFIRMED))
     if CONFIRMED:
         body.append(table_shell(CONFIRMED, EVENT_HEAD))
     else:
         body.append('<div class="panel"><p><b>None.</b> No structure sheet read during this session meets the '
                     'published standard. Nothing is listed here rather than listing something unverified.</p></div>')
-    body.append("<h2>2. What confirmation means here - and what it does not</h2>")
+    body.append("<h2>2. What the screen means here - and what it does not</h2>")
     body.append('<div class="panel"><p><b>No official source in this series states "one entry only" in words.</b> '
-                'Confirmation under standard S1 therefore means <i>the published rules grant no second entry</i> - '
+                'Passing the screen therefore means <i>the published rules grant no second entry</i> - '
                 'the sheet own numbered rule list contains no re-entry, re-buy, add-on, buy-back, subsequent or '
                 'additional buy-in, or purchased or alternate stack provision - not that the house promises a '
                 'freezeout. Every sheet also carries "Management reserves the right to cancel or change the '
@@ -1376,8 +1389,8 @@ def build_schedule():
               for d in all_days]
     body.append('<div class="daynav" id="daynav">%s</div>' % "".join(chips))
     body.append('<label class="chk" style="margin:6px 0"><input type="checkbox" id="winonly"> '
-                'Only my %d nights (%s to %s, checkout day included for the day event)</label>'
-                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+                'Only my %d nights (%s to %s; the playing days run to %s, the day before check-out)</label>'
+                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"]), esc(PLAY_END)))
     # Optional what-if: the user's own playing-length estimate. Blank by default; no source supplies it,
     # so it is never shown as an official value and never written into the data.
     body.append('<div class="panel" id="seqbox"><label><b>Assumed playing length</b> (hours, optional) '
@@ -1397,7 +1410,7 @@ def build_schedule():
     seqjson = json.dumps(seq, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     out = []
     for d, evs, prim, fb, conflicts in rows_by_date:
-        inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
+        inwin = TRIP["check_in"] <= d <= PLAY_END
         hay = "%s %s %s" % (pretty_date(d), weekday(d),
                             " ".join("%s %s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]],
                                                      (r.get("restriction") or {}).get("label", "")) for r in evs))
@@ -1712,13 +1725,14 @@ def build_hotels():
 
 def build_routes():
     body = ["<h1>Walking routes: hotel to poker room</h1>"]
-    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Every hotel&ndash;venue pair below '
-                'was measured with <b>Google Maps walking directions</b> between the official property names and '
-                're-read on <b>2026-11-19</b>: the minutes, distance and via-streets are what Google Maps returned '
-                'that day, and each row links the exact directions so you can re-check. These are dated '
-                'observations, not guarantees - entrances, walkways and closures change. A poker room inside your '
-                'own hotel is zero minutes. Pairs over 30 minutes are marked in red and hidden by the filter; '
-                'Google Maps also warns where a route uses restricted-usage or private roads (noted per row).</p>')
+    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Every hotel&ndash;venue pair '
+                'below is pinned on the two <b>official addresses</b> beside it and was measured with <b>Google '
+                'Maps walking directions</b> between the official property names on <b>2026-11-19</b>: the '
+                'minutes, distance and via-streets are what Google Maps returned that day, and each row links '
+                'the exact directions so you can re-check. These are dated observations, not guarantees - '
+                'entrances, walkways and closures change. A poker room inside your own hotel is zero minutes. '
+                'Pairs over 30 minutes are marked in red and hidden by the filter; Google Maps also warns where '
+                'a route uses restricted-usage or private roads (noted per row).</p>')
     body.append(SEARCH_BAR % ("Search hotels, rooms, routes...", ""))
     body.append('<div class="panel"><label class="chk"><input type="checkbox" id="walkfilter"> '
                 'Hide pairs known to exceed the 30-minute limit (rows without a measured time stay, marked unverified)</label>'
@@ -1726,40 +1740,76 @@ def build_routes():
                 '<label>Pair<select id="walkpair">%s</select></label>'
                 '<label>Minutes you measured<input id="walkmins" type="number" step="1" min="0"></label>'
                 '<button class="btn" id="walkrecord" type="button">Record</button></div>'
-                '<p class="muted sm">Your own measurements are stored in this browser only and are shown as '
-                'measured by you, next to the dated Google Maps observation.</p></div>'
+                '<p class="muted sm">Optional, and off by default: your own measurements are stored in this '
+                'browser only and are shown as measured by you, next to the dated Google Maps observation.</p></div>'
                 % "".join('<option value="%s">%s &rarr; %s</option>' % (esc(r["hotel_key"] + "|" + r["venue_key"]),
                                                                         esc(r["hotel"]), esc(r["venue"]))
                           for r in ROUTES if not r["same_property"]))
-    body.append('<div class="tablewrap"><table class="data" id="routetable"><thead><tr><th>Hotel</th><th>Poker room</th>'
-                '<th>Same property</th><th>Walking time</th><th>Method</th><th>Check it yourself</th></tr></thead><tbody>')
+    body.append('<div class="tablewrap"><table class="data" id="routetable"><thead><tr><th>Hotel</th>'
+                '<th>Hotel official address</th><th>Poker room</th><th>Room location / property address</th>'
+                '<th>Same property</th><th>Walking time</th><th>&le;30 min walk</th><th>How this pair is '
+                'measured</th><th>Check it yourself</th></tr></thead><tbody>')
     for r in ROUTES:
-        if r["same_property"]:
+        mins = r.get("minutes")
+        same = bool(r.get("same_property"))
+        addr = r.get("origin_address") or ""
+        daddr = r.get("destination_address") or ""
+        read = r.get("addresses_read") or r.get("room_location_read") or ""
+        origin_cell = ('<span class="sm">%s</span><br><span class="muted sm">%s</span>'
+                       % (esc(addr), src_link(r.get("origin_address_source") or "", "read %s" % read))
+                       if addr else '<span class="blank">no street address published</span>')
+        dest_bits = []
+        if r.get("room_location"):
+            dest_bits.append('<span class="sm">%s</span> %s'
+                             % (esc(r["room_location"]),
+                                src_link(r.get("room_location_source") or "", "official page")))
+        dest_bits.append('<span class="muted sm">%s</span>'
+                         % (esc(daddr) if daddr else '<span class="blank">no street address published</span>'))
+        if not daddr and r.get("venue_page"):
+            dest_bits.append(src_link(r["venue_page"], "property page"))
+        measured = mins not in (None, "")
+        verdict = ('<span class="pill pill-ok">yes - on property</span>' if same else
+                   ('<span class="pill %s">yes</span>' % ("pill-ok" if float(mins) <= 30 else "pill-bad"))
+                   if measured else '<span class="blank">not verified - no figure recorded</span>')
+        if same:
             mins_cell = '<span class="pill pill-ok">0 min</span>'
             dmin = "0"
-        elif r.get("minutes") is not None:
-            ok = "pill-ok" if r["minutes"] <= 30 else "pill-bad"
-            mins_cell = ('<span class="pill %s">%s min</span> <span class="muted sm">%s via %s &middot; checked %s</span>'
-                         % (ok, r["minutes"], esc(r.get("distance") or ""), esc(r.get("via") or ""),
-                            esc(r.get("checked") or "")))
-            dmin = str(r["minutes"])
+        elif measured:
+            mins_cell = ('<span class="pill %s">%s min</span> <span class="muted sm">%s via %s &middot; '
+                         'checked %s</span>'
+                         % ("pill-ok" if float(mins) <= 30 else "pill-bad", mins,
+                            esc(r.get("distance") or ""), esc(r.get("via") or ""), esc(r.get("checked") or "")))
+            dmin = str(mins)
         else:
             mins_cell = '<span class="blank">not verified</span>'
             dmin = ""
-        body.append("<tr data-pair=\"%s\" data-min=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
-                    "<td class=\"sm\">%s</td><td>%s</td></tr>"
-                    % (esc(r["hotel_key"] + "|" + r["venue_key"]),
-                       dmin,
-                       esc(r["hotel"]), esc(r["venue"]),
-                       "Yes" if r["same_property"] else "No",
+        body.append('<tr data-pair="%s" data-min="%s"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>'
+                    '<td>%s</td><td>%s</td><td class="sm">%s<br><span class="muted sm">%s</span></td>'
+                    '<td>%s %s</td></tr>'
+                    % (esc(r["hotel_key"] + "|" + r["venue_key"]), dmin,
+                       esc(r["hotel"]), origin_cell, esc(r["venue"]), " ".join(dest_bits),
+                       "Yes" if same else "No",
                        mins_cell,
-                       esc(r["method"]),
-                       src_link(r["maps"], "walking directions")))
+                       verdict,
+                       esc(r.get("method") or ""), esc(r.get("basis") or ""),
+                       src_link(r["maps"], "Google Maps"), src_link(r.get("maps_apple") or r["maps"], "Apple Maps")))
     body.append("</tbody></table></div>")
-    body.append('<div class="warnbox">The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the official '
-                'WPT terms state "Players will register in the Wynn Las Vegas Poker Room, located in Encore at Wynn '
-                'Las Vegas". Allow extra indoor walking time if you stay in the Wynn tower. '
-                '%s</div>' % src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf", "official terms"))
+    cross = [r for r in ROUTES if not r.get("same_property")]
+    measured_n = sum(1 for r in cross if r.get("minutes") is not None)
+    over = sum(1 for r in cross if r.get("minutes") is not None and float(r["minutes"]) > 30)
+    body.append('<div class="warnbox">Of the %d cross-property pairs, %d carry a dated <b>Google Maps walking '
+                'observation</b> (2026-11-19, minutes/distance/via per row, measured between the official '
+                'property names and pinned to the official addresses shown); the rest are blank and flagged - '
+                'flag <a href="flagged-review.html">F50</a> records the method and its limits. %d pairs exceed the '
+                '30-minute rule and are marked in red. The South Point pairs cannot be walked from a Strip hotel: '
+                'that property\u2019s own home page describes it as &ldquo;just a short drive from the iconic '
+                'Las Vegas Strip&rdquo; (roughly three hours on foot). '
+                'The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the official WPT terms state '
+                '&ldquo;Players will register in the Wynn Las Vegas Poker Room, located in Encore at Wynn Las '
+                'Vegas&rdquo;, so allow extra indoor walking time from the Wynn tower. %s</div>'
+                % (len(cross), measured_n, over, src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/"
+                                              "v1750864036/visitwynn_pdfs_files/Poker/WPT/"
+                                              "WPT_World_Championship_Structures.pdf", "official terms")))
     write("pages/routes.html", page("Walking routes", "".join(body), "routes.html", 1))
 
 
@@ -1768,7 +1818,7 @@ def build_planner():
     # confirmed single-entry or explicitly multi-entry. The planner lists what can actually be played -
     # the confirmed rows first, the not-stated ones still labelled as such.
     rows = [r for r in ALL_EVENTS if r["kind"] == "entry" and r.get("date")
-            and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]
+            and TRIP["check_in"] <= r["date"] <= PLAY_END
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     restricted_here = [r for r in rows if not is_open_to_general(r)]
@@ -1776,11 +1826,13 @@ def build_planner():
     body = ["<h1>Trip planner: cost of the trip</h1>"]
     body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
-                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your window (%s to %s): '
+                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your playing window '
+                '(%s to %s; you check out %s): '
                 'the ones whose own structure sheet was read in full and grants no further entry are the playable '
                 'set, and rows whose sheet is merely silent about re-entry are still labelled as such. One listed '
                 'buy-in is counted per ticked event.</p>'
-                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"]))))
+                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(PLAY_END)),
+                   esc(pretty_date(TRIP["check_out"]))))
     body.append('<div class="panel"><h2>Proposed planning window</h2><div class="kv">'
                 '<dt>Check in / out</dt><dd>%s &rarr; %s (%d nights)</dd>'
                 '<dt>Dates to consider</dt><dd>%s</dd>'
@@ -1952,7 +2004,7 @@ def build_exec():
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is not available for this exact stay and occupancy. The dated log preserves differing snapshots, but those are not comparable to one another or to the selected stay. The trip calculator deliberately remains incomplete until the actual stay's hotel cost is known.",
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
-        "Walking times for all 30 hotel-to-venue pairs are dated Google Maps observations read on 2026-11-19 (distance and via-streets recorded per row, with Google's restricted-usage warnings kept); pairs over the 30-minute limit are marked and filtered. A room in the venue's own hotel remains 0 minutes. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
+        "Walking times for 30 hotel-to-venue pairs (the five candidate hotels to all six poker rooms) are dated Google Maps observations read on 2026-11-19 (distance and via-streets recorded per row, with Google's restricted-usage warnings kept); pairs over the 30-minute limit are marked and filtered, and unmeasured pairs stay blank and flagged. A room in the venue's own hotel remains 0 minutes. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
         "%d rows across the other venues and series still have entry terms this project has not read (every WPT event whose own terms-and-conditions section is printed in the official structures PDF was read on %s: %d rows, and every one of them grants re-entry). The unread rows remain explicitly unverified and are not included in the single-entry comparison." % (len(UNREAD), esc(RETRIEVED), len([r for r in WPT if r.get("terms_read")])),
         "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),
@@ -2185,8 +2237,11 @@ def build_method():
     body.append('<div class="panel"><h2>The verification rule</h2><ul class="clean">'
                 '<li>Every value on this site was read from an official source - the casino\'s own site or its own '
                 'PDF - during this session, on %s.</li>' % esc(RETRIEVED))
-    body.append('<li>An event is labelled <span class="pill pill-ok">Confirmed single-entry</span> only when an '
-                'official source states a one-entry, no-re-entry or freezeout limit.</li>')
+    body.append('<li>An event is labelled <span class="pill pill-ok">No second entry granted (S1 screen)</span> '
+                'when its own official structure sheet was read in full and no numbered rule grants a re-entry, '
+                're-buy, add-on, buy-back, subsequent or additional buy-in, or a purchased or alternate stack. No '
+                'sheet in the series states a one-entry limit in words - flag F01 records that gap, so the label '
+                'asserts only what the sheet shows.</li>')
     body.append('<li>It is labelled <span class="pill pill-bad">Multi-entry</span> when the official text allows '
                 're-entry, an add-on, or more than one starting flight.</li>')
     body.append('<li>It is labelled <span class="pill pill-warn">Entry cap not stated</span> when the official sheet '

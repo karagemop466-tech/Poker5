@@ -32,6 +32,9 @@ ALLOWED_HOSTS = [
     "www.rwlasvegas.com", "rwlasvegas.com", "reservations.rwlasvegas.com",
     "clarkcountynv.gov", "www.clarkcountynv.gov",
     "www.google.com",
+    # the brief asks for a Google/Apple Maps check of each hotel-to-room walk: the link is a route
+    # the reader opens, never a value the site publishes, so apple.com is allowed like google.com.
+    "maps.apple.com", "www.apple.com", "apple.com",
     # the repository and the published site itself: a flag or a status note may point at
     # the Pages page or the Actions run it is about. Never used as a data source.
     "github.com", "karagemop466-tech.github.io",

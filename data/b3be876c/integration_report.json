@@ -3,7 +3,7 @@
  "run_at": "2026-11-19",
  "standard": {
   "id": "S1",
-  "text": "A Venetian row is published as CONFIRMED SINGLE-ENTRY only when all of these hold, each with the official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF was read (HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the row is an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or multi-day structure; (5) the sheet states a registration close; (6) nothing in the sheet's numbered rule list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second buy-in, or a purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields by scripts/check_ea99006a.py.",
+  "text": "A Venetian row is published as NO SECOND ENTRY GRANTED (S1 screen) when all of these hold, each with the official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF was read (HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the row is an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or multi-day structure; (5) the sheet states a registration close; (6) nothing in the sheet's numbered rule list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second buy-in, or a purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields by scripts/check_ea99006a.py. The screen is deliberately not a confirmation of a freezeout: no sheet in the series states a one-entry maximum in words (flag F01).",
   "limitation": "No official source in this series states 'one entry only' in words, and every sheet carries 'Management reserves the right to cancel or change the tournament'. Confirmation therefore means 'the published rules grant no second entry', not 'the house promises a freezeout'. That is flag F01 and it stays open."
  },
  "counts_after": {
@@ -32,6 +32,13 @@
   "ARIA Resort & Casino: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-19.",
   "MGM Grand: mandatory resort fee $50.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-19."
  ],
+ "preserved_curation": [
+  "flags.F47.detail (kept the committed wording)",
+  "flags.F47.status (kept the committed wording)",
+  "flags.F47.title (kept the committed wording)",
+  "flags.F50.detail (kept the committed wording)"
+ ],
+ "sources_read_on": "2026-11-19",
  "rate_log_entries": 2,
  "live_reads": {
   "wynn_resort_fee": [
@@ -63,5 +70,5 @@
    null
   ]
  },
- "flags_total": 57
+ "flags_total": 58
 }
