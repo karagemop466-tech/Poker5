@@ -17,6 +17,7 @@ import os
 import re
 import subprocess
 import sys
+import urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "ea99006a")
@@ -89,6 +90,7 @@ FLAGS = load("flags.json")
 QUESTIONS = load("questions.json")
 SUGGESTIONS = load("suggestions.json")
 RATE_SNAPSHOTS = load("rate_snapshots.json")
+REQUIREMENTS = _opt(DATA, "requirements.json", {"rows": [], "statuses": {}, "note": ""})
 CHANGE_LOG = load("change_log.json")
 
 
@@ -462,6 +464,7 @@ NAV = [
     ("pages/routes.html", "Walking routes"),
     ("pages/planner.html", "Trip planner"),
     ("pages/verification.html", "Verification"),
+    ("pages/requirements.html", "Requirements"),
     ("pages/venues/venetian.html", "Venetian"),
     ("pages/venues/wynn.html", "Wynn"),
     ("pages/venues/others.html", "Other venues"),
@@ -832,6 +835,19 @@ function initHotels2(){
 }
 
 /* ---- trip planner ---- */
+/* status chips on the requirements page: they drive the page's own search box, so no
+   query-string link is needed and the site's link checker stays honest. */
+function initQueryChips(){
+  qsa('[data-q]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var q=document.getElementById('q'); if(!q) return;
+      q.value=b.getAttribute('data-q')||'';
+      q.dispatchEvent(new Event('input',{bubbles:true}));
+      q.focus();
+    });
+  });
+}
+
 function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
@@ -912,7 +928,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
   try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
     if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
-  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
+  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions(); initQueryChips();
 });
 """
 
@@ -1008,6 +1024,7 @@ def build_index():
              ("pages/venues/venetian.html", "Venetian", "DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026."),
              ("pages/venues/wynn.html", "Wynn", "WPT World Championship festival, 27 Nov - 21 Dec 2026."),
              ("pages/venues/others.html", "Other venues", "Caesars Palace, Horseshoe, Resorts World, South Point and the rooms we could not verify."),
+             ("pages/requirements.html", "Requirements", "Every line of the brief, its status on this site, and the one thing blocking each gap."),
              ("pages/questions.html", "Questions", "What we know, what is missing, and how to find it."),
              ("pages/suggestions.html", "Suggestions", "Pick a path before anything is changed."),
              ("pages/verification.html", "Verification log",
@@ -2025,6 +2042,49 @@ def build_exec():
     write("pages/executive-summary.html", page("Executive summary", "".join(body),
                                                "executive-summary.html", 1))
 
+def build_requirements():
+    """Line-by-line traceability from the project brief to the published site (session 0fd4c550)."""
+    rows = REQUIREMENTS.get("rows") or []
+    by_status = {}
+    for r in rows:
+        by_status[r["status"]] = by_status.get(r["status"], 0) + 1
+    body = ["<h1>Requirements: what was asked, what is on the site, what is blocked</h1>"]
+    body.append(SEARCH_BAR % ("Search a requirement, a page name, a flag...", ""))
+    body.append('<p class="muted">%s</p>' % esc(REQUIREMENTS.get("note", "")))
+    chips = []
+    for st in ("implemented", "implemented, limit published", "blocked on an official source"):
+        n = by_status.get(st, 0)
+        if not n:
+            continue
+        chips.append('<button type="button" class="pill %s" data-q="%s">%s: %d</button>'
+                     % ("pill-ok" if st == "implemented" else ("pill-warn" if "limit" in st else "pill-bad"),
+                        esc(st), esc(st), n))
+    body.append('<p>%s <span class="muted sm">Each chip filters this table to that status.</span></p>'
+                % " ".join(chips))
+    body.append('<div class="panel"><h2>What each status means</h2><div class="kv">')
+    for st, meaning in (REQUIREMENTS.get("statuses") or {}).items():
+        body.append("<dt>%s</dt><dd>%s</dd>" % (esc(st), esc(meaning)))
+    body.append('</div></div>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>#</th><th>Requirement, as asked</th>'
+                '<th>Status</th><th>Where it lives</th><th>Evidence / source</th><th>What the site does, and the '
+                'limit it publishes</th></tr></thead><tbody>')
+    for r in rows:
+        cls = ("pill-ok" if r["status"] == "implemented"
+               else "pill-warn" if "limit" in r["status"] else "pill-bad")
+        body.append('<tr data-status="%s"><td>%s</td><td><b>%s</b></td>'
+                    '<td><span class="pill %s">%s</span></td><td>%s</td><td>%s</td><td class="sm">%s</td></tr>'
+                    % (esc(r["status"]), esc(r["id"]), esc(r["requirement"]), cls, esc(r["status"]),
+                       esc(r["where"]), src_link(r["evidence"], "open it"), esc(r["note"])))
+    body.append("</tbody></table></div>")
+    body.append('<div class="warnbox">The rows marked <i>blocked on an official source</i> are not unfinished '
+                'work in the ordinary sense: they are the places where the brief asks for a number the properties '
+                'do not publish - an expected finish time, a walking time between two hotels, a dated room rate '
+                'for the stay. Filling those cells would mean inventing them, so the cell stays blank, the flag '
+                'stays open, and the maps or booking link that settles the question in sixty seconds is printed '
+                'beside it.</div>')
+    write("pages/requirements.html", page("Requirements traceability", "".join(body), "requirements.html", 1,
+                                          TABLE_JS_INIT))
+
 def build_questions():
     body = ["<h1>Questions, answers and what is still missing</h1>"]
     body.append('<p class="muted">%d questions that have to be answered before a decision is reasonable. For each: '
@@ -2593,6 +2653,7 @@ def main():
     build_venue("venetian", "venetian.html", "The Venetian Resort", marquee_html())
     build_venue("wynn", "wynn.html", "Wynn Las Vegas", "")
     build_others()
+    build_requirements()
     build_questions()
     build_suggestions()
     build_flagged()

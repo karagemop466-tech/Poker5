@@ -270,6 +270,19 @@ function initHotels2(){
 }
 
 /* ---- trip planner ---- */
+/* status chips on the requirements page: they drive the page's own search box, so no
+   query-string link is needed and the site's link checker stays honest. */
+function initQueryChips(){
+  qsa('[data-q]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var q=document.getElementById('q'); if(!q) return;
+      q.value=b.getAttribute('data-q')||'';
+      q.dispatchEvent(new Event('input',{bubbles:true}));
+      q.focus();
+    });
+  });
+}
+
 function initPlanner(){
   var box=document.getElementById('picks'); if(!box) return;
   var out=document.getElementById('ptotal');
@@ -350,5 +363,5 @@ document.addEventListener('DOMContentLoaded',function(){
   /* landing-page search hands its term over as ?q=...; pre-fill the page's search box and filter */
   try{ var qp=new URLSearchParams(location.search).get('q'); var qb=document.getElementById('q');
     if(qp && qb){ qb.value=qp; qb.dispatchEvent(new Event('input')); } }catch(e){}
-  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions();
+  initFilters(); initHotels(); initHotels2(); initDays(); initPlanner(); initSuggestions(); initQueryChips();
 });

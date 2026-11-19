@@ -20,6 +20,7 @@ Data is time-sensitive. The repository's latest checked-in official-source captu
 - [Hotels and dated rates](https://karagemop466-tech.github.io/Poker5/pages/hotels.html) — itemized terms and dated observations; missing quote components stay blank
 - [Walking routes](https://karagemop466-tech.github.io/Poker5/pages/routes.html) — the 30-minute filter only applies where route evidence is recorded
 - [Trip planner](https://karagemop466-tech.github.io/Poker5/pages/planner.html) — does not claim a complete trip total without a date-matched, itemized hotel quote
+- [Requirements traceability](https://karagemop466-tech.github.io/Poker5/pages/requirements.html) — every line of the brief, its status, and the source that blocks each gap
 - [Questions / missing information](https://karagemop466-tech.github.io/Poker5/pages/questions.html)
 - [Suggestions](https://karagemop466-tech.github.io/Poker5/pages/suggestions.html)
 - [Flagged for review](https://karagemop466-tech.github.io/Poker5/pages/flagged-review.html)
@@ -54,6 +55,7 @@ python3 scripts/check_ea99006a.py
 python3 scripts/check_root_site.py
 python3 scripts/crosscheck_251c122f.py
 python3 scripts/recheck_ea99006a.py --offline
+python3 scripts/check_idempotency_0fd4c550.py
 python3 scripts/scrape_251c122f.py --self-test
 ```
 

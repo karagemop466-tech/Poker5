@@ -20,7 +20,7 @@ PAGES = ["index.html",
          "pages/executive-summary.html", "pages/tournaments.html", "pages/single-entry.html",
          "pages/tournaments-double.html", "pages/schedule.html", "pages/hotels.html",
          "pages/routes.html", "pages/planner.html", "pages/verification.html", "pages/venues/venetian.html",
-         "pages/venues/wynn.html", "pages/venues/others.html", "pages/questions.html",
+         "pages/venues/wynn.html", "pages/venues/others.html", "pages/questions.html", "pages/requirements.html",
          "pages/suggestions.html", "pages/flagged-review.html", "pages/monitor.html", "pages/repo-review.html",
          "pages/method.html"]
 
