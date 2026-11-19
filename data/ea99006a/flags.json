@@ -3,8 +3,9 @@
   "id": "F01",
   "area": "Entry rules",
   "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
-  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'No second entry granted (S1 screen)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'. The label was re-worded on 2026-11-19 (\"No second entry granted (S1 screen)\", PR #97) for exactly this reason: the pill states the result of the S1 screen, not a venue promise, and the old wording read as one. (session 6dba9b3c)",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F02",
@@ -461,5 +462,14 @@
   "status": "open",
   "last_updated": "2026-11-19",
   "id_note": "requested id F60 was already held by another session's finding"
+ },
+ {
+  "id": "F70",
+  "area": "Other rooms",
+  "title": "South Point's page text promises a $300 daily buy-in; its own published rules sheets do not have one",
+  "detail": "Read again 2026-11-19. The official South Point poker-room page states: \"We feature tournaments daily with aggressive guarantees at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300.\" The property's own Daily Tournament Schedule page carries no text at all (see F12) - eight rules-sheet images plus a schedule image - and the file names of those sheets state $120 six times and $200 twice: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg states $120; 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg states $120; 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg states $120; 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg states $120; 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg states $120; 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg states $200; 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg states $200; 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg states $120. So the $300 figure in the page text has no published sheet, and a $200 event that does have sheets is not mentioned in the page text at all. Because the schedule and the structures exist only as images, the eight South Point rows keep 'entry terms not read', and no start time is tied to a buy-in in any of them. Do not plan a South Point entry around a $300 event at a chosen hour on this evidence.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "status": "open: needs the printed schedule or rules in text form, or an answer from the room",
+  "last_updated": "2026-11-19"
  }
 ]

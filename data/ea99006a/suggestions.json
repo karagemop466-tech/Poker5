@@ -174,5 +174,16 @@
   ],
   "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
   "id": "S16"
+ },
+ {
+  "id": "S17",
+  "title": "Add a dated text capture for image-only official schedules",
+  "problem": "Two of the rooms the brief covers publish tournament detail only as images (South Point: the daily schedule plus all eight rules sheets; the Horseshoe and Caesars dailies are PDF flyers whose text is readable but whose per-event calendar is not). Those rows can never clear 'entry terms not read' from an HTML fetch, so they stay outside the single-entry comparison even when the event is real and playable.",
+  "options": [
+   "Fetch the named images on the morning run, OCR them into a dated capture, and publish the transcribed sentence with the image URL beside it (recommended: the value stays tied to an official artifact and the reader can see what was read)",
+   "Ask each room for its schedule and structures in text and publish the reply as the source (slowest, but it is also the only way to settle F01's written-cap question and Q21)",
+   "Leave them blank and flagged (current behaviour: honest, but it under-counts the playable field for a trip whose goal is to enter as many events as possible)"
+  ],
+  "effect": "Every room the trip could use becomes comparable on the same fields as the Venetian rows (buy-in, fee, guarantee, stack, levels, late-reg close, entry rules) instead of a table of blanks."
  }
 ]

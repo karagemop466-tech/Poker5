@@ -9,7 +9,7 @@
  {
   "id": "Q02",
   "q": "Is any DSE IV event actually a freezeout?",
-  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'No second entry granted (S1 screen)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
   "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
   "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
  },
@@ -138,5 +138,12 @@
   "missing": "No official source publishes a finish time, a field-size estimate or an expected duration, so the number of events a player can enter in one day cannot be computed - only bounded: an event's registration window is known, its end is not.",
   "how": "Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and ask the room for the typical finishing time of the specific event. One event per day stays the default until a real finish time is sourced.",
   "id": "Q20"
+ },
+ {
+  "id": "Q21",
+  "q": "Which South Point daily tournament is the $300 buy-in, and what are its structure and entry rules?",
+  "have": "The official room page states daily tournaments at 10:10 AM, 2:10 PM, 6:10 PM and 10:10 PM with buy-ins of $120 and $300, and the official schedule page publishes eight rules-sheet images whose file names state $120 (six) and $200 (two). The same page states 'Room rates are available with 4 hours of cash play for our out-of-town guests and parking is always free!' - the only published rate condition for staying there, and it is a cash-play condition, not a price.",
+  "missing": "The text of the schedule image (which event starts when), the text of each rules sheet (starting stack, blind levels, late-registration close, re-entry / add-on rules, guarantee) and whether a $300 event exists at all. None of it is published as text.",
+  "how": "Ask the South Point poker room for the daily schedule and structures in text (the property's own channel for lists is the Bravo Poker app), or transcribe the eight official sheet images into a dated capture. Until then the South Point rows stay 'entry terms not read' and are excluded from the single-entry comparison. See flags F12 and F70 and suggestion S17."
  }
 ]

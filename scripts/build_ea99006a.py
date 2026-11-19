@@ -122,6 +122,14 @@ VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
 
+# The trip window has two ends with two different jobs. TRIP["check_out"] is the hotel
+# check-out date (check_in + nights), which is what a booking link and a nights-times-rate
+# calculation need. Event lists run to the last *playing* day, which is the day before
+# check-out; listing events up to check-out would advertise a day the window was never scored
+# on. Older captures have no last_play_day, so the checkout date stays the fallback.
+PLAY_END = TRIP.get("last_play_day") or TRIP["check_out"]
+
+
 # The only nightly room rate any Strip property publishes on an official page (a starting floor, not a quote).
 VEN_POKER = {
     "rate_low": next((h.get("rate_floor") for h in HOTELS if h["key"] == "venetian"), None),
@@ -1362,8 +1370,8 @@ def build_schedule():
               for d in all_days]
     body.append('<div class="daynav" id="daynav">%s</div>' % "".join(chips))
     body.append('<label class="chk" style="margin:6px 0"><input type="checkbox" id="winonly"> '
-                'Only my %d nights (%s to %s, checkout day included for the day event)</label>'
-                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"])))
+                'Only my %d nights (%s to %s; the playing days run to %s, the day before check-out)</label>'
+                % (TRIP["nights"], esc(TRIP["check_in"]), esc(TRIP["check_out"]), esc(PLAY_END)))
     # Optional what-if: the user's own playing-length estimate. Blank by default; no source supplies it,
     # so it is never shown as an official value and never written into the data.
     body.append('<div class="panel" id="seqbox"><label><b>Assumed playing length</b> (hours, optional) '
@@ -1383,7 +1391,7 @@ def build_schedule():
     seqjson = json.dumps(seq, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     out = []
     for d, evs, prim, fb, conflicts in rows_by_date:
-        inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
+        inwin = TRIP["check_in"] <= d <= PLAY_END
         hay = "%s %s %s" % (pretty_date(d), weekday(d),
                             " ".join("%s %s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]],
                                                      (r.get("restriction") or {}).get("label", "")) for r in evs))
@@ -1690,11 +1698,13 @@ def build_hotels():
 
 def build_routes():
     body = ["<h1>Walking routes: hotel to poker room</h1>"]
-    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Only one walking distance is '
-                'published officially anywhere: a poker room that sits inside the hotel you are staying in, which is '
-                'zero minutes. No hotel or casino publishes a walking time to a <i>different</i> property, so those '
-                'cells are left blank rather than estimated. Use the route link to check one yourself, then record '
-                'the minutes below - the 30-minute filter works on what you record.</p>')
+    body.append('<p class="muted">The brief asks for a 30-minute walking limit measured between official '
+                'addresses. Each pair below is pinned on the two addresses printed beside it, taken from each '
+                'property\u2019s own official page with the date it was read. <b>No Strip property publishes a '
+                'walking time to a different property</b>, so the minute cells are blank rather than estimated, '
+                'and only the five pairs where the poker room is inside the hotel carry a verified time (zero). '
+                'Open the Google or Apple Maps link for the pair to see the walk for yourself; nothing on this '
+                'page has to be filled in to read the rest of the site.</p>')
     body.append(SEARCH_BAR % ("Search hotels, rooms, routes...", ""))
     body.append('<div class="panel"><label class="chk"><input type="checkbox" id="walkfilter"> '
                 'Hide pairs known to exceed the 30-minute limit (rows without verified minutes stay, marked unverified)</label>'
@@ -1702,29 +1712,62 @@ def build_routes():
                 '<label>Pair<select id="walkpair">%s</select></label>'
                 '<label>Minutes you measured<input id="walkmins" type="number" step="1" min="0"></label>'
                 '<button class="btn" id="walkrecord" type="button">Record</button></div>'
-                '<p class="muted sm">Recorded values are stored in this browser only and are shown as measured by you, '
-                'not as an official value.</p></div>'
+                '<p class="muted sm">Optional, and off by default: recorded values are stored in this browser only '
+                'and are shown as measured by you, never as an official value.</p></div>'
                 % "".join('<option value="%s">%s &rarr; %s</option>' % (esc(r["hotel_key"] + "|" + r["venue_key"]),
                                                                         esc(r["hotel"]), esc(r["venue"]))
                           for r in ROUTES if not r["same_property"]))
-    body.append('<div class="tablewrap"><table class="data" id="routetable"><thead><tr><th>Hotel</th><th>Poker room</th>'
-                '<th>Same property</th><th>Walking time</th><th>Method</th><th>Check it yourself</th></tr></thead><tbody>')
+    body.append('<div class="tablewrap"><table class="data" id="routetable"><thead><tr><th>Hotel</th>'
+                '<th>Hotel official address</th><th>Poker room</th><th>Room location / property address</th>'
+                '<th>Same property</th><th>Walking time</th><th>&le;30 min walk</th><th>How this pair is '
+                'measured</th><th>Check it yourself</th></tr></thead><tbody>')
     for r in ROUTES:
-        body.append("<tr data-pair=\"%s\" data-min=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
-                    "<td class=\"sm\">%s</td><td>%s</td></tr>"
+        mins = r.get("minutes")
+        same = bool(r.get("same_property"))
+        addr = r.get("origin_address") or ""
+        daddr = r.get("destination_address") or ""
+        read = r.get("addresses_read") or r.get("room_location_read") or ""
+        origin_cell = ('<span class="sm">%s</span><br><span class="muted sm">%s</span>'
+                       % (esc(addr), src_link(r.get("origin_address_source") or "", "read %s" % read))
+                       if addr else '<span class="blank">no street address published</span>')
+        dest_bits = []
+        if r.get("room_location"):
+            dest_bits.append('<span class="sm">%s</span> %s'
+                             % (esc(r["room_location"]),
+                                src_link(r.get("room_location_source") or "", "official page")))
+        dest_bits.append('<span class="muted sm">%s</span>'
+                         % (esc(daddr) if daddr else '<span class="blank">no street address published</span>'))
+        if not daddr and r.get("venue_page"):
+            dest_bits.append(src_link(r["venue_page"], "property page"))
+        verdict = ('<span class="pill pill-ok">yes - on property</span>' if same else
+                   '<span class="pill pill-bad">no</span>' if mins not in (None, "") and float(mins) > 30 else
+                   '<span class="blank">not verified - no official figure</span>')
+        body.append('<tr data-pair="%s" data-min="%s"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>'
+                    '<td>%s</td><td>%s</td><td class="sm">%s<br><span class="muted sm">%s</span></td>'
+                    '<td>%s %s</td></tr>'
                     % (esc(r["hotel_key"] + "|" + r["venue_key"]),
-                       "0" if r["same_property"] else "",
-                       esc(r["hotel"]), esc(r["venue"]),
-                       "Yes" if r["same_property"] else "No",
-                       '<span class="pill pill-ok">0 min</span>' if r["same_property"]
-                       else '<span class="blank">not verified</span>',
-                       esc(r["method"]),
-                       src_link(r["maps"], "walking directions")))
+                       "0" if same else "",
+                       esc(r["hotel"]), origin_cell, esc(r["venue"]), " ".join(dest_bits),
+                       "Yes" if same else "No",
+                       '<span class="pill pill-ok">0 min</span>' if same
+                       else (esc("%s min" % mins) if mins not in (None, "")
+                             else '<span class="blank">not verified</span>'),
+                       verdict,
+                       esc(r.get("method") or ""), esc(r.get("basis") or ""),
+                       src_link(r["maps"], "Google Maps"), src_link(r.get("maps_apple") or r["maps"], "Apple Maps")))
     body.append("</tbody></table></div>")
-    body.append('<div class="warnbox">The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the official '
-                'WPT terms state "Players will register in the Wynn Las Vegas Poker Room, located in Encore at Wynn '
-                'Las Vegas". Allow extra indoor walking time if you stay in the Wynn tower. '
-                '%s</div>' % src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf", "official terms"))
+    unmeasured = [r for r in ROUTES if not r.get("same_property")]
+    body.append('<div class="warnbox">The %d cross-property pairs stay unverified (flag '
+                '<a href="flagged-review.html">F50</a>): the walking minutes no official page states '
+                'are not filled in from a map\u2019s own estimate either, because the brief asks for verified '
+                'figures. The South Point pairs cannot be walked at all from a Strip hotel: that property\u2019s '
+                'own home page describes it as &ldquo;just a short drive from the iconic Las Vegas Strip&rdquo;. '
+                'The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the official WPT terms state '
+                '&ldquo;Players will register in the Wynn Las Vegas Poker Room, located in Encore at Wynn Las '
+                'Vegas&rdquo;, so allow extra indoor walking time from the Wynn tower. %s</div>'
+                % (len(unmeasured), src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/"
+                                             "v1750864036/visitwynn_pdfs_files/Poker/WPT/"
+                                             "WPT_World_Championship_Structures.pdf", "official terms")))
     write("pages/routes.html", page("Walking routes", "".join(body), "routes.html", 1))
 
 
@@ -1733,7 +1776,7 @@ def build_planner():
     # confirmed single-entry or explicitly multi-entry. The planner lists what can actually be played -
     # the confirmed rows first, the not-stated ones still labelled as such.
     rows = [r for r in ALL_EVENTS if r["kind"] == "entry" and r.get("date")
-            and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]
+            and TRIP["check_in"] <= r["date"] <= PLAY_END
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
     restricted_here = [r for r in rows if not is_open_to_general(r)]
@@ -1741,11 +1784,13 @@ def build_planner():
     body = ["<h1>Trip planner: cost of the trip</h1>"]
     body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
-                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your window (%s to %s): '
+                '<b>nights &times; true hotel cost</b>. The list below contains %d events in your playing window '
+                '(%s to %s; you check out %s): '
                 'the ones whose own structure sheet was read in full and grants no further entry are the playable '
                 'set, and rows whose sheet is merely silent about re-entry are still labelled as such. One listed '
                 'buy-in is counted per ticked event.</p>'
-                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(TRIP["check_out"]))))
+                % (len(rows), esc(pretty_date(TRIP["check_in"])), esc(pretty_date(PLAY_END)),
+                   esc(pretty_date(TRIP["check_out"]))))
     body.append('<div class="panel"><h2>Proposed planning window</h2><div class="kv">'
                 '<dt>Check in / out</dt><dd>%s &rarr; %s (%d nights)</dd>'
                 '<dt>Dates to consider</dt><dd>%s</dd>'
