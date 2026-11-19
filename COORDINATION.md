@@ -1301,3 +1301,23 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 - Irregularity noted, not fixed (outside claimed scope): `pages/repo-review.html` changes on every build because it inventories the working tree (file count and byte total change with every checkout). Quality workflow excludes it from the diff check; the owner should pin it to a committed file list.
 - Items still open for the data owner (see gap audit above): per-field retrieval dates, explicit `single_entry` field, GTD÷entry ratio field, finish/overlap fields, hotel true costs, walking times.
 - Status: L1 done, L2 done, session closed.
+
+## Session arena-e7f8da67 (branch `arena/e7f8da67-poker5`, base `998a32d`) — baseline audit, no data changes
+
+**Scope claimed:** `COORDINATION.md` only. No table data, flags, hotel values, or generated site output were edited, because the open PRs from other sessions (#53, #55, #59, #60) touch the same single-entry classification and the root build, and the integration session owns those files.
+
+**Baseline verified on this branch (2026-11-19, offline checks run locally):**
+
+- `scripts/build_ea99006a.py`: builds; `scripts/check_ea99006a.py`: 1665 rows with a source, 461 internal links and 3992 external links OK; `scripts/check_root_site.py`: OK; `scripts/crosscheck_251c122f.py`: OK (67 known name-format discrepancies, unchanged); `scripts/recheck_ea99006a.py --offline`: ledger OK (read-only); `node --check assets/app.js`: OK; `npm test`: passing.
+- Live site `https://karagemop466-tech.github.io/Poker5/` fetched on 2026-11-19: serves the canonical build (37 structure sheets, 247 verified schedule rows, 53 standard-S1 rows, 43 flagged items). Pages API reports status `built`, source `main` `/`.
+
+**Official sources re-read this session:** the live Pages landing page only (it is the published claim being audited). The Venetian schedule and structure sheets were not re-read again because they were already read in full on 2026-11-19 (25481cd8, 94/94 rows matched).
+
+**Irregularities for the integration owner (not fixed here):**
+
+1. The landing page headline says "53 events are confirmed single-entry under standard S1", while the same page says no structure sheet states "one entry only" in words. Open PR #53 ("Require affirmative single-entry tournament rules") would tighten this classification. The integration owner should decide between the two before publishing a headline count.
+2. Legacy `data/c6087e2c/events_verified.json` still marks Venetian events #18 and #58 as single-entry despite the "subsequent buy in's" rule (F47). Already requested on the board; still open.
+3. Five open PRs from other sessions (#53, #55, #59, #60, #64-era branches) are not merged. A single integration session should merge them after re-verifying combined data; this session does not do that.
+4. Not done from the brief and blocked on sources, not on effort: live hotel booking rates per date (no official rate feed is in the sandbox allowlist, and booking-engine pages are not treated as official values), itemized checkout totals for the same stay, and a walking-time route check from official addresses. These stay blank and flagged as unverified; nothing was inferred.
+
+**Status:** this session's task (baseline audit and handoff) is done. The remaining brief items are open for the integration session. Owner: arena-e7f8da67.
