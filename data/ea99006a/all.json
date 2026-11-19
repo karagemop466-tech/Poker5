@@ -32,7 +32,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -45,6 +45,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -138,7 +139,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -170,7 +172,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -183,6 +185,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 8:40 PM)",
+    "registration_close_clock": "20:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -276,7 +279,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "20:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -308,7 +312,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -321,6 +325,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -414,7 +419,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -446,7 +452,7 @@
    "entry_evidence": {
     "sheet_no": 9,
     "sheet_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -459,6 +465,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 8:40 PM)",
+    "registration_close_clock": "20:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -552,7 +559,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "20:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -584,12 +592,13 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -683,7 +692,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -715,7 +725,7 @@
    "entry_evidence": {
     "sheet_no": 10,
     "sheet_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -728,6 +738,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -821,7 +832,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -853,12 +865,13 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~ 12:25 PM)",
+    "registration_close_clock": "12:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -946,7 +959,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "12:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -978,12 +992,13 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~ 12:25 PM)",
+    "registration_close_clock": "12:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1071,7 +1086,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "12:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -1103,12 +1119,13 @@
    "entry_evidence": {
     "sheet_no": 18,
     "sheet_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~ 12:25 PM)",
+    "registration_close_clock": "12:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1196,7 +1213,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "12:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -1228,12 +1246,13 @@
    "entry_evidence": {
     "sheet_no": 29,
     "sheet_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1321,7 +1340,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -1353,7 +1373,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1366,6 +1386,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1459,7 +1480,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -1491,12 +1513,13 @@
    "entry_evidence": {
     "sheet_no": 30,
     "sheet_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1591,7 +1614,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -1623,7 +1647,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1636,6 +1660,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1729,7 +1754,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -1761,12 +1787,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1861,7 +1888,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -1893,7 +1921,7 @@
    "entry_evidence": {
     "sheet_no": 2,
     "sheet_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -1906,6 +1934,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -1999,7 +2028,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -2031,12 +2061,13 @@
    "entry_evidence": {
     "sheet_no": 6,
     "sheet_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2130,7 +2161,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -2162,12 +2194,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2262,7 +2295,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -2294,12 +2328,13 @@
    "entry_evidence": {
     "sheet_no": 5,
     "sheet_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2393,7 +2428,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -2425,12 +2461,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2525,7 +2562,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -2557,12 +2595,13 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2656,7 +2695,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -2688,12 +2728,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2788,7 +2829,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -2820,12 +2862,13 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -2919,7 +2962,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -2951,12 +2995,13 @@
    "entry_evidence": {
     "sheet_no": 26,
     "sheet_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + break (~ 4:40 PM)",
+    "registration_close_clock": "16:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3051,7 +3096,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -3083,7 +3129,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -3091,6 +3137,7 @@
     ],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3185,7 +3232,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -3217,7 +3265,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3230,6 +3278,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3323,7 +3372,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -3355,12 +3405,13 @@
    "entry_evidence": {
     "sheet_no": 22,
     "sheet_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + break (~ 4:40 PM)",
+    "registration_close_clock": "16:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3454,7 +3505,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -3486,12 +3538,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3586,7 +3639,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -3618,7 +3672,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3631,6 +3685,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3724,7 +3779,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -3756,12 +3812,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3856,7 +3913,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -3888,7 +3946,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -3901,6 +3959,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -3994,7 +4053,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -4026,12 +4086,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4126,7 +4187,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -4158,12 +4220,13 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 3:55 PM)",
+    "registration_close_clock": "15:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4257,6 +4320,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "15:55",
+   "restriction": {
+    "label": "Age restriction: 50+ (Seniors)",
+    "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 17
    }
   },
   {
@@ -4289,7 +4360,7 @@
    "entry_evidence": {
     "sheet_no": 3,
     "sheet_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4302,6 +4373,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4395,7 +4467,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -4427,12 +4500,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4527,7 +4601,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -4559,7 +4634,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4572,6 +4647,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4665,7 +4741,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -4697,12 +4774,13 @@
    "entry_evidence": {
     "sheet_no": 28,
     "sheet_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + break (~ 4:40 PM)",
+    "registration_close_clock": "16:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4796,7 +4874,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -4828,7 +4907,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4841,6 +4920,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 8:40 PM)",
+    "registration_close_clock": "20:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -4934,7 +5014,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "20:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -4966,7 +5047,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -4979,6 +5060,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5072,7 +5154,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -5104,7 +5187,7 @@
    "entry_evidence": {
     "sheet_no": 13,
     "sheet_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5117,6 +5200,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 8:40 PM)",
+    "registration_close_clock": "20:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5210,7 +5294,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "20:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -5242,7 +5327,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5255,6 +5340,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5348,7 +5434,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -5380,7 +5467,7 @@
    "entry_evidence": {
     "sheet_no": 14,
     "sheet_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5393,6 +5480,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 7:25 PM)",
+    "registration_close_clock": "19:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5486,7 +5574,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "19:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -5518,12 +5607,13 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5617,7 +5707,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -5649,7 +5740,7 @@
    "entry_evidence": {
     "sheet_no": 12,
     "sheet_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -5662,6 +5753,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "6 levels + Break (~ 3:40 PM)",
+    "registration_close_clock": "15:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5755,7 +5847,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "15:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -5787,12 +5880,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -5887,7 +5981,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -5919,12 +6014,13 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6018,7 +6114,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -6050,12 +6147,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6150,7 +6248,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -6182,12 +6281,13 @@
    "entry_evidence": {
     "sheet_no": 17,
     "sheet_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 10,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 3:55 PM)",
+    "registration_close_clock": "15:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6281,6 +6381,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "15:55",
+   "restriction": {
+    "label": "Age restriction: 50+ (Seniors)",
+    "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 17
    }
   },
   {
@@ -6313,12 +6421,13 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~6:25 PM)",
+    "registration_close_clock": "18:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6413,6 +6522,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "18:25",
+   "restriction": {
+    "label": "Restricted field: female players only (LIPS Ladies)",
+    "excerpt": "Open to Female players who must 21+ years of age and have a Venetian Rewards card to participate.",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 19
    }
   },
   {
@@ -6445,12 +6562,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6545,7 +6663,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -6577,12 +6696,13 @@
    "entry_evidence": {
     "sheet_no": 31,
     "sheet_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (~ 2:40 PM)",
+    "registration_close_clock": "14:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6676,6 +6796,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "14:40",
+   "restriction": {
+    "label": "Restricted format: two-player tag team, female/female or female/male",
+    "excerpt": "Teams: Female / Female OR Female / Male",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 31
    }
   },
   {
@@ -6708,12 +6836,13 @@
    "entry_evidence": {
     "sheet_no": 16,
     "sheet_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6807,7 +6936,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -6839,12 +6969,13 @@
    "entry_evidence": {
     "sheet_no": 19,
     "sheet_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~6:25 PM)",
+    "registration_close_clock": "18:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -6939,6 +7070,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "18:25",
+   "restriction": {
+    "label": "Restricted field: female players only (LIPS Ladies)",
+    "excerpt": "Open to Female players who must 21+ years of age and have a Venetian Rewards card to participate.",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 19
    }
   },
   {
@@ -6971,12 +7110,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7071,7 +7211,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -7103,7 +7244,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7114,6 +7255,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7207,7 +7349,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -7239,12 +7382,13 @@
    "entry_evidence": {
     "sheet_no": 27,
     "sheet_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + break (~ 4:40 PM)",
+    "registration_close_clock": "16:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7339,7 +7483,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -7371,12 +7516,13 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~6:25 PM)",
+    "registration_close_clock": "18:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7471,7 +7617,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "18:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -7503,12 +7650,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7603,7 +7751,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -7635,7 +7784,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -7646,6 +7795,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7739,7 +7889,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -7771,12 +7922,13 @@
    "entry_evidence": {
     "sheet_no": 33,
     "sheet_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -7870,7 +8022,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -7902,12 +8055,13 @@
    "entry_evidence": {
     "sheet_no": 24,
     "sheet_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels + Break (~6:25 PM)",
+    "registration_close_clock": "18:25",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8002,7 +8156,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "18:25"
   },
   {
    "venue": "The Venetian Resort",
@@ -8034,7 +8189,7 @@
    "entry_evidence": {
     "sheet_no": 32,
     "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8045,6 +8200,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8138,7 +8294,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -8170,12 +8327,13 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels",
+    "registration_close_clock": "",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8270,7 +8428,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": ""
   },
   {
    "venue": "The Venetian Resort",
@@ -8302,12 +8461,13 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels",
+    "registration_close_clock": "",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8402,7 +8562,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": ""
   },
   {
    "venue": "The Venetian Resort",
@@ -8434,7 +8595,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8447,6 +8608,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8540,7 +8702,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -8572,12 +8735,13 @@
    "entry_evidence": {
     "sheet_no": 25,
     "sheet_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "6 levels",
+    "registration_close_clock": "",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8672,7 +8836,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": ""
   },
   {
    "venue": "The Venetian Resort",
@@ -8704,7 +8869,7 @@
    "entry_evidence": {
     "sheet_no": 37,
     "sheet_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8717,6 +8882,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 11:10 PM)",
+    "registration_close_clock": "23:10",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8810,7 +8976,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "23:10"
   },
   {
    "venue": "The Venetian Resort",
@@ -8842,7 +9009,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -8855,6 +9022,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -8948,6 +9116,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "16:55",
+   "restriction": {
+    "label": "Age restriction: 50+ (Seniors)",
+    "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 20
    }
   },
   {
@@ -8980,7 +9156,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -8993,6 +9169,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9086,7 +9263,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -9118,12 +9296,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9218,7 +9397,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -9250,7 +9430,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9263,6 +9443,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9356,6 +9537,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "16:55",
+   "restriction": {
+    "label": "Age restriction: 50+ (Seniors)",
+    "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 20
    }
   },
   {
@@ -9388,7 +9577,7 @@
    "entry_evidence": {
     "sheet_no": 21,
     "sheet_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -9401,6 +9590,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9494,7 +9684,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -9526,12 +9717,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9626,7 +9818,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -9658,7 +9851,7 @@
    "entry_evidence": {
     "sheet_no": 20,
     "sheet_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
@@ -9671,6 +9864,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9764,6 +9958,14 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
+   },
+   "late_reg_clock": "16:55",
+   "restriction": {
+    "label": "Age restriction: 50+ (Seniors)",
+    "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+    "retrieved": "2026-11-19",
+    "sheet_no": 20
    }
   },
   {
@@ -9796,12 +9998,13 @@
    "entry_evidence": {
     "sheet_no": 34,
     "sheet_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -9896,7 +10099,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -9928,12 +10132,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10028,7 +10233,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -10060,12 +10266,13 @@
    "entry_evidence": {
     "sheet_no": 11,
     "sheet_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 11,
     "sheet_effective_date": "10.09.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10159,7 +10366,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -10191,12 +10399,13 @@
    "entry_evidence": {
     "sheet_no": 15,
     "sheet_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10291,7 +10500,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -10323,7 +10533,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10336,6 +10546,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10429,7 +10640,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -10461,12 +10673,13 @@
    "entry_evidence": {
     "sheet_no": 23,
     "sheet_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.12.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + break (~ 4:40 PM)",
+    "registration_close_clock": "16:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10560,7 +10773,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -10592,7 +10806,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10605,6 +10819,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 11:10 PM)",
+    "registration_close_clock": "23:10",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10698,7 +10913,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "23:10"
   },
   {
    "venue": "The Venetian Resort",
@@ -10730,7 +10946,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10743,6 +10959,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10836,7 +11053,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -10868,7 +11086,7 @@
    "entry_evidence": {
     "sheet_no": 36,
     "sheet_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -10881,6 +11099,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 11:10 PM)",
+    "registration_close_clock": "23:10",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -10974,7 +11193,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "23:10"
   },
   {
    "venue": "The Venetian Resort",
@@ -11006,7 +11226,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11019,6 +11239,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11112,7 +11333,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -11144,7 +11366,7 @@
    "entry_evidence": {
     "sheet_no": 8,
     "sheet_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [
@@ -11152,6 +11374,7 @@
     ],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11246,7 +11469,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -11278,7 +11502,7 @@
    "entry_evidence": {
     "sheet_no": 35,
     "sheet_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:45Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11291,6 +11515,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11384,7 +11609,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -11416,7 +11642,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11429,6 +11655,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11522,7 +11749,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -11554,12 +11782,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11654,7 +11883,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -11686,7 +11916,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11699,6 +11929,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11792,7 +12023,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -11824,12 +12056,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -11924,7 +12157,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -11956,7 +12190,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -11969,6 +12203,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -12062,7 +12297,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -12094,12 +12330,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -12194,7 +12431,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   },
   {
    "venue": "The Venetian Resort",
@@ -12226,7 +12464,7 @@
    "entry_evidence": {
     "sheet_no": 4,
     "sheet_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 13,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
@@ -12239,6 +12477,7 @@
      "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
     ],
     "registration_close": "9 levels + Break (5:55 PM)",
+    "registration_close_clock": "17:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -12332,7 +12571,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "17:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -12364,12 +12604,13 @@
    "entry_evidence": {
     "sheet_no": 7,
     "sheet_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 10,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "10 levels + Break (~ 4:55 PM)",
+    "registration_close_clock": "16:55",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -12463,7 +12704,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "16:55"
   },
   {
    "venue": "The Venetian Resort",
@@ -12495,12 +12737,13 @@
    "entry_evidence": {
     "sheet_no": 1,
     "sheet_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
-    "sheet_retrieved": "2026-11-19T22:00:52Z",
+    "sheet_retrieved": "2026-11-19T22:06:44Z",
     "rules_read": 12,
     "sheet_effective_date": "10.06.26",
     "entry_grant_sentences": [],
     "flight_sentences": [],
     "registration_close": "8 levels + Break (9:40 PM)",
+    "registration_close_clock": "21:40",
     "event_named_on_sheet": true,
     "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
    },
@@ -12595,7 +12838,8 @@
     "checked_by": "scripts/integrate_b3be876c.py",
     "basis": "the two official captures stored in data/c6087e2c/ compared field by field",
     "mismatches": 0
-   }
+   },
+   "late_reg_clock": "21:40"
   }
  ],
  "wpt": [
@@ -17629,10 +17873,10 @@
   {
    "id": "F47",
    "area": "Entry rules",
-   "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-   "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
+   "title": "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
+   "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: 'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both single_entry_confirmed, and its current cross-check passes because the classifier does not recognize this wording. That capture is not the canonical published dataset; request a classifier/cross-check repair before using it as a decision source. The S1 test now reads the whole rule list, not only re-entry/rebuy/add-on keywords.",
    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "status": "fixed by this session; kept visible",
+   "status": "open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected",
    "last_updated": "2026-11-19"
   },
   {
@@ -17761,48 +18005,92 @@
   },
   {
    "id": "F62",
-   "area": "Source mismatch",
+   "area": "Coverage",
    "title": "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
    "detail": "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in data/8f0b323b/schedule_recheck.json.",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+   "id_note": "reassigned during merge with main (id collision)",
    "status": "open - cosmetic, no value affected",
    "last_updated": "2026-11-19"
   },
   {
    "id": "F63",
-   "area": "Hotel fees",
+   "area": "Entry rules",
    "title": "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
    "detail": "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read.",
    "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
    "status": "open by design",
-   "last_updated": "2026-11-19"
+   "last_updated": "2026-11-19",
+   "id_note": "reassigned during merge with main (id collision)"
   },
   {
    "id": "F64",
-   "area": "Hotel fees",
+   "area": "Entry rules",
    "title": "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
    "detail": "Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties.",
    "source": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
    "status": "verified - figures official",
-   "last_updated": "2026-11-19"
+   "last_updated": "2026-11-19",
+   "id_note": "reassigned during merge with main (id collision)"
   },
   {
    "id": "F65",
-   "area": "Entry rules",
+   "area": "Monitoring",
    "title": "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
    "detail": "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01); six of the sheets behind the trip window were not re-read in this session.",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
    "status": "open - evidence limitation",
-   "last_updated": "2026-11-19"
+   "last_updated": "2026-11-19",
+   "id_note": "reassigned during merge with main (id collision)"
+  },
+  {
+   "id": "F66",
+   "area": "Schedule",
+   "title": "Shared structure sheets can print one registration close for several events on different start times",
+   "detail": "Structure sheet 25 covers events #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one line, 'Late Registration: 6 levels', with no clock. An earlier pass copied the 8:10 PM row's derived clock (9:40 PM) onto the two morning rows, which would have widened their registration window by more than ten hours. Fix applied: the builder now prefers the clock time the sheet itself printed, and where a shared sheet prints none the row keeps its text and states no close time instead of borrowing another event's. No close time is invented.",
+   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+   "status": "fixed by this session",
+   "last_updated": "2026-11-19",
+   "id_note": "reassigned during merge with main (id collision)"
+  },
+  {
+   "id": "F67",
+   "area": "Eligibility",
+   "title": "Event #35 is a two-person team event: the S1 label describes one entry, not one player",
+   "detail": "Session 0a0d8e6b flagged that #35 ($600 LIPS Poker Jingle Tag Team, sheet 31) is stored as a confirmed single-entry row although the sheet describes a team format ('Teams: Female / Female OR Female / Male'; 'Teams will rotate their players at the start of every level'). Re-read on 2026-11-19 and extended by session 2723deea: the sheet states no second-buy-in path, so the S1 entry test itself still passes - but the row is not an individual event and it requires a partner, which the S1 label cannot express. The row now carries a restriction label with the official sentence, the ranking and the day plan exclude it, and this flag records that the S1 label alone is not sufficient for team formats.",
+   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+   "status": "labelled by this session; S1 label limitation kept open",
+   "last_updated": "2026-11-19",
+   "id_note": "reassigned during merge with main (id collision)"
+  },
+  {
+   "id": "F68",
+   "area": "Entry rules",
+   "title": "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+   "detail": "The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December $600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints 'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived restriction label with its sentence and retrieval date, the label is shown on every row, the executive ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. A reader who is eligible can still play them; the label says who can.",
+   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+   "status": "fixed by this session; label visible on the row",
+   "last_updated": "2026-11-19",
+   "id_note": "requested id F59 was already held by another session's finding"
+  },
+  {
+   "id": "F69",
+   "area": "Monitoring",
+   "title": "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+   "detail": "The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the 2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it.",
+   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+   "status": "open",
+   "last_updated": "2026-11-19",
+   "id_note": "requested id F60 was already held by another session's finding"
   }
  ],
  "questions": [
   {
    "id": "Q01",
    "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-   "have": "The site now fixes this for you: 2026-12-06 to 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
-   "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
-   "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
+   "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day. The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
+   "missing": "The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The scenario above is the site's automatic choice, not your decision, and no hotel has a dated, itemized quote for it, so the trip total stays 'Incomplete'.",
+   "how": "Read the scenario as a starting point, then obtain official itemized quotes for the same nights, occupancy and room class before treating any hotel figure as a comparison. The date filter on every table re-scopes every row."
   },
   {
    "id": "Q02",
@@ -17922,6 +18210,20 @@
    "have": "All 22 single-entry structure sheets were re-read on 2026-11-19. None states a re-entry, rebuy, add-on or maximum-entry rule itself, and each cites 'TDA rules apply' by reference. The rulebook text has not been captured.",
    "missing": "The house-rules text, and a written statement from the poker room desk on the maximum number of entries for each event you plan to play.",
    "how": "Ask the Venetian poker room desk for the written house rules and the written entry limit for each event, record the answer with its date and source, then update the S1 label. Until then, a row is 'no re-entry wording found', not 'confirmed single-entry'."
+  },
+  {
+   "q": "Which published events is a general entrant actually allowed to enter, and where is that stated?",
+   "have": "Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on the row with its sentence and link: Seniors 50+ (sheet 17 events #24 and #32; sheet 20 events #49 and the #49 restart), a female-only field (sheet 19 events #33 and #37), and a two-player tag team (sheet 31 event #35). They are excluded from the executive ranking because they are not a pick a general reader can play.",
+   "missing": "There is no published list of which other rows carry eligibility conditions the sheets do not state (for example a minimum-play requirement, a member-only satellite, or an invitation-only field). The tag-team event also requires a partner, which the sheet states as a format rule, not as a waitlist or pairing service - whether the room pairs singles was not found.",
+   "how": "Ask the Venetian poker room to confirm in writing, per event number, that no unpublished eligibility condition applies; until then a reader should treat only the rows with no restriction label as open to them.",
+   "id": "Q19"
+  },
+  {
+   "q": "What would a day actually look like from 8 AM, and how many events can really be played in one day?",
+   "have": "The earliest official start in the captured window is 9:10 AM (Venetian #46, a turbo satellite on 12 December); the earliest non-satellite start is 10:10 AM. Evening events start at 4:10 PM, 5:10 PM, 6:10 PM and 8:10 PM, and the latest published registration close is 9:40 PM.",
+   "missing": "No official source publishes a finish time, a field-size estimate or an expected duration, so the number of events a player can enter in one day cannot be computed - only bounded: an event's registration window is known, its end is not.",
+   "how": "Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and ask the room for the typical finishing time of the specific event. One event per day stays the default until a real finish time is sourced.",
+   "id": "Q20"
   }
  ],
  "suggestions": [
@@ -18078,6 +18380,28 @@
    ],
    "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
    "id": "S14"
+  },
+  {
+   "title": "Filter the tables by whether an event is actually open to you",
+   "problem": "Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are 50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this session they were ranked as ordinary picks and could become a day's primary event.",
+   "options": [
+    "Keep the per-row 'entry restricted' label only (implemented)",
+    "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+    "Let the reader tick which field types they qualify for and filter on that"
+   ],
+   "effect": "The label is implemented and the ranking plus the day schedule already exclude restricted rows. A reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age and gender are the reader's own facts, not the site's to assume), so it is left as an option.",
+   "id": "S15"
+  },
+  {
+   "title": "Have the monitor record its first-read baseline explicitly",
+   "problem": "The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57).",
+   "options": [
+    "Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+    "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+    "Drop the page-hash ledger and publish only value-level changes"
+   ],
+   "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
+   "id": "S16"
   }
  ],
  "tax": {

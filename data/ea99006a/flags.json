@@ -252,10 +252,10 @@
  {
   "id": "F47",
   "area": "Entry rules",
-  "title": "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says 'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the brief asks for. The published test now reads the whole rule list, not a keyword.",
+  "title": "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
+  "detail": "Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: 'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both single_entry_confirmed, and its current cross-check passes because the classifier does not recognize this wording. That capture is not the canonical published dataset; request a classifier/cross-check repair before using it as a decision source. The S1 test now reads the whole rule list, not only re-entry/rebuy/add-on keywords.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-  "status": "fixed by this session; kept visible",
+  "status": "open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected",
   "last_updated": "2026-11-19"
  },
  {
@@ -384,38 +384,82 @@
  },
  {
   "id": "F62",
-  "area": "Source mismatch",
+  "area": "Coverage",
   "title": "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
   "detail": "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in data/8f0b323b/schedule_recheck.json.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "id_note": "reassigned during merge with main (id collision)",
   "status": "open - cosmetic, no value affected",
   "last_updated": "2026-11-19"
  },
  {
   "id": "F63",
-  "area": "Hotel fees",
+  "area": "Entry rules",
   "title": "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
   "detail": "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read.",
   "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
   "status": "open by design",
-  "last_updated": "2026-11-19"
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
  },
  {
   "id": "F64",
-  "area": "Hotel fees",
+  "area": "Entry rules",
   "title": "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
   "detail": "Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties.",
   "source": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
   "status": "verified - figures official",
-  "last_updated": "2026-11-19"
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
  },
  {
   "id": "F65",
-  "area": "Entry rules",
+  "area": "Monitoring",
   "title": "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
   "detail": "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01); six of the sheets behind the trip window were not re-read in this session.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
   "status": "open - evidence limitation",
-  "last_updated": "2026-11-19"
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F66",
+  "area": "Schedule",
+  "title": "Shared structure sheets can print one registration close for several events on different start times",
+  "detail": "Structure sheet 25 covers events #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one line, 'Late Registration: 6 levels', with no clock. An earlier pass copied the 8:10 PM row's derived clock (9:40 PM) onto the two morning rows, which would have widened their registration window by more than ten hours. Fix applied: the builder now prefers the clock time the sheet itself printed, and where a shared sheet prints none the row keeps its text and states no close time instead of borrowing another event's. No close time is invented.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+  "status": "fixed by this session",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F67",
+  "area": "Eligibility",
+  "title": "Event #35 is a two-person team event: the S1 label describes one entry, not one player",
+  "detail": "Session 0a0d8e6b flagged that #35 ($600 LIPS Poker Jingle Tag Team, sheet 31) is stored as a confirmed single-entry row although the sheet describes a team format ('Teams: Female / Female OR Female / Male'; 'Teams will rotate their players at the start of every level'). Re-read on 2026-11-19 and extended by session 2723deea: the sheet states no second-buy-in path, so the S1 entry test itself still passes - but the row is not an individual event and it requires a partner, which the S1 label cannot express. The row now carries a restriction label with the official sentence, the ranking and the day plan exclude it, and this flag records that the S1 label alone is not sufficient for team formats.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "status": "labelled by this session; S1 label limitation kept open",
+  "last_updated": "2026-11-19",
+  "id_note": "reassigned during merge with main (id collision)"
+ },
+ {
+  "id": "F68",
+  "area": "Entry rules",
+  "title": "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+  "detail": "The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December $600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints 'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived restriction label with its sentence and retrieval date, the label is shown on every row, the executive ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. A reader who is eligible can still play them; the label says who can.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+  "status": "fixed by this session; label visible on the row",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F59 was already held by another session's finding"
+ },
+ {
+  "id": "F69",
+  "area": "Monitoring",
+  "title": "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+  "detail": "The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the 2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "status": "open",
+  "last_updated": "2026-11-19",
+  "id_note": "requested id F60 was already held by another session's finding"
  }
 ]

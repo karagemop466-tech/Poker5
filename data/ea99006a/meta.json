@@ -645,6 +645,11 @@
   "session": "b3be876c",
   "run_at": "2026-11-19",
   "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
+  "reverified_by": {
+   "session": "2723deea",
+   "date": "2026-11-19",
+   "record": "data/2723deea/reverify.json"
+  },
   "live_reads": {
    "wynn_resort_fee": "2026-11-19",
    "caesars_resort_fee": "2026-11-19",

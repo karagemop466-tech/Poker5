@@ -130,3 +130,55 @@ test('schedule: assumed-length sequencing check is optional and correct on known
   assert.equal(r.cannot.length, 0, 'an unstated close is never treated as impossible');
   assert.equal(r.unknown, 1);
 });
+
+// ---- session 2723deea regression tests -------------------------------------
+// Three defects found on 2026-11-19 by re-reading the official sheets and the
+// published pages. Each test fails if the defect comes back.
+
+async function restrictedNames() {
+  const data = JSON.parse(await readFile(join(ROOT, 'data/ea99006a/venetian.json'), 'utf8'));
+  return new Set(data.filter((r) => r.restriction).map((r) => r.name));
+}
+
+test('a restricted field is never offered as a day\'s primary event or a top-ranked pick', async () => {
+  const [single, exec, sched] = await Promise.all([
+    page('pages/single-entry.html'), page('pages/executive-summary.html'), page('pages/schedule.html'),
+  ]);
+  // the label and the official reason are published next to the row
+  assert.match(single, /S1, entry restricted/);
+  assert.match(single, /50\+ \(Seniors\)/);
+  assert.match(single, /female players only/);
+  // the executive ranking states what it excluded and why
+  assert.match(exec, /excluded from this ranking because their own official structure sheet restricts the field/);
+  const restricted = await restrictedNames();
+  assert.ok(restricted.size > 0, 'expected at least one sheet-restricted row in the data');
+  for (const card of sched.split('<div class="panel daycard')) {
+    const m = card.match(/<dt>Primary event<\/dt><dd><b>([^<]+)<\/b>/);
+    if (!m) continue;
+    const name = m[1].replace(/&#x27;/g, "'").replace(/&amp;/g, '&');
+    assert.ok(!restricted.has(name), `restricted event chosen as a primary pick: ${name}`);
+  }
+});
+
+test('no row borrows another event\'s registration-close clock time', async () => {
+  const sched = await page('pages/schedule.html');
+  // Sheet 25 covers #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one
+  // "Late Registration: 6 levels" line with no clock. The morning rows must not carry
+  // the 9:40 PM close that belongs to the 8:10 PM event's derived time.
+  const rows = sched.split('<tr ').map((r) => r.split('</tr>')[0])
+    .filter((r) => /Turbo Milestone Satellite/.test(r) && /09:10 AM|12:10 PM/.test(r));
+  assert.ok(rows.length > 0, 'expected morning turbo-satellite rows on the schedule page');
+  for (const r of rows) assert.doesNotMatch(r, /9:40 PM/, 'a morning satellite row inherited the 8:10 PM close time');
+});
+
+test('every restricted row publishes the sheet sentence that closes the field', async () => {
+  const data = JSON.parse(await readFile(join(ROOT, 'data/ea99006a/venetian.json'), 'utf8'));
+  const restricted = data.filter((r) => r.restriction);
+  assert.ok(restricted.length > 0);
+  for (const r of restricted) {
+    assert.ok(r.restriction.label, `no label on #${r.event_no}`);
+    assert.ok(r.restriction.excerpt, `no official excerpt on #${r.event_no}`);
+    assert.match(r.restriction.source, /^https:\/\//, `no official link on #${r.event_no}`);
+    assert.match(r.restriction.retrieved, /^\d{4}-\d{2}-\d{2}$/, `no retrieval date on #${r.event_no}`);
+  }
+});

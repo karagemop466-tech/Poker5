@@ -152,5 +152,27 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "title": "Filter the tables by whether an event is actually open to you",
+  "problem": "Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are 50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this session they were ranked as ordinary picks and could become a day's primary event.",
+  "options": [
+   "Keep the per-row 'entry restricted' label only (implemented)",
+   "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+   "Let the reader tick which field types they qualify for and filter on that"
+  ],
+  "effect": "The label is implemented and the ranking plus the day schedule already exclude restricted rows. A reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age and gender are the reader's own facts, not the site's to assume), so it is left as an option.",
+  "id": "S15"
+ },
+ {
+  "title": "Have the monitor record its first-read baseline explicitly",
+  "problem": "The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57).",
+  "options": [
+   "Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+   "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+   "Drop the page-hash ledger and publish only value-level changes"
+  ],
+  "effect": "Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it does not change any published value.",
+  "id": "S16"
  }
 ]
