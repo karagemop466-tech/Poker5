@@ -20,6 +20,8 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Verification:** regenerated with `python3 scripts/build_ea99006a.py`; `npm test` (10/10), including a regression that the toggle excludes unknown and multi-entry records; `python3 scripts/check_ea99006a.py` (18 pages, 1,261 sourced rows, 417 internal / 1,271 external link references checked); `node --check assets/app.js`; `git diff --check`. No event data or source status changed.
 
+**Publication:** PR [#51](https://github.com/karagemop466-tech/Poker5/pull/51) merged 2026-11-19T05:53:32Z as `0e4fe793ea42bd0fb922667a45005d1704fa7667`; PR `check` and `validate` passed. Pages deployment [#44468260411](https://github.com/karagemop466-tech/Poker5/actions/runs/44468260411) succeeded and Pages API reports `built` for the merge commit. The live tournaments page at https://karagemop466-tech.github.io/Poker5/pages/tournaments.html shows the confirmed-only toggle. No single-entry event currently passes the filter because none is officially confirmed.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
