@@ -45,7 +45,10 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Verification (2026-11-19):** `python3 scripts/build_ea99006a.py` (deterministic; `pages/repo-review.html` changes only with its live inventory, as before); `python3 scripts/check_ea99006a.py` OK (1,649 rows, all with an official https source; no broken internal links); `python3 scripts/check_root_site.py` OK; `npm test` 21/21; `node --check assets/app.js` OK; the schedule script extracted and syntax-checked; `python3 scripts/recheck_ea99006a.py --offline` ledger OK; `python3 scripts/integrate_b3be876c.py --report` read-only, unchanged.
 
-**Irregularities (for Flagged for review):** F55 (Wynn cancellation, corrected). The Q14/F33 text is updated to match. No other irregularity was found in the 28 window rows or the six sheets re-read.
+**Irregularities (for Flagged for review):** F55 (Wynn cancellation, corrected). No other irregularity was found in the 28 window rows or the six sheets re-read.
+
+- **Merge and branch collision (logged).** `main` moved (PRs #64–#70) while this branch was open, so the PR showed a conflict. Resolved by merging `main` (`92edcac`): `COORDINATION.md` kept both sessions' sections; the generated root pages (`index.html`, `pages/verification.html`, `pages/repo-review.html`) were regenerated from the merged builder, not hand-merged; `scripts/build_ea99006a.py` auto-merged and was checked against `main` (only this session's intended edits differ). Separately, commit `97bc6d6` (session 1dd08538's claim, COORDINATION.md only) landed on this branch after this session pushed; its content was kept by merge `aad854e`, and the one conflict at the end of the file was resolved by keeping both sides (its claim lines were already present). No content from either session was dropped. Session 1dd08538 should use its own branch.
+- **Publication:** PR [#69](https://github.com/karagemop466-tech/Poker5/pull/69) (`arena/d615f79e-poker5` → `main`). The merge and Pages result are posted on that PR after the merge. The Q14/F33 text is updated to match. No other irregularity was found in the 28 window rows or the six sheets re-read.
 
 
 ### Sources (session 25481cd8; all read 2026-11-19)
