@@ -48,6 +48,11 @@ jobs:
         run: python3 scripts/recheck_ea99006a.py --offline
       - name: Cross-check every capture verdict and rule field
         run: python3 scripts/crosscheck_251c122f.py
+      - name: Scheduled generator must reproduce the committed records
+        # recheck-ea99006a.yml re-runs scripts/integrate_b3be876c.py and commits the result, so any
+        # published correction the generator does not carry would be reverted on the next run.
+        # This guard re-runs it here and fails on any non-date difference (it restores the tree).
+        run: python3 scripts/check_idempotency_0fd4c550.py
       - name: Committed site matches the generator output
         run: |
           if ! git diff --exit-code -- pages index.html assets ':(exclude)pages/repo-review.html'; then

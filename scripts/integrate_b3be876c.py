@@ -421,6 +421,58 @@ LIVE = {
                       "be adjusted to the prevailing rate."),
         "booking": "book the suite by calling 866.255.8936 and mentioning code EPOKR25; a Venetian Rewards account is required",
     },
+    # ---- 2026-11-19 (session 0fd4c550): the stay-critical Venetian terms, read from the official
+    # pages themselves. These are the brief's "mandatory resort fee and tax, parking, cancellation
+    # deadline, rate timestamp" components; each one is a property-wide published term, so it is
+    # recorded with its own read date and its own source URL instead of being attached to a quote.
+    "venetian_hotel_terms": {
+        "url": "https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html",
+        "read": TODAY,
+        "checkin_checkout": ("Check-in time is from 3:00 p.m. to 11:59 p.m. on the first day of your reservation. "
+                             "Check-out time is 11:00 a.m. Check-ins prior to 3:00 p.m. and check-outs after "
+                             "11:00 a.m. are subject to additional fees."),
+        "deposit": ("A deposit for your stay, including suite, fee, and tax, will be billed upon reservation "
+                    "confirmation. Depending on the offer and reservation, the deposit may be either payment of "
+                    "your first night's stay or prepayment of your entire stay."),
+        "prepaid": ("For prepaid offers, a deposit for the entire stay, including suite, fee, and tax, will be "
+                    "charged at the time of booking. Unless stated otherwise in the offer, bookings made using a "
+                    "prepaid offer are non-cancellable and non-refundable, and cancellation will result in a "
+                    "forfeiture of the deposit."),
+        "incidentals": ("A credit card incidental deposit of $150 per night is required upon check-in for suite "
+                        "charging privileges for non-Signature Suites."),
+        "extra_guest": ("For reservations with more than 2 guests per suite, a charge of $50 is added to the "
+                        "daily rate for each additional guest 13 years of age or older."),
+        "no_show": ("If you do not check-in nor notify us of your delayed arrival within the specified check-in "
+                    "time, your entire reservation will be canceled and your deposit for the first night's stay "
+                    "will not be refunded."),
+        "age": "All guests must be at least 21 years of age to book a suite, purchase and consume alcoholic beverages, and to gamble.",
+    },
+    "venetian_flexible_offer": {
+        "url": "https://www.venetianlasvegas.com/hotel/offers/most-flexible-rate.html",
+        "read": TODAY,
+        "bullets": ("Free cancellations; Fully refundable; Flexible 24-hour cancellation policy; No nightly "
+                    "minimum stay; Always the best rates, guaranteed; Available at The Venetian and The Palazzo"),
+        "terms": ("A deposit of the first night's stay, including suite, fee, and tax, will be billed upon "
+                  "reservation confirmation. You will receive a full refund if the reservation is canceled no "
+                  "later than 24 hours prior to arrival."),
+        "cancel_hours": 24,
+        "phone": "866.659.9643, mention code EAFDLDP",
+        "booking": "https://www.venetianlasvegas.com/book?offer_code=MVFDLDPV",
+    },
+    "venetian_parking": {
+        "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+        "read": TODAY,
+        "excerpt": ("The daily fee for registered hotel guests is $20/day, seven days a week. For non-hotel "
+                    "guests, the fee is $20/day Monday - Thursday, and $25/day Friday - Sunday. Valet parking is "
+                    "$40/day. [...] Players in the poker room who play three hours or more in tournament or cash "
+                    "games will receive complimentary self-parking for the day. Players must visit a supervisor "
+                    "at the end of their session to confirm qualifications for complimentary self-parking."),
+        "guest_self_per_night": 20.0,
+        "guest_valet_per_night": 40.0,
+        "nonguest_per_night": "20 (Mon-Thu) / 25 (Fri-Sun)",
+        "validation": ("three hours or more of tournament or cash play earns complimentary self-parking for the "
+                       "day, confirmed by a poker-room supervisor at the end of the session"),
+    },
     "sheet_live_spot_checks": {
         # sheet number -> values read from the live PDF on 2026-11-19 and compared
         # with the stored capture. Every value that matched is recorded as "match".
@@ -490,6 +542,36 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h["poker_rate_read"] = p["read"]
         h["poker_rate_condition"] = p["condition"]
         h["poker_rate_booking"] = p["booking"]
+        # Stay-critical terms, each read from its own official page on the date recorded here.
+        t, o, k = LIVE["venetian_hotel_terms"], LIVE["venetian_flexible_offer"], LIVE["venetian_parking"]
+        h["cancel"] = ("Most Flexible Rate (the refundable published rate): \"%s\" The property-wide terms add: "
+                       "\"%s\" Prepaid offers are \"%s\"") % (o["terms"], t["no_show"], t["prepaid"])
+        h["cancel_source"] = o["url"]
+        h["cancel_read"] = o["read"]
+        h["cancel_hours"] = o["cancel_hours"]
+        h["cancel_deadline_display"] = "24 hours before arrival (Most Flexible Rate)"
+        h["deposit"] = t["deposit"]
+        h["deposit_source"] = t["url"]
+        h["checkin_checkout"] = t["checkin_checkout"]
+        h["checkin_checkout_source"] = t["url"]
+        h["incidentals"] = t["incidentals"]
+        h["extra_guest"] = t["extra_guest"]
+        h["age_policy"] = t["age"]
+        h["extra_terms_source"] = t["url"]
+        h["extra_terms_read"] = t["read"]
+        h["parking"] = k["excerpt"]
+        h["parking_validation"] = k["validation"]
+        h["parking_source"] = k["url"]
+        h["parking_read"] = k["read"]
+        h["parking_self_per_night"] = k["guest_self_per_night"]
+        h["parking_valet_per_night"] = k["guest_valet_per_night"]
+        h["parking_note"] = ("Property-wide published fee for registered hotel guests, not a per-stay charge read "
+                             "from a quote: it is not included in the resort fee and the official page says rates are "
+                             "\"subject to change at the discretion of The Venetian Resort\" and that event parking "
+                             "rates may be in effect.")
+        h["offer_bullets"] = o["bullets"]
+        h["offer_booking"] = o["booking"]
+        h["offer_phone"] = o["phone"]
         m = re.search(r"start as low as \$([0-9,]+) and \$([0-9,]+)", p["excerpt"])
         if m:
             h["rate_floor"] = float(m.group(1).replace(",", ""))
@@ -506,6 +588,12 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         notes.append("Venetian: resort fee re-read today; the official poker suite-rate page is the only published "
                      "numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in "
                      "the dated rate log as a starting rate and NOT as a quote for the stay.")
+        notes.append("Venetian: cancellation deadline (24 h before arrival on the published refundable rate), "
+                     "deposit, incidental hold, extra-guest charge, check-in/out times and the $20/night "
+                     "registered-guest self-parking fee were read on %s from the official terms, offer, and "
+                     "parking pages, and are now on the hotel row and in the dated log. The nightly room rate for "
+                     "the trip window is still not published anywhere official, so F14 stays open."
+                     % o["read"])
     for h in hotels:
         h.setdefault("resort_fee_read", h.get("resort_fee_source") and TODAY or "")
         # A hotel with no published rate gets an explicit None: the page shows it blank and flagged,
@@ -555,6 +643,54 @@ def build_rate_log() -> list[dict]:
          "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
          "source_label": "Venetian official booking UI (2026-11-16 snapshot)",
          "verified": False, "cancellation_deadline": None, "parking": None},
+        # Third dated observation (read 2026-11-19, session 0fd4c550): the mandatory components of a Venetian stay,
+        # read from the property's own pages. No room rate is published for the trip window, so this row
+        # deliberately has no nightly figure: it prices the parts the official pages DO state, which turns
+        # the "unknown hotel cost" from one blank into one blank plus a known per-night obligation.
+        {"hotel": "The Venetian Resort (Venetian / Palazzo towers)", "hotel_key": "venetian",
+         "observed_on": TODAY,
+         "kind": "official terms capture - mandatory stay components, no room rate stated",
+         "room_type": ("Any Venetian or Palazzo suite on the published refundable 'Most Flexible Rate' "
+                       "(no nightly minimum stay)"),
+         "occupancy": "2 adults, 1 room (a $50/night charge is added for each additional guest aged 13+)",
+         "resort_fee_per_night": 55.0,
+         "resort_fee_with_tax_per_night": round(55 * (1 + 0.1338), 2),
+         "parking": ("$20/day self-parking for registered hotel guests, seven days a week; $40/day valet; "
+                     "non-hotel guests $20/day Mon-Thu and $25/day Fri-Sun; poker-room players with 3+ hours of "
+                     "play get that day's self-parking free"),
+         "parking_per_night": 20.0,
+         "cancellation_deadline": ("24 hours prior to arrival for the published refundable 'Most Flexible Rate'; "
+                                   "prepaid offers are non-cancellable and non-refundable"),
+         "deposit": LIVE["venetian_hotel_terms"]["deposit"],
+         "incidentals": LIVE["venetian_hotel_terms"]["incidentals"],
+         "checkin_checkout": LIVE["venetian_hotel_terms"]["checkin_checkout"],
+         "mandatory_components_per_night": round(55 * (1 + 0.1338) + 20, 2),
+         "tax_rate_pct": 13.38,
+         "checkout_total": None, "nightly_average": None, "nightly_low": None, "nightly_high": None,
+         "true_nightly_low": None, "true_nightly_high": None,
+         "rate_timestamp": TODAY,
+         "caveats": [
+             "Derived arithmetic, stated as such: the $55 resort fee 'plus tax' at the Clark County combined "
+             "13.38%% transient- lodging rate is $%.2f a night, and with the official $20 self-parking fee the "
+             "mandatory non-room cost of a Venetian stay is $%.2f a night ($%.2f over 7 nights). The room rate "
+             "itself is still unpublished for these dates, so no true nightly total exists."
+             % (round(55 * 1.1338, 2), round(55 * 1.1338 + 20, 2), round((55 * 1.1338 + 20) * 7, 2)),
+             "The room-tax rate is Clark County's published combined rate for a resort hotel inside the primary "
+             "gaming corridor; whether a booking engine applies it to the resort fee is shown by the checkout "
+             "total, not by this row.",
+             "Parking is quoted by the property as a daily fee and is not part of the resort fee; the official "
+             "page says rates are subject to change and that event parking rates may be in effect.",
+             "The 24-hour deadline belongs to the published refundable rate, not to a poker suite rate or a "
+             "prepaid offer: read the deadline on the rate you are actually quoted.",
+         ],
+         "source": LIVE["venetian_flexible_offer"]["url"],
+         "source_label": "official Most Flexible Rate offer page (cancellation, deposit)",
+         "additional_sources": [{"url": LIVE["venetian_parking"]["url"], "label": "official self-parking page"},
+                                {"url": LIVE["venetian_hotel_terms"]["url"],
+                                 "label": "official hotel terms and conditions"},
+                                {"url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+                                 "label": "official resort-fee page"}],
+         "verified": True},
     ]
 
 
@@ -702,6 +838,19 @@ def main() -> int:
         if n:
             row["guarantee_note"] = n
             guarantee_notes.append("%s #%s: %s" % (row["date"], row["event_no"], n))
+        # The brief asks for "guaranteed pool / entry fee" as a descriptive ratio. It used to exist only as
+        # page text, recomputed at render time, so nothing in the data carried it. It is now stored per row -
+        # arithmetic on the two published figures, blank whenever either side is missing, and never a forecast.
+        gtv = gtd_number(row.get("guarantee"))
+        try:
+            buyv = float(str(row.get("buyin")).replace(",", "")) if row.get("buyin") not in (None, "") else 0.0
+        except ValueError:
+            buyv = 0.0
+        row["gtd_to_entry"] = round(gtv / buyv, 1) if (gtv and buyv > 0 and not n) else None
+        if row["gtd_to_entry"] is not None:
+            row["gtd_to_entry_note"] = ("descriptive arithmetic: published guarantee divided by one listed "
+                                        "buy-in. Not a forecast or an expected value; it ignores the house fee, "
+                                        "the payout structure and any flight structure.")
         counts[verdict] += 1
 
     # WPT / other rows: same "last checked" treatment, verdicts untouched.
@@ -741,19 +890,27 @@ def main() -> int:
             cur += dt.timedelta(days=1)
     if best:
         _, cin, cout, n, ns, g = best
+        # The window is 7 NIGHTS, so the check-out date is check-in + 7. An earlier revision of this
+        # generator wrote the last playing day into "check_out", which contradicted its own
+        # "nights": 7 and made the planner's date filter end a day early. The published page shows
+        # both dates explicitly: the arrival/departure pair, and the first/last day you can play.
         meta["trip"] = {
             "check_in": cin.isoformat(),
-            "check_out": (cout - dt.timedelta(days=1)).isoformat(),
+            "check_out": cout.isoformat(),
+            "first_playing_day": cin.isoformat(),
+            "last_playing_day": (cout - dt.timedelta(days=1)).isoformat(),
             "nights": 7, "adults": 2, "rooms": 1,
-            "rationale": ("Chosen automatically on %s from the corrected single-entry set: %s to %s (7 nights, 7 "
-                          "full playing days) carries %d Venetian full-field entries whose own official structure "
-                          "sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry "
-                          "(about $%s of published guarantees across them), plus %d single-entry satellites into the "
-                          "$2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The "
-                          "window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov "
-                          "- 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every "
-                          "table follows the date filter, so you can move the week without re-entering anything."
-                          % (TODAY, cin.isoformat(), (cout - dt.timedelta(days=1)).isoformat(), n,
+            "rationale": ("Chosen automatically on %s from the corrected single-entry set: %s to %s (7 nights, so "
+                          "the seven full playing days run %s through %s) carries %d Venetian full-field entries "
+                          "whose own official structure sheet was read in full and grants no re-entry, rebuy, "
+                          "add-on or purchased-stack entry (about $%s of published guarantees across them), plus %d "
+                          "single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window "
+                          "in the series carries more. The window sits inside both verified Strip series (Venetian "
+                          "DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, "
+                          "27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week "
+                          "without re-entering anything."
+                          % (TODAY, cin.isoformat(), cout.isoformat(),
+                             cin.isoformat(), (cout - dt.timedelta(days=1)).isoformat(), n,
                              format(int(g), ",d"), ns)),
             "chosen_by": "scripts/integrate_b3be876c.py",
             # The brief asks for a nightly budget ceiling and a quality floor. No ceiling was ever stated by
@@ -827,7 +984,11 @@ def main() -> int:
           "starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The "
           "2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a "
           "different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports "
-          "'Incomplete' until a dated quote is recorded."),
+          "'Incomplete' until a dated quote is recorded. The other mandatory components of the stay are NOT missing "
+          "for the Venetian: the $55 plus-tax resort fee, the $20/night registered-guest self-parking fee, the "
+          "24-hour cancellation deadline on the published refundable rate and the $150/night incidental hold are "
+          "each on the site with their official page and read date (%s), and they are carried separately in the "
+          "planner's fee side." % TODAY),
          LIVE["venetian_poker_rate"]["url"], status="open")
     flag("F46", "Hotel fees",
          "Caesars Palace and Horseshoe publish only a $45-$60 corporate range, not a property fee",
@@ -837,14 +998,17 @@ def main() -> int:
           "fee value and the exact figure must be read at booking." % LIVE["caesars_resort_fee"]["read"]),
          LIVE["caesars_resort_fee"]["url"], status="open")
     flag("F47", "Entry rules",
-         "A sheet that never says 're-entry' can still grant further buy-ins - the earlier keyword test missed it",
-         ("Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) uses no "
-          "re-entry/rebuy/add-on word, and an earlier automated pass labelled it single-entry. Its rule 07 says "
-          "'All subsequent buy in's after the initial buy in will be $200', which grants a discounted second "
-          "entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the "
-          "brief asks for. The published test now reads the whole rule list, not a keyword."),
+         "Structure sheet 8 grants later buy-ins; legacy capture still misclassifies #18 and #58",
+         ("Structure sheet 8 ($200 NLH PokerAtlas Valuetown Bounty, events #18 on 28 Nov and #58 on 19 Dec) states: "
+          "'All subsequent buy in's after the initial buy in will be $200', which permits more than one paid entry. "
+          "The canonical dashboard classifies both rows as multi-entry and keeps them out of the confirmed-single "
+          "list. Irregularity: the separate legacy capture data/c6087e2c/events_verified.json still marks both "
+          "single_entry_confirmed, and its current cross-check passes because the classifier does not recognize "
+          "this wording. That capture is not the canonical published dataset; request a classifier/cross-check "
+          "repair before using it as a decision source. The S1 test now reads the whole rule list, not only "
+          "re-entry/rebuy/add-on keywords."),
          "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-         status="fixed by this session; kept visible")
+         status="open: legacy capture classifier/cross-check repair requested; canonical dashboard corrected")
     flag("F48", "Change monitoring",
          "Whole-page hashing marked 48 of 96 official sources 'changed' on the first nightly run",
          ("The monitor hashed every page as delivered. Casino pages carry per-request tokens and timestamps, so a "
@@ -889,6 +1053,36 @@ def main() -> int:
          "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
          status="rate confirmed; fee taxation flagged")
 
+    flag("F33", "Hotels",
+         "Per-stay parking cost and cancellation deadline are now official for the Venetian, still missing for the others",
+         ("Parking and cancellation are captured per property, and on %s the Venetian's were read from its own "
+          "official pages: $20/day self-parking for registered guests ($40 valet), a 24-hour cancellation deadline "
+          "on the published refundable rate, and a $150/night incidental hold. Wynn's offer terms give 48 hours "
+          "(the earlier 72-hour figure is withdrawn, see F55) and include parking in the resort fee. What is still "
+          "not captured for ANY hotel is what a specific stay will add at checkout, because no dated, itemized "
+          "quote for the trip window exists; Caesars Palace and Horseshoe publish neither a property resort fee nor "
+          "a guest parking rate on the pages we could read.")
+         % TODAY,
+         LIVE["venetian_parking"]["url"], status="partially resolved; per-stay checkout totals still open")
+    flag("F56", "Site build",
+         "The scheduled re-check re-derived the published records from the generator and silently reverted corrections",
+         ("recheck-ea99006a.yml runs scripts/integrate_b3be876c.py on every scheduled run, and that script writes "
+          "data/ea99006a/{venetian,hotels,flags,questions,suggestions,meta,all,rates_log}.json from its own "
+          "embedded text. It was not idempotent against the corrected committed records: running it on main "
+          "reverted flag F47 to the pre-correction wording, replaced Q01 with text that calls the automatic "
+          "scenario 'fixed for you', overwrote the parking question Q11 and the two newest suggestions by upserting "
+          "ids S10/S11 that already carried different published content, and wrote meta.trip.check_out as the LAST "
+          "PLAYING DAY while its own nights field said 7 (i.e. checkout 2026-12-12 for a 2026-12-06 arrival). "
+          "Because the job commits whatever changes, the next scheduled run would have republished those "
+          "regressions. Fixed in this session: the generator now carries the corrected text, check_out is "
+          "check-in + 7 with first/last playing day recorded separately, its upserts target the ids they actually "
+          "own (Q16, S13, S14), and quality.yml runs scripts/check_idempotency_0fd4c550.py, which re-runs the "
+          "generator and fails on any non-date difference. Run against the tree before and after the fix: "
+          "before, 7 data files changed; after, only dates move."),
+         "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+         status="fixed by session 0fd4c550; guarded by quality.yml")
+
+
     # ---- questions / suggestions ----
     def upsert(items, iid, **kw):
         for it in items:
@@ -899,29 +1093,67 @@ def main() -> int:
 
     upsert(questions, "Q01",
            q="What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-           have=("The site now fixes this for you: %s to %s (7 nights), chosen on %s from the corrected single-entry "
-                 "set (%d entries, about $%s of published guarantees), with the nightly budget ceiling and quality "
-                 "floor applied on the hotels page. No input is required to read the plan."
+           have=("The dashboard uses an automatic scenario: %s to %s (7 nights), selected from the captured schedule "
+                 "on %s (%d full-field entries, about $%s of published guarantees). The date choice is not "
+                 "traveler-provided. The budget ceiling is based on a dated, unverified booking observation, and the "
+                 "Luxury quality floor is a property-tier label, not an independent quality rating."
                  % (meta["trip"]["check_in"], meta["trip"]["check_out"], TODAY,
                     meta["trip"].get("entries_in_window", 0),
                     format(int(meta["trip"].get("guarantee_sum_in_window", 0)), ",d"))),
-           missing=("Your budget ceiling and quality floor are set to the values that keep every official-source "
-                    "hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds "
-                    "it, and it never invents a rate to make a hotel qualify."),
-           how="See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table.")
+           missing=("The traveler\u2019s preferred dates, budget ceiling, occupancy, and minimum quality standard are "
+                    "unknown. The automatic settings are scenario defaults only; the dated hotel quote used to "
+                    "derive the ceiling is not for the selected stay and is not a verified current rate."),
+           how=("Treat the Dates and Budget controls on the Hotels/Planner pages as scenario inputs. Replace them "
+                "with the actual trip window, occupancy, budget, and chosen quality floor before deciding; then "
+                "obtain a date-matched official itemized hotel quote."))
     upsert(questions, "Q11",
+           q="What will parking add to the stay, and is the poker-room validation usable for the planned schedule?",
+           have=("Venetian (official self-parking page, re-read %s): registered hotel guests pay $20 per day, seven "
+                 "days a week; valet is $40 per day; non-hotel guests pay $20 Mon-Thu and $25 Fri-Sun; and poker-room "
+                 "players with three hours or more of tournament or cash play get that day's self-parking free after "
+                 "a supervisor confirms the session. Wynn: complimentary self-parking for up to two vehicles is "
+                 "included in the $55 resort fee, and separate Wynn terms extend complimentary self-parking to "
+                 "poker-room guests." % LIVE["venetian_parking"]["read"]),
+           missing=("Whether a tournament day of play reliably reaches the Venetian's three-hour validation window, "
+                    "whether event parking rates are in effect for the planned dates, and Caesars/MGM parking terms "
+                    "for the candidate hotels (their official pages do not state a guest rate here)."),
+           how=("Ask the poker room at registration about daily validation, and read the parking page in the "
+                "booking flow before paying; the $20/night figure is a property-wide rate, not a per-stay quote."))
+    upsert(questions, "Q14",
+           q="What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
+           have=("Venetian (official pages, read %s): the published refundable 'Most Flexible Rate' gives a full "
+                 "refund if cancelled no later than 24 hours prior to arrival, with a deposit of the first night "
+                 "(suite, fee and tax) billed at confirmation; property-wide hotel terms add that prepaid offers are "
+                 "non-cancellable and non-refundable, that check-in is 3:00 p.m.-11:59 p.m. and check-out is 11:00 "
+                 "a.m., and that a $150 per night incidental card hold applies to non-Signature suites. Wynn offer "
+                 "terms DK26WLV2, re-read 2026-11-19: cancellations must be received at least 48 hours before "
+                 "arrival for that offer's bookings; the earlier 72-hour figure is withdrawn (F55)."
+                 % LIVE["venetian_flexible_offer"]["read"]),
+           missing=("The cancellation deadline for the Venetian poker suite rate and for the rate actually quoted at "
+                    "checkout (the offer pages publish their own deadlines, which differ), and any Caesars or MGM "
+                    "property-specific deadline."),
+           how=("Read the rate rules shown on the official booking page at quote time and record them in the dated "
+                "rate log before any non-refundable payment."))
+    upsert(questions, "Q16",
            q="Can the site complete the trip cost without me entering anything?",
-           have="The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
-           missing="A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
-           how="The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.")
-    upsert(suggestions, "S10",
+           have=("The entries side is complete and source-linked. On the hotel side the mandatory components are now "
+                 "official and dated for the Venetian (resort fee $55 plus tax, $20/night registered-guest "
+                 "self-parking, 24-hour cancellation deadline on the published refundable rate, $150/night "
+                 "incidental hold) and for Wynn ($55 resort fee including parking, 48-hour offer deadline). Only "
+                 "the nightly room rate for these dates is missing, and no official Strip page publishes it."),
+           missing=("A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory "
+                    "fees, tax, parking, cancellation deadline, rate timestamp)."),
+           how=("The nightly monitor re-reads the official suite-rate page and the booking links each morning and "
+                "records any published change in the dated rate log; the calculator shows the fee side and stays "
+                "'Incomplete' on the room-rate side until a dated quote exists. Nothing is asked of you."))
+    upsert(suggestions, "S13",
            title="Publish one root-site generator (done here) and retire the second one",
            problem="Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
            options=["One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
                     "Give each session its own subdirectory and never let a scheduled job write the root",
                     "Freeze the scheduled rebuilds entirely and rebuild only by hand"],
            effect="The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.")
-    upsert(suggestions, "S11",
+    upsert(suggestions, "S14",
            title="Keep value-level monitoring, drop hash-level alarmism",
            problem="Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
            options=["Compare extracted official sentences per value (implemented)",

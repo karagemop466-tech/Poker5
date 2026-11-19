@@ -218,7 +218,15 @@ def is_bounty(row):
 
 
 def ratio_text(row):
-    """Guarantee / entry fee. Descriptive only; blank when the row is not rankable."""
+    """Guarantee / entry fee. Descriptive only; blank when the row is not rankable.
+
+    The stored `gtd_to_entry` field (derived by scripts/integrate_b3be876c.py from the same two
+    official figures) is preferred so the number on the page is the number in the data; the
+    computation is the fallback for rows that predate the field.
+    """
+    stored = row.get("gtd_to_entry")
+    if stored:
+        return "%.1f" % stored
     g = guarantee_value(row)
     b = row.get("buyin")
     if not g or not b:
@@ -839,20 +847,48 @@ function initPlanner(){
     var nightsField=document.getElementById('pnights');
     var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
     var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
+    /* Parking and the mandatory stay fees come from the official pages, so they are added here
+       instead of being left for a reader to remember. If the hotel figure in use already includes
+       the stay (a dated checkout capture), parking is the only thing added on top. */
+    var panel=document.getElementById('pcalc');
+    var parkBox=document.getElementById('ppark');
+    var perNight=function(k){return panel&&panel.getAttribute('data-'+k)?Number(panel.getAttribute('data-'+k)):0;};
+    var quote=document.getElementById('pquote');
+    var opt=quote&&quote.selectedIndex>=0?quote.options[quote.selectedIndex]:null;
+    var includesStay=!!(opt&&opt.getAttribute('data-includes')==='1');
+    var parkOn=!!(parkBox&&parkBox.checked);
+    var perNightPark=parkOn?perNight('park'):0;
+    var feeTaxed=perNight('fee')*(1+perNight('tax')/100);
+    var knownNight=feeTaxed+perNightPark;
     var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
+    var nightsN=Number.isFinite(nights)&&nights>0?nights:NaN;
+    var hotelTotal=hotelComplete?(hotel+perNightPark)*nightsN:null;
     var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
-    var hotelTotal=hotelComplete?hotel*nights:null;
     var grandTotal=tripComplete?buy+hotelTotal:null;
+    var srcNote=opt&&opt.value!=='manual'?' <span class="muted sm">from '+(opt.getAttribute('data-label')||'')+'</span>':'';
     if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
-      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
+      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night'+srcNote:'<span class="blank">true nightly cost not confirmed</span>')+
+      (hotelComplete&&parkOn?' + parking $'+perNightPark.toFixed(2)+'/night':'')+
       ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
-      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
+      (includesStay?'<div class="muted sm">The hotel figure in use already includes the room, the resort fee and the tax for the stay it was captured for'+(parkOn?', so only parking is added on top':'. Nothing is added on top')+'.</div>':'')+
+      (!includesStay&&hotelComplete?'<div class="muted sm">This hotel figure is a room-rate component only: add the resort fee and tax (or use the dated capture) before treating it as the whole nightly cost.</div>':'')+
+      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+(opt&&opt.getAttribute('data-datematched')==='0'?' <span class="pill pill-warn">not date-matched to your window</span>':''))+'</div>'+
+      (grandTotal===null&&Number.isFinite(nightsN)?'<div>Mandatory stay cost that IS verified: $'+knownNight.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+' / night &times; '+nightsN+' = <b>$'+(knownNight*nightsN).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> <span class="muted sm">resort fee + '+perNight('tax')+'% tax'+(parkOn?' + parking':'')+'; the room rate is the only missing term</span></div>':'')+
       '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
-      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
+      (opt&&opt.value==='capture'?'<p class="warnbox">Not date-matched: the auto capture is an itemized total for the dates printed in the dated log, not for your window. It is shown so the scale of the hotel side is visible; it is not a quote for your stay.</p>':'')+
+      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; the calculator shows the verified mandatory stay cost, and the trip total closes only when a dated nightly total is recorded in the hotel rate log.</p>')+
       (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
       (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
   }
   box.addEventListener('change',total);
+  var pq=document.getElementById('pquote');
+  if(pq) pq.addEventListener('change',function(){
+    var o=pq.options[pq.selectedIndex], f=document.getElementById('ptrue');
+    var v=o.getAttribute('data-pernight');
+    if(f){ if(v&&v!=='null'){f.value=v;f.readOnly=true;} else {f.value='';f.readOnly=false;} }
+    total();
+  });
+  var pb=document.getElementById('ppark'); if(pb) pb.addEventListener('change',total);
   ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }
@@ -1392,6 +1428,70 @@ def build_hotels():
                        else '<span class="blank">no official page found</span>'))
     body.append("</tbody></table></div>")
 
+    # The brief's stay-capture list (mandatory resort fee and tax, parking, cancellation deadline,
+    # rate timestamp) gets its own table because the hotel table above is a comparison table and this
+    # one is an evidence table: one line per official statement, with the date it was read.
+    body.append('<h2>Stay terms, one line per official statement</h2>')
+    body.append('<p class="muted">Everything the brief asks to be captured for a stay is listed here as it is '
+                'written on the property\'s own page, with the page and the read date. A blank cell means no '
+                'official page states it - never a guess. Amounts marked <i>derived</i> are arithmetic on the '
+                'figures in the same row (the published tax rate applied to the published fee), not a new '
+                'observation.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th>'
+                '<th class="num">Resort fee / night</th><th class="num">Fee + 13.38% tax</th>'
+                '<th class="num">Parking / night</th><th>Cancellation deadline</th>'
+                '<th>Deposit and incidentals</th><th>Check-in / check-out</th>'
+                '<th class="num">Mandatory non-room cost / night</th><th>Rate timestamp</th>'
+                '</tr></thead><tbody>')
+    _tr = TAX["rate"] / 100.0
+    for h in HOTELS:
+        fee = h.get("resort_fee")
+        fee_taxed = fee * (1 + _tr) if fee else None
+        park = h.get("parking_self_per_night")
+        mand = (fee_taxed + park) if (fee_taxed and park) else None
+
+        def term(text, src, read, extra=""):
+            if not text:
+                return '<span class="blank">no official page states this</span>'
+            bits = [esc(text)]
+            if extra:
+                bits.append('<span class="muted sm">%s</span>' % esc(extra))
+            if src:
+                bits.append(src_link(src, "official page"))
+            if read:
+                bits.append('<span class="muted sm">read %s</span>' % esc(read))
+            return "<br>".join(bits)
+
+        cells = [
+            term(h.get("resort_fee_text"), h.get("resort_fee_source"), h.get("resort_fee_read")),
+            ("$%.2f <span class=\"muted sm\">derived: $%.0f + %.2f%%</span>" % (fee_taxed, fee, TAX["rate"]))
+            if fee_taxed else '<span class="blank">not computed - no verified fee</span>',
+            term(("self-parking for registered guests" if park else None) or h.get("parking"),
+                 h.get("parking_source"), h.get("parking_read"),
+                 ("$%.0f/day; valet $%.0f/day" % (park, h["parking_valet_per_night"]))
+                 if park and h.get("parking_valet_per_night") else ""),
+            term(h.get("cancel_deadline_display") or h.get("cancel"), h.get("cancel_source"),
+                 h.get("cancel_read")),
+            term(h.get("deposit") or h.get("incidentals"), h.get("extra_terms_source") or h.get("deposit_source"),
+                 h.get("extra_terms_read") or h.get("cancel_read"),
+                 ("Incidentals: " + h["incidentals"]) if h.get("incidentals") else ""),
+            term(h.get("checkin_checkout"), h.get("checkin_checkout_source"), h.get("cancel_read")),
+            ("$%.2f <span class=\"muted sm\">derived: taxed fee + parking</span>" % mand) if mand
+            else '<span class="blank">not computed</span>',
+            '<span class="nowrap">%s</span>' % esc(h.get("resort_fee_read") or h.get("extra_terms_read") or "")
+            if (h.get("resort_fee_read") or h.get("extra_terms_read"))
+            else '<span class="blank">no dated official read</span>',
+        ]
+        body.append('<tr data-tier="%s"><td><b>%s</b><br><span class="muted sm">%s</span></td>%s</tr>'
+                    % ({"Deluxe": "1", "Luxury": "2"}.get(h.get("tier", ""), ""), esc(h["name"]),
+                       esc(h.get("quality_note") or ""), "".join("<td>%s</td>" % c for c in cells)))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">The Venetian row is complete except for the room rate itself: the $55 resort '
+                'fee "plus tax" and the $20/day registered-guest self-parking fee are both stated on official '
+                'pages, so the mandatory non-room cost of a Venetian night is a known figure, and only the room '
+                'rate is missing. That is the difference between an unpriceable stay and a stay whose price is '
+                'one published number away.</p>')
+
     body.append('<h2>Dated stay captures (a log, never a single value)</h2>')
     body.append('<p class="muted">Each row is a dated capture from an official booking page or official terms page, '
                 'kept exactly as returned. Fields the official UI did not return are blank and flagged. Captures '
@@ -1543,11 +1643,15 @@ def build_hotels():
                            esc(r.get("cancellation_deadline") or "not stated for this rate"),
                            esc(r.get("parking") or "not stated for this rate"),
                            "".join("<li>%s</li>" % esc(c) for c in r.get("caveats") or []),
-                           src_link(r.get("source"), r.get("source_label") or "official source")))
+                           src_link(r.get("source"), r.get("source_label") or "official source")
+                           + "".join("<br>%s" % src_link(a.get("url"), a.get("label"))
+                                     for a in r.get("additional_sources") or [])))
         body.append("</tbody></table>")
-        body.append('<p class="muted sm">Both rows are the Venetian because it is the only property in the shortlist '
-                    'with a number on an official page. The other four have no dated rate entry at all - the log is '
-                    'not padded with estimates to make the table look complete.</p></div>')
+        body.append('<p class="muted sm">Every row here is the Venetian because it is the only property in the '
+                    'shortlist with a number on an official page. The other four have no dated rate entry at all - '
+                    'the log is not padded with estimates to make the table look complete. The newest row is not '
+                    'a rate at all: it is the dated capture of the fees, taxes and deadlines a Venetian stay '
+                    'mandates, which is the part of the true nightly cost that official pages do publish.</p></div>')
     body.append("</div>")
     body.append('<div class="panel" id="hcalc"><h2>True nightly cost calculator</h2>'
                 '<div class="calc">'
@@ -1679,25 +1783,67 @@ def build_planner():
                        '<span class="blank">quote needed</span>',
                        src_link(booking, "open official booking (%s to %s)" % (TRIP["check_in"], TRIP["check_out"]))))
     body.append("</tbody></table></div></div>")
-    body.append('<div class="panel"><div class="calc">'
+    # --- the hotel side of the calculator: prefilled from the dated log, not typed by the reader ---
+    _cap = None
+    for r in reversed(RATES):
+        if r.get("nightly_average") and r.get("hotel_key") == "venetian":
+            _cap = r
+            break
+    _fee = float(HOTELS[0]["resort_fee"] or 0) if HOTELS else 0.0
+    _park = (HOTELS[0].get("parking_self_per_night") or 0) if HOTELS else 0.0
+    _known = _fee * (1 + TAX["rate"] / 100.0) + _park
+    body.append('<div class="panel" id="pcalc" data-tax="%.2f" data-fee="%.2f" data-park="%.2f">'
+                '<h2>Cost of the trip</h2><div class="calc">'
+                '<label>Hotel cost source<select id="pquote">'
+                '<option value="capture" data-pernight="%s" data-includes="%s" data-label="%s"'
+                ' data-datematched="%s" selected>Auto: the dated capture in the log (%s)</option>'
+                '<option value="floor" data-pernight="%.2f" data-includes="0"'
+                ' data-label="official poker suite-rate floor">Auto: published poker suite-rate floor (%s + '
+                '$%.0f fee + %.2f%% tax)</option>'
+                '<option value="none" data-pernight="" data-includes="0" data-label="nothing">Nothing: price the '
+                'entries and the mandatory stay fees only</option>'
+                '<option value="manual" data-pernight="" data-includes="1" data-label="manual">'
+                'Type a quote I obtained</option></select></label>'
                 '<label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" '
-                'placeholder="no date-specific quote recorded" value=""></label>'
+                'placeholder="no date-specific quote recorded" value="%s"%s></label>'
                 '<label>Nights<input id="pnights" type="number" min="1" step="1" value="%d"></label>'
+                '<label class="chk"><input id="ppark" type="checkbox" %s> Add parking ($%.0f/night, official)</label>'
                 '</div><div class="result" id="ptotal"></div>'
-                '<p class="muted sm">The hotel side is deliberately blank: no dated, itemized quote for these '
-                'dates exists in the records, so the trip total stays <b>Incomplete</b> rather than being closed '
-                'with an estimate. For orientation only, the figure you would type in is $%.2f: the official '
-                'Venetian poker-suite rate of %s plus the $%.0f resort fee, taxed at %.2f%%. That is a published '
-                '<b>floor, not a quote</b> - the rate is conditional on six hours of live play or a $300+ tournament '
-                'entry every night before 2 a.m., and that page only publishes rates 150 days out, so December 2026 '
-                'is not on it. The resort-fee tax treatment is not verified for every hotel, so use the booking '
-                'checkout total, not an estimate. Record a dated quote in the log on the '
-                '<a href="hotels.html">hotels page</a> and the total becomes complete; until then flag F14 stays '
-                'open. Only single-entry and cap-not-stated '
-                'events are listed below: no official text bounds how many re-entries an event allows, so a '
-                're-entry event can never be priced.</p></div>'
-                % (TRIP["nights"], FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "not published",
-                   _V_FEE, TAX["rate"]))
+                '<p class="muted sm">The hotel side is filled from the dated log, not from a guess: the auto '
+                'options are the only two numbers an official source supports. The capture is a real itemized '
+                'total but for <b>%s</b>, not for your window, so the total is labelled '
+                '<i>not date-matched</i> until a quote for your dates is recorded. Without any hotel rate, the '
+                'mandatory non-room cost of a Venetian night is still known - $%.2f a night (%.2f%% tax on the '
+                '$%.0f resort fee, plus the $%.0f guest parking fee), which is $%.2f over %d nights - and the '
+                'trip total stays <b>Incomplete</b> rather than closing on a zero-cost hotel.</p></div>'
+                '<div class="panel">'
+                % (TAX["rate"], _fee, _park,
+                   ("null" if not _cap else "%.2f" % _cap["nightly_average"]),
+                   "1" if _cap else "0",
+                   esc("%s to %s, %s nights" % (_cap["checkin"], _cap["checkout"], _cap["nights"])) if _cap else "",
+                   esc("%s to %s, $%s/night average" % (_cap["checkin"], _cap["checkout"],
+                                                         format(_cap["nightly_average"], ",.2f"))) if _cap
+                   else "no dated capture",
+                   "1" if (_cap and _cap.get("checkin") == TRIP["check_in"]
+                           and _cap.get("checkout") == TRIP["check_out"]) else "0",
+                   FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "rate not published", _fee, TAX["rate"],
+                   ("%.2f" % _cap["nightly_average"]) if _cap else "",
+                   " readonly" if _cap else "",
+                   TRIP["nights"], "checked" if _park else "disabled", _park,
+                   esc("%s to %s" % (_cap["checkin"], _cap["checkout"])) if _cap else "-",
+                   _known, TAX["rate"], _fee, _park, _known * TRIP["nights"], TRIP["nights"]))
+    body.append('<p class="muted sm">The poker suite-rate floor (the second auto option, $%.2f a night: the '
+                'official Venetian poker-suite rate of %s plus the $%.0f resort fee, taxed at %.2f%%) is a '
+                'published <b>floor, not a quote</b> - it is conditional on six hours of live play or a $300+ '
+                'tournament entry every night before 2 a.m., and that page only publishes rates 150 days out, so '
+                'December 2026 is not on it. The resort-fee tax treatment is not verified for every hotel: the '
+                '$%.2f mandatory-cost figure on this page applies to the Venetian, whose own fee page states '
+                '"$55 plus tax"; for any other hotel use its checkout total, not this arithmetic. Prefer the '
+                'booking checkout total over any estimate. Only '
+                'single-entry and cap-not-stated events are listed below: no official text bounds how many '
+                're-entries an event allows, so a re-entry event can never be priced.</p></div>'
+                % (FLOOR_TRUE_NIGHT, money(VEN_POKER.get("rate_low")) or "rate not published",
+                   _V_FEE, TAX["rate"], _known))
     body.append('<div class="panel" id="picks"><h2>Entries in your window (%d)</h2>' % len(rows))
     body.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Play?</th><th>Date</th><th>Start</th>'
                 '<th>#</th><th>Event</th><th class="num">Buy-in</th><th>House fee</th>'
@@ -1739,15 +1885,35 @@ def build_venue(key, filename, title, extra):
         body.append('<div class="panel"><p><span class="blank">No verified rows.</span> %s</p></div>' % esc(v["status_note"]))
     if hotels:
         body.append("<h2>Stay here</h2>")
+        body.append('<p class="muted sm">Each figure is quoted from the property\'s own page with the date it was '
+                    'read; the full sentences and links are on the <a href="../hotels.html">hotels page</a>. '
+                    '"Mandatory non-room cost" is derived arithmetic: the published resort fee with the county '
+                    'transient-lodging tax on top, plus the published guest parking fee.</p>')
         body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Walk</th>'
-                    '<th class="num">Resort fee</th><th>Cancellation</th><th>Booking</th></tr></thead><tbody>')
+                    '<th class="num">Resort fee</th><th class="num">Parking / night</th>'
+                    '<th>Cancellation</th><th>Check-in / check-out</th>'
+                    '<th class="num">Mandatory non-room cost / night</th><th>Booking</th></tr></thead><tbody>')
+        _tr = TAX["rate"] / 100.0
         for h in hotels:
             booking = h["booking"].replace("{IN}", TRIP["check_in"]).replace("{OUT}", TRIP["check_out"])
-            body.append("<tr><td>%s</td><td>%s</td><td class=\"num\">%s</td><td>%s</td><td>%s</td></tr>"
+            fee, park = h.get("resort_fee"), h.get("parking_self_per_night")
+            mand = (fee * (1 + _tr) + park) if (fee and park) else None
+            body.append("<tr><td>%s</td><td>%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td>"
+                        "<td>%s</td><td>%s</td><td class=\"num\">%s</td><td>%s</td></tr>"
                         % (esc(h["name"]),
                            '<span class="pill pill-ok">0 min, same property</span>' if h["on_property"] else '<span class="blank">not verified</span>',
-                           ("$%.0f" % h["resort_fee"]) if h["resort_fee"] else '<span class="blank">not verified</span>',
-                           esc(h["cancel"]) or '<span class="blank">not verified</span>',
+                           ("$%.0f<br><span class=\"muted sm\">%s</span>" % (fee, esc(h.get("resort_fee_text") or "")))
+                           if fee else '<span class="blank">not verified</span>',
+                           ("$%.0f<br><span class=\"muted sm\">%s</span>"
+                            % (park, esc((h.get("parking_read") or "") + " read"))) if park
+                           else ("see hotels page" if h.get("parking") else '<span class="blank">not verified</span>'),
+                           esc(h.get("cancel_deadline_display") or h.get("cancel") or "")
+                           or '<span class="blank">not verified</span>',
+                           esc(h.get("checkin_checkout") or "")
+                           + ("<br><span class=\"muted sm\">read %s</span>" % esc(h.get("cancel_read")))
+                           if h.get("checkin_checkout") else '<span class="blank">not verified</span>',
+                           ("$%.2f <span class=\"muted sm\">derived</span>" % mand) if mand
+                           else '<span class="blank">not computed</span>',
                            src_link(booking, "official booking")))
         body.append("</tbody></table></div>")
     write("pages/venues/%s" % filename, page(title, "".join(body), filename, 2,

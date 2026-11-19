@@ -285,20 +285,48 @@ function initPlanner(){
     var nightsField=document.getElementById('pnights');
     var hotel=rateField&&rateField.value.trim()!==''?Number(rateField.value):NaN;
     var nights=nightsField&&nightsField.value.trim()!==''?Number(nightsField.value):NaN;
+    /* Parking and the mandatory stay fees come from the official pages, so they are added here
+       instead of being left for a reader to remember. If the hotel figure in use already includes
+       the stay (a dated checkout capture), parking is the only thing added on top. */
+    var panel=document.getElementById('pcalc');
+    var parkBox=document.getElementById('ppark');
+    var perNight=function(k){return panel&&panel.getAttribute('data-'+k)?Number(panel.getAttribute('data-'+k)):0;};
+    var quote=document.getElementById('pquote');
+    var opt=quote&&quote.selectedIndex>=0?quote.options[quote.selectedIndex]:null;
+    var includesStay=!!(opt&&opt.getAttribute('data-includes')==='1');
+    var parkOn=!!(parkBox&&parkBox.checked);
+    var perNightPark=parkOn?perNight('park'):0;
+    var feeTaxed=perNight('fee')*(1+perNight('tax')/100);
+    var knownNight=feeTaxed+perNightPark;
     var hotelComplete=Number.isFinite(hotel)&&hotel>0&&Number.isFinite(nights)&&nights>0;
+    var nightsN=Number.isFinite(nights)&&nights>0?nights:NaN;
+    var hotelTotal=hotelComplete?(hotel+perNightPark)*nightsN:null;
     var tripComplete=hotelComplete&&entries>0&&!hasInvalidBuyin;
-    var hotelTotal=hotelComplete?hotel*nights:null;
     var grandTotal=tripComplete?buy+hotelTotal:null;
+    var srcNote=opt&&opt.value!=='manual'?' <span class="muted sm">from '+(opt.getAttribute('data-label')||'')+'</span>':'';
     if(out) out.innerHTML='<div>Selected entries: <b>'+entries+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+'</b></div>'+
-      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night':'<span class="blank">true nightly cost not confirmed</span>')+
+      '<div>Hotel: '+(Number.isFinite(nights)?nights:'—')+' night(s) &times; '+(hotelComplete?'$'+hotel.toFixed(2)+' true cost / night'+srcNote:'<span class="blank">true nightly cost not confirmed</span>')+
+      (hotelComplete&&parkOn?' + parking $'+perNightPark.toFixed(2)+'/night':'')+
       ' = <b>'+(hotelComplete?'$'+hotelTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}):'Incomplete')+'</b></div>'+
-      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2}))+'</div>'+
+      (includesStay?'<div class="muted sm">The hotel figure in use already includes the room, the resort fee and the tax for the stay it was captured for'+(parkOn?', so only parking is added on top':'. Nothing is added on top')+'.</div>':'')+
+      (!includesStay&&hotelComplete?'<div class="muted sm">This hotel figure is a room-rate component only: add the resort fee and tax (or use the dated capture) before treating it as the whole nightly cost.</div>':'')+
+      '<div class="big">Estimated trip cost: '+(grandTotal===null?'Incomplete':'$'+grandTotal.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})+(opt&&opt.getAttribute('data-datematched')==='0'?' <span class="pill pill-warn">not date-matched to your window</span>':''))+'</div>'+
+      (grandTotal===null&&Number.isFinite(nightsN)?'<div>Mandatory stay cost that IS verified: $'+knownNight.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+' / night &times; '+nightsN+' = <b>$'+(knownNight*nightsN).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> <span class="muted sm">resort fee + '+perNight('tax')+'% tax'+(parkOn?' + parking':'')+'; the room rate is the only missing term</span></div>':'')+
       '<div class="muted sm">Formula: selected entries &times; their listed buy-ins + nights &times; true hotel cost. One buy-in is counted per selected event. The candidate events below do not have confirmed single-entry caps.</div>'+
-      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; enter a verified true nightly total from the hotel rate log before treating the trip total as complete.</p>')+
+      (opt&&opt.value==='capture'?'<p class="warnbox">Not date-matched: the auto capture is an itemized total for the dates printed in the dated log, not for your window. It is shown so the scale of the hotel side is visible; it is not a quote for your stay.</p>':'')+
+      (hotelComplete?'':'<p class="warnbox">Incomplete. No date-specific room quote is currently recorded; the calculator shows the verified mandatory stay cost, and the trip total closes only when a dated nightly total is recorded in the hotel rate log.</p>')+
       (entries===0?'<p class="muted sm">Select at least one event to include its buy-in in the estimate.</p>':'')+
       (hasInvalidBuyin?'<p class="warnbox">A selected event has no valid buy-in. The trip total cannot be completed.</p>':'');
   }
   box.addEventListener('change',total);
+  var pq=document.getElementById('pquote');
+  if(pq) pq.addEventListener('change',function(){
+    var o=pq.options[pq.selectedIndex], f=document.getElementById('ptrue');
+    var v=o.getAttribute('data-pernight');
+    if(f){ if(v&&v!=='null'){f.value=v;f.readOnly=true;} else {f.value='';f.readOnly=false;} }
+    total();
+  });
+  var pb=document.getElementById('ppark'); if(pb) pb.addEventListener('change',total);
   ['ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
   total();
 }

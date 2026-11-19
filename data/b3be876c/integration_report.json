@@ -48,7 +48,8 @@
   "Wynn resort fee moved from unverified to verified ($55 + tax) from an official Wynn terms page whose offer window covers the planned stay; parking, cancellation, incidentals and occupancy now carry the same source and read date.",
   "Caesars Palace: resort fee published only as a $45-$60 corporate range; left unverified for the property, with the official sentence and its read date.",
   "Horseshoe Las Vegas: resort fee published only as a $45-$60 corporate range; left unverified for the property, with the official sentence and its read date.",
-  "Venetian: resort fee re-read today; the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay."
+  "Venetian: resort fee re-read today; the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay.",
+  "Venetian: cancellation deadline (24 h before arrival on the published refundable rate), deposit, incidental hold, extra-guest charge, check-in/out times and the $20/night registered-guest self-parking fee were read on 2026-11-19 from the official terms, offer, and parking pages, and are now on the hotel row and in the dated log. The nightly room rate for the trip window is still not published anywhere official, so F14 stays open."
  ],
  "rate_log_entries": 2,
  "live_reads": {
@@ -68,10 +69,22 @@
    "2026-11-19",
    "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
   ],
+  "venetian_hotel_terms": [
+   "2026-11-19",
+   "https://www.venetianlasvegas.com/legal/hotel-terms-and-conditions.html"
+  ],
+  "venetian_flexible_offer": [
+   "2026-11-19",
+   "https://www.venetianlasvegas.com/hotel/offers/most-flexible-rate.html"
+  ],
+  "venetian_parking": [
+   "2026-11-19",
+   "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html"
+  ],
   "sheet_live_spot_checks": [
    null,
    null
   ]
  },
- "flags_total": 33
+ "flags_total": 44
 }

@@ -96,7 +96,7 @@
   "id": "F14",
   "area": "Hotels",
   "title": "No official page publishes a dated nightly rate for the trip dates",
-  "detail": "The only numeric room rate any Strip property publishes is the Venetian poker suite rate, '$119 and $209' starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The 2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports 'Incomplete' until a dated quote is recorded.",
+  "detail": "The only numeric room rate any Strip property publishes is the Venetian poker suite rate, '$119 and $209' starting ('and can be higher'), which is a published floor and not a quote for 6-13 December 2026. The 2026-12-02 to 2026-12-09 booking-engine total in the dated rate log is a 2026-11-16 snapshot from a different window. Every rate cell therefore stays blank on purpose, and the trip-cost calculator reports 'Incomplete' until a dated quote is recorded. The other mandatory components of the stay are NOT missing for the Venetian: the $55 plus-tax resort fee, the $20/night registered-guest self-parking fee, the 24-hour cancellation deadline on the published refundable rate and the $150/night incidental hold are each on the site with their official page and read date (2026-11-19), and they are carried separately in the planner's fee side.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -232,9 +232,11 @@
  {
   "id": "F33",
   "area": "Hotels",
-  "title": "Per-stay parking cost and cancellation deadline are not captured for every hotel",
-  "detail": "Parking terms are captured per property (Venetian player-parking page; Wynn parking page), but what a specific stay will add at checkout, and each hotel's cancellation deadline for the planned rate, is only known for Wynn (48 hours before arrival for offer DK26WLV2 bookings, re-read 2026-11-19; the earlier 72-hour figure is withdrawn, see F55). Blank elsewhere and flagged.",
-  "source": "https://www.wynnlasvegas.com/terms-and-conditions/849338"
+  "title": "Per-stay parking cost and cancellation deadline are now official for the Venetian, still missing for the others",
+  "detail": "Parking and cancellation are captured per property, and on 2026-11-19 the Venetian's were read from its own official pages: $20/day self-parking for registered guests ($40 valet), a 24-hour cancellation deadline on the published refundable rate, and a $150/night incidental hold. Wynn's offer terms give 48 hours (the earlier 72-hour figure is withdrawn, see F55) and include parking in the resort fee. What is still not captured for ANY hotel is what a specific stay will add at checkout, because no dated, itemized quote for the trip window exists; Caesars Palace and Horseshoe publish neither a property resort fee nor a guest parking rate on the pages we could read.",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "status": "partially resolved; per-stay checkout totals still open",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F46",
@@ -324,6 +326,15 @@
   "detail": "Several records (rate snapshots, Q14, F33) stated a Wynn cancellation deadline of '72 hours before arrival, per the Wynn terms page read 2026-11-17'. No stored capture contains that text, so it cannot be reproduced. The Wynn terms page re-read on 2026-11-19 (offer DK26WLV2) says 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited', and its longer full-deposit and cancellation policy applies only to stays on 15-21 Nov, 29-31 Dec 2026 and 4-6 Jan 2027, not to 6-13 Dec. The 72-hour figure is therefore withdrawn and the record now carries 48 hours, labelled as the offer's terms. The standard (non-offer) rate policy was not read, so the planned rate's deadline is still unconfirmed. Re-read the booking-engine rate rules at quote time before any payment.",
   "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
   "status": "corrected by d615f79e; needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F56",
+  "area": "Site build",
+  "title": "The scheduled re-check re-derived the published records from the generator and silently reverted corrections",
+  "detail": "recheck-ea99006a.yml runs scripts/integrate_b3be876c.py on every scheduled run, and that script writes data/ea99006a/{venetian,hotels,flags,questions,suggestions,meta,all,rates_log}.json from its own embedded text. It was not idempotent against the corrected committed records: running it on main reverted flag F47 to the pre-correction wording, replaced Q01 with text that calls the automatic scenario 'fixed for you', overwrote the parking question Q11 and the two newest suggestions by upserting ids S10/S11 that already carried different published content, and wrote meta.trip.check_out as the LAST PLAYING DAY while its own nights field said 7 (i.e. checkout 2026-12-12 for a 2026-12-06 arrival). Because the job commits whatever changes, the next scheduled run would have republished those regressions. Fixed in this session: the generator now carries the corrected text, check_out is check-in + 7 with first/last playing day recorded separately, its upserts target the ids they actually own (Q16, S13, S14), and quality.yml runs scripts/check_idempotency_0fd4c550.py, which re-runs the generator and fails on any non-date difference. Run against the tree before and after the fix: before, 7 data files changed; after, only dates move.",
+  "source": "https://github.com/karagemop466-tech/Poker5/actions/workflows/recheck-ea99006a.yml",
+  "status": "fixed by session 0fd4c550; guarded by quality.yml",
   "last_updated": "2026-11-19"
  }
 ]
