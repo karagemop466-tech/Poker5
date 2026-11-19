@@ -130,13 +130,23 @@ function initPlanner(){
       if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
       var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
       buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
+    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'');
     var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
+    var known=!isNaN(hotel)&&hotel>0;
+    var h=known?hotel*nights:0, t=buy+h;
+    var html='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>';
+    if(known){
+      html+='<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
+        '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>';
+    }else{
+      html+='<div>Hotel: <b>Incomplete</b> - no date-specific room quote is currently recorded. Enter the true '+
+        'nightly hotel cost from the hotels page to complete the total.</div>'+
+        '<div class="big">Estimated trip cost: Incomplete</div>';
+    }
+    html+='<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can '+
+      'cost several buy-ins; the multiplier above models that. Whether the resort fee is included in the tax base '+
+      'remains unverified - confirm on the folio.</div>';
+    if(out) out.innerHTML=html;
   }
   box.addEventListener('change',total);
   ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});

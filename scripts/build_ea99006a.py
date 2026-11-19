@@ -476,13 +476,23 @@ function initPlanner(){
       if(!c.checked) return; var b=parseFloat(c.getAttribute('data-buyin'))||0;
       var times=parseInt((document.getElementById('mult')||{}).value||'1',10);
       buy+=b*times; n+=times;});
-    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'0');
+    var hotel=parseFloat((document.getElementById('ptrue')||{}).value||'');
     var nights=parseFloat((document.getElementById('pnights')||{}).value||'0');
-    var h=hotel*nights, t=buy+h;
-    if(out) out.innerHTML='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
-      '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+
-      '<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can cost several buy-ins; the multiplier above models that.</div>';
+    var known=!isNaN(hotel)&&hotel>0;
+    var h=known?hotel*nights:0, t=buy+h;
+    var html='<div>Entries: <b>'+n+'</b> &nbsp; Buy-ins total: <b>$'+buy.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>';
+    if(known){
+      html+='<div>Hotel: '+nights+' night(s) &times; $'+hotel.toFixed(2)+' true cost = <b>$'+h.toLocaleString(undefined,{maximumFractionDigits:0})+'</b></div>'+
+        '<div class="big">Estimated trip cost: $'+t.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>';
+    }else{
+      html+='<div>Hotel: <b>Incomplete</b> - no date-specific room quote is currently recorded. Enter the true '+
+        'nightly hotel cost from the hotels page to complete the total.</div>'+
+        '<div class="big">Estimated trip cost: Incomplete</div>';
+    }
+    html+='<div class="muted sm">Entries &times; buy-ins + nights &times; true hotel cost. Multi-entry events can '+
+      'cost several buy-ins; the multiplier above models that. Whether the resort fee is included in the tax base '+
+      'remains unverified - confirm on the folio.</div>';
+    if(out) out.innerHTML=html;
   }
   box.addEventListener('change',total);
   ['mult','ptrue','pnights'].forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener('input',total);});
@@ -949,12 +959,14 @@ def build_planner():
                    esc(TRIP["rationale"])))
     body.append('<div class="panel"><div class="calc">'
                 '<label>Re-entry multiplier<input id="mult" type="number" min="1" max="10" step="1" value="1"></label>'
-                '<label>True hotel cost / night $<input id="ptrue" type="number" min="0" step="1" value="0"></label>'
+                '<label>True hotel cost / night $<input id="ptrue" type="number" min="0" step="1" placeholder="no date-specific quote recorded"></label>'
                 '<label>Nights<input id="pnights" type="number" min="0" step="1" value="%d"></label>'
                 '</div><div class="result" id="ptotal"></div>'
                 '<p class="muted sm">Set the multiplier to 1 for a single-entry plan and to 2 or more for a '
                 're-entry plan, so you can see both totals before you commit. Take the hotel figure from the '
-                '<a href="hotels.html">hotels page</a>.</p></div>' % TRIP["nights"])
+                '<a href="hotels.html">hotels page</a>. No date-specific room quote is currently recorded for '
+                'this stay, so the hotel and trip totals stay incomplete until you enter one. Whether the resort '
+                'fee is included in the tax base remains unverified - confirm it on the folio before you pay.</p></div>' % TRIP["nights"])
     body.append('<div class="panel" id="picks"><h2>Entries in your window (%d)</h2>' % len(rows))
     body.append('<div class="tablewrap"><table class="data pick"><thead><tr><th>Play?</th><th>Date</th><th>Start</th>'
                 '<th>#</th><th>Event</th><th class="num">Buy-in</th><th>House fee</th>'

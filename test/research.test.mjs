@@ -95,9 +95,11 @@ test('trip calculator never treats an unknown hotel quote as zero or a generic p
   assert.doesNotMatch(planner, /id="nights"[^>]*value="7"/);
   assert.doesNotMatch(planner, /<option[^>]+data-rate=/);
   assert.match(planner, /fee's own tax treatment is confirmed on the folio|whether the resort fee is included in the tax base remains unverified/i);
-  assert.match(script, /hotelComplete/);
-  assert.match(script, /: "Incomplete"/);
-  assert.match(script, /No dated room quote recorded for/);
+  // The canonical planner (scripts/build_ea99006a.py) must guard the hotel term:
+  // an unknown quote yields "Incomplete", never a $0 hotel cost folded into a total.
+  assert.match(script, /known=!isNaN\(hotel\)&&hotel>0/);
+  assert.match(script, /Incomplete/);
+  assert.match(script, /no date-specific room quote is currently recorded/i);
 });
 
 test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {
