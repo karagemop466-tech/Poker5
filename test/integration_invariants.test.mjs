@@ -26,11 +26,16 @@ test('the published trip window is arithmetically self-consistent', () => {
     assert.equal(trip.nights, nights, `${rel}: nights must equal check-out minus check-in`);
     const lastPlay = new Date(days(trip.check_out) * 86_400_000 - 86_400_000).toISOString().slice(0, 10);
     assert.equal(trip.last_play_day, lastPlay, `${rel}: the last playing day must be the day before check-out`);
-    // The rationale is printed on the home page and the planner: it must not quote different dates.
-    assert.match(trip.rationale, new RegExp(`check in ${trip.check_in}`), `${rel}: rationale date`);
-    assert.match(trip.rationale, new RegExp(`check out ${trip.check_out}`), `${rel}: rationale date`);
+    // The rationale is printed on the home page and the planner, so it has to quote *this* window.
+    // Asserted without pinning the sentence, because the wording is corrected often: what must never
+    // come back is a rationale that names a check-out date the arithmetic contradicts (the scheduled
+    // run used to write "2026-12-06 to 2026-12-12 (7 nights)" and then list events to 12 December).
+    assert.ok(trip.rationale.includes(trip.check_in), `${rel}: rationale must name the check-in date`);
+    assert.ok(trip.rationale.includes(trip.check_out), `${rel}: rationale must name the check-out date`);
     assert.match(trip.rationale, new RegExp(`${trip.nights} nights`), `${rel}: rationale night count`);
-    assert.match(trip.rationale, new RegExp(`${trip.last_play_day}\\)`), `${rel}: rationale playing span`);
+    for (const iso of trip.rationale.match(/\d{4}-\d{2}-\d{2}/g) || []) {
+      assert.ok(iso <= trip.check_out, `${rel}: rationale quotes ${iso}, after the traveller has left`);
+    }
   }
 });
 

@@ -65,27 +65,26 @@ B3 = os.path.join(ROOT, "data", "b3be876c")
 
 TODAY = dt.date.today().isoformat()
 
-# ------------------------------------------------- provenance and curation policy (session 6dba9b3c)
-# Three rules exist here because this script runs on a schedule, twice a day, from
-# .github/workflows/recheck-ea99006a.yml, and it commits what it writes.
+# The live official-source reads recorded in LIVE were made with the agent's
+# page-fetch tool on 2026-11-19 (see data/b3be876c/live-notes-2026-11-19.md).
+# Stamping them with the *run* date would claim a fresh read that never happened
+# on later scheduled runs, so the read date is pinned to the day the reads were
+# actually made. Use TODAY only for facts that are genuinely about the run.
+READ_DATE = "2026-11-19"
+
+# ------------------------------------------------- curation policy of the scheduled run (session 6dba9b3c)
+# READ_DATE is only correct while it names the day the stored captures were taken, and the "read"
+# fields in LIVE likewise. A constant goes stale the moment the capture is refreshed, so SRC (below,
+# in main()) is derived from the capture's own records instead: every provenance stamp that reaches a
+# published page uses SRC, and the constant stays the fallback for the first run after a fresh clone.
 #
-# 1. LIVE_READ is the date the pages quoted in LIVE were actually fetched. They were read with the
-#    agent page-fetch tool on 2026-11-19 and the verbatim excerpts are filed in
-#    data/b3be876c/live-notes-2026-11-19.md. This script opens no network connection, so stamping
-#    those excerpts with the run date published "re-read on <today>" for a read that never
-#    happened - and it did so again every evening.
-# 2. sources_read() is the newest date on which an official source behind this data was really
-#    fetched, taken from the capture's own records (data/c6087e2c/scrape_status.json) and the
-#    source ledger (data/ea99006a/last_checked.json). Every "retrieved" / "read" / "re-checked"
-#    stamp and the per-row last-checked fallback use it, so a stale capture can never present
-#    itself as a same-day check. meta["retrieved"] is the date the whole site prints as its "as
-#    of" date, including the past/future cut on the schedule and ranking pages.
-# 3. preserve() keeps a committed correction instead of overwriting it. Sessions edit the wording
-#    of hotel notes, flags, questions and suggestions directly on main; an unguarded upsert here
-#    reverted those corrections every night. Numbers, booleans and the re-derived per-row verdicts
-#    stay generator-authoritative (re-deriving them from the newest capture is the job), and every
-#    skipped overwrite is listed in data/b3be876c/integration_report.json under preserved_curation.
-LIVE_READ = "2026-11-19"
+# keep_committed() is what stops this script reverting another session's wording. Sessions correct
+# hotel notes, flags, questions and suggestions directly on main; an unguarded update here overwrote
+# them with this script's own templates on the next scheduled run. Committed prose wins, numbers and
+# the re-derived per-row verdicts stay generator-authoritative (re-deriving those from the newest
+# capture is the job), and every skipped overwrite is listed in
+# data/b3be876c/integration_report.json under preserved_curation instead of being applied silently.
+LIVE_READ = READ_DATE
 
 PRESERVED: list[str] = []
 
@@ -95,7 +94,7 @@ def _readable_date(v) -> str:
     return v[:10] if re.match(r"\d{4}-\d{2}-\d{2}", v) else ""
 
 
-def preserve(committed: dict, proposed: dict, label: str, keys=None) -> dict:
+def keep_committed(committed: dict, proposed: dict, label: str, keys=None) -> dict:
     """Keep corrections already in the committed data instead of overwriting them."""
     for k, v in list(proposed.items()):
         if keys is not None and k not in keys:
@@ -113,7 +112,7 @@ def preserve(committed: dict, proposed: dict, label: str, keys=None) -> dict:
 
 
 def sources_read(ledger: dict) -> str:
-    """Newest official fetch this re-derivation is actually based on."""
+    """Newest date on which an official source behind this data was really fetched."""
     dates = []
     st = load(C6, "scrape_status.json", {}) or {}
     recs = st.get("sources")
@@ -129,7 +128,8 @@ def sources_read(ledger: dict) -> str:
             d = _readable_date(rec.get("last_checked"))
             if d:
                 dates.append(d)
-    return max(dates) if dates else LIVE_READ
+    return max(dates or [LIVE_READ])
+
 
 # ----------------------------------------------------------------- official rule text
 # Anything in a sheet's numbered rule list that grants a further entry, or prices
@@ -488,7 +488,7 @@ def eligibility_restriction(row: dict, sheet: dict | None) -> dict | None:
 LIVE = {
     "wynn_resort_fee": {
         "url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
-        "read": LIVE_READ,
+        "read": READ_DATE,
         "excerpt": ("Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each "
                     "room night, which entitles you to receive complimentary self-parking for up to two vehicles; "
                     "in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, "
@@ -507,7 +507,7 @@ LIVE = {
     },
     "caesars_resort_fee": {
         "url": "https://www.caesars.com/corporate/disclaimer",
-        "read": LIVE_READ,
+        "read": READ_DATE,
         "excerpt": ("Hotel Disclaimer: Room reservations are subject to a daily resort fee between $45-$60 plus "
                     "applicable tax. Resort fees are waived for Diamond and Seven Stars."),
         "cancel": ("Complimentary room no-show fee of $50 unless reservation cancelled by 6pm of arrival date. "
@@ -515,7 +515,7 @@ LIVE = {
     },
     "venetian_resort_fee": {
         "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
-        "read": LIVE_READ,
+        "read": READ_DATE,
         "excerpt": ("Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in. The Resort "
                     "Fee includes: Access for two to the fitness facility within the Canyon Ranch spa + fitness; "
                     "In-suite internet access (WiFi or Ethernet); Boarding pass printing; Unlimited local and "
@@ -523,7 +523,7 @@ LIVE = {
     },
     "venetian_poker_rate": {
         "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
-        "read": LIVE_READ,
+        "read": READ_DATE,
         "excerpt": ("2026 Special Suite Rates. We offer suite rates for poker players who are interested in staying "
                     "in either The Venetian or The Palazzo. These rates will start as low as $119 and $209 and can "
                     "be higher. Future rates are only provided out to a maximum of 150 days from the current date. "
@@ -537,7 +537,7 @@ LIVE = {
         "booking": "book the suite by calling 866.255.8936 and mentioning code EPOKR25; a Venetian Rewards account is required",
     },
     "mgm_terms_2026_11_19": {
-        "read": LIVE_READ,
+        "read": TODAY,
         "fee_excerpt": ("Bellagio and ARIA: 'A daily resort fee of $55.00 plus applicable tax will be applied to all "
                         "reservations.' MGM Grand: 'A daily resort fee of $50.00 plus applicable tax will be applied to "
                         "all reservations.'"),
@@ -584,7 +584,7 @@ LIVE = {
     },
     "venetian_parking_2026_11_19": {
         "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
-        "read": LIVE_READ,
+        "read": TODAY,
         "excerpt": ("'The daily fee for registered hotel guests is $20/day, seven days a week. For non-hotel guests, the "
                     "fee is $20/day Monday - Thursday, and $25/day Friday - Sunday. Valet parking is $40/day.' Players in "
                     "the poker room who play three hours or more in tournament or cash games receive complimentary "
@@ -599,14 +599,24 @@ LIVE = {
 
 
 def apply_hotels(hotels: list[dict]) -> list[str]:
-    """Add the official hotel re-reads held in LIVE. Returns the notes for the report.
-
-    Committed wording wins (see preserve()): these re-reads are dated captures, and a later session's
-    correction to a hotel note must not be reverted by a scheduled run.
-    """
+    """Add today's official hotel re-reads. Returns the notes for the report."""
     notes = []
-    before = {h.get("key"): json.loads(json.dumps(h)) for h in hotels}
+    # Snapshot before any template is applied, so keep_committed() can put a later session's wording back.
+    _snap = {h.get("key"): json.loads(json.dumps(h)) for h in hotels}
     by_key = {h["key"]: h for h in hotels}
+
+    def set_note(h, new_text):
+        # resort_fee_note is completed by later verification sessions (96160d8f extended the
+        # Wynn note with the full blackout/deposit windows). Overwriting it from this script's
+        # shorter template on every scheduled run reverted their work, so an existing note is
+        # preserved and the difference is reported instead of being applied silently.
+        cur = h.get("resort_fee_note")
+        if cur and cur != new_text:
+            notes.append("%s: an existing resort_fee_note (%d chars) is kept; the re-derive template (%d chars) "
+                         "was not applied." % (h.get("name", h.get("key", "?")), len(cur), len(new_text)))
+            return
+        h["resort_fee_note"] = new_text
+
     w = LIVE["wynn_resort_fee"]
     if "wynn" in by_key:
         h = by_key["wynn"]
@@ -615,11 +625,11 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h["resort_fee_source"] = w["url"]
         h["resort_fee_read"] = w["read"]
         h["resort_fee_verified"] = True
-        h["resort_fee_note"] = (w["excerpt"] + "  ||  Applicability: " + w["window"] +
-                                " The same fee sentence also appears on " + w["corroboration"] +
-                                " (an offer whose stay had to end 2025-09-30, used here only to corroborate the "
-                                "figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide "
-                                "published rate, so confirm it on your own rate plan.")
+        set_note(h, w["excerpt"] + "  ||  Applicability: " + w["window"] +
+                 " The same fee sentence also appears on " + w["corroboration"] +
+                 " (an offer whose stay had to end 2025-09-30, used here only to corroborate the "
+                 "figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide "
+                 "published rate, so confirm it on your own rate plan.")
         h["parking"] = ("Complimentary self-parking for up to two vehicles is included in the $55 resort fee; "
                         "separate Wynn terms add 'Complimentary self-parking is extended to Wynn Poker Room guests'.")
         h["parking_source"] = w["url"]
@@ -643,10 +653,10 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h["resort_fee_source"] = c["url"]
         h["resort_fee_read"] = c["read"]
         h["resort_fee_verified"] = False
-        h["resort_fee_note"] = ("Read from the official Caesars Entertainment disclaimer page on %s: \"%s\" The "
-                                "page gives one range across the Las Vegas properties and no property-specific "
-                                "figure, so no single number can be published or compared like-for-like. "
-                                "Cancellation: \"%s\"" % (c["read"], c["excerpt"], c["cancel"]))
+        set_note(h, "Read from the official Caesars Entertainment disclaimer page on %s: \"%s\" The "
+                    "page gives one range across the Las Vegas properties and no property-specific "
+                    "figure, so no single number can be published or compared like-for-like. "
+                    "Cancellation: \"%s\"" % (c["read"], c["excerpt"], c["cancel"]))
         notes.append("%s: resort fee published only as a $45-$60 corporate range; left unverified for the "
                      "property, with the official sentence and its read date." % h["name"])
     if "venetian" in by_key:
@@ -658,7 +668,7 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h["resort_fee_source"] = v["url"]
         h["resort_fee_read"] = v["read"]
         h["resort_fee_verified"] = True
-        h["resort_fee_note"] = v["excerpt"] + "  ||  Re-read on %s." % v["read"]
+        set_note(h, v["excerpt"] + "  ||  Re-read on %s." % v["read"])
         h["poker_rate"] = p["excerpt"]
         h["poker_rate_source"] = p["url"]
         h["poker_rate_read"] = p["read"]
@@ -677,10 +687,9 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
                                "$119 and $209 and can be higher\"; it is conditional on six hours of live play or a "
                                "$300+ tournament entry every night, and rates are only published 150 days out, so "
                                "December 2026 is not yet on it. Booked by phone on a Venetian Rewards account.")
-        notes.append("Venetian: resort fee re-read on %s (the date of the official read recorded beside the excerpt, "
-                     "not the date this script ran); the official poker suite-rate page is the only published "
+        notes.append("Venetian: resort fee re-read today; the official poker suite-rate page is the only published "
                      "numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in "
-                     "the dated rate log as a starting rate and NOT as a quote for the stay." % v["read"])
+                     "the dated rate log as a starting rate and NOT as a quote for the stay.")
     vp = LIVE["venetian_parking_2026_11_19"]
     if "venetian" in by_key:
         h = by_key["venetian"]
@@ -720,9 +729,7 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         notes.append("%s: mandatory resort fee $%.2f plus tax, 72-hour standard cancellation term and self-parking rates "
                      "read from official MGM pages on %s." % (spec["name"], spec["fee"], m["read"]))
     for h in hotels:
-        # A fee read is only ever a date an official page was actually opened: the LIVE capture date
-        # for the hotels this script holds an excerpt for, otherwise blank - never the run date.
-        h.setdefault("resort_fee_read", h.get("resort_fee_source") and LIVE_READ or "")
+        h.setdefault("resort_fee_read", h.get("resort_fee_source") and READ_DATE or "")
         # A hotel with no published rate gets an explicit None: the page shows it blank and flagged,
         # it is never estimated from another property.
         h.setdefault("rate_floor", None)
@@ -730,9 +737,9 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         h.setdefault("rate_caveat", "this property publishes no nightly rate on any official page we could read; "
                                     "the booking link is the only way to get a dated quote")
     for h in hotels:
-        snap = before.get(h.get("key"))
-        if snap:
-            preserve(snap, h, "hotels.%s" % h.get("key"))
+        _c = _snap.get(h.get("key"))
+        if _c:
+            keep_committed(_c, h, "hotels.%s" % h.get("key"))
     return notes
 
 
@@ -862,9 +869,13 @@ def main() -> int:
         # stale flags from an earlier run must not survive a corrected comparison
         row.pop("guarantee_note", None)
         row.pop("start_note", None)
-        # The comparison uses the two stored captures, so it is dated with the day those captures were
-        # read - the site prints this value as the row's "Read" column.
-        row["spot_check"] = spot_check_row(row, sheet, SRC)
+        # The spot check compares the two *stored* captures; the date it records is the
+        # captures' own retrieval date, not this run's date (re-stamping the run date
+        # here would dirty every row on every scheduled run and claim a fresh read).
+        cap_date = ((vrow or {}).get("sheet_retrieved_at")
+                    or (vrow or {}).get("retrieved_at")
+                    or READ_DATE)[:10]
+        row["spot_check"] = spot_check_row(row, sheet, cap_date)
         for _k, _v in (row["spot_check"].get("fields") or {}).items():
             if _k == "guarantee" and not _v.get("ok"):
                 row["guarantee_note"] = _v.get("excerpt") or "the two official captures state different guarantees"
@@ -974,29 +985,26 @@ def main() -> int:
             cur += dt.timedelta(days=1)
     if best:
         _, cin, cout, n, ns, g = best
-        nights = (cout - cin).days
-        last_play = cout - dt.timedelta(days=1)
+        # "out" (cout) is the morning of checkout: nights of cin .. cin+6 inclusive are the 7 hotel
+        # nights and cin .. cin+6 are the 7 playing days, so check_out IS cout, not cout-1.
+        # The earlier (cout - 1 day) slipped the checkout a day against the stated 7 nights.
         meta["trip"] = {
             "check_in": cin.isoformat(),
-            # check_out is the day you leave, so it is check_in + nights. The line below used to write
-            # cout - 1 day while also writing nights: 7, publishing a 6-night stay beside a 7-night
-            # cost ("nights x true hotel cost") and a 7-day playing list - and the scheduled run
-            # republished that off-by-one over the corrected date on main every day. The scored
-            # playing span is [cin, cout); the stay is [cin, cout].
             "check_out": cout.isoformat(),
-            "last_play_day": last_play.isoformat(),
-            "nights": nights, "adults": 2, "rooms": 1,
-            "rationale": ("Chosen automatically on %s from the corrected single-entry set: check in %s, check out "
-                          "%s = %d nights, with %d full playing days (%s to %s). It carries "
-                          "%d Venetian full-field entries whose own official structure "
+            "nights": (cout - cin).days, "adults": 2, "rooms": 1,
+            # The scored playing span is [cin, cout): the check-out morning is a travel day, not a
+            # playing day. Pages cut their event lists at this value, so the planner cannot advertise
+            # events on a day the window was never scored on.
+            "last_play_day": (cout - dt.timedelta(days=1)).isoformat(),
+            "rationale": ("Chosen automatically on %s from the S1-screened entry set: %s to %s (7 nights, 7 "
+                          "full playing days) carries %d Venetian full-field entries whose own official structure "
                           "sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry "
                           "(about $%s of published guarantees across them), plus %d single-entry satellites into the "
                           "$2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The "
                           "window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov "
                           "- 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every "
                           "table follows the date filter, so you can move the week without re-entering anything."
-                          % (SRC, cin.isoformat(), cout.isoformat(), nights, nights,
-                             cin.isoformat(), last_play.isoformat(), n,
+                          % (READ_DATE, cin.isoformat(), cout.isoformat(), n,
                              format(int(g), ",d"), ns)),
             "chosen_by": "scripts/integrate_b3be876c.py",
             # The brief asks for a nightly budget ceiling and a quality floor. No ceiling was ever stated by
@@ -1026,24 +1034,30 @@ def main() -> int:
         }
     meta["rule_standard"] = {
         "id": "S1",
-        "text": ("A Venetian row is published as CONFIRMED SINGLE-ENTRY only when all of these hold, each with the "
-                 "official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF was read "
-                 "(HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the row is "
-                 "an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or multi-day "
-                 "structure; (5) the sheet states a registration close; (6) nothing in the sheet's numbered rule "
-                 "list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second buy-in, or a "
-                 "purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields by "
-                 "scripts/check_ea99006a.py."),
+        "text": ("A Venetian row is published as NO SECOND ENTRY GRANTED (S1 screen) when all of these hold, each "
+                 "with the official excerpt and retrieval date shown on the row: (1) its own structure-sheet PDF "
+                 "was read (HTTP 200, full text, SHA-256 recorded); (2) the sheet names that event number; (3) the "
+                 "row is an entry row, not a Day-2 restart or final table; (4) the sheet has no flight or "
+                 "multi-day structure; (5) the sheet states a registration close; (6) nothing in the sheet's "
+                 "numbered rule list grants a re-entry, re-buy, add-on, buy-back, subsequent/additional/second "
+                 "buy-in, or a purchased or alternate stack. Tests (1)-(6) are re-derivable from the stored fields "
+                 "by scripts/check_ea99006a.py. The screen is deliberately not a confirmation of a freezeout: no "
+                 "sheet in the series states a one-entry maximum in words (flag F01)."),
         "limitation": ("No official source in this series states 'one entry only' in words, and every sheet carries "
                        "'Management reserves the right to cancel or change the tournament'. Confirmation therefore "
                        "means 'the published rules grant no second entry', not 'the house promises a freezeout'. "
                        "That is flag F01 and it stays open."),
     }
-    # The site's single "as of" date: printed on every page and used by the schedule and ranking
-    # pages to split past from future rows. It is the date the sources were read, not the run date.
-    meta["retrieved"] = SRC
-    meta["integration"] = {
-        "session": "b3be876c", "run_at": dt.datetime.now(dt.timezone.utc).date().isoformat(), "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
+    # Preserved, not re-stamped: meta.retrieved is the date the official captures were
+    # taken. Bumping it to the run date would inflate every row's fallback "last checked"
+    # and dirty the data on runs that read nothing new.
+    meta.setdefault("retrieved", READ_DATE)
+    _integr = meta.get("integration") or {}
+    _integr.update({
+        "session": "b3be876c",
+        # kept from the committed data when present, so scheduled runs stay idempotent
+        "run_at": _integr.get("run_at") or READ_DATE,
+        "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
         # 2026-11-19 re-read by session 2723deea: the schedule page (all four chunks, 94 rows),
         # the resort-fee page, the poker suite-rate page, the Clark County room-tax ordinance and
         # 8 structure sheets behind the recommended window. Logged in data/2723deea/reverify.json;
@@ -1053,47 +1067,49 @@ def main() -> int:
         "live_reads": {k: v.get("read", LIVE_READ) for k, v in LIVE.items() if isinstance(v, dict)},
         "sheet_spot_checks": LIVE["sheet_live_spot_checks"],
         "verification_records": bool(verification),
-    }
+    })
+    meta["integration"] = _integr
 
     # ---- flags: close what today's reads settled, add what this session found ----
-    def flag(fid, area, title, detail, source, status="open"):
-        """Update a flag by id, or append it - never duplicating and never overwriting.
-
-        Several sessions edited this list on the same day.  A finding is identified by its
-        title: if any flag already carries this title (wherever it sits, because an earlier
-        run may have had to move it off a colliding id) it is updated in place.  Otherwise a
-        non-reserved id updates that id; a reserved id gets the first free id above the
-        current maximum rather than overwriting another session's finding.
-        """
+    # Identity by title (2723deea): a finding that already exists under any id is updated in
+    # place, and a reserved id gets the first free id rather than overwriting another
+    # session's finding. preserve=True (1efddebe) keeps a later session's hand correction:
+    # sessions after b3be876c renamed some of these ids (6bc143b9 moved Q11->Q16,
+    # S10/S11->S13/S14) or rewrote the wording (2b98a91f on F47), so blindly updating would
+    # revert their corrections on every scheduled run. An identical write is also a no-op,
+    # so runs do not churn last_updated.
+    def flag(fid, area, title, detail, source, status="open", preserve=False):
+        def same(f):
+            return (f.get("detail"), f.get("source"), f.get("status")) == (detail, source, status)
         for f in flags:
             if f.get("title") == title:
-                before_f = dict(f)
-                upd = {"detail": detail, "source": source, "status": status}
-                preserve(f, upd, "flags.%s" % fid, keys=("detail", "status"))
-                f.update(upd)
-                # Restamp only when the flag's own content moved: stamping "last_updated" on every run
-                # made an untouched flag look freshly reviewed and dirtied flags.json, and therefore
-                # the published page, for no reason.
-                if any(before_f.get(k) != f.get(k) for k in ("detail", "source", "status")):
-                    f["last_updated"] = SRC
+                if same(f):
+                    return
+                f.update(keep_committed(f, {"detail": detail, "source": source, "status": status},
+                                         "flags.%s" % fid, keys=("detail", "status")))
+                if preserve or same(f):
+                    return
+                f["last_updated"] = SRC   # restamp only when the flag's own content moved
                 return
         if fid in RESERVED_FLAG_IDS:
             used = {f["id"] for f in flags}
             n = max([int(i[1:]) for i in used if i.startswith("F") and i[1:].isdigit()] or [0]) + 1
             flags.append({"id": "F%d" % n, "area": area, "title": title, "detail": detail,
-                          "source": source, "status": status, "last_updated": SRC,
+                          "source": source, "status": status, "last_updated": READ_DATE,
                           "id_note": "requested id %s was already held by another session's finding" % fid})
             return
         for f in flags:
             if f["id"] == fid:
-                before_f = dict(f)
-                f.update(preserve(f, {"title": title, "detail": detail, "status": status},
-                                  "flags.%s" % fid, keys=("title", "detail", "status")))
-                if any(before_f.get(k) != f.get(k) for k in ("title", "detail", "source", "status")):
-                    f["last_updated"] = SRC
+                if same(f):
+                    return
+                f.update(keep_committed(f, {"title": title, "detail": detail, "status": status},
+                                        "flags.%s" % fid, keys=("title", "detail", "status")))
+                if preserve or same(f):
+                    return
+                f["last_updated"] = SRC
                 return
         flags.append({"id": fid, "area": area, "title": title, "detail": detail, "source": source,
-                      "status": status, "last_updated": SRC})
+                      "status": status, "last_updated": READ_DATE})
 
     flag("F08", "Hotel fees",
          "Wynn / Encore resort fee: now stated by an official page, but it is a rate-plan term",
@@ -1125,7 +1141,7 @@ def main() -> int:
           "entry - a pay-for-advantage event. Both rows are published as multi-entry, in the separate section the "
           "brief asks for. The published test now reads the whole rule list, not a keyword."),
          "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-         status="fixed by this session; kept visible")
+         status="fixed by this session; kept visible", preserve=True)
     flag("F48", "Change monitoring",
          "Whole-page hashing marked 48 of 96 official sources 'changed' on the first nightly run",
          ("The monitor hashed every page as delivered. Casino pages carry per-request tokens and timestamps, so a "
@@ -1150,7 +1166,7 @@ def main() -> int:
           "location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room "
           "parking, but no property publishes a walking minute figure to another property. Minute cells therefore "
           "stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps "
-          "deep link measured from the official street addresses." % SRC),
+          "deep link measured from the official street addresses." % READ_DATE),
          "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html", status="open")
     flag("F51", "Trip cost",
          "The true-cost figure the planner needs cannot be completed from official data alone",
@@ -1166,7 +1182,7 @@ def main() -> int:
           "increase ('Transient Lodging Establishments located within the Primary Gaming Corridor will impose a "
           "combined transient lodging tax rate of 13.38 percent'). Whether the county tax applies on top of the "
           "resort fee is a hotel-by-hotel practice question, so the calculator states the assumption on screen."
-          % SRC),
+          % READ_DATE),
          "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
          status="rate confirmed; fee taxation flagged")
 
@@ -1267,15 +1283,17 @@ def main() -> int:
          status="labelled by this session; S1 label limitation kept open")
 
     # ---- questions / suggestions ----
-    def upsert(items, iid, **kw):
+    # preserve=True for Q01/Q11/S10/S11: 6bc143b9 renumbered this session's items to
+    # Q16/S13/S14 and 2b98a91f rewrote the survivors, so these ids now hold *other*
+    # sessions' corrected content. Insert only if genuinely absent; never overwrite.
+    def upsert(items, iid, preserve=False, **kw):
         for it in items:
             if it.get("id") == iid:
-                # Curated registers: the committed wording of an existing entry wins, and an entry
-                # this run cannot improve is left byte-identical instead of being restamped.
-                preserve(it, kw, "%s" % iid, keys=tuple(kw))
-                if all(it.get(k) == v for k, v in kw.items()):
+                if preserve:
                     return
-                it.update(kw)
+                # Field-level merge: an existing entry keeps wording a later session corrected, and a
+                # run with nothing new to say leaves the entry byte-identical instead of restamping it.
+                it.update(keep_committed(it, kw, "%s" % iid, keys=tuple(kw)))
                 return
         items.append(dict(kw, id=iid))
 
@@ -1293,6 +1311,8 @@ def main() -> int:
            how=("Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record "
                 "it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."))
 
+    # Q19/Q20 belong to session 2723deea (eligibility restrictions, 8 AM day shape); kept
+    # verbatim so a fresh re-derivation reproduces them.
     upsert(questions, "Q19",
            q=("Which published events is a general entrant actually allowed to enter, and where is that stated?"),
            have=("Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on "
@@ -1318,6 +1338,9 @@ def main() -> int:
            how=("Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and "
                 "ask the room for the typical finishing time of the specific event. One event per day stays the "
                 "default until a real finish time is sourced."))
+    # Q01 stays dynamically derived from meta.trip (2723deea's wording): with the check_out
+    # arithmetic fixed it always matches the corrected field, so no preserve is wanted here.
+    # The choice date is pinned to the capture date, not the run date.
     upsert(questions, "Q01",
            q="What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
            have=("A planning scenario is fixed automatically: check-in %s, check-out %s (%d nights), chosen on %s "
@@ -1326,7 +1349,7 @@ def main() -> int:
                  "nightly room charge from one dated booking observation that is NOT for this stay, and the quality "
                  "floor is a property-tier label, not an independent rating; both are explained on the Hotels and "
                  "Trip planner pages. No input is required to read the plan."
-                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], meta["trip"]["nights"], SRC,
+                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], meta["trip"]["nights"], READ_DATE,
                     meta["trip"].get("entries_in_window", 0),
                     format(int(meta["trip"].get("guarantee_sum_in_window", 0)), ",d"))),
            missing=("The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The "
@@ -1335,6 +1358,7 @@ def main() -> int:
            how=("Read the scenario as a starting point, then obtain official itemized quotes for the same nights, "
                 "occupancy and room class before treating any hotel figure as a comparison. The date filter on every "
                 "table re-scopes every row."))
+    # Q11 likewise stays the dynamic/static template 2723deea published; no preserve.
     upsert(questions, "Q11",
            q="Can the site complete the trip cost without me entering anything?",
            have=("The entries side is complete and source-linked. On the hotel side the mandatory fees are now verified for the "
@@ -1344,6 +1368,8 @@ def main() -> int:
                  "for these dates."),
            missing="A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
            how="The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.")
+    # S15/S16 belong to session 2723deea; kept verbatim so a fresh re-derivation
+    # reproduces them.
     upsert(suggestions, "S15",
            title="Filter the tables by whether an event is actually open to you",
            problem=("Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are "
@@ -1364,14 +1390,19 @@ def main() -> int:
                     "Drop the page-hash ledger and publish only value-level changes"],
            effect=("Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it "
                    "does not change any published value."))
-    upsert(suggestions, "S10",
+    # S10/S11: 6bc143b9 renumbered b3be876c's items to S13/S14 and these ids held newer
+    # corrections (like-for-like ranking, walking-minute verification) that PR #88's
+    # integrate run reverted back to the old b3be876c text. The corrected content is
+    # restored directly in suggestions.json and these upserts become insert-if-missing,
+    # so neither session's wording is overwritten by a scheduled run again.
+    upsert(suggestions, "S10", preserve=True,
            title="Publish one root-site generator (done here) and retire the second one",
            problem="Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
            options=["One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
                     "Give each session its own subdirectory and never let a scheduled job write the root",
                     "Freeze the scheduled rebuilds entirely and rebuild only by hand"],
            effect="The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches.")
-    upsert(suggestions, "S11",
+    upsert(suggestions, "S11", preserve=True,
            title="Keep value-level monitoring, drop hash-level alarmism",
            problem="Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
            options=["Compare extracted official sentences per value (implemented)",
@@ -1400,7 +1431,7 @@ def main() -> int:
             "spot_checked": LIVE["sheet_live_spot_checks"].get(str(no)) == "match",
         })
     verification = {
-        "run": {"session": "b3be876c", "date": TODAY, "sources_read": SRC,
+        "run": {"session": "b3be876c", "date": READ_DATE,
                 "how": ("Values re-read on this date with the agent's page-fetch tool; the same URLs are re-read "
                         "nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the "
                         "extracted sentences rather than the page hash."),
@@ -1433,7 +1464,7 @@ def main() -> int:
              "excerpt": LIVE["venetian_poker_rate"]["excerpt"],
              "used_for": "Dated rate log + planner's optional published-floor rate (never a default)"},
         ],
-        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": LIVE_READ,
+        "tax_read": {"rate_pct": meta["tax"]["rate"], "source": meta["tax"]["source"], "read": SRC,
                      "corroboration": ("https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:"
                                        "7436500e-cac4-420a-b23a-02d3fec69900/original/as/"
                                        "room-tax-increase-transient-lodging-letter-111616.pdf"),
@@ -1476,8 +1507,8 @@ def main() -> int:
         "spot_check_mismatches": sum(1 for r in ven if r.get("spot_check", {}).get("mismatches")),
         "guarantee_disagreements": guarantee_notes,
         "hotel_notes": apply_hotels(hotels),
-        # what this run deliberately did NOT overwrite (another session's correction); an empty list
-        # means nothing was preserved. Reported instead of applied silently.
+        # what this run deliberately did NOT overwrite (another session's correction). An empty list
+        # means nothing was preserved; the list is the audit trail for the curation policy above.
         "preserved_curation": sorted(set(PRESERVED)),
         "sources_read_on": SRC,
         "rate_log_entries": 2,
@@ -1508,7 +1539,7 @@ def main() -> int:
         fh.write("\n")
     allj = load(EA, "all.json")
     allj.update({"venetian": ven, "hotels": hotels, "flags": flags, "questions": questions,
-                 "suggestions": suggestions, "retrieved": SRC, "tax": meta["tax"], "trip": meta["trip"],
+                 "suggestions": suggestions, "retrieved": meta.get("retrieved") or READ_DATE, "tax": meta["tax"], "trip": meta["trip"],
                  "sheets": meta["sheets"]})
     with open(os.path.join(EA, "all.json"), "w") as fh:
         json.dump(allj, fh, indent=1, ensure_ascii=False)

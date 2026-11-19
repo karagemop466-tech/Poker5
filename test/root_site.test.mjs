@@ -38,7 +38,7 @@ test('event tables expose the date selector and confirmed single-entry toggle', 
   assert.match(t, /id="dfrom"/);
   assert.match(t, /id="dto"/);
   assert.match(t, /id="fse"/);
-  assert.match(t, /Only rows whose rules grant no second entry \(S1 screen\)/);
+  assert.match(t, /No second entry granted \(S1 screen\) \/ freezeout only/);
 });
 
 test('hotels page publishes the dated stay capture log with the required columns', async () => {
@@ -182,7 +182,6 @@ test('every restricted row publishes the sheet sentence that closes the field', 
     assert.match(r.restriction.retrieved, /^\d{4}-\d{2}-\d{2}$/, `no retrieval date on #${r.event_no}`);
   }
 });
-
 test('every entry-rule pill uses a CSS class, never a visible label, in its class slot', async () => {
   const files = ['pages/tournaments.html', 'pages/single-entry.html', 'pages/tournaments-double.html', 'pages/schedule.html'];
   for (const f of files) {

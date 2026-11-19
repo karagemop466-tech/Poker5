@@ -2,14 +2,14 @@
  {
   "id": "Q01",
   "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-  "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day (2026-12-12). The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
+  "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day. The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
   "missing": "The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The scenario above is the site's automatic choice, not your decision, and no hotel has a dated, itemized quote for it, so the trip total stays 'Incomplete'.",
   "how": "Read the scenario as a starting point, then obtain official itemized quotes for the same nights, occupancy and room class before treating any hotel figure as a comparison. The date filter on every table re-scopes every row."
  },
  {
   "id": "Q02",
   "q": "Is any DSE IV event actually a freezeout?",
-  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'No second entry granted (S1 screen)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
   "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
   "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
  },

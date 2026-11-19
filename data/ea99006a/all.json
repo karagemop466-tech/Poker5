@@ -17628,7 +17628,7 @@
    "id": "F01",
    "area": "Entry rules",
    "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
-   "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'No second entry granted by the rules (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'. The label was re-worded on 2026-11-19 for exactly this reason: the pill states the result of the S1 screen, not a venue promise, and the old wording read as one. (session 6dba9b3c)",
+   "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'No second entry granted (S1 screen)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'. The label was re-worded on 2026-11-19 (\"No second entry granted (S1 screen)\", PR #97) for exactly this reason: the pill states the result of the S1 screen, not a venue promise, and the old wording read as one. (session 6dba9b3c)",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
    "last_updated": "2026-11-19"
   },
@@ -18102,14 +18102,14 @@
   {
    "id": "Q01",
    "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-   "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day (2026-12-12). The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
+   "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-13 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day. The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
    "missing": "The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The scenario above is the site's automatic choice, not your decision, and no hotel has a dated, itemized quote for it, so the trip total stays 'Incomplete'.",
    "how": "Read the scenario as a starting point, then obtain official itemized quotes for the same nights, occupancy and room class before treating any hotel figure as a comparison. The date filter on every table re-scopes every row."
   },
   {
    "id": "Q02",
    "q": "Is any DSE IV event actually a freezeout?",
-   "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+   "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'No second entry granted (S1 screen)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
    "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
    "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
   },
@@ -18349,25 +18349,25 @@
   },
   {
    "id": "S10",
-   "title": "Publish one root-site generator (done here) and retire the second one",
-   "problem": "Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
+   "title": "Adopt a like-for-like comparison policy before any hotel ranking",
+   "problem": "Existing captures differ in stay window and occupancy (2 adults Dec 2-9 vs 1 adult Dec 13-20), so 'cheapest hotel' cannot be derived from them.",
    "options": [
-    "One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
-    "Give each session its own subdirectory and never let a scheduled job write the root",
-    "Freeze the scheduled rebuilds entirely and rebuild only by hand"
+    "Rank nothing until two hotels share dates, occupancy and room class",
+    "Rank with an explicit comparability grade per row",
+    "Rank on nightly average and mark differing occupancy"
    ],
-   "effect": "The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches."
+   "effect": "Prevents a false ranking; the flagged page already refuses to name a cheapest hotel."
   },
   {
    "id": "S11",
-   "title": "Keep value-level monitoring, drop hash-level alarmism",
-   "problem": "Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
+   "title": "Decide how walking minutes get verified",
+   "problem": "No official source publishes walking times between properties; the brief wants a 30-minute walking filter.",
    "options": [
-    "Compare extracted official sentences per value (implemented)",
-    "Keep page hashes but label them informational (kept)",
-    "Diff rendered text with a normalisation pass before hashing (future)"
+    "Keep minutes blank + provide one-click walking-direction links (current)",
+    "Record user-measured minutes via the routes page recorder (already available, browser-only)",
+    "Add a maps-distance service to the morning job and label its output as third-party estimates"
    ],
-   "effect": "A row is marked 'source changed' only when the sentence behind its value changes."
+   "effect": "The 30-minute filter can only be honest about measured or officially stated minutes."
   },
   {
    "id": "S12",
@@ -18444,11 +18444,11 @@
  "trip": {
   "check_in": "2026-12-06",
   "check_out": "2026-12-13",
-  "last_play_day": "2026-12-12",
   "nights": 7,
   "adults": 2,
   "rooms": 1,
-  "rationale": "Chosen automatically on 2026-11-19 from the corrected single-entry set: check in 2026-12-06, check out 2026-12-13 = 7 nights, with 7 full playing days (2026-12-06 to 2026-12-12). It carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
+  "last_play_day": "2026-12-12",
+  "rationale": "Chosen automatically on 2026-11-19 from the S1-screened entry set: 2026-12-06 to 2026-12-13 (7 nights, 7 full playing days) carries 12 Venetian full-field entries whose own official structure sheet was read in full and grants no re-entry, rebuy, add-on or purchased-stack entry (about $335,000 of published guarantees across them), plus 7 single-entry satellites into the $2,200 PokerAtlas Championship. No other 7-night window in the series carries more. The window sits inside both verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026; WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026). Every table follows the date filter, so you can move the week without re-entering anything.",
   "chosen_by": "scripts/integrate_b3be876c.py",
   "budget_ceiling": {
    "per_night": 1007.82,

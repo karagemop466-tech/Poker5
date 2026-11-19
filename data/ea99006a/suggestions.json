@@ -100,25 +100,25 @@
  },
  {
   "id": "S10",
-  "title": "Publish one root-site generator (done here) and retire the second one",
-  "problem": "Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
+  "title": "Adopt a like-for-like comparison policy before any hotel ranking",
+  "problem": "Existing captures differ in stay window and occupancy (2 adults Dec 2-9 vs 1 adult Dec 13-20), so 'cheapest hotel' cannot be derived from them.",
   "options": [
-   "One canonical builder + an integration step, and a CI guard that fails when the committed site is not the canonical output (chosen, implemented)",
-   "Give each session its own subdirectory and never let a scheduled job write the root",
-   "Freeze the scheduled rebuilds entirely and rebuild only by hand"
+   "Rank nothing until two hotels share dates, occupancy and room class",
+   "Rank with an explicit comparability grade per row",
+   "Rank on nightly average and mark differing occupancy"
   ],
-  "effect": "The site is reproducible: `python3 scripts/integrate_b3be876c.py && python3 scripts/build_ea99006a.py` regenerates every published page, and quality.yml proves the committed output matches."
+  "effect": "Prevents a false ranking; the flagged page already refuses to name a cheapest hotel."
  },
  {
   "id": "S11",
-  "title": "Keep value-level monitoring, drop hash-level alarmism",
-  "problem": "Hashing a whole casino page produces a 'change' on every request (tokens, timestamps), which buries real edits in noise; 48 of 96 ledger entries were 'changed' on the first run.",
+  "title": "Decide how walking minutes get verified",
+  "problem": "No official source publishes walking times between properties; the brief wants a 30-minute walking filter.",
   "options": [
-   "Compare extracted official sentences per value (implemented)",
-   "Keep page hashes but label them informational (kept)",
-   "Diff rendered text with a normalisation pass before hashing (future)"
+   "Keep minutes blank + provide one-click walking-direction links (current)",
+   "Record user-measured minutes via the routes page recorder (already available, browser-only)",
+   "Add a maps-distance service to the morning job and label its output as third-party estimates"
   ],
-  "effect": "A row is marked 'source changed' only when the sentence behind its value changes."
+  "effect": "The 30-minute filter can only be honest about measured or officially stated minutes."
  },
  {
   "id": "S12",
