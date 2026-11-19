@@ -12,6 +12,8 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Verification:** `python3 scripts/build_ea99006a.py`; `npm test` (9/9); `python3 scripts/check_ea99006a.py` (18 pages, 1,261 rows all with source links, 417 internal and 1,271 external link checks, no broken internal links); `node --check assets/app.js`; Python compile check; `git diff --check`. The regression test now checks that missing hotel quote stays incomplete and that the proposed dates are visibly a scenario. No new official-source claims were introduced.
 
+**Publication:** PR [#48](https://github.com/karagemop466-tech/Poker5/pull/48) merged 2026-11-19T05:49:21Z as `26a350882ef4c9f3d6518e4b5d634edcfe7235dd`. PR checks `check` and `validate` passed. GitHub Pages build/deploy [#44467785556](https://github.com/karagemop466-tech/Poker5/actions/runs/44467785556) succeeded; Pages API reports status `built` for that merge commit, and the live planner was fetched at https://karagemop466-tech.github.io/Poker5/pages/planner.html and shows the new incomplete-cost and scenario messaging.
+
 ## Current branch session — 5d8999d6 (active)
 
 **Branch:** `arena/5d8999d6-poker5` (fixed by Arena). **Claimed scope:** correct misleading/zero-filled results in the trip-cost calculator so missing official hotel inputs remain visibly unknown; keep hotel rate observations as dated snapshots and preserve conservative source standards.
