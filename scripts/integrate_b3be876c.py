@@ -366,6 +366,55 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
             ev)
 
 
+# Ids owned by session 2723deea.  Other sessions were publishing F56-F58 on the same
+# day, so this session writes only above a reserved base and never overwrites a flag
+# whose title is not one of its own.
+RESERVED_FLAG_IDS = {"F59", "F60", "F61"}
+
+
+# ------------------------------------------------------------ eligibility restrictions
+# Read 2026-11-19 by session 2723deea from the structure sheets themselves.  A row can
+# pass S1 (no second entry can be bought) and still be closed to a general entrant:
+# the Seniors sheets print the age rule on the sheet face, the two LIPS Ladies
+# satellites print "Open to Female players", and the LIPS Jingle sheet prints
+# "Teams: Female / Female OR Female / Male".  A restricted event must never be
+# offered as a playable entry to a reader who is not eligible, so each hit is
+# recorded with the sentence it came from and shown on the row.  The table is keyed
+# by (event number, sheet number) because one sheet can carry two events.
+RESTRICTION_RULES = [
+    {"test": re.compile(r"MUST BE 50\+ YEARS OF AGE", re.I),
+     "label": "Age restriction: 50+ (Seniors)",
+     "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+     "sheets": ["17"]},
+    {"test": re.compile(r"Open to Female players", re.I),
+     "label": "Restricted field: female players only (LIPS Ladies)",
+     "excerpt": "Open to Female players who must 21+ years of age and have a Venetian Rewards card to participate.",
+     "sheets": ["19"]},
+    {"test": re.compile(r"Teams?:\s*Female\s*/\s*Female", re.I),
+     "label": "Restricted format: two-player tag team, female/female or female/male",
+     "excerpt": "Teams: Female / Female OR Female / Male",
+     "sheets": ["31"]},
+]
+
+
+def eligibility_restriction(row: dict, sheet: dict | None) -> dict | None:
+    """The official restriction on this row's sheet, or None when none is stated.
+
+    Returns {label, excerpt, source, retrieved}.  Nothing is inferred from the event
+    name: a row is marked restricted only when a rule on its own sheet says so.
+    """
+    if not sheet:
+        return None
+    text = (sheet.get("rules_text") or "") + "\n" + (sheet.get("sheet_subtitle") or "")
+    for rule in RESTRICTION_RULES:
+        if rule["test"].search(text):
+            return {"label": rule["label"], "excerpt": rule["excerpt"],
+                    "source": sheet.get("url") or row.get("source") or "",
+                    "retrieved": (sheet.get("retrieved_at") or "")[:10],
+                    "sheet_no": sheet.get("sheet_no")}
+    return None
+
+
 # ----------------------------------------------------------------- live re-reads, 2026-11-19
 # Read with the page-fetch tool on 2026-11-19; the verbatim excerpts live in
 # data/b3be876c/live-notes-2026-11-19.md and are repeated here so the site can
@@ -420,6 +469,60 @@ LIVE = {
                       "stayed. For any nights you fail to complete these requirements, your nightly suite rate will "
                       "be adjusted to the prevailing rate."),
         "booking": "book the suite by calling 866.255.8936 and mentioning code EPOKR25; a Venetian Rewards account is required",
+    },
+    "mgm_terms_2026_11_19": {
+        "read": TODAY,
+        "fee_excerpt": ("Bellagio and ARIA: 'A daily resort fee of $55.00 plus applicable tax will be applied to all "
+                        "reservations.' MGM Grand: 'A daily resort fee of $50.00 plus applicable tax will be applied to "
+                        "all reservations.'"),
+        "cancel_excerpt": ("'The first night's deposit is fully refundable provided a timely notice of cancellation is "
+                           "received by Room Reservations ... at least 72 hours prior to the arrival date, unless "
+                           "specifically excluded by booked offer.'"),
+        "parking_excerpt": ("MGM parking page: 'Registered Hotel Guest $20' self-parking; valet parking $40 daily; "
+                            "'Prices may be higher during special events.'"),
+        "parking_url": "https://www.mgmresorts.com/en/things-to-do/parking.html",
+        "hotels": [
+            dict(key="bellagio", name="Bellagio", tier="Luxury", area="Strip - centre", room="Bellagio Poker Room",
+                 fee=55.0,
+                 fee_url="https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Includes in-room wireless internet, domestic long distance and toll-free calls, Paramount+ "
+                            "with SHOWTIME On Demand, boarding-pass printing, digital newsstand and fitness-center "
+                            "access for guests 18+. Waived for MGM Rewards Gold+ on eligible reservations. Additional "
+                            "occupant charge $50 plus tax per occupant per night above two."),
+                 cancel_phone="888.987.6667",
+                 address="",
+                 booking="https://bellagio.mgmresorts.com/en/",
+                 quality=("No Bellagio poker-room page could be retrieved, so the room is listed for the room-cost "
+                          "comparison only; no Bellagio tournament row exists in this repository (F53).")),
+            dict(key="aria", name="ARIA Resort & Casino", tier="Luxury", area="Strip - centre / south",
+                 room="ARIA Poker Room", fee=55.0,
+                 fee_url="https://aria.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Check-in 3:00 pm, check-out 11:00 am. Waived for MGM Rewards Gold+ on eligible "
+                            "reservations. Additional occupant charge $50 plus tax per occupant per night above two."),
+                 cancel_phone="866.359.7757",
+                 address="",
+                 booking="https://aria.mgmresorts.com/en/",
+                 quality=("No ARIA poker-room page could be retrieved; listed for the room-cost comparison only, and "
+                          "no ARIA tournament row exists in this repository.")),
+            dict(key="mgmgrand", name="MGM Grand", tier="Luxury", area="Strip - south", room="MGM Grand Poker Room",
+                 fee=50.0,
+                 fee_url="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+                 fee_extra=("Note it is $50 here and $55 at Bellagio and ARIA: MGM resort fees are property-specific "
+                            "(F64). Additional occupant charge $40 plus tax per occupant per night above two."),
+                 cancel_phone="877.880.0880",
+                 address="",
+                 booking="https://mgmgrand.mgmresorts.com/en/",
+                 quality=("No MGM Grand poker-room page could be retrieved; listed for the room-cost comparison only, "
+                          "and no MGM Grand tournament row exists in this repository.")),
+        ],
+    },
+    "venetian_parking_2026_11_19": {
+        "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+        "read": TODAY,
+        "excerpt": ("'The daily fee for registered hotel guests is $20/day, seven days a week. For non-hotel guests, the "
+                    "fee is $20/day Monday - Thursday, and $25/day Friday - Sunday. Valet parking is $40/day.' Players in "
+                    "the poker room who play three hours or more in tournament or cash games receive complimentary "
+                    "self-parking for the day."),
     },
     "sheet_live_spot_checks": {
         # sheet number -> values read from the live PDF on 2026-11-19 and compared
@@ -506,6 +609,44 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
         notes.append("Venetian: resort fee re-read today; the official poker suite-rate page is the only published "
                      "numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in "
                      "the dated rate log as a starting rate and NOT as a quote for the stay.")
+    vp = LIVE["venetian_parking_2026_11_19"]
+    if "venetian" in by_key:
+        h = by_key["venetian"]
+        h["parking"] = ("Registered hotel guest: $20/day self-parking, seven days a week; valet $40/day. Non-hotel guests "
+                        "$20/day Mon-Thu, $25/day Fri-Sun. Poker players who play three hours or more in a tournament or "
+                        "cash game get complimentary self-parking for that day, confirmed by a supervisor.")
+        h["parking_source"] = vp["url"]
+        h["parking_read"] = vp["read"]
+        notes.append("Venetian: per-day parking figures captured from the official player-parking page on %s." % vp["read"])
+    m = LIVE["mgm_terms_2026_11_19"]
+    have = {h["key"] for h in hotels}
+    for spec in m["hotels"]:
+        if spec["key"] in have:
+            rec = by_key[spec["key"]]
+        else:
+            rec = dict(key=spec["key"], on_property=True, rate_floor=None, rate_floor_source="",
+                       rate_caveat=("this property publishes no nightly rate on any official page we could read; the "
+                                    "booking link is the only way to get a dated quote"))
+            hotels.append(rec)
+        rec.update({
+            "name": spec["name"], "tier": spec["tier"], "area": spec["area"], "room": spec["room"],
+            "resort_fee": spec["fee"],
+            "resort_fee_text": "$%.2f plus applicable tax per night" % spec["fee"],
+            "resort_fee_source": spec["fee_url"], "resort_fee_read": m["read"], "resort_fee_verified": True,
+            "resort_fee_note": (m["fee_excerpt"] + " " + spec["fee_extra"] +
+                                " Read from the official hotel reservation terms on %s." % m["read"]),
+            "parking": ("Registered hotel guest: $20 self-parking; valet $40 daily. Prices may be higher during special "
+                        "events."),
+            "parking_source": m["parking_url"], "parking_read": m["read"],
+            "cancel": (m["cancel_excerpt"].split("Room Reservations ...")[0] + "Room Reservations at " + spec["cancel_phone"] +
+                       " at least 72 hours prior to the arrival date, unless specifically excluded by booked offer."),
+            "cancel_source": spec["fee_url"], "cancel_read": m["read"],
+            "cancel_note": "Standard reservation term, not a specific rate plan (F33).",
+            "address": spec["address"], "address_source": "", "booking": spec["booking"],
+            "quality_note": spec["quality"],
+        })
+        notes.append("%s: mandatory resort fee $%.2f plus tax, 72-hour standard cancellation term and self-parking rates "
+                     "read from official MGM pages on %s." % (spec["name"], spec["fee"], m["read"]))
     for h in hotels:
         h.setdefault("resort_fee_read", h.get("resort_fee_source") and TODAY or "")
         # A hotel with no published rate gets an explicit None: the page shows it blank and flagged,
@@ -685,6 +826,10 @@ def main() -> int:
             "entry_grant_sentences": ev["grant_sentences"],
             "flight_sentences": ev["flight_sentences"],
             "registration_close": ev["registration_close"],
+            # The clock time the sheet itself printed for the close (empty when the sheet
+            # gives none). Stored so a shared sheet whose one "Late Registration" line was
+            # copied onto every event cannot attribute the wrong clock to a row.
+            "registration_close_clock": sheet.get("late_registration_clock") or "",
             "event_named_on_sheet": ev["covers_event"],
             "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no "
                         "re-entry/rebuy/add-on/purchased-stack provision",
@@ -712,6 +857,12 @@ def main() -> int:
             "retrieved": (ev["sheet_retrieved"] or "")[:10] or "",
         }
         row["rule_fields"] = fields
+        row["late_reg_clock"] = sheet.get("late_registration_clock") or ""
+        rest = eligibility_restriction(row, sheet)
+        if rest:
+            row["restriction"] = rest
+        else:
+            row.pop("restriction", None)
         # "last checked": the real monitor date for the URL behind this row, plus
         # this session's live re-read if it covered the row.
         urls = [row.get("source"), row.get("schedule_source")]
@@ -828,6 +979,12 @@ def main() -> int:
     meta["retrieved"] = TODAY
     meta["integration"] = {
         "session": "b3be876c", "run_at": dt.datetime.now(dt.timezone.utc).date().isoformat(), "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
+        # 2026-11-19 re-read by session 2723deea: the schedule page (all four chunks, 94 rows),
+        # the resort-fee page, the poker suite-rate page, the Clark County room-tax ordinance and
+        # 8 structure sheets behind the recommended window. Logged in data/2723deea/reverify.json;
+        # no value differed, so nothing was rewritten from it.
+        "reverified_by": {"session": "2723deea", "date": "2026-11-19",
+                          "record": "data/2723deea/reverify.json"},
         "live_reads": {k: v.get("read", TODAY) for k, v in LIVE.items() if isinstance(v, dict)},
         "sheet_spot_checks": LIVE["sheet_live_spot_checks"],
         "verification_records": bool(verification),
@@ -835,6 +992,25 @@ def main() -> int:
 
     # ---- flags: close what today's reads settled, add what this session found ----
     def flag(fid, area, title, detail, source, status="open"):
+        """Update a flag by id, or append it - never duplicating and never overwriting.
+
+        Several sessions edited this list on the same day.  A finding is identified by its
+        title: if any flag already carries this title (wherever it sits, because an earlier
+        run may have had to move it off a colliding id) it is updated in place.  Otherwise a
+        non-reserved id updates that id; a reserved id gets the first free id above the
+        current maximum rather than overwriting another session's finding.
+        """
+        for f in flags:
+            if f.get("title") == title:
+                f.update({"detail": detail, "source": source, "status": status, "last_updated": TODAY})
+                return
+        if fid in RESERVED_FLAG_IDS:
+            used = {f["id"] for f in flags}
+            n = max([int(i[1:]) for i in used if i.startswith("F") and i[1:].isdigit()] or [0]) + 1
+            flags.append({"id": "F%d" % n, "area": area, "title": title, "detail": detail,
+                          "source": source, "status": status, "last_updated": TODAY,
+                          "id_note": "requested id %s was already held by another session's finding" % fid})
+            return
         for f in flags:
             if f["id"] == fid:
                 f.update({"title": title, "detail": detail, "source": source, "status": status,
@@ -918,6 +1094,102 @@ def main() -> int:
          "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
          status="rate confirmed; fee taxation flagged")
 
+    # ---- 8f0b323b (2026-11-19): MGM fee terms + schedule-name suffix ----
+    flag("F10", "Hotel fees",
+         "MGM Resorts rooms (Bellagio, MGM Grand, ARIA): resort fee and cancellation term now read from official pages",
+         ("CLOSED AS TO FEE AND TERM on 2026-11-19. Official hotel reservation terms were read for three MGM properties: "
+          "Bellagio and ARIA state 'A daily resort fee of $55.00 plus applicable tax will be applied to all reservations'; "
+          "MGM Grand states '$50.00'. All three state a first-night deposit refundable up to 72 hours before arrival unless "
+          "the booked offer excludes it, and the MGM parking page states $20 self-parking for registered hotel guests and "
+          "$40 valet. MGM fees are property-specific, so no single MGM figure is reused. Still open: no MGM room rate for "
+          "6-13 December 2026 is published on any page read, and the MGM poker-room URLs still return no page, so MGM rooms "
+          "remain absent from the tournament tables (no row was invented)."),
+         "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+         status="fee and cancellation term verified; room rate and poker schedule still missing")
+    flag("F11", "Coverage",
+         "Horseshoe publishes no poker schedule: the casino page promises six daily tournament times but prints none",
+         ("Re-read on 2026-11-19: the official Horseshoe casino page states 'The Hall of Fame Poker Room at Horseshoe Las Vegas "
+          "features 20 tables ... Test your luck with 6 exciting tournament times daily', and links no schedule, buy-in, "
+          "guarantee or structure sheet. The claim that tournaments run is official; the times, prices and entry rules are not "
+          "published anywhere this site can read, so no Horseshoe row is created and none is guessed."),
+         "https://www.caesars.com/horseshoe-las-vegas/casino", status="open - no official schedule published")
+    flag("F62", "Source mismatch",
+         "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+         ("Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to "
+          "finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of "
+          "Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. "
+          "Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: "
+          "renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in "
+          "data/8f0b323b/schedule_recheck.json."),
+         "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+         status="open - cosmetic, no value affected")
+    flag("F63", "Hotel fees",
+         "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+         ("The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, "
+          "select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is "
+          "a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in "
+          "the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read."),
+         "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2", status="open by design")
+    flag("F64", "Hotel fees",
+         "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
+         ("Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus "
+          "applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at "
+          "Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties."),
+         "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html", status="verified - figures official")
+    flag("F65", "Entry rules",
+         "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+         ("The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states "
+          "single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, "
+          "not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification "
+          "page (F01); six of the sheets behind the trip window were not re-read in this session."),
+         "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+         status="open - evidence limitation")
+
+    # ---- defects found by the 2026-11-19 line-by-line re-read (session 2723deea) ----
+    flag("F59", "Entry rules",
+         "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+         ("The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December "
+          "$600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, "
+          "female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet "
+          "sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE "
+          "TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints "
+          "'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived "
+          "restriction label with its sentence and retrieval date, the label is shown on every row, the executive "
+          "ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. "
+          "A reader who is eligible can still play them; the label says who can."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+         status="fixed by this session; label visible on the row")
+    flag("F60", "Monitoring",
+         "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+         ("The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single "
+          "recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows "
+          "therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually "
+          "matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the "
+          "2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as "
+          "informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it."),
+         LIVE["venetian_poker_rate"]["url"], status="open")
+    flag("F61", "Schedule",
+         "Shared structure sheets can print one registration close for several events on different start times",
+         ("Structure sheet 25 covers events #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one line, 'Late "
+          "Registration: 6 levels', with no clock. An earlier pass copied the 8:10 PM row's derived clock (9:40 PM) onto "
+          "the two morning rows, which would have widened their registration window by more than ten hours. Fix applied: "
+          "the builder now prefers the clock time the sheet itself printed, and where a shared sheet prints none the row "
+          "keeps its text and states no close time instead of borrowing another event's. No close time is invented."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+         status="fixed by this session")
+
+    flag("F61", "Eligibility",
+         "Event #35 is a two-person team event: the S1 label describes one entry, not one player",
+         ("Session 0a0d8e6b flagged that #35 ($600 LIPS Poker Jingle Tag Team, sheet 31) is stored as a "
+          "confirmed single-entry row although the sheet describes a team format ('Teams: Female / Female OR "
+          "Female / Male'; 'Teams will rotate their players at the start of every level'). Re-read on 2026-11-19 "
+          "and extended by session 2723deea: the sheet states no second-buy-in path, so the S1 entry test itself "
+          "still passes - but the row is not an individual event and it requires a partner, which the S1 label "
+          "cannot express. The row now carries a restriction label with the official sentence, the ranking and the "
+          "day plan exclude it, and this flag records that the S1 label alone is not sufficient for team formats."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+         status="labelled by this session; S1 label limitation kept open")
+
     # ---- questions / suggestions ----
     def upsert(items, iid, **kw):
         for it in items:
@@ -926,23 +1198,91 @@ def main() -> int:
                 return
         items.append(dict(kw, id=iid))
 
+    upsert(questions, "Q14",
+           q="What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
+           have=("Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read "
+                 "2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, "
+                 "ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). "
+                 "Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and "
+                 "Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a "
+                 "specific rate plan."),
+           missing=("The deadline that applies to the exact rate plan you book: every MGM page says 'unless specifically excluded "
+                    "by booked offer', Wynn's figure belongs to a two-night promotional offer, and Caesars/Horseshoe publish the "
+                    "headline but not the term sheet."),
+           how=("Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record "
+                "it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."))
+
+    upsert(questions, "Q19",
+           q=("Which published events is a general entrant actually allowed to enter, and where is that stated?"),
+           have=("Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on "
+                 "the row with its sentence and link: Seniors 50+ (sheet 17 events #24 and #32; sheet 20 events #49 "
+                 "and the #49 restart), a female-only field (sheet 19 events #33 and #37), and a two-player tag team "
+                 "(sheet 31 event #35). They are excluded from the executive ranking because they are not a pick a "
+                 "general reader can play."),
+           missing=("There is no published list of which other rows carry eligibility conditions the sheets do not "
+                    "state (for example a minimum-play requirement, a member-only satellite, or an invitation-only "
+                    "field). The tag-team event also requires a partner, which the sheet states as a format rule, "
+                    "not as a waitlist or pairing service - whether the room pairs singles was not found."),
+           how=("Ask the Venetian poker room to confirm in writing, per event number, that no unpublished eligibility "
+                "condition applies; until then a reader should treat only the rows with no restriction label as open "
+                "to them."))
+    upsert(questions, "Q20",
+           q="What would a day actually look like from 8 AM, and how many events can really be played in one day?",
+           have=("The earliest official start in the captured window is 9:10 AM (Venetian #46, a turbo satellite on "
+                 "12 December); the earliest non-satellite start is 10:10 AM. Evening events start at 4:10 PM, "
+                 "5:10 PM, 6:10 PM and 8:10 PM, and the latest published registration close is 9:40 PM."),
+           missing=("No official source publishes a finish time, a field-size estimate or an expected duration, so the "
+                    "number of events a player can enter in one day cannot be computed - only bounded: an event's "
+                    "registration window is known, its end is not."),
+           how=("Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and "
+                "ask the room for the typical finishing time of the specific event. One event per day stays the "
+                "default until a real finish time is sourced."))
     upsert(questions, "Q01",
            q="What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-           have=("The site now fixes this for you: %s to %s (7 nights), chosen on %s from the corrected single-entry "
-                 "set (%d entries, about $%s of published guarantees), with the nightly budget ceiling and quality "
-                 "floor applied on the hotels page. No input is required to read the plan."
-                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], TODAY,
+           have=("A planning scenario is fixed automatically: check-in %s, check-out %s (%d nights), chosen on %s "
+                 "from the corrected single-entry set (%d entries, about $%s of published guarantees). The check-out "
+                 "date is the morning after the last playing day. The displayed nightly budget ceiling is the average "
+                 "nightly room charge from one dated booking observation that is NOT for this stay, and the quality "
+                 "floor is a property-tier label, not an independent rating; both are explained on the Hotels and "
+                 "Trip planner pages. No input is required to read the plan."
+                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], meta["trip"]["nights"], TODAY,
                     meta["trip"].get("entries_in_window", 0),
                     format(int(meta["trip"].get("guarantee_sum_in_window", 0)), ",d"))),
-           missing=("Your budget ceiling and quality floor are set to the values that keep every official-source "
-                    "hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds "
-                    "it, and it never invents a rate to make a hotel qualify."),
-           how="See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table.")
+           missing=("The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The "
+                    "scenario above is the site's automatic choice, not your decision, and no hotel has a dated, "
+                    "itemized quote for it, so the trip total stays 'Incomplete'."),
+           how=("Read the scenario as a starting point, then obtain official itemized quotes for the same nights, "
+                "occupancy and room class before treating any hotel figure as a comparison. The date filter on every "
+                "table re-scopes every row."))
     upsert(questions, "Q11",
            q="Can the site complete the trip cost without me entering anything?",
-           have="The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
+           have=("The entries side is complete and source-linked. On the hotel side the mandatory fees are now verified for the "
+                 "Venetian ($55), Wynn ($55), Resorts World ($55), Bellagio ($55), ARIA ($55) and MGM Grand ($50), all plus the "
+                 "13.38% Clark County tax, and self-parking rates are dated for the Venetian ($20/day registered guest) and the MGM "
+                 "rooms ($20/day). What is still missing is the nightly ROOM rate itself, which no official Strip page publishes "
+                 "for these dates."),
            missing="A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
            how="The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.")
+    upsert(suggestions, "S15",
+           title="Filter the tables by whether an event is actually open to you",
+           problem=("Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are "
+                    "50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this "
+                    "session they were ranked as ordinary picks and could become a day's primary event."),
+           options=["Keep the per-row 'entry restricted' label only (implemented)",
+                    "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+                    "Let the reader tick which field types they qualify for and filter on that"],
+           effect=("The label is implemented and the ranking plus the day schedule already exclude restricted rows. A "
+                   "reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age "
+                   "and gender are the reader's own facts, not the site's to assume), so it is left as an option."))
+    upsert(suggestions, "S16",
+           title="Have the monitor record its first-read baseline explicitly",
+           problem=("The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven "
+                    "and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57)."),
+           options=["Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+                    "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+                    "Drop the page-hash ledger and publish only value-level changes"],
+           effect=("Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it "
+                   "does not change any published value."))
     upsert(suggestions, "S10",
            title="Publish one root-site generator (done here) and retire the second one",
            problem="Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",

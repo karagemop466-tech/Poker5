@@ -92,6 +92,34 @@ jobs:
       - name: Cross-check the source capture (verdicts, sheets, dates)
         run: python3 scripts/crosscheck_251c122f.py
 
+      # The capture step above commits only data/c6087e2c/. This step re-derives
+      # the ledger's verdicts from the sheet text it just recorded and commits that
+      # too, so the committed ledger cannot stay stale. On 2026-11-19 the scrape
+      # committed a capture in which rows #18 and #58 were labelled
+      # single_entry_confirmed even though the recorded sheet 8 text says
+      # "All subsequent buy in's after the initial buy in will be $200" - the
+      # detector fix in merge_251c122f.py never ran in CI, so only a manual run
+      # corrected the file. There is no timestamp field in this ledger (a full
+      # timestamp would dirty the file on every run), so a stale capture cannot be
+      # detected from the file alone: it has to be re-derived every run.
+      - name: Re-derive the ledger verdicts and commit them with the capture
+        run: |
+          git config user.name  "poker5-source-bot"
+          git config user.email "actions@users.noreply.github.com"
+          python3 scripts/merge_251c122f.py
+          git add data/c6087e2c/events_verified.json
+          if git diff --cached --quiet; then
+            echo "ledger verdicts already match the recorded sheet text"
+            exit 0
+          fi
+          git commit -m "merge(251c122f): re-derive verdicts from the recorded sheet text $(date -u +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && break
+            echo "rebase attempt $attempt failed; retrying"
+            sleep 5
+          done
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
       - name: Check canonical site links and source anchors
         run: python3 scripts/check_root_site.py
 

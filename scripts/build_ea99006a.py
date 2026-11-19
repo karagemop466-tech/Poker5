@@ -19,6 +19,8 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if os.path.dirname(os.path.abspath(__file__)) not in sys.path:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "ea99006a")
 PAGES = os.path.join(ROOT, "pages")
 
@@ -122,12 +124,19 @@ def _load_optional(name):
 MORNING_FEED = _load_optional("morning_feed.json")
 
 # url -> earliest change event, for "source changed since this row was read" badges
+# Entries are read defensively: the value-level monitor (scripts/monitor_b3be876c.py) and the
+# hash-level recheck (scripts/recheck_ea99006a.py) both append to this log, and an entry missing
+# the canonical keys must never break the build. Unknown keys are ignored; the timestamp falls
+# back to "at" (the monitor's older key) and then to "" (never marks a row changed).
 CHANGED_AT = {}
 for _c in CHANGE_LOG:
+    if not isinstance(_c, dict):
+        continue
     u = _c.get("url")
-    if u and ("{" not in u) and ("google.com/maps" not in u):  # dynamic links never mark rows changed
-        if u not in CHANGED_AT or _c["changed_at"] < CHANGED_AT[u]:
-            CHANGED_AT[u] = _c["changed_at"]
+    when = _c.get("changed_at") or _c.get("at") or ""
+    if u and when and ("{" not in u) and ("google.com/maps" not in u):  # dynamic links never mark rows changed
+        if u not in CHANGED_AT or when < CHANGED_AT[u]:
+            CHANGED_AT[u] = when
 VENUE_BY_KEY = dict((v["key"], v) for v in VENUES)
 TAX = META["tax"]
 TRIP = META["trip"]
@@ -176,9 +185,31 @@ def pretty_time(t):
 LATE_RE = re.compile(r"\(?~?\s*(\d{1,2}):(\d{2})\s*(AM|PM)?\s*\)?", re.I)
 
 
+SHARED_SHEET_RE = re.compile(r"#[0-9]|Event\s*#", re.I)
+
+
 def late_reg_close(row):
-    """Return (minutes, label) using only what the official sheet states."""
-    txt = row.get("late_reg") or ""
+    """Return (minutes, label) using only what the official sheet states.
+
+    Precedence (defect fixed 2026-11-19 by session 2723deea): the stored
+    ``late_reg`` is the text the ingest pipeline copied, and for a sheet shared by
+    several events it can be the line of the *first* event on that sheet - sheet 25
+    prints one "Late Registration: 6 levels" line that belongs to all three of its
+    events, and an earlier pass had attached "#45 8:10 PM / #46 9:10 AM / #48 12:10 PM
+    ... 6 levels" to rows starting at 09:10 and 12:10.  When the structure-sheet
+    capture itself printed an explicit clock time for the close (``late_registration_clock``),
+    that value is used instead of re-parsing a possibly wrong string.  No time is
+    ever invented: if neither source states a clock time, the row keeps its text and
+    no minutes are returned.
+    """
+    raw = row.get("late_reg") or ""
+    txt = raw
+    if SHARED_SHEET_RE.search(raw):
+        clock = row.get("late_reg_clock") or ""
+        m = re.match(r"^(\d{1,2}):(\d{2})$", clock) if clock else None
+        if not m:
+            return None, raw
+        return int(m.group(1)) * 60 + int(m.group(2)), raw
     if not txt:
         return None, ""
     m = LATE_RE.search(txt)
@@ -344,6 +375,48 @@ def fmt_start(row):
     return pretty_time(row["start"])
 
 
+def entry_status(row):
+    """(short label, class) for the entry-rule cell.
+
+    A row can satisfy the S1 test - no second entry can be bought - and still be closed
+    to a general entrant (Seniors 50+, a female-only field, a two-player tag team).  The
+    published label has to say so, otherwise the page offers a playable "single-entry"
+    event that the reader is not allowed to enter.  The restriction is only ever taken
+    from the row's own structure sheet; see RESTRICTION_RULES in
+    scripts/integrate_b3be876c.py.
+    """
+    rule = row.get("entry_rule")
+    rest = row.get("restriction") or {}
+    if rest and rule == "confirmed_single":
+        return ("S1, entry restricted - %s" % (rest.get("label") or "restricted field"), "warn")
+    if rest:
+        return ("Multi-entry, restricted - %s" % (rest.get("label") or "restricted field"),
+                RULE_CLASS.get(rule, "warn2"))
+    return (RULE_LABEL.get(rule, rule or ""), RULE_CLASS.get(rule, "warn2"))
+
+
+def restriction_note(row):
+    """The official sentence and link that close the field, or an empty string."""
+    rest = row.get("restriction") or {}
+    if not rest:
+        return ""
+    return ('<br><span class="pill pill-warn" data-no-search="1">%s</span>'
+            '<br><span class="muted sm">%s</span>'
+            % (esc(rest.get("label") or "restricted field"),
+               src_link_opt(rest.get("source"), "sheet rule")))
+
+
+def entry_pill(row):
+    """The entry-rule pill as HTML, with the class and the visible label in the right slots."""
+    label, cls = entry_status(row)
+    return '<span class="pill pill-%s">%s</span>' % (cls, esc(label))
+
+
+def is_open_to_general(row):
+    """True only when no official restriction is recorded on the row."""
+    return not (row.get("restriction") or {}).get("label")
+
+
 def event_row_cells(row, with_venue=True):
     cells = []
     if with_venue:
@@ -374,8 +447,10 @@ def event_row_cells(row, with_venue=True):
     cells.append('<td class="num">%s</td>' % gcell)
     cells.append('<td class="num">%s</td>' % (ratio_text(row) if rankable(row)
                                               else '<span class="blank">not rankable</span>'))
-    cells.append('<td><span class="pill pill-%s">%s</span>%s%s%s</td>' % (
-        RULE_CLASS[row["entry_rule"]], esc(RULE_LABEL[row["entry_rule"]]),
+    st_label, st_class = entry_status(row)
+    cells.append('<td><span class="pill pill-%s">%s</span>%s%s%s%s</td>' % (
+        st_class, esc(st_label),
+        restriction_note(row),
         ('<br><span class="quote">%s</span>' % esc(row["rule_excerpt"][:220])) if row.get("rule_excerpt") else "",
         ('<br><span class="muted sm">%s</span>' % esc(row["entry_basis"][:200])) if row.get("entry_basis") else "",
         changed_marker(row)))
@@ -466,6 +541,7 @@ NAV = [
     ("pages/routes.html", "Walking routes"),
     ("pages/planner.html", "Trip planner"),
     ("pages/verification.html", "Verification"),
+    ("pages/reverify.html", "Re-verification log"),
     ("pages/venues/venetian.html", "Venetian"),
     ("pages/venues/wynn.html", "Wynn"),
     ("pages/venues/others.html", "Other venues"),
@@ -937,7 +1013,21 @@ CANDIDATES = [r for r in ALL_EVENTS if r["kind"] == "entry" and r["entry_rule"] 
 CONFIRMED = [r for r in ALL_EVENTS if r["entry_rule"] == "confirmed_single"]
 MULTI = [r for r in ALL_EVENTS if r["entry_rule"] == "multi"]
 UNREAD = [r for r in ALL_EVENTS if r["entry_rule"] == "unread"]
+# The multi-entry page lists every row whose terms were not read, including the rows that already sit in
+# the "stated re-entry" table above it (a WPT flight row can have a read section AND appear here once).
+_UNREAD_SHOWN = [r for r in ALL_EVENTS if r["entry_rule"] in ("unread", "unknown")]
+UNREAD_ALL = [r for r in _UNREAD_SHOWN if r not in MULTI]
 SATS = [r for r in ALL_EVENTS if r["kind"] == "satellite"]
+# Rows whose own official sheet closes the field (Seniors 50+, female-only, tag team).
+# They still count in CONFIRMED - the S1 question is whether a second entry can be
+# bought - but they must not be offered as a playable pick to a general reader.
+RESTRICTED_ROWS = [r for r in ALL_EVENTS if r.get("restriction")]
+if not (os.environ.get("POKER5_SKIP_RESTRICTION_GUARD") == "1"):
+    for _r in RESTRICTED_ROWS:
+        _src = (_r.get("restriction") or {}).get("source") or ""
+        if not _src.startswith("https://"):
+            raise SystemExit("BUILD FAILED: restricted row %s #%s carries no official sheet link"
+                             % (_r.get("date"), _r.get("event_no")))
 VENUE_OPTS = "".join('<option value="%s">%s</option>' % (esc(v["name"]), esc(v["name"]))
                      for v in [x for x in VENUES if x["key"] in ("venetian", "wynn", "caesars", "southpoint")])
 _all_days = sorted({r.get("date") for r in ALL_EVENTS if r.get("date")})
@@ -1165,11 +1255,16 @@ def build_multi():
     body.append("<h2>Official re-entry, add-on or multi-flight text</h2>")
     body.append(FILTER_BAR % FILTER_ARGS)
     body.append(table_shell(MULTI, EVENT_HEAD))
-    body.append("<h2>Entry terms not read individually (%d rows)</h2>" % len(UNREAD))
-    body.append('<p class="muted">Mostly WPT World Championship festival events. The official structures PDF was '
-                'read for 13 of the festival\'s events and every one of them permits re-entry, but this site does '
-                'not copy a rule from one event onto another. These rows stay unverified.</p>')
-    body.append(table_shell(UNREAD, EVENT_HEAD))
+    body.append("<h2>Entry terms not read individually (%d rows)</h2>" % len(UNREAD_ALL))
+    body.append('<p class="muted">Every event terms-and-conditions section printed in the official WPT World '
+                'Championship structures PDF was read on 2026-11-19 (14 sections, transcript in '
+                '<code>data/ea99006a/wpt_terms_2026-11-19.json</code>); every one of them permits re-entry, so '
+                'none of those rows can pass standard S1. The %d rows below are the ones the PDF prints <b>no</b> '
+                'terms section for - milestone satellites, high-roller and championship events, and a few names '
+                'the schedule uses more than once with different buy-ins, which makes the matching section '
+                'ambiguous. They stay unverified rather than having a rule copied onto them from a sibling '
+                'event.</p>' % len(UNREAD_ALL))
+    body.append(table_shell(UNREAD_ALL, EVENT_HEAD))
     body.append("<h2>Satellites (%d rows)</h2>" % len(SATS))
     body.append('<p class="muted">Satellites pay seats into a target event rather than a cash prize pool, so they '
                 'are not comparable on guarantee &divide; entry fee.</p>')
@@ -1245,19 +1340,22 @@ def build_schedule():
         # confirmed. The oldest rule here was "prefer a row whose cap is not stated", which is how a
         # schedule ends up built on an unverified event.
         def _rank(r):
+            # An event whose entry terms were NOT read (or whose cap is not stated) must not become a day's
+            # primary plan just because its guarantee is bigger. It sorts after every row whose terms were read.
             return (0 if r["entry_rule"] == "confirmed_single" else
-                    1 if r["entry_rule"] == "unknown" else
-                    2 if r["entry_rule"] == "unread" else 3,
+                    1 if r["entry_rule"] == "multi" else
+                    2 if r["entry_rule"] == "unknown" else 3,
                     0 if rankable(r) else 1,
                     0 if r["kind"] == "entry" else 1,
                     -(guarantee_value(r) or 0), minutes(r["start"]))
-        entries = [r for r in evs if r["kind"] == "entry"]
-        prim = min(entries or evs, key=_rank)
+        # A restricted field (Seniors 50+, female-only, tag team) can be recorded on the
+        # page but can never be the day's plan for a general entrant.
+        open_evs = [r for r in evs if is_open_to_general(r)]
+        entries = [r for r in (open_evs or evs) if r["kind"] == "entry"]
+        prim = min(entries or open_evs or evs, key=_rank)
         ps, pe = minutes(prim["start"]), (late_reg_close(prim)[0] or minutes(prim["start"]))
         fb = None
-        for r in evs:
-            if r is prim:
-                continue
+        for r in sorted((r for r in (open_evs or evs) if r is not prim), key=lambda r: minutes(r["start"])):
             s = minutes(r["start"])
             if s >= pe:
                 fb = r
@@ -1301,7 +1399,8 @@ def build_schedule():
     for d, evs, prim, fb, conflicts in rows_by_date:
         inwin = TRIP["check_in"] <= d <= TRIP["check_out"]
         hay = "%s %s %s" % (pretty_date(d), weekday(d),
-                            " ".join("%s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]]) for r in evs))
+                            " ".join("%s %s %s %s" % (r["venue"], r["name"], RULE_LABEL[r["entry_rule"]],
+                                                     (r.get("restriction") or {}).get("label", "")) for r in evs))
         out.append('<div class="panel daycard%s" data-date="%s" data-daysel="1"%s '
                    'data-search="%s">' % (" inwin" if inwin else "", esc(d), ' data-outside="1"' if not inwin else "",
                                          esc(hay.lower())))
@@ -1318,6 +1417,12 @@ def build_schedule():
         else:
             out.append("<dt>Conditional fallback</dt><dd><span class=\"blank\">None fits.</span> "
                        "No later event on this date starts after the primary's registration window closes.</dd>")
+        restr_today = [r for r in evs if not is_open_to_general(r)]
+        if restr_today:
+            out.append("<dt>Restricted field (not a plan for a general entrant)</dt><dd>%s</dd>" % "; ".join(
+                "<b>%s</b> (%s) &mdash; %s" % (esc(c["name"]), esc(pretty_time(c["start"])),
+                                              esc((c.get("restriction") or {}).get("label", "")))
+                for c in restr_today))
         if conflicts:
             out.append("<dt>Cannot be combined</dt><dd>%s</dd>" % "; ".join(
                 "<b>%s</b> (%s, starts %s)" % (esc(c["name"]), esc(c["venue"]), esc(pretty_time(c["start"])))
@@ -1342,8 +1447,7 @@ def build_schedule():
                           esc(pretty_time(r["start"])), esc(r["venue"]), esc(r.get("event_no") or ""),
                           esc(r["name"]) + (" <span class=\"tag tag-b\">primary</span>" if r is prim else ""),
                           money(r.get("buyin")),
-                          '<span class="pill pill-%s">%s</span>' % (RULE_CLASS[r["entry_rule"]],
-                                                                    esc(RULE_LABEL[r["entry_rule"]])),
+                          entry_pill(r),
                           esc(label) if label else '<span class="blank">not stated</span>',
                           src_link(r["source"], "source")))
         out.append("</tbody></table>")
@@ -1396,7 +1500,8 @@ def build_hotels():
                          '<br><span class="muted sm">this hotel hosts %s</span>' % esc(h["room"]))
                         + ('<br>%s' % walk_cell(h["key"], "venetian") if h["key"] != "venetian" else ""))
                        if h["on_property"] else walk_cell(h["key"], "venetian"),
-                       fee, esc(h["resort_fee_text"]),
+                       fee + ("<br><span class=\"muted sm\">read %s</span>" % esc(h["resort_fee_read"]) if h.get("resort_fee_read") and h["resort_fee"] else ""),
+                       esc(h["resort_fee_text"]),
                        (esc(h["address"]) + ("<br>" + src_link(h["address_source"], "source") if h["address_source"] else "")) if h.get("address") else '<span class="blank">not verified</span>',
                        (esc(h["parking"]) + ("<br>" + src_link(h["parking_source"], "source") if h["parking_source"] else "")) if h["parking"] else '<span class="blank">not verified</span>',
                        (esc(h["poker_rate"]) + ("<br>" + src_link(h["poker_rate_source"], "source") if h["poker_rate_source"] else "")) if h.get("poker_rate") else '<span class="blank">not verified</span>',
@@ -1666,6 +1771,8 @@ def build_planner():
             and TRIP["check_in"] <= r["date"] <= TRIP["check_out"]
             and r["entry_rule"] in ("confirmed_single", "unknown")]
     rows.sort(key=lambda r: (r["date"], r["start"]))
+    restricted_here = [r for r in rows if not is_open_to_general(r)]
+    rows = [r for r in rows if is_open_to_general(r)]
     body = ["<h1>Trip planner: cost of the trip</h1>"]
     body.append(SEARCH_BAR % ("Search candidate events...", ""))
     body.append('<p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + '
@@ -1805,6 +1912,12 @@ def build_others():
     if evs:
         body.append(FILTER_BAR % FILTER_ARGS)
         body.append(table_shell(evs, EVENT_HEAD))
+    body.append('<div class="warnbox"><b>Checked again on %s and still not readable as text.</b> South Point\'s daily '
+                'schedule is published as image files only (the schedule page embeds the flyer plus eight rules-sheet '
+                'JPGs), and the poker-room page states four start times - 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm - with '
+                '"buy-ins of $120 and $300" without pairing a time to a buy-in. Caesars Palace\'s daily flyer was not '
+                're-read in this session. Rows that cannot be tied to a stated price/rule stay blank or unverified.</div>'
+                % esc(RETRIEVED))
     body.append(archive_block(2))
     write("pages/venues/others.html", page("Other venues", "".join(body), "others.html", 2,
                                            TABLE_JS_INIT if evs else ""))
@@ -1822,8 +1935,12 @@ def build_exec():
                 and guarantee_value(r) is not None
                 and r.get("source")
                 and r.get("date", "") > RETRIEVED]
-    regular = [r for r in rankable if not is_bounty(r)]
-    bounty = [r for r in rankable if is_bounty(r)]
+    # An event whose own sheet closes the field to a general entrant is listed, but it cannot
+    # rank as a best pick here: the ranking is meant to be actionable for any reader.
+    eligible = [r for r in rankable if is_open_to_general(r)]
+    excluded_restricted = [r for r in rankable if not is_open_to_general(r)]
+    regular = [r for r in eligible if not is_bounty(r)]
+    bounty = [r for r in eligible if is_bounty(r)]
     rank_key = lambda r: -(guarantee_value(r) / float(r["buyin"]))
     regular.sort(key=rank_key)
     bounty.sort(key=rank_key)
@@ -1837,7 +1954,7 @@ def build_exec():
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
         "Walking times for all 30 hotel-to-venue pairs are dated Google Maps observations read on 2026-11-19 (distance and via-streets recorded per row, with Google's restricted-usage warnings kept); pairs over the 30-minute limit are marked and filtered. A room in the venue's own hotel remains 0 minutes. Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
-        "%d rows across other venues/series still have unread entry terms; they remain explicitly unverified and are not included in the single-entry comparison." % len(UNREAD),
+        "%d rows across the other venues and series still have entry terms this project has not read (every WPT event whose own terms-and-conditions section is printed in the official structures PDF was read on %s: %d rows, and every one of them grants re-entry). The unread rows remain explicitly unverified and are not included in the single-entry comparison." % (len(UNREAD), esc(RETRIEVED), len([r for r in WPT if r.get("terms_read")])),
         "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),
     ]
     for item in summary_items:
@@ -1868,6 +1985,17 @@ def build_exec():
     else:
         body.append('<p class="muted">No non-bounty rows meet the complete-data ranking gate.</p>')
     body.append('<p class="muted sm">Sorted by published guarantee &divide; listed total buy-in. This is a descriptive ratio, not a forecast or expected return. Rankings are withheld when buy-in, house fee, or guarantee is missing. Event restrictions and S1 caveats remain on each linked row.</p>')
+    if excluded_restricted:
+        body.append('<p class="muted sm"><b>%d otherwise-rankable rows are excluded from this ranking because their own '
+                    'official structure sheet restricts the field</b> (Seniors 50+, a female-only LIPS field, or a '
+                    'two-player tag team): %s. They remain listed on '
+                    '<a href="single-entry.html">Single-entry</a> with the rule and its source. A reader who is '
+                    'eligible can still play them.</p>'
+                    % (len(excluded_restricted),
+                       "; ".join("%s #%s &mdash; %s (%s)" % (esc(pretty_date(r["date"])), esc(r["event_no"]),
+                                                          esc(r["name"]),
+                                                          esc((r.get("restriction") or {}).get("label", "")))
+                                 for r in excluded_restricted)))
 
     body.append("<h2>Upcoming bounty / PKO S1 events (separate comparison)</h2>")
     if bounty:
@@ -1921,6 +2049,117 @@ def build_suggestions():
     body.append("</div>")
     body.append('<div class="result" id="spicked"></div>')
     write("pages/suggestions.html", page("Suggestions", "".join(body), "suggestions.html", 1))
+
+
+# --------------------------------------------------------------------- session 8f0b323b
+def build_reverify():
+    """Official re-verification: what was read live today, per value, with the page."""
+    import verify_8f0b323b as V8
+    checks = V8.CHECKS
+    verdict_cls = {"match": "pill-ok", "new": "pill-ok", "mismatch": "pill-bad", "not re-read": "pill-warn"}
+    body = ["<h1>Official re-verification, %s</h1>" % esc(V8.READ_ON)]
+    body.append("<p class=\"muted\">This page is the record of one re-verification pass, run in session "
+                "<code>%s</code> on <b>%s</b>. Each row below is one value, the official page it was read from, "
+                "the sentence (or datum) the page printed, what this site had stored, and the verdict. The point of "
+                "the page is that you can re-check any row yourself by opening its source link: a value that is not "
+                "on this page was not re-read today, and the site says so instead of implying it was.</p>"
+                % (esc(V8.SESSION), esc(V8.READ_ON)))
+    body.append("<p class=\"muted sm\"><b>Read method:</b> " + esc(V8.READ_METHOD) + "</p>")
+    counts = {}
+    for c in checks:
+        counts[c["verdict"]] = counts.get(c["verdict"], 0) + 1
+    body.append('<div class="panel"><h2>Result of this pass</h2><div class="kv">'
+                + "".join("<dt>%s</dt><dd><b>%d</b></dd>" % (esc(k), v) for k, v in sorted(counts.items()))
+                + "<dt>values looked for and not published</dt><dd><b>%d</b></dd>" % len(V8.NOT_PUBLISHED)
+                + "<dt>dated rate observations logged</dt><dd><b>%d</b></dd>" % len(V8.RATE_OBSERVATIONS)
+                + "<dt>session</dt><dd><code>" + esc(V8.SESSION) + "</code></dd></div>"
+                "<p class=\"sm\"><b>match</b> = the official page still prints the stored value. <b>new</b> = the official "
+                "page printed a value this site did not have before (it was blank). <b>mismatch</b> = the page prints something "
+                "different (none were found). <b>not re-read</b> = carried forward from an earlier dated read and explicitly not "
+                "presented as fresh evidence.</p></div>")
+    body.append(SEARCH_BAR % ("Search these re-checks (item, sentence, verdict)...", ""))
+    body.append('<h2>Values re-read against the official page</h2>')
+    body.append('<div class="tablewrap"><table id="tbl" class="data"><thead><tr><th>ID</th><th>Area</th><th>Value / item</th>'
+                '<th>What the official page printed</th><th>What the site had stored</th><th>Verdict</th>'
+                '<th>Read on</th><th>Official source</th></tr></thead><tbody>')
+    for c in checks:
+        body.append("<tr data-v=\"%s\"><td><code>%s</code></td><td>%s</td><td><b>%s</b>%s</td>"
+                    "<td><span class=\"quote\">%s</span></td><td>%s</td>"
+                    "<td><span class=\"pill %s\">%s</span></td><td class=\"nowrap\">%s</td><td>%s</td></tr>"
+                    % (esc(c["verdict"]), esc(c["id"]), esc(c["group"]), esc(c["item"]),
+                       ("<br><span class=\"muted sm\">" + esc(c["note"]) + "</span>") if c.get("note") else "",
+                       esc(c["read"]), esc(c["stored"]), verdict_cls.get(c["verdict"], "pill-warn"), esc(c["verdict"]),
+                       esc(V8.READ_ON if c["verdict"] != "not re-read" else "earlier session"),
+                       src_link(c["url"], "official page")))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">A row-level diff of the whole tournament schedule (94 rows) is on the '
+                '<a href="verification.html">Verification</a> page and in <code>data/8f0b323b/schedule_recheck.json</code>.</p>')
+
+    body.append("<h2>Looked for on the official site and not published</h2>")
+    body.append('<p class="muted">These are the blanks. Each one records where the value was looked for, so a blank on this '
+                'site is evidence rather than an omission.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>ID</th><th>What was looked for</th>'
+                '<th>What the official page said instead</th><th>Effect on the site</th><th>Pages opened</th></tr></thead><tbody>')
+    for n in V8.NOT_PUBLISHED:
+        body.append("<tr><td><code>%s</code></td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                    % (esc(n["id"]), esc(n["what"]), esc(n["result"]), esc(n["site_effect"]),
+                       "<br>".join(src_link(u, u.split("/")[-1] or u) for u in n["tried"])))
+    body.append("</tbody></table></div>")
+
+    body.append("<h2>Dated rate observations logged in this pass</h2>")
+    body.append('<p class="muted">A rate is never a single value on this site. Each observation is stored with the date it was '
+                'read and the official page it came from, and is comparable like-for-like only with another observation of the '
+                'same property, stay window, occupancy and room class. <b>No observation below is a quote for 6-13 December '
+                '2026</b>: the only nightly figure any of these pages prints is a published starting floor.</p>')
+    body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Hotel</th><th>Kind of observation</th>'
+                '<th class="num">Nightly low</th><th class="num">Nightly high</th><th class="num">Resort fee / night</th>'
+                '<th class="num">Tax rate used</th><th class="num">Fee incl. tax</th><th class="num">Fee tax only</th>'
+                '<th>Room type</th><th>Condition</th><th>Parking</th><th>Cancellation</th><th>Read on</th>'
+                '<th>Official source</th></tr></thead><tbody>')
+    for o in V8.RATE_OBSERVATIONS:
+        fee = o.get("resort_fee_per_night")
+        tax = o.get("tax_rate_pct")
+        fee_tax = "$%.2f" % round(fee * tax / 100.0, 2) if fee and tax else '<span class="blank">n/a</span>'
+        fee_in = "$%.2f" % round(fee * (1 + tax / 100.0), 2) if fee and tax else '<span class="blank">n/a</span>'
+        body.append("<tr><td><b>%s</b></td><td>%s</td>"
+                    "<td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s</td><td class=\"num\">%s%%</td>"
+                    "<td class=\"num\">%s</td><td class=\"num\">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
+                    "<td class=\"nowrap\">%s</td><td>%s</td></tr>"
+                    % (esc(o["hotel"]), esc(o["kind"]),
+                       money(o.get("nightly_low")) or '<span class="blank">not published</span>',
+                       money(o.get("nightly_high")) or '<span class="blank">not published</span>',
+                       money(fee) or '<span class="blank">not verified</span>',
+                       esc(str(tax)) if tax else '<span class="blank">&mdash;</span>',
+                       fee_in, fee_tax,
+                       esc(o.get("room_type") or "") or '<span class="blank">not published</span>',
+                       esc(o.get("condition") or ""), esc(o.get("parking_per_day") or "") or '<span class="blank">not verified</span>',
+                       esc(o.get("cancellation") or "") or '<span class="blank">not published for this rate plan</span>',
+                       esc(o["observed_on"]),
+                       src_link(o["source"], "official page") +
+                       ("<br>" + src_link(o["source_2"], "parking terms") if o.get("source_2") else "")))
+    body.append("</tbody></table></div>")
+    body.append('<p class="muted sm">"Fee incl. tax" is arithmetic on the verified fee and the Clark County rate, so the '
+                'calculator does not have to guess it. It is a fee, not a nightly rate: add the property\'s own nightly rate, '
+                'which no official page publishes for the trip dates (see row <code>N01</code> above).</p>')
+
+    body.append("<h2>How this pass changes what the site claims</h2>")
+    body.append('<div class="panel"><ul class="tight">'
+                '<li><b>Three MGM rooms now have a verified mandatory fee, a standard cancellation term and parking rates</b> '
+                '(Bellagio $55, ARIA $55, MGM Grand $50, all plus applicable tax). They are listed on the Hotels page for the '
+                'room-cost comparison. They still have <b>no tournament rows</b>, because no MGM poker-room page could be read: '
+                'nothing was invented to fill that gap.</li>'
+                '<li><b>The Venetian per-day parking figure is now dated evidence</b> ($20/day for a registered hotel guest), so '
+                'the parking line of the trip estimate is no longer blank for that property. It is optional: the poker-room '
+                'three-hour rule can make it $0.</li>'
+                '<li><b>Every schedule row still matches on what and when</b> (90 of 94 exactly; 4 differ only in a promotional '
+                'name suffix, logged as F56). <b>No entry rule is confirmed by the schedule page at all</b> (F59): the '
+                'single-entry verdicts still rest on structure sheets.</li>'
+                '<li><b>Nothing closed the room-rate gap.</b> No official page prints a nightly rate for 6-13 December 2026, so '
+                'the trip planner still reports the hotel term as Incomplete rather than showing a total with a zero-cost hotel '
+                '(F14/F51).</li></ul></div>')
+
+    write("pages/reverify.html", page("Official re-verification", "".join(body), "reverify.html", 1,
+                                      extra_head=TABLE_JS_INIT))
 
 
 def build_flagged():
@@ -2062,12 +2301,18 @@ def build_monitor():
                     '<th>What it backs</th><th>Old hash</th><th>New hash</th><th>Size</th>'
                     '<th>Link</th></tr></thead><tbody>')
         shown_changes = [c for c in changelog
-                         if "{" not in c.get("url", "") and "google.com/maps" not in c.get("url", "")]
+                         if isinstance(c, dict) and "{" not in c.get("url", "")
+                         and "google.com/maps" not in c.get("url", "")]
         for c in reversed(shown_changes[-200:]):
+            # Read defensively (see CHANGED_AT): the value-level monitor historically wrote
+            # "at"/"previous_sha256"/"sha256" keys. Accept both spellings so a monitor-written
+            # entry can never break the build; missing hashes render as "-".
+            _old = (c.get("old_sha256") or c.get("previous_sha256") or "")[:12] or "-"
+            _new = (c.get("new_sha256") or c.get("sha256") or "")[:12] or "-"
             body.append('<tr><td class="nowrap">%s</td><td>%s</td><td><code>%s</code></td>'
                         '<td><code>%s</code></td><td>%s</td><td>%s</td></tr>'
-                        % (esc(c["changed_at"]), esc(c.get("label") or ""),
-                           esc(c["old_sha256"][:12]), esc(c["new_sha256"][:12]),
+                        % (esc(c.get("changed_at") or c.get("at") or ""), esc(c.get("label") or c.get("kind") or ""),
+                           esc(_old), esc(_new),
                            esc("%s to %s bytes" % (c.get("old_bytes"), c.get("new_bytes"))),
                            src_link(c["url"], "open")))
         body.append("</tbody></table></div>")
@@ -2296,6 +2541,26 @@ def build_verification():
                     "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
                     "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
                     "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
+    # 8f0b323b: independent second re-read of the same page, session-scoped files
+    _sr2 = None
+    try:
+        with open(os.path.join(ROOT, "data", "8f0b323b", "schedule_recheck.json")) as _fh:
+            _sr2 = json.load(_fh)
+    except (OSError, ValueError):
+        _sr2 = None
+    if _sr2:
+        _notices = sum(len(r.get("notices") or []) for r in (_sr2.get("rows") or []))
+        body.append('<div class="panel"><h2>Second independent schedule re-read, ' + esc(_sr2.get("checked_on", "")) + '</h2>'
+                    '<p>Session <code>8f0b323b</code> re-read the same official page again with its own transcription '
+                    '(<code>data/8f0b323b/schedule_live_2026-11-19.tsv</code>) and its own diff script '
+                    '(<code>scripts/recheck_8f0b323b.py</code>), so the check does not depend on one session&#39;s notes. '
+                    'Fields compared: date, start time, event number, name, structure-sheet number, buy-in, guarantee.</p>'
+                    '<div class="kv"><dt>rows compared</dt><dd><b>' + str(_sr2.get("rows_compared", 0)) + '</b></dd>'
+                    '<dt>rows with a value mismatch</dt><dd><b>' + str(_sr2.get("mismatches", 0)) + '</b></dd>'
+                    '<dt>promotional-suffix notices</dt><dd><b>' + str(_notices) + '</b></dd></div>'
+                    '<p class="muted sm">' + esc(_sr2.get("name_suffix_note", "")) +
+                    ' Source: <a href="' + esc(_sr2.get("official_source", "")) + '" rel="noopener">official Venetian schedule page</a>. '
+                    'The full pass, value by value, is on the <a href="reverify.html">Re-verification log</a>.</p></div>')
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])
@@ -2437,6 +2702,25 @@ def build_verification():
                            src_link(c["official_url"], "official page")))
         body.append("</tbody></table></div>")
         body.append('<p class="muted sm">%s</p>' % esc(rv["not_changed"]))
+    # Live re-read by session 22f06ff9 (fetch_page on the official URLs, 2026-11-19).
+    rv2_path = os.path.join(ROOT, "data", "22f06ff9", "reverify.json")
+    if os.path.exists(rv2_path):
+        with open(rv2_path, encoding="utf-8") as fh:
+            rv2 = json.load(fh)
+        body.append("<h2>Live re-read of the official sources (%s)</h2>" % esc(rv2["retrieved"]))
+        body.append('<p class="muted">%s</p>' % esc(rv2["scope"]))
+        body.append('<p class="muted sm">Read by: %s. %s</p>' % (esc(rv2["read_method"]), esc(rv2["not_changed"])))
+        body.append('<div class="tablewrap"><table class="data"><thead><tr><th>Item</th><th>Result</th>'
+                    "<th>Stored value</th><th>What the official source says</th><th>Official source</th>"
+                    "</tr></thead><tbody>")
+        for c in rv2["checks"]:
+            res = c.get("result", "")
+            pill = {"match": "pill pill-ok", "mismatch": "pill pill-bad",
+                    "mismatch - corrected": "pill pill-warn"}.get(res, "pill pill-warn")
+            body.append("<tr><td>%s</td><td><span class=\"%s\">%s</span></td><td>%s</td><td>%s</td><td>%s</td></tr>"
+                        % (esc(c["item"]), pill, esc(res), esc(c["stored"]), esc(c["detail"]),
+                           src_link(c["official_url"], "official page")))
+        body.append("</tbody></table></div>")
     write("pages/verification.html", page("Verification log", "".join(body), "verification.html", 1))
 
 
@@ -2458,6 +2742,7 @@ def main():
     build_flagged()
     build_monitor()
     build_verification()
+    build_reverify()
     build_repo_review()
     build_method()
     build_redirects()

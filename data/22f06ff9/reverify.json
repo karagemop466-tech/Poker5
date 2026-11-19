@@ -1,0 +1,66 @@
+{
+  "session": "22f06ff9",
+  "scope": "Live re-read of the official sources behind the published site on 2026-11-19, line by line, before any decision or payment. Each value is compared with the stored record; nothing is marked verified that was not read on this date, and no value was changed by this session.",
+  "read_method": "fetch_page on the official URL (platform reader, full text). The Venetian schedule is a live HTML table read across all four chunks; structure sheets and the Wynn schedule are PDFs read as text. Byte-level hashes are checked by the scheduled monitor on a runner with casino-host egress, not from this sandbox.",
+  "retrieved": "2026-11-19",
+  "checks": [
+    {
+      "item": "Venetian DeepStack Extravaganza IV schedule: the whole official page, every row",
+      "official_url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+      "stored": "data/ea99006a/official_schedule_2026-11-19.tsv (94 rows) and data/ea99006a/venetian.json",
+      "result": "match",
+      "detail": "The live page was read in all four chunks and transcribed row by row (date, printed start time, event number, event name, structure-sheet number). All 94 rows match the stored transcription exactly, including the event numbers that repeat across flights (#1 for 1A-1D, #7 for 1A-1C, #19 for 1A-1C, #26 for 1A-1F, #39, #47, #49, #56, #59) and the restart/final-table rows. Festival window still reads 'November 16 - December 23, 2026'. 0 changes."
+    },
+    {
+      "item": "Venetian resort fee",
+      "official_url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+      "stored": "$55 plus tax per night",
+      "result": "match",
+      "detail": "Page reads 'Rates include a daily Resort Fee of $55 plus tax per night, payable upon check-in', with the listed inclusions. No change."
+    },
+    {
+      "item": "Venetian poker suite rate (floor) and its play condition",
+      "official_url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+      "stored": "$119 / $209 'as low as'; six hours of live cash play or a $300+ buy-in each night; $55 resort fee per night; booking code EPOKR25",
+      "result": "match",
+      "detail": "Page reads 'These rates will start as low as $119 and $209 and can be higher', '$55 resort fee per night stayed', 'play six hours of active live cash gameplay or buy in to a $300 or higher tournament for each night stayed', and the booking code EPOKR25. It remains a conditional floor, not a quote for the selected dates; the stored record keeps the condition in rate_caveat. No change."
+    },
+    {
+      "item": "Venetian structure sheet 10 (Event #1, $300 NLH Day A+C)",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
+      "stored": "data/ea99006a/venetian.json row for 2026-11-16 #1 1A (rule_fields, rule_excerpt, entry_evidence)",
+      "result": "match",
+      "detail": "Sheet read live as text. Event Number 01, Starting Chips 30,000, Level Duration 40 minutes, Late Registration '6 levels + Break (~ 3:40 PM)', Guarantee $75,000. Rule 3 flight language, rule 7 '$60 of the $300 Buy-In is withheld for house fees... prize pool consists of $240 of every $300 Buy In', rule 8 'Any player who bags chips for Day 2 may not play a subsequent flight'. The stored rule_fields, excerpts and entry_evidence match the sheet. No change."
+    },
+    {
+      "item": "Wynn WPT World Championship schedule",
+      "official_url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+      "stored": "data/ea99006a/wpt.json",
+      "result": "match",
+      "detail": "The schedule PDF was read live as text. The Nov 27 - Dec 21+ rows (Day 1A-1F flights, $600/$800/$1,100/$1,600 buy-ins, guarantees, chips, levels, satellites and the $10,400 World Championship Day 1A on Dec 13) match the stored WPT rows. No change."
+    },
+    {
+      "item": "Wynn resort fee, parking and cancellation deadline",
+      "official_url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+      "stored": "$55 plus tax resort fee; complimentary self-parking for up to two vehicles; cancellation at least 48 hours before arrival",
+      "result": "match",
+      "detail": "Page reads 'A daily resort fee of $55 plus tax', self-parking for up to two vehicles included, and 'cancellations must be received at least 48 hours prior to arrival date or deposit will be forfeited'. Matches the value corrected to 48 hours by session d615f79e. No change."
+    },
+    {
+      "item": "Venetian structure sheets other than sheet 10",
+      "official_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/",
+      "stored": "37 structure sheets captured in data/b3be876c/verification.json; every row's rule_fields carries its own excerpt and retrieval date",
+      "result": "not re-read this session",
+      "detail": "Only sheet 10 was re-read live this session. The other 36 sheets are carried forward from the dated 2026-11-19 capture and the scheduled monitor, each with its own retrieval date and excerpt on the row. Read them before payment; the scheduled monitor re-checks them."
+    },
+    {
+      "item": "Clark County transient-lodging tax 13.38%",
+      "official_url": "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:3a73546d-c587-409d-9728-cbcf3a72ed04/original/as/pubhear-roomtax-ord-sb1d2.pdf",
+      "stored": "13.38% (primary gaming corridor)",
+      "result": "not re-read this session",
+      "detail": "Not re-fetched in this session. The stored record keeps the ordinance link and the 'confirm the current schedule' note; the tax rate is applied as 13.38% in the calculators."
+    }
+  ],
+  "changes_made": [],
+  "not_changed": "No event, buy-in, guarantee, start time, entry-rule verdict, rate value, resort fee or cancellation value was changed by this re-read. Every stored value that was re-read matched the live official source. This session added no new facts and promoted no value to verified beyond what its own live read of the official page supported."
+}

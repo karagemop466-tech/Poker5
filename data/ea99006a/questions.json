@@ -2,9 +2,9 @@
  {
   "id": "Q01",
   "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-  "have": "The site now fixes this for you: 2026-12-06 to 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees), with the nightly budget ceiling and quality floor applied on the hotels page. No input is required to read the plan.",
-  "missing": "Your budget ceiling and quality floor are set to the values that keep every official-source hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds it, and it never invents a rate to make a hotel qualify.",
-  "how": "See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table."
+  "have": "A planning scenario is fixed automatically: check-in 2026-12-06, check-out 2026-12-12 (7 nights), chosen on 2026-11-19 from the corrected single-entry set (12 entries, about $335,000 of published guarantees). The check-out date is the morning after the last playing day. The displayed nightly budget ceiling is the average nightly room charge from one dated booking observation that is NOT for this stay, and the quality floor is a property-tier label, not an independent rating; both are explained on the Hotels and Trip planner pages. No input is required to read the plan.",
+  "missing": "The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The scenario above is the site's automatic choice, not your decision, and no hotel has a dated, itemized quote for it, so the trip total stays 'Incomplete'.",
+  "how": "Read the scenario as a starting point, then obtain official itemized quotes for the same nights, occupancy and room class before treating any hotel figure as a comparison. The date filter on every table re-scopes every row."
  },
  {
   "id": "Q02",
@@ -72,7 +72,7 @@
  {
   "id": "Q11",
   "q": "Can the site complete the trip cost without me entering anything?",
-  "have": "The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
+  "have": "The entries side is complete and source-linked. On the hotel side the mandatory fees are now verified for the Venetian ($55), Wynn ($55), Resorts World ($55), Bellagio ($55), ARIA ($55) and MGM Grand ($50), all plus the 13.38% Clark County tax, and self-parking rates are dated for the Venetian ($20/day registered guest) and the MGM rooms ($20/day). What is still missing is the nightly ROOM rate itself, which no official Strip page publishes for these dates.",
   "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
   "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you."
  },
@@ -93,9 +93,9 @@
  {
   "id": "Q14",
   "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
-  "have": "Wynn offer terms DK26WLV2, re-read 2026-11-19: cancellations must be received at least 48 hours before arrival for that offer's bookings. The earlier 72-hour figure (2026-11-17) is withdrawn: it could not be reproduced from any stored capture (F55). The standard-rate policy was not read.",
-  "missing": "Cancellation deadlines and deposit/refund terms for the Venetian booking rate, and for any Caesars or MGM rate.",
-  "how": "Read the rate rules shown on each official booking page at quote time and record them in the dated rate log."
+  "have": "Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read 2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a specific rate plan.",
+  "missing": "The deadline that applies to the exact rate plan you book: every MGM page says 'unless specifically excluded by booked offer', Wynn's figure belongs to a two-night promotional offer, and Caesars/Horseshoe publish the headline but not the term sheet.",
+  "how": "Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."
  },
  {
   "id": "Q15",
@@ -117,5 +117,26 @@
   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
+ },
+ {
+  "id": "Q18",
+  "q": "Does the Venetian house-rules text (cited on every single-entry sheet as 'TDA rules apply') contain any re-entry, rebuy or add-on rule for the DSE IV events?",
+  "have": "All 22 single-entry structure sheets were re-read on 2026-11-19. None states a re-entry, rebuy, add-on or maximum-entry rule itself, and each cites 'TDA rules apply' by reference. The rulebook text has not been captured.",
+  "missing": "The house-rules text, and a written statement from the poker room desk on the maximum number of entries for each event you plan to play.",
+  "how": "Ask the Venetian poker room desk for the written house rules and the written entry limit for each event, record the answer with its date and source, then update the S1 label. Until then, a row is 'no re-entry wording found', not 'confirmed single-entry'."
+ },
+ {
+  "q": "Which published events is a general entrant actually allowed to enter, and where is that stated?",
+  "have": "Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on the row with its sentence and link: Seniors 50+ (sheet 17 events #24 and #32; sheet 20 events #49 and the #49 restart), a female-only field (sheet 19 events #33 and #37), and a two-player tag team (sheet 31 event #35). They are excluded from the executive ranking because they are not a pick a general reader can play.",
+  "missing": "There is no published list of which other rows carry eligibility conditions the sheets do not state (for example a minimum-play requirement, a member-only satellite, or an invitation-only field). The tag-team event also requires a partner, which the sheet states as a format rule, not as a waitlist or pairing service - whether the room pairs singles was not found.",
+  "how": "Ask the Venetian poker room to confirm in writing, per event number, that no unpublished eligibility condition applies; until then a reader should treat only the rows with no restriction label as open to them.",
+  "id": "Q19"
+ },
+ {
+  "q": "What would a day actually look like from 8 AM, and how many events can really be played in one day?",
+  "have": "The earliest official start in the captured window is 9:10 AM (Venetian #46, a turbo satellite on 12 December); the earliest non-satellite start is 10:10 AM. Evening events start at 4:10 PM, 5:10 PM, 6:10 PM and 8:10 PM, and the latest published registration close is 9:40 PM.",
+  "missing": "No official source publishes a finish time, a field-size estimate or an expected duration, so the number of events a player can enter in one day cannot be computed - only bounded: an event's registration window is known, its end is not.",
+  "how": "Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and ask the room for the typical finishing time of the specific event. One event per day stays the default until a real finish time is sourced.",
+  "id": "Q20"
  }
 ]
