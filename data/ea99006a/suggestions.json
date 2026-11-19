@@ -206,7 +206,7 @@
    "Judge the 30-minute filter on the slower of the two directions",
    "Keep per-direction rows as now and sort pairs together"
   ],
-  "effect": "Safer late-night planning. In review - not implemented."
+  "effect": "Implemented on main while this session worked: scripts/integrate_b3be876c.py now derives a per-row gtd_per_entry field (guarantee divided by total entry fee, blank when not rankable). Kept for the record."
  },
  {
   "id": "S20",

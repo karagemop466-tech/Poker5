@@ -1,5 +1,5 @@
 {
- "note": "Dated log of hotel stay captures (rates are a log, never a single value). Each entry is a snapshot with its rate timestamp and the official source it was read from. Fields that the official pages never returned are left null - never inferred. Like-for-like comparison needs the same room type, occupancy and cancellation policy; until a hotel returns one itemised checkout total for the trip dates, the calculator stays incomplete. For 2026-12-06 to 2026-12-13 two dated Wynn quotes and two official December calendars (Horseshoe, Resorts World) were captured on 2026-11-19 alongside a logged Venetian engine attempt; calendars are raw daily displays, not checkout totals (flags F32, F57, F59).",
+ "note": "Dated log of hotel stay captures (rates are a log, never a single value). Each entry is a snapshot with its rate timestamp and the official source it was read from. Fields that the official booking UI did not return are null and are shown blank + flagged on the site; they are never filled in. Entries are only comparable like-for-like when check-in, check-out, occupancy and room class match. This is not a live quote; reconfirm on the official booking page before paying.",
  "schema": [
   "hotel",
   "room_type",
@@ -150,6 +150,31 @@
    "caveats": [
     "Wynn displayed $355 average/night including the resort fee and excluding tax; it did not return a tax-inclusive total, so checkout_total and tax_total stay blank.",
     "An all-in stay figure circulating in earlier research ($2,817.49) is arithmetic using a 13.38% rate, not a hotel quote; verify current tax treatment at booking."
+   ]
+  },
+  {
+   "hotel": "The Venetian Resort (Venetian / Palazzo towers)",
+   "room_type": null,
+   "checkin": "2026-12-06",
+   "checkout": "2026-12-13",
+   "nights": 7,
+   "occupancy": "2 adults, 1 room",
+   "checkout_total": null,
+   "nightly_average": null,
+   "room_rate_per_night": null,
+   "resort_fee_per_night": 55.0,
+   "resort_fee_total": 385.0,
+   "tax_total": null,
+   "tax_note": "Not quoted - the booking UI returned no numeric price for these dates on 2026-11-19.",
+   "parking": null,
+   "cancellation_deadline": null,
+   "rate_timestamp": "2026-11-19",
+   "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-06&children[]=0&departure_date=2026-12-13&view=calendar",
+   "source_label": "Venetian official booking UI (2026-11-19 attempt)",
+   "verified": false,
+   "caveats": [
+    "No numeric quote is returned for 6-13 December 2026 (the booking engine prices rooms in JavaScript only). Figures left blank - never invented. This entry records the dated attempt itself.",
+    "The trip-cost calculator therefore shows this stay as 'quote needed' until you read a price from the booking page."
    ]
   },
   {

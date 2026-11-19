@@ -87,6 +87,36 @@ OTH = load("other.json")
 VENUES = load("venues.json")
 HOTELS = load("hotels.json")
 ROUTES = load("routes.json")
+ROUTE_INDEX = {(r["hotel_key"], r["venue_key"]): r for r in ROUTES}
+
+
+def walk_cell(hkey, vkey="venetian"):
+    """Walk-time cell from the dated Google Maps observations in routes.json (both reading sets)."""
+    r = ROUTE_INDEX.get((hkey, vkey))
+    if r is None:
+        return '<span class="blank">not verified</span>'
+    if r.get("same_property"):
+        return '<span class="pill pill-ok">0 min, same property</span>'
+    a = r.get("minutes")
+    b = r.get("alt_minutes")
+    vals = [int(x) for x in (a, b) if x not in (None, "")]
+    if not vals:
+        return '<span class="blank">not verified</span>'
+    worst = max(vals)
+    ok = "pill-ok" if worst <= 30 else "pill-warn"
+    bits = []
+    if a not in (None, ""):
+        bits.append("name pins %d min%s" % (int(a), (" " + esc(r["distance"])) if r.get("distance") else ""))
+    if b not in (None, ""):
+        bits.append("address pins %d min%s"
+                    % (int(b), (" %.1f mi" % r["alt_distance_miles"])
+                       if r.get("alt_distance_miles") is not None else ""))
+    return ('<span class="pill %s">%d min</span> <span class="muted sm">to the Venetian poker room &middot; '
+            '%s &middot; Google Maps %s</span>'
+            % (ok, worst, " &middot; ".join(bits),
+               esc(r.get("checked") or r.get("alt_checked") or "")))
+
+
 FLAGS = load("flags.json")
 QUESTIONS = load("questions.json")
 SUGGESTIONS = load("suggestions.json")
@@ -1479,23 +1509,6 @@ def fee_cell(h):
     return "%s plus tax" % fee
 
 
-def walk_cell(hotel_key, venue_key="venetian"):
-    """Walk-time pill for a hotel -> poker-room pair, from the measured route table (routes.json)."""
-    for r in ROUTES:
-        if r["hotel_key"] == hotel_key and r["venue_key"] == venue_key:
-            if r.get("same_property"):
-                return '<span class="pill pill-ok">0 min, same property</span>'
-            m = r.get("minutes")
-            if m is None or m == "":
-                return '<span class="blank">not verified</span>'
-            ok = "pill-ok" if int(m) <= 30 else "pill-warn"
-            mi = r.get("distance_miles")
-            extra = ("%.1f mi, measured %s" % (mi, r.get("retrieved", ""))) if mi is not None \
-                else ("measured %s" % (r.get("retrieved", ""),))
-            return '<span class="pill %s">%s min walk to the room (%s)</span>' % (ok, esc(str(m)), esc(extra))
-    return '<span class="blank">not verified</span>'
-
-
 def build_hotels():
     body = ["<h1>Hotels: true cost per night</h1>"]
     body.append('<p class="muted">True nightly cost = room rate + resort fee + tax. The tax rate below is taken from '
@@ -1530,7 +1543,10 @@ def build_hotels():
                     "<td>%s</td><td>%s</td><td class=\"num\">%s<br><span class=\"muted sm\">%s</span></td>"
                     "<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
                     % (tier_rank, esc(h["name"]), esc(h["quality_note"]), esc(h["tier"]), esc(h["area"]), esc(h["room"]),
-                       walk_cell(h["key"], "venetian"),
+                       (('<span class="pill pill-ok">0 min, same property</span>'
+                         '<br><span class="muted sm">this hotel hosts %s</span>' % esc(h["room"]))
+                        + ('<br>%s' % walk_cell(h["key"], "venetian") if h["key"] != "venetian" else ""))
+                       if h["on_property"] else walk_cell(h["key"], "venetian"),
                        fee + ("<br><span class=\"muted sm\">read %s</span>" % esc(h["resort_fee_read"]) if h.get("resort_fee_read") and h["resort_fee"] else ""),
                        esc(h["resort_fee_text"]),
                        (esc(h["address"]) + ("<br>" + src_link(h["address_source"], "source") if h["address_source"] else "")) if h.get("address") else '<span class="blank">not verified</span>',
@@ -1763,25 +1779,27 @@ def build_hotels():
 
 def build_routes():
     body = ["<h1>Walking routes: hotel to poker room</h1>"]
-    body.append('<p class="muted">The brief asks for a 30-minute walking limit measured between official '
-                'addresses. Each pair below is pinned on the two addresses printed beside it, taken from each '
-                'property\u2019s own official page with the date it was read. <b>No Strip property publishes a '
-                'walking time to a different property</b>, so every cross-property pair was measured on Google '
-                'Maps walking directions between those addresses on 2026-11-19 and the minutes are stored per '
-                'direction as measured - the routes are asymmetric (flag F73) and are never symmetrized. Those '
-                'figures are routing measurements, not hotel-published facts (flag F50), and they cover the '
-                'sidewalk route to the property entrance; the poker room is inside the destination property, so '
-                'add in-property walking time. Same-property rows stay at the verified zero minutes. The '
-                '30-minute filter works on the stored values.</p>')
+    body.append('<p class="muted">The brief asks for a 30-minute walking limit. Every hotel&ndash;venue pair '
+                'below is pinned on the two <b>official addresses</b> beside it (each with its official source '
+                'and read date) and carries <b>two dated Google Maps walking readings</b> from 2026-11-19: '
+                'one measured between the official property names (session 0fd59a4a: minutes, distance, '
+                'via-streets, restricted-usage warnings) and one between the official street addresses '
+                '(session f7676bd0: minutes per direction, distance, via-streets). The two sets disagree on '
+                'some pairs because the map routes different entrances for name pins vs address pins (flag '
+                'F72); both are stored as measured, neither is smoothed into the other, and the 30-minute '
+                'filter and verdicts judge each pair by the <b>slower</b> reading so the limit is applied '
+                'conservatively. These are dated observations, not guarantees - entrances, walkways and '
+                'closures change - and no hotel publishes such a figure itself (flag F50). A poker room '
+                'inside your own hotel is zero minutes.</p>')
     body.append(SEARCH_BAR % ("Search hotels, rooms, routes...", ""))
     body.append('<div class="panel"><label class="chk"><input type="checkbox" id="walkfilter"> '
-                'Hide pairs known to exceed the 30-minute limit (rows without verified minutes stay, marked unverified)</label>'
+                'Hide pairs known to exceed the 30-minute limit (rows without a measured time stay, marked unverified)</label>'
                 '<div class="calc" style="margin-top:10px">'
                 '<label>Pair<select id="walkpair">%s</select></label>'
                 '<label>Minutes you measured<input id="walkmins" type="number" step="1" min="0"></label>'
                 '<button class="btn" id="walkrecord" type="button">Record</button></div>'
-                '<p class="muted sm">Optional, and off by default: recorded values are stored in this browser only '
-                'and are shown as measured by you, never as an official value.</p></div>'
+                '<p class="muted sm">Optional, and off by default: your own measurements are stored in this '
+                'browser only and are shown as measured by you, next to the dated Google Maps observation.</p></div>'
                 % "".join('<option value="%s">%s &rarr; %s</option>' % (esc(r["hotel_key"] + "|" + r["venue_key"]),
                                                                         esc(r["hotel"]), esc(r["venue"]))
                           for r in ROUTES if not r["same_property"]))
@@ -1813,26 +1831,47 @@ def build_routes():
             dist_cell = via_cell = rev_cell = "-"
             dmin = "0"
         else:
-            m = mins
-            dmin = "" if m in (None, "") else str(m)
-            if m in (None, ""):
-                time_cell = '<span class="blank">not verified</span>'
-            else:
-                time_cell = '<span class="pill %s">%s min</span>' % (
-                    "pill-ok" if int(m) <= 30 else "pill-warn", esc(str(m)))
-            dist_cell = ("%.1f mi" % r["distance_miles"]) if r.get("distance_miles") is not None else "-"
-            via_cell = esc(r.get("via") or "-")
-            if r.get("reverse_minutes") is not None:
-                rev_cell = "%d min (%.1f mi, via %s)" % (r["reverse_minutes"],
-                                                         r.get("reverse_distance_miles") or 0.0,
-                                                         r.get("reverse_via") or "-")
+            a_min = r.get("minutes")
+            b_min = r.get("alt_minutes")
+            vals = [int(x) for x in (a_min, b_min) if x not in (None, "")]
+            dmin = str(max(vals)) if vals else ""
+            parts = []
+            if a_min not in (None, ""):
+                parts.append('%s min <span class="muted sm">(name pins%s, checked %s)</span>'
+                             % (esc(str(a_min)),
+                                (", %s" % esc(r.get("distance") or "")) if r.get("distance") else "",
+                                esc(r.get("checked") or "")))
+            if b_min not in (None, ""):
+                parts.append('%s min <span class="muted sm">(address pins%s, checked %s)</span>'
+                             % (esc(str(b_min)),
+                                (", %.1f mi" % r["alt_distance_miles"])
+                                if r.get("alt_distance_miles") is not None else "",
+                                esc(r.get("alt_checked") or "")))
+            time_cell = ('<span class="pill %s">%s</span>'
+                         % ("pill-ok" if dmin and int(dmin) <= 30 else "pill-warn",
+                            "<br>".join(parts))) if parts else '<span class="blank">not verified</span>'
+            d_bits = []
+            if r.get("distance"):
+                d_bits.append("%s (name pins)" % esc(r["distance"]))
+            if r.get("alt_distance_miles") is not None:
+                d_bits.append("%.1f mi (address pins)" % r["alt_distance_miles"])
+            dist_cell = " / ".join(d_bits) or "-"
+            v_bits = []
+            if r.get("via"):
+                v_bits.append("%s (name pins)" % esc(r["via"]))
+            if r.get("alt_via"):
+                v_bits.append("%s (address pins)" % esc(r["alt_via"]))
+            via_cell = " / ".join(v_bits) or "-"
+            if r.get("alt_reverse_minutes") is not None:
+                rev_cell = "%d min (%.1f mi, via %s, address pins)" % (
+                    r["alt_reverse_minutes"], r.get("alt_reverse_distance_miles") or 0.0,
+                    r.get("alt_reverse_via") or "-")
             else:
                 rev_cell = "-"
         verdict = ('<span class="pill pill-ok">yes - on property</span>' if same else
-                   '<span class="pill pill-bad">no - measured over 30 min</span>'
-                   if mins not in (None, "") and float(mins) > 30 else
-                   '<span class="pill pill-ok">yes - measured %s min</span>' % esc(str(mins))
-                   if mins not in (None, "") else
+                   '<span class="pill pill-bad">no - over 30 min on the slower reading</span>'
+                   if dmin and int(dmin) > 30 else
+                   '<span class="pill pill-ok">yes - within 30 min on both readings</span>' if dmin else
                    '<span class="blank">not verified - no figure</span>')
         body.append('<tr data-pair="%s" data-min="%s"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>'
                     '<td>%s</td><td class="sm">%s</td><td class="sm">%s</td><td class="sm">%s</td>'
@@ -1847,23 +1886,27 @@ def build_routes():
                        src_link(r["maps"], "Google Maps"),
                        src_link(r.get("maps_apple") or r["maps"], "Apple Maps")))
     body.append("</tbody></table></div>")
-    unmeasured = [r for r in ROUTES if not r.get("same_property") and r.get("minutes") in (None, "")]
-    body.append('<div class="warnbox">The %d cross-property pairs without a stored measurement stay unverified '
-                '(flag <a href="flagged-review.html">F50</a>): no hotel page publishes these figures. The '
-                'stored minutes are Google Maps walking measurements between the official addresses on '
-                '2026-11-19 - every one is reproducible from the link on its row - but they are routing '
-                'estimates, not official facts. Two caveats on the readings: Horseshoe &rarr; Venetian measured '
-                '31 minutes, one minute over the limit, while the other direction measured exactly 30 (flag '
-                'F74) - both figures are shown so you can judge the walk you would actually take; and the '
-                'South Point pairs measure 2h45-3h24 and cannot be walked practically from a Strip hotel - '
-                'that property\u2019s own home page describes it as &ldquo;just a short drive from the iconic '
-                'Las Vegas Strip&rdquo;. The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the '
-                'official WPT terms state &ldquo;Players will register in the Wynn Las Vegas Poker Room, '
-                'located in Encore at Wynn Las Vegas&rdquo;, so allow extra indoor walking time from the Wynn '
-                'tower. %s</div>'
-                % (len(unmeasured), src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/"
-                                             "v1750864036/visitwynn_pdfs_files/Poker/WPT/"
-                                             "WPT_World_Championship_Structures.pdf", "official terms")))
+    cross = [r for r in ROUTES if not r.get("same_property")]
+    def _worst(r):
+        vals = [int(x) for x in (r.get("minutes"), r.get("alt_minutes")) if x not in (None, "")]
+        return max(vals) if vals else None
+    measured_n = sum(1 for r in cross if _worst(r) is not None)
+    over = sum(1 for r in cross if (_worst(r) or 0) > 30)
+    body.append('<div class="warnbox">Of the %d cross-property pairs, %d carry dated <b>Google Maps walking '
+                'observations</b> (2026-11-19, two reading sets per row - name pins and address pins; flag '
+                '<a href="flagged-review.html">F50</a> records the method and its limits, F72 the divergence '
+                'between the sets). %d pairs exceed the 30-minute rule on the slower reading and are marked '
+                'in red. Horseshoe &rarr; Venetian straddles the limit across readings - 30/31 minutes on the '
+                'address pins, 16 minutes on the name pins (flag F74) - every figure is shown so you can '
+                'judge the walk you would actually take. The South Point pairs cannot be walked from a Strip '
+                'hotel: that property\u2019s own home page describes it as &ldquo;just a short drive from '
+                'the iconic Las Vegas Strip&rdquo; (roughly three hours on foot). '
+                'The Wynn poker room is in <b>Encore</b>, not the main Wynn tower: the official WPT terms '
+                'state &ldquo;Players will register in the Wynn Las Vegas Poker Room, located in Encore at '
+                'Wynn Las Vegas&rdquo;, so allow extra indoor walking time from the Wynn tower. %s</div>'
+                % (len(cross), measured_n, over, src_link(WPT_TERMS := "https://cdn.wynnresorts.com/image/upload/"
+                                              "v1750864036/visitwynn_pdfs_files/Poker/WPT/"
+                                              "WPT_World_Championship_Structures.pdf", "official terms")))
     write("pages/routes.html", page("Walking routes", "".join(body), "routes.html", 1))
 
 
@@ -2068,7 +2111,7 @@ def build_exec():
         "The upcoming-value tables below include only future-dated Venetian full-field rows (after the latest source-capture date) whose S1 verdict, listed buy-in, house fee and guarantee are all present. Their guarantee-to-buy-in ratio is descriptive arithmetic only. Bounty/PKO rows are placed in a separate table; multi-flight, satellite and restart formats are not mixed into the ordinary-event ranking.",
         "A date-matched, itemized hotel quote is available only for the Wynn ($688-$818 average per night for the stay, resort fee included, taxes excluded, captured 2026-11-19); the Horseshoe and Resorts World published raw December calendars and the Venetian and Caesars Palace engines returned no rates. None returned an itemised checkout total, the captures are not comparable like-for-like, and the trip calculator deliberately remains incomplete until the actual stay's hotel cost is recorded.",
         "The room-fee and tax evidence is linked on the Hotels page. Hotel quality is a displayed property tier, not an independent quality score; the automatic budget ceiling is based on an older dated observation, not a traveler-approved cap.",
-        "Every hotel-to-poker-room pair was measured on Google Maps walking directions between official addresses on 2026-11-19 and is stored per direction: the Venetian walk itself is zero minutes, Wynn 14, Resorts World 21, Caesars Palace 25 and Horseshoe 30 minutes to the Venetian room (Horseshoe measures 31 minutes the other way - flags F73/F74). Official event finish times are not published, so a second same-day event is only a conditional fallback.",
+        "Walking times for the hotel-to-poker-room pairs are dated Google Maps observations read on 2026-11-19 in two independent sets - one pinned on the official property names, one on the official street addresses - both stored per row with distance and via-streets (flags F50/F72). Pairs over 30 minutes on the slower reading are marked and filtered; the Venetian walk itself is zero minutes, and the candidate hotels read 12-30 minutes to the Venetian room depending on the set (Horseshoe straddles the limit - flag F74). Official event finish times are not published, so a second same-day event is only a conditional fallback.",
         "The daily source-capture and monitoring workflows are scheduled, but the checked-in value-level monitor summary currently records no live value-level run. Until a run is recorded, no change badge means not yet re-checked, not verified unchanged.",
         "%d rows across the other venues and series still have entry terms this project has not read (every WPT event whose own terms-and-conditions section is printed in the official structures PDF was read on %s: %d rows, and every one of them grants re-entry). The unread rows remain explicitly unverified and are not included in the single-entry comparison." % (len(UNREAD), esc(RETRIEVED), len([r for r in WPT if r.get("terms_read")])),
         "%d items are flagged for review. See each source-linked note before relying on any exception or missing value." % len(FLAGS),

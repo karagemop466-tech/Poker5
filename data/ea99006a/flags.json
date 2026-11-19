@@ -109,8 +109,8 @@
  {
   "id": "F15",
   "area": "Routes",
-  "title": "Cross-property walking times are not published officially",
-  "detail": "Updated 2026-11-19 (session f7676bd0): still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F73/F74 on asymmetry). The on-property Venetian route remains zero minutes.",
+  "title": "Cross-property walking times are not published officially; recorded instead as dated Google Maps observations",
+  "detail": "Only hotel-to-its-own-poker-room (0 minutes, same property) is verified. Every other pair used to be blank; no hotel or casino publishes a walking time to a different property. RESOLVED ON 2026-11-19 with two independent Google Maps reading sets, both stored in data/ea99006a/routes.json: session 0fd59a4a measured all 30 hotel-to-venue pairs between official property names (minutes, distance and restricted-usage warnings in `minutes`/`distance`/`checked`), and session f7676bd0 measured the same pairs between the official street addresses (its values in `alt_minutes`/`alt_distance_miles`/`alt_via`, per direction, with the reverse reading where taken). The two sets differ materially on some pairs (e.g. Venetian-Wynn 13 vs 26 min one way) because the map routes different entrances and paths for name pins vs address pins - see flag F72. Both are dated observations, neither is smoothed into the other, and the routes page filters on the slower of the two readings so the 30-minute limit is judged conservatively.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
@@ -281,7 +281,7 @@
   "id": "F50",
   "area": "Walking routes",
   "title": "No hotel page publishes a walking time between two properties (routes now measured on Google Maps)",
-  "detail": "Still true - and worked around on 2026-11-19 (session f7676bd0) by measuring every pair on Google Maps walking directions between official street addresses. Values are routing estimates retrieved on one date, not hotel-published facts, and include only the sidewalk route to the property entrance, not in-property time.",
+  "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured twice on Google Maps walking directions - once between official property names (session 0fd59a4a) and once between the official street addresses (session f7676bd0) - and both dated reading sets are stored in data/ea99006a/routes.json with their links and check dates. The figures are map observations, not hotel-published facts; the routes page filters on the slower reading per pair.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -482,8 +482,8 @@
  {
   "id": "F72",
   "area": "Hotels",
-  "title": "Resorts World calendar shows conflicting resort-fee captions",
-  "detail": "One page displays both 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. Both captions are stored verbatim; the displayed calendar figures are kept as raw displays and no fee-inclusive interpretation is claimed.",
+  "title": "Google Maps walking routes are asymmetric by direction and vary by pin placement - two same-day reading sets disagree",
+  "detail": "Two Google Maps reading sets dated 2026-11-19 disagree on the same pairs and both are stored: the name-pinned set (session 0fd59a4a) reads Venetian-Wynn 13 min / Wynn-Venetian 19 min while the address-pinned set (session f7676bd0) reads 26 / 14 min; Venetian-Horseshoe 16 vs 30 min. Within the address-pinned set routes are also asymmetric (Wynn to Venetian 14 min but Venetian to Wynn 26 min; Caesars Palace to Wynn 39 vs Wynn to Caesars Palace 47 min). Entrance pin placement and route choice differ per query and per direction. Every reading is stored as measured; none is smoothed or symmetrized.",
   "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2"
  },
  {
@@ -496,8 +496,8 @@
  {
   "id": "F74",
   "area": "Hotels",
-  "title": "Horseshoe to Venetian measures 31 minutes - over the 30-minute limit - in one direction; calendars do not define their per-date meaning",
-  "detail": "Venetian to Horseshoe measured exactly 30 min (1.3 mi, via Krueger Dr) while Horseshoe to Venetian measured 31 min (1.3 mi) on 2026-11-19. Which direction the 30-minute limit applies to changes the verdict for this hotel; both figures are published so the reader can decide. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",
+  "title": "Horseshoe to Venetian straddles the 30-minute limit across readings; calendars do not define their per-date meaning",
+  "detail": "The address-pinned reading (2026-11-19) measures Venetian to Horseshoe 30 min (1.3 mi, via Krueger Dr) and Horseshoe to Venetian 31 min - one minute over the limit - while the name-pinned reading the same day measures 16 min both ways. Which reading and which direction the 30-minute limit applies to changes the verdict for this hotel; every figure is published so the reader can judge the walk they would actually take. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",
   "source": "https://www.google.com/maps/dir/3645+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  }
 ]

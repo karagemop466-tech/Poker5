@@ -807,6 +807,28 @@ def build_rate_log() -> list[dict]:
          "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
          "source_label": "Venetian official booking UI (2026-11-16 snapshot)",
          "verified": False, "cancellation_deadline": None, "parking": None},
+        {"hotel": "The Venetian Resort (Venetian / Palazzo towers)", "hotel_key": "venetian",
+         "observed_on": "2026-11-19", "kind": "booking-engine attempt for the trip window - no numeric quote returned",
+         "checkin": "2026-12-06", "checkout": "2026-12-13", "nights": 7,
+         "checkout_total": None, "nightly_average": None,
+         "resort_fee_per_night": 55.0, "resort_fee_total": 385.0, "tax_total": None,
+         "room_type": None, "occupancy": "2 adults, 1 room",
+         "caveats": ["Tried on 2026-11-19 with the official booking UI for 6-13 December 2026 (2 adults). The "
+                     "booking engine prices rooms in JavaScript only; no numeric quote appears in the page a "
+                     "non-browser reader receives. No price is invented here - the figures stay blank and the "
+                     "trip cost calculator waits for your own booking-page read.",
+                     "Resort fee shown is the published $55 per night (official resort-fee page), not a quoted "
+                     "stay total."],
+         "source": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-06&children[]=0&departure_date=2026-12-13&view=calendar",
+         "source_label": "Venetian official booking UI (2026-11-19 attempt)",
+         "verified": False, "cancellation_deadline": None, "parking": None},
+    # Session f7676bd0 captures (2026-11-19), stored verbatim so scheduled runs keep them:
+    # Session f7676bd0 captures (2026-11-19), stored verbatim so scheduled runs keep them:
+    {'id': 'RL-2026-11-19-WYNN-QUOTES', 'hotel': 'Wynn Las Vegas', 'hotel_key': 'wynn', 'kind': 'dated booking-engine quote', 'observed_on': '2026-11-19', 'checkin': '2026-12-06', 'checkout': '2026-12-13', 'nights': 7, 'room': 'Wynn Resort King', 'occupancy': '2 adults, 1 room', 'nightly_low': 688.0, 'nightly_high': 818.0, 'nightly_average': None, 'checkout_total': None, 'resort_fee_per_night': 55.0, 'resort_fee_total': None, 'tax_rate_pct': None, 'tax_total': None, 'true_nightly_low': 780.05, 'true_nightly_high': 927.45, 'cancellation_deadline': "72 hours before arrival (one night's room rate and tax penalty); one night's room rate and tax charged at booking.", 'parking': 'Self-parking complimentary to registered guests (up to two vehicles).', 'source': 'https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026', 'source_label': 'Wynn official booking engine (read 2026-11-19)', 'verified': True, 'disp': "Wynn Resort King, 7-night stay Dec 6-13, 2026: Flexible Getaway $818.00 avg/night; 'Your Fall to Have It All' $688.00 avg/night (book by Nov 24, 2026). Both 'Includes Resort Fee, Excludes taxes'.", 'caveats': ['Displayed values are averages per night for the stay; no checkout total was returned.', 'The resort fee is included in the displayed prices; taxes are excluded and no tax figure was returned.', 'true_nightly_low/high is arithmetic only: the displayed average times the 13.38% ordinance rate, not a hotel quote.', 'Wonder of Wynn and Wynn Rewards Exclusive plans show sign-in-only prices and were not captured.']},
+    {'id': 'RL-2026-11-19-WYNN-FLOORS', 'hotel': 'Wynn Las Vegas', 'hotel_key': 'wynn', 'kind': 'published starting rate (undated)', 'observed_on': '2026-11-19', 'room': 'Wynn Resort King', 'nightly_low': 253.0, 'nightly_high': 319.0, 'checkout_total': None, 'resort_fee_per_night': 55.0, 'tax_rate_pct': 13.38, 'source': 'https://reservations.wynnlasvegas.com/ibe/shop.aspx?selectedTower=WYNN&hotelID=13763', 'source_label': 'Wynn official booking index (read 2026-11-19)', 'verified': True, 'disp': "Booking index floors: 'Flexible Getaway From $319'; 'Your Fall to Have It All From $253'.", 'caveats': ['From-prices without dates; not quotes. For the recommended window the same plans quote $688-$818 (see the dated entry).', 'All Wynn fees ($55 resort fee) are per room per day and are taxed; taxes are not included in the displayed prices.']},
+    {'id': 'RL-2026-11-19-HORSESHOE-CAL', 'hotel': 'Horseshoe Las Vegas', 'hotel_key': 'horseshoe', 'kind': 'flexible-date calendar capture', 'observed_on': '2026-11-19', 'checkin': '2026-12-06', 'checkout': '2026-12-13', 'nights': 7, 'room': 'not stated (lowest available rate)', 'occupancy': '2 adults, 1 room', 'nightly_low': 134.0, 'nightly_high': 449.0, 'checkout_total': None, 'resort_fee_per_night': 49.95, 'resort_fee_total': None, 'tax_rate_pct': 13.38, 'tax_total': None, 'true_nightly_low': None, 'true_nightly_high': None, 'cancellation_deadline': 'Free 48-hour cancellation; deposit $50 per day.', 'parking': 'Surcharge applies; complimentary for Platinum+ and registered guests.', 'source': 'https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000', 'source_label': 'Caesars official booking engine, Horseshoe calendar (read 2026-11-19)', 'verified': True, 'disp': 'December 2026 displays for the trip window: Dec 6 $245; Dec 7 $202; Dec 8 $151; Dec 9 $134; Dec 10 $325; Dec 11 $432; Dec 12 $449 (Dec 13 $55).', 'caveats': ["Caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'", 'Per-date meaning (night of vs stay from) is not stated on the page (flag F74); no true_nightly figures are computed from these displays.', 'No checkout total is displayed; the seven figures sum to $1,938 as arithmetic only.']},
+    {'id': 'RL-2026-11-19-RW-CAL', 'hotel': 'Resorts World Las Vegas (Hilton tower)', 'hotel_key': 'resortsworld', 'kind': 'flexible-date calendar capture', 'observed_on': '2026-11-19', 'checkin': '2026-12-06', 'checkout': '2026-12-13', 'nights': 7, 'room': 'Double Queen', 'occupancy': '2 adults, 1 room', 'nightly_low': 354.0, 'nightly_high': 654.0, 'checkout_total': None, 'resort_fee_per_night': 55.0, 'resort_fee_total': None, 'tax_rate_pct': 13.38, 'tax_total': None, 'true_nightly_low': None, 'true_nightly_high': None, 'cancellation_deadline': "First night's room rate plus taxes as deposit; free cancellation until 48 hours before check-in.", 'parking': 'Self-parking complimentary for Nevada residents and Elite+ members.', 'source': 'https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2', 'source_label': 'Resorts World official booking engine, calendar (read 2026-11-19)', 'verified': True, 'disp': 'December 2026 displays for the trip window: Dec 6 $354; Dec 7 $654; Dec 8 $354; Dec 9 $414; Dec 10 $414; Dec 11 (no number); Dec 12 $454 (Dec 13 $184).', 'caveats': ["Conflicting captions on one page: 'Calendar pricing excludes daily resort fee and taxes' vs 'Calendar pricing includes $55 daily resort fee and excludes taxes' (flag F72).", "The 7-night query itself returned 'The rate is not available. Select an alternate rate.'", 'Dec 11 displayed no number; per-date meaning is not stated (flag F74); no true_nightly figures are computed from these displays.']},
+    {'id': 'RL-2026-11-19-ATTEMPTS', 'hotel': 'The Venetian Resort / Caesars Palace', 'hotel_key': 'venetian', 'kind': 'booking-engine attempts (no rate returned)', 'observed_on': '2026-11-19', 'checkin': '2026-12-06', 'checkout': '2026-12-13', 'nights': 7, 'checkout_total': None, 'nightly_low': None, 'nightly_high': None, 'resort_fee_per_night': 55.0, 'source': 'https://www.venetianlasvegas.com/booking/?adults=2&children=0&checkin=2026-12-06&checkout=2026-12-13&view=calendar', 'source_label': 'Venetian and Caesars official booking engines (read 2026-11-19)', 'verified': False, 'disp': 'No numeric rate was returned by either engine on 2026-11-19.', 'caveats': ["The Venetian calendar view rendered '$XXX' placeholders only; its caption reads 'Pricing shown is best available suite and rate, includes daily resort fee, excludes taxes'.", "The Caesars Palace December 2026 search returned 'Sorry! Our website is currently experiencing technical difficulties' (flag F71); its Hotel Policies block did return the $62.30 fee."]},
     ]
 
 
@@ -909,6 +931,20 @@ def main() -> int:
                 row["start_note"] = _v.get("note") or "the two official captures state different start times"
         row["entry_rule"] = verdict
         row["entry_basis"] = basis
+        # Descriptive ranking field required by the brief: total guarantee divided by total
+        # entry fee (buy-in incl. house fee). A ratio, never a score: stored on the row so
+        # comparisons never need re-deriving, blank when the row is not rankable (seat
+        # guarantees, missing buy-in, or the two official captures disagree on the guarantee).
+        row.pop("gtd_per_entry", None)
+        try:
+            gval = gtd_number(row.get("guarantee"))
+        except Exception:
+            gval = None
+        if (gval and row.get("buyin") and not row.get("guarantee_note")
+                and not GUAR_SEATS.search(str(row.get("guarantee") or ""))):
+            row["gtd_per_entry"] = round(gval / float(row["buyin"]), 2)
+        else:
+            row["gtd_per_entry"] = None
         row["entry_evidence"] = {
             "sheet_no": ev["sheet_no"], "sheet_sha256": ev["sheet_sha256"],
             "sheet_retrieved": ev["sheet_retrieved"], "rules_read": ev["rules_read"],
