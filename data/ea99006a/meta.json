@@ -656,9 +656,19 @@
    "caesars_resort_fee": "2026-11-19",
    "venetian_resort_fee": "2026-11-19",
    "venetian_poker_rate": "2026-11-19",
+   "sheet_live_spot_checks": "2026-11-19",
    "mgm_terms_2026_11_19": "2026-11-19",
    "venetian_parking_2026_11_19": "2026-11-19",
-   "sheet_live_spot_checks": "2026-11-19"
+   "venetian_hotel_terms": "2026-11-19",
+   "venetian_contact_address": "2026-11-19",
+   "wynn_contact_address": "2026-11-19",
+   "wynn_booking_quotes_dec6-13": "2026-11-19",
+   "resortsworld_address": "2026-11-19",
+   "resortsworld_ibe_calendar": "2026-11-19",
+   "caesars_palace_booking_policies": "2026-11-19",
+   "horseshoe_booking_policies_and_calendar": "2026-11-19",
+   "venetian_booking_attempt": "2026-11-19",
+   "google_maps_walking_matrix": "2026-11-19"
   },
   "sheet_spot_checks": {
    "5": "match",

@@ -197,5 +197,38 @@
   ],
   "effect": "Each closed row loses its unverified label and joins either the no-second-entry set or the multi-entry section, with the official sentence stored on the row.",
   "id": "S18"
+ },
+ {
+  "id": "S19",
+  "title": "Nightly calendar capture for the hotels whose booking engines render server-side",
+  "problem": "The Horseshoe and Resorts World calendars returned full December price maps in one read (2026-11-19), while the Venetian and Caesars Palace engines returned nothing. One nightly scheduled capture of the two working engines would turn the rate log into a real price history.",
+  "options": [
+   "Extend the monitor's hotel group to the two booking-engine URLs and store the per-date map",
+   "Snapshot only the seven trip nights to keep the diff small",
+   "Leave manual: rates are a log the reader appends"
+  ],
+  "effect": "Price history and change badges for hotel rates, like the ones event rows already have. In review - not implemented."
+ },
+ {
+  "id": "S20",
+  "title": "Show both directions of every walk and let the filter use the direction that matters",
+  "problem": "Walking routes are asymmetric (Wynn to Venetian 14 min vs Venetian to Wynn 26 min; flag F72). The table shows one direction per row; a reader deciding on the walk home after midnight sees the reverse row only if they look for it.",
+  "options": [
+   "Add a 'reverse' column with the measured minutes",
+   "Judge the 30-minute filter on the slower of the two directions",
+   "Keep per-direction rows as now and sort pairs together"
+  ],
+  "effect": "Implemented: the walk cell shows both direction readings (name pins and address pins, per row) and the 30-minute filter uses the slower reading of each pair, so no direction is hidden."
+ },
+ {
+  "id": "S21",
+  "title": "Store the GTD to entry-fee ratio as a data field",
+  "problem": "The ratio is computed at render time (schedule tables, planner) but is not a stored field, so it cannot be sorted or exported from the data files alone.",
+  "options": [
+   "Compute and store ratio fields when the data files are written",
+   "Add a small export script that derives the field on demand",
+   "Keep it render-only"
+  ],
+  "effect": "Implemented on main: scripts/integrate_b3be876c.py derives a per-row gtd_per_entry field (guaranteed pool divided by total entry fee; blank when not rankable). The ratio is descriptive, not a forecast."
  }
 ]

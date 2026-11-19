@@ -16,9 +16,9 @@
  {
   "id": "Q03",
   "q": "What is the true nightly hotel cost for your dates?",
-  "have": "Resort fees: Venetian $55 + tax (official), Resorts World $55 per room per day (official, waived on the 'All Resort, No Fees' offer through 28 Dec 2026). Tax: 13.38% (Clark County ordinance).",
-  "missing": "The nightly room rate itself, parking charges, and each hotel's cancellation deadline for your dates.",
-  "how": "Open the official booking link on the Hotels page for your dates, read the itemised total on the checkout screen (room, resort fee, tax, parking) and paste the figures into the rate log. The log keeps each entry dated and computes true cost/night = rate + resort fee + tax."
+  "have": "Resort fees: Venetian $55 + tax (official), Resorts World $55 per room per day (official, waived on the 'All Resort, No Fees' offer through 28 Dec 2026). Tax: 13.38% (Clark County ordinance). Dated captures added 2026-11-19 (session f7676bd0): Wynn quotes for Dec 6-13 - $688 ('Your Fall to Have It All') and $818 (Flexible Getaway) average per night, resort fee included, taxes excluded; raw December calendars for the Horseshoe and Resorts World. Caesars Palace $62.30 total ($54.95 plus $7.35 tax) and Horseshoe $56.63 total ($49.95 plus $6.68 tax) per night are now verified from their booking-page Hotel Policies.",
+  "missing": "An itemised checkout total for the actual stay at any hotel (room + fee + tax + parking): the Wynn pages show averages only, the calendars are raw daily displays with an undefined per-date meaning (F79), and the Venetian and Caesars Palace engines returned no rates at all on 2026-11-19 (F76).",
+  "how": "Open the official booking link on the Hotels page for your dates and read the itemised checkout screen; record it in the dated log. The Wynn calculator figure can already be entered from the captured quote ($688-$818/night); the rest need a checkout total first."
  },
  {
   "id": "Q04",
@@ -93,8 +93,8 @@
  {
   "id": "Q14",
   "q": "What is each candidate hotel's cancellation deadline and deposit policy for the planned rate?",
-  "have": "Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read 2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a specific rate plan.",
-  "missing": "The deadline that applies to the exact rate plan you book: every MGM page says 'unless specifically excluded by booked offer', Wynn's figure belongs to a two-night promotional offer, and Caesars/Horseshoe publish the headline but not the term sheet.",
+  "have": "Official hotel reservation terms now establish a standard cancellation deadline for four properties, re-read 2026-11-19: Wynn/Encore 48 hours before arrival for offer DK26WLV2 (one night's deposit forfeited); Bellagio, ARIA and MGM Grand 72 hours before arrival for the standard reservation (first night's deposit forfeited). Resorts World requires 48 hours' notice for a deposit refund under its published offer. Caesars Palace and Horseshoe advertise 'FREE 48-Hour Cancellation' on the booking widget but no term sheet has been read for a specific rate plan. Deposit and cancellation captures added 2026-11-19 (session f7676bd0): Venetian - first-night or full-stay deposit at confirmation, prepaid offers non-refundable, no-show forfeits the deposit, early-departure fee $100 plus tax (official hotel terms). Caesars Palace - deposit $100 per day; comp-room no-show $50 plus tax unless cancelled by 6 p.m. of arrival date. Horseshoe - deposit $50 per day. The Wynn 72-hour figure is now reproducible after all, per rate plan: the booking engine's dated Flexible Getaway and Fall quotes for these dates each print '72-Hour Cancellation', while DK26WLV2 and the Wynn Rewards Exclusive rate remain 48-hour (see F55).",
+  "missing": "Which exact rate plan will be booked at each hotel (cancellation terms are rate-plan-specific at the Wynn), the term sheet behind the Caesars 'FREE 48-Hour Cancellation' headline, and the cancellation terms behind the displayed Horseshoe/Resorts World calendar figures.",
   "how": "Read the cancellation paragraph on the confirmation page for the chosen rate before paying any deposit, and record it in the dated rate log. Any rate that cannot be cancelled for free is a risk against the whole trip budget."
  },
  {
@@ -105,9 +105,9 @@
   "how": "Treat the per-room feed as presence-and-change detection, not as content proof; a 'changed' row means a human should re-read the source before relying on the table."
  },
  {
-  "q": "Can the site complete the trip cost without me entering anything?",
-  "have": "The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
-  "missing": "A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
+  "q": "Can the site complete the trip cost without me entering anything, and is the hotel input backed by a dated quote?",
+  "have": "The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates. Update 2026-11-19 (session f7676bd0): a dated Wynn quote for these dates now exists - $688 and $818 average per night for Dec 6-13, 2026, fee included, taxes excluded (official booking engine) - so a Wynn stay can be priced into the calculator from an official figure. The Venetian $119/$209 poker-suite rates remain floors, not quotes.",
+  "missing": "Itemised checkout totals for the Venetian, Caesars Palace, Horseshoe and Resorts World; the calculator stays incomplete until one is recorded for the hotel actually chosen.",
   "how": "The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.",
   "id": "Q16"
  },
@@ -152,5 +152,19 @@
   "missing": "The entry terms for the remaining WPT rows and the eight South Point rows. Until they are read, those rows carry 'Entry terms not read - unverified' and cannot enter any single-entry comparison, and no label is removed on their behalf.",
   "how": "Ask the Wynn poker room for the per-event structure sheets the schedule footnotes reference, and South Point for its rules sheets in text form; or read the full structures PDF past page 30 and the JPG rules sheets manually and record each Registration sentence with its URL and retrieval date. Treat every one of those rows as cap unknown until then.",
   "id": "Q22"
+ },
+ {
+  "id": "Q23",
+  "q": "Which entrance does each walking route use, and should the 30-minute limit be judged per direction?",
+  "have": "Google Maps walking times measured both ways on 2026-11-19 are stored per direction (e.g. Wynn to Venetian 14 min vs Venetian to Wynn 26 min; Horseshoe to Venetian 31 min vs the other way 30 min - flags F78/F79).",
+  "missing": "The official entrance each route targets, and a rule for which direction the 30-minute limit applies to. Both directions are shown so the reader can decide.",
+  "how": "Open the route link per row and walk it once at the pace you would actually use, from the entrance you would leave by; record your own minutes in the panel on the routes page."
+ },
+ {
+  "id": "Q24",
+  "q": "What does a date in the Caesars/Horseshoe/Resorts World calendars price - the night of that date, or a stay starting it?",
+  "have": "The raw December 2026 displays for each candidate hotel (stored per date in the rate log and stay captures). The Horseshoe caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'",
+  "missing": "The per-date meaning; the pages do not state it (flag F79). Until it is confirmed, the figures are not added up into a stay total and no nightly average is claimed.",
+  "how": "Ask the hotel's reservations line in writing, or run a one-night and a multi-night query for the same date and compare what the engine displays."
  }
 ]

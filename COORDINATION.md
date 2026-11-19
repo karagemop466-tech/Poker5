@@ -1962,3 +1962,88 @@ Claimed 2026-11-19 before any file edit (first claim pushed from base `b16775c`;
 - GitHub Pages: "pages build and deployment" run [44627845498](https://github.com/karagemop466-tech/Poker5/actions/runs/44627845498) completed **success** for merge commit `4d4fcf7`; Pages API latest build `status: built`, `error: null` at 22:22:00Z.
 - Live site re-fetched after deployment and verified: the landing page carries "The single-entry screen: 53 Venetian rows pass the S1 no-second-entry screen", the honest no-written-one-entry-cap sentence, the corrected window (check-in 2026-12-06, check-out 2026-12-13, 7 nights), and the tournaments page carries the relabelled toggle "No second entry granted (S1 screen) / freezeout only" with the corrected legend. Live at https://karagemop466-tech.github.io/Poker5/ .
 - Status: T1 done, T2 done, T3 done. Session closed.
+## Session f7676bd0 (branch `arena/f7676bd0-poker5`) — live hotel-rate capture, property resort fees, Google Maps walking times, trip-cost completion
+
+Claimed 2026-11-19 from `main` @ `998a32d` before any data edit. Read-only survey of the board first: every prior claim is done/merged or >60 min idle; open PRs #53/#55/#59/#60 belong to other sessions' branches and are not touched; PR #75 (96994b83, board-only) is fresh and respected — this session only appends its own section to `COORDINATION.md` and will resolve any conflict keeping both sides. No other session holds an open claim on the files below.
+
+| # | Task | Status | Owner | Files touched |
+|---|------|--------|-------|---------------|
+| G1 | Live re-read of trip-critical official sources (2026-11-19): Venetian resort-fee + poker suite-rate pages, Wynn offer terms + booking resort-fee block, Caesars corporate disclaimer, Resorts World "All Resort, No Fees" terms, Caesars Palace + Horseshoe booking-page Hotel Policies (property-specific resort fees found — F09/F46 gap), Wynn/Resorts World contact + location pages (addresses) | done | f7676bd0 | `data/ea99006a/hotels.json`, `data/ea99006a/flags.json`, `data/ea99006a/last_checked.json` |
+| G2 | Dated hotel rate captures for the recommended window 2026-12-06→2026-12-13 from official booking engines (Wynn dated rate plans; Horseshoe + Resorts World December calendars; Venetian/Caesars attempts logged), appended to the dated rate log, never overwriting snapshots | done | f7676bd0 | `data/ea99006a/rate_snapshots.json`, `data/ea99006a/rates_log.json`, `data/f7676bd0/` (session notes) |
+| G3 | Google Maps walking-time verification for every hotel–venue pair in `routes.json` (official addresses; ≤30-minute filter data), replacing blank rows with measured times + retrieval date, keeping the "no hotel page publishes these" caveat | done | f7676bd0 | `data/ea99006a/routes.json` |
+| G4 | Builder: surface the new fee/rate/route data, complete the trip-cost calculator from dated quotes where available (never inventing totals), refresh executive summary/questions/flags text | done | f7676bd0 | `scripts/build_ea99006a.py` (+ regenerated `index.html`, `pages/**`) |
+| G5 | Validate (row-level sources, no broken links, tests), PR → main, merge, confirm Pages deploy, record | done | f7676bd0 | `COORDINATION.md` |
+
+Data edits begin only after this claim is pushed.
+
+### G1-G5 completion record - session f7676bd0 (2026-11-19)
+
+All five tasks done. Sources, verification and irregularities, per protocol.
+
+**G1 - live re-read (2026-11-19) + property fee/address gap closure.** All previously
+stored values matched the live pages (Venetian suite rates $119/$209 + resort fee $55+tax;
+Wynn DK26WLV2 terms $55+tax, 2-vehicle parking; Caesars corporate disclaimer $45-$60;
+Resorts World "All Resort, No Fees" $55 waived through 2026-12-28). NEW official captures:
+Caesars Palace "Resort fees: $62.30 ($54.95 plus $7.35 tax)", deposit $100/day, 48-hour
+cancellation (`caesars.com/book/hotel-calendar?propCode=clv...` Hotel Policies);
+Horseshoe "Resort fees: $56.63 ($49.95 plus $6.68 tax)", deposit $50/day
+(`...propCode=blv...`); Venetian official address "3355 Las Vegas Blvd. South, Las Vegas,
+NV 89109" (`venetianlasvegas.com/resort/contact.html`), hotel terms
+(deposit/cancellation, parking $20/$25/$40, tax note "Daily rates do not include the
+applicable Clark County Room Tax of 13.38%", check-in 3 pm / check-out 11 am); Wynn
+address 3131 Las Vegas Blvd. South (`wynnlasvegas.com/about-us/contact-information`);
+Resorts World address 3000 South Las Vegas Boulevard (`rwlasvegas.com/location-directions/`).
+F09/F46 resolved; Q03/Q14/Q16 updated. Raw capture log: `data/f7676bd0/live-capture-2026-11-19.md`.
+
+**G2 - dated rate captures for 2026-12-06 -> 2026-12-13.** Wynn booking engine dated
+quote (Wynn Resort King, 7 nights): Flexible Getaway $818.00 avg/night and "Your Fall to
+Have It All" $688.00 avg/night (book by 2026-11-24), both "Includes Resort Fee, Excludes
+taxes", 72-hour cancellation, 1-night deposit (`reservations.wynnlasvegas.com/ibe/
+details.aspx?hotelID=13763&...&checkin=12/06/2026&checkout=12/13/2026`). Horseshoe
+December calendar (raw per-date displays, caption "Rates shown reflect the lowest
+available rate and include applicable resort fees. All pricing may vary by length of
+stay") and Resorts World December calendar (conflicting fee-inclusion captions stored
+verbatim; 7-night query returned "The rate is not available"). Venetian booking attempt
+("$XXX" placeholders) and Caesars Palace attempt ("technical difficulties") logged as
+no-rate captures. All appended to `rate_snapshots.json` (11 entries) + `rates_log.json`
+with `2026-11-19` timestamps, nulls for anything a page did not return; nothing
+overwritten. Calendar figures are stored as raw display maps and never summed into a
+checkout total.
+
+**G3 - walking matrix (Google Maps walking, official addresses, 2026-11-19).** All 30
+hotel x venue pairs in `routes.json` now carry measured values with retrieval date and
+route detail; 5 same-property rows re-verified zero. Venetian poker room walk: Wynn 14
+min, Resorts World 21, Caesars Palace 25, Horseshoe 30 (directions as measured; the
+reverse Horseshoe -> Venetian is 31 min). South Point pairs 2h45-3h24 (not walking
+candidates). Per-direction asymmetry stored, never smoothed.
+
+**G4 - builder.** `scripts/build_ea99006a.py`: exact fee cells ($54.95 + $7.35 tax =
+$62.30 total etc.), walk pills from the measured matrix with <=30-min styling, December
+calendar-capture panel on the hotels page, dynamic rate-log note (the old "both rows are
+the Venetian" text is gone), updated badbox/executive summary/method-page claims,
+planner quote column (Wynn dated quote shown; calendars flagged; others "quote needed"
+as before). The trip-cost calculator still refuses to close without a recorded quote;
+the Wynn figure is documented for entry. Regenerated `index.html` + `pages/**`
+(`pages/repo-review.html` churn deliberately not committed).
+
+**G5 - validation + integration.** `python3 scripts/build_ea99006a.py` (deterministic),
+`check_ea99006a.py` ("every table row carries an official https source; no broken
+links", 1685 rows / 463 internal / 4018 external links), `check_root_site.py` OK,
+`npm test` 22/22, `node --check assets/app.js` OK, `crosscheck_251c122f.py` OK (67 known
+name-text diffs, F47 note stands), `scrape_251c122f.py --self-test` OK,
+`recheck_ea99006a.py --offline` ledger OK (21 new URLs seeded for the monitor's next
+live run). PR + merge result recorded below.
+
+**Irregularities flagged (published on the Flagged page, none blocking):** F70 Caesars
+Palace booking calendar returned a technical error (retry needed); F71 Resorts World
+calendar shows conflicting resort-fee captions (both stored verbatim); F72 Google Maps
+walking routes are asymmetric by direction (e.g. Wynn -> Venetian 14 min vs Venetian ->
+Wynn 26 min; stored per direction); F73 Horseshoe -> Venetian 31 min exceeds the
+30-minute limit while the reverse measures exactly 30, and the Caesars/Horseshoe/Resorts
+World calendars do not state whether a date prices the night or a stay starting that
+date. Also standing: F47 misclassification note (crosscheck), and itemised checkout
+totals are still absent for every hotel (F14/F32 remain open for the Venetian and
+Caesars Palace quotes).
+**Integration note (this session):** `main` advanced twice while this session worked (through PR #100, then through PR #105). Both `git merge origin/main` rounds were resolved keeping both sides everywhere; conflicts touched `COORDINATION.md`, `data/ea99006a/{flags,hotels,meta,questions,routes,suggestions}.json`, `scripts/build_ea99006a.py` and the generated pages. Because `main` had already assigned F56-F59 (other sessions' WPT/TDA flags) and later F70, Q21 and S17, this session's new items carry the final IDs **F71-F74** (Caesars calendar error; Resorts World caption conflict; route direction asymmetry; Horseshoe 31-min limit straddle + calendar per-date meaning), **Q22/Q23** and **S18-S20**. F55 was extended (not replaced) with the new evidence reproducing the 72-hour Wynn figure from the dated booking-engine rate plans. The second merge also brought session 6dba9b3c's per-row official addresses in `routes.json` and its address columns in the builder: the merged routes table shows both the official addresses and this session's measured minutes per direction. `scripts/integrate_b3be876c.py` (the scheduled re-derivation) was updated to carry the verified Caesars Palace ($54.95 + $7.35) and Horseshoe ($49.95 + $6.68) property fees so a scheduled run can no longer revert them (the new `integration_invariants.test.mjs` proved the revert; 31/31 tests pass after the fix). Other sessions' records in this file are untouched.
+
+- PR: https://github.com/karagemop466-tech/Poker5/pull/106 (G1-G5 integration, this session). Merge result and Pages deploy recorded below once complete.

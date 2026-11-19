@@ -126,9 +126,12 @@ def build(routes, hotels_by_key, venues_by_key):
                           "measurement is needed (0 minutes)")
         elif both:
             if r.get("minutes") not in (None, ""):
-                r["basis"] = ("the walking time on this row is a dated Google Maps walking-directions "
-                              "observation between the official property names (see the method sentence); "
-                              "the two official street addresses below pin the same two properties")
+                r["basis"] = ("the walking times on this row are dated Google Maps walking-directions "
+                              "observations (2026-11-19) in two sets: one measured between the official "
+                              "property names (session 0fd59a4a, minutes/distance/via) and one between the "
+                              "official street addresses (session f7676bd0, stored as alt_minutes and "
+                              "friends, per direction); the two official street addresses below pin the "
+                              "same two properties")
             else:
                 r["basis"] = ("no walking time recorded; the map links below run between the two official "
                               "street addresses below, and no official source publishes a walking time "
