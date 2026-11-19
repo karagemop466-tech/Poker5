@@ -38,6 +38,8 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 
 **Files I will touch:** `COORDINATION.md` (this entry), `scripts/recheck_ea99006a.py` only (add the readable official Bellagio/ARIA poker pages and the three Bellagio PDFs to the monitored set, and point the Bellagio room entry at the live page). The next scheduled run writes the ledger and `morning_feed.json`. No event, hotel, rate or flag data is edited by this session; data corrections found while reading are logged below as requests for the integration session.
 
+**Publication:** PR [#65](https://github.com/karagemop466-tech/Poker5/pull/65) merged to `main` 2026-11-19 as `c7cd87432ed263c29a595e922dcc880533823ec8` (checks `check` and `validate` passed on the head). Pages build/deploy run [44602171266](https://github.com/karagemop466-tech/Poker5/actions/runs/44602171266) succeeded for that merge commit.
+
 **Status:** done (2026-11-19). Code change only; the next scheduled `recheck-ea99006a` run records the new sources in the ledger and rewrites `morning_feed.json`.
 
 **What changed:** `scripts/recheck_ea99006a.py` — `MORNING_FEED_EXTRA` (5 official URLs: Bellagio live poker page, the three Bellagio tournament PDFs, ARIA live poker page) are added to the monitored set; the Bellagio/MGM/ARIA room's feed source is the live Bellagio poker page; the room group also counts the Bellagio PDFs (hosted on contentstack, not mgmresorts.com). The timed-out `bellagio.mgmresorts.com/en/casino/poker-room.html` URL stays in the ledger as an `error` (not hidden). Simulated feed check: Bellagio/MGM/ARIA room = 8 sources, 7 ok, 1 failed (the old URL), no fabricated timestamp.
