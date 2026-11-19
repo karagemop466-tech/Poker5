@@ -921,6 +921,25 @@ Official, read through the agent's page-fetch tool because the sandbox cannot op
 
 **Claimed scope:** align the published trip-cost calculator with the conservative dated-rate policy already documented in the repo, make the root-site generator the consistent source for the published output, and repair/add focused regression checks. No new tournament or hotel facts will be promoted without an official source.
 
-**Files:** `COORDINATION.md`, `scripts/build_c6087e2c.py`, `pages/planner.html`, `assets/app.js`, `test/research.test.mjs` (and only deterministic generated root outputs if required by that generator).
+**Files:** `COORDINATION.md`, `README.md`, `scripts/merge_251c122f.py`, `scripts/crosscheck_251c122f.py`, `scripts/build_251c122f.py`, `data/c6087e2c/events_verified.json`, `data/c6087e2c/flags_251c122f.json`, `pages/planner.html`, `assets/app.js`, `test/research.test.mjs`, `.github/workflows/daily-scrape.yml` (and deterministic generated root outputs from the canonical builder). The older `build_c6087e2c.py` remains untouched because it classifies the same capture differently.
 
-**Status:** in progress (claimed 2026-11-19). Initial check found a reproducible regression: `npm test` fails because the published planner still initializes the true nightly cost to `$0` and nights to `7`, despite the test and project policy requiring missing date-specific rates to remain incomplete. The root dashboard also contains conflicting single-entry counts (landing page: 0; current structured capture: 55). These are display/build consistency issues, not source research findings.
+**Status:** implementation and local verification done (2026-11-19); PR/deployment record pending. Fixed the calculator's zero-filled incomplete totals and removed its hard-coded seven-night stay. Corrected the evidence policy: silence in the structure sheet is not proof of single-entry, no-rebuy or no-add-on. The capture now has 0 confirmed single-entry events, 55 one-day rows with entry policy unstated (F35), 28 multi-flight rows and 11 restarts. Only explicit official one-entry + no-rebuy + no-add-on wording can qualify. The daily scraper now rebuilds with the same canonical generator used by the quality workflow, avoiding the old generator's contradictory classification.
+
+### Sources and verification (session f91b3121)
+
+- Official Venetian DSE IV schedule (capture retrieved 2026-11-18): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- All 37 official structure PDFs are linked per event row; the reviewed rules text is stored in `data/c6087e2c/structures.json` and the event-specific rule fields in `data/c6087e2c/events_verified.json`. Example structure PDF: https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf
+- Source display and row-level retrieval dates are generated from the dated official captures. This session did not claim a fresh live casino fetch from the restricted sandbox. Scheduled GitHub Actions continues the live daily fetch.
+- The calculator retains the official tax source and its unresolved tax-base caveat; it will not output a completed lodging or grand total without a dated room quote, stay length and fee.
+
+**Verification performed:**
+
+- `npm run check` — pass; 10 Node tests, including new checks that unverified entry rules cannot be promoted and missing hotel quotes do not yield a numeric trip total.
+- `node --check planner-aa83f1e1/assets/app.js`, `node scripts/smoke_aa83f1e1.mjs`, `node scripts/build_aa83f1e1.mjs` — pass (kept separate planner outputs unchanged).
+- `python3 scripts/scrape_251c122f.py --self-test` — pass.
+- `python3 scripts/merge_251c122f.py` — 94 rows; 0 strict confirmed, 55 entry-limit-unverified, 28 multi-flight, 11 restart; 37/37 sheets readable in the stored capture.
+- `python3 scripts/build_251c122f.py` — 17 generated pages; root site rebuild passes source and internal-link checks.
+- `python3 scripts/crosscheck_251c122f.py`, `python3 scripts/check_root_site.py`, `git diff --check` — pass. Every searchable table row with a Source column has a source link.
+- `node serve.mjs 4173` — root site preview running on port 4173.
+
+**Remaining review items (intentionally not filled by inference):** no official written single-entry/no-rebuy/no-add-on policies for the 55 candidate events; no date-specific hotel stay, occupancy, cancellation window or room totals; no agreed nightly budget/quality floor; no sourced off-property walking durations; current Wynn fee applicability and room-tax base remain flagged. The site publishes the questions and source links under “Flagged for review” and “Questions to resolve.”

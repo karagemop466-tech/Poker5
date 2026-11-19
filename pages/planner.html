@@ -1,19 +1,92 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Trip planner | Poker5</title>
-<link rel="stylesheet" href="../assets/css/style.css">
-</head><body>
-<header><div class="brand"><span class="logo">P5</span> Poker5
-<small>Las Vegas Strip poker trip planner &middot; source-verified</small></div>
-<nav class="hnav"><a href="../index.html">Home</a><a href="../pages/executive-summary.html">Executive summary</a><a href="../pages/tournaments.html">All tournaments</a><a href="../pages/single-entry.html">Single-entry</a><a href="../pages/tournaments-double.html">Multi-entry / advantage</a><a href="../pages/schedule.html">Day schedule</a><a href="../pages/hotels.html">Hotels</a><a href="../pages/routes.html">Walking routes</a><a class="active" href="../pages/planner.html">Trip planner</a><a href="../pages/venues/venetian.html">Venetian</a><a href="../pages/venues/wynn.html">Wynn</a><a href="../pages/venues/others.html">Other venues</a><a href="../pages/questions.html">Questions</a><a href="../pages/suggestions.html">Suggestions</a><a href="../pages/flagged-review.html">Flagged for review</a><a href="../pages/monitor.html">Source monitor</a><a href="../pages/repo-review.html">Repo review</a><a href="../pages/method.html">Method &amp; sources</a></nav></header>
-<main>
-<h1>Trip planner: cost of the trip</h1><p class="muted">Estimated trip cost = <b>selected entries &times; listed buy-ins</b> + <b>nights &times; true hotel cost</b>. The list below contains 14 candidate events in your proposed window (December 6, 2026 to December 13, 2026) whose official sheets do not state re-entry, rebuy or add-on terms. Silence is not proof of a single-entry limit; every candidate remains unverified for the single-entry filter. Tick rows only to model one listed buy-in each.</p><div class="panel"><h2>Proposed planning window</h2><div class="kv"><dt>Check in / out</dt><dd>2026-12-06 &rarr; 2026-12-13 (7 nights)</dd><dt>Dates to consider</dt><dd>December 6, 2026 to December 13, 2026</dd><dt>Selection basis</dt><dd>Chosen automatically to sit inside the two officially-verified Strip series (Venetian DeepStack Extravaganza IV, 16 Nov - 23 Dec 2026, and the WPT World Championship festival at Wynn, 27 Nov - 21 Dec 2026) and to maximise the number of Venetian events whose official structure sheet shows no re-entry, rebuy or add-on text. 6-13 December carries 14 such entries, the highest of any 7-night window in the series. Adjust it with the date filter; the whole site follows your choice.</dd></div><p class="warnbox">These dates are an automatically selected research scenario, not confirmed travel dates. No user trip dates, nightly budget, or hotel quality floor are present in the source records.</p><p class="muted sm">Use the date filters on tournament tables to review other dates. Verify dates and schedules before booking; the proposed window does not imply that all listed events can be played in sequence.</p></div><div class="panel"><div class="calc"><label>True hotel cost / night $<input id="ptrue" type="number" min="0.01" step="0.01" placeholder="no date-specific quote recorded" value=""></label><label>Stay nights<input id="pnights" type="number" min="1" step="1" value="7"></label></div><div class="result" id="ptotal"></div><p class="muted sm">Enter the itemized, date-specific true nightly total (room rate + mandatory resort fee + tax) from the dated <a href="hotels.html">hotel rate log</a>. Include parking if it is part of the planned stay cost. The required resort-fee tax treatment is not verified for every hotel; use the booking checkout total, not an estimate.</p></div><div class="panel" id="picks"><h2>Candidate event entries in your window (14)</h2><div class="tablewrap"><table class="data pick"><thead><tr><th>Play?</th><th>Date</th><th>Start</th><th>#</th><th>Event</th><th class="num">Buy-in</th><th>House fee</th><th class="num">Guarantee</th><th class="num">GTD &divide; entry</th><th>Source</th></tr></thead><tbody><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 6, 2026</td><td>11:10 AM</td><td>28</td><td>$600 No Limit Hold&#x27;em $40K GTD (1Day)</td><td class="num">$600</td><td>$90</td><td class="num">40,000</td><td class="num">66.7</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 6, 2026</td><td>5:10 PM</td><td>29</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 7, 2026</td><td>11:10 AM</td><td>30</td><td>$600 No Limit Hold&#x27;em Bounty $40K GTD (1Day) - $200 bounties to start &amp; $500 bounties in the money</td><td class="num">$600</td><td>$90</td><td class="num">40,000</td><td class="num">66.7</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 7, 2026</td><td>5:10 PM</td><td>31</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 8, 2026</td><td>10:10 AM</td><td>32</td><td>$600 No Limit Hold&#x27;em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate</td><td class="num">$600</td><td>$90</td><td class="num">40,000</td><td class="num">66.7</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 8, 2026</td><td>5:10 PM</td><td>34</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 9, 2026</td><td>10:10 AM</td><td>35</td><td>$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day)</td><td class="num">$600</td><td>$80 house + $10 LIPS</td><td class="num">10,000</td><td class="num">16.7</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="800"></td><td class="nowrap">December 9, 2026</td><td>11:10 AM</td><td>36</td><td>$800 No Limit Hold&#x27;em Bounty $75K GTD (1Day) - $200 bounties to start &amp; $500 bounties in the money</td><td class="num">$800</td><td>$100</td><td class="num">75,000</td><td class="num">93.8</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 9, 2026</td><td>5:10 PM</td><td>38</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="800"></td><td class="nowrap">December 10, 2026</td><td>10:10 AM</td><td>39</td><td>$800 No Limit Hold&#x27;em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event</td><td class="num">$800</td><td>$90 house + $20 LIPS</td><td class="num">40,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 10, 2026</td><td>12:10 PM</td><td>40</td><td>$600 Pot Limit Omaha Bounty $25K GTD (1Day)</td><td class="num">$600</td><td>$90</td><td class="num">25,000</td><td class="num">41.7</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 10, 2026</td><td>5:10 PM</td><td>42</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="600"></td><td class="nowrap">December 11, 2026</td><td>11:10 AM</td><td>43</td><td>$600 No Limit Hold&#x27;em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players</td><td class="num">$600</td><td>$80 house + $10 LIPS</td><td class="num">30,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><input type="checkbox" data-buyin="300"></td><td class="nowrap">December 13, 2026</td><td>5:10 PM</td><td>50</td><td>$300 No Limit Hold&#x27;em Bounty $15K GTD (1Day)</td><td class="num">$300</td><td>$50</td><td class="num">15,000</td><td class="num">50.0</td><td><a class="src" href="https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf" target="_blank" rel="noopener">source</a></td></tr></tbody></table></div></div><div class="warnbox">A buy-in is not the whole cost of an entry: an event that allows re-entry can cost two, three or more buy-ins, and the house fee is already inside the published buy-in. Reconfirm schedules, rates and policies with the room and the hotel before any non-refundable payment.</div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip cost calculator | Poker5</title>
+<meta name="description" content="Las Vegas Strip poker tournament and hotel trip planner built only from official sources. Anything not confirmed is blank and flagged.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">P5</span> Poker5
+    <small>Las Vegas Strip poker trip planner</small></div>
+  <nav class="nav"><a href="../index.html">Dashboard</a>
+<a href="../pages/executive-summary.html">Executive summary</a>
+<a href="../pages/single-entry.html">Single-entry events</a>
+<a href="../pages/multientry.html">Advantage &amp; multi-entry</a>
+<a href="../pages/schedule.html">Day schedule</a>
+<a href="../pages/hotels.html">Hotels &amp; true cost</a>
+<a href="../pages/planner.html">Trip calculator</a>
+<a href="../pages/qa.html">Questions to resolve</a>
+<a href="../pages/suggestions.html">Suggestions</a>
+<a href="../pages/flagged.html">Flagged for review</a>
+<a href="../pages/sources.html">Sources &amp; method</a>
+<a href="../pages/repo-review.html">Repo review</a></nav>
+</header>
+<main class="wrap">
+<h1>Trip cost calculator</h1>
+<section class="panel">
+<strong>Estimated trip cost</strong> = entries &times; buy-ins + nights &times; true hotel
+cost per night, where true hotel cost = room rate + mandatory resort fee + tax. Every buy-in
+and fee in the picker comes from the official source linked on these pages. The room rate is
+the one number you have to read off the official booking page for your dates; nothing here
+guesses it. This is a planning estimate, not a booking quote.
+</section>
+<div class="panel calc">
+  <div class="calc-grid">
+    <div>
+      <h3>1. Stay</h3>
+      <label>Nights <input id="nights" type="number" min="1" placeholder="e.g. 7"></label>
+      <label>Hotel <select id="hotel" onchange="poker5LoadHotel()">
+        <option value="">-- choose a hotel to load its official fee --</option>
+        <option value="The Venetian Resort" data-fee="55" data-name="The Venetian Resort">The Venetian Resort &middot; fee $55 (+13.38% tax)</option><option value="The Palazzo (same resort as The Venetian)" data-fee="55" data-name="The Palazzo (same resort as The Venetian)">The Palazzo (same resort as The Venetian) &middot; fee $55 (+13.38% tax)</option><option value="Wynn Las Vegas" data-fee="55" data-name="Wynn Las Vegas">Wynn Las Vegas &middot; fee $55 (+13.38% tax)</option><option value="Encore at Wynn Las Vegas" data-fee="55" data-name="Encore at Wynn Las Vegas">Encore at Wynn Las Vegas &middot; fee $55 (+13.38% tax)</option><option value="Bellagio" data-fee="55" data-name="Bellagio">Bellagio &middot; fee $55 (+13.38% tax)</option><option value="ARIA Resort &amp; Casino" data-fee="55" data-name="ARIA Resort &amp; Casino">ARIA Resort &amp; Casino &middot; fee $55 (+13.38% tax)</option><option value="MGM Grand Las Vegas" data-fee="50" data-name="MGM Grand Las Vegas">MGM Grand Las Vegas &middot; fee $50 (+13.38% tax)</option><option value="Caesars Palace" data-fee="" data-name="Caesars Palace">Caesars Palace &middot; fee not verified (+13.38% tax)</option><option value="Horseshoe Las Vegas" data-fee="" data-name="Horseshoe Las Vegas">Horseshoe Las Vegas &middot; fee not verified (+13.38% tax)</option>
+      </select></label>
+      <label>Nightly room rate ($) — from the official booking page
+        <input id="rate" type="number" min="0" step="1" placeholder="no date-specific quote recorded"></label>
+      <label>Resort fee per night ($) <input id="fee" type="number" min="0" step="1"></label>
+      <label>Room tax (%) <input id="tax" type="number" min="0" step="0.01" value="13.38"
+        title="Clark County ordinance rate for a resort hotel in the primary gaming corridor; confirm on the official booking page."></label>
+      <p class="muted">Fee is loaded from the hotel you pick and confirmed on that hotel's
+      official page. Tax is the Clark County rate tied to the ordinance table. An unknown
+      rate is never treated as zero: the trip total stays incomplete until a dated room quote
+      is entered.</p>
+      <p class="tiny">The 13.38% figure is the Clark County ordinance rate for a resort hotel inside the primary gaming corridor. Whether the resort fee is included in the tax base remains unverified on the official pages read; the fee's own tax treatment is confirmed on the folio at checkout.</p>
+      <p id="hotel-status" class="tiny">Incomplete. No date-specific room quote is currently recorded for this stay, so the true nightly cost and the trip total cannot be completed yet.</p>
+    </div>
+    <div>
+      <h3>2. Tournaments</h3>
+      <p class="warn-panel">No event currently has an officially confirmed one-entry cap plus no-rebuy/no-add-on rules. The event picker is empty; do not estimate tournament cost from an unverified entry policy. See <a href="single-entry.html">single-entry candidates</a>.</p>
+      <label>Confirmed single-entry event <select id="event">
+        <option value="">-- pick an event --</option>
+        <option value="" disabled>No confirmed single-entry events available</option>
+      </select></label>
+      <label>Entries (times you will play this event)
+        <input id="count" type="number" min="1" value="1"></label>
+      <button class="btn" onclick="poker5AddEntry()">Add to the trip</button>
+      <div id="entries" class="entries"></div>
+    </div>
+  </div>
+  <div class="calc-total">
+    <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
+    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">Incomplete</strong></div>
+    <div><span>Fee + tax per night</span><strong id="sum-nightly">Incomplete</strong></div>
+    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">Incomplete — add stay details</strong></div>
+  </div>
+</div>
+<h2>Same calculation as a table (no JavaScript needed)</h2>
+<div class="tablewrap"><table class="tbl" data-searchable><thead><tr><th>Event</th><th>Buy-in</th><th>House fee inside the buy-in</th><th>Guarantee</th><th>Guarantee &divide; buy-in</th><th>Source</th></tr></thead><tbody></tbody></table></div><p class="muted">Worked example with official parts only: resort fee $55 + 13.38% tax = <strong>$62 per night before the room rate</strong>. For a 7-night stay that part alone is $437. The room rate is added from the official booking page.</p>
+
 </main>
-<footer>
-<p><b>Poker5</b> is an independent planning tool. It is not affiliated with any casino, poker room or hotel.</p>
-<p>Every table value links to the official page it was read from (retrieved 2026-11-17). Values that could not be confirmed
-are left blank and listed on the <a href="../pages/flagged-review.html">Flagged for review</a> page.
-Nothing is inferred, estimated or filled in. Room rates change daily; confirm before booking or playing. Must be 21+.
-If gambling is a problem, call the Nevada Problem Gambling HelpLine 1-800-522-4700.</p>
-</footer></body></html>
+<footer class="foot">
+  <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
+  Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
+  If gambling is a problem, call 1-800-522-4700.</div>
+  <div>Site built 2026-11-19T05:58Z from the official-source capture of 2026-11-18T21:35:03Z.
+    Code: <a href="https://github.com/karagemop466-tech/Poker5">github.com/karagemop466-tech/Poker5</a> &middot;
+    Task board: <a href="https://github.com/karagemop466-tech/Poker5/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
+    Data: <a href="https://github.com/karagemop466-tech/Poker5/tree/main/data/c6087e2c">data/c6087e2c</a></div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

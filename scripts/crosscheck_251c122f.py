@@ -4,9 +4,9 @@
 Fails (exit 1) when a check that protects the "no hallucination" rule breaks:
 
   1. every schedule row in the official capture has exactly one merged record;
-  2. every record's single-entry verdict can be reproduced from the stored
-     rule fields (verdict == single_entry_confirmed only when a sheet was read,
-     its event-number list covers the row, and no re-entry language was found);
+  2. every record's single-entry verdict can be reproduced from explicit
+     official evidence (a read/matched sheet, one-day format, one-entry cap,
+     no re-entry, no rebuy and no add-on); silence never confirms a rule;
   3. every row that reports a buy-in or guarantee also carries a source URL;
   4. every structure sheet in the capture has a URL and a retrieval timestamp;
   5. the built site contains no table row that lacks a source link unless it is
@@ -51,35 +51,45 @@ def main() -> int:
                      "(flights of one event legitimately share an event "
                      "number)".format(sorted(map(str, dupes))[:6]))
 
+    from importlib.machinery import SourceFileLoader
+    merge = SourceFileLoader("poker5_merge", os.path.join(
+        ROOT, "scripts", "merge_251c122f.py")).load_module()
     for e in merged["events"]:
         v = e["verdict"]
         sheet = structures["sheets"].get(str(e.get("structure_no")), {})
         sheet_ok = bool(sheet) and "error" not in sheet
         covered = e["event_no"] in (sheet.get("event_numbers") or []) if sheet_ok else False
         adds = bool(sheet.get("adds_a_second_entry")) if sheet_ok else False
+        evidence = merge.entry_policy_evidence(sheet) if sheet_ok else None
         if v == "single_entry_confirmed":
-            if not sheet_ok:
-                errors.append("{} {} #{}: confirmed without a read sheet".format(
+            if not sheet_ok or not covered or sheet.get("multi_day_format"):
+                errors.append("{} {} #{}: confirmed without a readable, matching, one-day sheet".format(
                     e["date"], e["time"], e["event_no"]))
-            elif not covered:
-                errors.append("{} {} #{}: confirmed but the sheet's event-number "
-                              "list does not cover it".format(
-                                  e["date"], e["time"], e["event_no"]))
-            elif adds:
-                errors.append("{} {} #{}: confirmed although the sheet carries "
-                              "re-entry/rebuy/add-on language".format(
-                                  e["date"], e["time"], e["event_no"]))
-            elif sheet.get("multi_day_format"):
-                errors.append("{} {} #{}: confirmed although the sheet is a "
-                              "multi-day format".format(
-                                  e["date"], e["time"], e["event_no"]))
-        if v in ("unverified",) and sheet_ok and covered and not adds \
-                and not sheet.get("multi_day_format") \
-                and not sheet.get("flight_language") \
-                and not re.search(r"\b1[a-f]\b", e.get("name", ""), re.I):
-            errors.append("{} {} #{}: left unverified although its read sheet "
-                          "supports single entry".format(
-                              e["date"], e["time"], e["event_no"]))
+            elif not evidence or not evidence.get("confirmed"):
+                errors.append("{} {} #{}: confirmed without explicit one-entry, no-rebuy and no-add-on wording".format(
+                    e["date"], e["time"], e["event_no"]))
+        if v == "entry_limit_unverified":
+            if not (sheet_ok and covered and not sheet.get("multi_day_format")
+                    and not (sheet.get("flight_language") or re.search(r"\b1[a-f]\b", e.get("name", ""), re.I))):
+                errors.append("{} {} #{}: entry_limit_unverified does not match a read one-day sheet".format(
+                    e["date"], e["time"], e["event_no"]))
+            if evidence and evidence.get("confirmed"):
+                errors.append("{} {} #{}: explicit single-entry evidence was not promoted".format(
+                    e["date"], e["time"], e["event_no"]))
+        is_one_day_candidate = (sheet_ok and covered and not sheet.get("multi_day_format")
+                                and not sheet.get("flight_language")
+                                and not re.search(r"\b1[a-f]\b", e.get("name", ""), re.I))
+        if is_one_day_candidate and not (evidence and evidence.get("confirmed")) \
+                and not adds and v != "entry_limit_unverified":
+            errors.append("{} {} #{}: silent entry policy is not flagged as unverified".format(
+                e["date"], e["time"], e["event_no"]))
+        if v in ("single_entry_confirmed", "entry_limit_unverified"):
+            fields = e.get("rule_fields", {})
+            for field in ("single_entry", "re_entry", "rebuy", "add_on", "house_fee"):
+                item = fields.get(field, {})
+                if not item.get("source") or not item.get("retrieved_at"):
+                    errors.append("{} {} #{}: {} rule missing source or retrieval time".format(
+                        e["date"], e["time"], e["event_no"], field))
         if (e.get("buyin") or e.get("gtd")) and not e.get("source"):
             errors.append("{} {} #{}: value without a source".format(
                 e["date"], e["time"], e["event_no"]))

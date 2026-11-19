@@ -3,9 +3,9 @@
 **Live site:** https://karagemop466-tech.github.io/Poker5/
 
 An independent, evidence-first planner for a Las Vegas Strip poker trip: which
-tournaments are genuinely single-entry, what each one costs, how long a playing
-day runs, which days fit two events, and what a hotel night really costs once the
-resort fee and room tax are added.
+tournaments have an explicit single-entry/no-rebuy/no-add-on policy, what each
+entry costs, how long a playing day may run, which days could fit two events, and
+what a hotel night costs once the resort fee and room tax are considered.
 
 Every value on the site comes from an official source — a casino's own schedule,
 structure sheet, hotel terms page, or the Clark County room-tax ordinance — and
@@ -33,11 +33,12 @@ index.html, pages/**, assets/            (published by GitHub Pages from main `/
   late-registration cutoff, level length, starting chips, guarantee and house fee
   with the exact excerpt each value came from, and hashes the hotel/venue pages on
   a watch list so a change can be spotted. It has a network-free `--self-test`.
-* `scripts/merge_251c122f.py` applies one published standard: a row is
-  **confirmed single-entry** only when its own sheet was read, lists that event
-  number, is a one-day event, and contains no re-entry, rebuy, add-on,
-  double-entry, alternate-stack or purchased-chip language. Disagreements between
-  two official sources are recorded and shown, never resolved by picking one.
+* `scripts/merge_251c122f.py` requires affirmative official language for a
+  **confirmed single-entry** verdict: the row's own sheet must match the event,
+  describe a one-day event, and state a one-entry cap/freezeout plus no re-entry,
+  no rebuy and no add-on. Silence is not proof; one-day rows without those written
+  rules are flagged and excluded from ranking. Disagreements between official
+  sources are recorded and shown, never resolved by picking one.
 * `scripts/build_251c122f.py` generates the site and refuses to publish a data row
   without a source link or an internal link that does not resolve.
 * `scripts/crosscheck_251c122f.py` re-derives every verdict from the stored rule

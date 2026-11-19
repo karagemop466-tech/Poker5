@@ -21,11 +21,13 @@ Rules
 -----
 * A row is **confirmed single-entry** only when its structure sheet was read,
   the sheet's own event-number list contains the row's event number, the sheet
-  is a one-day format, and the sheet contains no re-entry / rebuy / add-on /
-  double-entry / purchased-stack language. Silence plus a read sheet is the
-  published confirmation standard; it is stated on the site.
-* A row whose sheet was read but contains such language is **adds a second
-  entry** (multi-entry) and is routed to the separate section.
+  is a one-day format, and the sheet explicitly states a one-entry cap / freezeout
+  plus no re-entry, no rebuy and no add-on. Silence is not confirmation.
+* A one-day row whose sheet is read but does not state those limits is
+  **entry_limit_unverified**. Its buy-in and structure fields may be sourced,
+  but it is excluded from single-entry-only lists and flagged for review.
+* A row whose sheet explicitly offers a second entry or paid chips is routed to
+  the separate multi-entry / advantage section.
 * A row whose sheet was not read, or a sheet that could not be matched to the
   row's event number, stays **unverified** and is listed as such.
 * Live schedule fields (date, time, event number, name, sheet link) come from
@@ -78,6 +80,27 @@ def norm(text: str) -> str:
     t = t.replace("\u2019", "'").replace("no limit hold'em", "nlh")
     t = re.sub(r"[^a-z0-9$%]+", " ", t)
     return re.sub(r"\s+", " ", t).strip()
+
+
+def entry_policy_evidence(sheet):
+    """Return explicit one-entry / no-rebuy / no-add-on excerpts, if present.
+
+    A missing mention is deliberately not treated as a prohibition.
+    """
+    text = sheet.get("rules_text", "") or ""
+    patterns = {
+        "single_entry": r"\b(?:single[- ]entry|freeze[- ]?out|one entry per player|one entry only|maximum(?: of)? one entry|max(?:imum)? entries?\s*[:=]?\s*1)\b",
+        "re_entry": r"\b(?:no re[- ]?entries?|re[- ]?entry(?: is| will be)? not (?:allowed|permitted))\b",
+        "rebuy": r"\b(?:no rebuys?|rebuy(?:s)? not (?:allowed|permitted))\b",
+        "add_on": r"\b(?:no add[- ]ons?|add[- ]on(?:s)? not (?:allowed|permitted))\b",
+    }
+    evidence = {}
+    for field, pattern in patterns.items():
+        match = re.search(pattern, text, re.I)
+        evidence[field] = match.group(0) if match else ""
+    evidence["confirmed"] = all(evidence[field] for field in
+                                 ("single_entry", "re_entry", "rebuy", "add_on"))
+    return evidence
 
 
 def flag_duplicate_names(events):
@@ -210,6 +233,9 @@ def main() -> int:
 
         adds_second_entry = bool(sheet_ok and sheet.get("adds_a_second_entry"))
         one_day = bool(sheet_ok and not sheet.get("multi_day_format"))
+        entry_evidence = entry_policy_evidence(sheet) if sheet_ok else {
+            "single_entry": "", "re_entry": "", "rebuy": "", "add_on": "",
+            "confirmed": False}
         flight = bool(sheet_ok and sheet.get("flight_language"))
         is_flight_row = bool(re.search(r"\b1[a-f]\b", name, re.I))
         multi_flight = (flight or sheet.get("multi_day_format") or is_flight_row)
@@ -223,10 +249,12 @@ def main() -> int:
             verdict = "restart"
         elif adds_second_entry:
             verdict = "adds_second_entry"
-        elif sheet_ok and covered and one_day and not multi_flight:
-            verdict = "single_entry_confirmed"
         elif multi_flight:
             verdict = "multi_flight"
+        elif sheet_ok and covered and one_day and entry_evidence["confirmed"]:
+            verdict = "single_entry_confirmed"
+        elif sheet_ok and covered and one_day:
+            verdict = "entry_limit_unverified"
         else:
             verdict = "unverified"
 
@@ -346,20 +374,33 @@ def main() -> int:
                     "pool_per_entry": sheet.get("pool_per_entry") if sheet_ok else None,
                     "excerpt": sheet.get("fee_line", "") if sheet_ok else "",
                     "source": lr["structure_url"] if sheet_ok else "",
+                    "retrieved_at": sheet.get("retrieved_at", "") if sheet_ok else "",
+                },
+                "single_entry": {
+                    "value": True if entry_evidence["confirmed"] else None,
+                    "max_entries": 1 if entry_evidence["single_entry"] else None,
+                    "excerpt": "; ".join(v for v in entry_evidence.values()
+                                        if isinstance(v, str) and v),
+                    "source": lr["structure_url"] if sheet_ok else "",
+                    "retrieved_at": sheet.get("retrieved_at", "") if sheet_ok else "",
                 },
                 "re_entry": {
-                    "value": ("re-entry / rebuy / add-on / purchased-stack language "
-                              "found" if adds_second_entry else
-                              ("no such language found on the sheet" if sheet_ok else "")),
-                    "excerpts": sheet.get("restriction_keywords", []) if sheet_ok else [],
+                    "value": False if entry_evidence["re_entry"] else None,
+                    "excerpt": entry_evidence["re_entry"],
                     "source": lr["structure_url"] if sheet_ok else "",
+                    "retrieved_at": sheet.get("retrieved_at", "") if sheet_ok else "",
+                },
+                "rebuy": {
+                    "value": False if entry_evidence["rebuy"] else None,
+                    "excerpt": entry_evidence["rebuy"],
+                    "source": lr["structure_url"] if sheet_ok else "",
+                    "retrieved_at": sheet.get("retrieved_at", "") if sheet_ok else "",
                 },
                 "add_on": {
-                    "value": ("add-on language found" if any(
-                        k.get("keyword") == "add-on"
-                        for k in (sheet.get("restriction_keywords") or []))
-                        else ("no add-on language found on the sheet" if sheet_ok else "")),
+                    "value": False if entry_evidence["add_on"] else None,
+                    "excerpt": entry_evidence["add_on"],
                     "source": lr["structure_url"] if sheet_ok else "",
+                    "retrieved_at": sheet.get("retrieved_at", "") if sheet_ok else "",
                 },
                 "guarantee_sheet": {
                     "value": sheet.get("guarantee") if sheet_ok else None,
@@ -372,6 +413,8 @@ def main() -> int:
         }
         if verdict in ("unverified", "unverified_row"):
             rec["flags"].append("F01")
+        if verdict == "entry_limit_unverified":
+            rec["flags"].append("F35")
         if verdict == "multi_flight":
             rec["flags"].append("F04")
         if sheet_ok and not covered:

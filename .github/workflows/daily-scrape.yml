@@ -18,8 +18,10 @@ on:
     branches: ["arena/**", "main"]
     paths:
       - "scripts/scrape_251c122f.py"
-      - "scripts/build_c6087e2c.py"
+      - "scripts/merge_251c122f.py"
+      - "scripts/build_251c122f.py"
       - "scripts/check_root_site.py"
+      - "scripts/crosscheck_251c122f.py"
       - ".github/workflows/daily-scrape.yml"
       - "data/c6087e2c/verification_251c122f.json"
 
@@ -56,8 +58,8 @@ jobs:
       - name: Merge the live capture into the verified dataset
         run: python3 scripts/merge_251c122f.py
 
-      - name: Rebuild the site from the data
-        run: python3 scripts/build_c6087e2c.py
+      - name: Rebuild the published site from the verified capture
+        run: python3 scripts/build_251c122f.py
 
       - name: Upload the capture for review (always)
         if: always()
@@ -76,7 +78,7 @@ jobs:
         run: |
           git config user.name  "poker5-source-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/c6087e2c/ index.html pages/
+          git add data/c6087e2c/ index.html pages/ assets/
           if git diff --cached --quiet; then
             echo "no change in the capture or the site"
             exit 0

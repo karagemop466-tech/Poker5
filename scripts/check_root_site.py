@@ -8,7 +8,7 @@ Checks:
   * every data-searchable table row has a source link or a flagged-link anchor;
   * the scheduled re-check baseline is present and parses.
 
-Exits non-zero on any failure. Run after scripts/build_c6087e2c.py.
+Exits non-zero on any failure. Run after scripts/build_251c122f.py.
 """
 import glob
 import json

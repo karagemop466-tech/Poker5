@@ -171,9 +171,10 @@ LAST_SCRAPE = SCRAPE.get("last_run") or EV.get("generated_at") or ""
 BUILD_STAMP = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
 
 CONFIRMED = [e for e in EVENTS if e.get("verdict") == "single_entry_confirmed"]
+ENTRY_CANDIDATES = [e for e in EVENTS if e.get("verdict") == "entry_limit_unverified"]
 MULTI = [e for e in EVENTS if e.get("verdict") == "multi_flight"]
 RESTARTS = [e for e in EVENTS if e.get("verdict") == "restart"]
-UNVERIFIED = [e for e in EVENTS if e.get("verdict") in ("unverified", "unverified_row")]
+UNVERIFIED = [e for e in EVENTS if e.get("verdict") in ("unverified", "unverified_row", "entry_limit_unverified")]
 COUNTS = (EV.get("counts", {}) or {}).get("verdicts", {}) or {}
 
 # Structured rule fields are official only when a sheet was read; the flag
@@ -192,6 +193,8 @@ def verdict_badge(e) -> str:
     v = e.get("verdict")
     if v == "single_entry_confirmed":
         return badge("ok", "Confirmed single-entry")
+    if v == "entry_limit_unverified":
+        return badge("bad", "Entry limit not stated")
     if v == "multi_flight":
         return badge("warn", "Multi-flight / multi-entry")
     if v == "restart":
@@ -382,6 +385,7 @@ def page_index() -> str:
     stats = [
         ("Schedule rows read", len(EVENTS)),
         ("Confirmed single-entry", n_conf),
+        ("Entry limits not stated", len(ENTRY_CANDIDATES)),
         ("Multi-flight / multi-entry", len(MULTI)),
         ("Restart rows", len(RESTARTS)),
         ("Official PDFs read", "{}/{}".format(
@@ -433,10 +437,10 @@ def page_index() -> str:
 <section class="panel">
   <h2>What changed in this pass</h2>
   <ul class="tight">
-    <li><strong>{n_conf} events are confirmed single-entry</strong> because their own
-      official structure sheet was read, lists that event number, is a one-day event, and
-      contains no re-entry, rebuy, add-on or purchased-stack language. That is the
-      published standard; nothing else is treated as confirmed.</li>
+    <li><strong>{n_conf} events are confirmed single-entry.</strong> Silence in a structure
+      sheet does not prove that re-entry, rebuys or add-ons are prohibited. {n_candidates}
+      one-day rows have readable sheets but no explicit entry-cap policy, so they are excluded
+      from the single-entry list and flagged for review.</li>
     <li><strong>Every Venetian structure sheet was read</strong> ({sheets} official PDFs),
       so the rule fields (late-registration cutoff, level length, starting chips, house fee,
       prize-pool share) are official values, not estimates.</li>
@@ -470,12 +474,11 @@ def page_index() -> str:
 </section>
 </div>
 <section class="panel">
-  <h2>Best published guarantee per dollar of buy-in (descriptive, not a forecast)</h2>
-  <p class="muted">Confirmed single-entry rows only. The ratio is the published guarantee
-  divided by the buy-in. It says nothing about your chance of winning; it is only a way to
-  compare how much prize money a room publishes per dollar of entry. Bounty events include
-  bounties in that guarantee, so their ratio is not comparable with a standard event; the
-  Format column on the events page marks them.</p>
+  <h2>Event ranking</h2>
+  <p class="muted">Ranking is withheld until an event's one-entry limit, total entry fee and
+  guarantee are all officially confirmed. If/when available, guarantee divided by entry fee
+  will be a descriptive ratio only, not a forecast. Bounty and flight events will remain
+  separately labeled.</p>
   {best}
 </section>
 <section class="panel">
@@ -528,8 +531,8 @@ def page_index() -> str:
   in that tax base is not stated on the official pages read, so it remains unverified. The fee's
   own tax treatment is confirmed on the folio at checkout.</p>
 </section>
-""".format(cards=cards, n_conf=n_conf, sheets=SCRAPE.get("sheets_read", "?"),
-           best=best_tbl, fees=fee_tbl,
+""".format(cards=cards, n_conf=n_conf, n_candidates=len(ENTRY_CANDIDATES),
+           sheets=SCRAPE.get("sheets_read", "?"), best=best_tbl, fees=fee_tbl,
            window=(fdate(first) + " to " + fdate(last)) if first else "")
     return body
 
@@ -589,38 +592,42 @@ def events_table(rows, base="", show_rules=True) -> str:
                 money(fee["value"]), esc(excerpt(fee.get("excerpt", ""), 70)))
              if fee.get("value") else '<span class="blank">blank</span>'),
             esc(e.get("sheet_retrieved_at") or "")[:10] or '<span class="blank">blank</span>',
+            esc(e.get("retrieved_at") or "")[:10] or '<span class="blank">blank</span>',
             row_source_cell(e, base),
         ])
     heads = ["Event", "Date &middot; start", "Buy-in", "Guarantee",
              "Guarantee &divide; buy-in", "Format", "Single-entry status",
              "Levels (official)", "Starting chips (official)",
              "Late registration (official)", "House fee per entry (official)",
-             "Sheet read", "Source"]
-    return table(heads, cells, 12, "events")
+             "Structure sheet read", "Last checked", "Source"]
+    return table(heads, cells, 13, "events")
 
 
 def page_single_entry() -> str:
     rows = sorted(CONFIRMED, key=lambda e: (e["date"], to_min(e["time"]) or 0, e["event_no"] or 0))
+    candidates = sorted(ENTRY_CANDIDATES,
+                        key=lambda e: (e["date"], to_min(e["time"]) or 0, e["event_no"] or 0))
     body = controls("events") + """
 """ + panel("""
-<strong>How a row earns the "Confirmed single-entry" badge.</strong> The structure sheet
-linked in the row was downloaded from the official Venetian site, its own list of event
-numbers includes the row's event number, the sheet describes a one-day event, and the text
-contains no re-entry, rebuy, add-on, double-entry, alternate-stack or purchased-chip
-language. The row shows the sheet's own words for the late-registration cutoff, level
-length, starting chips and house fee, and the date the sheet was read. A sheet that is
-silent on re-entry is the published confirmation standard; it is stated on this page and on
-<a href="sources.html">Sources &amp; method</a> so you can judge it. Rows that fail any part
-of that test are on <a href="flagged.html">Flagged for review</a>, not here.
+<strong>Strict confirmation rule.</strong> A row appears in the confirmed list only when its
+own official sheet explicitly states a one-entry limit / freezeout, prohibits re-entry,
+rebuy and add-on, matches the event number, and describes a one-day event. Silence does not
+prove a purchase is prohibited. An unstated rule is blank, flagged and excluded from the
+single-entry filter. Each rule field links to its official sheet and retrieval date.
 """) + """
-<h2>Grouped by what you want to spend per entry</h2>
-{tiers}
 <h2>Confirmed single-entry events ({n})</h2>
 <p class="muted">Guarantee &divide; buy-in is a descriptive ratio, not a forecast. Bounty
 events include bounties in the guarantee, so their ratio is not comparable with a standard
 event; the Format column marks them.</p>
 {tbl}
-""".format(n=len(rows), tbl=events_table(rows), tiers=budget_tiers())
+<h2>One-day candidates with unstated entry limits ({c})</h2>
+<p class="warn-panel">These events have readable, event-matched structure sheets, but the sheets
+currently do not explicitly confirm a one-entry cap and no-rebuy/no-add-on rules. They are
+not presented as single-entry or eligible for ranking. Contact the poker room for the missing
+written policy. Review every flagged row before relying on it.</p>
+{candidate_tbl}
+""".format(n=len(rows), tbl=events_table(rows), c=len(candidates),
+           candidate_tbl=events_table(candidates), tiers=budget_tiers())
     return body
 
 
@@ -773,7 +780,7 @@ def page_schedule() -> str:
             p["continuation"] or '<span class="muted">none</span>',
             row_source_cell(pr, "../"),
         ])
-    plan_tbl = table(["Date", "Primary event", "Conditional fallback", "Earliest realistic "
+    plan_tbl = table(["Date", "Primary schedule candidate", "Conditional fallback", "Earliest realistic "
                       "exit from the primary", "Other entries whose windows collide",
                       "Continuation of an earlier event (official restart row)",
                       "Source"], plan_rows, 6, "dayplan")
@@ -781,6 +788,7 @@ def page_schedule() -> str:
     for date in sorted(plans):
         for e in plans[date]["rows"]:
             kind = {"single_entry_confirmed": "Entry (confirmed single)",
+                    "entry_limit_unverified": "Entry (policy unstated)",
                     "multi_flight": "Entry (flight)", "restart": "Restart row",
                     "unverified": "Entry (unverified)"}.get(e.get("verdict"), "Entry")
             day_rows.append([
@@ -796,13 +804,12 @@ def page_schedule() -> str:
                    "Guarantee", "Single-entry", "Row type", "Playing-day length",
                    "Source"], day_rows, 9, "everyrow")
     body = controls("schedule") + panel("""
-<strong>How the day plan is built.</strong> Each day's primary event is the confirmed
-single-entry row with the largest published guarantee that day. Its realistic exit is the
-official start time plus a playing-day length derived from the sheet's late-registration
-figure (levels x minutes per level + breaks). A fallback is only shown when its official
-start time is at least 30 minutes after that exit; otherwise the day says "none feasible"
-rather than proposing a sequence that cannot be played. The derived length is a planning
-figure, not a published finish time.
+<strong>How the provisional day plan is built.</strong> It selects a schedule candidate using
+published start times, guarantees and structure-sheet duration data; each row's entry-policy
+status is shown. Since no event currently has explicit single-entry/no-rebuy/no-add-on proof,
+these are not recommendations or confirmed entries. A fallback is only shown when its official
+start time is at least 30 minutes after the primary candidate's derived exit; otherwise the day
+says "none feasible". The derived length is a planning figure, not a published finish time.
 """) + panel("""
 <strong>8:00 AM cannot be met.</strong> No Strip room publishes an 8:00 AM tournament in the
 sources read. Horseshoe's official daily slate starts at 9:00 AM (six events: 9 AM, 11 AM,
@@ -940,6 +947,15 @@ def page_planner() -> str:
                 x=esc(e["name"][:60]), bb=money(e.get("buyin")) or "",
                 b=e.get("buyin") or "", g=e.get("gtd") or "",
                 f=(rule_field(e, "house_fee").get("value") or "")))
+    if not options:
+        entry_warning = ('<p class="warn-panel">No event currently has an officially confirmed '
+                         'one-entry cap plus no-rebuy/no-add-on rules. The event picker is empty; '
+                         'do not estimate tournament cost from an unverified entry policy. See '
+                         '<a href="single-entry.html">single-entry candidates</a>.</p>')
+    else:
+        entry_warning = ""
+    if not options:
+        options.append('<option value="" disabled>No confirmed single-entry events available</option>')
     hotel_opts = []
     for h in HOTEL_ROWS:
         hotel_opts.append(
@@ -978,6 +994,7 @@ guesses it. This is a planning estimate, not a booking quote.
     </div>
     <div>
       <h3>2. Tournaments</h3>
+      {entry_warning}
       <label>Confirmed single-entry event <select id="event">
         <option value="">-- pick an event --</option>
         {events}
@@ -990,15 +1007,16 @@ guesses it. This is a planning estimate, not a booking quote.
   </div>
   <div class="calc-total">
     <div><span>Entries &times; buy-ins</span><strong id="sum-entries">$0</strong></div>
-    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">$0</strong></div>
-    <div><span>Fee + tax per night</span><strong id="sum-nightly">$0</strong></div>
-    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">$0</strong></div>
+    <div><span>Nights &times; true hotel cost</span><strong id="sum-hotel">Incomplete</strong></div>
+    <div><span>Fee + tax per night</span><strong id="sum-nightly">Incomplete</strong></div>
+    <div class="grand"><span>Estimated trip cost</span><strong id="sum-total">Incomplete — add stay details</strong></div>
   </div>
 </div>
 <h2>Same calculation as a table (no JavaScript needed)</h2>
 {quick}
 """.format(hotels="".join(hotel_opts), events="".join(options),
-           tax=TAX.get("rate_pct", ""), quick=quick_cost_table())
+           entry_warning=entry_warning, tax=TAX.get("rate_pct", ""),
+           quick=quick_cost_table())
     return body
 
 
@@ -1034,7 +1052,8 @@ def quick_cost_table() -> str:
 
 
 def page_venue_venetian() -> str:
-    rows = sorted(CONFIRMED, key=lambda e: (e["date"], to_min(e["time"]) or 0))
+    rows = sorted([e for e in EVENTS if e.get("venue_group") == "venetian"],
+                  key=lambda e: (e["date"], to_min(e["time"]) or 0))
     hs = [h for h in HOTEL_ROWS if "venetian" in h["hotel"].lower() or "palazzo" in h["hotel"].lower()]
     hotel_rows = []
     for h in hs:
@@ -1050,11 +1069,11 @@ def page_venue_venetian() -> str:
                  hotel_rows, 4, "venetian-hotels")
     return controls("events") + panel("""
 The Venetian hosts the <strong>DeepStack Extravaganza IV</strong> (November 16 - December 23,
-2026) and publishes more than $3.6 million in guaranteed prize pools. All {n} scheduled rows
-are on this site; the {c} that pass the single-entry test are listed below. Every rule field
-comes from the structure sheet linked in the row.
-""".format(n=len(EVENTS), c=len(rows))) + """
-<h2>Confirmed single-entry events at The Venetian</h2>
+2026). The {n} dated event rows below link to the official schedule and structure sheet. No
+row is marked confirmed single-entry unless its sheet explicitly states a one-entry cap,
+no-rebuy and no-add-on policy; current unstated policies remain flagged.
+""".format(n=len(rows))) + """
+<h2>All dated event rows at The Venetian</h2>
 {tbl}
 <h2>Hotels on the property</h2>
 {htbl}
@@ -1166,13 +1185,13 @@ def page_qa() -> str:
          "can move a room's published start time.",
          "answered"],
         ["Q04", "Which events are genuinely single-entry?",
-         "Answered for {} rows".format(len(CONFIRMED)),
-         "Each confirmed row's own structure sheet was read, lists that event number, is a "
-         "one-day event and contains no re-entry, rebuy, add-on or purchased-stack "
-         "language.",
-         "For the rows still unverified, the sheet is either unreadable or does not name "
-         "the event; the row links both the schedule and the sheet so it can be checked.",
-         "answered"],
+         "Unresolved: {} confirmed; {} one-day entry limits unstated".format(
+             len(CONFIRMED), len(ENTRY_CANDIDATES)),
+         "The event-matched one-day sheets do not explicitly prohibit re-entry, rebuy and "
+         "add-on or state a one-entry cap, so those events are not confirmed.",
+         "Obtain event-specific written maximum-entry, no-rebuy and no-add-on terms from "
+         "the Venetian; the official schedule and exact structure sheet are linked per row.",
+         "unresolved"],
         ["Q05", "How long does a hotel-to-room walk take?",
          "Blocks the 30-minute rule for every off-property hotel",
          "No casino publishes a walking time. Only on-property routes are zero minutes by "
@@ -1390,11 +1409,10 @@ def page_sources() -> str:
 <strong>Confirmation standard used on this site.</strong>
 <ol class="tight">
   <li>A value is shown only when an official source states it, and the row links that source.</li>
-  <li>A tournament is called <em>confirmed single-entry</em> when its own structure sheet was
-      read, the sheet's event-number list includes that event, the format is one day, and the
-      text contains no re-entry, rebuy, add-on, double-entry, alternate-stack or
-      purchased-chip language. Silence on re-entry, together with a read sheet, is the
-      standard; it is stated here so you can reject it if you disagree.</li>
+  <li>A tournament is called <em>confirmed single-entry</em> only when its own event-matched
+      structure sheet explicitly states a one-entry cap / freezeout and prohibits re-entry,
+      rebuy and add-on. Silence is not treated as proof of a prohibition. Any unstated field
+      stays blank and is flagged.</li>
   <li>A structure sheet's own words are quoted next to the value they support, so the quote can
       be checked against the PDF in one click.</li>
   <li>If two official sources disagree, both values are shown and the row is flagged. Nothing
@@ -1454,39 +1472,34 @@ def page_exec() -> str:
                          for f, n in sorted(fees.items()))
     cash_entries = [e for e in CONFIRMED if e.get("format") != "satellite"]
     cheapest = min((e for e in cash_entries if e.get("buyin")),
-                   key=lambda e: e["buyin"])
-    largest = max([e for e in cash_entries if e.get("gtd")], key=lambda e: e["gtd"])
+                   key=lambda e: e["buyin"], default=None)
+    largest = max((e for e in cash_entries if e.get("gtd")),
+                  key=lambda e: e["gtd"], default=None)
     body = panel("""
 <h2>Executive summary</h2>
-<p><strong>The trip this site can support:</strong> a Strip poker trip between
-{first} and {last}, built on the {conf} tournaments that pass the single-entry test at The
-Venetian, with a second event on {withfb} of the {days} scheduled days, and hotel nights whose
-resort fee and tax are official while the room rate is read from the official booking page for
-your dates.</p>
+<p><strong>Evidence status:</strong> the official Strip schedule window is {first} to {last}.
+No tournament currently passes the strict single-entry rule; {candidates} one-day rows have
+unstated entry policies and are not ranked or recommended. Hotel fees and tax are sourced,
+while each room rate must be date-specific.</p>
 <ol class="tight">
-  <li><strong>Supply is strong and fully read.</strong> {rows} scheduled rows come from the
-  official Venetian DeepStack Extravaganza IV page. {conf} are confirmed single-entry, {multi}
-  are multi-flight or multi-entry (separate section), {rest} are restart rows of an event
-  already counted. All {sheets} distinct structure-sheet PDFs were downloaded and read, so the
-  rule fields in every confirmed row are official values with their own quote.</li>
-  <li><strong>How "confirmed single-entry" is decided.</strong> The row's own sheet lists that
-  event number, describes a one-day event, and contains no re-entry, rebuy, add-on,
-  double-entry, alternate-stack or purchased-chip language. Rows that fail any part of that
-  test are not in the single-entry table, and the standard itself is published on
-  <a href="sources.html">Sources &amp; method</a> so it can be challenged.</li>
-  <li><strong>Cheapest confirmed cash entry is {cheap_b} buy-in, {cheap_name}</strong>; the
-  largest confirmed guarantee is {large_g} ({large_name}). Guarantee &divide; buy-in is shown
-  as a descriptive ratio, never a forecast. Satellites are marked with a Satellite badge and
-  are left out of these two figures, because their prize is a seat in another event rather
-  than cash.</li>
+  <li><strong>Schedule and structure coverage:</strong> {rows} scheduled rows are in the
+  Venetian DeepStack Extravaganza IV capture. {conf} have explicit single-entry, no-rebuy and
+  no-add-on evidence; {candidates} one-day events have unstated entry policies; {multi} are
+  multi-flight rows and {rest} are restarts. All {sheets} structure PDFs were read.</li>
+  <li><strong>Confirmed-entry rule:</strong> the official sheet must match the event and
+  explicitly state the one-entry cap / freezeout and prohibit re-entry, rebuy and add-on.
+  Silence is not treated as a rule. See <a href="sources.html">Sources &amp; method</a>.</li>
+  <li><strong>Ranking is withheld.</strong> There are no events with confirmed single-entry
+  policy, so no “best” event or guarantee-to-buy-in comparison is published. Once a qualifying
+  rule and the total entry fee are officially confirmed, the guarantee / fee ratio will be a
+  descriptive comparison only, never a forecast.</li>
   <li><strong>Official fees found:</strong> {fees}. Room tax is 13.38% under the Clark County
   ordinance table for a resort hotel inside the primary gaming corridor. Caesars Palace and
   Horseshoe fees are still missing, so those nights cannot be costed yet.</li>
-  <li><strong>The day plan is playable, not idealised.</strong> Every scheduled day gets one
-  primary event and, where a later official start clears the primary's derived exit by 30
-  minutes, a fallback. {withfb} of {days} days have a feasible fallback; the rest show "none
-  feasible" instead of a sequence you could not play. Restart rows (Day 2, Day 3, final table)
-  are shown in their own column so a continuation day is never mistaken for a fresh entry.</li>
+  <li><strong>Schedule fit is provisional.</strong> Each day has a primary schedule candidate
+  and a later fallback only when the published start time clears the earlier event's derived
+  exit by at least 30 minutes. Entry-policy uncertainty remains visible, and the plan is not a
+  recommendation until written rules are confirmed. Restart rows are not treated as fresh entries.</li>
   <li><strong>The 8:00 AM goal cannot be met.</strong> The earliest official start anywhere on
   the Strip is {earliest_t} ({earliest_n}). The Venetian's earliest full-tournament start is
   10:10 AM. A full day therefore starts at 9:00 AM at the earliest.</li>
@@ -1496,23 +1509,26 @@ your dates.</p>
 </ol>
 """.format(first=fdate(min(e["date"] for e in EVENTS)),
            last=fdate(max(e["date"] for e in EVENTS)),
-           rows=len(EVENTS), conf=len(CONFIRMED), multi=len(MULTI), rest=len(RESTARTS),
+           rows=len(EVENTS), conf=len(CONFIRMED), candidates=len(ENTRY_CANDIDATES),
+           multi=len(MULTI), rest=len(RESTARTS),
            sheets=SCRAPE.get("sheets_total", "?"), withfb=with_fb, days=days,
-           fees=fee_text, cheapest="",
-           cheap_b=money(cheapest.get("buyin")),
-           cheap_name=esc(shorten(cheapest["name"], 64)),
-           large_g=money(largest.get("gtd")),
-           large_name=esc(shorten(largest["name"], 64)),
+           fees=fee_text,
+           cheap_b=money(cheapest.get("buyin")) if cheapest else "not available",
+           cheap_name=esc(shorten(cheapest["name"], 64)) if cheapest else "not available",
+           large_g=money(largest.get("gtd")) if largest else "not available",
+           large_name=esc(shorten(largest["name"], 64)) if largest else "not available",
            earliest_t=ftime(earliest.get("time", "")),
            earliest_n=esc(shorten(earliest.get("name", ""), 64)),
            nconf=len(conflicts))) + """
-<h2>The five largest confirmed single-entry guarantees</h2>
+<h2>Confirmed single-entry events eligible for comparison ({count})</h2>
+<p class="muted">No ranking is produced when the count is zero. First confirm the one-entry
+policy and total entry fee from an official source.</p>
 {top}
 <h2>What to decide first, in order</h2>
 {decisions}
 <h2>What this page cannot tell you, and why</h2>
 {limits}
-""".format(top=top_tbl, decisions=panel("""
+""".format(top=top_tbl, count=len(CONFIRMED), decisions=panel("""
 <ol class="tight">
   <li><strong>Dates, nights and party size.</strong> Every cost answer keys off them (Q01).</li>
   <li><strong>A nightly cap and a quality standard.</strong> No official page publishes a
@@ -1581,10 +1597,12 @@ def page_repo_review() -> str:
          "docs/, site/, five dashboard-* folders and three site-* folders all answer the same "
          "questions, with different numbers. This pass publishes one root site and leaves the "
          "others untouched."],
-        ["F-R2", "Earlier root site stated figures that the official sheets contradict",
-         "Irregularity (data)",
-         "The previous build reported 31 confirmed single-entry events; reading all 37 sheets "
-         "gives {} confirmed. The earlier figure is superseded, not deleted.".format(len(CONFIRMED))],
+        ["F-R2", "Prior build treated silence in structure sheets as proof of single-entry",
+         "Irregularity (evidence standard)",
+         "A readable sheet with no re-entry language does not establish the one-entry cap or "
+         "no-rebuy/no-add-on rules. This build requires affirmative official wording; {} events "
+         "are confirmed and {} one-day rows remain entry-limit-unverified.".format(
+             len(CONFIRMED), len(ENTRY_CANDIDATES))],
         ["F-R3", "Third-party resort fees on the earlier hotels page",
          "Irregularity (sourcing)",
          "Bellagio, ARIA and MGM Grand fees previously came from a news article. All three "
@@ -1842,13 +1860,15 @@ border-top:1px solid var(--line)}
     var rate = parseFloat((document.getElementById("rate") || {}).value) || 0;
     var fee = parseFloat((document.getElementById("fee") || {}).value) || 0;
     var tax = (parseFloat((document.getElementById("tax") || {}).value) || 0) / 100;
+    var stayComplete = window.hotelComplete();
     var nightly = (rate + fee) * (1 + tax);
     var hotel = nightly * nights;
     document.getElementById("sum-entries").textContent = usd(entriesTotal);
-    document.getElementById("sum-hotel").textContent = usd(hotel);
+    document.getElementById("sum-hotel").textContent = stayComplete ? usd(hotel) : "Incomplete";
     var nb = document.getElementById("sum-nightly");
-    if (nb) { nb.textContent = usd(nightly); }
-    document.getElementById("sum-total").textContent = usd(entriesTotal + hotel);
+    if (nb) { nb.textContent = stayComplete ? usd(nightly) : "Incomplete"; }
+    document.getElementById("sum-total").textContent = stayComplete
+      ? usd(entriesTotal + hotel) : "Incomplete — add a dated room quote and complete stay details";
     var statusBox = document.getElementById("hotel-status");
     if (statusBox) { statusBox.textContent = hotelStatus(); }
   };

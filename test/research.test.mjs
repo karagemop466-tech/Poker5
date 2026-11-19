@@ -28,6 +28,42 @@ test('strict primary list stays empty until one-entry-overall is verified', () =
   );
 });
 
+test('root capture never treats missing entry-rule language as a confirmed freezeout', async () => {
+  const capture = JSON.parse(await readFile(new URL('../data/c6087e2c/events_verified.json', import.meta.url), 'utf8'));
+  const confirmed = capture.events.filter((event) => event.verdict === 'single_entry_confirmed');
+  const unknown = capture.events.filter((event) => event.verdict === 'entry_limit_unverified');
+  assert.equal(confirmed.length, capture.counts.verdicts.single_entry_confirmed ?? 0);
+  assert.equal(unknown.length, capture.counts.verdicts.entry_limit_unverified ?? 0);
+  for (const event of confirmed) {
+    const rules = event.rule_fields;
+    assert.equal(rules.single_entry.value, true);
+    assert.equal(rules.single_entry.max_entries, 1);
+    assert.equal(rules.re_entry.value, false);
+    assert.equal(rules.rebuy.value, false);
+    assert.equal(rules.add_on.value, false);
+  }
+  for (const event of unknown) {
+    assert.ok(event.flags.includes('F35'));
+    for (const field of ['single_entry', 're_entry', 'rebuy', 'add_on', 'house_fee']) {
+      assert.ok(event.rule_fields[field].source, `${event.event_no}: ${field} missing source`);
+      assert.ok(event.rule_fields[field].retrieved_at, `${event.event_no}: ${field} missing retrieval date`);
+    }
+    assert.equal(event.rule_fields.single_entry.value, null);
+    assert.equal(event.single_entry_confirmed, false);
+  }
+});
+
+test('confirmed-entry filter excludes rows with unstated limits', async () => {
+  const [singleEntry, script] = await Promise.all([
+    readFile(new URL('../pages/single-entry.html', import.meta.url), 'utf8'),
+    readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
+  ]);
+  assert.match(singleEntry, /Confirmed single-entry events \(0\)/);
+  assert.match(singleEntry, /One-day candidates with unstated entry limits/);
+  assert.match(singleEntry, /Entry limit not stated/);
+  assert.match(script, /st\.indexOf\("Confirmed single-entry"\) >= 0/);
+});
+
 test('event records have unique IDs, complete evidence, and valid status values', () => {
   assert.equal(new Set(events.map((event) => event.id)).size, events.length);
   for (const event of events) {
@@ -85,33 +121,24 @@ test('Pages excludes repository-only notes and test tooling from the published r
   }
 });
 
-test('trip calculator keeps unknown hotel costs incomplete and labels the auto-selected dates as a scenario', async () => {
+test('trip calculator never treats an unknown hotel quote as zero or a generic poker rate as dated', async () => {
   const [planner, script] = await Promise.all([
     readFile(new URL('../pages/planner.html', import.meta.url), 'utf8'),
     readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
   ]);
-  assert.match(planner, /Estimated trip cost =/);
+  assert.match(planner, /No date-specific room quote is currently recorded/);
   assert.match(planner, /placeholder="no date-specific quote recorded"/);
-  assert.doesNotMatch(planner, /id="ptrue"[^>]*value="0"/);
+  assert.match(planner, /id="sum-hotel">Incomplete</);
+  assert.match(planner, /id="sum-total">Incomplete/);
   assert.doesNotMatch(planner, /id="nights"[^>]*value="7"/);
   assert.doesNotMatch(planner, /<option[^>]+data-rate=/);
-  assert.match(planner, /automatically selected research scenario, not confirmed travel dates/i);
-  assert.match(planner, /not verified for every hotel/i);
+  assert.match(planner, /fee's own tax treatment is confirmed on the folio|whether the resort fee is included in the tax base remains unverified/i);
   assert.match(script, /hotelComplete/);
-  assert.match(script, /hotelTotal=hotelComplete\?/);
-  assert.match(script, /grandTotal=tripComplete\?/);
-  assert.match(script, /No date-specific room quote is currently recorded/);
-  assert.match(script, /One buy-in is counted per selected event/);
-});
-
-test('confirmed single-entry toggle excludes unverified and multi-entry rows', async () => {
-  const [tournaments, script] = await Promise.all([
-    readFile(new URL('../pages/tournaments.html', import.meta.url), 'utf8'),
-    readFile(new URL('../assets/app.js', import.meta.url), 'utf8'),
-  ]);
-  assert.match(tournaments, /Confirmed single-entry \/ freezeout only/);
-  assert.match(script, /if\(ok && s && tr\.getAttribute\('data-rule'\)!=='confirmed_single'\) ok=false;/);
-  assert.doesNotMatch(script, /data-rule'\)!=='unknown'.*data-rule/);
+  assert.match(script, /: "Incomplete"/);
+  assert.match(script, /No dated room quote recorded for/);
+  const builder = await readFile(new URL('../scripts/build_251c122f.py', import.meta.url), 'utf8');
+  assert.match(builder, /sum-hotel[\s\S]*?stayComplete \? usd\(hotel\) : "Incomplete"/);
+  assert.match(builder, /stayComplete[\s\S]*?usd\(entriesTotal \+ hotel\) : "Incomplete/);
 });
 
 test('dashboard and ledger link to each other, publish correctly, and integrate from the root', async () => {
