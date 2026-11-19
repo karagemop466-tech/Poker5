@@ -726,7 +726,7 @@ HOTELS = [
                  "received at least 48 hours prior to arrival date or deposit will be forfeited.' (offer DK26WLV2, re-read 2026-11-19)"),
          cancel_source="https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
          cancel_note=("This is the term of promotional offer DK26WLV2, which is limited to two consecutive nights on select dates "
-                      "and therefore cannot price a seven-night stay (F57)."),
+                      "and therefore cannot price a seven-night stay (F63)."),
          quality_note=("On the same property as the Wynn poker room: the official WPT terms state the "
                        "poker room is 'located in Encore at Wynn Las Vegas'.")),
     dict(key="caesars", name="Caesars Palace", tier="Upper upscale", area="Strip - centre",
@@ -828,7 +828,7 @@ HOTELS = [
          resort_fee_read="2026-11-19",
          resort_fee_note=("Official MGM Grand Hotel Reservation Terms, re-read 2026-11-19: 'A daily resort fee of $50.00 plus applicable "
                           "tax will be applied to all reservations.' Note it is $50 here and $55 at Bellagio and ARIA: MGM resort fees are "
-                          "property-specific (F58). Additional occupant charge $40 plus tax per occupant per night above two occupants."),
+                          "property-specific (F64). Additional occupant charge $40 plus tax per occupant per night above two occupants."),
          booking="https://mgmgrand.mgmresorts.com/en/",
          address="", address_source="",
          parking=("Registered hotel guest: $20 self-parking; valet $40 daily. Prices may be higher during special events."),
@@ -1013,23 +1013,23 @@ FLAGS = [
      "tower, and note the room is a long inside walk from the Strip entrance.",
      "https://www.venetianlasvegas.com/resort/casino/poker.html"),
     # ---- session 8f0b323b (2026-11-19 live re-read) ----
-    ("F56", "Source mismatch", "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
+    ("F62", "Source mismatch", "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
      "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish "
      "before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or "
      "Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event "
      "number, buy-in, guarantee and sheet number all match. Logged rather than edited: changing event names is a data-owner decision "
      "and no displayed value is affected.", SCHEDULE_PAGE),
-    ("F57", "Hotel cost", "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
+    ("F63", "Hotel cost", "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
      "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates "
      "2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and "
      "is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete.",
      "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2"),
-    ("F58", "Hotel cost", "MGM resort fees are property-specific ($55 at Bellagio and ARIA, $50 at MGM Grand) and were previously blank",
+    ("F64", "Hotel cost", "MGM resort fees are property-specific ($55 at Bellagio and ARIA, $50 at MGM Grand) and were previously blank",
      "Bellagio and ARIA print $55.00 plus applicable tax; MGM Grand prints $50.00 plus applicable tax (all re-read 2026-11-19). Before this "
      "re-check every MGM room was blank (F10). The pages also supply the additional-occupant charge, the 72-hour standard cancellation "
      "term and the parking rates. A single corporate figure must still not be reused across MGM properties, and no MGM room rate for the "
      "trip dates is published anywhere.", "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html"),
-    ("F59", "Entry rules", "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
+    ("F65", "Entry rules", "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
      "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, "
      "re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 "
      "standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01), and six of the sheets behind the "

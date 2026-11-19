@@ -117,5 +117,12 @@
   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
+ },
+ {
+  "id": "Q18",
+  "q": "Does the Venetian house-rules text (cited on every single-entry sheet as 'TDA rules apply') contain any re-entry, rebuy or add-on rule for the DSE IV events?",
+  "have": "All 22 single-entry structure sheets were re-read on 2026-11-19. None states a re-entry, rebuy, add-on or maximum-entry rule itself, and each cites 'TDA rules apply' by reference. The rulebook text has not been captured.",
+  "missing": "The house-rules text, and a written statement from the poker room desk on the maximum number of entries for each event you plan to play.",
+  "how": "Ask the Venetian poker room desk for the written house rules and the written entry limit for each event, record the answer with its date and source, then update the S1 label. Until then, a row is 'no re-entry wording found', not 'confirmed single-entry'."
  }
 ]

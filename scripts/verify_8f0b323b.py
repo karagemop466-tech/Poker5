@@ -36,7 +36,7 @@ CHECKS = [
                "by scripts/recheck_8f0b323b.py. 90 rows matched on every field. 4 rows differ in the trailing promotional text of "
                "the event NAME only (rows 6, 7, 8 'Race to finish before the Race' and row 49 'Tag Teams Consist of "
                "Female/Female or Female/Male'); the stored rows keep the sheet text and carry that promotional line in their notes. "
-               "No date, time, buy-in or guarantee differs. See F56."),
+               "No date, time, buy-in or guarantee differs. See F62."),
          script="scripts/recheck_8f0b323b.py"),
     dict(id="V02", group="Tournament schedule",
          item="Venetian DSE IV headline events and guarantees (series page)",
@@ -125,7 +125,7 @@ CHECKS = [
          verdict="match",
          note=("Confirmed again today: the 48-hour figure is what the live offer terms say; the earlier 72-hour figure remains withdrawn "
                "(F55). The offer's own stay window is 2 October 2026 - 31 March 2027 and it requires a two-night stay, so it does NOT "
-               "price a 7-night trip - see F57."),
+               "price a 7-night trip - see F63."),
          script=""),
     dict(id="V15", group="Hotel cost",
          item="Bellagio mandatory resort fee",
@@ -358,7 +358,7 @@ def fee_math():
 
 
 EXTRA_FLAGS = [
-    dict(id="F56", area="Source mismatch",
+    dict(id="F62", area="Source mismatch",
          title="Four live schedule names carry a promotional suffix the stored rows keep in notes",
          detail=("Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race "
                  "to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of "
@@ -366,21 +366,21 @@ EXTRA_FLAGS = [
                  "notes. Date, start time, event number, buy-in, guarantee and sheet number all match. Logged rather than edited: "
                  "changing event names is a data-owner decision, and no displayed value is affected."),
          source="https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"),
-    dict(id="F57", area="Hotel cost",
+    dict(id="F63", area="Hotel cost",
          title="The only Wynn terms page with a dated fee is a two-night promotional offer, not a 7-night rate",
          detail=("The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, "
                  "select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. It cannot "
                  "price a seven-night stay. The fee itself ($55 plus tax) is a property-wide term and is used as such; the stay "
                  "conditions are not transferable to a longer booking, so the Wynn row in the cost calculator stays Incomplete."),
          source="https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2"),
-    dict(id="F58", area="Hotel cost",
+    dict(id="F64", area="Hotel cost",
          title="MGM resort fees are property-specific ($55 vs $50) and were previously left entirely blank",
          detail=("Bellagio and ARIA print $55.00 plus applicable tax; MGM Grand prints $50.00 plus applicable tax. Before this re-check "
                  "all MGM rooms were blank (F10). The three pages read on 2026-11-19 now supply the fee, the $50/$40 additional-occupant "
                  "charge, the 72-hour standard cancellation term and the parking rates. A corporate MGM figure still must not be "
                  "reused across properties, and no MGM room rate for the trip dates is published anywhere."),
          source="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html"),
-    dict(id="F59", area="Entry rules",
+    dict(id="F65", area="Entry rules",
          title="The live schedule page does not state entry rules; every single-entry label still rests on a structure sheet",
          detail=("The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states "
                  "single entry, re-entry, rebuy or add-on. So the live row-level re-read in this session confirms WHAT and WHEN, not "

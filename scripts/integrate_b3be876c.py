@@ -459,7 +459,7 @@ LIVE = {
                  fee=50.0,
                  fee_url="https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
                  fee_extra=("Note it is $50 here and $55 at Bellagio and ARIA: MGM resort fees are property-specific "
-                            "(F58). Additional occupant charge $40 plus tax per occupant per night above two."),
+                            "(F64). Additional occupant charge $40 plus tax per occupant per night above two."),
                  cancel_phone="877.880.0880",
                  address="",
                  booking="https://mgmgrand.mgmresorts.com/en/",
@@ -1000,7 +1000,7 @@ def main() -> int:
           "guarantee or structure sheet. The claim that tournaments run is official; the times, prices and entry rules are not "
           "published anywhere this site can read, so no Horseshoe row is created and none is guessed."),
          "https://www.caesars.com/horseshoe-las-vegas/casino", status="open - no official schedule published")
-    flag("F56", "Source mismatch",
+    flag("F62", "Source mismatch",
          "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
          ("Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to "
           "finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of "
@@ -1010,20 +1010,20 @@ def main() -> int:
           "data/8f0b323b/schedule_recheck.json."),
          "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
          status="open - cosmetic, no value affected")
-    flag("F57", "Hotel fees",
+    flag("F63", "Hotel fees",
          "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
          ("The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, "
           "select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is "
           "a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in "
           "the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read."),
          "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2", status="open by design")
-    flag("F58", "Hotel fees",
+    flag("F64", "Hotel fees",
          "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
          ("Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus "
           "applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at "
           "Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties."),
          "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html", status="verified - figures official")
-    flag("F59", "Entry rules",
+    flag("F65", "Entry rules",
          "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
          ("The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states "
           "single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, "

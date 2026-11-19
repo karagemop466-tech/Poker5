@@ -3,7 +3,7 @@
   "id": "F01",
   "area": "Entry rules",
   "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
-  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page.",
+  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'.",
   "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
  },
  {
@@ -24,7 +24,7 @@
   "id": "F04",
   "area": "Entry rules",
   "title": "Every WPT / Wynn event whose terms were read permits re-entry",
-  "detail": "Unlimited re-entry (until level 9 or level 10) on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8 and NLH Turbo events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per flight.",
+  "detail": "Re-checked 2026-11-19 against all 14 event sections in the official structures PDF: unlimited re-entry on the $600, $800, $1,100 PLO, $1,600, TORSE, HORSE, Mixed Triple Draw, Limit Omaha 8, Limit Omaha 8/Stud 8, $600 NLH Turbo and $1,600 PLO Mystery Bounty events; the $1,100 WPT Prime Championship allows one entry plus one re-entry per starting flight. The Wynn daily structures PDF likewise states a re-entry fee on its $200 events, and 'Re-entry is NOT allowed' only on the $240 Friday NLH Rebuy & Add-on, which sells extra chips by rebuy ($200 for 25,000 chips while at 15,000 or less) and one $100 add-on instead. No WPT/Wynn event of any kind meets standard S1.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -152,8 +152,8 @@
  {
   "id": "F21",
   "area": "Coverage",
-  "title": "Not every WPT event's entry terms were read individually",
-  "detail": "Terms were read for 13 distinct events in the official structures PDF. The rest are marked 'entry terms not read' rather than being copied from a sibling event.",
+  "title": "Some WPT festival events still have no terms section in the official structures PDF",
+  "detail": "Every event terms-and-conditions section printed in the official WPT World Championship structures PDF was read on 2026-11-19 (14 sections: $600 NLH, TORSE, $400 PLO, Mixed Triple Draw, $800 NLH, Limit Omaha 8, Limit Omaha 8/Stud 8, $1,100 PLO, $1,600 NLH, HORSE, WPT Prime Championship, $600 NLH Turbo, $1,600 PLO Mystery Bounty, plus the General Terms). Every one of them grants re-entry, so none can pass S1. 47 rows are covered by those sections (38 flights/entries plus 9 continuation days). The 89 rows below are not: milestone satellites, the Seniors, Ladies, High Roller, Big O, 6-Max, 8-Max and Turbo events and the $3,000 and $10,400 championships have no section in that PDF at all, and three names ('No Limit Hold'em Day 1A', 'No Limit Hold'em Day 1B', 'No Limit Hold'em') are used by more than one event with different buy-ins, so no section can be matched to a row without guessing. Those rows keep the unread label. See F60 for the same finding stated from the schedule side.",
   "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf"
  },
  {
@@ -332,6 +332,58 @@
  },
  {
   "id": "F56",
+  "area": "Entry rules",
+  "title": "Event #35 is a two-person team event but is stored as a single-entry row",
+  "detail": "The official sheet for event #35 ($600 NLH LIPS Poker Jingle Tag Team, sheet 31, start 10:10 AM, guarantee $10,000) is a team format: 'Teams will rotate their players at the start of every level' and teams must be Female / Female or Female / Male. The row is stored as confirmed single-entry (standard S1), the same as the individual events. A two-person team is not an individual single-entry freezeout in the sense of the brief. Review its classification before the single-entry filter is used for it.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "status": "open: classification review requested (user decision)",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F57",
+  "area": "Entry rules",
+  "title": "'TDA rules apply' is cited by all 22 single-entry sheets; the rulebook text was not captured",
+  "detail": "Every single-entry sheet read on 2026-11-19 opens its rule list with 'TDA rules apply to all Venetian Poker Room tournaments'. That is a reference to an external rulebook, not a rule written on the sheet. The rulebook text was not read, so any entry limit it contains is unknown to this dashboard. No official Venetian house-rules page covering re-entry was located in this session. Obtain the house-rules text from the poker room desk before payment.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+  "status": "open: unverified reference; request the house-rules text",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F58",
+  "area": "Source defect",
+  "title": "WPT Day 2 dates: the official schedule and the structures PDF disagree",
+  "detail": "Structures PDF: the $800 No Limit Hold'em Day 2 is Thu Dec 3 at 1 p.m. (the schedule prints Mon Nov 30 1 p.m.); the $1,600 No Limit Hold'em Day 2 is Sat Dec 5 at 11 a.m. (the schedule prints Thu Dec 3 1 p.m.). The schedule's Sat Dec 5 11 a.m. 'No Limit Hold'em Day 2' line carries $1,100 / $5,000,000, which matches neither event. Rows 2026-11-30 13:00, 2026-12-03 13:00 and 2026-12-05 11:00 keep the schedule's date and buy-in, so their date is not confirmed by the structures PDF. Ask the Wynn poker desk which date is correct before planning a Day 2.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F59",
+  "area": "Source defect",
+  "title": "WPT NLH Turbo on Mon Dec 21: 6 p.m. in the structures PDF, 8 p.m. in the schedule",
+  "detail": "The structures PDF lists the Monday Dec 21 NLH Turbo at 6 p.m.; the official schedule lists 8 p.m. The row keeps the schedule time (20:00). Confirm before relying on it.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F60",
+  "area": "Coverage",
+  "title": "91 WPT schedule lines have no entry terms in the document the site cited for them",
+  "detail": "All 136 WPT rows match the official schedule on date, start time and buy-in, and on guarantee where the schedule prints one (see data/98087225/wpt_schedule_check.json). The structures PDF (read in full on 2026-11-19) contains terms for 13 events only, and 45 site rows match them (re-entry granted, so classified multi). The other 91 lines (Milestone satellites, Super Gold Million Mystery Bounty, Seniors, Ladies, High Roller, Big O, PLO 6-Max, the Dec 18 NLH and NLH Turbo variants and similar) are not in it. Their rows previously cited that PDF; they now cite the schedule, and their entry terms remain unread and unverified. The schedule says 'See structure sheet for details'; those sheets were not located.",
+  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "status": "new (98087225); needs review",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F61",
+  "area": "Source defect",
+  "title": "WPT schedule PDF prints two different weeks under a 'Dec. 18' heading",
+  "detail": "The official schedule PDF's 16 December block is headed 'Dec. 18 Wednesday' (18 December 2026 is a Friday; Wednesday is the 16th), and the block that follows it is headed 'Dec. 18 Friday' with a different set of events and start times. One of the two blocks must be misdated, and the PDF alone cannot say which: the first block's weekday disagrees with its printed date, the second block's agrees. Rows are stored under 16 December with the discrepancy printed on the row (F05 is the older, narrower note). Treat both days as provisional until Wynn publishes a corrected schedule.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf"
+ },
+ {
+  "id": "F62",
   "area": "Source mismatch",
   "title": "Four live schedule names carry a promotional suffix that the stored rows keep in notes",
   "detail": "Re-reading the official DSE IV page on 2026-11-19 showed rows #3, #4, #5 as '$200 NLH RaceDay Stack (1Day) - Race to finish before the Race' and #35 as '$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male', where the stored rows stop at the structure-sheet title and carry the suffix in notes. Date, start time, event number, buy-in, guarantee and structure-sheet number all match. Logged rather than edited: renaming rows is a data-owner decision and no displayed value is affected. Full 94-row diff in data/8f0b323b/schedule_recheck.json.",
@@ -340,7 +392,7 @@
   "last_updated": "2026-11-19"
  },
  {
-  "id": "F57",
+  "id": "F63",
   "area": "Hotel fees",
   "title": "The only Wynn terms page that prints a dated fee is a two-night promotional offer, not a 7-night rate",
   "detail": "The Wynn page that prints the $55 resort fee and the 48-hour cancellation rule is offer DK26WLV2: two-night maximum, select dates 2 October 2026 - 31 March 2027, blackouts including 17-21 November 2026 and 31 December 2026. The fee is a property-wide term and is used as such; the stay conditions cannot price a seven-night booking, so the Wynn line in the cost calculator stays Incomplete and no Wynn nightly rate is published anywhere the site can read.",
@@ -349,7 +401,7 @@
   "last_updated": "2026-11-19"
  },
  {
-  "id": "F58",
+  "id": "F64",
   "area": "Hotel fees",
   "title": "MGM resort fees are property-specific: $55 at Bellagio and ARIA, $50 at MGM Grand",
   "detail": "Three official MGM hotel reservation-terms pages were read on 2026-11-19. Bellagio and ARIA print '$55.00 plus applicable tax'; MGM Grand prints '$50.00 plus applicable tax'. Additional-occupant charges differ too ($50 at Bellagio and ARIA, $40 at MGM Grand). A corporate MGM figure must not be reused across properties.",
@@ -358,7 +410,7 @@
   "last_updated": "2026-11-19"
  },
  {
-  "id": "F59",
+  "id": "F65",
   "area": "Entry rules",
   "title": "The live schedule page states no entry rule; every single-entry label still rests on a structure sheet",
   "detail": "The DSE IV schedule page prints date, time, event number, name, guarantee and a structure-sheet link. It never states single entry, re-entry, rebuy or add-on. The live row-level re-read in this session therefore confirms WHAT and WHEN, not the entry rule, so the 53 standard-S1 labels still rest on the structure-sheet reads logged on the Verification page (F01); six of the sheets behind the trip window were not re-read in this session.",
