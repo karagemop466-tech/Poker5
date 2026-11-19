@@ -30,7 +30,7 @@ return stay absent.
   Dec 10 $325; Dec 11 $432; Dec 12 $449; Dec 13 $55; Dec 14-18 $55; Dec 19 $219; Dec 20-24 $55;
   Dec 25 $62; Dec 26 $143; Dec 27 $138; Dec 28 $96; Dec 29 $57; Dec 30 $232; Dec 31 $483.
   (The per-date meaning - night of the date vs stay starting the date - is not stated on the
-  page; stored as a raw display map, flagged F59/Q19.)
+  page; stored as a raw display map, flagged F74/Q19.)
 - Wynn dated quote (`reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026`),
   Wynn Resort King, 1 King, 2 adults, "7 Night Stay Dec. 6 - 13, 2026":
   Flexible Getaway Rate $818.00 Average/Night; "Your Fall to Have It All" $688.00 Average/Night
@@ -47,7 +47,7 @@ return stay absent.
   Dec 5 $514; Dec 6 $354; Dec 7 $654; Dec 8 $354; Dec 9 $414; Dec 10 $414; Dec 11 no number;
   Dec 12 $454; Dec 13 $184; Dec 31 $754 (other December dates were not shown in the table).
   The 7-night Dec 6-13 query itself returned "The rate is not available. Select an alternate rate."
-  Captions conflict (F57): "Calendar pricing excludes daily resort fee and taxes" vs
+  Captions conflict (F72): "Calendar pricing excludes daily resort fee and taxes" vs
   "Calendar pricing includes $55 daily resort fee and excludes taxes" ("Rates do not include
   Standard room rate taxes of 13.38%").
 - Venetian booking attempt (`venetianlasvegas.com/booking/?adults=2&children=0&checkin=2026-12-06&checkout=2026-12-13&view=calendar`):
@@ -73,7 +73,7 @@ return stay absent.
 
 URL form: `google.com/maps/dir/<A>/<B>/data=!4m2!4m1!3e2`. Values are the primary walking
 route of the detail panel (X min, Y miles, via ...). Directions are asymmetric - store each
-as measured (F58).
+as measured (F73).
 
 - Venetian 3355 -> Wynn 3131: 26 min, 1.1 mi, via Encore Resort Blvd
 - Wynn 3131 -> Venetian 3355: 14 min, 0.5 mi, via Wynn Main Gate Dr
@@ -103,7 +103,7 @@ as measured (F58).
 
 Key verdicts: every candidate hotel is within 30 minutes of the Venetian poker room
 (walk to room: Venetian 0, Wynn 14, Resorts World 21, Caesars Palace 25, Horseshoe 30);
-Horseshoe -> Venetian measures 31 min in the other direction (F59). South Point is 2h45-3h24
+Horseshoe -> Venetian measures 31 min in the other direction (F74). South Point is 2h45-3h24
 from the Strip candidates (not a walking candidate). Caesars Palace <-> Wynn is 39-47 min.
 
 ## Other pages read 2026-11-19 (match previously stored values)
@@ -122,3 +122,8 @@ from the Strip candidates (not a walking candidate). Caesars Palace <-> Wynn is 
   banner "November 16 - December 23, 2026 ... More than $3.6 Million".
 - `venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html`:
   series header matches; Nov 16-28 rows reviewed (before the trip window).
+
+> ID note: after integration with `main` (which had assigned F56-F59 to other sessions and later
+> F70/Q21/S17), this session's flags are **F71** (Caesars calendar error), **F72** (Resorts World
+> caption conflict), **F73** (route asymmetry), **F74** (Horseshoe 31 min + calendar per-date
+> meaning); questions **Q22/Q23**; suggestions **S18-S20**.

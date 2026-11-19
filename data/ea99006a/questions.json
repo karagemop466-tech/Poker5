@@ -9,7 +9,7 @@
  {
   "id": "Q02",
   "q": "Is any DSE IV event actually a freezeout?",
-  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'Confirmed single-entry (standard S1)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
+  "have": "All 37 official structure sheets were read. Under S1, 53 rows are classified 'No second entry granted (S1 screen)' because their own sheet contains no rule granting another entry; none of the sheets explicitly promises a one-entry maximum or uses 'freezeout' as a guarantee.",
   "missing": "A written, event-number-specific statement from the Venetian that the entry limit is one, with no re-entry, rebuy, add-on, or other paid advantage. The S1 label describes the published terms found; it is not the venue's explicit promise.",
   "how": "Ask the Venetian tournament desk for written maximum-entry/no-rebuy/no-add-on terms for each candidate event number. Until then, treat S1 as a rules-based screen rather than a guaranteed freezeout and keep the limitation visible."
  },
@@ -17,7 +17,7 @@
   "id": "Q03",
   "q": "What is the true nightly hotel cost for your dates?",
   "have": "Resort fees: Venetian $55 + tax (official), Resorts World $55 per room per day (official, waived on the 'All Resort, No Fees' offer through 28 Dec 2026). Tax: 13.38% (Clark County ordinance). Dated captures added 2026-11-19 (session f7676bd0): Wynn quotes for Dec 6-13 - $688 ('Your Fall to Have It All') and $818 (Flexible Getaway) average per night, resort fee included, taxes excluded; raw December calendars for the Horseshoe and Resorts World. Caesars Palace $62.30 total ($54.95 plus $7.35 tax) and Horseshoe $56.63 total ($49.95 plus $6.68 tax) per night are now verified from their booking-page Hotel Policies.",
-  "missing": "An itemised checkout total for the actual stay at any hotel (room + fee + tax + parking): the Wynn pages show averages only, the calendars are raw daily displays with an undefined per-date meaning (F73), and the Venetian and Caesars Palace engines returned no rates at all on 2026-11-19 (F70).",
+  "missing": "An itemised checkout total for the actual stay at any hotel (room + fee + tax + parking): the Wynn pages show averages only, the calendars are raw daily displays with an undefined per-date meaning (F74), and the Venetian and Caesars Palace engines returned no rates at all on 2026-11-19 (F71).",
   "how": "Open the official booking link on the Hotels page for your dates and read the itemised checkout screen; record it in the dated log. The Wynn calculator figure can already be entered from the captured quote ($688-$818/night); the rest need a checkout total first."
  },
  {
@@ -141,16 +141,23 @@
  },
  {
   "id": "Q21",
+  "q": "Which South Point daily tournament is the $300 buy-in, and what are its structure and entry rules?",
+  "have": "The official room page states daily tournaments at 10:10 AM, 2:10 PM, 6:10 PM and 10:10 PM with buy-ins of $120 and $300, and the official schedule page publishes eight rules-sheet images whose file names state $120 (six) and $200 (two). The same page states 'Room rates are available with 4 hours of cash play for our out-of-town guests and parking is always free!' - the only published rate condition for staying there, and it is a cash-play condition, not a price.",
+  "missing": "The text of the schedule image (which event starts when), the text of each rules sheet (starting stack, blind levels, late-registration close, re-entry / add-on rules, guarantee) and whether a $300 event exists at all. None of it is published as text.",
+  "how": "Ask the South Point poker room for the daily schedule and structures in text (the property's own channel for lists is the Bravo Poker app), or transcribe the eight official sheet images into a dated capture. Until then the South Point rows stay 'entry terms not read' and are excluded from the single-entry comparison. See flags F12 and F70 and suggestion S17."
+ },
+ {
+  "id": "Q22",
   "q": "Which entrance does each walking route use, and should the 30-minute limit be judged per direction?",
-  "have": "Google Maps walking times measured both ways on 2026-11-19 are stored per direction (e.g. Wynn to Venetian 14 min vs Venetian to Wynn 26 min; Horseshoe to Venetian 31 min vs the other way 30 min - flags F72/F73).",
+  "have": "Google Maps walking times measured both ways on 2026-11-19 are stored per direction (e.g. Wynn to Venetian 14 min vs Venetian to Wynn 26 min; Horseshoe to Venetian 31 min vs the other way 30 min - flags F73/F74).",
   "missing": "The official entrance each route targets, and a rule for which direction the 30-minute limit applies to. Both directions are shown so the reader can decide.",
   "how": "Open the route link per row and walk it once at the pace you would actually use, from the entrance you would leave by; record your own minutes in the panel on the routes page."
  },
  {
-  "id": "Q22",
+  "id": "Q23",
   "q": "What does a date in the Caesars/Horseshoe/Resorts World calendars price - the night of that date, or a stay starting it?",
   "have": "The raw December 2026 displays for each candidate hotel (stored per date in the rate log and stay captures). The Horseshoe caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'",
-  "missing": "The per-date meaning; the pages do not state it (flag F73). Until it is confirmed, the figures are not added up into a stay total and no nightly average is claimed.",
+  "missing": "The per-date meaning; the pages do not state it (flag F74). Until it is confirmed, the figures are not added up into a stay total and no nightly average is claimed.",
   "how": "Ask the hotel's reservations line in writing, or run a one-night and a multi-night query for the same date and compare what the engine displays."
  }
 ]

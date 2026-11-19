@@ -248,7 +248,7 @@
    "verified": true,
    "caveats": [
     "Caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'",
-    "The page does not state whether a date's figure is for the night of that date or for a stay beginning that date (flag F59); stored as a raw display map.",
+    "The page does not state whether a date's figure is for the night of that date or for a stay beginning that date (flag F74); stored as a raw display map.",
     "No checkout total is displayed; these figures are not a stay quote. The seven figures for Dec 6-12 sum to $1,938, but that arithmetic is not a booking total and is not stored as one.",
     "Other December displays: Dec 1 $457; Dec 2-3 no rate ('The rate is not available. Select an alternate rate.'); Dec 4 $194; Dec 5 $330; Dec 13 $55."
    ]
@@ -269,7 +269,7 @@
    "resort_fee_per_night": 55.0,
    "resort_fee_total": null,
    "tax_total": null,
-   "tax_note": "Two conflicting captions appear on the same page (flag F57): 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. 'Rates do not include Standard room rate taxes of 13.38%'.",
+   "tax_note": "Two conflicting captions appear on the same page (flag F72): 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. 'Rates do not include Standard room rate taxes of 13.38%'.",
    "parking": "Self-parking complimentary for Nevada residents and Genting Rewards Elite+ members (offer page).",
    "cancellation_deadline": "Deposit of the first night's room rate plus taxes at booking; free cancellation until 48 hours before check-in (offer terms).",
    "rate_timestamp": "2026-11-19",
@@ -288,11 +288,11 @@
    "source_label": "Resorts World official booking engine, December 2026 calendar (read 2026-11-19)",
    "verified": true,
    "caveats": [
-    "Conflicting fee-inclusion captions on one page (flag F57); the stored figures are the raw displays.",
+    "Conflicting fee-inclusion captions on one page (flag F72); the stored figures are the raw displays.",
     "The 7-night Dec 6-13 query returned 'The rate is not available. Select an alternate rate.', so no stay quote exists.",
     "Dec 11 displayed no number; the legend marks such dates Unavailable / Closed to Arrival / Closed to Departure.",
     "The six displayed figures for Dec 6-12 sum to $2,586 (Dec 11 blank) - arithmetic only, not a booking total, not stored as one.",
-    "Per-date meaning not stated by the page (flag F59)."
+    "Per-date meaning not stated by the page (flag F74)."
    ]
   },
   {
@@ -347,7 +347,7 @@
    "source_label": "Caesars official booking engine, Caesars Palace December 2026 attempt (read 2026-11-19)",
    "verified": false,
    "caveats": [
-    "The rate search returned 'Sorry! Our website is currently experiencing technical difficulties' on 2026-11-19 and rendered no calendar; retry needed (flag F56).",
+    "The rate search returned 'Sorry! Our website is currently experiencing technical difficulties' on 2026-11-19 and rendered no calendar; retry needed (flag F71).",
     "The same page's Hotel Policies block did return the resort fee ($62.30) and deposit terms."
    ]
   }

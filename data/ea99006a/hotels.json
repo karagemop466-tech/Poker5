@@ -95,9 +95,11 @@
   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
   "resort_fee_tax": 7.35,
   "resort_fee_total": 62.3,
-  "booking_note": "Booking page renders with 'FREE 48-Hour Cancellation' and 'Resort fees and taxes are not included in the room rate displayed' (read 2026-11-19); the December 2026 rate calendar returned 'Sorry! Our website is currently experiencing technical difficulties' on that date, so no dated Caesars Palace quote is stored (flag F70).",
+  "booking_note": "Booking page renders with 'FREE 48-Hour Cancellation' and 'Resort fees and taxes are not included in the room rate displayed' (read 2026-11-19); the December 2026 rate calendar returned 'Sorry! Our website is currently experiencing technical difficulties' on that date, so no dated Caesars Palace quote is stored (flag F71).",
   "cancel_read": "2026-11-19",
-  "parking_read": "2026-11-19"
+  "parking_read": "2026-11-19",
+  "address_read": "2026-11-19",
+  "address_note": "Re-read in this session on 2026-11-19 from the footer of the official Caesars Palace page, which prints \"3570 Las Vegas Blvd South, Las Vegas, NV 89109 / Las Vegas, NV89109\" and the reservations phone number."
  },
  {
   "key": "horseshoe",
@@ -125,9 +127,11 @@
   "rate_caveat": "this property publishes no nightly rate on any official page we could read; the booking link is the only way to get a dated quote",
   "resort_fee_tax": 6.68,
   "resort_fee_total": 56.63,
-  "booking_note": "Booking page renders the December 2026 flexible calendar with 'FREE 48-Hour Cancellation' and 'Resort fees and taxes are not included in the room rate displayed' (read 2026-11-19); daily figures are captured in the rate log (flag F73 on their per-date meaning).",
+  "booking_note": "Booking page renders the December 2026 flexible calendar with 'FREE 48-Hour Cancellation' and 'Resort fees and taxes are not included in the room rate displayed' (read 2026-11-19); daily figures are captured in the rate log (flag F74 on their per-date meaning).",
   "cancel_read": "2026-11-19",
-  "parking_read": "2026-11-19"
+  "parking_read": "2026-11-19",
+  "address_read": "2026-11-19",
+  "address_note": "Re-read in this session on 2026-11-19 from the footer of the official Horseshoe Las Vegas page, which prints \"3645 Las Vegas Blvd South, Las Vegas, NV 89109 / Las Vegas, NV89109\" and the reservations phone number."
  },
  {
   "key": "resortsworld",
@@ -139,7 +143,7 @@
   "resort_fee": 55.0,
   "resort_fee_text": "$55 per room, per day (waived under the 'All Resort, No Fees' offer)",
   "resort_fee_source": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
-  "resort_fee_note": "Official offer terms: 'The daily resort fee of $55 per room, will be waived for each night of your stay when booked under this offer. Standard room rate taxes still apply and are not waived. An additional incidental deposit of $150 per room will be required at check-in for each night of your stay.' Offer valid for travel through 28 December 2026; blackout dates may apply. The offer page also states 'Rates do not include Standard room rate taxes of 13.38%'. The official booking engine's December 2026 calendar shows conflicting fee-inclusion captions (flag F71).",
+  "resort_fee_note": "Official offer terms: 'The daily resort fee of $55 per room, will be waived for each night of your stay when booked under this offer. Standard room rate taxes still apply and are not waived. An additional incidental deposit of $150 per room will be required at check-in for each night of your stay.' Offer valid for travel through 28 December 2026; blackout dates may apply. The offer page also states 'Rates do not include Standard room rate taxes of 13.38%'. The official booking engine's December 2026 calendar shows conflicting fee-inclusion captions (flag F72).",
   "booking": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin={IN}&checkout={OUT}&nights=7&adults=2&children=0",
   "address": "3000 South Las Vegas Boulevard, Las Vegas, Nevada 89109",
   "address_source": "https://www.rwlasvegas.com/privacy-policy/",
@@ -151,7 +155,7 @@
   "resort_fee_read": "2026-11-19",
   "rate_floor": null,
   "rate_floor_source": "",
-  "rate_caveat": "Rooms-only convention pricing before taxes and the waived $55 resort fee. For the Dec 6-13 window the official booking engine displayed a December 2026 calendar (figures captured in the rate log) and reported no rate for the 7-night query (flags F71/F73).",
+  "rate_caveat": "Rooms-only convention pricing before taxes and the waived $55 resort fee. For the Dec 6-13 window the official booking engine displayed a December 2026 calendar (figures captured in the rate log) and reported no rate for the 7-night query (flags F72/F74).",
   "address_read": "2026-11-19",
   "cancel_read": "2026-11-19",
   "parking_read": "2026-11-19"

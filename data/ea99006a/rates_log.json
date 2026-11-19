@@ -135,7 +135,7 @@
   "disp": "December 2026 displays for the trip window: Dec 6 $245; Dec 7 $202; Dec 8 $151; Dec 9 $134; Dec 10 $325; Dec 11 $432; Dec 12 $449 (Dec 13 $55).",
   "caveats": [
    "Caption: 'Rates shown reflect the lowest available rate and include applicable resort fees. All pricing may vary by length of stay.'",
-   "Per-date meaning (night of vs stay from) is not stated on the page (flag F59); no true_nightly figures are computed from these displays.",
+   "Per-date meaning (night of vs stay from) is not stated on the page (flag F74); no true_nightly figures are computed from these displays.",
    "No checkout total is displayed; the seven figures sum to $1,938 as arithmetic only."
   ]
  },
@@ -166,9 +166,9 @@
   "verified": true,
   "disp": "December 2026 displays for the trip window: Dec 6 $354; Dec 7 $654; Dec 8 $354; Dec 9 $414; Dec 10 $414; Dec 11 (no number); Dec 12 $454 (Dec 13 $184).",
   "caveats": [
-   "Conflicting captions on one page: 'Calendar pricing excludes daily resort fee and taxes' vs 'Calendar pricing includes $55 daily resort fee and excludes taxes' (flag F57).",
+   "Conflicting captions on one page: 'Calendar pricing excludes daily resort fee and taxes' vs 'Calendar pricing includes $55 daily resort fee and excludes taxes' (flag F72).",
    "The 7-night query itself returned 'The rate is not available. Select an alternate rate.'",
-   "Dec 11 displayed no number; per-date meaning is not stated (flag F59); no true_nightly figures are computed from these displays."
+   "Dec 11 displayed no number; per-date meaning is not stated (flag F74); no true_nightly figures are computed from these displays."
   ]
  },
  {
@@ -190,7 +190,7 @@
   "disp": "No numeric rate was returned by either engine on 2026-11-19.",
   "caveats": [
    "The Venetian calendar view rendered '$XXX' placeholders only; its caption reads 'Pricing shown is best available suite and rate, includes daily resort fee, excludes taxes'.",
-   "The Caesars Palace December 2026 search returned 'Sorry! Our website is currently experiencing technical difficulties' (flag F56); its Hotel Policies block did return the $62.30 fee."
+   "The Caesars Palace December 2026 search returned 'Sorry! Our website is currently experiencing technical difficulties' (flag F71); its Hotel Policies block did return the $62.30 fee."
   ]
  }
 ]

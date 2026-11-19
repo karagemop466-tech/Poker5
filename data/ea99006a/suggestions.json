@@ -177,6 +177,17 @@
  },
  {
   "id": "S17",
+  "title": "Add a dated text capture for image-only official schedules",
+  "problem": "Two of the rooms the brief covers publish tournament detail only as images (South Point: the daily schedule plus all eight rules sheets; the Horseshoe and Caesars dailies are PDF flyers whose text is readable but whose per-event calendar is not). Those rows can never clear 'entry terms not read' from an HTML fetch, so they stay outside the single-entry comparison even when the event is real and playable.",
+  "options": [
+   "Fetch the named images on the morning run, OCR them into a dated capture, and publish the transcribed sentence with the image URL beside it (recommended: the value stays tied to an official artifact and the reader can see what was read)",
+   "Ask each room for its schedule and structures in text and publish the reply as the source (slowest, but it is also the only way to settle F01's written-cap question and Q21)",
+   "Leave them blank and flagged (current behaviour: honest, but it under-counts the playable field for a trip whose goal is to enter as many events as possible)"
+  ],
+  "effect": "Every room the trip could use becomes comparable on the same fields as the Venetian rows (buy-in, fee, guarantee, stack, levels, late-reg close, entry rules) instead of a table of blanks."
+ },
+ {
+  "id": "S18",
   "title": "Nightly calendar capture for the hotels whose booking engines render server-side",
   "problem": "The Horseshoe and Resorts World calendars returned full December price maps in one read (2026-11-19), while the Venetian and Caesars Palace engines returned nothing. One nightly scheduled capture of the two working engines would turn the rate log into a real price history.",
   "options": [
@@ -187,7 +198,7 @@
   "effect": "Price history and change badges for hotel rates, like the ones event rows already have. In review - not implemented."
  },
  {
-  "id": "S18",
+  "id": "S19",
   "title": "Show both directions of every walk and let the filter use the direction that matters",
   "problem": "Walking routes are asymmetric (Wynn to Venetian 14 min vs Venetian to Wynn 26 min; flag F72). The table shows one direction per row; a reader deciding on the walk home after midnight sees the reverse row only if they look for it.",
   "options": [
@@ -198,7 +209,7 @@
   "effect": "Safer late-night planning. In review - not implemented."
  },
  {
-  "id": "S19",
+  "id": "S20",
   "title": "Store the GTD to entry-fee ratio as a data field",
   "problem": "The ratio is computed at render time (schedule tables, planner) but is not a stored field, so it cannot be sorted or exported from the data files alone.",
   "options": [

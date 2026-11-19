@@ -3,8 +3,9 @@
   "id": "F01",
   "area": "Entry rules",
   "title": "No structure sheet explicitly guarantees a one-entry maximum; S1 classifications are evidence-based",
-  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'Confirmed single-entry (standard S1)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'.",
-  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html"
+  "detail": "All 37 official DSE IV structure sheets were read. None explicitly says 'one entry only' or promises a freezeout. The site nevertheless marks 53 event rows 'No second entry granted (S1 screen)' because each row's own sheet was read and no rule grants a second entry under the published S1 test; this is not a venue guarantee. The other 41 rows are classified as multi-entry under the same standard. Obtain a written event-specific cap from the tournament desk before treating any event as a guaranteed freezeout. Per-row evidence and the full standard are on the Verification page. Re-read 2026-11-19 (session 0a0d8e6b, data/0a0d8e6b/sheet_reread.json): the 22 structure sheets behind the 53 rows were read line by line. Their start times, buy-ins, guarantees, starting chips, late-registration closes, house fees and prize pools match the stored rows on 53 of 53 rows. None of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence. The label therefore means 'no re-entry, rebuy or add-on wording found on the sheet', not 'written single-entry rule'. User decision: keep the label with this definition, or relabel these rows as 'no re-entry wording found'. The label was re-worded on 2026-11-19 (\"No second entry granted (S1 screen)\", PR #97) for exactly this reason: the pill states the result of the S1 screen, not a venue promise, and the old wording read as one. (session 6dba9b3c)",
+  "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+  "last_updated": "2026-11-19"
  },
  {
   "id": "F02",
@@ -100,7 +101,7 @@
   "id": "F14",
   "area": "Hotels",
   "title": "Dated nightly rates: Wynn captured for the window; Venetian and Caesars Palace still missing",
-  "detail": "Updated 2026-11-19 (session f7676bd0): the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F71/F73). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F72/F74). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
   "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
   "status": "open",
   "last_updated": "2026-11-19"
@@ -109,7 +110,7 @@
   "id": "F15",
   "area": "Routes",
   "title": "Cross-property walking times are not published officially",
-  "detail": "Updated 2026-11-19 (session f7676bd0): still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F72/F73 on asymmetry). The on-property Venetian route remains zero minutes.",
+  "detail": "Updated 2026-11-19 (session f7676bd0): still no hotel page publishes a cross-property walking time, but all 30 pairs were measured on Google Maps walking between the official addresses and are stored per pair with retrieval date. Walking to the Venetian room: Wynn 14 min, Resorts World 21 min, Caesars Palace 25 min, Horseshoe 30 min (one direction; see F73/F74 on asymmetry). The on-property Venetian route remains zero minutes.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
@@ -464,27 +465,36 @@
  },
  {
   "id": "F70",
+  "area": "Other rooms",
+  "title": "South Point's page text promises a $300 daily buy-in; its own published rules sheets do not have one",
+  "detail": "Read again 2026-11-19. The official South Point poker-room page states: \"We feature tournaments daily with aggressive guarantees at 10:10 am, 2:10 pm, 6:10 pm and 10:10 pm with buy-ins of $120 and $300.\" The property's own Daily Tournament Schedule page carries no text at all (see F12) - eight rules-sheet images plus a schedule image - and the file names of those sheets state $120 six times and $200 twice: 01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg states $120; 02_120-No-Limit-Holdem-Chip-Chop-Rules-Sheet-Oct2026-1.jpg states $120; 03_120-Omaha-8-or-Better-Rules-Sheet-Oct2026-1.jpg states $120; 04_120-Crazy-Pineapple-Turbo-Rules-Sheet-Oct2026-1.jpg states $120; 05_120-No-Limit-Holdem-Turbo-Mega-Stack-Rules-Sheet-Oct2026-1.jpg states $120; 06_200-No-Limit-Holdem-Bounty-Rules-Sheet-Oct2026-1.jpg states $200; 07_200-Deep-Stack-Rules-Sheet-Oct2026-1.jpg states $200; 08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg states $120. So the $300 figure in the page text has no published sheet, and a $200 event that does have sheets is not mentioned in the page text at all. Because the schedule and the structures exist only as images, the eight South Point rows keep 'entry terms not read', and no start time is tied to a buy-in in any of them. Do not plan a South Point entry around a $300 event at a chosen hour on this evidence.",
+  "source": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "status": "open: needs the printed schedule or rules in text form, or an answer from the room",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F71",
   "area": "Hotels",
   "title": "The Caesars Palace booking calendar returned a technical error on 2026-11-19",
   "detail": "The official December 2026 rate calendar for Caesars Palace rendered 'Sorry! Our website is currently experiencing technical difficulties' and no rates, while the same engine rendered the Horseshoe calendar minutes later. No dated Caesars Palace quote is stored; retry needed.",
   "source": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000"
  },
  {
-  "id": "F71",
+  "id": "F72",
   "area": "Hotels",
   "title": "Resorts World calendar shows conflicting resort-fee captions",
   "detail": "One page displays both 'Calendar pricing excludes daily resort fee and taxes' and 'Calendar pricing includes $55 daily resort fee and excludes taxes'. Both captions are stored verbatim; the displayed calendar figures are kept as raw displays and no fee-inclusive interpretation is claimed.",
   "source": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2"
  },
  {
-  "id": "F72",
+  "id": "F73",
   "area": "Hotels",
   "title": "Google Maps walking routes are asymmetric by direction",
   "detail": "Measured 2026-11-19 (session f7676bd0): Wynn to Venetian 14 min (0.5 mi) but Venetian to Wynn 26 min (1.1 mi); Caesars Palace to Wynn 39 min but Wynn to Caesars Palace 47 min. Entrance pin placement and route choice differ per direction. Both directions are stored as measured; neither is smoothed or symmetrized.",
   "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2"
  },
  {
-  "id": "F73",
+  "id": "F74",
   "area": "Hotels",
   "title": "Horseshoe to Venetian measures 31 minutes - over the 30-minute limit - in one direction; calendars do not define their per-date meaning",
   "detail": "Venetian to Horseshoe measured exactly 30 min (1.3 mi, via Krueger Dr) while Horseshoe to Venetian measured 31 min (1.3 mi) on 2026-11-19. Which direction the 30-minute limit applies to changes the verdict for this hotel; both figures are published so the reader can decide. Separately, the Caesars/Horseshoe/Resorts World calendars do not state whether a date's displayed figure is for the night of that date or a stay beginning that date.",
