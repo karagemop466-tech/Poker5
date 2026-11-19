@@ -66,29 +66,25 @@ B3 = os.path.join(ROOT, "data", "b3be876c")
 TODAY = dt.date.today().isoformat()
 
 # ------------------------------------------------- provenance and curation policy (session 6dba9b3c)
-# Three rules exist here because this script is run on a schedule, twice a day, by
-# .github/workflows/recheck-ea99006a.yml. Before them, a scheduled run wrote dates it had
-# no evidence for and overwrote corrections other sessions had made:
+# Three rules exist here because this script runs on a schedule, twice a day, from
+# .github/workflows/recheck-ea99006a.yml, and it commits what it writes.
 #
-# 1. LIVE_READ is the date the pages quoted in LIVE were actually fetched. They were read with
-#    the agent page-fetch tool on 2026-11-19 and their verbatim excerpts are filed in
-#    data/b3be876c/live-notes-2026-11-19.md. This script opens no network connection, so
-#    stamping those excerpts with the run date published "re-read on <today>" for a read that
-#    never happened. The read date is the capture date; the max() in the writers below keeps a
-#    newer date when a session really did re-read a page.
-# 2. SOURCES_READ is the newest date on which an official source behind this data was really
-#    fetched, read from the capture's own records (data/c6087e2c/scrape_status.json, written by
-#    scripts/scrape_251c122f.py) and the source ledger (data/ea99006a/last_checked.json, written
-#    by scripts/recheck_ea99006a.py and scripts/monitor_b3be876c.py). Every "retrieved", "read"
-#    and "re-checked" stamp in the derived data uses it, so a stale capture can never present
-#    itself as a same-day check. meta["retrieved"] is the value the whole site prints as its
-#    "as of" date, including the future/past cut on the schedule pages.
-# 3. Curation is preserved: _preserve() keeps a committed string that this script would replace
-#    with a different one, for the narrative fields of hotels, flags, questions and
-#    suggestions. The published verdicts in venetian.json stay generator-authoritative - re-
-#    deriving them from the newest capture is the point of the job - but wording that a later
-#    session corrected is not silently reverted; every skipped overwrite is listed in
-#    data/b3be876c/integration_report.json under "preserved_curation".
+# 1. LIVE_READ is the date the pages quoted in LIVE were actually fetched. They were read with the
+#    agent page-fetch tool on 2026-11-19 and the verbatim excerpts are filed in
+#    data/b3be876c/live-notes-2026-11-19.md. This script opens no network connection, so stamping
+#    those excerpts with the run date published "re-read on <today>" for a read that never
+#    happened - and it did so again every evening.
+# 2. sources_read() is the newest date on which an official source behind this data was really
+#    fetched, taken from the capture's own records (data/c6087e2c/scrape_status.json) and the
+#    source ledger (data/ea99006a/last_checked.json). Every "retrieved" / "read" / "re-checked"
+#    stamp and the per-row last-checked fallback use it, so a stale capture can never present
+#    itself as a same-day check. meta["retrieved"] is the date the whole site prints as its "as
+#    of" date, including the past/future cut on the schedule and ranking pages.
+# 3. preserve() keeps a committed correction instead of overwriting it. Sessions edit the wording
+#    of hotel notes, flags, questions and suggestions directly on main; an unguarded upsert here
+#    reverted those corrections every night. Numbers, booleans and the re-derived per-row verdicts
+#    stay generator-authoritative (re-deriving them from the newest capture is the job), and every
+#    skipped overwrite is listed in data/b3be876c/integration_report.json under preserved_curation.
 LIVE_READ = "2026-11-19"
 
 PRESERVED: list[str] = []
@@ -100,27 +96,17 @@ def _readable_date(v) -> str:
 
 
 def preserve(committed: dict, proposed: dict, label: str, keys=None) -> dict:
-    """Keep corrections already in the committed data instead of overwriting them.
-
-    Text, list and dict fields are protected; numbers, booleans and the re-derived verdicts always
-    come from this script. A date field (anything ending in _read, or named retrieved/last_updated) takes
-    the later of the two dates, because the committed one may record a read that happened after
-    the capture this script falls back on.
-    """
+    """Keep corrections already in the committed data instead of overwriting them."""
     for k, v in list(proposed.items()):
         if keys is not None and k not in keys:
             continue
         cur = committed.get(k)
         if _readable_date(v) and _readable_date(cur):
-            newer = _readable_date(cur)
-            if _readable_date(v) < newer:
+            if _readable_date(v) < _readable_date(cur):
                 proposed[k] = cur
-                PRESERVED.append("%s.%s (kept the later read date %s)" % (label, k, newer))
+                PRESERVED.append("%s.%s (kept the later read date %s)" % (label, k, cur))
             continue
         if isinstance(v, (str, list, dict)) and isinstance(cur, type(v)) and cur and cur != v:
-            # A narrative field (text, an option list, a nested block). The committed version is a
-            # curation decision - sometimes by a later session, sometimes a deliberate renumbering -
-            # so it stands, and this run says so in its report instead of quietly replacing it.
             proposed[k] = cur
             PRESERVED.append("%s.%s (kept the committed wording)" % (label, k))
     return proposed
@@ -143,8 +129,7 @@ def sources_read(ledger: dict) -> str:
             d = _readable_date(rec.get("last_checked"))
             if d:
                 dates.append(d)
-    d2 = LIVE_READ
-    return max(dates) if dates else d2
+    return max(dates) if dates else LIVE_READ
 
 # ----------------------------------------------------------------- official rule text
 # Anything in a sheet's numbered rule list that grants a further entry, or prices
@@ -447,6 +432,55 @@ def derive_verdict(row: dict, sheet: dict | None, kind: str) -> tuple[str, str, 
             ev)
 
 
+# Ids owned by session 2723deea.  Other sessions were publishing F56-F58 on the same
+# day, so this session writes only above a reserved base and never overwrites a flag
+# whose title is not one of its own.
+RESERVED_FLAG_IDS = {"F59", "F60", "F61"}
+
+
+# ------------------------------------------------------------ eligibility restrictions
+# Read 2026-11-19 by session 2723deea from the structure sheets themselves.  A row can
+# pass S1 (no second entry can be bought) and still be closed to a general entrant:
+# the Seniors sheets print the age rule on the sheet face, the two LIPS Ladies
+# satellites print "Open to Female players", and the LIPS Jingle sheet prints
+# "Teams: Female / Female OR Female / Male".  A restricted event must never be
+# offered as a playable entry to a reader who is not eligible, so each hit is
+# recorded with the sentence it came from and shown on the row.  The table is keyed
+# by (event number, sheet number) because one sheet can carry two events.
+RESTRICTION_RULES = [
+    {"test": re.compile(r"MUST BE 50\+ YEARS OF AGE", re.I),
+     "label": "Age restriction: 50+ (Seniors)",
+     "excerpt": "MUST BE 50+ YEARS OF AGE TO PARTICPATE",
+     "sheets": ["17"]},
+    {"test": re.compile(r"Open to Female players", re.I),
+     "label": "Restricted field: female players only (LIPS Ladies)",
+     "excerpt": "Open to Female players who must 21+ years of age and have a Venetian Rewards card to participate.",
+     "sheets": ["19"]},
+    {"test": re.compile(r"Teams?:\s*Female\s*/\s*Female", re.I),
+     "label": "Restricted format: two-player tag team, female/female or female/male",
+     "excerpt": "Teams: Female / Female OR Female / Male",
+     "sheets": ["31"]},
+]
+
+
+def eligibility_restriction(row: dict, sheet: dict | None) -> dict | None:
+    """The official restriction on this row's sheet, or None when none is stated.
+
+    Returns {label, excerpt, source, retrieved}.  Nothing is inferred from the event
+    name: a row is marked restricted only when a rule on its own sheet says so.
+    """
+    if not sheet:
+        return None
+    text = (sheet.get("rules_text") or "") + "\n" + (sheet.get("sheet_subtitle") or "")
+    for rule in RESTRICTION_RULES:
+        if rule["test"].search(text):
+            return {"label": rule["label"], "excerpt": rule["excerpt"],
+                    "source": sheet.get("url") or row.get("source") or "",
+                    "retrieved": (sheet.get("retrieved_at") or "")[:10],
+                    "sheet_no": sheet.get("sheet_no")}
+    return None
+
+
 # ----------------------------------------------------------------- live re-reads, 2026-11-19
 # Read with the page-fetch tool on 2026-11-19; the verbatim excerpts live in
 # data/b3be876c/live-notes-2026-11-19.md and are repeated here so the site can
@@ -513,7 +547,7 @@ LIVE = {
 def apply_hotels(hotels: list[dict]) -> list[str]:
     """Add the official hotel re-reads held in LIVE. Returns the notes for the report.
 
-    Committed wording wins (see preserve()): the re-reads below are dated captures, and a later
+    Committed wording wins (see preserve()): these re-reads are dated captures, and a later
     session's correction to a hotel note must not be reverted by a scheduled run.
     """
     notes = []
@@ -589,14 +623,13 @@ def apply_hotels(hotels: list[dict]) -> list[str]:
                                "$119 and $209 and can be higher\"; it is conditional on six hours of live play or a "
                                "$300+ tournament entry every night, and rates are only published 150 days out, so "
                                "December 2026 is not yet on it. Booked by phone on a Venetian Rewards account.")
-        notes.append("Venetian: resort fee re-read on %s (the date of the official read recorded beside the "
-                     "excerpt, not the date this script ran); the official poker suite-rate page is the only "
-                     "published numeric room rate found on any Strip property ($119 / $209 'start as low as'), "
-                     "recorded in the dated rate log as a starting rate and NOT as a quote for the stay."
-                     % v["read"])
+        notes.append("Venetian: resort fee re-read on %s (the date of the official read recorded beside the excerpt, "
+                     "not the date this script ran); the official poker suite-rate page is the only published "
+                     "numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in "
+                     "the dated rate log as a starting rate and NOT as a quote for the stay." % v["read"])
     for h in hotels:
         # A fee read is only ever a date an official page was actually opened: the LIVE capture date
-        # for the hotels this script holds an excerpt for, otherwise blank (never the run date).
+        # for the hotels this script holds an excerpt for, otherwise blank - never the run date.
         h.setdefault("resort_fee_read", h.get("resort_fee_source") and LIVE_READ or "")
         # A hotel with no published rate gets an explicit None: the page shows it blank and flagged,
         # it is never estimated from another property.
@@ -737,8 +770,8 @@ def main() -> int:
         # stale flags from an earlier run must not survive a corrected comparison
         row.pop("guarantee_note", None)
         row.pop("start_note", None)
-        # The comparison is made from the two stored captures, so it is dated with the day those
-        # captures were read - the site prints this as the row's "Read" column.
+        # The comparison uses the two stored captures, so it is dated with the day those captures were
+        # read - the site prints this value as the row's "Read" column.
         row["spot_check"] = spot_check_row(row, sheet, SRC)
         for _k, _v in (row["spot_check"].get("fields") or {}).items():
             if _k == "guarantee" and not _v.get("ok"):
@@ -754,6 +787,10 @@ def main() -> int:
             "entry_grant_sentences": ev["grant_sentences"],
             "flight_sentences": ev["flight_sentences"],
             "registration_close": ev["registration_close"],
+            # The clock time the sheet itself printed for the close (empty when the sheet
+            # gives none). Stored so a shared sheet whose one "Late Registration" line was
+            # copied onto every event cannot attribute the wrong clock to a row.
+            "registration_close_clock": sheet.get("late_registration_clock") or "",
             "event_named_on_sheet": ev["covers_event"],
             "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no "
                         "re-entry/rebuy/add-on/purchased-stack provision",
@@ -781,6 +818,12 @@ def main() -> int:
             "retrieved": (ev["sheet_retrieved"] or "")[:10] or "",
         }
         row["rule_fields"] = fields
+        row["late_reg_clock"] = sheet.get("late_registration_clock") or ""
+        rest = eligibility_restriction(row, sheet)
+        if rest:
+            row["restriction"] = rest
+        else:
+            row.pop("restriction", None)
         # "last checked": the real monitor date for the URL behind this row, plus
         # this session's live re-read if it covered the row.
         urls = [row.get("source"), row.get("schedule_source")]
@@ -839,18 +882,17 @@ def main() -> int:
             cur += dt.timedelta(days=1)
     if best:
         _, cin, cout, n, ns, g = best
-        # check_out is the day you leave, so it is check_in + nights. The previous line wrote
-        # cout - 1 day while also writing nights: 7, which published a 6-night stay (6 -> 12 Dec)
-        # beside a 7-night cost ("nights x true hotel cost") and a 7-day playing list - and the
-        # nightly run republished that off-by-one over the corrected date on main every day.
-        # The scored playing span is [cin, cout); the stay is [cin, cout].
+        # check_out is the day you leave, so it is check_in + nights. The line below used to write
+        # cout - 1 day while also writing nights: 7, publishing a 6-night stay (6 -> 12 Dec) beside a
+        # 7-night cost ("nights x true hotel cost") and a 7-day playing list - and the scheduled run
+        # republished that off-by-one over the corrected date on main every day. The scored playing
+        # span is [cin, cout); the stay is [cin, cout].
         nights = (cout - cin).days
         last_play = cout - dt.timedelta(days=1)
-        TRIP_END = last_play.isoformat()
         meta["trip"] = {
             "check_in": cin.isoformat(),
             "check_out": cout.isoformat(),
-            "last_play_day": TRIP_END,
+            "last_play_day": last_play.isoformat(),
             "nights": nights, "adults": 2, "rooms": 1,
             "rationale": ("Chosen automatically on %s from the corrected single-entry set: check in %s, check out "
                           "%s = %d nights, with %d full playing days (%s to %s). It carries "
@@ -905,12 +947,17 @@ def main() -> int:
                        "means 'the published rules grant no second entry', not 'the house promises a freezeout'. "
                        "That is flag F01 and it stays open."),
     }
-    # The site's single "as of" date (build_ea99006a.py prints it on every page, and the schedule
-    # pages use it to split past from future rows). It is the date the sources were read, not the
-    # date this job ran.
+    # The site's single "as of" date: printed on every page and used by the schedule and ranking
+    # pages to split past from future rows. It is the date the sources were read, not the run date.
     meta["retrieved"] = SRC
     meta["integration"] = {
         "session": "b3be876c", "run_at": dt.datetime.now(dt.timezone.utc).date().isoformat(), "run_at_note": "date only on purpose: a full timestamp would make every scheduled run dirty the data files and produce an empty commit",
+        # 2026-11-19 re-read by session 2723deea: the schedule page (all four chunks, 94 rows),
+        # the resort-fee page, the poker suite-rate page, the Clark County room-tax ordinance and
+        # 8 structure sheets behind the recommended window. Logged in data/2723deea/reverify.json;
+        # no value differed, so nothing was rewritten from it.
+        "reverified_by": {"session": "2723deea", "date": "2026-11-19",
+                          "record": "data/2723deea/reverify.json"},
         "live_reads": {k: v.get("read", LIVE_READ) for k, v in LIVE.items() if isinstance(v, dict)},
         "sheet_spot_checks": LIVE["sheet_live_spot_checks"],
         "verification_records": bool(verification),
@@ -918,16 +965,39 @@ def main() -> int:
 
     # ---- flags: close what today's reads settled, add what this session found ----
     def flag(fid, area, title, detail, source, status="open"):
+        """Update a flag by id, or append it - never duplicating and never overwriting.
+
+        Several sessions edited this list on the same day.  A finding is identified by its
+        title: if any flag already carries this title (wherever it sits, because an earlier
+        run may have had to move it off a colliding id) it is updated in place.  Otherwise a
+        non-reserved id updates that id; a reserved id gets the first free id above the
+        current maximum rather than overwriting another session's finding.
+        """
+        for f in flags:
+            if f.get("title") == title:
+                before_f = dict(f)
+                upd = {"detail": detail, "source": source, "status": status}
+                preserve(f, upd, "flags.%s" % fid, keys=("detail", "status"))
+                f.update(upd)
+                # Restamp only when the flag's own content moved: stamping "last_updated" on every
+                # run made an untouched flag look freshly reviewed and dirtied the published page.
+                if any(before_f.get(k) != f.get(k) for k in ("detail", "source", "status")):
+                    f["last_updated"] = SRC
+                return
+        if fid in RESERVED_FLAG_IDS:
+            used = {f["id"] for f in flags}
+            n = max([int(i[1:]) for i in used if i.startswith("F") and i[1:].isdigit()] or [0]) + 1
+            flags.append({"id": "F%d" % n, "area": area, "title": title, "detail": detail,
+                          "source": source, "status": status, "last_updated": SRC,
+                          "id_note": "requested id %s was already held by another session's finding" % fid})
+            return
         for f in flags:
             if f["id"] == fid:
-                before = dict(f)
-                upd = preserve(f, {"title": title, "detail": detail, "source": source, "status": status},
-                               "flags.%s" % fid, keys=("title", "detail", "status"))
-                f.update(upd)
-                # "last_updated" is the date the flag's own content last moved. Restamping it on
-                # every scheduled run made an untouched flag look freshly reviewed and dirtied
-                # flags.json (and therefore the published page) for no reason.
-                if any(before.get(k) != f.get(k) for k in ("title", "detail", "source", "status")):
+                before_f = dict(f)
+                proposed = preserve(f, {"title": title, "detail": detail, "status": status},
+                                    "flags.%s" % fid, keys=("title", "detail", "status"))
+                f.update(proposed)
+                if any(before_f.get(k) != f.get(k) for k in ("title", "detail", "source", "status")):
                     f["last_updated"] = SRC
                 return
         flags.append({"id": fid, "area": area, "title": title, "detail": detail, "source": source,
@@ -1008,34 +1078,131 @@ def main() -> int:
          "https://www.clarkcountynv.gov/adobe/assets/urn:aaid:aem:7436500e-cac4-420a-b23a-02d3fec69900/original/as/room-tax-increase-transient-lodging-letter-111616.pdf",
          status="rate confirmed; fee taxation flagged")
 
+    # ---- defects found by the 2026-11-19 line-by-line re-read (session 2723deea) ----
+    flag("F59", "Entry rules",
+         "A restricted field was counted among the ordinary single-entry picks (the top-ranked event was a Seniors 50+ event)",
+         ("The Executive Summary's 'highest descriptive guarantee-to-entry ratios' table put the 2 December and 8 December "
+          "$600 Seniors events at the top of the ordinary ranking, and the day schedule could choose a Seniors, "
+          "female-only or tag-team event as the day's primary pick. Those rows DO pass S1 (nothing on the sheet "
+          "sells a second entry), but their own sheets close the field: sheet 17 prints 'MUST BE 50+ YEARS OF AGE "
+          "TO PARTICPATE', sheet 19 prints 'Open to Female players who must 21+ years of age', and sheet 31 prints "
+          "'Teams: Female / Female OR Female / Male'. Fix applied: each such row now carries a sheet-derived "
+          "restriction label with its sentence and retrieval date, the label is shown on every row, the executive "
+          "ranking lists them separately as excluded, and the day schedule cannot make one the day's primary event. "
+          "A reader who is eligible can still play them; the label says who can."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+         status="fixed by this session; label visible on the row")
+    flag("F60", "Monitoring",
+         "The source-change monitor has never recorded a successful first read, so every row's 'source changed' badge is unproven",
+         ("The whole-page ledger (data/ea99006a/last_checked.json) has first_checked empty for all 96 URLs, and its single "
+          "recorded run of 2026-11-19T00:51:24Z marked 13 URLs 'changed' on their first attempt - 94 Venetian rows "
+          "therefore carry a 'page re-fetched' note even though the per-row value comparison (which is what actually "
+          "matters) has recorded no run at all (monitor_summary.run is null). The value-level monitor and the "
+          "2026-11-19 re-reads in this session found no value difference on the rows checked. A badge is kept as "
+          "informational only; it is not evidence that a published value moved. Re-read the row's sheet before relying on it."),
+         LIVE["venetian_poker_rate"]["url"], status="open")
+    flag("F61", "Schedule",
+         "Shared structure sheets can print one registration close for several events on different start times",
+         ("Structure sheet 25 covers events #45 (8:10 PM), #46 (9:10 AM) and #48 (12:10 PM) and prints one line, 'Late "
+          "Registration: 6 levels', with no clock. An earlier pass copied the 8:10 PM row's derived clock (9:40 PM) onto "
+          "the two morning rows, which would have widened their registration window by more than ten hours. Fix applied: "
+          "the builder now prefers the clock time the sheet itself printed, and where a shared sheet prints none the row "
+          "keeps its text and states no close time instead of borrowing another event's. No close time is invented."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+         status="fixed by this session")
+
+    flag("F61", "Eligibility",
+         "Event #35 is a two-person team event: the S1 label describes one entry, not one player",
+         ("Session 0a0d8e6b flagged that #35 ($600 LIPS Poker Jingle Tag Team, sheet 31) is stored as a "
+          "confirmed single-entry row although the sheet describes a team format ('Teams: Female / Female OR "
+          "Female / Male'; 'Teams will rotate their players at the start of every level'). Re-read on 2026-11-19 "
+          "and extended by session 2723deea: the sheet states no second-buy-in path, so the S1 entry test itself "
+          "still passes - but the row is not an individual event and it requires a partner, which the S1 label "
+          "cannot express. The row now carries a restriction label with the official sentence, the ranking and the "
+          "day plan exclude it, and this flag records that the S1 label alone is not sufficient for team formats."),
+         "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+         status="labelled by this session; S1 label limitation kept open")
+
     # ---- questions / suggestions ----
     def upsert(items, iid, **kw):
         for it in items:
             if it.get("id") == iid:
+                # Curated registers: the committed wording of an existing entry wins, and an entry
+                # this run cannot improve is left byte-identical instead of being restamped.
                 preserve(it, kw, "%s" % iid, keys=tuple(kw))
                 if all(it.get(k) == v for k, v in kw.items()):
-                    return          # nothing derived changed: leave the entry byte-identical
+                    return
                 it.update(kw)
                 return
         items.append(dict(kw, id=iid))
 
+    upsert(questions, "Q19",
+           q=("Which published events is a general entrant actually allowed to enter, and where is that stated?"),
+           have=("Every restriction below was read on the event's own structure sheet on 2026-11-19 and is shown on "
+                 "the row with its sentence and link: Seniors 50+ (sheet 17 events #24 and #32; sheet 20 events #49 "
+                 "and the #49 restart), a female-only field (sheet 19 events #33 and #37), and a two-player tag team "
+                 "(sheet 31 event #35). They are excluded from the executive ranking because they are not a pick a "
+                 "general reader can play."),
+           missing=("There is no published list of which other rows carry eligibility conditions the sheets do not "
+                    "state (for example a minimum-play requirement, a member-only satellite, or an invitation-only "
+                    "field). The tag-team event also requires a partner, which the sheet states as a format rule, "
+                    "not as a waitlist or pairing service - whether the room pairs singles was not found."),
+           how=("Ask the Venetian poker room to confirm in writing, per event number, that no unpublished eligibility "
+                "condition applies; until then a reader should treat only the rows with no restriction label as open "
+                "to them."))
+    upsert(questions, "Q20",
+           q="What would a day actually look like from 8 AM, and how many events can really be played in one day?",
+           have=("The earliest official start in the captured window is 9:10 AM (Venetian #46, a turbo satellite on "
+                 "12 December); the earliest non-satellite start is 10:10 AM. Evening events start at 4:10 PM, "
+                 "5:10 PM, 6:10 PM and 8:10 PM, and the latest published registration close is 9:40 PM."),
+           missing=("No official source publishes a finish time, a field-size estimate or an expected duration, so the "
+                    "number of events a player can enter in one day cannot be computed - only bounded: an event's "
+                    "registration window is known, its end is not."),
+           how=("Use the 'Assumed playing length' control on the Day schedule page to test your own assumption, and "
+                "ask the room for the typical finishing time of the specific event. One event per day stays the "
+                "default until a real finish time is sourced."))
     upsert(questions, "Q01",
            q="What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
-           have=("The site now fixes this for you: %s to %s (7 nights), chosen on %s from the corrected single-entry "
-                 "set (%d entries, about $%s of published guarantees), with the nightly budget ceiling and quality "
-                 "floor applied on the hotels page. No input is required to read the plan."
-                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], SRC,
+           have=("A planning scenario is fixed automatically: check-in %s, check-out %s (%d nights), chosen on %s "
+                 "from the corrected single-entry set (%d entries, about $%s of published guarantees). The check-out "
+                 "date is the morning after the last playing day. The displayed nightly budget ceiling is the average "
+                 "nightly room charge from one dated booking observation that is NOT for this stay, and the quality "
+                 "floor is a property-tier label, not an independent rating; both are explained on the Hotels and "
+                 "Trip planner pages. No input is required to read the plan."
+                 % (meta["trip"]["check_in"], meta["trip"]["check_out"], meta["trip"]["nights"], SRC,
                     meta["trip"].get("entries_in_window", 0),
                     format(int(meta["trip"].get("guarantee_sum_in_window", 0)), ",d"))),
-           missing=("Your budget ceiling and quality floor are set to the values that keep every official-source "
-                    "hotel on the page; tell the site a ceiling and it hides hotels whose verified fee alone exceeds "
-                    "it, and it never invents a rate to make a hotel qualify."),
-           how="See the 'Budget ceiling and quality floor' panel on the Hotels page and the date filter on any table.")
+           missing=("The traveller's own dates, budget ceiling and minimum quality standard are still unknown. The "
+                    "scenario above is the site's automatic choice, not your decision, and no hotel has a dated, "
+                    "itemized quote for it, so the trip total stays 'Incomplete'."),
+           how=("Read the scenario as a starting point, then obtain official itemized quotes for the same nights, "
+                "occupancy and room class before treating any hotel figure as a comparison. The date filter on every "
+                "table re-scopes every row."))
     upsert(questions, "Q11",
            q="Can the site complete the trip cost without me entering anything?",
-           have="The entries side is complete and source-linked. The hotel side needs a dated nightly rate, which no official Strip page publishes for these dates.",
+           have="The entries side is complete and source-linked. The hotel side needs a dated nightly rate, and no official Venetian, Wynn or Caesars page publishes one for these dates; the only numeric room rate any of them publishes is the Venetian poker-suite floor. The booking engines that would produce a quote are JavaScript-driven and were not captured, so the rate log has no dated observation for 6-13 December 2026.",
            missing="A dated quote per hotel for 6-13 December 2026 (checkout total, nightly average, mandatory fees, tax, parking, cancellation deadline, rate timestamp).",
            how="The nightly monitor re-reads the official suite-rate page and the booking links each morning and records any published change in the dated rate log; the calculator stays 'Incomplete' until a dated quote exists. Nothing is asked of you.")
+    upsert(suggestions, "S15",
+           title="Filter the tables by whether an event is actually open to you",
+           problem=("Single-entry rows can still be closed fields: the 2 and 8 December Seniors events pass S1 but are "
+                    "50+, two LIPS satellites are female-only, and one event is a two-player tag team. Before this "
+                    "session they were ranked as ordinary picks and could become a day's primary event."),
+           options=["Keep the per-row 'entry restricted' label only (implemented)",
+                    "Add a checkbox 'hide events I am not eligible to enter (Seniors 50+, female-only, tag team)'",
+                    "Let the reader tick which field types they qualify for and filter on that"],
+           effect=("The label is implemented and the ranking plus the day schedule already exclude restricted rows. A "
+                   "reader-side toggle is the natural next step but needs a decision on what 'eligible' means (age "
+                   "and gender are the reader's own facts, not the site's to assume), so it is left as an option."))
+    upsert(suggestions, "S16",
+           title="Have the monitor record its first-read baseline explicitly",
+           problem=("The whole-page ledger has no successful first read recorded, so its 'changed' marks are unproven "
+                    "and 94 schedule rows carry a page-level note that has nothing to do with their values (flag F57)."),
+           options=["Leave it and keep the badge informational (the value-level monitor already compares sentences)",
+                    "Seed the ledger on the next successful run as 'baseline', and only compare from the run after it",
+                    "Drop the page-hash ledger and publish only value-level changes"],
+           effect=("Option 2 costs one scheduled run of extra latency and removes the misleading first-run badges; it "
+                   "does not change any published value."))
     upsert(suggestions, "S10",
            title="Publish one root-site generator (done here) and retire the second one",
            problem="Two scheduled jobs each rebuilt the root site from different data with different verdict standards, so the published headline changed every night depending on which job committed last.",
@@ -1073,10 +1240,9 @@ def main() -> int:
         })
     verification = {
         "run": {"session": "b3be876c", "date": TODAY, "sources_read": SRC,
-                "how": ("The official sources behind these values were last read on %s (the date recorded in the "
-                        "capture and the source ledger, not the date of this run, which is the day above). The "
-                        "same URLs are re-read nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, "
-                        "which compares the extracted sentences rather than the page hash." % SRC),
+                "how": ("Values re-read on this date with the agent's page-fetch tool; the same URLs are re-read "
+                        "nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the "
+                        "extracted sentences rather than the page hash."),
                 "sandbox_note": ("The authoring sandbox cannot open a TCP connection to casino hosts, so the live "
                                  "reads below were made through the agent's page-fetch tool and the scheduled "
                                  "network reads run on GitHub Actions runners.")},
@@ -1149,8 +1315,8 @@ def main() -> int:
         "spot_check_mismatches": sum(1 for r in ven if r.get("spot_check", {}).get("mismatches")),
         "guarantee_disagreements": guarantee_notes,
         "hotel_notes": apply_hotels(hotels),
-        # what this run deliberately did NOT overwrite (a later session's correction), so the
-        # divergence is reported instead of hidden; an empty list means nothing was preserved.
+        # what this run deliberately did NOT overwrite (another session's correction); an empty list
+        # means nothing was preserved. Reported instead of applied silently.
         "preserved_curation": sorted(set(PRESERVED)),
         "sources_read_on": SRC,
         "rate_log_entries": 2,

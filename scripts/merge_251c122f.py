@@ -46,6 +46,36 @@ DATA = os.path.join(ROOT, "data", "c6087e2c")
 STRUCT_BASE = ("https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/"
                "deepstack/2026/structures/dse_nov_2026-structure_{}.pdf")
 
+# Check the official rules text as well as the scraper's convenience boolean.
+# The Venetian sheet 8 says “All subsequent buy in's after the initial buy in
+# will be $200”; this grants another paid entry without using “re-entry”.
+SECOND_ENTRY_GRANT = re.compile(
+    r"(?:re-?entry|re-?entries|re-?buy|rebuys?|add-?on|add-?ons?"
+    r"|(?:subsequent|additional|second|extra|further)\s+(?:buy-?\s?in|entry|entries)"
+    r"|buy-?\s?in'?s?\s+(?:after|beyond)"
+    r"|buy\s+back|purchas\w+\s+(?:chips|stack|entry)|alternate\s+stack"
+    r"|unlimited\s+(?:re-?entry|re-?buy))",
+    re.I)
+
+
+def sheet_grants_second_entry(sheet):
+    """Return true when official sheet text or parsed fields allow an extra entry."""
+    if not sheet or "error" in sheet:
+        return False
+    return bool(sheet.get("adds_a_second_entry") or SECOND_ENTRY_GRANT.search(
+        sheet.get("rules_text") or sheet.get("rules_excerpt") or ""))
+
+
+def second_entry_excerpt(sheet):
+    """Return the source sentence that grants an additional entry, if present."""
+    if not sheet or "error" in sheet:
+        return ""
+    text = re.sub(r"\s+", " ", sheet.get("rules_text") or sheet.get("rules_excerpt") or "").strip()
+    for sentence in re.split(r"(?<=[.!?])\s+", text):
+        if SECOND_ENTRY_GRANT.search(sentence):
+            return sentence
+    return ""
+
 
 def levels_per_day(sheet):
     """Levels a single playing day runs, for a derived duration.
@@ -208,7 +238,7 @@ def main() -> int:
         elif re.search(r"day \d( restart)?$|final table|day 2 restart|day 3 restart", lower):
             kind = "restart"
 
-        adds_second_entry = bool(sheet_ok and sheet.get("adds_a_second_entry"))
+        adds_second_entry = sheet_grants_second_entry(sheet)
         one_day = bool(sheet_ok and not sheet.get("multi_day_format"))
         flight = bool(sheet_ok and sheet.get("flight_language"))
         is_flight_row = bool(re.search(r"\b1[a-f]\b", name, re.I))
@@ -370,6 +400,15 @@ def main() -> int:
             "sheet_covered_event": covered,
             "flags": [],
         }
+        # Preserve the structure-sheet retrieval date on each field, not only
+        # at event level, so field-level evidence remains auditable by itself.
+        for rule_field in rec["rule_fields"].values():
+            rule_field["retrieved_at"] = sheet.get("retrieved_at", "") if sheet_ok else ""
+        if adds_second_entry:
+            excerpt = second_entry_excerpt(sheet)
+            if excerpt:
+                rec["rule_fields"]["re_entry"]["value"] = "additional entry grant found"
+                rec["rule_fields"]["re_entry"]["excerpts"] = [excerpt]
         if verdict in ("unverified", "unverified_row"):
             rec["flags"].append("F01")
         if verdict == "multi_flight":

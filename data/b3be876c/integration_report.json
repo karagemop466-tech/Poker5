@@ -17,31 +17,9 @@
   "multi": 38
  },
  "confirmed_single_total": 53,
- "moved_out_as_multi": [
-  "2026-11-28 #18 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-  "2026-12-19 #58 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200."
- ],
+ "moved_out_as_multi": [],
  "rows_without_a_read_sheet": [],
- "moved_out_of_single_entry": [
-  {
-   "date": "2026-11-28",
-   "event_no": "18",
-   "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-   "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "old_label": "confirmed_single",
-   "new_label": "multi"
-  },
-  {
-   "date": "2026-12-19",
-   "event_no": "58",
-   "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-   "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "old_label": "confirmed_single",
-   "new_label": "multi"
-  }
- ],
+ "moved_out_of_single_entry": [],
  "spot_check_mismatches": 0,
  "guarantee_disagreements": [],
  "hotel_notes": [
@@ -51,25 +29,7 @@
   "Venetian: resort fee re-read on 2026-11-19 (the date of the official read recorded beside the excerpt, not the date this script ran); the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay."
  ],
  "preserved_curation": [
-  "Q01.have (kept the committed wording)",
-  "Q01.how (kept the committed wording)",
-  "Q01.missing (kept the committed wording)",
-  "Q11.have (kept the committed wording)",
-  "Q11.how (kept the committed wording)",
-  "Q11.missing (kept the committed wording)",
-  "Q11.q (kept the committed wording)",
-  "S10.effect (kept the committed wording)",
-  "S10.options (kept the committed wording)",
-  "S10.problem (kept the committed wording)",
-  "S10.title (kept the committed wording)",
-  "S11.effect (kept the committed wording)",
-  "S11.options (kept the committed wording)",
-  "S11.problem (kept the committed wording)",
-  "S11.title (kept the committed wording)",
-  "flags.F47.detail (kept the committed wording)",
-  "flags.F47.status (kept the committed wording)",
-  "flags.F47.title (kept the committed wording)",
-  "hotels.wynn.resort_fee_note (kept the committed wording)"
+  "Q01.have (kept the committed wording)"
  ],
  "sources_read_on": "2026-11-19",
  "rate_log_entries": 2,
@@ -95,5 +55,5 @@
    null
   ]
  },
- "flags_total": 44
+ "flags_total": 56
 }

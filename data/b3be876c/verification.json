@@ -3,37 +3,15 @@
   "session": "b3be876c",
   "date": "2026-11-19",
   "sources_read": "2026-11-19",
-  "how": "The official sources behind these values were last read on 2026-11-19 (the date recorded in the capture and the source ledger, not the date of this run, which is the day above). The same URLs are re-read nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the extracted sentences rather than the page hash.",
+  "how": "Values re-read on this date with the agent's page-fetch tool; the same URLs are re-read nightly on a GitHub Actions runner by scripts/monitor_b3be876c.py, which compares the extracted sentences rather than the page hash.",
   "sandbox_note": "The authoring sandbox cannot open a TCP connection to casino hosts, so the live reads below were made through the agent's page-fetch tool and the scheduled network reads run on GitHub Actions runners."
  },
  "schedule_page": {
   "url": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
   "rows_checked": 94,
-  "rows_matched": 92,
-  "rows_moved_out": [
-   "2026-11-28 #18 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-   "2026-12-19 #58 $200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT - the earlier pass labelled it confirmed single-entry; official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200."
-  ],
-  "moved_out_of_single_entry": [
-   {
-    "date": "2026-11-28",
-    "event_no": "18",
-    "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-    "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-    "old_label": "confirmed_single",
-    "new_label": "multi"
-   },
-   {
-    "date": "2026-12-19",
-    "event_no": "58",
-    "name": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
-    "basis": "official sheet 8 rule text grants further entries: All subsequent buy in's after the initial buy in will be $200.",
-    "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-    "old_label": "confirmed_single",
-    "new_label": "multi"
-   }
-  ],
+  "rows_matched": 94,
+  "rows_moved_out": [],
+  "moved_out_of_single_entry": [],
   "note": "Every Venetian row in the published table was compared with the official schedule page (all four chunks of the same table): date, start time, event number, buy-in, guarantee and the structure-sheet link."
  },
  "sheets": [

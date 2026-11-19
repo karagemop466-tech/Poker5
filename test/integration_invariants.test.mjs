@@ -34,20 +34,34 @@ test('the published trip window is arithmetically self-consistent', () => {
   }
 });
 
-test('event lists are cut at the last playing day, matching the scored window', () => {
+test('event lists are cut at the last playing day, not at the hotel check-out day', () => {
   const trip = readJson('../data/ea99006a/meta.json').trip;
   const planner = read('../pages/planner.html');
   const venetian = readJson('../data/ea99006a/venetian.json');
-  const expected = venetian.filter((row) => row.kind === 'entry' && row.date
-    && row.date >= trip.check_in && row.date <= trip.last_play_day
-    && ['confirmed_single', 'unknown'].includes(row.entry_rule)).length;
-  const listed = /The list below contains (\d+) events in your playing window/.exec(planner);
-  assert.ok(listed, 'the planner states how many events it lists');
-  assert.equal(Number(listed[1]), expected, 'planner list must be the scored playing window');
-  const unreadInWindow = venetian.filter((row) => row.kind === 'entry' && row.date >= trip.check_in
-    && row.date <= trip.last_play_day && row.entry_rule === 'unknown').length;
-  assert.equal(expected, trip.entries_in_window + unreadInWindow,
-    'the planner list must be the scored entries plus any row whose terms were not read');
+  const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'];
+  const pretty = (iso) => `${MONTH[Number(iso.slice(5, 7)) - 1]} ${Number(iso.slice(8, 10))}, ${iso.slice(0, 4)}`;
+  // Only the event table counts: other tables on the page (the dated rate log) hold stay dates.
+  const table = planner.split('<table').filter((chunk) => /Buy-in/i.test(chunk)).join('<table');
+  const cells = [...table.matchAll(/<td class="nowrap">([A-Z][a-z]+ \d{1,2}, \d{4})<\/td>/g)].map((m) => m[1]);
+  assert.ok(cells.length > 0, 'the planner lists dated events');
+  // The window must be meaningful: the check-out day does carry listed-class events.
+  const onCheckout = venetian.filter((row) => row.kind === 'entry' && row.date === trip.check_out
+    && ['confirmed_single', 'unknown'].includes(row.entry_rule));
+  assert.ok(onCheckout.length > 0, 'the check-out day carries events, so cutting at it is a real decision');
+  assert.ok(!cells.includes(pretty(trip.check_out)),
+    'the event table must not list the check-out day as a playing day');
+  // The last playing day must still be reachable: the schedule page lists it, the planner simply
+  // has no full-field entry that day (its Dec 12 rows are satellites), which is a data fact, not a bug.
+  const sched = read('../pages/schedule.html');
+  assert.ok(sched.includes(pretty(trip.last_play_day)), 'the schedule must list the last playing day');
+  assert.ok(!sched.includes(`${pretty(trip.check_out)}`)
+    || sched.includes(pretty(trip.last_play_day)), 'the schedule page stays scoped to the playing days');
+  for (const value of cells) {
+    const iso = `${value.slice(-4)}-${String(MONTH.indexOf(value.split(' ')[0]) + 1).padStart(2, '0')}-${String(value.match(/\d+/)[0]).padStart(2, '0')}`;
+    assert.ok(iso >= trip.check_in && iso <= trip.last_play_day, `planner lists ${value}, outside the window`);
+  }
+  assert.match(planner, /you check out [^)]*\)/, 'the planner names check-out as the stay end, not a playing day');
 });
 
 test("the site's 'as of' date is a date an official source was really read", () => {

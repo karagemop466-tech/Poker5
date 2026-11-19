@@ -114,6 +114,34 @@ test('confirmed single-entry toggle excludes unverified and multi-entry rows', a
   assert.doesNotMatch(script, /data-rule'\)!=='unknown'.*data-rule/);
 });
 
+test('legacy Venetian capture treats explicitly priced subsequent buy-ins as multi-entry', async () => {
+  const [captureText, structuresText, mergeSource] = await Promise.all([
+    readFile(new URL('../data/c6087e2c/events_verified.json', import.meta.url), 'utf8'),
+    readFile(new URL('../data/c6087e2c/structures.json', import.meta.url), 'utf8'),
+    readFile(new URL('../scripts/merge_251c122f.py', import.meta.url), 'utf8'),
+  ]);
+  const capture = JSON.parse(captureText);
+  const structures = JSON.parse(structuresText);
+  const affected = capture.events.filter((event) => [18, 58].includes(event.event_no));
+  assert.equal(affected.length, 2);
+  for (const event of affected) {
+    assert.equal(event.verdict, 'adds_second_entry', `event #${event.event_no}`);
+    assert.equal(event.single_entry_confirmed, false, `event #${event.event_no}`);
+    assert.equal(event.structure_url, structures.sheets['8'].url);
+    assert.equal(event.sheet_retrieved_at, structures.sheets['8'].retrieved_at);
+    for (const field of Object.values(event.rule_fields)) {
+      assert.equal(field.retrieved_at, structures.sheets['8'].retrieved_at);
+    }
+    assert.deepEqual(event.rule_fields.re_entry.excerpts, [
+      "All subsequent buy in's after the initial buy in will be $200.",
+    ]);
+    assert.equal(event.rule_fields.re_entry.source, structures.sheets['8'].url);
+  }
+  assert.match(structures.sheets['8'].rules_text, /All subsequent buy in's after the initial buy in will be \$200/i);
+  assert.match(mergeSource, /def sheet_grants_second_entry/);
+  assert.match(mergeSource, /subsequent\|additional\|second/);
+});
+
 test('only the canonical source monitor rebuilds and commits the root site', async () => {
   const [capture, publisher] = await Promise.all([
     readFile(new URL('../.github/workflows/daily-scrape.yml', import.meta.url), 'utf8'),

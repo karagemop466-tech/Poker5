@@ -1,0 +1,25 @@
+{
+ "session": "2723deea",
+ "read_at": "2026-11-19",
+ "official_source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
+ "window": {
+  "from": "2026-12-06",
+  "to": "2026-12-12"
+ },
+ "official_rows": 25,
+ "site_rows_in_window": 25,
+ "matched_rows": 25,
+ "diffs": [
+  {
+   "kind": "name_text_differs",
+   "official": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day) - Tag Teams Consist of Female/Female or Female/Male",
+   "site": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day)",
+   "key": [
+    "2026-12-09",
+    "10:10",
+    "35"
+   ]
+  }
+ ],
+ "note": "Name differences are the page's '<br>- ...' tail versus the site's joined text and are reported, not fixed. Buy-in, house fee and guarantee are not published on the schedule page and are verified separately against the structure sheets."
+}
