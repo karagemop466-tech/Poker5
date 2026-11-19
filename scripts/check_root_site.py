@@ -32,7 +32,7 @@ def check_links():
         with open(f, encoding="utf-8") as fh:
             txt = fh.read()
         base = os.path.dirname(f)
-        for m in re.finditer(r'(?:href|src)="([^"#]+)"', txt):
+        for m in re.finditer(r'\b(?:href|src)="([^"#]+)"', txt):
             href = m.group(1)
             if href.startswith(("http", "mailto", "tel", "//", "data:")):
                 continue

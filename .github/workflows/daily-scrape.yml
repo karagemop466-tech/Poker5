@@ -1,14 +1,19 @@
 name: Daily official-source scrape (root site)
 
 # Every morning this job reads the official pages and PDFs behind the root
-# planner, records exactly what they say (with the excerpt and the retrieval
-# timestamp), rebuilds the site from that data and pushes the result. The
-# agent sandbox that authors this repo cannot open a connection to casino
-# hosts, so the reading happens here, on a runner with normal internet access.
+# planner and records exactly what they say (with the excerpt and the
+# retrieval timestamp) into data/c6087e2c/. The agent sandbox that authors
+# this repo cannot open a connection to casino hosts, so the reading happens
+# here, on a runner with normal internet access.
+#
+# This job is capture-only: it never rebuilds the published root site. The
+# root site has exactly one generator (scripts/build_ea99006a.py, run by the
+# recheck-ea99006a workflow and validated by Quality checks), so the morning
+# capture cannot silently overwrite pages with a different builder's output.
 #
 # A changed source never silently changes a displayed value: the scraper writes
-# new excerpts and hashes, the build regenerates the pages from the data, and
-# any field that disappeared from a source becomes blank + flagged.
+# new excerpts and hashes, and any field that disappeared from a source becomes
+# blank + flagged in the capture for review.
 
 on:
   schedule:
@@ -56,9 +61,6 @@ jobs:
       - name: Merge the live capture into the verified dataset
         run: python3 scripts/merge_251c122f.py
 
-      - name: Rebuild the site from the data
-        run: python3 scripts/build_c6087e2c.py
-
       - name: Upload the capture for review (always)
         if: always()
         uses: actions/upload-artifact@v4
@@ -76,9 +78,9 @@ jobs:
         run: |
           git config user.name  "poker5-source-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/c6087e2c/ index.html pages/
+          git add data/c6087e2c/
           if git diff --cached --quiet; then
-            echo "no change in the capture or the site"
+            echo "no change in the capture"
             exit 0
           fi
           git commit -m "scrape(251c122f): daily official-source capture $(date -u +%F)"
@@ -89,10 +91,8 @@ jobs:
           done
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
-      - name: Validate links, source anchors and cross-checks
-        run: |
-          python3 scripts/check_root_site.py
-          python3 scripts/crosscheck_251c122f.py
+      - name: Validate the capture's rule fields and verdicts
+        run: python3 scripts/crosscheck_251c122f.py
 
       - name: Print the capture summary
         if: always()
