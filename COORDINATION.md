@@ -1,3 +1,42 @@
+## Current branch session — 0a0d8e6b (active) — structure-sheet entry-rule re-read (single-entry claim check)
+
+**Branch:** `arena/0a0d8e6b-poker5`, based on `main` @ `f2eb22a`. **Claimed 2026-11-19 before any analysis.** No other session holds a claim on this scope; open PRs #76–#79 belong to other sessions and are not touched.
+
+**Scope (files I will touch):**
+
+| Task | Status | Owner | Files |
+|---|---|---|---|
+| S1 | done | 0a0d8e6b | `data/0a0d8e6b/` (new: sheet re-read record + script), `data/ea99006a/flags.json` (F01 extended; F56, F57 added), `data/ea99006a/questions.json` (Q18 added), generated `index.html` / `pages/**`, `COORDINATION.md` (this section only) |
+
+**S1 — live re-read of all 37 linked Venetian DSE IV structure sheets** (the `structure_N.pdf` set linked from the official schedule page). For each sheet: record the sheet text sentences that mention entries, re-entry, rebuy, add-on, buy-ins, flights, and bag-ins; compare with the stored `entry_rule` classification for the rows that cite that sheet. Output: `data/0a0d8e6b/sheet_reread.json`. Data files under `data/ea99006a/` are not edited in this step; any change required is logged below as a request and handled in the integration step.
+
+**Why:** the stored "confirmed single-entry (standard S1)" label (53 rows) is defined as sheet read + no re-entry/rebuy/add-on provision. It is not a written maximum-entry statement. The brief requires written single-entry rules before a row can be called confirmed, so each sheet's text is checked directly.
+
+### Results — session 0a0d8e6b (2026-11-19)
+
+**Sources (official Venetian URLs, read 2026-11-19 with the page-fetch tool):** the 22 structure sheets behind the 53 rows labelled confirmed single-entry, at `https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_<N>.pdf` for N = 1, 5, 6, 7, 11, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34. Schedule page (linked from the rows): `https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html`.
+
+**Verification performed:**
+- Each of the 22 sheets was read in full. The transcribed values are in `data/0a0d8e6b/sheet_reread.py`. A field the sheet does not print is recorded as absent, never filled in.
+- Mechanical diff against `data/ea99006a/venetian.json` for the 53 rows on start time, buy-in, guarantee (including the per-event guarantees on sheets 7 and 11), starting chips, late-registration close, house fee and prize pool: **53 rows compared, 0 mismatches** (`data/0a0d8e6b/sheet_reread.json`).
+- Rule text: **none of the 22 sheets contains a written one-entry, maximum-entry, re-entry, rebuy or add-on sentence.** Each cites "TDA rules apply to all Venetian Poker Room tournaments" by reference. The rulebook text was not captured (new flag F57).
+- Not re-read in this session: the 15 sheets behind the 41 multi-entry rows (2, 3, 4, 8, 9, 10, 12, 13, 14, 20, 21, 32, 35, 36, 37). Their multi-entry classification is unchanged. Sheet 8 was already quoted in F47 with the "subsequent buy in's" wording.
+
+**Irregularities and changes:**
+- **F01 extended** with this result: the 53 "Confirmed single-entry (standard S1)" labels mean "no re-entry, rebuy or add-on wording found on the sheet". They are not a written single-entry rule, which the brief requires. **User decision:** keep the label with that definition, or relabel the rows as "no re-entry wording found". This session did not change the 53 labels.
+- **F56 (new):** event #35 ($600 NLH LIPS Poker Jingle Tag Team, sheet 31) is a two-person team format (teams rotate players every level; Female/Female or Female/Male only) but is stored as a single-entry row. Classification review requested.
+- **F57 (new):** "TDA rules apply" is cited by all 22 single-entry sheets; the rulebook text is not captured. No official house-rules page covering re-entry was located in this session.
+- **Q18 (new):** asks the poker room desk for the written house rules and each event's written entry limit.
+- Satellites: 7 single-entry rows are Milestone satellites (events 33, 37, 41, 44, 45, 46, 48) whose prize is a seat in another event. They are kept as single-entry (no re-entry text) and are labelled as satellites on the sheet.
+- Sheet 25 prints no break time for its late-registration close ("6 levels"); the stored row matches the printed text.
+- Sheet 18 prints no guarantee; the stored rows for events 3, 4 and 5 carry no guarantee, which matches the sheet.
+
+**Checks run (2026-11-19):** `python3 data/0a0d8e6b/sheet_reread.py` (53 compared, 0 mismatches); `python3 scripts/build_ea99006a.py` (deterministic apart from the live inventory on `pages/repo-review.html`); `python3 scripts/check_ea99006a.py` OK (1,665 rows with an official https source; 0 broken links); `python3 scripts/check_root_site.py` OK.
+
+**Publication:** PR and merge record to follow in the next board-only commit.
+
+---
+
 # Coordination - Poker5
 
 ## Current branch session — 96160d8f (active) — line-by-line official-source verification + gap close
