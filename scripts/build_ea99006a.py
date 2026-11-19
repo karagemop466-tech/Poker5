@@ -385,6 +385,12 @@ def restriction_note(row):
                src_link_opt(rest.get("source"), "sheet rule")))
 
 
+def entry_pill(row):
+    """The entry-rule pill as HTML, with the class and the visible label in the right slots."""
+    label, cls = entry_status(row)
+    return '<span class="pill pill-%s">%s</span>' % (cls, esc(label))
+
+
 def is_open_to_general(row):
     """True only when no official restriction is recorded on the row."""
     return not (row.get("restriction") or {}).get("label")
@@ -1419,7 +1425,7 @@ def build_schedule():
                           esc(pretty_time(r["start"])), esc(r["venue"]), esc(r.get("event_no") or ""),
                           esc(r["name"]) + (" <span class=\"tag tag-b\">primary</span>" if r is prim else ""),
                           money(r.get("buyin")),
-                          '<span class="pill pill-%s">%s</span>' % entry_status(r),
+                          entry_pill(r),
                           esc(label) if label else '<span class="blank">not stated</span>',
                           src_link(r["source"], "source")))
         out.append("</tbody></table>")
