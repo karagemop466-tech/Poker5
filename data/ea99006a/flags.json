@@ -325,5 +325,50 @@
   "source": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
   "status": "corrected by d615f79e; needs review",
   "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F56",
+  "area": "Entry rules",
+  "title": "Venetian #39 (LIPS Ladies $800, 2Day) was published multi-entry on a Day-2 continuation sentence; corrected to Cap not stated",
+  "detail": "Structure sheet 32 was re-read live on 2026-11-19 (12 numbered rules). No rule grants a re-entry, rebuy, add-on or purchased stack, and the event has no starting flights (one Day 1, Dec 10, with Day 2 Dec 11 and a streamed final table). The earlier capture had quoted the sentence 'Day 2 will resume at 10:00 AM ...' as flight language and published the three rows (Day 1, Day 2 restart, final table) as 'Multi-entry: re-entry, add-on or flights' while their own excerpt said the opposite. The rows now read 'Cap not stated': S1 condition (4) (no flight or multi-day structure) is not met, so the event cannot be labelled confirmed single-entry, and no text grants a second entry. Review the wording of S1 condition (4) if single-flight multi-day events should qualify for the confirmed set.",
+  "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F57",
+  "area": "Tournament data",
+  "title": "24 WPT satellite guarantees were blank although the official schedule sign states them; filled from the sign",
+  "detail": "The Wynn WPT schedule sign prints a seats/prizes guarantee for every milestone satellite (for example '25 Seats', '50 Seats', '75 Seats', '10 Seats', '25 Prizes'). The earlier capture stored only money guarantees, leaving 24 satellite rows blank. Re-read live on 2026-11-19 and filled verbatim from the sign (data/ec3c21b8/wpt_sign_2026-11-19.tsv). The Milestone Satellite to the $25K NLH High Roller (Dec 16) has no guarantee cell on the sign and stays blank. Seat and prize counts are shown as seats, not cash, and are never divided by a buy-in in the ranking.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F58",
+  "area": "Official sources disagree",
+  "title": "Wynn schedule sign vs WPT event terms: Day-2 money columns, the Dec 21 Turbo time, and a 'Dec. 18 Wednesday' date typo",
+  "detail": "Line-by-line comparison of both official Wynn WPT documents (2026-11-19) found: (1) the sign's three 'No Limit Hold'em Day 2' rows (Nov 30 1 p.m., Dec 3 1 p.m., Dec 5 11 a.m.) each print the NEXT event's buy-in and guarantee, while the event terms pages state those exact dates and times as the Day 2 of the $600 $400K, the $800 $1M and the $1,600 $1M events respectively (the WPT Prime's own Day 2 is listed separately by both documents on Dec 9). The rows publish the terms-page figures and keep both readings in their disagreement note; they are not ranked. (2) The Dec 21 NLH Turbo: terms page 'Monday, December 21, 2026 at 6 p.m.' vs sign '8 p.m.' - the row follows the sign. (3) The sign prints a block header 'Dec. 18 Wednesday' where the weekday and sequence show Dec 16 (rows are stored as Dec 16). Cosmetic sign typos kept visible: 'NIH' for 'NLH', 'BadugI', '1A/8' for '1A/B', 'Limit Omaha 8/5/stud 8'.",
+  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F59",
+  "area": "Official sources disagree",
+  "title": "Wynn sign footnote says the Ladies Championship entry is $11,100 while its own table lists $1,100",
+  "detail": "The schedule sign's footnote reads 'The Tournament Entry for the Ladies Championship is $11,100. Ladies will receive a discounted entry.' while the same sign's table lists the Ladies NLH Championship (2 Day, Dec 13) at $1,100 with a $250,000 guarantee, and the stored row uses $1,100. The $11,100 figure appears inconsistent (possibly a printed $1,110 or an extra digit) and is not used anywhere. Confirm with the room before relying on either figure.",
+  "source": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19"
+ },
+ {
+  "id": "F60",
+  "area": "Verification limits",
+  "title": "91 WPT rows and 8 South Point rows keep the unverified label: their entry terms are not machine-readable here",
+  "detail": "The official WPT World Championship structures PDF holds every event's Registration text, but this environment's PDF text extraction stops at page 30 (mid-sentence, after the Mystery Bounty rules). The 45 rows whose event terms fall inside those pages were re-read and classified live on 2026-11-19; the terms for events from Dec 7 onward (91 rows: HORSE 2-Day, PLO $500 Bounty, Super Gold Million, WPT World Championship, Ladies, Seniors, high rollers and all milestone satellites) sit beyond the cutoff and could not be read, so those rows keep 'Entry terms not read - unverified' and no label was removed. South Point's eight daily-tournament rows are confirmed on schedule (times and $120/$300 buy-ins match the official poker-room page), but its entry rules live in linked JPG rules-sheet images that cannot be read by this tool. A human with the full PDF or the JPG sheets can close both gaps; see question Q18.",
+  "source": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "status": "open",
+  "last_updated": "2026-11-19"
  }
 ]

@@ -152,5 +152,17 @@
   ],
   "effect": "A row is marked 'source changed' only when the sentence behind its value changes.",
   "id": "S14"
+ },
+ {
+  "id": "S15",
+  "title": "Close the remaining unverified rows: human-readable event terms capture",
+  "problem": "99 rows (91 WPT, 8 South Point) keep an unverified label only because their official entry terms are not machine-readable in the build environment: the WPT structures PDF truncates at 30 pages of extracted text, and South Point publishes its rules as JPG images.",
+  "options": [
+   "A human reads the WPT structures PDF past page 30 and pastes each Registration section into data/ with its URL and retrieval date (fastest, no code)",
+   "The scheduled capture workflow on GitHub Actions downloads the PDFs and extracts all pages there (it has normal egress; add a per-event text extract to data/c6087e2c/)",
+   "Add OCR to the capture pipeline for the South Point JPG rules sheets",
+   "Ask each room for a written one-entry cap per event (also resolves F01)"
+  ],
+  "effect": "Each closed row loses its unverified label and joins either the confirmed single-entry set or the multi-entry section, with the official sentence stored on the row."
  }
 ]

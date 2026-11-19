@@ -7089,14 +7089,14 @@
   "late_reg": "9 levels + Break (~4:55 PM)",
   "sheet_start": "Day 1 Dec 10 10:10 AM",
   "sheet_title": "$800 NLH LIPS Ladies (2Day) - female only",
-  "entry_rule": "multi",
+  "entry_rule": "unknown",
   "rule_excerpt": "No re-entry, rebuy or add-on text appears on the sheet.",
   "notes": "Day 2 Dec 11 10:00 AM. Female players only.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
   "source_label": "structure sheet 32",
   "schedule_source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
   "retrieved": "2026-11-17",
-  "entry_basis": "flight language on the sheet: Day 2 will resume at 10:00 AM with all remaining players being considered in the money & will continue until seven (7) players remain for a produced a",
+  "entry_basis": "no re-entry, rebuy or add-on sentence appears anywhere in the sheet's 12 numbered rules; the event has one starting day (Dec 10) but continues on Dec 11 (Day 2) and a streamed final table, so S1 condition (4) - no flight or multi-day structure - is not met and the row is published as Cap not stated. The earlier capture had read the Day-2 continuation sentence ('Day 2 will resume at 10:00 AM ...') as flight language and published Multi-entry; corrected 2026-11-19 after a live re-read of sheet 32 (flag F56).",
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
@@ -7104,15 +7104,10 @@
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
-   "flight_sentences": [
-    "Day 2 will resume at 10:00 AM with all remaining players being considered in the money & will continue until seven (7) players remain for a produced and distributed streamed final table by PokerGO.",
-    "To begin Day 2, the clock will resume at the stoppage time of Day 1.",
-    "On Day 2, at Tournament Directors Discretion, players will have twenty (20) seconds pre-flop and thirty (30) seconds post-flop to act on their hand through the use of a countdown clock.",
-    "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
-   ],
+   "flight_sentences": [],
    "registration_close": "9 levels + Break (~ 4:55 PM)",
    "event_named_on_sheet": true,
-   "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
+   "standard": "S1 not satisfied (2026-11-19 re-read): sheet read + event named + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision, but the sheet documents a two-day structure, so the row is published as Cap not stated, never as confirmed single-entry."
   },
   "rule_fields": {
    "re_entry": {
@@ -7621,14 +7616,14 @@
   "late_reg": "9 levels + Break (~4:55 PM)",
   "sheet_start": "Day 1 Dec 10 10:10 AM",
   "sheet_title": "$800 NLH LIPS Ladies (2Day) - female only",
-  "entry_rule": "multi",
+  "entry_rule": "unknown",
   "rule_excerpt": "No re-entry, rebuy or add-on text appears on the sheet.",
   "notes": "Day 2 Dec 11 10:00 AM. Female players only.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
   "source_label": "structure sheet 32",
   "schedule_source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
   "retrieved": "2026-11-17",
-  "entry_basis": "the row is a Day 2 / final-table continuation",
+  "entry_basis": "continuation row (Day 2 / streamed final table) of a single-flight event; entry terms carry over from the Day 1 row - Cap not stated (corrected 2026-11-19, flag F56)",
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
@@ -7636,15 +7631,10 @@
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
-   "flight_sentences": [
-    "Day 2 will resume at 10:00 AM with all remaining players being considered in the money & will continue until seven (7) players remain for a produced and distributed streamed final table by PokerGO.",
-    "To begin Day 2, the clock will resume at the stoppage time of Day 1.",
-    "On Day 2, at Tournament Directors Discretion, players will have twenty (20) seconds pre-flop and thirty (30) seconds post-flop to act on their hand through the use of a countdown clock.",
-    "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
-   ],
+   "flight_sentences": [],
    "registration_close": "9 levels + Break (~ 4:55 PM)",
    "event_named_on_sheet": true,
-   "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
+   "standard": "S1 not satisfied (2026-11-19 re-read): sheet read + event named + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision, but the sheet documents a two-day structure, so the row is published as Cap not stated, never as confirmed single-entry."
   },
   "rule_fields": {
    "re_entry": {
@@ -8020,14 +8010,14 @@
   "late_reg": "9 levels + Break (~4:55 PM)",
   "sheet_start": "Day 1 Dec 10 10:10 AM",
   "sheet_title": "$800 NLH LIPS Ladies (2Day) - female only",
-  "entry_rule": "multi",
+  "entry_rule": "unknown",
   "rule_excerpt": "No re-entry, rebuy or add-on text appears on the sheet.",
   "notes": "Day 2 Dec 11 10:00 AM. Female players only.",
   "source": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
   "source_label": "structure sheet 32",
   "schedule_source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
   "retrieved": "2026-11-17",
-  "entry_basis": "the row is a Day 2 / final-table continuation",
+  "entry_basis": "continuation row (Day 2 / streamed final table) of a single-flight event; entry terms carry over from the Day 1 row - Cap not stated (corrected 2026-11-19, flag F56)",
   "entry_evidence": {
    "sheet_no": 32,
    "sheet_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
@@ -8035,15 +8025,10 @@
    "rules_read": 12,
    "sheet_effective_date": "10.06.26",
    "entry_grant_sentences": [],
-   "flight_sentences": [
-    "Day 2 will resume at 10:00 AM with all remaining players being considered in the money & will continue until seven (7) players remain for a produced and distributed streamed final table by PokerGO.",
-    "To begin Day 2, the clock will resume at the stoppage time of Day 1.",
-    "On Day 2, at Tournament Directors Discretion, players will have twenty (20) seconds pre-flop and thirty (30) seconds post-flop to act on their hand through the use of a countdown clock.",
-    "Based on Day 2 field size, players will receive the following time-extension chips, each worth a 30-second addition to a player's action: a."
-   ],
+   "flight_sentences": [],
    "registration_close": "9 levels + Break (~ 4:55 PM)",
    "event_named_on_sheet": true,
-   "standard": "S1 (2026-11-19): sheet read + event named + one day + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision"
+   "standard": "S1 not satisfied (2026-11-19 re-read): sheet read + event named + registration close stated + no re-entry/rebuy/add-on/purchased-stack provision, but the sheet documents a two-day structure, so the row is published as Cap not stated, never as confirmed single-entry."
   },
   "rule_fields": {
    "re_entry": {

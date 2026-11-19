@@ -3,7 +3,7 @@
   "id": "Q01",
   "q": "What are your exact trip dates, your nightly budget ceiling and your minimum hotel quality?",
   "have": "The dashboard uses an automatic scenario: 2026-12-06 to 2026-12-13 (7 nights), selected from the captured schedule on 2026-11-19. The date choice is not traveler-provided. The budget ceiling is based on a dated, unverified booking observation, and the Luxury quality floor is a property-tier label, not an independent quality rating.",
-  "missing": "The traveler’s preferred dates, budget ceiling, occupancy, and minimum quality standard are unknown. The automatic settings are scenario defaults only; the dated hotel quote used to derive the ceiling is not for the selected stay and is not a verified current rate.",
+  "missing": "The traveler\u2019s preferred dates, budget ceiling, occupancy, and minimum quality standard are unknown. The automatic settings are scenario defaults only; the dated hotel quote used to derive the ceiling is not for the selected stay and is not a verified current rate.",
   "how": "Treat the Dates and Budget controls on the Hotels/Planner pages as scenario inputs. Replace them with the actual trip window, occupancy, budget, and chosen quality floor before deciding; then obtain a date-matched official itemized hotel quote."
  },
  {
@@ -117,5 +117,12 @@
   "have": "Official start times and late-registration closes for every Venetian and Wynn row (structure sheets). The day schedule now tests sequencing for any playing length you enter (0.5 to 12 hours), and it shows which pairs cannot be played in sequence at that length.",
   "missing": "No official source publishes a finishing time or a typical playing length for any of these events, so the check depends on an estimate that only you can supply.",
   "how": "Enter your own estimate in the 'Assumed playing length' box on the Day schedule page. It is never written into the data or shown as an official value. To remove the estimate, find a published finish time or a level-by-level structure sheet that implies one, and record its source."
+ },
+ {
+  "id": "Q18",
+  "q": "What are the entry terms (re-entry / re-buy / add-on caps) of the 91 WPT events from Dec 7 onward and the eight South Point daily tournaments?",
+  "have": "Every one of those rows is verified on schedule fields (date, start, buy-in, guarantee, chips, level length) from the official Wynn schedule sign and the South Point poker-room page, re-read 2026-11-19. For the 45 earlier WPT rows the Registration text was read and classified. The remaining terms exist in official sources: the WPT structures PDF (its later pages) and South Point's rules-sheet images.",
+  "missing": "This environment can extract text only from the first 30 pages of that PDF (the later events' terms sit beyond the cutoff), and South Point's rules sheets are JPG images. So 99 rows still carry 'Entry terms not read - unverified' and cannot enter the single-entry set.",
+  "how": "Read the WPT World Championship structures PDF past page 30 (or the per-event structure sheets its footnotes reference) and the South Point rules-sheet images, then record each Registration sentence with its retrieval date. Until then, treat every one of those rows as cap unknown and keep them out of any single-entry plan."
  }
 ]
