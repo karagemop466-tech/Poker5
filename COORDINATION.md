@@ -25,7 +25,7 @@ Claimed 2026-11-19 before any edit. Board-only change; no data, builder, or page
 
 ### Status
 
-V1 done, V2 done. Session closed. Publication: PR and merge recorded below.
+V1 done, V2 done. Session closed. Publication: PR https://github.com/karagemop466-tech/Poker5/pull/80 merged to `main` (merge commit `045cc51`) on 2026-11-19 with no approval wait; Pages build for `main` was `built` before this record.
 
 ---
 
