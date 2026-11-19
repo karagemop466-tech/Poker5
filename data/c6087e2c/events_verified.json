@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T07:10:12Z",
+ "generated_at": "2026-11-19T07:12:09Z",
  "generator": "scripts/merge_251c122f.py",
  "source_schedule": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
  "note": "One record per row of the official Venetian schedule. Rule fields are extracted from the linked official structure sheet; the excerpt is stored with each field so it can be checked against the PDF. Blank/null means the official source did not state it.",
@@ -16,7 +16,7 @@
  "sheets": {
   "1": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     9,
@@ -44,7 +44,7 @@
   },
   "2": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     7
@@ -61,7 +61,7 @@
   },
   "3": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     19
@@ -78,7 +78,7 @@
   },
   "4": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     59
@@ -95,7 +95,7 @@
   },
   "5": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     2,
@@ -113,7 +113,7 @@
   },
   "6": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     10
@@ -130,7 +130,7 @@
   },
   "7": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     14,
@@ -149,7 +149,7 @@
   },
   "8": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     18,
@@ -167,7 +167,7 @@
   },
   "9": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     1
@@ -184,7 +184,7 @@
   },
   "10": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     1
@@ -201,7 +201,7 @@
   },
   "11": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     16,
@@ -220,7 +220,7 @@
   },
   "12": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     26
@@ -237,7 +237,7 @@
   },
   "13": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     26
@@ -254,7 +254,7 @@
   },
   "14": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     26
@@ -271,7 +271,7 @@
   },
   "15": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     29,
@@ -296,7 +296,7 @@
   },
   "16": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     36
@@ -313,7 +313,7 @@
   },
   "17": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     24,
@@ -331,7 +331,7 @@
   },
   "18": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     3,
@@ -350,7 +350,7 @@
   },
   "19": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     33,
@@ -368,7 +368,7 @@
   },
   "20": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     49
@@ -385,7 +385,7 @@
   },
   "21": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     47
@@ -402,7 +402,7 @@
   },
   "22": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf",
-   "retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     20
@@ -419,7 +419,7 @@
   },
   "23": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     57
@@ -436,7 +436,7 @@
   },
   "24": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     41,
@@ -454,7 +454,7 @@
   },
   "25": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     45,
@@ -473,7 +473,7 @@
   },
   "26": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     17
@@ -490,7 +490,7 @@
   },
   "27": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     40
@@ -507,7 +507,7 @@
   },
   "28": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     27
@@ -524,7 +524,7 @@
   },
   "29": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     6
@@ -541,7 +541,7 @@
   },
   "30": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     8
@@ -558,7 +558,7 @@
   },
   "31": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     35
@@ -575,7 +575,7 @@
   },
   "32": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     39
@@ -592,7 +592,7 @@
   },
   "33": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     43
@@ -609,7 +609,7 @@
   },
   "34": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     52
@@ -626,7 +626,7 @@
   },
   "35": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     56
@@ -643,7 +643,7 @@
   },
   "36": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     56
@@ -660,7 +660,7 @@
   },
   "37": {
    "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf",
-   "retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:10Z",
    "http_status": 200,
    "event_numbers": [
     47
@@ -1240,8 +1240,8 @@
    "structure_no": 10,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -1316,8 +1316,8 @@
    "structure_no": 9,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -1392,8 +1392,8 @@
    "structure_no": 10,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -1468,8 +1468,8 @@
    "structure_no": 9,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -1544,8 +1544,8 @@
    "structure_no": 5,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -1618,8 +1618,8 @@
    "structure_no": 10,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -1692,8 +1692,8 @@
    "structure_no": 18,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -1766,8 +1766,8 @@
    "structure_no": 18,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -1840,8 +1840,8 @@
    "structure_no": 18,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -1914,8 +1914,8 @@
    "structure_no": 29,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -1988,8 +1988,8 @@
    "structure_no": 2,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -2064,8 +2064,8 @@
    "structure_no": 30,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -2138,8 +2138,8 @@
    "structure_no": 2,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -2214,8 +2214,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -2288,8 +2288,8 @@
    "structure_no": 2,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -2362,8 +2362,8 @@
    "structure_no": 6,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -2436,8 +2436,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -2510,8 +2510,8 @@
    "structure_no": 5,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -2584,8 +2584,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -2661,8 +2661,8 @@
    "structure_no": 7,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -2735,8 +2735,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -2811,8 +2811,8 @@
    "structure_no": 11,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -2885,8 +2885,8 @@
    "structure_no": 26,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "12:10",
@@ -2959,8 +2959,8 @@
    "structure_no": 8,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -3033,8 +3033,8 @@
    "structure_no": 3,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -3109,8 +3109,8 @@
    "structure_no": 22,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "12:10",
@@ -3183,8 +3183,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -3257,8 +3257,8 @@
    "structure_no": 3,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -3333,8 +3333,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -3407,8 +3407,8 @@
    "structure_no": 3,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -3483,8 +3483,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -3557,8 +3557,8 @@
    "structure_no": 17,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -3631,8 +3631,8 @@
    "structure_no": 3,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -3705,8 +3705,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -3779,8 +3779,8 @@
    "structure_no": 12,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -3855,8 +3855,8 @@
    "structure_no": 28,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "12:10",
@@ -3929,8 +3929,8 @@
    "structure_no": 13,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4005,8 +4005,8 @@
    "structure_no": 12,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4081,8 +4081,8 @@
    "structure_no": 13,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4157,8 +4157,8 @@
    "structure_no": 12,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4233,8 +4233,8 @@
    "structure_no": 14,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4312,8 +4312,8 @@
    "structure_no": 7,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -4386,8 +4386,8 @@
    "structure_no": 12,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -4460,8 +4460,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -4536,8 +4536,8 @@
    "structure_no": 11,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -4610,8 +4610,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -4684,8 +4684,8 @@
    "structure_no": 17,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -4758,8 +4758,8 @@
    "structure_no": 19,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "16:10",
@@ -4832,8 +4832,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -4906,8 +4906,8 @@
    "structure_no": 31,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "10:10",
@@ -4980,8 +4980,8 @@
    "structure_no": 16,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -5054,8 +5054,8 @@
    "structure_no": 19,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "16:10",
@@ -5128,8 +5128,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -5202,8 +5202,8 @@
    "structure_no": 32,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -5278,8 +5278,8 @@
    "structure_no": 27,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "12:10",
@@ -5352,8 +5352,8 @@
    "structure_no": 24,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "16:10",
@@ -5426,8 +5426,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -5500,8 +5500,8 @@
    "structure_no": 32,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -5574,8 +5574,8 @@
    "structure_no": 33,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -5648,8 +5648,8 @@
    "structure_no": 24,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "16:10",
@@ -5722,8 +5722,8 @@
    "structure_no": 32,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -5796,8 +5796,8 @@
    "structure_no": 25,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "20:10",
@@ -5870,8 +5870,8 @@
    "structure_no": 25,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "20:10",
@@ -5944,8 +5944,8 @@
    "structure_no": 21,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6020,8 +6020,8 @@
    "structure_no": 25,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "20:10",
@@ -6094,8 +6094,8 @@
    "structure_no": 37,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6170,8 +6170,8 @@
    "structure_no": 20,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6246,8 +6246,8 @@
    "structure_no": 21,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6320,8 +6320,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -6394,8 +6394,8 @@
    "structure_no": 20,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6470,8 +6470,8 @@
    "structure_no": 21,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6544,8 +6544,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -6618,8 +6618,8 @@
    "structure_no": 20,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -6692,8 +6692,8 @@
    "structure_no": 34,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -6766,8 +6766,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -6842,8 +6842,8 @@
    "structure_no": 11,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -6916,8 +6916,8 @@
    "structure_no": 15,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -6990,8 +6990,8 @@
    "structure_no": 35,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7066,8 +7066,8 @@
    "structure_no": 23,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "12:10",
@@ -7140,8 +7140,8 @@
    "structure_no": 36,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7216,8 +7216,8 @@
    "structure_no": 35,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7292,8 +7292,8 @@
    "structure_no": 36,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7368,8 +7368,8 @@
    "structure_no": 35,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7444,8 +7444,8 @@
    "structure_no": 8,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -7518,8 +7518,8 @@
    "structure_no": 35,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:13Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7592,8 +7592,8 @@
    "structure_no": 4,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7668,8 +7668,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -7742,8 +7742,8 @@
    "structure_no": 4,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7818,8 +7818,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -7892,8 +7892,8 @@
    "structure_no": 4,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -7968,8 +7968,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
@@ -8042,8 +8042,8 @@
    "structure_no": 4,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "",
@@ -8119,8 +8119,8 @@
    "structure_no": 7,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "11:10",
@@ -8193,8 +8193,8 @@
    "structure_no": 1,
    "structure_url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "retrieved_at": "2026-11-19T07:10:12Z",
-   "sheet_retrieved_at": "2026-11-19T07:10:12Z",
+   "retrieved_at": "2026-11-19T07:12:09Z",
+   "sheet_retrieved_at": "2026-11-19T07:12:10Z",
    "rule_fields": {
     "start_time": {
      "value": "17:10",
