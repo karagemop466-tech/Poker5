@@ -205,7 +205,7 @@ Every brief item was checked against the built site and its data files:
 | V2 | Live re-read the official Venetian DeepStack Extravaganza IV schedule (all four fetch chunks) and compare every row against the stored capture | done | `data/22f06ff9/reverify.json` |
 | V3 | Live re-read the trip-critical official pages (Venetian resort fee, Venetian poker-suite rates, Venetian structure sheet 10, Wynn WPT schedule, Wynn offer terms) and compare with the stored values | done | `data/22f06ff9/reverify.json` |
 | V4 | Publish the re-check as a new section on the Verification log page; rebuild and validate | done | `scripts/build_ea99006a.py`, `pages/verification.html` |
-| V5 | Full validation, PR → main, merge, confirm Pages deploy, record the result here | in progress | `COORDINATION.md` |
+| V5 | Full validation, PR → main, merge, confirm Pages deploy, record the result here | done | `COORDINATION.md` |
 
 ### Sources read this session (live via the fetch tool, 2026-11-19)
 
@@ -231,6 +231,13 @@ Every brief item was checked against the built site and its data files:
 - **None blocking.** No stored value differed from its live official source, so no row was re-labelled, no "source changed" badge was added, and no value was promoted to verified.
 - **Not re-read this session (carried forward, stated on the page):** the other 36 Venetian structure sheets and the Clark County tax ordinance. The value-level monitor summary still records `run: null` because the scheduled monitor runs on a GitHub runner with casino-host egress, not from this sandbox; this session's fetch-tool reads are recorded separately and honestly, and the absence of a changed-value badge still means "not recorded as re-checked by the monitor", not "verified unchanged".
 - `pages/repo-review.html` regenerates with a changing file count on every build (it inventories the working tree). Following the established convention it was reverted rather than committed; the quality workflow excludes it from the drift check. **Request to its owner:** pin it to a committed file list so it stops drifting.
+
+### Publication record (22f06ff9)
+
+- **PR:** [#89](https://github.com/karagemop466-tech/Poker5/pull/89) — "22f06ff9: live official-source re-verification (94/94 Venetian rows + hotel/WPT/terms) + verification page" — merged to `main` with a merge commit on 2026-11-19T22:04:41Z as [`b0ab077`](https://github.com/karagemop466-tech/Poker5/commit/b0ab077d51289c84d222c6fd8dfc26cf0290efb0) (state MERGED). The branch was rebased onto `main` @ `e491658` before pushing; the only conflict was in this board (both sides added a top section), resolved by keeping every section from both sides — main's newer session sections and this session's — without discarding either.
+- **GitHub Pages:** the Pages API reports status `built`, source `main` `/`, at https://karagemop466-tech.github.io/Poker5/. The live Verification log page was fetched after deployment and serves the new "Live re-read of the official sources (2026-11-19)" section alongside the existing standard, schedule re-check and spot-check tables.
+- **Checks before merge (on the rebased head):** `npm test` 23/23; `python3 scripts/build_ea99006a.py` deterministic; `python3 scripts/check_ea99006a.py` (1,675 table rows, every row with an official https source, internal and external links resolve); `python3 scripts/check_root_site.py` OK; `crosscheck_251c122f.py`, `recheck_ea99006a.py --offline`, `scrape_251c122f.py --self-test` OK; `git diff --check` clean.
+- **No data values changed.** This session added no new tournament, hotel, rate or source facts and promoted nothing to verified beyond its own live read of the official page. Flagged irregularities and the carried-forward (not re-read) items remain visible on the site's Flagged for review and Verification pages; they do not block the merge.
 
 **Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
 
