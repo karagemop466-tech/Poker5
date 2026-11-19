@@ -1,6 +1,36 @@
 # Coordination - Poker5
 
+## Current branch session — 25481cd8 (active) — schedule re-verification + site integration
+
+**Branch:** `arena/25481cd8-poker5` (fixed by Arena), based on `main` @ `0011ea1`. Scope claimed before any data edit:
+
+| # | Task | Status | Files touched |
+|---|------|--------|---------------|
+| R1 | Re-read every official Venetian DeepStack Extravaganza IV schedule page (4 chunks, 2026-11-19) and diff all rows (date, start, event no., name, buy-in, guarantee, structure-sheet number) against `data/ea99006a/venetian.json` by script | done — 94/94 rows match, 0 mismatches | `data/ea99006a/official_schedule_2026-11-19.tsv` (new), `data/ea99006a/schedule_recheck.json` (new), `scripts/recheck_schedule_25481cd8.py` (new) |
+| R2 | Rebuild the root site, run every existing check, PR to main, merge, confirm Pages deploy, record here | in progress (PR and merge record below) | `index.html`, `pages/**` (generator output only), COORDINATION.md |
+
+Other sessions' folders are not edited. No row is newly marked verified unless the official page was read in this session and compared.
+
+
 Shared task board for the Poker5 project (Las Vegas poker tournament + hotel planner).
+
+### Sources (session 25481cd8; all read 2026-11-19)
+
+- Official Venetian DeepStack Extravaganza IV schedule (4 chunks): https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html
+- Structure sheets are linked from that page (`dse_nov_2026-structure_N.pdf`); only the sheet numbers were compared in this session. Sheet text was not re-read here; it remains as captured by earlier sessions (see the Verification log).
+
+### Verification performed (25481cd8)
+
+- Transcribed all 94 official rows to `data/ea99006a/official_schedule_2026-11-19.tsv`, then `scripts/recheck_schedule_25481cd8.py` diffed them against `data/ea99006a/venetian.json` on date, start time, event number, name, buy-in, guarantee and structure-sheet number. Result: 94 compared, 0 mismatches (`data/ea99006a/schedule_recheck.json`). Two first-pass mismatches were transcription errors (a missing " - " before the PKO descriptor on events 8 and 52); the TSV was corrected to the page text and the rows were not changed.
+- The result is shown on `pages/verification.html`.
+- Checks run: `python3 scripts/build_ea99006a.py`, `python3 scripts/check_ea99006a.py` (every row has an official https source; no broken links), `python3 scripts/check_root_site.py`, `npm test` (20/20).
+
+### Irregularities (25481cd8)
+
+- The official page prints "No LImit" (capital I) in the names of events 2, 5 and 12. Cosmetic only; the stored names use the correct spelling.
+- Structure sheets are shared across events (for example `structure_10` covers 1A, 1C and the Day 2 restart). The sheet's own text decides the rule for each event; this session did not re-read sheet text.
+- Not verified in this session: single-entry status of any row (unchanged from earlier sessions), hotel rates, resort fees, walking times, Wynn/other-venue schedules.
+
 
 ## Current branch session — fe101311 (active) — Strip room morning-feed repair (Bellagio / MGM)
 
@@ -31,7 +61,6 @@ Shared task board for the Poker5 project (Las Vegas poker tournament + hotel pla
 - R1 — `data/c6087e2c/other_events.json`, Bellagio Sunday H.O.R.S.E.: the PDF now read states re-entry through level 8 and a 11:00 a.m. start; the row still says `reentry: Unverified` and `schedule: time not captured`. Update from the PDF (re-entry = multi-entry, so keep it in the re-entry/double buy-in section, not the single-entry list).
 - R2 — Bellagio flagged row F53 ($200/$300/$240/$320/$400 flyer prices "not re-verifiable") — the official PDFs above now give $600 (Fri), $1,000/$1,100 (Sat) and $400 (Sun); reconcile F53 against them.
 - R3 — Friday PDF re-entry (already recorded as "Re-entry through Level 8") is correct; keep it in the re-entry section.
-
 ## Current branch session — 8154689a (active)
 
 **Branch:** `arena/8154689a-poker5` (fixed by Arena). **Role:** final integration — the brief's structure-sheet label task, live official-source re-verification, the CI validate-step defect fix, the interrupted-session irregularities as review flags, and the PR + merge + Pages close-out. Claimed before editing; no other session's work is modified.

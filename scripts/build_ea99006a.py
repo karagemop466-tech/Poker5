@@ -2178,6 +2178,18 @@ def build_verification():
                 + "<dt>structure sheets read</dt><dd><b>" + str(len(META.get("sheets") or [])) + "</b></dd>"
                 + "<dt>URLs under daily monitor</dt><dd><b>" + str(len(LEDGER)) + "</b></dd>"
                 + "<dt>value-level changes open</dt><dd><b>" + str(len(VALCH)) + "</b></dd></div></div>")
+    # 25481cd8: full schedule re-read against the official page, row by row (scripts/recheck_schedule_25481cd8.py)
+    _sr = _opt(DATA, "schedule_recheck.json", {})
+    if _sr:
+        _bad = [r for r in (_sr.get("rows") or []) if r.get("result") != "match"]
+        body.append("<div class=\"panel\"><h2>Venetian schedule re-check, " + esc(_sr.get("checked_on", "")) + "</h2>"
+                    "<p>Every row of the official DeepStack Extravaganza IV schedule page was read again and compared field by field "
+                    "(date, start time, event number, name, buy-in, guarantee, structure-sheet number) with the stored row. "
+                    "Source: <a href=\"" + esc(_sr.get("official_source", "")) + "\" rel=\"noopener\">official Venetian schedule page</a>. "
+                    "Method and per-row result: <code>data/ea99006a/schedule_recheck.json</code>.</p>"
+                    "<div class=\"kv\"><dt>rows compared</dt><dd><b>" + str(_sr.get("rows_compared", 0)) + "</b></dd>"
+                    "<dt>rows matching</dt><dd><b>" + str((_sr.get("rows_compared", 0) or 0) - len(_bad)) + "</b></dd>"
+                    "<dt>mismatches</dt><dd><b>" + str(len(_bad)) + "</b></dd></div></div>")
     body.append("<div class=\"panel\"><h2>The standard a verdict applies (" + esc(STD["id"]) + ")</h2>"
                 "<p>" + esc(STD["text"]) + "</p>"
                 "<div class=\"warnbox\"><b>What this standard cannot do.</b> " + esc(STD["limitation"])
