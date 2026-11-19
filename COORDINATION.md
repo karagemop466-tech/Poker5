@@ -65,7 +65,7 @@ Scope discipline: no other session's folder (`docs/`, `site*/`, `dashboard-*/`, 
 | I1 | Repair F47 (structure sheet 8 grants later buy-ins; legacy capture misclassified #18/#58) | **redundant — closed** | bcff3a9a | — |
 | I2 | Make `scripts/integrate_b3be876c.py` idempotent (pin static as-of dates, fix the `check_out` off-by-one, stop reverting later wording corrections) | **redundant — closed** | bcff3a9a | — |
 | I3 | Line-by-line verification of the published site against the brief | **done** | bcff3a9a | `COORDINATION.md` (record only) |
-| I4 | Open PR to `main`, merge without waiting, confirm GitHub Pages deploy, record PR link + merge result | pending | bcff3a9a | `COORDINATION.md` (record only) |
+| I4 | Open PR to `main`, merge without waiting, confirm GitHub Pages deploy, record PR link + merge result | **done** | bcff3a9a | `COORDINATION.md` (record only) |
 
 ### I1 — redundant, closed (not re-attempted)
 
@@ -101,6 +101,15 @@ Every brief requirement was independently located and confirmed in the published
 
 **Read-only for this session:** every other session's files and open PRs (#53, #55, #59, #60). No published tournament or hotel value was changed; I1 and I2 were confirmed already-resolved on `main` and closed without re-applying.
 
+### I4 — done (PR merged, GitHub Pages deploy confirmed)
+
+- **PR:** [#103](https://github.com/karagemop466-tech/Poker5/pull/103) — "Coordination record: I1/I2 redundant-closed (main already fixed both), I3 line-by-line site verification". COORDINATION.md record only; no site, data, or script file changed.
+- **Merge:** merged to `main` at 2026-11-19 22:34:53 UTC as merge commit [`a31bd18`](https://github.com/karagemop466-tech/Poker5/commit/a31bd187069f944d85a700b32138f4af98b90a2a).
+- **Branch note:** the PR first conflicted because `main` advanced after the branch was cut; it was resolved by rebasing the branch onto the latest `main` and keeping both the merged `6dba9b3c` section (the session that actually applied the I2 idempotency fix) and this session's `bcff3a9a` record. No content from either side was discarded.
+- **Checks on the merge:** Quality checks workflow run [44629969183](https://github.com/karagemop466-tech/Poker5/actions/runs/44629969183) **success**; Pages build and deployment run [44629968709](https://github.com/karagemop466-tech/Poker5/actions/runs/44629968709) **success** at headSha `a31bd18`.
+- **Pages deploy:** confirmed. Repository Pages status `built`; site live at https://karagemop466-tech.github.io/Poker5/ (source `main` `/`, build type `legacy`).
+- **Irregularities:** none introduced. Standing flags (F01, F14, F47, F59–F61, etc.) remain published on the Flagged for Review page with their official source links and do not block the merge.
+- **Follow-up record PR:** [#105](https://github.com/karagemop466-tech/Poker5/pull/105) merged to `main` at 2026-11-19 22:37:14 UTC as merge commit [`db49131`](https://github.com/karagemop466-tech/Poker5/commit/db49131b34c53e71d7c4a16a9b0088e5fd5900f4); it carried this I4 outcome record. Quality checks run [44630336083](https://github.com/karagemop466-tech/Poker5/actions/runs/44630336083) and Validate run [44630336273](https://github.com/karagemop466-tech/Poker5/actions/runs/44630336273) both **success**; Pages build and deployment run [44630335495](https://github.com/karagemop466-tech/Poker5/actions/runs/44630335495) **success** at headSha `db49131`. (An intermediate Pages build at an earlier SHA was cancelled when a newer push superseded it; the final build for the merged `main` is `built`.) Final Pages status: `built`; site live at https://karagemop466-tech.github.io/Poker5/.
 ## Current branch session — 2723deea (active) — line-by-line re-verification, defect repair, integration
 
 **Branch:** `arena/2723deea-poker5` (fixed by Arena), based on `main` @ `998a32d`. **Claimed before any file edit**, 2026-11-19. The board shows no other open claim (every entry is done or merged; open PRs #53, #55, #59, #60 belong to other sessions and are not touched).
