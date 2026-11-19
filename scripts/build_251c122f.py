@@ -168,7 +168,7 @@ RATES = load("rates_log.json", {}) or {}
 WALKING = load("walking.json", {}) or {}
 
 LAST_SCRAPE = SCRAPE.get("last_run") or EV.get("generated_at") or ""
-BUILD_STAMP = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+BUILD_STAMP = LAST_SCRAPE or "n/a"
 
 CONFIRMED = [e for e in EVENTS if e.get("verdict") == "single_entry_confirmed"]
 ENTRY_CANDIDATES = [e for e in EVENTS if e.get("verdict") == "entry_limit_unverified"]
@@ -365,7 +365,7 @@ def shell(title: str, body: str, depth: int) -> str:
   <div>Independent planning tool. Not affiliated with any casino, poker room or hotel.
   Values change without notice. Confirm before you book or play. Must be 21+. Gamble responsibly.
   If gambling is a problem, call 1-800-522-4700.</div>
-  <div>Site built {stamp} from the official-source capture of {last}.
+  <div>Official-source capture timestamp: {stamp}. The site is generated from this capture.
     Code: <a href="{repo}">github.com/karagemop466-tech/Poker5</a> &middot;
     Task board: <a href="{repo}/blob/main/COORDINATION.md">COORDINATION.md</a> &middot;
     Data: <a href="{repo}/tree/main/data/c6087e2c">data/c6087e2c</a></div>
