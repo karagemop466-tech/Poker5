@@ -16,16 +16,18 @@ the **Flagged for review** page. Nothing is inferred.
 
 ```
 official pages / PDFs
-        │  scripts/scrape_251c122f.py      (runs daily in GitHub Actions)
+        │  scripts/scrape_251c122f.py      (daily GitHub Actions; reads the
+        │                                   Venetian DSE IV schedule + 37 sheets)
         ▼
-data/c6087e2c/schedule_live.json, structures.json, scrape_status.json, watch_status.json
-        │  scripts/merge_251c122f.py       (applies the single-entry standard)
+data/c6087e2c/  (preserved source capture: schedule_live.json, structures.json)
+        │
         ▼
-data/c6087e2c/events_verified.json
-        │  scripts/build_251c122f.py       (generates index.html + pages/)
+data/ea99006a/  (verified dataset the published site is built from)
+        │  scripts/build_ea99006a.py        (generates index.html + pages/)
         ▼
-index.html, pages/**, assets/            (published by GitHub Pages from main `/`)
-        │  scripts/crosscheck_251c122f.py  (fails if a verdict cannot be reproduced)
+index.html, pages/**, assets/**             (published by GitHub Pages from main `/`)
+        │  scripts/check_ea99006a.py        (fails on a missing source link or
+        │  scripts/recheck_ea99006a.py       a broken internal/external link)
 ```
 
 * `scripts/scrape_251c122f.py` reads the official Venetian DeepStack Extravaganza IV
@@ -33,40 +35,56 @@ index.html, pages/**, assets/            (published by GitHub Pages from main `/
   late-registration cutoff, level length, starting chips, guarantee and house fee
   with the exact excerpt each value came from, and hashes the hotel/venue pages on
   a watch list so a change can be spotted. It has a network-free `--self-test`.
-* `scripts/merge_251c122f.py` applies one published standard: a row is
-  **confirmed single-entry** only when its own sheet was read, lists that event
-  number, is a one-day event, and contains no re-entry, rebuy, add-on,
-  double-entry, alternate-stack or purchased-chip language. Disagreements between
-  two official sources are recorded and shown, never resolved by picking one.
-* `scripts/build_251c122f.py` generates the site and refuses to publish a data row
-  without a source link or an internal link that does not resolve.
-* `scripts/crosscheck_251c122f.py` re-derives every verdict from the stored rule
-  fields and fails the build if one cannot be reproduced.
+* `scripts/build_ea99006a.py` is the **canonical generator of the published root
+  site**. It refuses to publish a data row without a source link or an internal
+  link that does not resolve, and it emits the shared `assets/app.js` that powers
+  the search box, date filter, single-entry toggle, trip-cost calculator, hotel
+  true-cost calculator, dated rate log and the 30-minute walk filter.
+* `scripts/check_ea99006a.py` re-checks every generated page: table rows must
+  carry an official `https` source, and every internal and external link must
+  resolve.
+* `scripts/recheck_ea99006a.py` re-fetches every official source URL, hashes it
+  and records what changed; `.github/workflows/recheck-ea99006a.yml` runs it on a
+  schedule and commits a change log.
 
-Daily job: `.github/workflows/daily-scrape.yml` (13:37 UTC). Quality gate:
-`.github/workflows/quality.yml`.
+**Single-entry standard.** A row is labelled *Confirmed single-entry* only when an
+official source states a one-entry limit. All 37 official Venetian structure
+sheets were read on 2026-11-17; none contains a one-entry, no-re-entry or freezeout
+statement, and every WPT / Wynn event whose terms were read permits re-entry. The
+site therefore reports **0 confirmed single-entry events**. The 47 entry rows whose
+sheet shows no re-entry, rebuy or add-on text are the closest available candidates
+and stay labelled *Entry cap not stated*; the 92 rows that explicitly allow re-entry,
+flights or add-ons are kept on a separate Multi-entry / advantage page.
+
+Daily jobs:
+* `.github/workflows/daily-scrape.yml` — reads the official schedule and sheets and
+  rebuilds the canonical root site (13:37 UTC).
+* `.github/workflows/recheck-ea99006a.yml` — re-fetches every source and records
+  changes (06:00 and 12:00 UTC).
+* `.github/workflows/quality.yml` — validates and rebuilds on every PR and push to
+  `main`.
 
 ## Local commands
 
 ```sh
 python3 scripts/scrape_251c122f.py --self-test   # parser self-test, no network
-python3 scripts/merge_251c122f.py                # capture -> events_verified.json
-python3 scripts/build_251c122f.py                # regenerate the site
-python3 scripts/crosscheck_251c122f.py           # verify verdicts, sources, links
+python3 scripts/build_ea99006a.py                # regenerate the root site
+python3 scripts/check_ea99006a.py                # verify sources and links
+python3 scripts/recheck_ea99006a.py --offline    # validate the source ledger
 node serve.mjs 4173                              # local preview on 0.0.0.0:4173
 ```
 
-The agent sandbox that authored this repository cannot open a TCP connection to
+The agent sandbox that authors this repository cannot open a TCP connection to
 casino hosts, so the live reading happens on GitHub Actions runners; the capture
-is committed to `data/c6087e2c/` and every excerpt in it can be checked against
-the linked PDF.
+is committed under `data/` and every excerpt in it can be checked against the
+linked PDF.
 
 ## Other files in the repo
 
-`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-aa83f1e1/`, `data-*/` and
-`tools/` are output from earlier parallel sessions. They are preserved unchanged
-and are not part of the published root site. `COORDINATION.md` is the shared task
-board and records every session's scope and results.
+`docs/`, `site/`, `site-*/`, `dashboard-*/`, `planner-*/`, `data-*/` and `tools/`
+are output from earlier parallel sessions. They are preserved unchanged and are
+not part of the published root site. `COORDINATION.md` is the shared task board
+and records every session's scope and results.
 
 ## Notes
 

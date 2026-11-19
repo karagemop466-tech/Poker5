@@ -517,6 +517,7 @@ def page(title, body, active, depth=1, extra_head=""):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>%s | Poker5</title>
 <link rel="stylesheet" href="%sassets/css/style.css">
+<script src="%sassets/app.js"></script>
 %s</head><body>
 <header><div class="brand"><span class="logo">P5</span> Poker5
 <small>Las Vegas Strip poker trip planner &middot; source-verified</small></div>
@@ -531,7 +532,7 @@ are left blank and listed on the <a href="%spages/flagged-review.html">Flagged f
 Nothing is inferred, estimated or filled in. Room rates change daily; confirm before booking or playing. Must be 21+.
 If gambling is a problem, call the Nevada Problem Gambling HelpLine 1-800-522-4700.</p>
 </footer></body></html>
-""" % (esc(title), pre, extra_head, nav_html(active, depth), body, esc(RETRIEVED), pre)
+""" % (esc(title), pre, pre, extra_head, nav_html(active, depth), body, esc(RETRIEVED), pre)
 
 
 WROTE = {}

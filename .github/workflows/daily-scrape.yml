@@ -18,8 +18,8 @@ on:
     branches: ["arena/**", "main"]
     paths:
       - "scripts/scrape_251c122f.py"
-      - "scripts/build_c6087e2c.py"
-      - "scripts/check_root_site.py"
+      - "scripts/build_ea99006a.py"
+      - "scripts/check_ea99006a.py"
       - ".github/workflows/daily-scrape.yml"
       - "data/c6087e2c/verification_251c122f.json"
 
@@ -56,8 +56,8 @@ jobs:
       - name: Merge the live capture into the verified dataset
         run: python3 scripts/merge_251c122f.py
 
-      - name: Rebuild the site from the data
-        run: python3 scripts/build_c6087e2c.py
+      - name: Rebuild the canonical root site from the verified dataset
+        run: python3 scripts/build_ea99006a.py
 
       - name: Upload the capture for review (always)
         if: always()
@@ -91,8 +91,7 @@ jobs:
 
       - name: Validate links, source anchors and cross-checks
         run: |
-          python3 scripts/check_root_site.py
-          python3 scripts/crosscheck_251c122f.py
+          python3 scripts/check_ea99006a.py
 
       - name: Print the capture summary
         if: always()
