@@ -1369,7 +1369,7 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 | V2 | Full local check suite | done — all green | none |
 | V3 | Brief-feature coverage: landing page + category subpages; date filter; global search box on all tables; single-entry/freezeout-confirmed toggle; one page per venue (Venetian/Wynn/others); trip-cost calculator entries × buy-ins + nights × true hotel cost (Incomplete without a dated quote); dated rate log; per-row last-checked dates; source-changed badges; overlap check with primary + conditional fallback; descriptive guarantee÷entry-fee ratio; bounty/flight separation; walking routes ≤30 min; morning feed; executive summary; questions; suggestions; flagged-for-review page | done — all present; remaining gaps are honest blanks/flags (F14, F32, F33, F50, F51), not missing features | pages/**, assets/app.js (regenerated output only) |
 | V4 | Rebase onto `main`, claim + verification record committed and pushed | done | COORDINATION.md |
-| V5 | PR integration branch → main (#76), merge without waiting, confirm GitHub Pages deploy via API, record PR link + merge result here | pending | COORDINATION.md |
+| V5 | PR integration branch → main (#76), merge without waiting, confirm GitHub Pages deploy via API, record PR link + merge result here | done | COORDINATION.md |
 
 ### Verification record (2026-11-19)
 
@@ -1397,11 +1397,17 @@ Not claimed here (out of scope, logged as requests below): per-field retrieval d
 
 **No manual input was used.** Every published value is captured from an official source with its retrieval date; derived figures (ratios, nightly averages, true cost per night) are labelled derived and shown only when their inputs are known.
 
-### Publication record (merge pending)
+### Publication record (merged)
 
-PR: https://github.com/karagemop466-tech/Poker5/pull/76 (arena/98c6f29b-poker5 → main). Merge command: `gh pr merge 76 --merge` (no approval wait, per the brief). Pages: source `main` `/`, live at https://karagemop466-tech.github.io/Poker5/; deploy status to be confirmed via the GitHub Pages API after the merge and recorded below.
+- PR: https://github.com/karagemop466-tech/Poker5/pull/76 (arena/98c6f29b-poker5 → main).
+- Merged with `gh pr merge 76 --merge` without waiting for approval, per the brief.
+- Merge commit: `40b5a40250840d356449e1b50d4de05cf58c6145` (state MERGED; PR closed), merged 2026-11-19.
+- CI before merge (PR #76): Quality checks success (run 44623765245); Validate Dec 2–9 poker dashboard success (run 44623764984).
+- GitHub Pages: source `main` `/`, https enforced, live https://karagemop466-tech.github.io/Poker5/. Pages build for commit `0471b264` (current main tip, which contains merge commit `40b5a402`): status `built`, error `null`, finished 2026-11-19T22:01:09Z — confirmed via the GitHub Pages API (the sandbox cannot reach github.io directly, as in every prior session).
+- After this session's merge, main advanced with PR #78 (legacy subsequent-buy-in detection fix — the F47 repair requested in this session's record) and PR #84; merge commit `40b5a402` is an ancestor of the current main tip, so the published site includes this session's verification record.
+- Flagged irregularities remain published on pages/flagged-review.html (43 flags, F01–F55, each with its official source link) and do not block the merge; they are posted for review after the site is live.
 
-**Merge result:** to be recorded here after `gh pr merge 76 --merge` returns (merge commit, Pages build/deploy status). Flagged irregularities remain published on pages/flagged-review.html and do not block the merge.
+**Session 98c6f29b closed: all claimed tasks V1–V5 done.**
 
 ---
 
