@@ -2047,3 +2047,33 @@ Caesars Palace quotes).
 **Integration note (this session):** `main` advanced twice while this session worked (through PR #100, then through PR #105). Both `git merge origin/main` rounds were resolved keeping both sides everywhere; conflicts touched `COORDINATION.md`, `data/ea99006a/{flags,hotels,meta,questions,routes,suggestions}.json`, `scripts/build_ea99006a.py` and the generated pages. Because `main` had already assigned F56-F59 (other sessions' WPT/TDA flags) and later F70, Q21 and S17, this session's new items carry the final IDs **F71-F74** (Caesars calendar error; Resorts World caption conflict; route direction asymmetry; Horseshoe 31-min limit straddle + calendar per-date meaning), **Q22/Q23** and **S18-S20**. F55 was extended (not replaced) with the new evidence reproducing the 72-hour Wynn figure from the dated booking-engine rate plans. The second merge also brought session 6dba9b3c's per-row official addresses in `routes.json` and its address columns in the builder: the merged routes table shows both the official addresses and this session's measured minutes per direction. `scripts/integrate_b3be876c.py` (the scheduled re-derivation) was updated to carry the verified Caesars Palace ($54.95 + $7.35) and Horseshoe ($49.95 + $6.68) property fees so a scheduled run can no longer revert them (the new `integration_invariants.test.mjs` proved the revert; 31/31 tests pass after the fix). Other sessions' records in this file are untouched.
 
 - PR: https://github.com/karagemop466-tech/Poker5/pull/106 (G1-G5 integration, this session). Merge result and Pages deploy recorded below once complete.
+
+**Integration record (session f7676bd0, 3rd and 4th merge rounds).** Main advanced again
+(PRs #109, #110, #111, #112). Merged `origin/main` three more times, keeping both sides
+everywhere. Conflicts logged: `data/c6087e2c/*` (newest capture kept, repo precedent);
+`data/ea99006a/{flags,questions,suggestions,rate_snapshots,rates_log,routes}.json` and
+`scripts/build_ea99006a.py`. The builder kept main's window-matched Wynn quote prose and
+rows, and this session's dual-reading walk cells. Dated captures from both sessions are
+unioned, not replaced.
+
+**Final ID map (this session, after the final re-number):** flags **F76** Caesars Palace
+booking calendar technical error; **F77** walking routes asymmetric by direction and by pin
+placement (two same-day reading sets); **F78** direction asymmetry; **F79** Horseshoe to
+Venetian straddles the 30-minute limit across the two readings. Questions **Q23** entrance /
+direction rule; **Q24** calendar per-date meaning. Suggestions **S19** nightly calendar
+capture (in review); **S20** both directions of every walk (implemented: dual reading shown,
+filter uses the slower reading); **S21** GTD / entry-fee ratio (implemented on main as
+`gtd_per_entry`; descriptive only). Main's own F70-F75, Q18-Q22 and S1-S18 are untouched.
+Cross-references in the site were checked against the renumbered IDs.
+
+**Checks on the final tree:** `complete_routes_6dba9b3c.py --check` (72 pairs), `check_ea99006a.py`
+(every row carries an official https source; no broken links), `check_root_site.py` OK,
+`crosscheck_251c122f.py` OK, `scrape_251c122f.py --self-test` OK, `recheck_ea99006a.py --offline`
+ledger OK, `npm test` 31/31, `node --check assets/app.js` OK. Whitespace warning in another
+session's `data/ec3c21b8/wpt_sign_2026-11-19.tsv` (empty tab fields) is left unmodified.
+
+**Merge result:** PR #106 (arena/f7676bd0-poker5 -> main), https://github.com/karagemop466-tech/Poker5/pull/106
+merged as a merge commit, merge SHA **452144f**. Quality checks green on head 5887adf.
+GitHub Pages "pages build and deployment" for 452144f: completed, success. Live root
+https://karagemop466-tech.github.io/Poker5/ confirmed by fetch: the dashboard and the
+S1-screened counts render.
