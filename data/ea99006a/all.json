@@ -17682,7 +17682,7 @@
    "detail": "Updated 2026-11-19 (session 45556d36): the Wynn booking engine returned stay-matched averages for 6-13 Dec 2026 (Wynn Resort King $688/night, resort fee included, tax excluded; 9 room types listed), captured in the dated rate log; the trip planner prefills its true nightly cost from that capture (688.00 x 1.1338 = 780.05, labelled as computed, not an engine total). The Venetian booking calendar still renders '$XXX' placeholders for the same dates and the Caesars Palace/Horseshoe engines reported technical difficulties, so no other window-matched rate exists. The Venetian poker-suite '$119 / $209' floor remains the only Venetian number and is conditional, not a quote. All other rate cells stay blank on purpose.  ||  Also recorded by session f7676bd0 on 2026-11-19: the Wynn booking engine published dated quotes for Dec 6-13, 2026 ($818 Flexible Getaway, $688 'Your Fall to Have It All', both average/night, fee included, taxes excluded) and both are in the rate log. The Horseshoe and Resorts World engines published December calendars (raw displays, flags F77/F79). The Venetian engine returned '$XXX' placeholders and the Caesars Palace calendar errored, so no dated quote exists for those two; the Venetian poker-suite rates remain floors, not quotes.",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
    "status": "partially resolved: Wynn window quote captured 2026-11-19",
-   "last_updated": "2026-11-20"
+   "last_updated": "2026-11-19"
   },
   {
    "id": "F15",
@@ -17826,7 +17826,7 @@
    "detail": "Resolved 2026-11-19 (session f7676bd0) for the two candidate properties: booking-page Hotel Policies give exact fees (Caesars Palace $54.95 plus $7.35 tax; Horseshoe $49.95 plus $6.68 tax). The corporate disclaimer still publishes only the $45-$60 range for other Caesars properties.",
    "source": "https://www.caesars.com/corporate/disclaimer",
    "status": "open",
-   "last_updated": "2026-11-20"
+   "last_updated": "2026-11-19"
   },
   {
    "id": "F47",
@@ -17862,7 +17862,7 @@
    "detail": "Verified again on 2026-11-19: the Venetian publishes a resort fee, a player-parking rule and its poker-room location ('The Palazzo, level 2 of Grand Canal Shoppes'), and the Wynn terms publish poker-room parking, but no property publishes a walking minute figure to another property. Minute cells therefore stay blank, the 30-minute filter only acts on values recorded by you, and each pair carries a maps deep link measured from the official street addresses. RESOLVED ON 2026-11-19: all 30 hotel-to-venue pairs were measured twice on Google Maps walking directions - once between official property names (session 0fd59a4a) and once between the official street addresses (session f7676bd0) - and both dated reading sets are stored in data/ea99006a/routes.json with their links and check dates. The figures are map observations, not hotel-published facts; the routes page filters on the slower reading per pair.",
    "source": "https://www.google.com/maps/dir/Wynn+Las+Vegas,+3131+Las+Vegas+Blvd+South,+Las+Vegas,+NV/3355+S+Las+Vegas+Blvd,+Las+Vegas,+NV+89109/data=!4m2!4m1!3e2",
    "status": "open",
-   "last_updated": "2026-11-20"
+   "last_updated": "2026-11-19"
   },
   {
    "id": "F51",
@@ -17871,7 +17871,7 @@
    "detail": "Updated 2026-11-19 (session f7676bd0): a dated official Wynn quote for Dec 6-13 exists ($688-$818 average per night, fee included, taxes excluded), so the planner's hotel side can be completed for a Wynn stay by typing that figure into the calculator. For the Venetian, Caesars Palace, Horseshoe and Resorts World no itemised checkout total for the window was returned, so the calculator stays incomplete for those until one is captured.",
    "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
    "status": "open by design",
-   "last_updated": "2026-11-20"
+   "last_updated": "2026-11-19"
   },
   {
    "id": "F52",

@@ -1,12 +1,12 @@
 {
- "run": "2026-11-20T01:09:52Z",
- "urls": 69,
+ "run": "2026-11-20T21:01:39Z",
+ "urls": 68,
  "counts": {
   "ok": 3,
-  "changed": 66,
+  "changed": 65,
   "error": 0
  },
- "value_changes": 1399,
- "page_only_changes": 1,
+ "value_changes": 1398,
+ "page_only_changes": 3,
  "note": "statuses: ok = nothing moved; page-only = bytes differ, every published sentence still reads the same; reflow = the value is still on the page but the recorded sentence moved; changed = the value itself is gone; error = could not re-check, which is never reported as 'no change'."
 }

@@ -1674,5 +1674,1236 @@
    "parking",
    "resort fee"
   ]
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2",
+  "label": "flag source",
+  "old_sha256": "e32da767151f5a396ff451e02916367cd285a20865162415a5789c6e9d8ffdf5",
+  "new_sha256": "9d1b45b2f6465ea1570e3b8871eeacebec96ff7b7e151b9acc3c0f6ed1d96e56",
+  "old_bytes": 103753,
+  "new_bytes": 102423
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
+  "label": "cancellation source",
+  "old_sha256": "a2daa59938c41e5be76dc532387c5f41d86ba8603c009d4fe18dde61357b0103",
+  "new_sha256": "1563e7c7404f9bbb45f1abe776291dcd25db9cd0ecd221710687c8cc3fb487ed",
+  "old_bytes": 118728,
+  "new_bytes": 118747
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "label": "schedule source",
+  "old_sha256": "be54d65557912dc295898dcda102489d7d0f97a2c6e024e842c09d5baad1dbff",
+  "new_sha256": "0d2ceb2ca05d42df58a494ee7d6e4dab37c2bb18417652bf3a54844b947137b8",
+  "old_bytes": 117186,
+  "new_bytes": 117207
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000",
+  "label": "resort fee page",
+  "old_sha256": "0cf7eb79995c00c3f687e9f27d0009c097a5716a220341a5b82b61bf45816730",
+  "new_sha256": "2d6189cdacc2acbc54a6c76b2fbc245549d19fafd26c97dbeeaa1a398dd459c1",
+  "old_bytes": 6382,
+  "new_bytes": 6381
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000",
+  "label": "resort fee page",
+  "old_sha256": "6ef6b99ce414fab1edcc526f503c8b9ab6ed0be534eeb595d8424b6e08372174",
+  "new_sha256": "f404e1087ba9a39a7e52319216c4022fbcd6577dd8df33596680e4842d438b00",
+  "old_bytes": 6380,
+  "new_bytes": 6381
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.caesars.com/caesars-palace/casino",
+  "label": "venue page",
+  "old_sha256": "336dc3f98188347573a81cc0d10635d941741e8487fd3a8d059f514f3caac3bb",
+  "new_sha256": "4b28c8df8c5d3129c968f4758c39d4ff625f1add2743c09f6157ccc2a4f43050",
+  "old_bytes": 99255,
+  "new_bytes": 99255
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.caesars.com/horseshoe-las-vegas/casino",
+  "label": "venue page",
+  "old_sha256": "86c3512469ee108337c0463fca784f11f3d7e25c9ff019adc94b4f84d44f738e",
+  "new_sha256": "79456fb96c161085aa5445e064dba9a8c5e13659c3073e0221409cc44111f779",
+  "old_bytes": 92471,
+  "new_bytes": 92472
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
+  "label": "resort fee page",
+  "old_sha256": "85f5d3391c949ecda714f58e541a8d09a59ff5ab71d9c59405fef8230192bead",
+  "new_sha256": "a4d248f2953a3dacc7e45aa8dc7c155bff8527cedbb7d8d5feae23fd7c1c088e",
+  "old_bytes": 116470,
+  "new_bytes": 116470
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.venetianlasvegas.com/content/venetian/us/en/legal/hotel-terms-and-conditions.html",
+  "label": "cancellation source",
+  "old_sha256": "12272d8108dfc9fd5eeb501291ea02ccd435279a89e4eeae34490b58f21fca69",
+  "new_sha256": "3dc03ff879bc4beadc7212c3b526fdf27c4dfa43f915c4e816b155e30394ad9d",
+  "old_bytes": 233108,
+  "new_bytes": 232349
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "label": "parking source",
+  "old_sha256": "685b18ee30cda70ce1f94e87e2251f87099dc7771606db5c519ced962478cb5b",
+  "new_sha256": "fef9a79bb146d60dbdb32b763be0222f27dde87ce631a7c8368aa23ba91809a0",
+  "old_bytes": 226118,
+  "new_bytes": 225359
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "label": "flag source",
+  "old_sha256": "7e463d4ecede40341096e4e9bee108387e4d40d19e1151c25fabe401ba5f06c8",
+  "new_sha256": "4ca9df6354496c49ac6c913ee629688003a275602ac204d1793e836d4fda099a",
+  "old_bytes": 232210,
+  "new_bytes": 231451
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.venetianlasvegas.com/resort/resort-fee.html",
+  "label": "resort fee page",
+  "old_sha256": "818f2c39df8c7fdbac4dccb69ca771f933a8398389fae86b27a44ee61cd5bb9c",
+  "new_sha256": "aaf94058bf555e129bf9091dcb7a696bc13f26cc90a5d14db6ac9a0a8a0a342c",
+  "old_bytes": 227569,
+  "new_bytes": 226810
+ },
+ {
+  "changed_at": "2026-11-20T20:50:56Z",
+  "url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "label": "resort fee page",
+  "old_sha256": "d568d4eb1dd9b49a7cbab805c303ab6f70881fe2929ea56e2a2398ac26505b7f",
+  "new_sha256": "77a2bb89af1b589d8017263609ee254e4a4dd5ca844763ecc8e603245459d2a8",
+  "old_bytes": 357464,
+  "new_bytes": 353615
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://aria.mgmresorts.com/en/terms-and-conditions.html",
+  "label": "ARIA Resort & Casino",
+  "old_sha256": "0c44188b09c565d9892749aa4deae97f173776eda01c1d56f29f53e69b70c712",
+  "new_sha256": "05ed32c030a809a8319197a87cd5b65d84d66001fe8f691abd656c29c1f14897",
+  "old_bytes": 355322,
+  "new_bytes": 355322,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://bellagio.mgmresorts.com/en/terms-and-conditions.html",
+  "label": "Bellagio",
+  "old_sha256": "2fa7d56c13bfa2c9164a8ae1be672e55d4b2a76cd7c1e7e1b6143767fc3c9ef9",
+  "new_sha256": "c7f7546db1754de6232810e5538e777a8d450d61565c9783c585bde480ec41e8",
+  "old_bytes": 432260,
+  "new_bytes": 432260,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/01_120-No-Limit-Holdem-Rules-Sheet-Oct2026-1-Revise.jpg",
+  "label": "Daily NLH",
+  "old_sha256": "eb1644af66179c322f1221f544d7c6b0ba23bc24a2135b1346dde271c3ac1d95",
+  "new_sha256": "eb1644af66179c322f1221f544d7c6b0ba23bc24a2135b1346dde271c3ac1d95",
+  "old_bytes": 205136,
+  "new_bytes": 205136,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://cdn.southpointcasino.com/wp-content/uploads/sites/1/2026/05/08_120-No-Limit-Holdem-Turbo-Bounty-Rules-Sheet-Oct2026-1.jpg",
+  "label": "NLH Turbo Bounty ($25)",
+  "old_sha256": "0ef6ed1925cc9cc311943abcbb82f72372a5ac95f72cbea9896b43722807febd",
+  "new_sha256": "0ef6ed1925cc9cc311943abcbb82f72372a5ac95f72cbea9896b43722807febd",
+  "old_bytes": 202342,
+  "new_bytes": 202342,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://cdn.wynnresorts.com/image/upload/v1750864036/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Structures.pdf",
+  "label": "No Limit Hold'em Day 1A",
+  "old_sha256": "40522ad679c5d7a290b69a6a740dfd6f5f44ca883b3fee64c708249ae0540693",
+  "new_sha256": "40522ad679c5d7a290b69a6a740dfd6f5f44ca883b3fee64c708249ae0540693",
+  "old_bytes": 2637121,
+  "new_bytes": 2637121,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://cdn.wynnresorts.com/image/upload/v1752011191/visitwynn_pdfs_files/Poker/Daily%20Tournaments/Poker-All_Daily_Structures.pdf",
+  "label": "Daily NLH $10,000 Guarantee (Monday-Thursday)",
+  "old_sha256": "95c63a1317edfc86f733d81d96c726c55efe663f872eaa9541a7d21b51ef87cf",
+  "new_sha256": "95c63a1317edfc86f733d81d96c726c55efe663f872eaa9541a7d21b51ef87cf",
+  "old_bytes": 313776,
+  "new_bytes": 313776,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://cdn.wynnresorts.com/image/upload/v1757097329/visitwynn_pdfs_files/Poker/WPT/WPT_World_Championship_Schedule.pdf",
+  "label": "Double Play Milestone Satellite (2 x $1,100 ticket)",
+  "old_sha256": "9291f60e5263033d9bd884849a56e36cb8180d91e6bee24aa319267d8634b3e0",
+  "new_sha256": "9291f60e5263033d9bd884849a56e36cb8180d91e6bee24aa319267d8634b3e0",
+  "old_bytes": 23785821,
+  "new_bytes": 23785821,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://mgmgrand.mgmresorts.com/en/terms-and-conditions.html",
+  "label": "MGM Grand",
+  "old_sha256": "854d1d621422eda25796c01f50af100df393783861da815fa8780f672b0e7a3a",
+  "new_sha256": "1e9c822eb27f33e809c5ac257ea73363228cdaae22988d3837c48e59e336496f",
+  "old_bytes": 435043,
+  "new_bytes": 435043,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://reservations.rwlasvegas.com/ibe/shop.aspx?selectedTower=HILTON&hotelID=17726&checkin=2026-12-06&checkout=2026-12-13&nights=7&adults=2",
+  "label": "Resorts World Las Vegas (Hilton tower)",
+  "old_sha256": "9d1b45b2f6465ea1570e3b8871eeacebec96ff7b7e151b9acc3c0f6ed1d96e56",
+  "new_sha256": "1cead93f3db239f0061653751ec95e62fea25b4b632b5296530d70f9e1744c72",
+  "old_bytes": 102423,
+  "new_bytes": 103753,
+  "kind": "changed",
+  "values": [
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://reservations.wynnlasvegas.com/ibe/details.aspx?hotelID=13763&langID=1&rmID=68658&checkin=12/06/2026&checkout=12/13/2026",
+  "label": "Wynn Las Vegas / Encore",
+  "old_sha256": "1563e7c7404f9bbb45f1abe776291dcd25db9cd0ecd221710687c8cc3fb487ed",
+  "new_sha256": "2d0f332b79ef8d1f46a19f1eaa6c2c8fb532b920e70e2e5f1a82ef768a3329f1",
+  "old_bytes": 118747,
+  "new_bytes": 118747,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://reservations.wynnlasvegas.com/ibe/shop.aspx?selectedTower=WYNN&hotelID=13763",
+  "label": "Wynn Las Vegas",
+  "old_sha256": "91f24b8b3b5aff8addbf58b9b6aa40e9b0b57528df08b208f70e6c9ec4c689a2",
+  "new_sha256": "e46b55dff97ac848ecb802c4125dead9adb09d506471bc2a6143ca9c26741ff3",
+  "old_bytes": 83831,
+  "new_bytes": 83837,
+  "kind": "changed",
+  "values": [
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://southpointcasino.com/casino/poker-room/daily-tournament-schedule",
+  "label": "Chip Chop Survivor",
+  "old_sha256": "0d2ceb2ca05d42df58a494ee7d6e4dab37c2bb18417652bf3a54844b947137b8",
+  "new_sha256": "dfe20b7f4b0accec93d274f64dfe71e1435d05614a12c3a6f9495e4bd1142e50",
+  "old_bytes": 117207,
+  "new_bytes": 117207,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://wptmedia-mig.s3.amazonaws.com/wp-content/uploads/2026/11/WPT_World_Championship_Structures.pdf",
+  "label": "No Limit Hold'em Day 2",
+  "old_sha256": "25fd37dd6f1035286810a8c3304ecc78e32e76af5b3eb5863e7800126926ba97",
+  "new_sha256": "25fd37dd6f1035286810a8c3304ecc78e32e76af5b3eb5863e7800126926ba97",
+  "old_bytes": 2637046,
+  "new_bytes": 2637046,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?propCode=blv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000",
+  "label": "Horseshoe Las Vegas",
+  "old_sha256": "2d6189cdacc2acbc54a6c76b2fbc245549d19fafd26c97dbeeaa1a398dd459c1",
+  "new_sha256": "ca7ae1c2eaef916ac9bfc29e53b78cd5545b7bda63ed320fd6363df571e84750",
+  "old_bytes": 6381,
+  "new_bytes": 6380,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "dated rate observation",
+   "parking",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.caesars.com/book/hotel-calendar?propCode=clv&arrivalDate=12/06/2026&departureDate=12/13/2026&adults=2&rooms=1&flexibleCalendar=1101100110000000000000000000000000000000000000000000000000000000",
+  "label": "Caesars Palace",
+  "old_sha256": "f404e1087ba9a39a7e52319216c4022fbcd6577dd8df33596680e4842d438b00",
+  "new_sha256": "6c253e5581dad6ab40cdafde455fd742aa228fb70d7ecff4dd746779c9be137b",
+  "old_bytes": 6381,
+  "new_bytes": 6381,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "parking",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.caesars.com/caesars-palace/casino",
+  "label": "Caesars Palace",
+  "old_sha256": "4b28c8df8c5d3129c968f4758c39d4ff625f1add2743c09f6157ccc2a4f43050",
+  "new_sha256": "6e37c83b16d0c26cd3aeba8682aaebcf68e470e1c58e72438672085e5b6285ee",
+  "old_bytes": 99255,
+  "new_bytes": 99254,
+  "kind": "changed",
+  "values": [
+   "address"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.caesars.com/content/dam/empire/clv/casino/poker/tournament-schedule/clv-poker-daily-nlh-tournament-flyer-2026.pdf",
+  "label": "Daily No-Limit Texas Hold'em",
+  "old_sha256": "4ed421291e69642b9a45e7510ee1fe9ca2807abeccad9e85fba7a2fb391e5222",
+  "new_sha256": "4ed421291e69642b9a45e7510ee1fe9ca2807abeccad9e85fba7a2fb391e5222",
+  "old_bytes": 244164,
+  "new_bytes": 244164,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.caesars.com/horseshoe-las-vegas/casino",
+  "label": "Horseshoe Las Vegas",
+  "old_sha256": "79456fb96c161085aa5445e064dba9a8c5e13659c3073e0221409cc44111f779",
+  "new_sha256": "79456fb96c161085aa5445e064dba9a8c5e13659c3073e0221409cc44111f779",
+  "old_bytes": 92472,
+  "new_bytes": 92472,
+  "kind": "changed",
+  "values": [
+   "address"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.mgmresorts.com/en/things-to-do/parking.html",
+  "label": "Bellagio",
+  "old_sha256": "6fcc5bb5aa9f7a4253fc0615028cc1ef032e6d3d219784f4b6ba5c50086fdfea",
+  "new_sha256": "31a18888b47e2b10388ca73c0b9c225219040e90ecd35f0a07d592a1cb48acde",
+  "old_bytes": 482941,
+  "new_bytes": 482941,
+  "kind": "changed",
+  "values": [
+   "parking"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.rwlasvegas.com/offers/all-resort-no-fees/",
+  "label": "Resorts World Las Vegas (Hilton / Conrad / Crockfords)",
+  "old_sha256": "a4d248f2953a3dacc7e45aa8dc7c155bff8527cedbb7d8d5feae23fd7c1c088e",
+  "new_sha256": "a4d248f2953a3dacc7e45aa8dc7c155bff8527cedbb7d8d5feae23fd7c1c088e",
+  "old_bytes": 116470,
+  "new_bytes": 116470,
+  "kind": "changed",
+  "values": [
+   "cancellation",
+   "parking",
+   "resort fee"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/booking/?adults=2&children=0&checkin=2026-12-06&checkout=2026-12-13&view=calendar",
+  "label": "The Venetian Resort / Caesars Palace",
+  "old_sha256": "a919ee56f520904b8165a6a33c13472f104ba6c38fc163d91e8eb544cbcf8b7a",
+  "new_sha256": "efc1573c4313b2d13e07e1792b6a85593a8a60269af5ca47dbe93122a6f81adb",
+  "old_bytes": 142777,
+  "new_bytes": 142777,
+  "kind": "changed",
+  "values": [
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-02&children[]=0&departure_date=2026-12-09&view=calendar",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "ee5f2d8cda0d88ae766220c1a587a1e9fd9d8f6264dd8ed7f9fb0acf3a31b659",
+  "new_sha256": "1b9dda4e92b70fa67d3b88237e8496ab54510d8b76861c53499dc179ee44fec7",
+  "old_bytes": 142777,
+  "new_bytes": 142777,
+  "kind": "changed",
+  "values": [
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/booking?adults[]=2&arrival_date=2026-12-06&children[]=0&departure_date=2026-12-13&view=calendar",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "d4bb35c5734f39900983a322c7db3c9c448e9b11b809100544d26a16e96f42fc",
+  "new_sha256": "223bc1c5c89be3706209b27f75753b6802790b851bc5e5773e3d522cd2e6ff0a",
+  "old_bytes": 142777,
+  "new_bytes": 142777,
+  "kind": "changed",
+  "values": [
+   "dated rate observation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_1.pdf",
+  "label": "$200 No Limit Hold'em Bounty $8K GTD (1Day)",
+  "old_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
+  "new_sha256": "3ac99fb0c5e94ffadd20cce6871550a29e825e5b3545a6e6156f172f14031e1c",
+  "old_bytes": 381816,
+  "new_bytes": 381816,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_10.pdf",
+  "label": "$300 No Limit Hold'em 1A $75K GTD",
+  "old_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
+  "new_sha256": "32fccc9ec29fa00c71f6fee4fc3ada9c02e39a49243c29d3cc2df99ddb07016c",
+  "old_bytes": 390783,
+  "new_bytes": 390783,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_11.pdf",
+  "label": "$600 No Limit Hold'em Bounty $30K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+  "old_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
+  "new_sha256": "bc4d5f6f320ada80a042d5632cbdf58387772701fee57ed5157ba220cf439566",
+  "old_bytes": 381850,
+  "new_bytes": 381850,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_12.pdf",
+  "label": "$800 No Limit Hold'em 1A $500K GTD",
+  "old_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
+  "new_sha256": "7d5e0a03a5e4b90c760b75db2a80c3a69ff1d70bc8137698f2eaf0b620108b52",
+  "old_bytes": 390826,
+  "new_bytes": 390826,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_13.pdf",
+  "label": "$800 No Limit Hold'em 1B $500K GTD",
+  "old_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
+  "new_sha256": "7a1ffb8af0e30bcf7e248ee7a0c53fddfe062c98a4b260183988d1e36b247416",
+  "old_bytes": 389850,
+  "new_bytes": 389850,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_14.pdf",
+  "label": "$800 No Limit Hold'em 1F (Turbo) $500K GTD",
+  "old_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
+  "new_sha256": "5deef7a1812620275283cfd1b81636795a155047172471346c8402ff9074d0ae",
+  "old_bytes": 389783,
+  "new_bytes": 389783,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_15.pdf",
+  "label": "$300 No Limit Hold'em Bounty $15K GTD (1Day)",
+  "old_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
+  "new_sha256": "8fb8ea386697f858b44454c29587d2185999c3560ef6c44e36e50cdb20a32dac",
+  "old_bytes": 381826,
+  "new_bytes": 381826,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_16.pdf",
+  "label": "$800 No Limit Hold'em Bounty $75K GTD (1Day) - $200 bounties to start & $500 bounties in the money",
+  "old_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
+  "new_sha256": "3d8841a1f08af069cec37e92672fe6a30ce9fe3fc53b30dca89c07d09db0b5fe",
+  "old_bytes": 381831,
+  "new_bytes": 381831,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_17.pdf",
+  "label": "$600 No Limit Hold'em Seniors $40K GTD (1Day) - Must be 50+ years of age to participate",
+  "old_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
+  "new_sha256": "8acf20fe50bfa3bb4655501c470b800b5e28693bd07ae6f658fb56e7badeb0ac",
+  "old_bytes": 382458,
+  "new_bytes": 382458,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_18.pdf",
+  "label": "$200 NLH RaceDay Stack (1Day)",
+  "old_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
+  "new_sha256": "fd96adb2397bebe7f16a0bbf27805727da6cc3b5aedfc1158960ea1c92365517",
+  "old_bytes": 380525,
+  "new_bytes": 380525,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_19.pdf",
+  "label": "$100 NLH LIPS Ladies Milestone Satellite (1Day) - Awards Direct Entry to Event # 39",
+  "old_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
+  "new_sha256": "45615e6091b56ba9176e58e588b3661a77030bf8f0678811c17b655935caec20",
+  "old_bytes": 384214,
+  "new_bytes": 384214,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_2.pdf",
+  "label": "$400 No Limit Hold'em 1A $75K GTD",
+  "old_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
+  "new_sha256": "8cee0c84b4a8971a6648ffad137628c5e063e178c4f2ed6fbf00dfacf74418da",
+  "old_bytes": 385984,
+  "new_bytes": 385984,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_20.pdf",
+  "label": "$1,100 No Limit Hold'em Seniors 1A $300K GTD - Must be 50+ years of age to participate",
+  "old_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
+  "new_sha256": "157f6b19a5673cf42547e8cfde68209051949a595c44dd296a7a6f724193016b",
+  "old_bytes": 387390,
+  "new_bytes": 387390,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_21.pdf",
+  "label": "$2,200 No Limit Hold'em 1A $1 Mill GTD - PokerAtlas Championship Title Event",
+  "old_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
+  "new_sha256": "e82ec36e43339b7e5ac9f7885569fe162aed62247399aa67d3ac9b441054d201",
+  "old_bytes": 390889,
+  "new_bytes": 390889,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_22.pdf",
+  "label": "$300 Pot Limit Omaha $10K GTD (1Day) - Double Board Bomb Pot",
+  "old_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
+  "new_sha256": "ceae493e3c1f69ca4f03673412e23954b61b400297629dd1d71be117f819d1b1",
+  "old_bytes": 373598,
+  "new_bytes": 373598,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_23.pdf",
+  "label": "$600 Pot Limit Omaha $25K GTD (1Day) - Double Board Bomb Pot",
+  "old_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
+  "new_sha256": "b4be72a2fb76b04d68f1b4ab9b73afe690d6352d6eb76fcab6ca8aed8037d00a",
+  "old_bytes": 373071,
+  "new_bytes": 373071,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_24.pdf",
+  "label": "$260 NLH Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+  "old_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
+  "new_sha256": "c74efdc12f12c8cc085e17cad163012c55516c1f28d46fdf66f6a56d90f1fb47",
+  "old_bytes": 384791,
+  "new_bytes": 384791,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_25.pdf",
+  "label": "$260 NLH Turbo Milestone Satellite (1Day) - Awards Direct Entry to Event # 47",
+  "old_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
+  "new_sha256": "e45e2c857e213900b7db9f1fc1ac77abf7b0b62b4dc3aa8ca99a67adf9d65380",
+  "old_bytes": 386830,
+  "new_bytes": 386830,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_26.pdf",
+  "label": "$400 Pot Limit Omaha Bounty $15K GTD (1Day)",
+  "old_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
+  "new_sha256": "5af709a896267db464e94bbc30293f12c573f22a15b6ee4b149c569654769b8c",
+  "old_bytes": 383325,
+  "new_bytes": 383325,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_27.pdf",
+  "label": "$600 Pot Limit Omaha Bounty $25K GTD (1Day)",
+  "old_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
+  "new_sha256": "2845d1b470b0645c6c9b16cd2991e3e224b558946c640d8cdc46beb283b5c7f2",
+  "old_bytes": 383527,
+  "new_bytes": 383527,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_28.pdf",
+  "label": "$600 BIG O $25K GTD (1Day)",
+  "old_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
+  "new_sha256": "25e72b4e0878f0d493082bb6404aeb6660e2c2c60b242a62da5d1968b0d98fd7",
+  "old_bytes": 380876,
+  "new_bytes": 380876,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_29.pdf",
+  "label": "$200 No Limit Hold'em (1Day)",
+  "old_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
+  "new_sha256": "7ad7bf5effe2fba2a9e4838c12aac8ef91c302eb046bf5ea035608e9efa00bb7",
+  "old_bytes": 380636,
+  "new_bytes": 380636,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_3.pdf",
+  "label": "$400 No Limit Hold'em 1A $75K GTD",
+  "old_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
+  "new_sha256": "f9721bcaa36df2e83c1efd1277abee82f169a84087502b00ab374522db00cd78",
+  "old_bytes": 385967,
+  "new_bytes": 385967,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_30.pdf",
+  "label": "$200 No Limit Hold'em $8K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+  "old_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
+  "new_sha256": "a769510ec44c90866949ac0646afd19d64042e35b07a4f0e936e8409f66e81c8",
+  "old_bytes": 334831,
+  "new_bytes": 334831,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_31.pdf",
+  "label": "$600 NLH LIPS Poker Jingle Tag Team $10K GTD (1Day)",
+  "old_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
+  "new_sha256": "9223f61d108c40e2bb11a261620689ff0aea3591178314709051fe38adbf2bd2",
+  "old_bytes": 384061,
+  "new_bytes": 384061,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_32.pdf",
+  "label": "$800 No Limit Hold'em LIPS Ladies $40K GTD (2Day) - Women in Poker - Main Event",
+  "old_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
+  "new_sha256": "3187c282dab371da436172d0d43fea84e151f8426a91b470cec63ab57eeb4b99",
+  "old_bytes": 387438,
+  "new_bytes": 387438,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_33.pdf",
+  "label": "$600 No Limit Hold'em LIPS $30K GTD (1Day) - KINGS and QUEENS Bounty - Open to all players",
+  "old_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
+  "new_sha256": "735f978d1acd82fe06333a289c6eac7c0047c97446817d6a6904b42c65d20ab4",
+  "old_bytes": 382733,
+  "new_bytes": 382733,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_34.pdf",
+  "label": "$1,100 No Limit Hold'em $75K GTD (1Day) - Progressive Knock-Out Bounty (PKO)",
+  "old_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
+  "new_sha256": "a9e276f250632ef476ea0778620c4b47ee8078140057e4568bb8d01ea259b3e7",
+  "old_bytes": 384420,
+  "new_bytes": 384420,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_35.pdf",
+  "label": "$1,100 No Limit Hold'em 1A $500K GTD - $40 Rake Discount for Entries Before 10:10 a.m.",
+  "old_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
+  "new_sha256": "9773f4da5c3099edb8cea8dd68430551faa9362f2a95fe20043b7fdf3c19fb24",
+  "old_bytes": 391273,
+  "new_bytes": 391273,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_36.pdf",
+  "label": "$1,100 No Limit Hold'em 1B $500K GTD - $40 Rake Discount for Entries Before 6:10 p.m.",
+  "old_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
+  "new_sha256": "6d56c06996af1b37fe7a1dbe3b25c80a432d14f44253b103e994d82d29a58e98",
+  "old_bytes": 390364,
+  "new_bytes": 390364,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_37.pdf",
+  "label": "$2,200 No Limit Hold'em 1B $1 Mill GTD - PokerAtlas Championship Title Event",
+  "old_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
+  "new_sha256": "7ddf2e7e85c00833a0e0362a60d5fdbda8765d925fe3f98893485cc6a1b83057",
+  "old_bytes": 389850,
+  "new_bytes": 389850,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_4.pdf",
+  "label": "$600 No Limit Hold'em 1A $150K GTD - $20 Rake Discount for Entries Before 11:10 a.m.",
+  "old_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
+  "new_sha256": "8cd8c57d75648a9ade4d774e723a214824b61d3e85302ede0944cdadd1b0896f",
+  "old_bytes": 386299,
+  "new_bytes": 386299,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_5.pdf",
+  "label": "$300 No Limit Hold'em $10K GTD (1Day)",
+  "old_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
+  "new_sha256": "5687b59d82ceb0f806582da8c702613797bdc278b612fe250ad18b18a327af17",
+  "old_bytes": 381560,
+  "new_bytes": 381560,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_6.pdf",
+  "label": "$400 No Limit Hold'em $15K GTD (1Day)",
+  "old_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
+  "new_sha256": "21f943c336b29d784645705f3e854e4ea6dc1a5bec22823196d5933ae31f39f0",
+  "old_bytes": 381424,
+  "new_bytes": 381424,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_7.pdf",
+  "label": "$600 No Limit Hold'em $30K GTD (1Day)",
+  "old_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
+  "new_sha256": "a5ccc0fdaf609bda71e3c9cc98ea797bfea0f799a0469608301f13ef23d0d8be",
+  "old_bytes": 381642,
+  "new_bytes": 381642,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_8.pdf",
+  "label": "$200 NLH PokerAtlas Valuetown Bounty $20K GTD (1Day) - POKERATLAS PRO MEMBER $20 RAKE DISCOUNT",
+  "old_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
+  "new_sha256": "01ce2d797601e06c78c3e7390df9faa2640c055aee1fe6c23e73e011d321ffbd",
+  "old_bytes": 375065,
+  "new_bytes": 375065,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/dam/vlvweb/casino/poker/deepstack/2026/structures/dse_nov_2026-structure_9.pdf",
+  "label": "$300 No Limit Hold'em 1B $75K GTD",
+  "old_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
+  "new_sha256": "1e25900a50b3db8b955c672343d812b4e51696fb199a6fc037fbc4c55c7e8ce9",
+  "old_bytes": 389806,
+  "new_bytes": 389806,
+  "kind": "changed",
+  "values": [
+   "buy-in",
+   "guarantee",
+   "house fee",
+   "late registration",
+   "level duration",
+   "start time",
+   "starting chips"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/content/venetian/us/en/legal/hotel-terms-and-conditions.html",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "3dc03ff879bc4beadc7212c3b526fdf27c4dfa43f915c4e816b155e30394ad9d",
+  "new_sha256": "930dc0fbfdad28b978b585ef7df691f68767bae5d9f1eb70c7ca2180d950d1a6",
+  "old_bytes": 232349,
+  "new_bytes": 232349,
+  "kind": "changed",
+  "values": [
+   "cancellation"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/legal/privacy-notice.html",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "090f950f66a397e77b646c74f20acd7d84b3b84ebd847f0561c5c66efb426af3",
+  "new_sha256": "d36b36e8121eab83a69e82d13bd53e731996fc2468b73faa99cb37862ce7a737",
+  "old_bytes": 272889,
+  "new_bytes": 272130,
+  "kind": "changed",
+  "values": [
+   "address"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "fef9a79bb146d60dbdb32b763be0222f27dde87ce631a7c8368aa23ba91809a0",
+  "new_sha256": "8b443486c2fb0a0c08afd1f06697de7b4a34ace35ea3787fa2be7bb1633750c0",
+  "old_bytes": 225359,
+  "new_bytes": 225359,
+  "kind": "changed",
+  "values": [
+   "parking"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html",
+  "label": "The Venetian Resort (Venetian / Palazzo towers)",
+  "old_sha256": "4ca9df6354496c49ac6c913ee629688003a275602ac204d1793e836d4fda099a",
+  "new_sha256": "299f8c60eba0c3d9ea66b00dad55676b9f1da78249160e10b1c3291978798c38",
+  "old_bytes": 231451,
+  "new_bytes": 231451,
+  "kind": "changed",
+  "values": [
+   "dated rate observation",
+   "poker suite rate"
+  ]
+ },
+ {
+  "changed_at": "2026-11-20T21:01:39Z",
+  "url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
+  "label": "Wynn Las Vegas / Encore",
+  "old_sha256": "77a2bb89af1b589d8017263609ee254e4a4dd5ca844763ecc8e603245459d2a8",
+  "new_sha256": "77a2bb89af1b589d8017263609ee254e4a4dd5ca844763ecc8e603245459d2a8",
+  "old_bytes": 353615,
+  "new_bytes": 353615,
+  "kind": "changed",
+  "values": [
+   "parking",
+   "resort fee"
+  ]
  }
 ]

@@ -9826,21 +9826,6 @@
  },
  {
   "detected": "2026-11-20",
-  "url": "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/06/2026&checkout=12/13/2026&rooms=1&adults=2",
-  "kind": "changed",
-  "venue": "Wynn Las Vegas (Wynn / Encore towers)",
-  "event": "",
-  "event_no": null,
-  "date": null,
-  "value": "dated rate observation",
-  "field": "rate",
-  "published": "688.0",
-  "old_excerpt": "Matches the planning window exactly (2026-12-06 to 2026-12-13, 7 nights, 2 adults, 1 room) - the only window-matched capture in this log. The engine returned averages that already include the $55 resort fee and exclude taxes; no checkout total or tax amount was returned, so those cells stay blank. true_nightly 780.05 = 688.00 x 1.1338, computed by this site from the official average and the published Clark County lodging-tax rate; it is not a booking-engine figure. Reconfirm at booking. Other room types returned for the same stay: Encore Resort King $735, Wynn Resort Two Queens $741, Wynn Panoramic View King $752, Wynn Panoramic View Two Queens $752, Encore Panoramic View King $797, Encore Resort Two Queens $803, Encore Panoramic View Two Queens $819, Wynn Panoramic Corner King $1,207 (all incl. resort fee, excl. tax).",
-  "new_excerpt": "",
-  "note": "the stored sentence is gone and the value does not appear on the page"
- },
- {
-  "detected": "2026-11-20",
   "url": "https://reservations.wynnlasvegas.com/ibe/shop.aspx?selectedTower=WYNN&hotelID=13763",
   "kind": "changed",
   "venue": "Wynn Las Vegas",
@@ -20957,7 +20942,7 @@
  {
   "detected": "2026-11-20",
   "url": "https://www.wynnlasvegas.com/terms-and-conditions/DK26WLV2",
-  "kind": "moved",
+  "kind": "changed",
   "venue": "Wynn Las Vegas / Encore",
   "event": "Wynn Las Vegas / Encore",
   "event_no": null,
@@ -20967,7 +20952,7 @@
   "published": "55.0",
   "old_excerpt": "Resort Fee: A daily resort fee of $55 plus tax will be added to your room account for each room night, which entitles you to receive complimentary self-parking for up to two vehicles; in-room Wi-Fi of 15 Mbps on an unlimited number of devices; complimentary bottled water, refreshed daily; unlimited local, domestic long distance (including HI and AK) and toll free calls; access for up to two persons to our fitness center; and a digital newsstand of magazines and newspapers.  ||  Applicability: offer text: 'only available on select dates from October 2, 2026 through March 31, 2027'; blackout dates listed include November 17-21, 2026 and December 31, 2026 The same fee sentence also appears on https://www.wynnlasvegas.com/terms-and-conditions/850070 (an offer whose stay had to end 2025-09-30, used here only to corroborate the figure). Flag F28 stays open: the fee is a rate-plan term, not a property-wide published rate, so confirm it on your own rate plan.",
   "new_excerpt": "",
-  "note": "the value still appears on the page but not in the recorded sentence - the document was re-flowed or the value moved to a different line"
+  "note": "the stored sentence is gone and the value does not appear on the page"
  },
  {
   "detected": "2026-11-20",
