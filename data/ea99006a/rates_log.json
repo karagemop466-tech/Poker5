@@ -78,33 +78,6 @@
   "parking": null
  },
  {
-  "hotel": "Wynn Las Vegas (Wynn / Encore towers)",
-  "hotel_key": "wynn",
-  "observed_on": "2026-11-19",
-  "kind": "booking-engine snapshot, 7 nights, matches the planning window",
-  "checkin": "2026-12-06",
-  "checkout": "2026-12-13",
-  "nights": 7,
-  "checkout_total": null,
-  "nightly_average": 688.0,
-  "resort_fee_per_night": 55.0,
-  "tax_rate_pct": 13.38,
-  "true_nightly": 780.05,
-  "room_type": "Wynn Resort King (640 sq ft), lowest of the 9 room types returned for this stay",
-  "occupancy": "2 adults, 1 room",
-  "parking": "Self-parking complimentary to registered guests; valet parking complimentary to Wynn and Encore Tower Suites registered guests",
-  "cancellation_deadline": "Conflicting official statements, both read 2026-11-19: the booking engine says 'Cancel 72 hours prior to arrival...'; the offer's linked terms say 'cancellations must be received at least 48 hours prior to arrival date...'. See flag F74.",
-  "verified": true,
-  "caveats": [
-   "Matches the planning window exactly (2026-12-06 to 2026-12-13, 7 nights, 2 adults, 1 room) - the only window-matched capture in this log.",
-   "The engine returned averages that already include the $55 resort fee and exclude taxes; no checkout total or tax amount was returned, so those cells stay blank.",
-   "true_nightly 780.05 = 688.00 x 1.1338, computed by this site from the official average and the published Clark County lodging-tax rate; it is not a booking-engine figure. Reconfirm at booking.",
-   "Other room types returned for the same stay: Encore Resort King $735, Wynn Resort Two Queens $741, Wynn Panoramic View King $752, Wynn Panoramic View Two Queens $752, Encore Panoramic View King $797, Encore Resort Two Queens $803, Encore Panoramic View Two Queens $819, Wynn Panoramic Corner King $1,207 (all incl. resort fee, excl. tax)."
-  ],
-  "source": "https://reservations.wynnlasvegas.com/ibe/details.aspx?propertyid=13763&rate=WEBONLY&nono=1&checkin=12/06/2026&checkout=12/13/2026&rooms=1&adults=2",
-  "source_label": "official Wynn booking engine (dated stay Dec 6-13 2026)"
- },
- {
   "id": "RL-2026-11-19-WYNN-QUOTES",
   "hotel": "Wynn Las Vegas",
   "hotel_key": "wynn",

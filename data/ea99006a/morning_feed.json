@@ -1,59 +1,59 @@
 {
- "generated_at": "2026-11-19T06:16:04Z",
+ "generated_at": "2026-11-20T01:09:52Z",
  "note": "Per-room morning feed: each official schedule source for each Strip room, re-read on the scheduled run. 'changed' means a human must re-read the source before trusting any row backed by it; values are never rewritten automatically.",
  "rooms": [
   {
    "room": "Venetian Poker Room",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "checked_at": "2026-11-19T00:51:24Z",
-   "urls": 41,
-   "ok": 37,
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 42,
+   "ok": 38,
    "changed": 4,
    "failed": 0
   },
   {
    "room": "Wynn / WPT World Championship",
    "source": "https://www.wynnlasvegas.com/casino/poker",
-   "checked_at": "2026-11-19T00:51:24Z",
-   "urls": 6,
-   "ok": 4,
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 10,
+   "ok": 8,
    "changed": 2,
    "failed": 0
   },
   {
    "room": "Caesars Palace / Horseshoe",
    "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
-   "checked_at": "2026-11-19T00:51:24Z",
-   "urls": 5,
-   "ok": 1,
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 9,
+   "ok": 5,
    "changed": 3,
    "failed": 0
   },
   {
    "room": "Bellagio / MGM Grand / ARIA",
-   "source": "https://bellagio.mgmresorts.com/en/casino/poker-room.html",
-   "checked_at": "",
-   "urls": 3,
-   "ok": 0,
+   "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 15,
+   "ok": 3,
    "changed": 0,
-   "failed": 3
+   "failed": 12
   },
   {
    "room": "South Point",
    "source": "https://southpointcasino.com/casino/poker-room",
-   "checked_at": "2026-11-19T00:51:24Z",
-   "urls": 2,
-   "ok": 0,
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 4,
+   "ok": 2,
    "changed": 2,
    "failed": 0
   },
   {
    "room": "Resorts World",
    "source": "https://www.rwlasvegas.com/gaming/poker-room/",
-   "checked_at": "2026-11-19T00:51:24Z",
-   "urls": 2,
-   "ok": 1,
-   "changed": 1,
+   "checked_at": "2026-11-20T00:59:03Z",
+   "urls": 4,
+   "ok": 2,
+   "changed": 2,
    "failed": 0
   }
  ]

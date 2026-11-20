@@ -1,8 +1,12 @@
 {
- "run": null,
- "urls": 0,
- "counts": {"ok": 0, "changed": 0, "error": 0},
- "value_changes": 0,
- "page_only_changes": 0,
- "note": "No value-level run has been recorded yet. The agent sandbox that authors this repo cannot open a connection to casino hosts, so scripts/monitor_b3be876c.py has only ever been executed offline against fixtures (that is how its detection was tested: an intact capture reports 0 changes, a wiped sheet reports 8, a $300 to $325 price change is caught). The first scheduled run on a GitHub runner with internet access writes the real ledger. Until then no row is marked, and the absence of a mark means 'not yet re-checked', never 'verified unchanged'."
+ "run": "2026-11-20T01:09:52Z",
+ "urls": 69,
+ "counts": {
+  "ok": 3,
+  "changed": 66,
+  "error": 0
+ },
+ "value_changes": 1399,
+ "page_only_changes": 1,
+ "note": "statuses: ok = nothing moved; page-only = bytes differ, every published sentence still reads the same; reflow = the value is still on the page but the recorded sentence moved; changed = the value itself is gone; error = could not re-check, which is never reported as 'no change'."
 }
