@@ -29,10 +29,10 @@
   "Horseshoe Las Vegas: an existing resort_fee_note (813 chars) is kept; the re-derive template (224 chars) was not applied.",
   "Horseshoe Las Vegas: resort fee verified at the property level from the booking-page Hotel Policies (read 2026-11-19); the corporate range note is kept alongside.",
   "Venetian: resort fee re-read today; the official poker suite-rate page is the only published numeric room rate found on any Strip property ($119 / $209 'start as low as'), recorded in the dated rate log as a starting rate and NOT as a quote for the stay.",
-  "Venetian: per-day parking figures captured from the official player-parking page on 2026-11-20.",
-  "Bellagio: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-20.",
-  "ARIA Resort & Casino: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-20.",
-  "MGM Grand: mandatory resort fee $50.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-20."
+  "Venetian: per-day parking figures captured from the official player-parking page on 2026-11-21.",
+  "Bellagio: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-21.",
+  "ARIA Resort & Casino: mandatory resort fee $55.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-21.",
+  "MGM Grand: mandatory resort fee $50.00 plus tax, 72-hour standard cancellation term and self-parking rates read from official MGM pages on 2026-11-21."
  ],
  "preserved_curation": [
   "Q14.have (kept the committed wording)",
@@ -55,7 +55,7 @@
   "hotels.wynn.cancel (kept the committed wording)",
   "hotels.wynn.cancel_source (kept the committed wording)"
  ],
- "sources_read_on": "2026-11-19",
+ "sources_read_on": "2026-11-20",
  "rate_log_entries": 2,
  "live_reads": {
   "wynn_resort_fee": [
@@ -83,11 +83,11 @@
    "https://www.venetianlasvegas.com/resort/casino/poker/suite-rates.html"
   ],
   "mgm_terms_2026_11_19": [
-   "2026-11-20",
+   "2026-11-21",
    null
   ],
   "venetian_parking_2026_11_19": [
-   "2026-11-20",
+   "2026-11-21",
    "https://www.venetianlasvegas.com/resort/casino/poker/player-parking.html"
   ],
   "sheet_live_spot_checks": [

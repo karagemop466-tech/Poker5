@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-20T21:01:39Z",
+ "generated_at": "2026-11-21T00:43:07Z",
  "note": "Per-room morning feed: each official schedule source for each Strip room, re-read on the scheduled run. 'changed' means a human must re-read the source before trusting any row backed by it; values are never rewritten automatically.",
  "rooms": [
   {
    "room": "Venetian Poker Room",
    "source": "https://www.venetianlasvegas.com/resort/casino/poker/deepstack-extravaganza-poker-tournament/dse-nov-2026.html",
-   "checked_at": "2026-11-20T20:50:56Z",
+   "checked_at": "2026-11-21T00:32:27Z",
    "urls": 42,
    "ok": 40,
    "changed": 2,
@@ -14,16 +14,16 @@
   {
    "room": "Wynn / WPT World Championship",
    "source": "https://www.wynnlasvegas.com/casino/poker",
-   "checked_at": "2026-11-20T20:50:56Z",
-   "urls": 13,
-   "ok": 9,
-   "changed": 4,
+   "checked_at": "2026-11-21T00:32:27Z",
+   "urls": 12,
+   "ok": 8,
+   "changed": 3,
    "failed": 0
   },
   {
    "room": "Caesars Palace / Horseshoe",
    "source": "https://www.caesars.com/las-vegas/explore/casino/poker-tournaments-las-vegas-strip",
-   "checked_at": "2026-11-20T20:50:56Z",
+   "checked_at": "2026-11-21T00:32:27Z",
    "urls": 7,
    "ok": 3,
    "changed": 4,
@@ -32,7 +32,7 @@
   {
    "room": "Bellagio / MGM Grand / ARIA",
    "source": "https://bellagio.mgmresorts.com/en/casino/poker.html",
-   "checked_at": "2026-11-20T20:50:56Z",
+   "checked_at": "2026-11-21T00:32:27Z",
    "urls": 15,
    "ok": 3,
    "changed": 0,
@@ -41,7 +41,7 @@
   {
    "room": "South Point",
    "source": "https://southpointcasino.com/casino/poker-room",
-   "checked_at": "2026-11-20T20:50:56Z",
+   "checked_at": "2026-11-21T00:32:27Z",
    "urls": 4,
    "ok": 3,
    "changed": 1,
@@ -50,10 +50,10 @@
   {
    "room": "Resorts World",
    "source": "https://www.rwlasvegas.com/gaming/poker-room/",
-   "checked_at": "2026-11-20T20:50:56Z",
+   "checked_at": "2026-11-21T00:32:27Z",
    "urls": 5,
    "ok": 3,
-   "changed": 2,
+   "changed": 1,
    "failed": 0
   }
  ]
